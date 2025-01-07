@@ -224,16 +224,16 @@ Jeff Stevens (he/him)
 <p>R is a statistical programming language.</p>
 <p>It allows you to flexibly</p>
 <ul>
-<li><p>wrangle</p></li>
-<li><p>analyze</p></li>
-<li><p>visualize your data</p></li>
+<li><p>wrangle data</p></li>
+<li><p>visualize data</p></li>
+<li><p>analyze data</p></li>
 <li><p>create reproducible documents</p></li>
 </ul></section><section id="conventions" class="slide level2"><h2>Conventions</h2>
 <ul>
-<li><p>All <code>code</code> is in monospace font peach text</p></li>
+<li><p>All <code>code</code> is in monospace font purple text</p></li>
 <li><p>R functions end with parentheses: <code>function()</code></p></li>
 <li><p>Directory names end with slash: <code>home/</code></p></li>
-<li><p>Package names are surrounded by curly braces: <a href="https://tidyverse.tidyverse.org">tidyverse</a></p></li>
+<li><p>Package names are surrounded by curly braces: <a href="https://tidyverse.org"><code>{tidyverse}</code></a></p></li>
 <li><p>Keyboard buttons separate keys with a plus: <kbd>Ctrl</kbd>+<kbd>S</kbd></p></li>
 <li><p>These are parentheses <code>()</code>, brackets <code>[]</code>, and braces <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code></p></li>
 <li><p>Links are in <a href="">light blue text</a></p></li>
@@ -272,7 +272,7 @@ Jeff Stevens (he/him)
 <aside class="notes"><p>Base R is the core, default software needed to run R maintained by the R Development Team. It includes a few core packages that underly much of R.</p>
 <p>But other people can contribute packages, or collections of data and functions.</p>
 <p>The official repository for R packages is the Comprehensive R Archive Network or <a href="https://cloud.r-project.org/web/packages/index.html">CRAN</a>. There are more than 19,000 packages on CRAN!</p>
-<p>Packages can also be stored at other locations such as <a href="https://github.com">GitHub</a>, especially during development.</p>
+<p>Packages can also be stored at other locations such as <a href="https://github.com">GitHub</a> especially during development.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -340,7 +340,7 @@ Jeff Stevens (he/him)
           display:block!important;
       }</style></aside></section><section id="packages-6" class="slide level2"><h2>Packages</h2>
 <h3 id="using">Using</h3>
-<p>Let’s view the <code>penguins</code> data set from the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a> package.</p>
+<p>Let’s view the <code>penguins</code> data set from the <a href="https://allisonhorst.github.io/palmerpenguins/"><code>{palmerpenguins}</code></a> package.</p>
 <p>Try this:</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -360,31 +360,48 @@ Jeff Stevens (he/him)
           overflow: hidden!important;
           display:block!important;
       }</style></aside></section><section id="packages-7" class="slide level2"><h2>Packages</h2>
-<p>But you can either load the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a> package, or use this trick to call a specific function from a specific package.</p>
+<p>But you can either load the <a href="https://allisonhorst.github.io/palmerpenguins/"><code>{palmerpenguins}</code></a> package, or use this trick to call a specific function from a specific package.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
 </div>
 </section><section id="tidyverse" class="slide level2"><h2>tidyverse</h2>
 
 <img data-src="../images/tidyverse_banner.png" class="r-stretch"></section><section id="core-tidyverse-packages" class="slide level2"><h2>Core tidyverse packages</h2>
 <ul>
-<li><p><a href="https://ggplot2.tidyverse.org">ggplot2</a>, for data visualisation</p></li>
-<li><p><a href="https://dplyr.tidyverse.org">dplyr</a>, for data manipulation</p></li>
-<li><p><a href="https://tidyr.tidyverse.org">tidyr</a>, for data tidying</p></li>
-<li><p><a href="https://readr.tidyverse.org">readr</a>, for data import</p></li>
-<li><p><a href="https://purrr.tidyverse.org/">purrr</a>, for functional programming</p></li>
-<li><p><a href="https://tibble.tidyverse.org/">tibble</a>, for tibbles, a version of data frames</p></li>
-<li><p><a href="https://stringr.tidyverse.org">stringr</a>, for strings</p></li>
-<li><p><a href="https://forcats.tidyverse.org/">forcats</a>, for factors</p></li>
-<li><p><a href="https://lubridate.tidyverse.org">lubridate</a>, for dates</p></li>
+<li><p><a href="https://ggplot2.tidyverse.org/"><code>{ggplot2}</code></a> for data visualisation</p></li>
+<li><p><a href="https://dplyr.tidyverse.org/"><code>{dplyr}</code></a> for data manipulation</p></li>
+<li><p><a href="https://tidyr.tidyverse.org/"><code>{tidyr}</code></a> for data tidying</p></li>
+<li><p><a href="https://readr.tidyverse.org/"><code>{readr}</code></a> for data import</p></li>
+<li><p><a href="https://tibble.tidyverse.org/"><code>{tibble}</code></a> for tibbles, a version of data frames</p></li>
+<li><p><a href="https://stringr.tidyverse.org/"><code>{stringr}</code></a> for strings</p></li>
+<li><p><a href="https://forcats.tidyverse.org/"><code>{forcats}</code></a> for factors</p></li>
+<li><p><a href="https://lubridatetidyverse.org/"><code>{lubridate}</code></a> for dates</p></li>
+<li><p><a href="https://purrr.tidyverse.org/"><code>{purrr}</code></a> for functional programming</p></li>
 </ul></section><section id="homework" class="slide level2"><h2>Homework</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <h3 id="before-the-first-class-period">Before the first class period</h3>
 <ul>
 <li><p>Install R from <a href="https://r-project.org" class="uri">https://r-project.org</a></p></li>
-<li><p>Install RStudio from <a href="https://rstudio.com" class="uri">https://rstudio.com</a></p></li>
-<li><p>Install <a href="https://tidyverse.tidyverse.org">tidyverse</a> package</p></li>
+<li><p>Install RStudio from <a href="https://posit.co" class="uri">https://posit.co</a></p></li>
+<li><p>Install <a href="https://tidyverse.org"><code>{tidyverse}</code></a> package</p></li>
 <li><p>Complete course introduction form</p></li>
 <li><p>Read the syllabus</p></li>
 <li><p>Read readings in syllabus schedule</p></li>
