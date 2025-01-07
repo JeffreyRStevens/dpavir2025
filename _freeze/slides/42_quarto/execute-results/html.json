@@ -1,9 +1,11 @@
 {
-  "hash": "d04869012cd1a3d28fdbf949ca51ca62",
+  "hash": "1e26a0e6d525c784bc238761dd10da0a",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Quarto\"\nauthor: \"Jeff Stevens\"\ndate: \"2023-05-10\"\ndate-format: iso\nexecute:\n  echo: true\n  freeze: auto\nformat:\n  revealjs: \n    theme: custom.scss\n    slide-number: true\n    code-line-numbers: false\n    highlight-style: github\n    code-overflow: wrap\n    footer: \"[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)\"\n    code-link: true\n---\n\n\n\n\n\n# Set-up\n\nFirst, install [Quarto](https://quarto.org/docs/get-started/) as a stand-alone app on your computer\n\n## Quarto\n\nQuarto is an open-source scientific and technical publishing system built on Pandoc\n\n![](../images/quarto_workflow.png)\n\n\n# Documents\n\n\n# Presentations\n\n\n# Websites\n\n\n# Quarto Pub\n<https://quarto.pub>\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Quarto\"\nauthor: \"Jeff Stevens\"\ndate: \"2023-05-10\"\ndate-format: iso\nexecute:\n  echo: true\n  freeze: auto\nformat:\n  revealjs: \n    theme: custom.scss\n    slide-number: true\n    code-line-numbers: false\n    highlight-style: github\n    code-overflow: wrap\n    footer: \"[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir)\"\n    code-link: true\n---\n\n\n\n\n\n# Set-up\n\nFirst, install [Quarto](https://quarto.org/docs/get-started/) as a stand-alone app on your computer\n\n## Quarto\n\nQuarto is an open-source scientific and technical publishing system built on Pandoc\n\n![](../images/quarto_workflow.png)\n\n\n# Documents\n\n\n# Presentations\n\n\n# Websites\n\n\n# Quarto Pub\n<https://quarto.pub>\n",
+    "supporting": [
+      "42_quarto_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

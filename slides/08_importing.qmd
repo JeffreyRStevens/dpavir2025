@@ -13,7 +13,7 @@ format:
     code-line-numbers: false
     highlight-style: github
     code-overflow: wrap
-    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir)"
     code-link: true
 ---
 
@@ -57,7 +57,7 @@ format:
 :::{.incremental}
 * Download data for [dog breed popularity](../data/dog_breed_popularity.csv).
 
-* Create `data/` directory in your `dpavir2023` course directory.
+* Create `data/` directory in your `dpavir2025` course directory.
 
 * Save `dog_breed_popularity.csv` into the `data/` directory.
 

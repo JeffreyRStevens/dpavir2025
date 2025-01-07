@@ -1110,7 +1110,7 @@
     "href": "slides/23_dates.html#current-datetime",
     "title": "Dates and times",
     "section": "Current date/time",
-    "text": "Current date/time\n\nSys.Date()  # base R\n\n[1] \"2025-01-07\"\n\ntoday() # {lubridate}\n\n[1] \"2025-01-07\"\n\n\n\n\nSys.time()  # base R\n\n[1] \"2025-01-07 14:39:32 CST\"\n\nnow()  # {lubridate}\n\n[1] \"2025-01-07 14:39:32 CST\""
+    "text": "Current date/time\n\nSys.Date()  # base R\n\n[1] \"2025-01-07\"\n\ntoday() # {lubridate}\n\n[1] \"2025-01-07\"\n\n\n\n\nSys.time()  # base R\n\n[1] \"2025-01-07 15:19:09 CST\"\n\nnow()  # {lubridate}\n\n[1] \"2025-01-07 15:19:09 CST\""
   },
   {
     "objectID": "slides/23_dates.html#creating-datestimes",
@@ -2678,7 +2678,7 @@
     "href": "slides/05_rmarkdown.html#r-code-chunks",
     "title": "Literate programming",
     "section": "R code chunks",
-    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1] -1.30411251 -0.12320019  0.15448691  0.87961415  0.02657322 -1.17236762\n [7] -1.39191609 -0.35520885  0.24708840 -0.35257014"
+    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1]  0.405408645  0.570283809 -0.084009961 -0.200033505 -0.001119474\n [6]  0.275475233  1.211709879  0.977450645  1.625753141  0.733143627"
   },
   {
     "objectID": "slides/05_rmarkdown.html#embed-figures",
@@ -4946,7 +4946,7 @@
     "href": "slides/24_functions.html#multiple-conditions-1",
     "title": "Functions",
     "section": "Multiple conditions",
-    "text": "Multiple conditions\nUse switch()\n\ncentral_tend &lt;- function(x, type) {\n  switch(type,\n         mean = mean(x),\n         median = median(x),\n         trimmed = mean(x, trim = .1))\n}\n\n\n\nvector &lt;- rcauchy(100)\ncentral_tend(x = vector, type = \"mean\")\n\n[1] 0.3605787\n\ncentral_tend(x = vector, type = \"median\")\n\n[1] -0.2040509\n\ncentral_tend(x = vector, type = \"trimmed\")\n\n[1] -0.4419657"
+    "text": "Multiple conditions\nUse switch()\n\ncentral_tend &lt;- function(x, type) {\n  switch(type,\n         mean = mean(x),\n         median = median(x),\n         trimmed = mean(x, trim = .1))\n}\n\n\n\nvector &lt;- rcauchy(100)\ncentral_tend(x = vector, type = \"mean\")\n\n[1] -2.679521\n\ncentral_tend(x = vector, type = \"median\")\n\n[1] 0.08329218\n\ncentral_tend(x = vector, type = \"trimmed\")\n\n[1] 0.1699906"
   },
   {
     "objectID": "slides/24_functions.html#creating-functions-in-tidyverse",
