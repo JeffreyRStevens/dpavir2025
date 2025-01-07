@@ -277,7 +277,7 @@ This is a list of all of the functions that we will be learning throughout the c
 
 ## Flashcards
 
-Flashcards can be a useful way to help learning functions and their descriptions. I created a package called [`{flashr}`](https://jeffreyrstevens.github.io/flashr/){target="_blank"} that builds decks of HTML flashcards. You're welcome to build your own decks of flashcards by installing the package and following the instructions for building decks. Or, you can use existing decks built for the course or for each of the chapters of [_R for Data Science_](https://r4ds.hadley.nz/){target="_blank"} (1st edition).
+Flashcards can be a useful way to help learning functions and their descriptions. I created a package called [`{flashr}`](https://jeffreyrstevens.github.io/flashr/){target="_blank"} that builds decks of HTML flashcards. You're welcome to build your own decks of flashcards by installing the package and following the instructions for building decks. Or, you can use existing decks built for the course or for each of the chapters of [_R for Data Science_](https://r4ds.hadley.nz/){target="_blank"} (2nd edition).
 
 <details>
 
@@ -309,27 +309,29 @@ Flashcards can be a useful way to help learning functions and their descriptions
 
 <summary>R4DS flashcards</summary>
 
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds1.html" target="_blank">Ch. 1 Introduction</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds3.html" target="_blank">Ch. 3 Data visualization</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds5.html" target="_blank">Ch. 5 Data transformation</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds7.html" target="_blank">Ch. 7 Exploratory data analysis</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds8.html" target="_blank">Ch. 8 Workflow: projects</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds10.html" target="_blank">Ch. 10 Tibbles</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds11.html" target="_blank">Ch. 11 Data import</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds12.html" target="_blank">Ch. 12 Tidy data</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds13.html" target="_blank">Ch. 13 Relational data</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds14.html" target="_blank">Ch. 14 Strings</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds15.html" target="_blank">Ch. 15 Factors</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds16.html" target="_blank">Ch. 16 Dates and times</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds18.html" target="_blank">Ch. 18 Pipes</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds20.html" target="_blank">Ch. 20 Vectors</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds21.html" target="_blank">Ch. 21 Iteration</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds23.html" target="_blank">Ch. 23 Model basics</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds25.html" target="_blank">Ch. 25 Many models</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds27.html" target="_blank">Ch. 27 R Markdown</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds28.html" target="_blank">Ch. 28 Graphics for communication</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds29.html" target="_blank">Ch. 29 R Markdown formats</a>
--   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds30.html" target="_blank">Ch. 30 R Markdown workflow</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e00.html" target="_blank">Ch. 0 Introduction</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e01.html" target="_blank">Ch. 1 Data visualization</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e03.html" target="_blank">Ch. 3 Data transformation</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e05.html" target="_blank">Ch. 5 Data tidying</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e07.html" target="_blank">Ch. 7 Data import</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e09.html" target="_blank">Ch. 9 Layers</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e10.html" target="_blank">Ch. 10 Exploratory data analysis</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e11.html" target="_blank">Ch. 11 Communication</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e12.html" target="_blank">Ch. 12 Logical vectors</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e13.html" target="_blank">Ch. 13 Numbers</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e14.html" target="_blank">Ch. 14 Strings</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e15.html" target="_blank">Ch. 15 Regular expressions</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e16.html" target="_blank">Ch. 16 Factors</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e18.html" target="_blank">Ch. 18 Dates and times</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e19.html" target="_blank">Ch. 19 Joins</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e20.html" target="_blank">Ch. 20 Spreadsheets</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e21.html" target="_blank">Ch. 21 Databases</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e23.html" target="_blank">Ch. 23 Hierarchical data</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e25.html" target="_blank">Ch. 25 Functions</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e26.html" target="_blank">Ch. 26 Iteration</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e27.html" target="_blank">Ch. 27 Base R</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e28.html" target="_blank">Ch. 28 Quarto</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e29.html" target="_blank">Ch. 29 Quarto formats</a>
 
 </details>
 

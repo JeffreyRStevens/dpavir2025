@@ -1,0 +1,15 @@
+{
+  "hash": "6c4071ea2a9c66e331965818a6a1d931",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Summarizing rows\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-02-22\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\nFor these exercises, we'll use a new clean version of the dog breed traits data set. \n\n1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. What is the overall mean rating for _affectionate_?\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. What is the overall mean rating for all rating columns ignoring `NA`s? \n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. How many breeds are there in each coat type?\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. What is the median grooming rating for each coat type?\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. What is the lowest rating per coat length for each of the rating columns, ignoring `NA`s?\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n7. What are the sample size, mean, and standard deviation of shedding ratings for medium coat length dogs per coat type sorted from largest to smallest sample size and only including coat types with 5 or more samples?\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n8. Calculate each breed's mean rating across all ratings columns and return a data frame with the highest rating for each coat type. Don't forget to undo `rowwise()` with `ungroup()` before further calculations.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

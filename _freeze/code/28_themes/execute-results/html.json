@@ -1,0 +1,15 @@
+{
+  "hash": "b76172ec86a669cf45f0725b3e7b80b4",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Design and themes\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-04-05\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight with color based on the number of cylinders.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Repeat the scatterplot but with classic, bw, and dark themes.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Repeat the scatterplot from #1 but with no minor grid lines and no legend.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Repeat the scatterplot from #1 but no minor grid lines for the x-axis (keep them for the y-axis) and move the legend inside the plot area and remove the legend title.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Repeat the scatterplot from #1 but make the major y-axis grid lines black dashed lines and change the text font to 12 point Times font.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. Create a version of scatterplot #1 that minimizes the data-ink ratio by reducing non-data-ink.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

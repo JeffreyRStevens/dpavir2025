@@ -1,0 +1,15 @@
+{
+  "hash": "a33e46b0468cb182dd99f289f68042b8",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Plotting challenge\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-05-01\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\nRecreate the following plot. Don't worry about exact locations, size, or scaling. But pay attention to subsetting of the data and capitalization of text. Feel free to write the code in an R script or R Markdown document. Upload your final code to Canvas under _Exercise: Plotting challenge_ by May 3.\n\n![](../images/plot_challenge.png)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

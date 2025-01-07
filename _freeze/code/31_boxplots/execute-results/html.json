@@ -1,0 +1,15 @@
+{
+  "hash": "0d8337b0cb63f8ffaf08583be1163da9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Plotting distributions: boxplots\"\nauthor: \"Francine Goh\"\ndate: \"2023-04-12\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `penguins` data, create a boxplot that shows penguin flipper length by island without outliers.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Add the means and standard error for each boxplot.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Switch from standard errors to confidence intervals, increase the size of the point, and color the box shading _chocolate_.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Fill the boxplots with color separately for each island and remove the legend.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n5. Create a boxplot to show how flipper length differs for each species by island.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n6. Recreate the boxplot #5 as a violin plot with a white background.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

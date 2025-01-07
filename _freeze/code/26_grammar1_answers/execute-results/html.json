@@ -1,0 +1,17 @@
+{
+  "hash": "6d484f1298fc8abad4d00aae5eac5010",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Grammar of graphics I\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-03-31\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors\n```\n\n\n:::\n\n```{.r .cell-code}\nmtcars |> \n  ggplot(aes(x = wt, y = mpg)) +\n  geom_point()\n```\n\n::: {.cell-output-display}\n![](26_grammar1_answers_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n\n2. Repeat the plot but only with vehicles having 4 or 6 cylinders.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmtcars |> \n  filter(cyl < 8) |> \n  ggplot(aes(x = wt, y = mpg)) +\n  geom_point()\n```\n\n::: {.cell-output-display}\n![](26_grammar1_answers_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\n\n3. Repeat plot #1 but add a smooth line **underneath** the data points.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmtcars |> \n  ggplot(aes(x = wt, y = mpg)) +\n  geom_smooth() +\n  geom_point()\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n```\n\n\n:::\n\n::: {.cell-output-display}\n![](26_grammar1_answers_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\n\n4. Make a boxplot of fuel efficiency for each cylinder size.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmtcars |> \n  mutate(cyl = as.factor(cyl)) |> \n  ggplot(aes(x = cyl, y = mpg)) +\n  geom_boxplot()\n```\n\n::: {.cell-output-display}\n![](26_grammar1_answers_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n\n\n\n5. Add \" cylinders\" to the end of each value in the cylinder column of data and replot #4.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmtcars |> \n  mutate(cyl = paste0(cyl, \" cylinders\")) |> \n  ggplot(aes(x = cyl, y = mpg)) +\n  geom_boxplot()\n```\n\n::: {.cell-output-display}\n![](26_grammar1_answers_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n\n6. Replot #4 ordering the cylinders such that the median mpg increases from left to right.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmtcars |> \n  mutate(cyl = as.factor(cyl)) |> \n  ggplot(aes(x = fct_reorder(cyl, mpg), y = mpg)) +\n  geom_boxplot()\n```\n\n::: {.cell-output-display}\n![](26_grammar1_answers_files/figure-html/unnamed-chunk-6-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "26_grammar1_answers_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

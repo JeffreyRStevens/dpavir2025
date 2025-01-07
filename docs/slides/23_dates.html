@@ -308,22 +308,22 @@ Jeff Stevens
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># base R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-11-21"</code></pre>
+<pre><code>[1] "2025-01-07"</code></pre>
 </div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># {lubridate}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-11-21"</code></pre>
+<pre><code>[1] "2025-01-07"</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># base R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-11-21 13:46:16 CST"</code></pre>
+<pre><code>[1] "2025-01-07 14:39:32 CST"</code></pre>
 </div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># {lubridate}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-11-21 13:46:16 CST"</code></pre>
+<pre><code>[1] "2025-01-07 14:39:32 CST"</code></pre>
 </div>
 </div>
 </div>
@@ -699,7 +699,7 @@ Jeff Stevens
 </div>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="va">r_class_schedule</span><span class="op">$</span><span class="va">iso_date</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 668 days</code></pre>
+<pre><code>Time difference of 715 days</code></pre>
 </div>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">r_class_schedule</span><span class="op">$</span><span class="va">iso_date</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="fl">7</span> <span class="op">*</span> <span class="fl">9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -719,9 +719,9 @@ Jeff Stevens
 <pre><code># A tibble: 3 × 6
   meeting date        topic               iso_date   week_later days_since
     &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;               &lt;date&gt;     &lt;date&gt;     &lt;drtn&gt;    
-1       1 23 Jan 2023 Course introduction 2023-01-23 2023-01-30 668 days  
-2       2 25 Jan 2023 Working in RStudio  2023-01-25 2023-02-01 666 days  
-3       3 27 Jan 2023 Coding basics       2023-01-27 2023-02-03 664 days  </code></pre>
+1       1 23 Jan 2023 Course introduction 2023-01-23 2023-01-30 715 days  
+2       2 25 Jan 2023 Working in RStudio  2023-01-25 2023-02-01 713 days  
+3       3 27 Jan 2023 Coding basics       2023-01-27 2023-02-03 711 days  </code></pre>
 </div>
 </div>
 </section><section id="solving-the-problem" class="slide level2"><h2>Solving the problem</h2>

@@ -1,0 +1,15 @@
+{
+  "hash": "886c4d8a13c9413ebcc13141f9d1ea1a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Plotting amounts: barcharts and dot plots\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-04-14\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mtcars` data, create a barchart of the counts for each level of cylinder.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Repeat the barchart but stack the counts by gear.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Recreate this plot:\n\n![](../images/stacked_proportional_barchart.png)\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Repeat barchart #2 but set the position to \"dodge\".\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Whoa, what happened to 8 cylinders? Unfortunately, since there were only two levels of gear for 8 cylinders, it just split the bars in two. To hold the numbers of bars the same across all levels, you can set position to `position_dodge(preserve = \"single\")`. Try that.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. Well, that's better---the two bars are the same width as all of the other bars. But the 4 gears should show up as 0. To fix, we need to count the data first, find implicitly missing data, and plot using `geom_col()`. So first, find counts for the combinations of cylinders and gears. Then use `complete()` to find the implicitly missing combinations. Then replace the NAs with 0s. Then use `geom_col()` to plot these values with the position dodged.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n7. Make a dotplot of the counts for each level of carb and plot carb on the y-axis and the count on the x-axis. Reminder that first you'll need to count the observations in each level of carb before starting the plot.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n8. Repeat dotplot #8 but order carb based on the counts from highest to lowest count.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

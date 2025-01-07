@@ -1,0 +1,15 @@
+{
+  "hash": "ded166ae2e683fe5b7b4c2d804b10aba",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Selecting columns\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-02-13\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\nFor these exercises, we'll use the `iris` data set build into base R.\n\n1. View `iris` to see what it looks like.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Return a data frame with only the sepal data using _inclusion_.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Return a data frame with only the sepal data using a _helper function_.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Return a data frame with the sepal and petal data using a _helper function_.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Return a data frame with the sepal and petal data using _exclusion_.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. Move `Species` to be the first column using `select()` and a helper function.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n7. Move `Species` to be the first column using `relocate()`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n8. Rename `Species` to `species` using `select()`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n9. Rename `Species` to `species` using `rename()`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

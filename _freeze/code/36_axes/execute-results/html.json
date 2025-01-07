@@ -1,0 +1,15 @@
+{
+  "hash": "61413b611b7ee6404e97c0121b2e9f07",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Adjusting axes\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-04-24\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mpg` data, create boxplots of highway fuel efficiency as a function of class.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n2. Zoom into the plot with y-axis limits of 15 and 40 without altering the data.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n3. Change the y-axis limits to 15 and 40 but allow the statistical transformations to change the data.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n4. Replot #1 but using a log10 scale.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n5. Replot #1 but with y-axis limits running from 0 to 50 and with labels in increments of 5 but no minor grid lines.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n6. Replot #1 but create separate panels based on year (as rows) and cylinders (as columns) and allowing the scales to vary across rows.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n7. Replot #1 and assign it to `hwy_plot` and replot a similar version with city fuel efficiency named `cty_plot`. Then combine them into a compound plot labeled as subfigures A and B and save this figure on your computer as a PNG file.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -52,7 +52,7 @@ The primary aim of this course is to teach you how to use R. Therefore, reading 
 ## Student hours
 Jeff has time to meet with students Tuesday mornings from 10-11am and Wednesday afternoons from 1-2pm in his office at B83 East Stadium (CB3).
 
-<!-- In addition to Jeff's student hours, Quantitative Assistant Katie McNealy is available to help with R-related issues.  Katie took the course previously and is proficient in R. Note that she is available for general consultation on topics covered in the course not for specific questions about course requirements or assignments. So you can go to her with general R understanding/debugging issues. She has drop-in hours 1-3pm on Wednesdays and has reservable consultation 10-minute and 30-minute slots available on Wednesday and Thursday afternoons. See the course [Canvas resources page](https://canvas.unl.edu/courses/149637/pages/course-resources) for links to her calendar to schedule a time to meet. -->
+In addition to Jeff's student hours, Quantitative Assistant Harper Jones is available to help with R-related issues.  Harper took the course previously and is proficient in R. Note that she is available for general consultation on topics covered in the course not for specific questions about course requirements or assignments. So you can go to her with general R understanding/debugging issues. Find out more about her consultation services at the  [Canvas resources page](https://canvas.unl.edu/courses/192678/pages/course-resource) for links to her calendar to schedule a time to meet.
 
 ## Computing requirements
 You will need to bring a _fully charged_ laptop to each class meeting to run in-class coding. While we will not be using very large data sets or running massive computations, having a faster computer will allow you to quickly proceed through the coding. On this laptop, you will need to install [R](https://r-project.org), [RStudio](https://posit.co/products/open-source/rstudio/), and a number of R packages.
@@ -64,11 +64,11 @@ This course will draw from a number of resources, primarily:
 * Hadley Wickham, Garrett Grolemund, and Mine Çetinkaya-Rundel’s [*R for Data Science*](https://r4ds.hadley.nz/) 2nd edition.
 * Clause Wilke's [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/).
 
-Other readings are available in the [course schedule][Course schedule].
+Other readings are available in the [course materials][materials.qmd].
 
 ## Assignments
 ### Learning journal
-As you learn R, you will pick up all kinds of little gems to help you use it. For example, to add the pipe syntax `|>` (something you’ll be doing a lot in the tidyverse), you can simply type `Ctrl/Cmd-Shift-M`. Keep a journal of these little tricks/hints that you are most excited about to submit at the end of the course. I highly recommend posting them on social media throughout the semester.
+As you learn R, you will pick up all kinds of little gems to help you use it. For example, to add the pipe syntax `|>` (something you’ll be doing a lot in the tidyverse), you can simply type `Ctrl/Cmd-Shift-M`. Keep a journal of these little tricks/hints that you are most excited about to submit at the end of the course. I recommend posting them on social media throughout the semester.
 
 ### Exercises
 Most class meetings will be followed with sets of exercises to help you practice implementing the concepts discussed. These will be assessed as complete or incomplete. <!--Please complete and submit the exercises for each chapter. While it is most beneficial to complete these prior to the course meeting discussing the chapters, you can submit them afterwards if needed. Please submit your exercises as R scripts (files ending in .R) or as PDFs rendered through R Markdown.-->
@@ -88,7 +88,7 @@ The aim of this course is for you to be able to use R to process, visualize, and
 <!-- * I'm open to other ways of expressing your cReativity (R cookies? tidyverse in verse? ode to RStudio?) -->
 
 ### Wrapped
-Combine everything that we've learned to create your own Spotify Wrapped or other summary. If you have a Spotify account and have used it in the last year, download your data. Otherwise, use an existing data set. Then process that data to find the most listened to artists and songs and plot your results.
+Combine everything that we've learned to create your own Spotify Wrapped or other summary. If you have a Spotify account and have used it in the last year, download your data. Otherwise, use an existing data set. Then process that data to find the most listened to artists and songs and plot your results. Finally, put these together into a Quarto slide deck.
 
 
 ## Grades
@@ -111,8 +111,8 @@ Grades of B- or higher (>= 79.5) count as passing for Pass/No Pass grading.
 | Exercises       | 20               |
 | Check-ins       | 35               |
 | Learning journal| 5                |
-| Projects        | 35               |
-| Creativity      | 5                |
+| Projects        | 25               |
+| Wrapped         | 15               |
 
 ## Course resources and policies
 

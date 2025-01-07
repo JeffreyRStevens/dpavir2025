@@ -1,0 +1,15 @@
+{
+  "hash": "bb9128b3f31a9a87f15009e43ce10d49",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Strings\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-03-08\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\nFor these exercises, we'll use the dog breed traits data set. \n\n1. Load tidyverse and import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n2. Return the first ten letters of the alphabet in upper case.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n3. Create this character string and assign it to `mystring`: The elephant said \"Hello\" then 'Bye!'  Then view how it would be printed.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n4. Find how many characters are in `mystring`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n5. Create a vector of the first four characters of the _coat_length_ column from `traits`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n6. Convert the _breed_ column of `traits` to sentence case.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n7. Create series of sentences using _breed_ and _coat_length_ that states \"[insert breed name] have a [insert coat length] coat\" that uses the proper cases.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n8. In the `mtcars` data set, extract the first two digits of the _mpg_ variable and the last three digits of the car names and combine them into a single string.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n9. Print the `fruit` data set, then capitalize all first word letters in the data set, then capitalize all words in the data set.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

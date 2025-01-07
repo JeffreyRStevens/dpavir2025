@@ -1,0 +1,15 @@
+{
+  "hash": "448d9e81a66559b4315f824cbb2fa500",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Plotting x-y data: associations\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-04-17\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mpg` data, create a scatterplot of the highway fuel efficiency and city fuel efficiency.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Now add a dashed reference line showing equivalent values for the two axes and set the aspect ratio to 1.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Looks like there is a possibility of overplotting. Turn this into a bubble chart with dot size scaling to the number of data points for each dot and make the dot colors _steelblue_.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Add rugs to scatterplot #1 and change to minimal theme.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n5. From scatterplot #1, color the dots by class, move the legend to the top left corner of the plot, and add marginal density plots.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. Create a data frame called `mpg_num` that only includes variables with numeric values using the `where()` function. Then remove the _year_ column.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n7. Create correlation plots of the numeric variables in `mpg_num` in both base R and using {GGally}'s `ggpairs()` function.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n8. Create a correlation matrix of `mpg_num` with the `cor()` function. Then use `ggcorrplot()` from the {ggcorrplot} package to make a heatmap correlation plot with just the upper triangle of the matrix and using circles to represent correlation coefficient magnitude.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

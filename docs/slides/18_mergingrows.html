@@ -215,20 +215,20 @@ Jeff Stevens
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
-      id  resp
-   &lt;int&gt; &lt;dbl&gt;
- 1     1 0.473
- 2     2 0.346
- 3     3 0.786
- 4     4 0.121
- 5     5 0.910
- 6     6 0.888
- 7     7 0.370
- 8     8 0.133
- 9     9 0.520
-10    10 0.188
-11    11 0.608
-12    12 0.190</code></pre>
+      id    resp
+   &lt;int&gt;   &lt;dbl&gt;
+ 1     1 0.489  
+ 2     2 0.00965
+ 3     3 0.214  
+ 4     4 0.148  
+ 5     5 0.535  
+ 6     6 0.528  
+ 7     7 0.952  
+ 8     8 0.0381 
+ 9     9 0.561  
+10    10 0.462  
+11    11 0.253  
+12    12 0.268  </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:28%;">
@@ -259,10 +259,10 @@ Jeff Stevens
 <pre><code># A tibble: 4 × 2
      id  resp
   &lt;int&gt; &lt;dbl&gt;
-1     1 0.473
-2     4 0.121
-3     7 0.370
-4    10 0.188</code></pre>
+1     1 0.489
+2     4 0.148
+3     7 0.952
+4    10 0.462</code></pre>
 </div>
 </div>
 </div></div>
@@ -607,12 +607,65 @@ Jeff Stevens
 </div>
 </div>
 </div></div>
-</section><section id="add-rows" class="slide level2"><h2>Add rows</h2>
+</section><section id="adding-columns" class="slide level2"><h2>Adding columns</h2>
+<p><code><a href="https://tibble.tidyverse.org/reference/add_column.html">tibble::add_column()</a></code></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, y <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+      x     y
+  &lt;int&gt; &lt;int&gt;
+1     1     3
+2     2     2
+3     3     1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">add_column</span><span class="op">(</span>z <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      x     y     z
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1     1     3     4
+2     2     2     5
+3     3     1     6</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">add_column</span><span class="op">(</span>w <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, </span>
+<span>               .before <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      w     x     y
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1     4     1     3
+2     5     2     2
+3     6     3     1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">add_column</span><span class="op">(</span>z <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+      x     y     z alpha
+  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+1     1     3     4     0
+2     2     2     5     0
+3     3     1     6     0</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section><section id="combine-data-frames-by-rows" class="slide level2"><h2>Combine data frames by rows</h2>
 <p><code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows()</a></code></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
       x     y
@@ -622,7 +675,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
       x     y
@@ -637,7 +690,7 @@ Jeff Stevens
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">6</span><span class="op">:</span><span class="fl">7</span>, y <span class="op">=</span> <span class="fl">7</span><span class="op">:</span><span class="fl">6</span>, </span>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">6</span><span class="op">:</span><span class="fl">7</span>, y <span class="op">=</span> <span class="fl">7</span><span class="op">:</span><span class="fl">6</span>, </span>
 <span>              z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
@@ -648,7 +701,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
       x     y z    
@@ -662,12 +715,12 @@ Jeff Stevens
 </div>
 </div>
 </div></div>
-</section><section id="add-columns" class="slide level2"><h2>Add columns</h2>
+</section><section id="combine-data-frames-by-columns" class="slide level2"><h2>Combine data frames by columns</h2>
 <p><code><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">dplyr::bind_cols()</a></code></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> , <span class="st">"C"</span><span class="op">)</span>, </span>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> , <span class="st">"C"</span><span class="op">)</span>, </span>
 <span>              zz <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Z"</span>, <span class="st">"Y"</span>, <span class="st">"X"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
@@ -679,7 +732,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
       x     y z     zz   
@@ -691,7 +744,7 @@ Jeff Stevens
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">df</span>, new_col <span class="op">=</span> <span class="va">df4</span><span class="op">$</span><span class="va">z</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">df</span>, new_col <span class="op">=</span> <span class="va">df4</span><span class="op">$</span><span class="va">z</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       x     y new_col
@@ -735,28 +788,28 @@ Jeff Stevens
 <div class="columns">
 <div class="column" style="width:31%;">
 <div class="cell">
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
-      id  resp
-   &lt;int&gt; &lt;dbl&gt;
- 1     1 0.473
- 2     2 0.346
- 3     3 0.786
- 4     4 0.121
- 5     5 0.910
- 6     6 0.888
- 7     7 0.370
- 8     8 0.133
- 9     9 0.520
-10    10 0.188
-11    11 0.608
-12    12 0.190</code></pre>
+      id    resp
+   &lt;int&gt;   &lt;dbl&gt;
+ 1     1 0.489  
+ 2     2 0.00965
+ 3     3 0.214  
+ 4     4 0.148  
+ 5     5 0.535  
+ 6     6 0.528  
+ 7     7 0.952  
+ 8     8 0.0381 
+ 9     9 0.561  
+10    10 0.462  
+11    11 0.253  
+12    12 0.268  </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:28%;">
 <div class="cell">
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
       id  cond
@@ -777,15 +830,15 @@ Jeff Stevens
 </div>
 </div><div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
      id  resp
   &lt;int&gt; &lt;dbl&gt;
-1     1 0.473
-2     4 0.121
-3     7 0.370
-4    10 0.188</code></pre>
+1     1 0.489
+2     4 0.148
+3     7 0.952
+4    10 0.462</code></pre>
 </div>
 </div>
 </div></div>

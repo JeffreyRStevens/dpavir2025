@@ -1,0 +1,15 @@
+{
+  "hash": "cef1cde11fc675e19ddfc5b385e5ceb4",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Plotting x-y data: time series\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-04-19\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mpg` data, calculate the mean highway fuel efficiency for each number of cylinders and plot a line graph of fuel efficiency by cylinder number.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n2. Repeat the previous plot but also group by class and plot separately colored lines for different classes.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n3. Create a new column called `low_high` that codes high fuel efficiency greater than or equal to 25 as 1 and less than 25 as 0. Plot `low_high` as a function of displacement with a bubble chart (no legend) and include a logistic regression curve and band.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n4. Plot highway fuel efficiency for each class as points first, then add jitter, finding an appropriate amount of jitter to add.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n5. Repeat plot #4 with a beeswarm plot.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

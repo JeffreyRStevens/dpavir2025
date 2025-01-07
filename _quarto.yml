@@ -46,8 +46,10 @@ website:
 format:
   html:
     theme: darkly
+    light: flatly
     css: styles.css
     toc: true
+
 
 
 

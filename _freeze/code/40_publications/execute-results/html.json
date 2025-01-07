@@ -1,0 +1,15 @@
+{
+  "hash": "d6f3b1d51ba69723d958da86961438cd",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Publications\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-05-05\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mpg` data, create a data frame called `mpg46` that only includes 4 and 6 cylinder cars. Conduct a t-test that compares highway fuel efficiency between the 4 and 6 cylinder cars and save the output as `mpg_ttest`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n2. Load `{papaja}` and use the `apa_print()` function to extract the mean difference between cylinder numbers and the 95% confidence interval from `mpg_ttest`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n3. Extract the t-statistic and p-value for `mpg_ttest`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n4. Extract the mean difference, 95% CI, t-statistic, and p-value in one string.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n5. Use `printp()` to format 0.0000001 as a p-value in APA format.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n6. Dropping the leading zero is silly. Use `printnum()` to return the same output as #5 but include the leading zero.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

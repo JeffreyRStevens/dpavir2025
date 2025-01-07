@@ -1,0 +1,15 @@
+{
+  "hash": "c8a0fcd8566d85a6bcd1f2e33ee5117f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Importing data\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-02-08\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n1. Download <https://jeffreyrstevens.quarto.pub/dpavir/data/newdata.csv> and save it in your `data/` directory.\n\n1. Import `newdata.csv` and name it `newdata` using `read.csv()`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nnewdata <- read.csv(here::here(\"data/newdata.csv\"))\n```\n:::\n\n\n\n3. Import <https://jeffreyrstevens.quarto.pub/dpavir/data/newdata2.csv> directly from the URL using `readr::read_csv()`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(readr)\nnewdata2 <- read_csv(\"https://jeffreyrstevens.quarto.pub/dpavir/data/newdata2.csv\")\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nRows: 198 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (3): Breed, links, Image\ndbl (8): X2013.Rank, X2014.Rank, X2015.Rank, X2016.Rank, X2017.Rank, X2018.R...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n```\n\n\n:::\n:::\n\n\n\n4. Repeat the previous import of `newdata2.csv`, but add the arguments `col_select = c(\"Breed\", \"links\")` and `show_col_types = FALSE` and name it `newdata3`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nnewdata3 <- read_csv(\"https://jeffreyrstevens.quarto.pub/dpavir/data/newdata2.csv\", col_select = c(\"Breed\", \"links\"), show_col_types = FALSE)\n```\n:::\n\n\n\n5. Export the `newdata3` data as a CSV file to your `data/` directory.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nwrite_csv(newdata3, here::here(\"data/newdata3.csv\"))\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

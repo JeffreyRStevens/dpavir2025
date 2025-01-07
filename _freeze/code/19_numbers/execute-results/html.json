@@ -1,0 +1,15 @@
+{
+  "hash": "181e8a8d112b4c444e16d2e5bb342f74",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Numbers\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-03-06\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\nFor these exercises, we'll use the dog breed traits and dog breed popularity rankings data sets. \n\n1. Load tidyverse and import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n2. Create a column of per-row means over all rating columns called _mean_ratings_ and assign to `traits2`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Convert _mean_ratings_ to a proportion in a column called _pmean_ratings_ and add to `traits2`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Apply a natural log transformation to the _pmeans_ratings_ vector.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Round _pmean_ratings_ to two decimal places.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. Convert _pmean_ratings_ to scientific notation.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n7. Sum up the total grooming ratings for each coat type.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n8. Add inline R code to the following sentence in R Markdown to say how many rows have `NA` for _grooming_:\n\nWe are missing grooming data for [insert inline R code] breeds.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

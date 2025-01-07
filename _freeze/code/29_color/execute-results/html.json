@@ -1,0 +1,15 @@
+{
+  "hash": "4f77c939fee1c0a2450d1598a0dabc80",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Color\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-04-07\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight with color based on the number of cylinders.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Repeat the scatterplot but use `scale_color_brewer()` to set the palette to _Set1_.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Why did you use `scale_color_brewer()` not `scale_fill_brewer()` or `scale_color_distiller()`?\n\n\n4. Repeat scatterplot #1 but use `scale_color_manual()` to set the three colors to _red_, _green_, and _blue_.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Find three colors (either names or hex codes), and repeat scatterplot #4 with your own colors.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n6. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight with color based on horsepower using the _BuPu_ palette and reverse the direction of the gradient.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n7. Create a new column in `mtcars` that centers and scales displacement with the `scale()` function. Create a scatterplot of fuel efficiency as a function of weight with color based on the rescaled displacement, using a diverging scale of your choice.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

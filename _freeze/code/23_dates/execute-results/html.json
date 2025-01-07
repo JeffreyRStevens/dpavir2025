@@ -1,0 +1,15 @@
+{
+  "hash": "95a958c6054779e64b64a64fe82a3c53",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Dates and times\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-03-22\"\noutput: html_document\nexecute:\n  freeze: true\n---\n\n\n\n\nFor these exercises, we'll use the dates data set. \n\n\n1. Load tidyverse, import [`dates.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dates.csv) to `dates`, and view the data set.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n2. Convert `birth_date` to a date object and resave `dates`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n3. Create a column called _time1_ that converts _test1_ to datetime and change the time zone to \"America/Chicago\".\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n4. Calculate each participant's age in years at the time of test 1, rounded to 1 decimal place, stored in _age_ and resave `dates`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n5. Calculate the number of days between test 1 and test 2 for each participant and label this column _test_diff_ (and resave `dates`).\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n6. Create `dates2` that subsets the participants who were born after January 1, 1970.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n7. Create a column named _diff_text_ that writes the following sentence for each participant in `dates2`: \"Participant [insert _id_] (age: [insert _age_]) had test 1 on [insert _test1_] and test 2 on [insert _test2_], which were [insert _test_diff_] days apart.\"\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

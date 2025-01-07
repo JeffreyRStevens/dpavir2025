@@ -1,0 +1,15 @@
+{
+  "hash": "a681f0e489d2afa21dbfca9801a0fc5e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Grammar of graphics I\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-03-31\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Repeat the plot but only with vehicles having 4 or 6 cylinders.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Repeat plot #1 but add a smooth line **underneath** the data points.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Make a boxplot of fuel efficiency for each cylinder size.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Add \" cylinders\" to the end of each value in the cylinder column of data and replot #4.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. Replot #4 ordering the cylinders such that the median mpg increases from left to right.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

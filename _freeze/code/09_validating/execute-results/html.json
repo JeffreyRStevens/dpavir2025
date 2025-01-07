@@ -1,0 +1,15 @@
+{
+  "hash": "54f30a2e04ad7ece9c75839b4db86c81",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Validating data\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-02-10\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\nFor these exercises, we'll use the `mtcars` data set build into base R.\n\n1. What are the dimensions of `mtcars`?\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. In one line of code, view the data types for all of the columns in `mtcars`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. What is the range of values for the `mpg` column?\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. What are all of the possible values used in `gear`?\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Check whether the value 5 is found in the `carb` column.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. Do any columns have missing values?\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n7. What is the 3rd quartile for `mpg`?\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n8. Check whether all horsepower (`hp`) values fall between 50 and 300. Which row numbers fall out of this range?\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n9. Make a codebook for `mtcars`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -236,26 +236,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 20 × 5
       id birth_date test1      test2      time1              
    &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;dttm&gt;             
- 1     1 1968-02-13 2022-02-23 2022-06-16 2022-02-23 00:00:00
- 2     2 1990-09-14 2022-01-09 2022-08-14 2022-01-09 00:00:00
- 3     3 1964-12-05 2022-03-26 2022-08-24 2022-03-26 00:00:00
- 4     4 1998-10-23 2022-02-26 2022-08-26 2022-02-26 00:00:00
- 5     5 1957-06-05 2022-01-18 2022-06-14 2022-01-18 00:00:00
- 6     6 1969-09-14 2022-03-21 2022-08-24 2022-03-21 00:00:00
- 7     7 1958-08-09 2022-03-27 2022-09-30 2022-03-27 00:00:00
- 8     8 2001-11-18 2022-03-30 2022-08-03 2022-03-30 00:00:00
- 9     9 1988-08-10 2022-01-29 2022-06-02 2022-01-29 00:00:00
-10    10 1955-03-19 2022-01-11 2022-07-11 2022-01-11 00:00:00
-11    11 1960-02-21 2022-02-27 2022-09-30 2022-02-27 00:00:00
-12    12 1951-11-07 2022-02-06 2022-06-07 2022-02-06 00:00:00
-13    13 1978-07-03 2022-03-22 2022-06-24 2022-03-22 00:00:00
-14    14 1965-04-14 2022-03-16 2022-09-10 2022-03-16 00:00:00
-15    15 1973-06-12 2022-03-24 2022-07-02 2022-03-24 00:00:00
-16    16 1969-10-24 2022-01-05 2022-09-10 2022-01-05 00:00:00
-17    17 1973-09-04 2022-03-02 2022-07-03 2022-03-02 00:00:00
-18    18 1963-09-16 2022-03-29 2022-06-09 2022-03-29 00:00:00
-19    19 1950-10-21 2022-03-19 2022-07-04 2022-03-19 00:00:00
-20    20 1974-02-20 2022-02-14 2022-08-03 2022-02-14 00:00:00</code></pre>
+ 1     1 1955-05-04 2022-01-21 2022-09-12 2022-01-21 00:00:00
+ 2     2 2001-01-26 2022-01-05 2022-06-07 2022-01-05 00:00:00
+ 3     3 1973-01-13 2022-02-02 2022-06-26 2022-02-02 00:00:00
+ 4     4 1951-03-26 2022-02-09 2022-08-08 2022-02-09 00:00:00
+ 5     5 1986-10-25 2022-01-14 2022-06-05 2022-01-14 00:00:00
+ 6     6 2003-04-10 2022-03-04 2022-08-14 2022-03-04 00:00:00
+ 7     7 1971-01-21 2022-02-13 2022-08-09 2022-02-13 00:00:00
+ 8     8 1966-04-14 2022-03-17 2022-08-27 2022-03-17 00:00:00
+ 9     9 1993-07-05 2022-02-13 2022-06-29 2022-02-13 00:00:00
+10    10 1966-04-25 2022-03-04 2022-07-12 2022-03-04 00:00:00
+11    11 1992-04-22 2022-02-25 2022-09-02 2022-02-25 00:00:00
+12    12 1957-03-01 2022-01-12 2022-09-20 2022-01-12 00:00:00
+13    13 1984-03-01 2022-01-14 2022-07-23 2022-01-14 00:00:00
+14    14 1957-11-28 2022-03-30 2022-06-18 2022-03-30 00:00:00
+15    15 1993-08-01 2022-02-06 2022-07-24 2022-02-06 00:00:00
+16    16 1979-09-03 2022-01-26 2022-09-03 2022-01-26 00:00:00
+17    17 1993-04-30 2022-01-24 2022-07-06 2022-01-24 00:00:00
+18    18 1962-07-03 2022-01-25 2022-06-10 2022-01-25 00:00:00
+19    19 1997-05-10 2022-02-21 2022-07-22 2022-02-21 00:00:00
+20    20 1966-10-19 2022-02-10 2022-07-09 2022-02-10 00:00:00</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
@@ -286,17 +286,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dates2 <span class="sc">|&gt;</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff_text =</span> stringr<span class="sc">::</span><span class="fu">str_glue</span>(<span class="st">"Participant {id} (age: {age}) had test 1 on {test1} and test 2 on {test2}, which were {test_diff} days apart."</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 7
-     id birth_date test1      test2        age test_diff diff_text              
-  &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt; &lt;drtn&gt;    &lt;glue&gt;                 
-1     2 1990-09-14 2022-01-09 2022-08-14  31.3 217 days  Participant 2 (age: 31…
-2     4 1998-10-23 2022-02-26 2022-08-26  23.3 181 days  Participant 4 (age: 23…
-3     8 2001-11-18 2022-03-30 2022-08-03  20.4 126 days  Participant 8 (age: 20…
-4     9 1988-08-10 2022-01-29 2022-06-02  33.5 124 days  Participant 9 (age: 33…
-5    13 1978-07-03 2022-03-22 2022-06-24  43.7  94 days  Participant 13 (age: 4…
-6    15 1973-06-12 2022-03-24 2022-07-02  48.8 100 days  Participant 15 (age: 4…
-7    17 1973-09-04 2022-03-02 2022-07-03  48.5 123 days  Participant 17 (age: 4…
-8    20 1974-02-20 2022-02-14 2022-08-03  48   170 days  Participant 20 (age: 4…</code></pre>
+<pre><code># A tibble: 12 × 7
+      id birth_date test1      test2        age test_diff diff_text             
+   &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt; &lt;drtn&gt;    &lt;glue&gt;                
+ 1     2 2001-01-26 2022-01-05 2022-06-07  20.9 153 days  Participant 2 (age: 2…
+ 2     3 1973-01-13 2022-02-02 2022-06-26  49.1 144 days  Participant 3 (age: 4…
+ 3     5 1986-10-25 2022-01-14 2022-06-05  35.2 142 days  Participant 5 (age: 3…
+ 4     6 2003-04-10 2022-03-04 2022-08-14  18.9 163 days  Participant 6 (age: 1…
+ 5     7 1971-01-21 2022-02-13 2022-08-09  51.1 177 days  Participant 7 (age: 5…
+ 6     9 1993-07-05 2022-02-13 2022-06-29  28.6 136 days  Participant 9 (age: 2…
+ 7    11 1992-04-22 2022-02-25 2022-09-02  29.8 189 days  Participant 11 (age: …
+ 8    13 1984-03-01 2022-01-14 2022-07-23  37.9 190 days  Participant 13 (age: …
+ 9    15 1993-08-01 2022-02-06 2022-07-24  28.5 168 days  Participant 15 (age: …
+10    16 1979-09-03 2022-01-26 2022-09-03  42.4 220 days  Participant 16 (age: …
+11    17 1993-04-30 2022-01-24 2022-07-06  28.7 163 days  Participant 17 (age: …
+12    19 1997-05-10 2022-02-21 2022-07-22  24.8 151 days  Participant 19 (age: …</code></pre>
 </div>
 </div>
 
@@ -724,7 +728,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2024-2025 Jeffrey R. Stevens. Powered by <a href="https://www.quarto.org">Quarto</a>.</p>
+<p>© 2025 Jeffrey R. Stevens. Powered by <a href="https://www.quarto.org">Quarto</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

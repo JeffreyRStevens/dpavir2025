@@ -3,9 +3,6 @@ title: "Data Processing and Visualization in R"
 author: "Jeff Stevens (he/him)"
 date: "2025-01-22"
 date-format: iso
-execute:
-  echo: true
-  freeze: false
 format:
   revealjs: 
     theme: custom.scss

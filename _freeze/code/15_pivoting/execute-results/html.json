@@ -1,0 +1,15 @@
+{
+  "hash": "f7a579917937513a07dbb0ebb267824e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Pivoting data\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-02-24\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\nFor these exercises, we'll use a new clean version of the dog breed traits data set. \n\n1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Create `traits2` where we delete the coat columns, so we only have breed and ratings data.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Is `traits2` tidy?\n\n4. Is `traits2` in wide or long format?\n\n5. Reshape `traits2` so that all of the ratings scores are in a single column called _rating_ with a column labeling what kind of rating it is called _scale_. Assign this to `traits3`.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. How would we check if `traits3` has the expected number of rows?\n\n7. Create `traits4` by removing the rows with affectionate, children, and other_dogs as values of _scale_.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n8. Spread out the data into wide format with separate columns for the shedding and grooming data, then create a new column _diff_ that subtracts grooming from shedding ratings.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

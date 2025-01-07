@@ -1,0 +1,15 @@
+{
+  "hash": "87ccaf504bfbe906da4021e7eaea22d2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Grammar of graphics II\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-04-03\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n2. Repeat the scatterplot, but make the points _violet_ open squares of size 5.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Repeat the scatterplot but with separate colors for cylinder levels.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Why does the legend look like that? Fix it so there are separate colors for cylinder levels.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Overlay separate regression lines for each cylinder level.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n6. Overlay a single _firebrick_ regression line over the points with a _firebrick1_-colored confidence band.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n7. Plot the mean and standard error of the mean of fuel efficiency for each level of cylinder and color them _sienna_.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

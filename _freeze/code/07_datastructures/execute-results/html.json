@@ -1,0 +1,15 @@
+{
+  "hash": "86974819347d4df8188a649415ca3b57",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Data structures\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-02-06\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n## In-class coding\n\nMake a sequence from 0 to 100 in steps of 10.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nCreate a repetition of “yes” and “no” with 10 instance of each, alternating between the two. Then make one with 10 \"yes\" and then 10 \"no\".\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\nAdd the argument `n = 10` to `head(mtcars)`. What does this do?\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n## Extra coding practice\n\n### Vectors\n\nCreate a vector called  `dog_names` with the values _Bella_, _Daisy_, and _Max_.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nCreate a vector called `sex` with the values _Female_, _Male_, and _Male_.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nUse the index operator to print to console only _Daisy_ and _Max_ from `dog_names`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nReplace the _Daisy_ entry with _Luna_ and print `dog_names` to console.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n\n### Lists\n\nCopy/paste and run this code: `(mylist <- list(a = 1:4, b = c(4, 3, 8, 5), c = LETTERS[10:15], d = c(\"yes\", \"yes\")))`\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nCheck the data types for each list element individually.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nCheck the data types for each list element with one command.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nCombine list elements `a` and `b` into a single vector.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n### Data frames\n\nCreate a data frame called `mydf` with three columns: `x`, `y`, and `z` and five rows. For `x` assign any five numbers, for `y` assign any five character strings, and for `z` assign any five logical values.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nCreate a data frame called `dogs` that combines the `dog_names` and `sex` vectors and print to console.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nPrint to console just Luna's row.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\nPrint to console the number of rows in `dogs`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
