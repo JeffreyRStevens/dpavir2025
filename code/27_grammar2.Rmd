@@ -1,0 +1,52 @@
+---
+title: "Grammar of graphics II"
+author: "Jeffrey R. Stevens"
+date: "2023-04-03"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight.
+
+```{r}
+# >
+```
+
+2. Repeat the scatterplot, but make the points _violet_ open squares of size 5.
+
+```{r}
+# >
+```
+
+3. Repeat the scatterplot but with separate colors for cylinder levels.
+
+```{r}
+# >
+```
+
+4. Why does the legend look like that? Fix it so there are separate colors for cylinder levels.
+
+```{r}
+# >
+```
+
+5. Overlay separate regression lines for each cylinder level.
+
+```{r}
+# >
+```
+
+6. Overlay a single _firebrick_ regression line over the points with a _firebrick1_-colored confidence band.
+
+```{r}
+# >
+```
+
+7. Plot the mean and standard error of the mean of fuel efficiency for each level of cylinder and color them _sienna_.
+
+```{r}
+# >
+```
+

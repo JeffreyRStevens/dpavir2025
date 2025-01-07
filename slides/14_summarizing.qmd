@@ -1,0 +1,379 @@
+---
+title: "Summarizing rows"
+author: "Jeff Stevens"
+date: "2023-02-22"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Introduction
+
+
+## The problem
+
+```{r echo = FALSE}
+library(tidyverse)
+nrows <- 12
+data1 <- data.frame(cond = sample(c(1:3), nrows, replace = TRUE), id = 1:nrows, date = sample(seq(as.Date('2022-01-01'), as.Date('2022-02-28'), by="day"), nrows), response = runif(nrows)
+)
+data2 <- data1 |> 
+  group_by(cond) |> 
+  summarise(cond_n = n(), cond_mean = mean(response), cond_sd = sd(response))
+```
+
+What's different between these data sets? What needs to happen to create `data2` from `data1`?
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+data1
+```
+:::
+:::{.column width="50%}
+```{r}
+data2
+```
+:::
+::::
+
+
+## Data wrangling
+
+![](../images/dplyr_summary.png){fig-align=center width=80%}
+
+
+## Set-up
+
+```{r}
+library(dplyr)
+library(nycflights13)
+(flights2 <- select(flights, year:dep_delay, carrier))
+```
+
+
+# Summarizing data
+
+
+## `count()`
+
+```{r}
+flights2 |> 
+  count(carrier)
+```
+
+
+## `count()`
+
+```{r}
+flights2 |> 
+  count(carrier, month)
+```
+
+
+## `summarise()`
+
+![](../images/dplyr_summarise.png){fig-align="center" height=45%}
+
+
+---
+
+## `summarise()`
+
+```{r}
+flights2 |> 
+  summarise(n())
+```
+
+
+## Summary functions
+
+* `n()`
+* `mean()`
+* `median()`
+* `min()`
+* `max()`
+* `sd()`
+
+
+## `summarise()`
+
+```{r}
+flights2 |> 
+  summarise(mean_dep_delay = mean(dep_delay), 
+            sd_dep_delay = sd(dep_delay),
+            n_dep_delay = n())
+```
+
+Why does this return `NA`?
+
+:::{.fragment}
+```{r}
+flights2 |> 
+  summarise(mean_dep_delay = mean(dep_delay, na.rm = TRUE),
+          sd_dep_delay = sd(dep_delay, na.rm = TRUE),
+          n_dep_delay = n())
+```
+:::
+
+
+---
+
+## Summarizing multiple columns
+
+How do we apply a function across multiple columns?
+
+:::{.fragment}
+`summarise()` `+` `across()`
+
+```{r}
+flights2 |> 
+  summarise(across(contains("_time"), mean))
+```
+:::
+
+:::{.fragment}
+```{r}
+flights2 |> 
+  summarise(across(contains("_time"), ~ mean(.x, na.rm = TRUE)))
+```
+
+:::
+
+
+---
+
+## Summarizing multiple columns
+
+`summarise()` `+` `across()`
+
+Multiple functions (add `list()`)
+
+```{r}
+flights2 |> 
+  summarise(across(contains("_time"), # for all columns containing "_time"
+                   list(mean = ~ mean(.x, na.rm = TRUE), # calculate the mean
+                        sd = ~ sd(.x, na.rm = TRUE)))) # and standard deviation
+```
+
+
+# Grouping data
+
+
+## `group_by()`
+
+```{r}
+flights2 |> 
+  group_by(month)
+```
+
+---
+
+## `group_by()`
+
+Remove groups with `ungroup()`
+
+```{r}
+flights2 |> 
+  group_by(month) |> 
+  ungroup()
+```
+
+---
+
+## Summarizing groups of data
+
+`group_by()` `+` `summarise()`
+
+```{r}
+flights2 |> 
+  group_by(carrier) |> 
+  summarise(carrier_n = n(),
+            mean_carrier_delay = mean(dep_delay, na.rm = TRUE), 
+            sd_carrier_delay = sd(dep_delay, na.rm = TRUE))
+```
+
+
+---
+
+## Summarizing multiple groups
+
+`group_by()` `+` `summarise()`
+
+```{r}
+flights2 |> 
+  group_by(carrier, month) |> 
+  summarise(carrier_n = n(),
+            mean_carrier_delay = mean(dep_delay, na.rm = TRUE), 
+            sd_carrier_delay = sd(dep_delay, na.rm = TRUE))
+```
+
+
+---
+
+## Summarizing groups for multiple columns
+
+`group_by()` `+` `summarise()` `+` `across()`
+
+```{r}
+flights2 |> 
+  group_by(carrier) |> # separately for each carrier
+  summarise(across(contains("_time"), # for all columns containing "_time"
+                   list(mean = ~ mean(.x, na.rm = TRUE), # calculate the mean
+                        sd = ~ sd(.x, na.rm = TRUE)))) # and standard deviation
+```
+
+
+---
+
+## Solving the problem
+
+What code turns `data1` into `data2`?
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+data1
+```
+:::
+:::{.column width="50%}
+```{r}
+data2
+```
+:::
+::::
+
+
+# Slicing data
+
+
+## Slicing rows
+
+### What if you want to grab a subset of rows per group?
+
+`dplyr::slice_()` functions
+
+* `slice_head()` first row(s) from each group
+* `slice_tail()` last row(s) in each group
+* `slice_min()` row(s) with smallest value in column x
+* `slice_max()` row(s) with largest value in column x
+* `slice_sample()` random row(s)
+
+
+## Slicing rows
+
+Let's say we want the first flight for each carrier on 2022-02-22.
+
+```{r}
+flights2 |> 
+  filter(month == 2 & day == 22 & dep_time > 10)
+```
+
+
+## Slicing rows
+
+Let's say we want the first flight for each carrier on 2022-02-22.
+
+```{r}
+flights2 |> 
+  filter(month == 2 & day == 22 & dep_time > 10) |> 
+  group_by(carrier) |> 
+  slice_min(dep_time)
+```
+
+
+## Slicing rows
+
+What if we want the three most delayed flight for each carrier on 2022-02-22.
+
+```{r}
+flights2 |> 
+  filter(month == 2 & day == 22 & dep_time > 10) |> 
+  group_by(carrier) |> 
+  slice_max(dep_delay, n = 3) |> 
+  arrange(carrier, dep_delay)
+```
+
+
+
+# Putting it all together
+
+
+## {dplyr} verbs
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+* `select()`
+* `rename()`
+* `relocate()`
+* `mutate()`
+* `if_else()`
+* `case_when()`
+* `rowwise()`
+* `across()`
+:::
+
+::: {.column width="33%"}
+
+::: {.fragment fragment-index=1}
+* `filter()`
+* `if_any()`
+* `drop_na()`
+* `arrange()`
+* `desc()`
+:::
+:::
+
+::: {.column width="30%"}
+
+:::{.fragment fragment-index=1}
+* `summarise()`
+* `count()`, `n()`
+* `group_by()`
+* `slice_()`
+:::
+:::
+
+::::
+
+## Solving the problem
+
+What code turns `data1` into `data3`?
+```{r echo = FALSE}
+data3 <- data1 |> 
+  filter(cond != 1) |> 
+  mutate(condition = paste("Condition", cond)) |> 
+  group_by(condition) |> 
+  summarise(earliest_date = min(date))
+```
+
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+data1
+```
+:::
+:::{.column width="50%}
+```{r}
+data3
+```
+:::
+::::
+
+## Let's code!
+
+[Summarizing rows](../code/14_summarizing.html){target="_blank"} [[Rmd](../code/14_summarizing.Rmd){target="_blank"}]

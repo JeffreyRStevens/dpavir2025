@@ -1,0 +1,44 @@
+---
+title: "Annotating plots"
+author: "Jeffrey R. Stevens"
+date: "2023-04-26"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, create a scatterplot of highway and city fuel efficiencies. Create a title, subtitle, caption, and axes labels.
+
+```{r}
+# >
+```
+
+
+2. Repeat #1 adding a linear regression line. Use `cor()` to calculate the correlation coefficient for the correlation. Add it to the plot somewhere labeled and rounded to two decimals.
+
+```{r}
+# >
+```
+
+
+3. Repeat #1. Find the manufacturer and model of the data point with the highest city fuel efficiency. Label this point by drawing a line from the point to the text label and include the manufacturer and model (broken across two lines).
+
+```{r}
+# >
+```
+
+
+4. Repeat #1 drawing _grey_ horizontal and vertical lines at 20 mpg for both axes underneath the data points. Add a _lightpink_ rectangle under the points filling the upper right quandrant (>20 for both axes).
+
+```{r}
+# >
+```
+
+
+5. Create boxplots of fuel efficiency by class but order the class levels by mean highway fuel efficiency. At y = 10, add the sample size for each box (e.g., N=5, N=47, etc.).
+
+```{r}
+# >
+```
+

@@ -1,0 +1,379 @@
+---
+title: "Dates and times"
+author: "Jeff Stevens"
+date: "2023-03-22"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Introduction
+
+
+## The problem
+
+```{r echo = FALSE}
+library(tidyverse)
+nrows <- 12
+set.seed(12)
+data1 <- tibble(test_date = as_date(sample(as_date("2023-01-01"):as_date("2023-01-31"), nrows, replace = TRUE)),
+                    birth_date = as.character(as_date(sample(as_date("1950-01-01"):as_date("2005-01-31"), nrows, replace = TRUE)))
+                    ) |> 
+  arrange(test_date)
+data1$birth_date[4] <- "Jan 9, 1960"
+data2 <- data1 |> 
+  mutate(birth_date = as_date(birth_date, format = c("%Y-%m-%d", "%b %d, %Y"))) |> 
+  filter(birth_date < "1990-01-01") |> 
+  mutate(age_at_testing = test_date - birth_date,
+         day_of_birth = wday(birth_date, label = TRUE, abbr = FALSE))
+```
+
+What's different between these data sets? 
+
+:::: {.columns}
+
+::: {.column width="35%"}
+
+::: {style="font-size:90%"}
+```{r}
+data1
+```
+:::
+:::
+
+::: {.column width="65%"}
+
+::: {style="font-size:90%"}
+```{r}
+data2
+```
+:::
+:::
+
+::::
+
+
+## Set-up
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+```
+
+
+# Dates and times
+
+## Reminder
+
+Dates and times are augmented doubles
+
+```{r}
+(x <- as.Date("2023-03-22"))
+class(x)
+typeof(x)
+```
+
+::: {.fragment}
+::: {.callout-note}
+Standard (ISO-8601) way to represent dates and times is 
+
+YYYY-MM-DD HH:MM:SS, so 2023-03-22 10:30:00
+:::
+:::
+
+
+## Dates and times with {lubridate}
+
+```{r, message = FALSE}
+library(lubridate)
+```
+
+![](../images/lubridate_allisonhorst.png){fig-align="center" width="58%"}
+
+![](../images/lubridate_hex.png){.absolute width="15%" top="0%" left="90%"}
+
+::: {.aside}
+Congratulations to [{lubridate}](https://lubridate.tidyverse.org) for joining {tidyverse} last week in version 2.0.0!
+:::
+
+
+## Current date/time
+
+```{r}
+Sys.Date()  # base R
+today() # {lubridate}
+```
+
+::: {.fragment}
+```{r}
+Sys.time()  # base R
+now()  # {lubridate}
+```
+:::
+
+
+## Creating dates/times
+
+```{r}
+as.Date("2023-03-22")  # base R
+as_date("2023-03-22") # {lubridate}
+ymd(20230322) # {lubridate}
+```
+
+
+## Convert dates to ISO-8601
+```{r}
+ymd("2017-01-31")
+mdy("January 31st, 2017")
+mdy("Jan 31 17")
+dmy("31-Jan-2017")
+```
+
+
+## Convert dates to ISO-8601
+```{r}
+(r_class_schedule <- tibble(meeting = 1:4, date = c("23 Jan 2023", "25 Jan 2023", "27 Jan 2023", "30 Jan 2023"), topic = c("Course introduction", "Working in RStudio", "Coding basics", "Workflows")))
+```
+
+::: {.fragment}
+How do we change the dates in a data frame?
+:::
+
+::: {.fragment}
+```{r}
+(r_class_schedule <- r_class_schedule |>
+   mutate(iso_date = dmy(date)))
+```
+:::
+
+
+## Convert multiple formats
+
+What if your date column has multiple formats?
+
+```{r warning = TRUE}
+(bad_dates <- c("Jan 1 2023", "2-Jan-2023"))
+as_date(bad_dates)
+```
+
+
+## Date formatting
+
+Codes for different components/styles of date components
+
+| Code | Component |
+|:---- |:--------- |
+| `%y`   | Two digit year (23) |
+| `%Y`   | Four digit year (2023) |
+| `%m`   | Month as number (01-12 or 1-12) |
+| `%b`   | Abbreviated month name (Mar) |
+| `%B`   | Full month name (March) |
+| `%d`   | Day of the month (01-31 or 1-31) |
+
+
+## Date formatting
+
+Combine codes to make dates
+
+2023-03-22 = `"%Y-%m-%d"`
+
+3/22/23 = `"%m/%d/%y"`
+
+23 Mar 2023 = `"%d %b %Y"`
+
+March 23, 2023 = `"%B %d, %Y"`
+
+
+## Date formatting
+
+```{r warning = TRUE}
+(bad_dates <- c("Jan 01 2023", "02-Jan-2023"))
+as_date(bad_dates, format = "%b %d %Y")
+```
+
+::: {.fragment}
+```{r}
+as_date(bad_dates, format = c("%b %d %Y", "%d-%b-%Y"))
+```
+:::
+
+
+## Convert times to ISO-8601
+
+```{r}
+hms("20:11:59")
+hm("10:30")
+```
+
+
+## Convert date-times to ISO-8601
+```{r}
+as_datetime("2023-03-10")
+ymd_hms("2023-03-10 20:11:59")
+mdy_hm("03/22/2023 10:30")
+```
+
+
+## Change time zone 
+`tz` argument
+```{r}
+ymd_hms("2023-03-10 20:11:59", tz = "America/Chicago")
+```
+
+::: {.fragment}
+Find system time zone
+```{r}
+Sys.timezone()
+mdy_hm("03/22/2023 10:30", tz = Sys.timezone())  
+```
+
+::: {.callout-warning}
+Setting `tz = Sys.timezone()` is dangerous and not reproducible if you are traveling or giving code to others in different time zones.
+:::
+
+:::
+
+
+# Date/time components
+
+## Create dates from components
+```{r}
+flights |>
+  select(year, month, day, hour, minute)
+```
+
+
+## Create dates from components
+
+`make_date()`, `make_datetime()`
+```{r}
+flights |>
+  select(year, month, day, hour, minute) |>
+  mutate(date = make_date(year, month, day),
+         departure = make_datetime(year, month, day, hour, minute))
+```
+
+
+## Extract date/time elements
+
+First, let's extract a random sample of departure times
+
+```{r}
+(datetime <- flights |>
+   drop_na(dep_time) |> 
+   slice_sample(n = 20) |>
+   mutate(departure = make_datetime(year, month, day, hour, minute)) |> 
+   pull(departure))
+```
+
+
+## Extract date/time elements
+
+Now let's extract components
+```{r}
+year(datetime)
+month(datetime)
+month(datetime, label = TRUE)
+```
+
+
+## Extract date/time elements
+
+Now let's extract components
+```{r}
+mday(datetime)
+yday(datetime)
+wday(datetime)
+wday(datetime, label = TRUE, abbr = FALSE)
+```
+
+
+## Extract date/time elements
+
+Now let's extract components
+```{r}
+hour(datetime)
+minute(datetime)
+second(datetime)
+```
+
+
+## Create vectors of days of the week
+```{r}
+wday(1:7, label = TRUE, abbr = FALSE)
+as.character(wday(1:7, label = TRUE, abbr = FALSE))
+stringr::str_c(as.character(wday(1:7, label = TRUE, abbr = FALSE)), collapse = ", ")
+```
+
+
+## Set date/time elements with components
+```{r}
+head(datetime)
+year(datetime) <- 2020
+head(datetime)
+```
+
+
+# Time spans
+
+## Time spans
+Find or create durations
+```{r}
+r_class_schedule$iso_date[2] - r_class_schedule$iso_date[1]
+today() - ymd(r_class_schedule$iso_date[1])
+r_class_schedule$iso_date[1] - 7 * 9
+r_class_schedule$iso_date[1] + 7 * 9
+```
+
+
+## Filter dates
+
+```{r}
+(oldsched <- filter(r_class_schedule, iso_date < "2023-01-30") |>
+  mutate(week_later = iso_date + 7,
+         days_since = today() - iso_date))
+```
+
+
+## Solving the problem
+
+What code generates `data2` from `data1`?
+
+:::: {.columns}
+
+::: {.column width="35%"}
+
+
+::: {style="font-size:90%"}
+```{r}
+data1
+```
+:::
+:::
+
+::: {.column width="65%"}
+
+
+::: {style="font-size:90%"}
+```{r}
+data2
+```
+:::
+:::
+::::
+
+
+## Let's code!
+
+[Dates and times](../code/23_dates.html){target="_blank"} [[Rmd](../code/23_dates.Rmd){target="_blank"}]

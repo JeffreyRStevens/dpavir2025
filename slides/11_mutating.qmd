@@ -1,0 +1,268 @@
+---
+title: "Mutating columns"
+author: "Jeff Stevens"
+date: "2023-02-15"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+# Review
+
+## Data wrangling
+
+![](../images/dplyr_summary.png){fig-align=center width=80%}
+
+
+# Mutating columns
+
+## Mental model of mutating columns
+
+![](../images/mentalmodel_mutate.png){fig-align="center"}
+
+
+---
+
+## Set-up
+
+```{r}
+library(dplyr)
+library(nycflights13)
+glimpse(flights)
+```
+
+
+## Changing and creating columns
+
+#### `dplyr::mutate()`
+
+![](../images/dplyr_mutate.png){fig-align="center" width="40%"}
+
+
+# Changing columns
+
+## Changing existing columns
+
+![](../images/dplyr_mutate_change.png){fig-align="center" width="80%"}
+
+
+## Changing existing columns
+
+```{r}
+mutate(flights, month = as.character(month))
+```
+
+
+---
+
+## Changing existing columns
+
+### Conditional changes
+
+`ifelse()`
+
+```{r warning = FALSE}
+mutate(flights, month = ifelse(month < 10, # conditional statement
+                               paste0("0", month), # what to do if TRUE
+                               as.character(month))) # what to do if FALSE
+```
+
+
+## Changing existing columns
+
+### Conditional changes
+
+`dplyr::if_else()`
+
+```{r warning = FALSE}
+mutate(flights, month = if_else(month < 10,  # conditional statement
+                                paste0("0", month),  # what to do if TRUE
+                                as.character(month),  # what to do if FALSE
+                                NA)) # what to do if missing
+```
+
+
+## Changing existing columns
+
+### Multiple changes
+
+
+```{r warning = FALSE}
+mutate(flights, 
+       month = if_else(month < 10, paste0("0", month), as.character(month), NA),
+       day = if_else(day < 10, paste0("0", day), as.character(day), NA)
+)
+```
+
+
+# Creating columns
+
+## Creating new columns
+
+![](../images/dplyr_mutate_create.png){fig-align="center" width="80%"}
+
+
+## Creating new columns
+
+```{r}
+mutate(flights, speed = distance / air_time * 60)
+```
+
+---
+
+## Creating new columns
+
+### Move column when creating
+
+```{r}
+mutate(flights, speed = distance / air_time * 60, .after = day)
+```
+
+
+## Creating new columns
+
+### Conditionals with multiple outcomes
+
+`dplyr::case_when`
+
+```{r warning = FALSE}
+mutate(flights, season = case_when(month %in% c(3:5) ~ "spring",
+                                   month %in% c(6:8) ~ "summer",
+                                   month %in% c(9:11) ~ "fall",
+                                   month %in% c(12, 1:2) ~ "winter"),
+       .after = day)
+
+```
+
+
+---
+
+## Creating new columns
+
+### Multiple columns
+
+```{r}
+mutate(flights, speed = distance / air_time * 60, .after = dep_time) %>%
+  mutate(month = if_else(month < 10, paste0("0", month), as.character(month), NA),
+         day = if_else(day < 10, paste0("0", day), as.character(day), NA),
+         date = paste(year, month, day, sep = "-"), 
+         .after = day)
+```
+
+
+---
+
+## Creating new columns
+
+### Remove old columns
+
+```{r}
+mutate(flights, date = paste(year, month, day, sep = "-"), 
+       .before = 1, 
+       .keep = "unused")
+```
+
+
+---
+
+## Creating new columns
+
+### Keep only new column
+
+```{r}
+mutate(flights, date = paste(year, month, day, sep = "-"), 
+       .keep = "none")
+```
+
+
+## Extract column into vector
+
+#### `dplyr::pull()`
+
+```{r}
+pull(flights, flight)
+```
+
+
+
+# Working with multiple columns
+
+## Apply functions to multiple columns
+
+```{r}
+mutate(flights, min_dep_time = min(dep_time, sched_dep_time, na.rm = TRUE), 
+       .after = arr_time)
+```
+
+
+---
+
+## Apply functions to multiple columns
+
+#### `dplyr::rowwise()`
+
+```{r}
+rowwise(flights) %>% 
+  mutate(min_dep_time = min(dep_time, sched_dep_time), .after = arr_time)
+```
+
+
+---
+
+## Changing multiple columns
+
+#### `dplyr::across()`
+
+```{r warning = FALSE}
+mutate(flights, across(contains("_time"), as.character))
+```
+
+
+---
+
+## Changing multiple columns
+
+#### `dplyr::across()`
+
+#### What if you need to pass arguments to your function?
+
+```{r warning = FALSE}
+mutate(flights, across(contains("_time"), ~ .x / 60))
+```
+
+
+## Changing multiple columns
+
+#### `dplyr::across()`
+
+#### What if you need to pass arguments to your function?
+
+```{r eval = FALSE}
+print(mutate(flights, across(contains("_time"), ~ .x / 60)), n = 5)
+```
+
+:::{.callout-note}
+* Start with `~`
+* Replace where the column name should be with `.x`
+* Note dividing these numbers by 60 doesn't make sense---just an example
+:::
+
+
+## Mental model of mutating columns
+
+![](../images/mentalmodel_mutate.png){fig-align="center"}
+
+
+## Let's code!
+
+[Mutating data](../code/11_mutating.html){target="_blank"} [[Rmd](../code/11_mutating.Rmd){target="_blank"}]

@@ -1,0 +1,41 @@
+---
+title: 'title'
+author:
+  - Jeff Stevens
+date: '2023-0?-?'
+categories: 
+  - "module ?"
+  - "week ?"
+  - other
+description: "description"
+execute:
+  freeze: auto
+draft: true
+---
+
+**Summary**
+
+## Learning objectives
+
+* 
+* 
+* 
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* 
+
+## Class meeting
+
+* [Script](../../slides/.R){target="_blank"} and [Code](../../code/.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_/){target='_blank'}
+
+### For next class meeting
+
+* Read ??

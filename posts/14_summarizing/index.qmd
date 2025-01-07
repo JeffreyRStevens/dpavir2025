@@ -1,0 +1,53 @@
+---
+title: 'Summarizing rows'
+author:
+  - Jeff Stevens
+date: '2023-02-22'
+categories: 
+  - "module 3"
+  - "week 5"
+  - across
+  - count
+  - group_by
+  - slice
+  - summarise
+description: "Aggregate row values"
+draft: true
+---
+
+We'll use the [{dplyr}](https://dplyr.tidyverse.org) `summarise()` functions to apply summary functions to data rows (e.g., `mean()`, `min()`). This is most useful when paired with `group_by()` to calculate summary values for each level in a group.
+
+## Learning objectives
+
+* Summarize column values
+* Start using summary functions
+* Apply functions across columns
+* Summarize separately for group levels
+* Generate subsets of rows per group
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 4.4](https://r4ds.hadley.nz/data-transform.html#groups){target='_blank'}
+
+## Class meeting
+
+* Counting rows per column level
+* Summarizing column values across rows
+* Summarizing multiple columns
+* Grouping rows
+* Summarizing groups of data
+* Summarizing multiple groups 
+* Slicing rows per group
+* Reviewing dplyr verbs
+* [Slides](../../slides/14_summarizing.qmd){target="_blank"} and [Code](../../code/14_summarizing.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_14_summarizing/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 6](https://r4ds.hadley.nz/data-tidy.html){target='_blank'}

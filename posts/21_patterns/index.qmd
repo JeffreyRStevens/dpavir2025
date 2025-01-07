@@ -1,0 +1,49 @@
+---
+title: 'Matching patterns'
+author:
+  - Jeff Stevens
+date: '2023-03-10'
+categories: 
+  - "module 5"
+  - "week 7"
+  - characters
+  - patterns
+  - regular expressions
+  - strings
+description: "Match patterns in character strings"
+execute:
+  freeze: true
+draft: true
+---
+
+We'll use the {stringr} package to match patterns with regular expressions.
+
+## Learning objectives
+
+* Get a basic familiarization with regular expressions
+* Learn to detect, extract, and replace pattern matches
+* Learn to split strings
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 16](https://r4ds.hadley.nz/regexps.html){target='_blank'}
+
+## Class meeting
+
+* Regular expressions
+* Detecting patterns
+* Extracting patterns
+* Replacing patterns
+* Splitting strings 
+* [Slides](../../slides/21_patterns.qmd){target="_blank"} and [Code](../../code/21_patterns.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_21_patterns/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 17](https://r4ds.hadley.nz/factors.html){target='_blank'}

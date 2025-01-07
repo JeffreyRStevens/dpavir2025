@@ -1,0 +1,45 @@
+---
+title: 'Selecting columns'
+author:
+  - Jeff Stevens
+date: '2023-02-13'
+categories: 
+  - "module 3"
+  - "week 4"
+  - columns
+  - relocate
+  - rename
+  - select
+description: "Select, move, and rename columns"
+draft: true
+---
+
+We'll start our data wrangling by cleaning up the columns of our data. We'll use [{dplyr}](https://dplyr.tidyverse.org) functions to select, move, and rename columns.
+
+## Learning objectives
+
+* Select a subset of columns
+* Move columns within the data set
+* Rename columns
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 4.3.2 - 4.3.4](https://r4ds.hadley.nz/data-transform.html#sec-select){target='_blank'}
+
+## Class meeting
+
+* Subsetting columns
+* Moving columns
+* Renaming columns
+* [Slides](../../slides/10_selecting.qmd){target="_blank"} and [Code](../../code/10_selecting.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_10_selecting/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 4.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'}

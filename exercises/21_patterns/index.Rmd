@@ -1,0 +1,232 @@
+---
+title: "Matching patterns"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+set.seed(3)
+fruits <- fruit[1:20]
+```
+
+
+## Matching strings
+
+### Regular expressions
+
+`{stringr}` use _regular expressions_ to match characters in strings. This allows us to find, extract, and replace strings.
+
+Here are a few metacharacters for regular expressions that help us generate pattern.s
+
+| Metacharacters | Meaning |
+|:--------------:|:--------|
+|`.`| Wildcard--any character |
+|`^`| Matches at beginning of string |
+|`$`| Matches at end of string |
+|`|`| Matches one pattern or another |
+|`()`| Matches character group |
+|`\d`| Matches numerical digits |
+|`[]`| Matches any characters inside brackets |
+|`[^]`| Matches any characters **not** inside brackets |
+|`[a-z]`| Matches any lower case letters |
+|`[A-Z]`| Matches any upper case letters |
+|`[A-Za-z]`| Matches any letters |
+
+###
+
+To practice with regular expressions, we can use the `str_view_all()` function, which simply highlights patterns that match regular expressions passed to it. Let's work with the first 20 elements of the `fruit` data set, which we'll call `fruits`.
+
+```{r}
+fruits <- fruit[1:20]
+```
+
+Let's first view the letter "a" in `fruits`.
+
+```{r echo = TRUE}
+str_view_all(fruits, "a")
+```
+
+Strings that match the patterns are surrounded by `<>` just to show us where the pattern is matched. Now let's view letter "a"s that have any other characters in front of them.
+
+```{r echo = TRUE}
+str_view_all(fruits, ".a")
+```
+
+Notice apple and apricot are no longer marked in the view. Why not?
+
+###
+
+**Use `str_view_all()` to mark all _vowels_ in `fruits`.**
+```{r exercise1, exercise = TRUE}
+str_view_all(fruits, ...)
+```
+ 
+###
+
+**Use `str_view_all()` to mark all _consonants_ in `fruits`.**
+```{r exercise2, exercise = TRUE}
+str_view_all(fruits, ...)
+```
+ 
+###
+
+**Use `str_view_all()` to mark all fruits that end with "nut".**
+```{r exercise3, exercise = TRUE}
+str_view_all(fruits, ...)
+```
+ 
+
+## Detecting and extracting patterns
+
+### 
+
+We can detect whether a pattern was present in each element of a vector with `str_detect()`. Note this returns a logical vector, so we only get a TRUE/FALSE indication, but we can do our usual tricks with logical vectors.
+
+**Use `str_detect()` to create a logical vector of fruits that include the pattern "berry".**
+```{r exercise4, exercise = TRUE}
+str_detect(fruits, ...)
+```
+ 
+```{r exercise4-check}
+grade_result(
+  pass_if(~identical(.result, str_detect(fruits, "berry")))
+)
+```
+
+
+**Use `str_detect()` to determine how many fruits include the pattern "berry".**
+```{r exercise5, exercise = TRUE}
+...
+```
+ 
+```{r exercise5-check}
+grade_result(
+  pass_if(~identical(.result, sum(str_detect(fruits, "berry"))))
+)
+```
+
+###
+
+We can also pair `str_detect()` with `filter()` to return observations that match patterns in columns.
+
+**Return the observations from the `starwars` data set for the names that include a "-".**
+```{r exercise6, exercise = TRUE}
+starwars |> 
+  ...
+```
+ 
+```{r exercise6-check}
+grade_result(
+  pass_if(~identical(.result, starwars |> filter(str_detect(name, "-"))))
+)
+```
+
+###
+
+Often, instead of a logical vector detecting the presence of a pattern, we're interesting in extracting the elements of a vector that include a pattern. For this, we use `str_subset()`.
+
+**Return the berries from `fruits`.**
+```{r exercise7, exercise = TRUE}
+str_subset(fruits, ...)
+```
+ 
+```{r exercise7-check}
+grade_result(
+  pass_if(~identical(.result, str_subset(fruits, "berry")))
+)
+```
+
+
+**Return the `fruits` that have "black" or "blue" in them.**
+```{r exercise8, exercise = TRUE}
+...
+```
+ 
+```{r exercise8-check}
+grade_result(
+  pass_if(~identical(.result, str_subset(fruits, "blue|black")))
+)
+```
+
+
+## Replacing patterns
+
+### 
+
+In addition to detecting and extracting patterns, we may want to replace them (e.g., to correct spelling mistakes). The `str_replace()` function replaces a pattern **the first time it appears within an element**. It will replace across all elements but only once per element. The `str_replace_all()` function will replace all instances across the whole vector.
+
+**Make bell pepper and chili pepper one word (bellpepper and chilipepper) while leaving blood orange and canary melon as two words.**
+```{r exercise9, exercise = TRUE}
+str_replace(fruits, ...)
+```
+ 
+```{r exercise9-check}
+grade_result(
+  pass_if(~identical(.result, str_replace(fruits, " pepper", "pepper")))
+)
+```
+
+###
+
+**Replace just the first time "an" shows up in a string with "am".**
+```{r exercise10, exercise = TRUE}
+...(fruits, ...)
+```
+ 
+```{r exercise10-check}
+grade_result(
+  pass_if(~identical(.result, str_replace(fruits, "an", "am")))
+)
+```
+
+**Replace any instance of "an" with "am".**
+```{r exercise11, exercise = TRUE}
+...(fruits, ...)
+```
+ 
+```{r exercise11-check}
+grade_result(
+  pass_if(~identical(.result, str_replace_all(fruits, "an", "am")))
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 14
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

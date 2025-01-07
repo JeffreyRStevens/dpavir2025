@@ -1,0 +1,365 @@
+---
+title: "Color"
+author: "Jeff Stevens"
+date: "2023-04-07"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](http://dpavir.org)"
+    code-link: true
+---
+
+
+## Source
+
+### [Data Visualization in R](https://wilkelab.org/SDS375/)
+
+### SDS 375
+
+#### Claus O. Wilke
+
+![](../images/fdv.jpg){.absolute width="40%" top="10%" left="60%"}
+
+
+# Uses of color
+
+## Uses of color
+
+1. Distinguish categories (qualitative)
+
+2. Represent ordered numeric values (sequential)
+
+3. Represent binary numeric values (diverging)
+
+4. Highlight
+
+
+## Distinguish categories
+
+```{r setup, echo = FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE, fig.width = 8, fig.align = "center")
+theme_set(theme_classic(14)) # 16 for full width, 18 for half width 
+update_geom_defaults("point", list(size = 2)) # 2 for full width, 2.5 for half width
+```
+
+```{r}
+set.seed(1)
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, color = drv)) +
+  geom_jitter() +
+  labs(x = "Displacement", y = "Highway fuel efficiency") +
+  theme(legend.position = c(0.8, 0.8))
+```
+
+
+<!-- ## Represent sequential numeric values -->
+
+<!-- ```{r} -->
+<!-- set.seed(1) -->
+<!-- mpg |>  -->
+<!--   ggplot(aes(x = displ, y = hwy, color = cty)) + -->
+<!--   geom_jitter() + -->
+<!--   labs(x = "Displacement", y = "Highway fuel efficiency") + -->
+<!--   theme(legend.position = c(0.8, 0.8)) -->
+<!-- ``` -->
+
+
+## Represent sequential numeric values
+
+```{r}
+set.seed(1)
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, color = cty)) +
+  geom_jitter() +
+  labs(x = "Displacement", y = "Highway fuel efficiency") +
+  scale_color_viridis_c() +
+  theme(legend.position = c(0.8, 0.8))
+```
+
+
+## Represent diverging numeric values
+
+```{r}
+set.seed(1)
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, color = cty)) +
+  geom_jitter() +
+  labs(x = "Displacement", y = "Highway fuel efficiency") +
+  scale_color_distiller(palette = "RdBu") +
+  theme_dark() +
+  theme(legend.position = c(0.8, 0.8))
+```
+
+
+## Highlight
+
+```{r}
+set.seed(1)
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, color = manufacturer)) +
+  geom_jitter() +
+  labs(x = "Displacement", y = "Highway fuel efficiency") +
+  scale_color_manual(values = c(rep("#808080", 14), "#BD3828")) +
+  theme(legend.position = "none")
+```
+
+
+# Color space
+
+## RGB color space
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- red R (0-255): amount of red 
+
+- green G (0-255): amount of green 
+
+- blue B (0-255): amount of blue 
+
+:::
+
+::: {.column width="40%"}
+
+R | G | B | hexcode 
+---| --- | --- | --- 
+0  | 0 | 0 | <font color="#000000">#000000</font> 
+255  | 0 | 0 | <font color="#FF0000">#FF0000 </font> 
+0  | 255 | 255 | <font color="#00FFFF">#00FFFF </font> 
+128  | 128 | 128 | <font color="#808080">#808080 </font> 
+0 | 158 | 115 | <font color="#009E73">#009E73 </font> 
+255 | 255 | 255 | <font color="#FFFFFF">#FFFFFF </font> 
+:::
+::::
+
+
+## RGB color space
+
+![](../images/rgb-viz-1.svg){fig-align="center"}
+
+::: {.fragment}
+Humans cannot reason well about the RGB color space
+:::
+
+
+## HCL color space
+
+![](../images/cl-planes-1.svg){fig-align="center"}
+
+::: {.fragment}
+Explore HCL colors with `colorspace::choose_color()`
+:::
+
+# Choosing colors
+
+## Avoid high chroma
+
+:::: {.columns}
+
+::: {.column width="50%"}
+High chroma: Toys
+
+![](../images/toys-image.jpg){fig-alt="Photo by Pixabay from Pexels" height=300}
+
+:::{style="font-size: 50%"}
+Source: [Alexas_Fotos](https://pixabay.com/photos/mario-yoschi-characters-fun-1557251/)
+:::
+:::
+
+::: {.column width="50%"}
+Low chroma: Elegance
+
+![](../images/home-interior.jpg){fig-alt="Photo by Saviesa Home from Pexels" height=300}
+
+:::{style="font-size: 50%"}
+Source: [Saviesa Home](https://www.pexels.com/photo/kitchen-island-2089698/)
+:::
+:::
+::::
+
+## Be aware of color-vision deficiency
+
+5%–8% of men are color blind!
+
+![](https://clauswilke.com/dataviz/pitfalls_of_color_use_files/figure-html/red-green-cvd-sim-1.png)
+
+
+## Consider using Okabe-Ito scale
+
+:::{style="font-size: 90%"}
+Name           | Hex code &nbsp;&nbsp; | R, G, B (0-255)
+:----------    | :-------  | :--------
+orange         | <font color="#E69F00">#E69F00</font>   | 230, 159, 0
+sky blue	     | <font color="#56B4E9">#56B4E9</font>   | 86, 180, 233
+bluish green   | <font color="#009E73">#009E73</font>   | 0, 158, 115
+yellow	       | <font color="#F0E442">#F0E442</font>   | 240, 228, 66
+blue	         | <font color="#0072B2">#0072B2</font>   | 0, 114, 178
+vermilion	     | <font color="#D55E00">#D55E00</font>   | 213, 94, 0
+reddish purple | <font color="#CC79A7">#CC79A7</font>   | 204, 121, 167
+black	         | <font color="#000000">#000000</font>   | 0, 0, 0
+:::
+
+
+## Consider using viridis
+
+![](../images/color_scales.png){.absolute width="45%" top="20%" left="0%"}
+![](../images/color_scales_cvd.png){.absolute width="45%" top="20%" left="50%"}
+
+
+::: {.aside}
+Source: [viridis package](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
+:::
+
+
+# Color scales
+
+## Using color scales in ggplot
+
+:::{style="font-size: 85%"}
+Scale function            | Data type     | Palette type
+:-----------              | :----------  | :------------ | :------------
+`scale_color_hue()` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |  discrete  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | qualitative &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`scale_color_gradient()`      | continuous    | sequential
+`scale_color_gradient2()`       | continuous    | diverging
+`scale_color_brewer()`        | discrete      | qualitative, diverging, sequential
+`scale_color_distiller()`    | continuous    | qualitative, diverging, sequential
+:::
+
+::: {.fragment}
+Replace `color` with `fill` for shaded areas
+:::
+
+
+## Color palettes: qualitative
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](../images/ggplot_colors_qualitative.png){fig-align="center"}
+
+::: {.fragment}
+`scale_color_brewer()`
+:::
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r echo = TRUE, fig.width = 5, fig.height = 4, out.width = 500, out.height = 400}
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, color = drv)) +
+  geom_jitter() +
+  labs(x = "Displacement", y = "Highway fuel efficiency") +
+  scale_color_brewer(palette = "Accent") +
+  theme(legend.position = c(0.8, 0.8))
+```
+:::
+:::
+::::
+
+
+## Color palettes: sequential
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](../images/ggplot_colors_sequential.png){fig-align="center"}
+
+::: {.fragment}
+`scale_color_distiller()`
+:::
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r echo = TRUE, fig.width = 5, fig.height = 4, out.width = 500, out.height = 400}
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, color = cty)) +
+  geom_jitter() +
+  labs(x = "Displacement", y = "Highway fuel efficiency") +
+  scale_color_distiller(palette = "YlGnBu") +
+  theme(legend.position = c(0.8, 0.8))
+```
+:::
+:::
+::::
+
+
+## Color palettes: diverging
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](../images/ggplot_colors_diverging.png){fig-align="center"}
+
+::: {.fragment}
+`scale_color_distiller()`
+:::
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r echo = TRUE, fig.width = 5, fig.height = 4, out.width = 500, out.height = 400}
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, color = cty)) +
+  geom_jitter() +
+  labs(x = "Displacement", y = "Highway fuel efficiency") +
+  scale_color_distiller(palette = "Spectral") +
+  theme(legend.position = c(0.8, 0.8))
+```
+:::
+:::
+::::
+
+
+## Additional palettes
+
+```{r echo = TRUE, eval = FALSE}
+library(paletteer)
+```
+
+![](../images/paletteer_examples.png){fig-align="center"}
+
+<!-- ![](../images/wesanderson.png){fig-align="center"} -->
+
+![](../images/paletteer_hex.png){.absolute width="15%" top="0%" left="85%"}
+
+
+## Additional palettes
+
+![](../images/wesanderson.png){fig-align="center"}
+
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400}
+library(wesanderson)
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, color = cty)) +
+  geom_jitter() +
+  labs(x = "Displacement", y = "Highway fuel efficiency") +
+  scale_color_gradientn(colors = wes_palette("Zissou1")) +
+  theme(legend.position = c(0.8, 0.8))
+```
+
+
+
+<!-- ## Set-up -->
+
+<!-- ```{r} -->
+<!-- library(tidyverse) -->
+<!-- ``` -->
+
+Switch to [R script](29_color.R)
+
+## Let's code!
+
+[Color](../code/29_color.html){target="_blank"} [[Rmd](../code/29_color.Rmd){target="_blank"}]

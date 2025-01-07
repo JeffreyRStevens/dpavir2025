@@ -1,0 +1,1024 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  doc]{apa6}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{english}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Overwrite redefinition of paragraph and subparagraph by the default LaTeX template
+% See https://github.com/crsh/papaja/issues/292
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries\itshape\typesectitle}}
+
+\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-\z@\relax}%
+  {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+\makeatother
+
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\HyOrg@maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd\appendix
+  {\xapptocmd\section
+    {\addcontentsline{toc}{section}{\appendixname\ifoneappendix\else~\theappendix\fi\\: #1}}
+    {}{\InnerPatchFailed}%
+  }
+{}{\PatchFailed}
+\usepackage{csquotes}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Tables},
+  pdflang={en-EN},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Tables}
+\author{\phantom{0}}
+\date{}
+
+
+\shorttitle{SHORT TITLE}
+
+\affiliation{\phantom{0}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+First, load \texttt{\{tidyverse\}} and \texttt{\{papaja\}} and import the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(papaja)}
+\NormalTok{hai }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://decisionslab.unl.edu/data/thayer\_stevens\_2020\_data1.csv"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(experiment, participant, condition, gender,}
+         \AttributeTok{panas\_pre =}\NormalTok{ panas\_pre\_pos, }\AttributeTok{panas\_post =}\NormalTok{ panas\_post\_pos)}
+\NormalTok{hai\_long }\OtherTok{\textless{}{-}}\NormalTok{ hai }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{contains}\NormalTok{(}\StringTok{"panas"}\NormalTok{), }\AttributeTok{names\_to =} \StringTok{"prepost"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"panas"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{condition =} \FunctionTok{fct\_recode}\NormalTok{(condition, }\StringTok{"Control"} \OtherTok{=} \StringTok{"control"}\NormalTok{, }\StringTok{"HAI"} \OtherTok{=} \StringTok{"hai"}\NormalTok{),}
+         \AttributeTok{prepost =} \FunctionTok{fct\_recode}\NormalTok{(prepost, }\StringTok{"Pre"} \OtherTok{=} \StringTok{"panas\_pre"}\NormalTok{, }\StringTok{"Post"} \OtherTok{=} \StringTok{"panas\_post"}\NormalTok{),}
+         \AttributeTok{prepost =} \FunctionTok{fct\_relevel}\NormalTok{(prepost, }\FunctionTok{c}\NormalTok{(}\StringTok{"Pre"}\NormalTok{, }\StringTok{"Post"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+Now let's build a data frame that will be our table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(condition\_prepost\_means }\OtherTok{\textless{}{-}}\NormalTok{ hai\_long }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(condition, prepost) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{summarise}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"panas"}\NormalTok{), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{mean}\NormalTok{(.x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 3
+## # Groups:   condition [2]
+##   condition prepost panas
+##   <fct>     <fct>   <dbl>
+## 1 Control   Pre      2.99
+## 2 Control   Post     2.76
+## 3 HAI       Pre      2.97
+## 4 HAI       Post     3.23
+\end{verbatim}
+
+\newpage
+
+\hypertarget{tables-by-knitr}{%
+\section{\texorpdfstring{Tables by \texttt{\{knitr\}}}{Tables by \{knitr\}}}\label{tables-by-knitr}}
+
+The \href{https://yihui.org/knitr/}{\texttt{\{knitr\}}} package uses the \texttt{kable()} function to format tables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|l|r}
+\hline
+condition & prepost & panas\\
+\hline
+Control & Pre & 2.989873\\
+\hline
+Control & Post & 2.760759\\
+\hline
+HAI & Pre & 2.971795\\
+\hline
+HAI & Post & 3.232051\\
+\hline
+\end{tabular}
+
+\newpage
+
+\hypertarget{column-and-row-names}{%
+\subsection{Column and row names}\label{column-and-row-names}}
+
+You can control column names and row names with \texttt{col.names} and \texttt{row.names}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means, }
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|l|r}
+\hline
+Condition & Prepost & Mean PANAS\\
+\hline
+Control & Pre & 2.989873\\
+\hline
+Control & Post & 2.760759\\
+\hline
+HAI & Pre & 2.971795\\
+\hline
+HAI & Post & 3.232051\\
+\hline
+\end{tabular}
+
+\newpage
+
+\hypertarget{column-alignment}{%
+\subsection{Column alignment}\label{column-alignment}}
+
+By default, character columns are left aligned and numeric columns are right aligned. You can set alignment manually with the \texttt{align} argument with \texttt{l} = left, \texttt{c} = center, and \texttt{r} = right. You can just pass a character string with a series of those letters.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means,}
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{), }
+      \AttributeTok{align =} \StringTok{"rcl"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{r|c|l}
+\hline
+Condition & Prepost & Mean PANAS\\
+\hline
+Control & Pre & 2.989873\\
+\hline
+Control & Post & 2.760759\\
+\hline
+HAI & Pre & 2.971795\\
+\hline
+HAI & Post & 3.232051\\
+\hline
+\end{tabular}
+
+\newpage
+
+\hypertarget{digit-rounding}{%
+\subsection{Digit rounding}\label{digit-rounding}}
+
+Round the digits for all numeric data columns with \texttt{digits} argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means,}
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{), }
+      \AttributeTok{digits =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|l|r}
+\hline
+Condition & Prepost & Mean PANAS\\
+\hline
+Control & Pre & 2.99\\
+\hline
+Control & Post & 2.76\\
+\hline
+HAI & Pre & 2.97\\
+\hline
+HAI & Post & 3.23\\
+\hline
+\end{tabular}
+
+If you want different digits for different columns, you can pass a vector to the \texttt{digits} argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{condition\_prepost\_means }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{id\_cols =}\NormalTok{ condition, }\AttributeTok{names\_from =}\NormalTok{ prepost, }\AttributeTok{values\_from =}\NormalTok{ panas) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{digits =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r}
+\hline
+condition & Pre & Post\\
+\hline
+Control & 2.99 & 2.761\\
+\hline
+HAI & 2.97 & 3.232\\
+\hline
+\end{tabular}
+
+\newpage
+
+\hypertarget{table-titles}{%
+\subsection{Table titles}\label{table-titles}}
+
+Add a title to the table with the \texttt{caption} argument. The good news is that we can cross-reference easily (Table \ref{tab:title-table}). The bad news is that with captions, tables in PDFs are automatically placed at the top of the page. We'll see how to fix this later.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means,}
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{), }
+      \AttributeTok{caption =} \StringTok{"PANAS scores by condition and prepost"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:title-table}PANAS scores by condition and prepost}
+\centering
+\begin{tabular}[t]{l|l|r}
+\hline
+Condition & Prepost & Mean PANAS\\
+\hline
+Control & Pre & 2.989873\\
+\hline
+Control & Post & 2.760759\\
+\hline
+HAI & Pre & 2.971795\\
+\hline
+HAI & Post & 3.232051\\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\hypertarget{supplementing-kable-with-kableextra}{%
+\section{\texorpdfstring{Supplementing kable with \texttt{\{kableExtra\}}}{Supplementing kable with \{kableExtra\}}}\label{supplementing-kable-with-kableextra}}
+
+The \texttt{kable()} function is intentionally simple to use and therefore does not have a lot of additional functionality. The \href{https://haozhu233.github.io/kableExtra/}{\texttt{\{kableExtra\}}} package supplements the \texttt{kable()} functionality with additional formatting options by adding additional functions after the \texttt{kable()} function call using the \texttt{\textbar{}\textgreater{}} pipe (a bit like how \texttt{ggplot()} works). Check out \href{https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf}{Create Awesome LaTeX Table with knitr::kable and kableExtra}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("kableExtra")}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{general-styling}{%
+\subsection{General styling}\label{general-styling}}
+
+The \texttt{kable\_styling()} function formats a number of things such as font size, table width, and table alignment. I'll also add \texttt{latex\_options\ =\ "hold\_position"} to keep the table in the text. Otherwise, it puts it at the top of the page.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means,}
+      \AttributeTok{caption =} \StringTok{"PANAS scores by condition and prepost"}\NormalTok{,}
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{), }
+      \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{font\_size =} \DecValTok{18}\NormalTok{, }\AttributeTok{latex\_options =} \StringTok{"hold\_position"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[!h]
+
+\caption{\label{tab:unnamed-chunk-9}PANAS scores by condition and prepost}
+\centering
+\fontsize{18}{20}\selectfont
+\begin{tabular}[t]{llr}
+\toprule
+Condition & Prepost & Mean PANAS\\
+\midrule
+Control & Pre & 2.989873\\
+Control & Post & 2.760759\\
+HAI & Pre & 2.971795\\
+HAI & Post & 3.232051\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+\hypertarget{labels-spanning-rows}{%
+\subsection{Labels spanning rows}\label{labels-spanning-rows}}
+
+If you want to label groups of rows, use \texttt{pack\_rows()}. Let's get rid of the \texttt{condition} column and label the conditions explicitly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{condition\_prepost\_means2 }\OtherTok{\textless{}{-}}\NormalTok{ condition\_prepost\_means }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ungroup}\NormalTok{(condition) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{condition)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means2, }
+      \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{lr}
+\toprule
+prepost & panas\\
+\midrule
+Pre & 2.989873\\
+Post & 2.760759\\
+Pre & 2.971795\\
+Post & 3.232051\\
+\bottomrule
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means2, }
+      \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{pack\_rows}\NormalTok{(}\StringTok{"Control"}\NormalTok{, }\AttributeTok{start\_row =} \DecValTok{1}\NormalTok{, }\AttributeTok{end\_row =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{pack\_rows}\NormalTok{(}\StringTok{"HAI"}\NormalTok{, }\AttributeTok{start\_row =} \DecValTok{3}\NormalTok{, }\AttributeTok{end\_row =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{lr}
+\toprule
+ & Mean PANAS\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{2}{l}{\textbf{Control}}\\
+\hspace{1em}Pre & 2.989873\\
+\hspace{1em}Post & 2.760759\\
+\addlinespace[0.3em]
+\multicolumn{2}{l}{\textbf{HAI}}\\
+\hspace{1em}Pre & 2.971795\\
+\hspace{1em}Post & 3.232051\\
+\bottomrule
+\end{tabular}
+
+Notice that we removed the first column name with \texttt{""}.
+
+\newpage
+
+\hypertarget{labels-spanning-columns}{%
+\subsection{Labels spanning columns}\label{labels-spanning-columns}}
+
+You can labels groups of columns with the \texttt{add\_header\_above()} function. Let's rearrange the data into wide format to illustrate this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(wide\_means }\OtherTok{\textless{}{-}}\NormalTok{ condition\_prepost\_means }\SpecialCharTok{|\textgreater{}}
+   \FunctionTok{unite}\NormalTok{(cond\_prepost, condition}\SpecialCharTok{:}\NormalTok{prepost) }\SpecialCharTok{|\textgreater{}}
+   \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ cond\_prepost, }\AttributeTok{values\_from =}\NormalTok{ panas))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 4
+##   Control_Pre Control_Post HAI_Pre HAI_Post
+##         <dbl>        <dbl>   <dbl>    <dbl>
+## 1        2.99         2.76    2.97     3.23
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(wide\_means, }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{rrrr}
+\toprule
+Control\_Pre & Control\_Post & HAI\_Pre & HAI\_Post\\
+\midrule
+2.989873 & 2.760759 & 2.971795 & 3.232051\\
+\bottomrule
+\end{tabular}
+
+Now that the data are in wide format, we can add the column names by repeating \emph{Pre} and \emph{Post} then add the headers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(wide\_means, }
+      \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{, }
+      \AttributeTok{col.names =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Pre"}\NormalTok{, }\StringTok{"Post"}\NormalTok{), }\DecValTok{2}\NormalTok{),}
+      \AttributeTok{digits =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Control"} \OtherTok{=} \DecValTok{2}\NormalTok{, }\StringTok{"HAI"} \OtherTok{=} \DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{rrrr}
+\toprule
+\multicolumn{2}{c}{Control} & \multicolumn{2}{c}{HAI} \\
+\cmidrule(l{3pt}r{3pt}){1-2} \cmidrule(l{3pt}r{3pt}){3-4}
+Pre & Post & Pre & Post\\
+\midrule
+2.99 & 2.76 & 2.97 & 3.23\\
+\bottomrule
+\end{tabular}
+
+Maybe we need a column stating this is Mean PANAS.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wide\_means2 }\OtherTok{\textless{}{-}}\NormalTok{ wide\_means }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{label =} \StringTok{"Mean PANAS"}\NormalTok{, }\AttributeTok{.before =} \DecValTok{1}\NormalTok{)}
+\FunctionTok{kable}\NormalTok{(wide\_means2, }
+      \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{, }
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Pre"}\NormalTok{, }\StringTok{"Post"}\NormalTok{), }\DecValTok{2}\NormalTok{)),}
+      \AttributeTok{digits =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"Control"} \OtherTok{=} \DecValTok{2}\NormalTok{, }\StringTok{"HAI"} \OtherTok{=} \DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{lrrrr}
+\toprule
+\multicolumn{1}{c}{} & \multicolumn{2}{c}{Control} & \multicolumn{2}{c}{HAI} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+ & Pre & Post & Pre & Post\\
+\midrule
+Mean PANAS & 2.99 & 2.76 & 2.97 & 3.23\\
+\bottomrule
+\end{tabular}
+
+\newpage
+
+\hypertarget{table-footnotes}{%
+\subsection{Table footnotes}\label{table-footnotes}}
+
+Add table notes with the \texttt{footnote()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means, }
+      \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
+      \AttributeTok{caption =} \StringTok{"PANAS scores by condition and prepost"}\NormalTok{,}
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition*"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{latex\_options =} \StringTok{"hold\_position"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{footnote}\NormalTok{(}\AttributeTok{general =} \StringTok{"Source: Thayer \& Stevens (2021)"}\NormalTok{,}
+           \AttributeTok{symbol =} \StringTok{"73 control participants, 72 HAI participants"}\NormalTok{,}
+           \AttributeTok{footnote\_as\_chunk =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[!h]
+
+\caption{\label{tab:unnamed-chunk-17}PANAS scores by condition and prepost}
+\centering
+\begin{tabular}[t]{llr}
+\toprule
+Condition* & Prepost & Mean PANAS\\
+\midrule
+Control & Pre & 2.989873\\
+Control & Post & 2.760759\\
+HAI & Pre & 2.971795\\
+HAI & Post & 3.232051\\
+\bottomrule
+\multicolumn{3}{l}{\rule{0pt}{1em}\textit{Note: } Source: Thayer \& Stevens (2021)}\\
+\multicolumn{3}{l}{\rule{0pt}{1em}\textsuperscript{*} 73 control participants, 72 HAI participants}\\
+\end{tabular}
+\end{table}
+
+\newpage
+
+\hypertarget{landscape}{%
+\subsection{Landscape}\label{landscape}}
+
+Rotate wide tables with \texttt{landscape()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(condition\_prepost\_means, }
+      \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
+      \AttributeTok{caption =} \StringTok{"PANAS scores by condition and prepost"}\NormalTok{,}
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{latex\_options =} \StringTok{"hold\_position"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{footnote}\NormalTok{(}\AttributeTok{general =} \StringTok{"Source: Thayer \& Stevens (2021)"}\NormalTok{,}
+           \AttributeTok{footnote\_as\_chunk =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{landscape}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{landscape}\begin{table}[!h]
+
+\caption{\label{tab:unnamed-chunk-18}PANAS scores by condition and prepost}
+\centering
+\begin{tabular}[t]{llr}
+\toprule
+Condition & Prepost & Mean PANAS\\
+\midrule
+Control & Pre & 2.989873\\
+Control & Post & 2.760759\\
+HAI & Pre & 2.971795\\
+HAI & Post & 3.232051\\
+\bottomrule
+\multicolumn{3}{l}{\rule{0pt}{1em}\textit{Note: } Source: Thayer \& Stevens (2021)}\\
+\end{tabular}
+\end{table}
+\end{landscape}
+
+\hypertarget{tables-by-papaja}{%
+\section{\texorpdfstring{Tables by \texttt{\{papaja\}}}{Tables by \{papaja\}}}\label{tables-by-papaja}}
+
+The \texttt{\{papaja\}} package uses the \texttt{kable()} function to format tables in APA format with the \texttt{apa\_table()} function. You can use many of the same arguments that are available in the \texttt{kable()} function. You can control where the table is placed (\texttt{h}ere, \texttt{t}op, \texttt{b}ottom) with the \texttt{placement} argument. You can add a general footnote with the \texttt{note} argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{apa\_table}\NormalTok{(condition\_prepost\_means,}
+          \AttributeTok{caption =} \StringTok{"PANAS scores by condition and prepost"}\NormalTok{,}
+          \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{),}
+          \AttributeTok{placement =} \StringTok{"h"}\NormalTok{,}
+          \AttributeTok{note =} \StringTok{"Source: Thayer \& Stevens (2021)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:unnamed-chunk-19}PANAS scores by condition and prepost}
+
+\begin{tabular}{lll}
+\toprule
+Condition & Prepost & Mean PANAS\\
+\midrule
+Control & Pre & 2.99\\
+Control & Post & 2.76\\
+HAI & Pre & 2.97\\
+HAI & Post & 3.23\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} Source: Thayer \& Stevens (2021)}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+Notice the alignment is different, with everything left aligned. Let's right align the means.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{apa\_table}\NormalTok{(condition\_prepost\_means, }
+          \AttributeTok{caption =} \StringTok{"PANAS scores by condition and prepost"}\NormalTok{,}
+          \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{),}
+          \AttributeTok{align =} \FunctionTok{c}\NormalTok{(}\StringTok{"l"}\NormalTok{, }\StringTok{"l"}\NormalTok{, }\StringTok{"r"}\NormalTok{),}
+          \AttributeTok{placement =} \StringTok{"h"}\NormalTok{,}
+          \AttributeTok{note =} \StringTok{"Source: Thayer \& Stevens (2021)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:unnamed-chunk-20}PANAS scores by condition and prepost}
+
+\begin{tabular}{llr}
+\toprule
+Condition & Prepost & Mean PANAS\\
+\midrule
+Control & Pre & 2.99\\
+Control & Post & 2.76\\
+HAI & Pre & 2.97\\
+HAI & Post & 3.23\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} Source: Thayer \& Stevens (2021)}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\newpage
+
+You can rotate to landscape orientation with the \texttt{landscape\ =\ TRUE} argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{apa\_table}\NormalTok{(condition\_prepost\_means, }
+          \AttributeTok{caption =} \StringTok{"PANAS scores by condition and prepost"}\NormalTok{,}
+          \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Condition"}\NormalTok{, }\StringTok{"Prepost"}\NormalTok{, }\StringTok{"Mean PANAS"}\NormalTok{),}
+          \AttributeTok{align =} \FunctionTok{c}\NormalTok{(}\StringTok{"l"}\NormalTok{, }\StringTok{"l"}\NormalTok{, }\StringTok{"r"}\NormalTok{),}
+          \AttributeTok{placement =} \StringTok{"h"}\NormalTok{,}
+          \AttributeTok{note =} \StringTok{"Source: Thayer \& Stevens (2021)"}\NormalTok{,}
+          \AttributeTok{landscape =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lltable}
+
+\begin{TableNotes}[para]
+\normalsize{\textit{Note.} Source: Thayer \& Stevens (2021)}
+\end{TableNotes}
+
+\begin{longtable}{llr}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:unnamed-chunk-21}PANAS scores by condition and prepost}\\
+\toprule
+Condition & Prepost & Mean PANAS\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:unnamed-chunk-21} continued}}\\
+\toprule
+Condition & Prepost & Mean PANAS\\
+\midrule
+\endhead
+Control & Pre & 2.99\\
+Control & Post & 2.76\\
+HAI & Pre & 2.97\\
+HAI & Post & 3.23\\
+\bottomrule
+\addlinespace
+\insertTableNotes
+\end{longtable}
+
+\end{lltable}
+
+\hypertarget{apa-formatted-statistics-by-papaja}{%
+\section{\texorpdfstring{APA-formatted statistics by \texttt{\{papaja\}}}{APA-formatted statistics by \{papaja\}}}\label{apa-formatted-statistics-by-papaja}}
+
+\texttt{\{papaja\}} also includes \texttt{apa\_print()}, which extracts statistical values in APA format.
+
+\hypertarget{linear-regression}{%
+\subsection{Linear regression}\label{linear-regression}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hai\_lm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(panas\_post }\SpecialCharTok{\textasciitilde{}}\NormalTok{ condition }\SpecialCharTok{*}\NormalTok{ gender, }\AttributeTok{data =}\NormalTok{ hai)}
+\FunctionTok{summary}\NormalTok{(hai\_lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = panas_post ~ condition * gender, data = hai)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.80909 -0.58525  0.01475  0.48333  1.88333 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)              2.68525    0.09578  28.035  < 2e-16 ***
+## conditionhai             0.52385    0.13287   3.943 0.000122 ***
+## genderMale               0.33142    0.20066   1.652 0.100662    
+## conditionhai:genderMale -0.18218    0.30884  -0.590 0.556142    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7481 on 153 degrees of freedom
+## Multiple R-squared:  0.109,  Adjusted R-squared:  0.09149 
+## F-statistic: 6.236 on 3 and 153 DF,  p-value: 0.0005053
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{apa\_print}\NormalTok{(hai\_lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $estimate
+## $estimate$Intercept
+## [1] "$b = 2.69$, 95\\% CI $[2.50, 2.87]$"
+## 
+## $estimate$conditionhai
+## [1] "$b = 0.52$, 95\\% CI $[0.26, 0.79]$"
+## 
+## $estimate$genderMale
+## [1] "$b = 0.33$, 95\\% CI $[-0.07, 0.73]$"
+## 
+## $estimate$conditionhai_genderMale
+## [1] "$b = -0.18$, 95\\% CI $[-0.79, 0.43]$"
+## 
+## $estimate$modelfit
+## $estimate$modelfit$r2
+## [1] "$R^2 = .11$"
+## 
+## $estimate$modelfit$r2_adj
+## [1] "$R^2_{adj} = .09$"
+## 
+## $estimate$modelfit$aic
+## [1] "$\\mathrm{AIC} = 360.36$"
+## 
+## $estimate$modelfit$bic
+## [1] "$\\mathrm{BIC} = 375.64$"
+## 
+## 
+## 
+## $statistic
+## $statistic$Intercept
+## [1] "$t(153) = 28.03$, $p < .001$"
+## 
+## $statistic$conditionhai
+## [1] "$t(153) = 3.94$, $p < .001$"
+## 
+## $statistic$genderMale
+## [1] "$t(153) = 1.65$, $p = .101$"
+## 
+## $statistic$conditionhai_genderMale
+## [1] "$t(153) = -0.59$, $p = .556$"
+## 
+## $statistic$modelfit
+## $statistic$modelfit$r2
+## [1] "$F(3, 153) = 6.24$, $p = .001$"
+## 
+## 
+## 
+## $full_result
+## $full_result$Intercept
+## [1] "$b = 2.69$, 95\\% CI $[2.50, 2.87]$, $t(153) = 28.03$, $p < .001$"
+## 
+## $full_result$conditionhai
+## [1] "$b = 0.52$, 95\\% CI $[0.26, 0.79]$, $t(153) = 3.94$, $p < .001$"
+## 
+## $full_result$genderMale
+## [1] "$b = 0.33$, 95\\% CI $[-0.07, 0.73]$, $t(153) = 1.65$, $p = .101$"
+## 
+## $full_result$conditionhai_genderMale
+## [1] "$b = -0.18$, 95\\% CI $[-0.79, 0.43]$, $t(153) = -0.59$, $p = .556$"
+## 
+## $full_result$modelfit
+## $full_result$modelfit$r2
+## [1] "$R^2 = .11$, $F(3, 153) = 6.24$, $p = .001$"
+## 
+## 
+## 
+## $table
+## A data.frame with 6 labelled columns:
+## 
+##                                term estimate      conf.int statistic  df p.value
+## 1                         Intercept     2.69  [2.50, 2.87]     28.03 153  < .001
+## 2                      Conditionhai     0.52  [0.26, 0.79]      3.94 153  < .001
+## 3                        GenderMale     0.33 [-0.07, 0.73]      1.65 153    .101
+## 4 Conditionhai $\\times$ GenderMale    -0.18 [-0.79, 0.43]     -0.59 153    .556
+## 
+## term     : Predictor 
+## estimate : $b$ 
+## conf.int : 95\\% CI 
+## statistic: $t$ 
+## df       : $\\mathit{df}$ 
+## p.value  : $p$ 
+## attr(,"class")
+## [1] "apa_results" "list"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{apa\_table}\NormalTok{(}\FunctionTok{apa\_print}\NormalTok{(hai\_lm)}\SpecialCharTok{$}\NormalTok{table,}
+          \AttributeTok{caption =} \StringTok{"Linear regression results"}\NormalTok{,}
+          \AttributeTok{placement =} \StringTok{"h"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:lm-table}Linear regression results}
+
+\begin{tabular}{llllll}
+\toprule
+Predictor & \multicolumn{1}{c}{$b$} & \multicolumn{1}{c}{95\% CI} & \multicolumn{1}{c}{$t$} & \multicolumn{1}{c}{$\mathit{df}$} & \multicolumn{1}{c}{$p$}\\
+\midrule
+Intercept & 2.69 & {}[2.50, 2.87] & 28.03 & 153 & < .001\\
+Conditionhai & 0.52 & {}[0.26, 0.79] & 3.94 & 153 & < .001\\
+GenderMale & 0.33 & {}[-0.07, 0.73] & 1.65 & 153 & .101\\
+Conditionhai $\times$ GenderMale & -0.18 & {}[-0.79, 0.43] & -0.59 & 153 & .556\\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\newpage
+
+Let's clean up those predictor names.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hai\_lm\_table }\OtherTok{\textless{}{-}} \FunctionTok{apa\_print}\NormalTok{(hai\_lm)}\SpecialCharTok{$}\NormalTok{table}
+\NormalTok{hai\_lm\_table }\OtherTok{\textless{}{-}}\NormalTok{ hai\_lm\_table }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{term =} \FunctionTok{str\_replace}\NormalTok{(term, }\StringTok{"Conditionhai"}\NormalTok{, }\StringTok{"Condition"}\NormalTok{),}
+         \AttributeTok{term =} \FunctionTok{str\_replace}\NormalTok{(term, }\StringTok{"GenderMale"}\NormalTok{, }\StringTok{"Gender"}\NormalTok{))}
+\FunctionTok{apa\_table}\NormalTok{(hai\_lm\_table,}
+          \AttributeTok{caption =} \StringTok{"Linear regression results"}\NormalTok{,}
+          \AttributeTok{placement =} \StringTok{"h"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:unnamed-chunk-23}Linear regression results}
+
+\begin{tabular}{llllll}
+\toprule
+term & \multicolumn{1}{c}{$b$} & \multicolumn{1}{c}{95\% CI} & \multicolumn{1}{c}{$t$} & \multicolumn{1}{c}{$\mathit{df}$} & \multicolumn{1}{c}{$p$}\\
+\midrule
+Intercept & 2.69 & {}[2.50, 2.87] & 28.03 & 153 & < .001\\
+Condition & 0.52 & {}[0.26, 0.79] & 3.94 & 153 & < .001\\
+Gender & 0.33 & {}[-0.07, 0.73] & 1.65 & 153 & .101\\
+Condition $\times$ Gender & -0.18 & {}[-0.79, 0.43] & -0.59 & 153 & .556\\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\textbf{How could we name the first column \emph{Predictor} instead of \emph{term}?}
+
+\newpage
+
+\hypertarget{other-table-packages}{%
+\section{Other table packages}\label{other-table-packages}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://gt.rstudio.com/index.html}{\texttt{\{gt\}}} RStudio's grammar of tables (logically like ggplot2)
+\item
+  \href{https://davidgohel.github.io/flextable/articles/overview.html}{\texttt{\{flextable\}}} Good Word output but a bit tricky to work with
+\item
+  \href{https://hughjonesd.github.io/huxtable/}{\texttt{\{huxtable\}}} Very flexible but tricky to work with
+\end{itemize}
+
+
+\end{document}

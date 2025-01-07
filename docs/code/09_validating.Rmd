@@ -1,0 +1,56 @@
+---
+title: "Validating data"
+author: "Jeffrey R. Stevens"
+date: "2023-02-10"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the `mtcars` data set build into base R.
+
+1. What are the dimensions of `mtcars`?
+```{r}
+# >
+```
+
+2. In one line of code, view the data types for all of the columns in `mtcars`.
+```{r}
+# >
+```
+
+3. What is the range of values for the `mpg` column?
+```{r}
+# >
+```
+
+4. What are all of the possible values used in `gear`?
+```{r}
+# >
+```
+
+5. Check whether the value 5 is found in the `carb` column.
+```{r}
+# >
+```
+
+6. Do any columns have missing values?
+```{r}
+# >
+```
+
+7. What is the 3rd quartile for `mpg`?
+```{r}
+# >
+```
+
+8. Check whether all horsepower (`hp`) values fall between 50 and 300. Which row numbers fall out of this range?
+```{r}
+# >
+```
+
+9. Make a codebook for `mtcars`.
+```{r}
+# >
+```
+

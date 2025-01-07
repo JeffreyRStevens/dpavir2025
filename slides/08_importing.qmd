@@ -1,0 +1,313 @@
+---
+title: "Importing data"
+author: "Jeff Stevens"
+date: "2023-02-08"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+# Review
+
+## Mental model of data in R
+
+![](../images/data-structures-overview.png){fig-align="center"}
+
+
+## Mental model of data analysis
+
+![](../images/data_analysis_workflow.png){fig-align="center"}
+
+
+## Mental model of importing data
+
+![](../images/mentalmodel_import.png){fig-align="center"}
+
+
+# Data files
+
+
+## File types
+
+:::{.incremental}
+* Excel (`.xls`/`.xlsx`): Binary matrix file with formatting, formulas, multiple sheets
+
+* Comma-separated values (`.csv`): Plain text matrix file without formatting, etc. (also TSV)
+
+* Other program-specific files: SPSS, SAS, etc.
+
+* Text files (`.txt`): Plain text file of raw text
+
+* Start saving CSVs and convert other formats to CSVs
+:::
+
+
+## Dog data
+
+:::{.incremental}
+* Download data for [dog breed popularity](../data/dog_breed_popularity.csv).
+
+* Create `data/` directory in your `dpavir2023` course directory.
+
+* Save `dog_breed_popularity.csv` into the `data/` directory.
+
+* View file in RStudio file manager
+:::
+
+
+# Importing CSV files
+
+## Base R data import
+
+`read.csv()`
+
+* Wrapper around `read.table()`
+
+:::{.fragment}
+#### Defaults
+* Header row (turn off with `header = FALSE`)
+
+* Comma separated (change with `sep=";"` or use `read.csv2()`)
+
+* Outputs data frame
+:::
+
+---
+
+## Base R  data import
+
+`read.csv()`
+
+### Usage: 
+
+`read.csv(file = "path/to/file.csv")`
+
+```{r}
+library(here)
+mydf <- read.csv(here("data/dog_breed_popularity.csv"))
+```
+
+
+---
+
+## {tidyverse} data import
+
+### [{readr}](https://readr.tidyverse.org)
+
+`readr::read_csv()`
+
+![](../images/readr_hex.png){.absolute width="15%" top="2%" left="80%"}
+
+:::{.fragment}
+* Control column names with `col_names` (including renaming)
+
+* Control column types with `col_types`
+
+* Control missing values with `na` and `quoted_na`
+
+* Can skip rows before reading data with `skip` or cut off with `n_max`
+
+* Outputs tibble
+:::
+
+---
+
+## {tidyverse} data import
+
+`readr::read_csv()`
+
+### Usage: 
+
+`read_csv(file = "path/to/file.csv")`
+
+```{r}
+library(readr)
+mydf2 <- read_csv(here("data/dog_breed_popularity.csv"))
+```
+
+
+---
+
+## Importing from URLs
+
+Both `read.csv()` and `read_csv()` import CSV files available online by using the URL as the path.
+
+<https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv>
+
+```{r eval = FALSE}
+mydf3 <- read.csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv")
+mydf4 <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv")
+```
+
+
+---
+
+## Exporting CSVs
+
+`write.csv()`
+
+* Character/factor columns in quotes with `quote = TRUE`
+
+* Remove row/column names with `row.names = FALSE` or `col.names = FALSE`
+
+:::{.fragment}
+`readr::write_csv()`
+
+* Characters are only quoted if they contain a comma, quote, or new line
+:::
+
+
+## Exporting CSVs
+
+### Usage
+
+`write.csv(df, file = "path/to/file.csv")`
+
+`write_csv(df, file = "path/to/file.csv")`
+
+
+```{r}
+write.csv(mydf, here("data/newdata.csv"))
+write_csv(mydf, here("data/newdata2.csv"))
+```
+
+
+# Importing other files
+
+## Excel data
+
+### Import Excel data with [{readxl}](https://readxl.tidyverse.org/)
+
+![](../images/readxl_hex.png){.absolute width="15%" top="2%" left="80%"}
+
+:::{.fragment}
+* Functions: `read_xls()`, `read_xlsx()`, `read_excel()`
+
+* Specify sheets with `sheets` argument
+
+* Specify subset of cells with `range` argument
+
+* Like `read_csv()`, has `col_names`, `col_types`, `na`, `skip`, `n_max`
+:::
+
+
+## Excel data
+
+### Import Excel data with [{readxl}](https://readxl.tidyverse.org/)
+
+#### Usage: 
+
+`read_excel(path = "path/to/file.csv")`<sup>*</sup>
+
+:::{.fragment}
+
+```{r}
+library(readxl)
+mydf5 <- read_excel(here("data/dog_breed_data.xlsx"), sheet = "Sheet2")
+```
+:::{.aside}
+*Currently, `read_excel()` cannot download from URLs. So first download <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_data.xlsx> and save it in the `data/` directory.
+:::
+:::
+
+---
+
+## Other stats packages
+
+### Import SPSS, SAS, & Stata data with [{haven}](https://haven.tidyverse.org/)
+
+![](../images/haven_hex.png){.absolute width="15%" top="15%" left="95%"}
+
+:::{.fragment}
+### SPSS
+`haven::read_sav("mtcars.sav")`
+
+### SAS
+`haven::read_sas("mtcars.sas7bdat")`
+
+### Stata
+`haven::read_dta("mtcars.dta")`
+:::
+
+
+---
+
+## Qualtrics data
+
+### Import Qualtrics data directly with [{qualtRics}](https://docs.ropensci.org/qualtRics/)
+
+:::{.fragment}
+1. Register your Qualtrics credentials with `qualtRics::qualtrics_api_credentials()`<sup>*</sup>
+
+1. Get survey ID by viewing `qualtRics::all_surveys()`
+
+1. Import data with `qualtRics::fetch_survey()`
+
+1. Never have to download Qualtrics data again!
+
+:::{.aside}
+*Be cautious with using API credentials! I'm not responsible for the security of packages that I describe.
+:::
+:::
+
+---
+
+## Qualtrics data
+
+### Import Qualtrics data directly with [{qualtRics}](https://docs.ropensci.org/qualtRics/)
+
+* Download choice text by default or numeric values with `label = FALSE`
+
+* Set time zone with `time_zone = "America/Chicago"`
+
+* Turn off sublabels with `add_var_labels = FALSE`
+
+
+---
+
+## Qualtrics data
+
+### Usage
+
+```{r eval = FALSE}
+mydf6 <- qualtRics::fetch_survey("SV_xxxxxxxxxxxxx", save_dir = "data", label = FALSE, convert = FALSE, 
+             force_request = TRUE, time_zone = "America/Chicago")
+```
+
+
+---
+
+## Cloud storage
+
+### Import data directly from cloud storage
+* OneDrive [{Microsoft365R}](https://github.com/Azure/Microsoft365R)<sup>*</sup>
+
+* Google sheets [{googlesheets4}](https://googlesheets4.tidyverse.org/)<sup>*</sup>
+
+* Box [{boxr}](https://r-box.github.io/boxr/)<sup>*</sup>
+
+:::{.aside}
+*Be cautious with using API credentials! I'm not responsible for the security of packages that I describe.
+:::
+
+![](../images/microsoft365r_hex.png){.absolute width="15%" top="22%" left="80%"}
+
+
+## Mental model of importing data
+
+![](../images/mentalmodel_import.png){fig-align="center"}
+
+
+## Let's code!
+
+[Importing data](../code/08_importing.html){target="_blank"} [[Rmd](../code/08_importing.Rmd){target="_blank"}]

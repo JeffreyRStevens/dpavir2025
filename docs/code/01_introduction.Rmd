@@ -1,0 +1,96 @@
+---
+title: "Introduction"
+author: "Jeffrey R. Stevens"
+date: "2025-01-22"
+output: html_document
+execute:
+  freeze: auto
+---
+
+Let's go to R's console, which is the direct connection to the R engine. In the console, you give R a command, and it returns the output.
+
+## Numerical operations
+
+R can be a very fancy calculator. It uses standard mathematical operators for things like addition (`+`), subtraction (`-`), multiplication (`*`), and division (`/`). Let's do some calculations by entering numerical operations into the console. How many seconds are there in a year?
+```{r}
+# >
+```
+
+On average, how many days are in each month of a leap year?
+```{r}
+# >
+```
+
+## Text
+
+R also can store, manipulate, and return text. But working with text requires wrapping the characters in quotation marks (either \" or \'). Type this out and replace `<name>` with your name: `"My name is <name>!"`.
+```{r}
+# >
+```
+
+You can also apply functions to text. If we want to yell our names, let's convert the string of characters to upper case with the `toupper()` function. Put the previous text inside the parentheses of `toupper()`.
+```{r}
+# >
+```
+
+Press the up arrow ⬆️ to place previous commands in the console. Navigate to the previous command and change the text a bit.
+
+## Packages
+
+If you haven't already, install the `{palmerpenguins}` and `{tidyverse}` packages. Remember how to do that?
+```{r}
+# >
+```
+
+Let's look at the `penguins` data set. What do we need to do first?
+```{r}
+# >
+```
+
+
+View the data set by typing `penguins` into the console.
+```{r}
+# >
+```
+
+<!-- ## Importing data -->
+
+<!-- Let's import, process, and plot some data! For this, we're going to need several of the `{tidyverse}` packages, so let's just load them all by loading `{tidyverse}`. -->
+<!-- ```{r}
+# >
+``` -->
+
+<!-- Now I stumbled across some extra penguin data that was missing from the original data set. I have it saved as a CSV or comma-separated value file at `https://jeffreyrstevens.quarto.pub/dpavir/code/penguins_extra.csv`. To import it into our R session, we need to use the `read_csv()` function. How might you do that? -->
+<!-- ```{r}
+# >
+``` -->
+
+<!-- Hmm, did that do what we wanted? What do we need to do next to be able to work with the data? -->
+<!-- ```{r}
+# >
+``` -->
+
+
+<!-- ## Wrangle data -->
+
+<!-- OK, now we have two data sets and we need to combine them into a single data set. We can use the `bind_rows()` function to do this and assign it to an object called `penguins_all`. How might you do that? -->
+<!-- ```{r}
+# >
+``` -->
+
+<!-- We want to explore these data a bit, but we're only interested in the 2009 observations. So we need to `filter()` the data to only give us data in which the values in the _year_ column are 2009.  -->
+<!-- ```{r}
+# >
+``` -->
+
+## Plot data 
+
+Excellent! We now have wrangled the data to where we want it. Let's say we want to make a scatterplot of the bill length vs. the bill depth for all birds. We need to use the `plot()` function for this.
+
+```{r}
+# >
+```
+
+Hey, hey! We have a plot! 📊 Sweet! We've input data, wrangled it, and plotted it. Well done! 🎉 💪
+
+

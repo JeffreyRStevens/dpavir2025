@@ -1,0 +1,486 @@
+---
+title: "Data structures"
+author: "Jeff Stevens"
+date: "2023-02-06"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Review
+
+## Mental model of data types
+
+![](../images/mentalmodel_datatypes.png){fig-align="center"}
+
+
+# Vectors
+
+## Vectors
+
+:::: {.columns}  
+::: {.column width="45%"}
+#### Actually, everything in R is a vector
+
+:::{.fragment}
+#### _vector_ = _atomic vector_
+
+* elements with a single dimension of the same data type
+:::
+:::
+
+::: {.column width="60%"}
+:::
+::::
+
+![](../images/data-structures-overview.png){.absolute width="65%" top="10%" left="50%"}
+
+<!-- --- -->
+
+<!-- ## Creating vectors -->
+
+<!-- ### Add elements -->
+
+<!-- :::: {.columns}   -->
+
+<!-- ::: {.column width="50%"} -->
+<!-- ```{r} -->
+<!-- a <- 7 -->
+<!-- a[1] -->
+<!-- a[2] -->
+<!-- ``` -->
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+<!-- ```{r} -->
+<!-- a[2] <- 3 -->
+<!-- a -->
+<!-- a[3] <- 8 -->
+<!-- a -->
+<!-- a[2] <- NA -->
+<!-- a -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- :::: -->
+
+---
+
+## Create vectors with `c()`
+
+### Numeric vectors
+
+```{r}
+(myvec1 <- c(1, 5, 3, 6))
+(myvec2 <- c(11, 14, 18, 12))
+
+```
+
+
+```{r}
+c(myvec1, myvec2)
+```
+
+---
+
+## Create vectors with `c()`
+
+### Character vectors
+
+```{r}
+(myvec3 <- c("a", "b", "c"))
+```
+
+---
+
+## Create vectors with `c()`
+
+:::{.callout-tip}
+## Strain your brain
+
+What do you think will happen if you combine `myvec2` and `myvec3`?
+:::
+
+```{r}
+myvec2
+myvec3
+```
+```{r eval=FALSE}
+c(myvec2, myvec3)
+```
+
+:::{.fragment}
+```{r echo=FALSE}
+c(myvec2, myvec3)
+```
+
+#### Numeric vector `myvec2` converts to character vector to combine with `myvec3`
+:::
+
+---
+
+## Create sequences with `seq()`
+
+```{r}
+seq(from = 0, to = 20, by = 5)
+seq(from = 20, to = 0, by = -5)
+seq(0, 1, 0.2)
+```
+
+---
+
+## Create sequences with `:`
+
+### Sequences with increments of 1
+
+```{r}
+4:9
+9:4
+```
+
+:::{.fragment}
+:::{.callout-tip}
+## Try it!
+
+Make a sequence from 0 to 100 in steps of 10.
+:::
+:::
+
+---
+
+## Create repetitions with `rep()`
+
+#### Repeat single numbers
+
+```{r}
+rep(0, times = 10)
+```
+
+---
+
+## Create repetitions with `rep()`
+
+#### Repeat vectors
+
+```{r}
+rep(myvec3, times = 3)
+rep(c("d", "e", "f"), times = 3)
+```
+
+---
+
+## Create repetitions with `rep()`
+
+#### Repeat sequences
+
+```{r}
+rep(1:4, times = 3)
+```
+
+
+```{r}
+rep(1:4, each = 3)
+```
+
+:::{.fragment}
+
+:::{.callout-tip}
+## Try it!
+
+Create a repetition of "yes" and "no" with 10 instance of each, alternating between the two. Then make one with 10 "yes" and then 10 "no".
+:::
+
+:::
+
+
+---
+
+## Working with vectors
+
+### Find vector length with `length()`
+
+```{r}
+myvec3
+length(myvec3)
+```
+
+:::{.fragment}
+:::{.callout-tip}
+## Try it!
+
+How long is the combined vector of `myvec1` and `myvec2`?
+:::
+
+:::
+
+
+
+---
+
+## Checking `typeof()` and `str()`
+
+:::: {.columns}  
+::: {.column width="50%"}
+```{r}
+myvec2
+typeof(myvec2)
+str(myvec2)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+myvec3
+typeof(myvec3)
+str(myvec3)
+```
+:::
+
+::::
+
+---
+
+## Index with `[]`
+
+#### Tracks the content of a specific element (starting with 1)
+
+:::{.fragment}
+```{r}
+myvec2
+myvec2[2]
+```
+:::
+:::{.fragment}
+#### Allows subsetting
+```{r}
+myvec2[2:4]
+myvec2[c(4, 1, 3)]
+```
+:::
+:::{.fragment}
+#### Allows reassignment
+```{r}
+myvec2[2] <- NA
+myvec2
+```
+:::
+
+
+
+
+# Lists, data frames, and tibbles
+
+## Lists
+
+#### Recursive vectors (vectors of vectors) potentially with different data types
+
+:::{.fragment}
+```{r}
+(mylist <- list(a = 1:4, b = c(4, 3, 8, 5), c = LETTERS[10:15], d = c("yes", "yes")))
+```
+:::
+
+
+---
+
+## Working with lists
+
+```{r}
+typeof(mylist)
+typeof(mylist$b)
+str(mylist)
+```
+
+## Data frames
+
+#### List of named vectors of the same length (rectangular)
+
+```{r}
+mydf <- data.frame(
+  datetime = as.Date(c("2021-04-21 11:56:12", "2021-04-21 14:57:44", "2021-04-22 03:09:56", "2021-04-22 12:39:22")),
+  session_complete = as.logical(c("TRUE", "TRUE", "TRUE", "FALSE")),
+  condition = as.factor(c("control", "control", "experimental", "experimental")),
+  mean_response = c(17.53, 24.45, 19.82, NA),
+  age = c(19, 20, 19, NA),
+  comments = c("none", "Great study", "toooo long", NA)
+  )
+```
+
+
+## Data frames
+
+#### List of named vectors of the same length (rectangular)
+
+```{r}
+mydf
+```
+
+:::{.fragment}
+```{r}
+typeof(mydf)
+str(mydf)
+```
+:::
+
+
+---
+
+## Creating data frames
+
+:::: {.columns}  
+
+::: {.column width="50%"}
+
+**Create new vectors**
+
+```{r}
+(mydf1 <- data.frame(subject = 1:3, 
+                     response = 8:6))
+```
+:::
+
+::: {.column width="50%"}
+:::{.fragment}
+**Combine existing vectors**
+```{r}
+var1 <- c(1:6)
+var2 <- c(6:1)
+var3 <- c(21:26)
+mydf2 <- data.frame(var1, var2, 
+                    resp = var3)
+mydf2
+```
+:::
+:::
+::::
+
+
+---
+
+## Index with `[row, column]`
+
+```{r}
+mydf1
+mydf1[2, 1] 
+mydf1[2, 1] <- 6
+mydf1
+
+```
+
+
+---
+
+## Index with `[row, column]`
+
+:::: {.columns}  
+::: {.column width="50%"}
+
+**Extract whole rows/columns**
+```{r}
+mydf1[2, ] 
+mydf1[, 2] 
+```
+:::
+
+::: {.column width="50%"}
+:::{.fragment}
+**Extract subsets**
+```{r}
+mydf1[2:3, 2]
+mydf1[2:3, 1:2]
+```
+:::
+:::
+::::
+
+---
+
+## Working with data frames
+
+### But extract columns by name with `$`
+
+```{r}
+mydf1$response 
+mydf1$response[2] 
+mydf1$response[2:3] 
+```
+
+:::{.fragment}
+:::{.callout-tip}
+## Strain your brain
+
+Why should you use column names rather than number?
+:::
+:::
+
+---
+
+## Working with data frames
+
+### View first rows with `head()`
+
+```{r}
+head(mtcars)
+```
+
+:::{.fragment}
+:::{.callout-note}
+<!-- When you get a chance, check out tidyverse's `dplyr::glimpse()` and compare/contrast to `head()`. -->
+Add the argument `n = 10` to `head(mtcars)`. What does this do?
+:::
+:::
+
+---
+
+## Working with data frames
+
+### View dimensions
+
+```{r}
+dim(mtcars)
+nrow(mtcars)
+ncol(mtcars)
+```
+
+---
+
+## Tibbles
+
+### Tibbles are just tidyverse versions of data frames
+
+:::: {.columns}  
+::: {.column width="50%"}
+```{r}
+mydf2
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+(mytibble <- tibble::tibble(mydf2))
+```
+:::
+
+::::
+
+---
+
+
+## Mental model of data in R
+
+![](../images/data-structures-overview.png){fig-align="center"}
+
+
+## Let's code!
+
+[Data structures coding](../code/07_datastructures.html){target="_blank"} [[Rmd](../code/07_datastructures.Rmd){target="_blank"}]

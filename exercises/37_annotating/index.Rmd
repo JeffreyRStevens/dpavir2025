@@ -1,0 +1,247 @@
+---
+title: "Annotating plots"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+## Introduction
+
+This exercise covers adorning your plots by labeling axes and title, annotating text, and including reference lines and shapes.
+
+### Set-up
+
+Load `{tidyverse}` and `{palmerpenguins}`. 
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Labels and titles
+
+With the `labs()` function you can specify a title, subtitle, caption, and axes labels.
+
+**Replicate the labels for the plot below.**
+
+```{r labels, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)", title = "Penguin bill size", subtitle = "Adelie, chinstrap, and gentoo penguins", caption = "Source: Palmer penguins")
+```
+
+```{r exercise1, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  ...
+```
+
+```{r exercise1-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)", title = "Penguin bill size", subtitle = "Adelie, chinstrap, and gentoo penguins", caption = "Source: Palmer penguins")
+```
+
+
+
+## Adding text
+
+There are two ways to add text to plots. The first is to overlay any arbitrary text and the second is to label elements of the plot with data from the data frame.
+
+### Overlaying text
+
+General text can be overlaid on the plot using the `annotate()` function and setting the `geom` argument to "text".
+
+```{r text, echo=TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  annotate(geom = "text", label = "Long bills", x = 58, y = 13, color = "blue") +
+  annotate(geom = "text", label = "Tall bills", x = 32, y = 21.5, color = "blue")
+```
+
+###
+
+**Calculate the total sample size (call it `penguin_num`), add that to the top right corner of the plot (preceded by "N="), and make it size 5.**
+
+```{r text2, warning = FALSE}
+penguin_num <- nrow(penguins)
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  annotate(geom = "text", label = paste0("N=", penguin_num), x = 58, y = 21.5, size = 5)
+```
+
+```{r exercise2, exercise = TRUE, warning = FALSE, message = FALSE}
+penguin_num <- ...
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  ...
+```
+
+```{r exercise2-solution}
+penguin_num <- nrow(penguins)
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  annotate(geom = "text", label = paste0("N=", penguin_num), x = 58, y = 21.5, size = 5)
+```
+
+### Labeling data
+
+The `geom_text()` function can label data. Because it is mapping data to object properties (labels), this uses aesthetics.
+
+Here we calculate counts for bar charts and place the counts at the bottom of the bars.
+
+```{r counts, echo = TRUE, warning=FALSE}
+penguins |> 
+  ggplot(aes(x = species)) +
+  geom_bar() +
+  facet_wrap(vars(sex)) +
+  geom_text(stat = "count", aes(label = after_stat(count)), y = 2.5, color = "white")
+```
+
+###
+
+You can also plot text based on different data frames from the one you are plotting. Here, we create a new data frame called `penguin_labels` that lists the species and locations where we want the labels plotted.
+
+```{r labels2, echo=TRUE, warning=FALSE}
+penguin_labels <- data.frame(species = c("Adelie", "Chinstrap", "Gentoo"), height = c(0.065, 0.06, 0.062), flipper = c(190, 200, 215))
+
+penguins |> 
+  ggplot(aes(x = flipper_length_mm, color = species, fill = species)) +
+  geom_density(alpha = 0.25, show.legend = FALSE) +
+  geom_text(aes(y = height, x = flipper, label = species, color = species), data = penguin_labels, show.legend = FALSE)
+```
+
+
+## Reference lines and shapes
+
+### Lines
+
+In addition to adding text, you can add lines to plots. We've already seen diagonal lines with `geom_abline()`. You can add vertical and horizontal lines with `geom_vline()` and `geom_hline()` respectively---you just need to set the intercept.
+
+**Add a vertical line at 45 mm and a horizontal line at 17.5 mm.**
+
+```{r hvlines, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  geom_vline(xintercept = 45) +
+  geom_hline(yintercept = 17.5)
+```
+
+```{r exercise3, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  ...
+```
+
+```{r exercise3-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  geom_vline(xintercept = 45) +
+  geom_hline(yintercept = 17.5)
+```
+
+### Segments
+
+You can draw individual line segments with `annotate(geom = "segment")`.
+
+```{r segment, echo=TRUE, warning=FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  annotate(geom = "segment", x = 40, xend = 50, y = 15, yend = 20, color = "red") +
+  annotate(geom = "segment", x = 40, xend = 50, y = 20, yend = 15, color = "blue")
+```
+
+### Shapes
+
+You can draw rectangles with `annotate(geom = "rect")`.
+
+**Draw a _steelblue1_ rectangle behind the points from bill length 40-50 and bill depth 15-20.**
+
+```{r rect, warning=FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  annotate(geom = "rect", xmin = 40, xmax = 50, ymin = 15, ymax = 20, fill = "steelblue1") +
+    geom_point()
+```
+
+```{r exercise4, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() +
+  ...
+```
+
+```{r exercise4-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  annotate(geom = "rect", xmin = 40, xmax = 50, ymin = 15, ymax = 20, fill = "steelblue1") +
+    geom_point()
+```
+
+### Shapes based on data
+
+You can have ggplot calculate an ellipse for your data with `stat_ellipse()`.
+
+```{r ellipse, echo=TRUE, warning=FALSE}
+penguins |>
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point() +
+  stat_ellipse()
+
+```
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 7
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

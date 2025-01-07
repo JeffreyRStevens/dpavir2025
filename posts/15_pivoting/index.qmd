@@ -1,0 +1,45 @@
+---
+title: 'Pivoting data'
+author:
+  - Jeff Stevens
+date: '2023-02-24'
+categories: 
+  - "module 4"
+  - "week 5"
+  - "long data"
+  - pivoting
+  - "tidy data"
+  - "wide data"
+description: "Tidy up your data into long or wide format"
+draft: true
+---
+
+Tidy data is a specific form of data that let's you apply formulas to your data for modeling or plotting. To make your data tidy, you may need to pivot it to a longer or wider format.
+
+## Learning objectives
+
+* Recognize tidy data
+* Pivot wide data longer
+* Pivot long data wider
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 6](https://r4ds.hadley.nz/data-tidy.html){target='_blank'}
+
+## Class meeting
+
+* Define tidy data
+* pivot_longer()
+* pivot_wider()
+* [Slides](../../slides/15_pivoting.qmd){target="_blank"} and [Code](../../code/15_pivoting.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_15_pivoting/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS1 12.4 - 12.5](https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting){target='_blank'}

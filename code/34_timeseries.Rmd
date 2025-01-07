@@ -1,0 +1,44 @@
+---
+title: "Plotting x-y data: time series"
+author: "Jeffrey R. Stevens"
+date: "2023-04-19"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, calculate the mean highway fuel efficiency for each number of cylinders and plot a line graph of fuel efficiency by cylinder number.
+
+```{r}
+# >
+```
+
+
+2. Repeat the previous plot but also group by class and plot separately colored lines for different classes.
+
+```{r}
+# >
+```
+
+
+3. Create a new column called `low_high` that codes high fuel efficiency greater than or equal to 25 as 1 and less than 25 as 0. Plot `low_high` as a function of displacement with a bubble chart (no legend) and include a logistic regression curve and band.
+
+```{r}
+# >
+```
+
+
+4. Plot highway fuel efficiency for each class as points first, then add jitter, finding an appropriate amount of jitter to add.
+
+```{r}
+# >
+```
+
+
+5. Repeat plot #4 with a beeswarm plot.
+
+```{r}
+# >
+```
+

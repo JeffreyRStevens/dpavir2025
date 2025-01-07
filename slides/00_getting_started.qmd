@@ -1,0 +1,306 @@
+---
+title: "Getting started with R"
+subtitle: "Data Processing and Visualization in R"
+author: "Jeff Stevens (he/him)"
+date: "`r Sys.Date()`"
+date-format: iso
+execute:
+  echo: true
+  freeze: false
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-link: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir2025)"
+    logo: "../logo/dpavir_hex.png"
+---
+
+## What is R?
+
+R is a statistical programming language.
+
+![](../images/r_logo.png){height="300" fig-align="center"}
+
+---
+
+## What is R?
+
+R is a statistical programming language.
+
+![Source: <a href = "https://allisonhorst.com">Allison Horst</a>](../images/r_first_then_allisonhorst.png){width="40%"}
+
+---
+
+## What is R?
+
+R is a statistical programming language.
+
+![Source: <a href = "https://allisonhorst.com">Allison Horst</a>](../images/r_rollercoaster_allisonhorst.png){width="45%"}
+
+---
+
+## What is R?
+
+R is a statistical programming language.
+
+![Source: [Twitter](https://twitter.com/hadleywickham/status/589068687669243905)](../images/hadley_shitty_code.jpeg){width="45%"}
+
+---
+
+## What is R?
+
+
+R is a statistical programming language.
+
+It allows you to  flexibly
+
+* wrangle
+
+* analyze
+
+* visualize your data
+
+* create reproducible documents
+
+
+---
+
+## Conventions
+
+* All `code` is in monospace font peach text
+
+* R functions end with parentheses: `function()`
+
+* Directory names end with slash: `home/`
+
+* Package names are surrounded by curly braces: `{tidyverse}`
+
+* Keyboard buttons separate keys with a plus: <kbd>Ctrl</kbd>+<kbd>S</kbd>
+
+* These are parentheses `()`, brackets `[]`, and braces `{}`
+
+* Links are in [light blue text]()
+
+
+---
+
+## Getting started
+
+### Installing R
+Download at [https://r-project.org](https://r-project.org).
+
+For Windows, also install [Rtools](https://cloud.r-project.org/bin/windows/Rtools/rtools44/rtools.html)
+
+
+
+---
+
+## Getting started
+
+### Installing RStudio
+
+RStudio is an Integrated Development Environment (IDE). Download from [Posit](https://posit.co/downloads/)
+
+
+---
+
+## Getting started
+
+### Interacting with R
+
+Using the R console
+
+![](../images/rstudio_console.png){fig-align="center"}
+
+---
+
+## Packages
+
+Packages are collections of function and data sets
+
+![](../images/hex_stickers.png){fig-align="center"}
+
+---
+
+## Packages
+
+Base R is a core set of packages for all R installations.
+
+![Source: [A ModernDive into R and the Tidyverse](https://moderndive.netlify.app/images/shutterstock/R_vs_R_packages.png)](../images/r_vs_r_packages.png)
+
+::: {.fragment}
+::: {.callout-note}
+User-contributed packages can be found on the Comprehensive R Archive Network or [CRAN](https://cloud.r-project.org/web/packages/index.html).
+:::
+:::
+
+
+::: {.notes}
+Base R is the core, default software needed to run R maintained by the R Development Team. It includes a few core packages that underly much of R.
+
+But other people can contribute packages, or collections of data and functions.
+
+The official repository for R packages is the Comprehensive R Archive Network or [CRAN](https://cloud.r-project.org/web/packages/index.html). There are more than 19,000 packages on CRAN!
+
+Packages can also be stored at other locations such as [GitHub](https://github.com), especially during development.
+
+
+:::
+
+
+---
+
+## Packages
+
+### Installing
+
+In the console type 
+
+`install.packages("<package_name>")` where `<package_name>` is the name of the package.
+
+---
+
+## Packages
+
+### Installing
+
+Try installing the [`{palmerpenguins}`](https://allisonhorst.github.io/palmerpenguins/) package.
+``` {r eval = FALSE, echo = TRUE}
+install.packages("palmerpenguins")
+```
+
+::: {.fragment}
+You can install multiple packages simultaneously by wrapping them with `c()`. For example, 
+``` {r eval = FALSE, echo = TRUE}
+install.packages(c("remotes", "here"))
+```
+:::
+
+---
+
+## Packages
+
+### Loading packages
+
+![Source: [Preceptor's Primer for Bayesian Data Science](https://ppbds.github.io/primer/00-getting-started.html)](../images/install_vs_load.jpg){height="400"}
+
+---
+
+## Packages
+
+### Loading packages
+
+Load the [`{here}`](https://here.r-lib.org) package:
+
+``` {r eval = FALSE, echo = TRUE}
+library("here")
+```
+
+::: {.fragment}
+::: {.callout-note}
+Every time you close your R session, you'll have to reload the packages you were using. 
+:::
+:::
+
+:::{.notes}
+Installing packages just means that you have copies of them on your computer. You have to load them for R to have access to their functionality. To load packages, use the `library()` function.
+
+Now, all of the functions in the here package are available for us to use.
+:::
+
+
+---
+
+## Packages
+
+### Using
+
+Let's view the `penguins` data set from the `{palmerpenguins}` package.
+
+Try this:
+``` {r eval = FALSE, echo = TRUE}
+penguins
+```
+
+:::{.fragment}
+You should receive `Error: object 'penguins' not found`. Why did you receive this error?
+:::
+
+:::{.notes}
+Once you load a package, you have access to all of its functions for that R session. But if it is not loaded, you won't have access.
+
+:::
+
+---
+
+## Packages
+
+But you can either load the `{palmerpenguins}` package, or use this trick to call a specific function from a specific package.
+``` {r eval = FALSE, echo = TRUE}
+palmerpenguins::penguins
+```
+
+
+
+---
+
+## tidyverse
+
+![](../images/tidyverse_banner.png)
+
+---
+
+## Core tidyverse packages
+
+*  `{ggplot2}`, for data visualisation
+
+*  `{dplyr}`, for data manipulation
+
+*  `{tidyr}`, for data tidying
+
+*  `{readr}`, for data import
+
+*  `{purrr}`, for functional programming
+
+*  `{tibble}`, for tibbles, a version of data frames
+
+*  `{stringr}`, for strings
+
+*  `{forcats}`, for factors
+
+*  `{lubridate}`, for dates
+
+
+
+---
+
+## Homework
+
+::::{.columns}
+
+::: {.column width="70%"}
+### Before the first class period
+
+* Install R from <https://r-project.org>
+
+* Install RStudio from <https://rstudio.com>
+
+* Install `{tidyverse}` package
+
+* Complete course introduction form
+
+* Read the syllabus
+
+* Read readings in syllabus schedule
+:::
+
+::: {.column width="30%"}
+
+![Source: <a href = "https://allisonhorst.com">Allison Horst</a>](../images/rainbowr_allisonhorst.gif){width="80%"}
+:::
+
+::::

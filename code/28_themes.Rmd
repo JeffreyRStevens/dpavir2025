@@ -1,0 +1,46 @@
+---
+title: "Design and themes"
+author: "Jeffrey R. Stevens"
+date: "2023-04-05"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight with color based on the number of cylinders.
+
+```{r}
+# >
+```
+
+2. Repeat the scatterplot but with classic, bw, and dark themes.
+
+```{r}
+# >
+```
+
+3. Repeat the scatterplot from #1 but with no minor grid lines and no legend.
+
+```{r}
+# >
+```
+
+4. Repeat the scatterplot from #1 but no minor grid lines for the x-axis (keep them for the y-axis) and move the legend inside the plot area and remove the legend title.
+
+```{r}
+# >
+```
+
+5. Repeat the scatterplot from #1 but make the major y-axis grid lines black dashed lines and change the text font to 12 point Times font.
+
+```{r}
+# >
+```
+
+6. Create a version of scatterplot #1 that minimizes the data-ink ratio by reducing non-data-ink.
+
+```{r}
+# >
+```
+

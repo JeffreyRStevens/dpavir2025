@@ -1,0 +1,163 @@
+---
+title: "Piping"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Piping
+
+### Setup
+
+We're learning how to combine functions into pipelines, so let's load the `{dplyr}` package along with the `{palmerpenguins}` package to use the `penguins` data set.
+
+```{r echo = TRUE, message = FALSE}
+library(dplyr)
+library(palmerpenguins)
+head(penguins)
+```
+
+
+## `|>` vs. `%>%`
+
+We will focus on using the base R pipe `|>`. But you should recognize the tidyverse pipe `%>%` if you see it in the wild (or in some of your old code). For most purposes, there are not major differences between the pipes. The key advantages of `|>` are that (1) it is in base R, so no additional packages are need and (2) it applies to base R functions as well as tidyverse function. `%>%` primarily works with tidyverse functions.
+
+If you want to use the tidyverse pipe, you need to have the `{magrittr}` package loaded. If you load `{tidyverse}` or any tidyverse packages (e.g., `{dplyr}`, `{readr}`), the tidyverse pipe is automatically loaded.
+
+A key difference between `|>` and `%>%` is the placeholder used when the data object is not the first argument for a function.
+
+```{r summary-quiz}
+quiz(
+  question(
+    "What does the base R `|>` pipe use as a placeholder?",
+    answer("`_`", correct = TRUE),
+    answer("`.`"),
+    answer("`.x`"),
+    answer("`?`"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question(
+    "What is wrong with the following code?\n```df |> select(df, col1:col4)```",
+    answer("`df` should not be included again after the pipe", correct = TRUE),
+    answer("You need to use a `%>%` pipe in the situation instead of a `|>` pipe"),
+    answer("The placeholder is missing"),
+    answer("The `select()` function has to be on a separate line from the pipe"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+## Using pipes
+
+Pipes can be used to create whole chains of functions to wrangle data. In many cases, the order of the commands doesn't matter---unless it matters (😝).  
+
+### 
+
+Please complete these commands in the order specified.
+
+**Produce a data frame that (1) includes the species, sex, island, and body mass, (2) converts the species to a character, and (3) creates a new column called _body_mass_kg_ that converts body mass from grams to kilograms and replaces the _body_mass_g_ column using the `.keep` argument. Don't save the output to an object---just return the output to the console.**
+```{r exercise1, exercise = TRUE}
+penguins |> ...
+```
+
+```{r exercise1-check}
+grade_this({
+  if (identical(.result, penguins |>  
+  select(species, sex, island, body_mass_g) |> 
+  mutate(species = as.character(species),
+         body_mass_kg = body_mass_g / 1000, .keep = "unused"))) {
+  pass()
+  }
+  fail("Not quite there. Try again!")
+})
+```
+
+
+
+
+### 
+
+**Recreate the following data frame with as little code as possible.**
+```{r echo = FALSE}
+penguins |> 
+  select(species, year, island, sex) |> 
+  mutate(species_year = paste(species, year, sep = "_"), .after = year) |> 
+  mutate(sex_num = if_else(sex == "female", 1, 0, NA))
+```
+```{r exercise2, exercise = TRUE}
+penguins |> ...
+```
+```{r exercise2-check}
+grade_this({
+  if (identical(.result, penguins |> 
+  select(species, year, island, sex) |> 
+  mutate(species_year = paste(species, year, sep = "_"), .after = year) |> 
+  mutate(sex_num = if_else(sex == "female", 1, 0, NA)))) {
+  pass()
+  }
+  fail("Not quite there. Try again!")
+})
+```
+
+### 
+
+**Produce a data frame that (1) includes only the columns starting with "bill_", (2) converts all measurements from mm to cm (in one line; don't worry about changing the column names), and (3) creates a _bill_area_ column by multiplying the bill length and depth. **
+```{r exercise3, exercise = TRUE}
+penguins |> ...
+```
+
+```{r exercise3-solution}
+penguins |>  
+  select(starts_with("bill_")) |> 
+  mutate(across(contains("_mm"), ~ . / 10),
+         bill_area = bill_length_mm * bill_depth_mm)
+```
+
+```{r exercise3-code-check}
+grade_code()
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 5
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

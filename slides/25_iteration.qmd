@@ -1,0 +1,230 @@
+---
+title: "Iteration"
+author: "Jeff Stevens"
+date: "2023-03-29"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Introduction
+
+
+## The problems
+
+* Run the same model on multiple data sets
+* Create the same plot multiple data sets
+* Read in data files from multiple subjects
+
+
+## Set-up
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+library(here)
+```
+
+
+# Iteration
+
+## For loops
+
+![](../images/for-loop.png){fig-align="center" width="58%"}
+
+
+## For loops
+
+```{r eval = FALSE}
+for (counter in min:max) {
+  # What you want repeated.
+  # Index counter-specific vector with [counter]
+}
+```
+
+
+
+## Building objects with for loops
+
+```{r eval = FALSE}
+for (i in 1:nrow(penguins)) {
+  bill_size[i] <- penguins$bill_length_mm[i] * penguins$bill_depth_mm[i]
+}
+```
+::: {.fragment}
+```
+Error: object 'bill_size' not found
+```
+:::
+
+::: {.fragment}
+::: {.callout-warning}
+You must initialize variables that you build in for loops.
+:::
+
+```{r}
+bill_size <- NA
+for (i in 1:nrow(penguins)) {
+  bill_size[i] <- penguins$bill_length_mm[i] * penguins$bill_depth_mm[i]
+}
+```
+:::
+
+
+## For loops with vectors
+
+```{r}
+for (i in month.name) {
+  print(paste0(i, " has ", str_length(i), " letters."))
+}
+```
+
+<!-- ## For loops with lists -->
+
+<!-- Use `foreach()` from [`{foreach}`](https://github.com/RevolutionAnalytics/foreach) package -->
+
+<!-- ```{r} -->
+<!-- species_list <- split(penguins, penguins$species) -->
+<!-- library(foreach) -->
+<!-- foreach (species = species_list) %do% { -->
+<!--     lm(bill_length_mm ~ bill_depth_mm, data = species) -->
+<!-- } -->
+<!-- ``` -->
+
+<!-- ##  Parallel processing -->
+
+<!-- To run loops in parallel, use `%dopar` with `foreach()` -->
+
+<!-- ```{r eval = FALSE} -->
+<!-- library(doParallel) -->
+<!-- registerDoParallel(3) -->
+<!-- foreach (dat = dat_list) %dopar% { -->
+<!--     lm(bill_length_mm ~ bill_depth_mm, data = dat) -->
+<!-- } -->
+<!-- stopImplicitCluster() -->
+<!-- ``` -->
+
+
+# Mapping over multiple arguments
+
+## Mapping with {purrr}
+
+```{r, message = FALSE}
+library(purrr)
+```
+
+![](../images/purrr_map.png){fig-align="center" width="58%"}
+
+![](../images/purrr_hex.png){.absolute width="15%" top="0%" left="90%"}
+
+::: {.aside}
+Source: [Malcolm Barrett](https://malco.io/slides/hs_purrr/)
+:::
+
+
+## Mapping functions
+
+`purrr::map()` applies functions repeatedly across data
+```{r}
+map(select(penguins, ends_with("_mm")), ~ mean(.x, na.rm = TRUE))
+```
+
+::: {.fragment}
+What kind of data type does `map()` return?
+:::
+
+
+## Mapping function
+
+Need different data types as output?
+```{r}
+map_dbl(select(penguins, ends_with("_mm")), ~ mean(.x, na.rm = TRUE))
+map_chr(select(penguins, ends_with("_mm")), ~ mean(.x, na.rm = TRUE))
+```
+
+
+## Mapping function
+
+Use `split()` like `dplyr::group_by()`
+```{r}
+penguins |>
+  split(penguins$species) |>
+  map(~ lm(bill_length_mm ~ bill_depth_mm, data = .x))
+```
+
+
+## Mapping function
+
+Create multiple plots
+```{r}
+penguins |>
+  split(penguins$species) |>
+  map(~ ggplot(.x, aes(bill_length_mm, bill_depth_mm)) + geom_point())
+```
+
+
+## Importing multiple data files
+
+First, we'll create multiple data files
+```{r}
+species_list <- penguins |> 
+  split(penguins$species)
+write_csv(species_list$Adelie, here("data/adelie_penguin_data.csv"))
+write_csv(species_list$Chinstrap, here("data/chinstrap_penguin_data.csv"))
+write_csv(species_list$Gentoo, here("data/gentoo_penguin_data.csv"))
+```
+
+
+## Importing multiple data files
+
+Get file names and paths with `dir()`
+```{r}
+(penguin_files <- dir(path = "../data", 
+                      pattern = "penguin_data.csv", 
+                      full.names = TRUE))
+```
+
+
+## Importing multiple data files
+
+Map `readr::read_csv()` to each element of `penguin_files`
+
+::: {style="font-size:90%"}
+```{r}
+(penguin_data1 <- map(penguin_files, read_csv))
+```
+:::
+
+
+## Importing multiple data files
+
+::: {style="font-size:90%"}
+Use `purrr::map_df()` to return output as data frame
+```{r}
+(penguin_data2 <- map_df(penguin_files, read_csv))
+```
+:::
+
+
+## Solving the problems
+
+* Run the same model on multiple data sets
+* Create the same plot for multiple data sets
+* Read in data files from multiple subjects
+
+
+
+## Let's code!
+
+[Iteration](../code/25_iteration.html){target="_blank"} [[Rmd](../code/25_iteration.Rmd){target="_blank"}]

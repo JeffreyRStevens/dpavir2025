@@ -1,0 +1,57 @@
+---
+title: "Adjusting axes"
+author: "Jeffrey R. Stevens"
+date: "2023-04-24"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, create boxplots of highway fuel efficiency as a function of class.
+
+```{r}
+# >
+```
+
+
+2. Zoom into the plot with y-axis limits of 15 and 40 without altering the data.
+
+```{r}
+# >
+```
+
+
+3. Change the y-axis limits to 15 and 40 but allow the statistical transformations to change the data.
+
+```{r}
+# >
+```
+
+
+4. Replot #1 but using a log10 scale.
+
+```{r}
+# >
+```
+
+
+5. Replot #1 but with y-axis limits running from 0 to 50 and with labels in increments of 5 but no minor grid lines.
+
+```{r}
+# >
+```
+
+
+6. Replot #1 but create separate panels based on year (as rows) and cylinders (as columns) and allowing the scales to vary across rows.
+
+```{r}
+# >
+```
+
+
+7. Replot #1 and assign it to `hwy_plot` and replot a similar version with city fuel efficiency named `cty_plot`. Then combine them into a compound plot labeled as subfigures A and B and save this figure on your computer as a PNG file.
+```{r}
+# >
+```
+

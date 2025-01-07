@@ -1,0 +1,340 @@
+---
+title: "Plotting amounts: barcharts and dot plots"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+library(Hmisc)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+penguin_island <- penguins |> 
+  count(island)
+```
+
+
+## Introduction
+
+This exercise covers visualizing amounts and proportions using barcharts and dotplots. These are used to plot counts and proportions for categorical data.
+
+### Set-up
+
+Load `{tidyverse}` and `{palmerpenguins}`.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Bar plots
+
+### Calculate counts
+
+The `geom_bar()` function will automatically count  the numbers of observations of a categorical variable.
+
+**Plot the number of penguins recorded from each island.**
+
+```{r barplot}
+penguins |>
+  ggplot(aes(x = island)) +
+  geom_bar()
+```
+
+```{r exercise1, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise1-solution}
+penguins |>
+  ggplot(aes(x = island)) +
+  geom_bar()
+```
+
+### Use existing counts
+If the amount of each category are already counted, you can use `geom_col()` to produce the same plot. First, we'll create a new object that counts the observations of each category.
+
+**Create an object called `penguin_island` that counts the number of penguins recorded on each island.**
+
+```{r exercise2, exercise = TRUE, warning = FALSE}
+penguin_island <- penguins |> 
+  ...
+```
+
+```{r exercise2-solution}
+penguin_island <- penguins |> 
+  count(island)
+```
+
+```{r exercise2-check}
+grade_result(
+  pass_if(~identical(.result, 
+                     penguin_island <- penguins |> 
+                       count(island)
+  ))
+)
+```
+
+**Now plot the `penguin_island` data.**
+
+```{r exercise3, exercise = TRUE, warning = FALSE, exercise.setup = "exercise2-solution"}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise3-solution}
+penguin_island |>
+  ggplot(aes(x = island, y = n)) +
+  geom_col()
+```
+
+```{r penguin-island}
+penguin_island <- penguins |> 
+  group_by(island) |> 
+  count()
+```
+
+## Grouped bar plots
+
+Bar plots can be grouped by another variable. The `position` argument controls how the groups are represented.
+
+### Stacked bar plots
+
+By default, group variables are stacked on top of one another, so the total bar height is the same as a plot with no grouping. 
+
+**Plot the penguin numbers for each *year* and color the bar area based on species.**
+
+```{r bar-stack}
+penguins |> 
+  ggplot(aes(x = year, fill = species)) +
+  geom_bar()
+```
+
+```{r exercise4, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise4-solution}
+penguins |> 
+  ggplot(aes(x = year, fill = species)) +
+  geom_bar()
+```
+
+###
+
+To be explicit, the default position is "stack".
+
+```{r echo = TRUE, eval = FALSE}
+penguins |> 
+  ggplot(aes(x = year, fill = species)) +
+  geom_bar(position = "stack")
+```
+
+### Dodged bar plots
+
+To place grouped variables side-by-side, use the "dodge" value for position.
+
+**Add `position = "dodge"` to the plot.**
+
+```{r bar-dodge}
+penguins |> 
+  ggplot(aes(x = year, fill = species)) +
+  geom_bar(position = "dodge")
+```
+
+```{r exercise5, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise5-solution}
+penguins |> 
+  ggplot(aes(x = year, fill = species)) +
+  geom_bar(position = "dodge")
+```
+
+###
+
+Ugh, that's not very appealing. Try switching year and species.
+
+
+**Make species the x variable and year the grouping variable. Hint: you'll need to make year a factor for this to work.**
+
+```{r bar-dodge2}
+penguins |> 
+  ggplot(aes(x = species, fill = as.factor(year))) +
+  geom_bar(position = "dodge")
+```
+
+```{r exercise8, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise8-solution}
+penguins |> 
+  ggplot(aes(x = species, fill = as.factor(year))) +
+  geom_bar(position = "dodge")
+```
+
+###
+
+Compare it to the previous plot. Why is this plot better?
+
+### Proportional bar plots
+
+If we are interested in plotting the relative proportions of each type rather than the absolute amounts, we can set `position` to `fill`.
+
+**Set `position = "fill"`.**
+
+```{r bar-fill}
+penguins |> 
+  ggplot(aes(x = year, fill = species)) +
+  geom_bar(position = "fill")
+```
+
+```{r exercise6, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise6-solution}
+penguins |> 
+  ggplot(aes(x = year, fill = species)) +
+  geom_bar(position = "fill")
+```
+
+###
+
+This shows clearly that the researchers have measured the same proportion of Adelie penguins across the years. This fact was not obvious with the previous plots.
+
+
+## Dot plots
+
+### Tale of two dot plots
+
+Dot plots replace the bars with dots. There are two ways to do this. The first is related to a histogram and uses `geom_dotplot()`. Note that this plots continuous data.
+
+```{r dotplot, echo = TRUE, warning=FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm)) +
+  geom_dotplot()
+```
+
+### 
+
+When we say dot plot, we'll be referring to the Cleveland dot plot, which just places a single dot at the amount value. To create this kind of plot, use `geom_point()`. Note that you have to use the pre-calculated count data for this.
+
+```{r dotplot-cleveland, echo = TRUE}
+penguin_island |> 
+  ggplot(aes(x = island, y = n)) +
+  geom_point()
+```
+
+
+### Flipping coordinates
+
+Dot plots are typically oriented with the dependent variable on the x axis, which requires using `coord_flip()`.
+
+**Flip the coordinates of the previous plot.**
+
+```{r dotplot-coord-flip}
+penguin_island |> 
+  ggplot(aes(x = island, y = n)) +
+  geom_point() +
+  coord_flip()
+```
+
+```{r exercise7, exercise = TRUE, warning = FALSE}
+penguin_island |> 
+  ggplot(...)
+```
+
+```{r exercise7-solution}
+penguin_island |> 
+  ggplot(aes(x = island, y = n)) +
+  geom_point() +
+  coord_flip()
+```
+
+### Add a reference line
+
+The dots alone can make the dot plots difficult to visualize the data. It may be beneficial to add a reference line extending from an origin to the data point. To do this, we need to use the `geom_linerange()` and set the `ymin` to the origin (usually 0) and the `ymax` to the count variable.
+
+```{r dotplot-line, echo = TRUE}
+penguin_island |> 
+  ggplot(aes(x = island, y = n)) +
+  geom_point() +
+  geom_linerange(aes(ymin = 0, ymax = n)) +
+  coord_flip()
+```
+
+
+
+### Reordering categories
+
+While the counts per island are ordered, they're order from fewest to most. What if we want to order them from most to fewest number of penguins per island.
+
+**Reorder the islands based on the counts. You can either do this in a `mutate()` before the plot or do  it in the `ggplot()`.**
+
+```{r dot-reorder}
+penguin_island |> 
+  ggplot(aes(x = fct_reorder(island, n), y = n)) +
+  geom_point() +
+  geom_linerange(aes(ymin = 0, ymax = n)) +
+  coord_flip()
+```
+
+```{r exercise9, exercise = TRUE, warning = FALSE}
+penguin_island |> 
+  ggplot(...)
+```
+
+```{r exercise9-solution}
+penguin_island |> 
+  ggplot(aes(x = fct_reorder(island, n), y = n)) +
+  geom_point() +
+  geom_linerange(aes(ymin = 0, ymax = n)) +
+  coord_flip()
+```
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 19
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

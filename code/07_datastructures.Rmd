@@ -1,0 +1,98 @@
+---
+title: "Data structures"
+author: "Jeffrey R. Stevens"
+date: "2023-02-06"
+output: html_document
+execute:
+  freeze: auto
+---
+
+## In-class coding
+
+Make a sequence from 0 to 100 in steps of 10.
+```{r}
+# >
+```
+
+Create a repetition of “yes” and “no” with 10 instance of each, alternating between the two. Then make one with 10 "yes" and then 10 "no".
+```{r}
+# >
+```
+
+
+Add the argument `n = 10` to `head(mtcars)`. What does this do?
+```{r}
+# >
+```
+
+
+## Extra coding practice
+
+### Vectors
+
+Create a vector called  `dog_names` with the values _Bella_, _Daisy_, and _Max_.
+```{r}
+# >
+```
+
+Create a vector called `sex` with the values _Female_, _Male_, and _Male_.
+```{r}
+# >
+```
+
+Use the index operator to print to console only _Daisy_ and _Max_ from `dog_names`.
+```{r}
+# >
+```
+
+Replace the _Daisy_ entry with _Luna_ and print `dog_names` to console.
+```{r}
+# >
+```
+
+
+### Lists
+
+Copy/paste and run this code: `(mylist <- list(a = 1:4, b = c(4, 3, 8, 5), c = LETTERS[10:15], d = c("yes", "yes")))`
+
+```{r}
+# >
+```
+
+Check the data types for each list element individually.
+```{r}
+# >
+```
+
+Check the data types for each list element with one command.
+```{r}
+# >
+```
+
+Combine list elements `a` and `b` into a single vector.
+```{r}
+# >
+```
+
+### Data frames
+
+Create a data frame called `mydf` with three columns: `x`, `y`, and `z` and five rows. For `x` assign any five numbers, for `y` assign any five character strings, and for `z` assign any five logical values.
+```{r}
+# >
+```
+
+Create a data frame called `dogs` that combines the `dog_names` and `sex` vectors and print to console.
+```{r}
+# >
+```
+
+Print to console just Luna's row.
+```{r}
+# >
+```
+
+Print to console the number of rows in `dogs`.
+```{r}
+# >
+```
+

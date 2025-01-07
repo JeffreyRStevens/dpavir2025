@@ -1,0 +1,58 @@
+---
+title: "Functions"
+author: "Jeffrey R. Stevens"
+date: "2023-03-27"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Write a function called `mystring` that takes a vector as an argument and returns the first three characters from the string. Test it on `words[1:10]`.
+
+```{r}
+# >
+```
+
+2. Add an argument to `mystring()` that allows the user to control how many of the first characters should be returned. Test it on `words[1:10]` with 5 characters.
+
+```{r}
+# >
+```
+
+3. Set the default number of characters returned by `mystring()` to be 3 and test that the default works and that you can override the default.
+
+```{r}
+# >
+```
+
+4. Add a step that checks whether the inputted vector is a character string. If it is, continue to return the truncated strings. If the vector is not a character string, use the `stop()` function to stop the computation and return a message to the console telling the user that the vector was not a character vector. Test your function with a character vector, a numeric vector, and a logical vector.
+
+```{r}
+# >
+```
+
+5. Create a function called `parse_my_vector` that does the following:
+  * Allows users to input a vector and a response to the argument `type` that determines whether the vector is a numeric (`"num"`), character (`"char"`), or logical (`"logical"`) vector. There should be no default value. If the user response does not match any of these three strings, stop with a message asking the user to specify one of the three strings.
+  * For each type, checks whether the vector is actually the type specified by the user and stops with a message if they do not match.
+  * For numeric vectors, multiplies by 10. For character vectors, extracts the first three characters. For logical vectors, returns the number of TRUE responses.
+  * Before returning output, prints a message thanking the user.
+  * Returns the original vector and output of the functions described above.
+
+```{r}
+# >
+```
+
+6. Check the following with `parse_my_vector()`:
+  * x = 1:10, type = "num"
+  * x = 1:10, type = "char"
+  * x = words[1:10], type = "num"
+  * x = words[1:10], type = "char"
+  * x = c(TRUE, FALSE, TRUE), type = "num"
+  * x = c(TRUE, FALSE, TRUE), type = "logical"
+  * x = 1:10, type = "nums"
+
+```{r}
+# >
+```
+

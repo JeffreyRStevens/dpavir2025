@@ -1,0 +1,58 @@
+---
+title: "Numbers"
+author: "Jeffrey R. Stevens"
+date: "2023-03-06"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the dog breed traits and dog breed popularity rankings data sets. 
+
+1. Load tidyverse and import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`.
+
+```{r}
+# >
+```
+
+
+2. Create a column of per-row means over all rating columns called _mean_ratings_ and assign to `traits2`.
+
+```{r}
+# >
+```
+
+3. Convert _mean_ratings_ to a proportion in a column called _pmean_ratings_ and add to `traits2`.
+
+```{r}
+# >
+```
+
+4. Apply a natural log transformation to the _pmeans_ratings_ vector.
+
+```{r}
+# >
+```
+
+5. Round _pmean_ratings_ to two decimal places.
+
+```{r}
+# >
+```
+
+6. Convert _pmean_ratings_ to scientific notation.
+
+```{r}
+# >
+```
+
+7. Sum up the total grooming ratings for each coat type.
+
+```{r}
+# >
+```
+
+
+8. Add inline R code to the following sentence in R Markdown to say how many rows have `NA` for _grooming_:
+
+We are missing grooming data for [insert inline R code] breeds.

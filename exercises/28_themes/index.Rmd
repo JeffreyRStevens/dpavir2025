@@ -1,0 +1,328 @@
+---
+title: "Design and themes"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Design
+
+[Edward Tufte](https://www.edwardtufte.com/tufte/) and others have thought a lot about design principles for data visualization. Check out [Visual Display of Quantitative Information](https://www.edwardtufte.com/tufte/books_vdqi) for an introduction.
+
+### Tufte's principles of graphical excellence
+
+* Well-designed presentation of interesting data
+* Complex ideas communicated with clarity, precision, and efficiency
+* Give the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space
+* Nearly always multivariate
+* Requires telling the truth about data
+
+### Data-ink ratio
+
+Tufte's key concept is the notion of data-ink ratio:
+
+> amount of data-ink divided by total ink used to print the graphic
+
+Basically, the idea is to maximize the amount of data that your present with the least amount of ink. **Avoid chartjunk!**
+
+## ggplot2 themes
+
+Themes allow us to control plot-wide characteristics such as background, grid lines, legends, fonts, etc. In `{ggplot2}`, we can both use existing themes that have set these properties and adjust individual theme elements.
+
+###
+
+To mess with themes, we'll load the full `{tidyverse}` and `{palmerpenguins}` for the `penguins` data set.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+###
+
+`{ggplot2}`'s default theme is `theme_gray()`, which has a gray background, white grid lines, no axis lines, a legend left of the plot area, and Arial font type.
+
+```{r point-color, echo = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5)
+```
+
+###
+
+While this may be Hadley Wickham's style for plots, the APA uses a different style that uses a white background, no grid lines, axis lines on the top and left, and tick marks.
+
+```{r echo = FALSE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5) +
+  theme_classic()
+```
+
+```{r function-output, echo = FALSE}
+quiz(
+  question(
+    'Which theme best matches the APA format? Try them out to find out.',
+    answer('`theme_classic()`', correct = TRUE),
+    answer('`theme_bw()`'),
+    answer('`theme_dark()`'),
+    answer('`theme_gray()`'),
+    answer('`theme_minimal()`'),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+To use an existing theme, simply add it to the ggplot pipeline. I usually put themes at the end of the pipeline because they're less important than the geoms and other components.
+
+```{r echo = TRUE, eval = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5) +
+  theme_classic()
+```
+
+
+**Now, change the theme to match the following plot.**
+
+```{r theme-bw, warning = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5) +
+  theme_bw()
+```
+
+```{r exercise3, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5) +
+  ...
+```
+
+```{r exercise3-solution}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5) +
+  theme_bw()
+```
+
+
+## Adjusting themes
+
+###
+
+Though pre-set themes are nice, they don't always include all of the style elements you'd like. I recommend starting with the theme that is closest to what you want and then tweaking them to match your style.
+
+For this, you can start with the ggplot theme (or a theme from another package) and then add a `theme()` function that allows you to alter style elements.
+
+### Plot background
+
+Probably the most noticable aspect of ggplots is the grey background. This is easily changed with the `panel.background` argument in the `theme()`function. 
+
+Once you're in a theme argument, you'll usually need to select a function that works with the particular element. For instance, the background of a plot is a rectangle, so we'll use `element_rect()`. To control the color of the rectangle, we need to set the `fill` argument inside the `element_rect()` function. So to make the background white, we can add `theme(panel.background = element_rect(fill = "white"))`.
+
+```{r echo = FALSE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5) +
+  theme(panel.background = element_rect(fill = "white"))
+```
+
+**Make the background white by adding the theme line provided above.**
+
+```{r exercise4, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5) +
+  ...
+```
+
+```{r exercise4-solution}
+penguins |> 
+  ggplot(aes(x = species, y = bill_depth_mm, color = species, fill = species)) +
+  geom_boxplot(alpha = 0.5) +
+  theme(panel.background = element_rect(fill = "white"))
+```
+
+### Grid lines
+
+To be honest, I never really used or even thought about grid lines until I started using ggplot. But now they're everywhere! In ggplot, you have _major_ grid lines, which occur with your tick marks and axis value labels. And you have _minor_ grid lines in between those. 
+
+As you probably expect by now, you can control every tiny element separately in ggplot. Which means you can either adjust all grid lines, major or minor grid lines, or x or y grid lines with `panel` arguments.
+
+* All grid lines: `panel.grid`
+* All major grid lines: `panel.grid.major`
+* All minor grid lines: `panel.grid.minor`
+* Major x grid lines: `panel.major.x`
+* Minor x grid lines: `panel.major.x`
+* Major y grid lines: `panel.major.y`
+* Minor y grid lines: `panel.major.y`
+
+###
+
+Because these are lines (as opposed to rectangles that we tweaked in the previous examples), we need to use the `element_line()` function inside our `panel` argument. Once we're in the `element_line()` function, we can control color, linetype, and linewidth.
+
+**Make the major grid lines black and the minor x grid lines dashed lines.**
+
+```{r gridlines, warning = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  theme(panel.grid.major = element_line(color = "black"),
+        panel.grid.minor.x = element_line(linetype = 2))
+```
+
+```{r exercise5, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  ...
+```
+
+```{r exercise5-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  theme(panel.grid.major = element_line(color = "black"),
+        panel.grid.minor.x = element_line(linetype = 2))
+```
+
+### 
+
+That's not an appealing plot. Personally, I'm not sold on grid lines. To remove an element use `element_blank()`.
+
+**Use the default theme but remove all grid lines.**
+
+```{r nogridlines, warning = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  theme(panel.grid = element_blank())
+```
+
+```{r exercise6, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  ...
+```
+
+```{r exercise6-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  theme(panel.grid = element_blank())
+```
+
+
+### Legends
+
+I don't know about you, but that legend dangling off on the right of the plot has been bugging me this whole time. Fortunately, we can control the position of the legends.
+
+Some folks like their legends above or below the plot. This reduces the space wasted by having them on the right. Moving the legend doesn't require an element function. Just use the `legend.position` argument and set it to `"top"`, `"bottom"`, `"left"`, or `"right"`.
+
+**Move the legend below the plot.**
+
+```{r legendbottom, warning = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  theme(legend.position = "bottom")
+```
+
+```{r exercise7, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  ...
+```
+
+```{r exercise7-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  theme(legend.position = "bottom")
+```
+
+###
+
+Still not a fan. I prefer legends inside the plot area when they fit. Looks like we have an open area in the bottom left of the plot. Let's move the legend there. To put a legend instead a plot, give the coordinates (as a numeric vector) for the middle of the legend ranging from 0-1 for both the x-axis and y-axis. So 3/4 down the x-axis and half way up the y-axis would be `c(0.75, 0.5)`.
+
+
+**Move the legend to the bottom left corner of the plot. Also change the background color to white.**
+
+```{r legendinside, warning = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  theme(legend.position = c(0.15, 0.15),
+        panel.background = element_rect(fill = "white"))
+```
+
+```{r exercise8, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  ...
+```
+
+```{r exercise8-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  theme(legend.position = c(0.15, 0.15),
+        panel.background = element_rect(fill = "white"))
+```
+
+###
+
+That's better. Note that there's still a lot we can tweak about the legend (change background fill around points, add border, etc.) and other aspects of the plot. All of the arguments that you can tweak are listed in the documentation for `theme()`, so go check it out.
+
+
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 22
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

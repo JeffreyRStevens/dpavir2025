@@ -1,0 +1,55 @@
+---
+title: "Check-in 1"
+output: pdf_document
+urlcolor: blue
+---
+
+**The check-ins will review material presented in class but will also require you to think about new concepts, integrate across topics, and search for information in R help. Some will be complex and take time to figure out. Feel free to work in groups on this. **
+
+**Please submit the assignment as a pdf file on Canvas. Insert answers within the asterisks, backticks, or code chunks unless directed otherwise.**
+
+**Problem 1: (3 pts)**  Find the help documentation for the `read.table()` function from base R. What does the `header` argument do? What is the default value for the `header` argument? Describe two default argument values that differ between `read.table()` and `read.csv()`. Answer each question as a separate bullet point.
+
+*Your text goes here (with each answer as a bullet point).*
+
+
+
+**Problem 2: (2 pt)** In the backticks below, clean up the following expression to satisfy tidyverse coding style and assign it to the object `myformula`: `((x-mean(x,na.rm=T))^2)/length (x)`.
+
+`Type answer here.`
+
+
+
+**Problem 3: (1 pt)**  Create a new directory on your hard drive called `checkins` (if you have a directory for this course material, put it in there). Save this Rmd file in that directory. Type the full absolute path to this file in between the backticks.
+
+`Type path here.`
+
+
+
+**Problem 4: (1 pt)**  Create a subdirectory in your `checkins/` directory called `R/`. In the `R/` directory, create an R script called `analysis.R` that just includes the command `2+2`. If your working directory is `checkins/`, what code would you type to run the script using relative paths? 
+
+```{r}
+# Replace this entire line (including the #) with the code to run script.
+```
+
+
+
+**Problem 5: (5 pts)**  Demonstrate a basic command of Markdown by typing the code for (1) a level 1 heading with the text "My Favorite Foods", (2) a numbered list with your three favorite foods (ranked), and (3) a sentence that has one word in bold, one word in italics, and a link to a Wikipedia article on your favorite food. Note when you knit this, the output will be the **Markdown code** not the formatted output.
+
+```
+Type level 1 heading here.
+```
+```
+Type numbered list code here.
+```
+```
+Type sentence here.
+```
+
+
+**Problem 6: (5 pts)** Look up the help documentation for the `head()` function in base R and explore the arguments. Using the [`{reprex}`](https://reprex.tidyverse.org/) package, create a reproducible example that outputs only the first four rows of the `penguins` dataset from the [`{palmerpenguins}`](https://allisonhorst.github.io/palmerpenguins/) package. *Hint: When you run the correct command, the reproducible example is automatically copied to your clipboard.*
+
+*Paste your {reprex} output here (but without the asterisks).*
+
+
+**Once you complete the assignment, knit it into a PDF and submit in Canvas.**

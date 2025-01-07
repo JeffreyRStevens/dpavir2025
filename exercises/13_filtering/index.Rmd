@@ -1,0 +1,157 @@
+---
+title: "Filtering rows"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Data wrangling
+
+### Setup
+
+We're working with `{dplyr}` again, so let's load the `{dplyr}` package along with the `{palmerpenguins}` package to use the `penguins` data set.
+
+```{r echo = TRUE, message = FALSE}
+library(dplyr)
+library(palmerpenguins)
+head(penguins)
+```
+
+Now we'll start working with rows for this lesson.
+
+
+## Filtering rows {data-allow-skip=TRUE}
+
+While base R uses the `subset()` function, tidyverse uses `filter()` to pull out rows based on data values. For instance, to filter the gentoo species of penguins:
+```{r echo = TRUE}
+filter(penguins, species == "Gentoo")
+```
+
+You can use multiple criteria within a column or combining multiple columns using logical operators `>`, `>=`, `<`, `<=`, `!=`, `==`, `%in%`.
+
+**Produce a data frame of penguins with body masses between and including 4500-5000 g. **
+```{r exercise1, exercise = TRUE}
+filter(penguins, ...)
+```
+ 
+```{r exercise1-check}
+grade_result(
+  pass_if(~identical(.result, filter(penguins, body_mass_g >= 4500 & body_mass_g <=5000)))
+)
+```
+
+
+**Produce a data frame of penguins measured in 2008 or 2009. **
+```{r exercise2, exercise = TRUE}
+filter(penguins, ...)
+```
+ 
+```{r exercise2-check}
+grade_result(
+  pass_if(~identical(.result, filter(penguins, year == 2008 | year == 2009)))
+)
+```
+
+**Produce a data frame of penguins measured on Biscoe or Dream using the `%in%` operator. **
+```{r exercise3, exercise = TRUE}
+filter(...)
+```
+ 
+```{r exercise3-check}
+grade_result(
+  pass_if(~identical(.result, filter(penguins, island %in% c("Biscoe", "Dream"))))
+)
+```
+
+**Produce a data frame of penguins of unknown sex by including only NAs. **
+```{r exercise4, exercise = TRUE}
+filter(...)
+```
+ 
+```{r exercise4-check}
+grade_result(
+  pass_if(~identical(.result, filter(penguins, is.na(sex))))
+)
+```
+
+
+**Produce a data frame of penguins of unknown sex by excluding those found in the vector `c("male", "female")`. Hint: This one is tricky, but remember, `!` means NOT. Feel free to check the solution if you get stuck.**
+```{r exercise5, exercise = TRUE}
+
+```
+ 
+```{r exercise5-check}
+grade_result(
+  pass_if(~identical(.result, filter(penguins, !sex %in% c("male", "female"))))
+)
+```
+
+
+## Sorting rows
+
+While most computations don't depend on the order of rows, some do (e.g., ranks) and sometimes it's just nice to visualize a data frame sorted by some of the column values. The `arrange()` function does this and hierarchically sorts based on the order of column names passed as arguments.
+
+**Sort the rows by sex then body mass.**
+```{r exercise6, exercise = TRUE}
+arrange(penguins, ...)
+```
+ 
+```{r exercise6-check}
+grade_result(
+  pass_if(~identical(.result, arrange(penguins, sex, body_mass_g)))
+)
+```
+
+**Now do the same, but sort body mass from highest to lowest.**
+```{r exercise7, exercise = TRUE}
+arrange(penguins, ...)
+```
+ 
+```{r exercise7-check}
+grade_result(
+  pass_if(~identical(.result, arrange(penguins, sex, desc(body_mass_g))))
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 25
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

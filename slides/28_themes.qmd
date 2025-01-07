@@ -1,0 +1,142 @@
+---
+title: "Design and themes"
+author: "Jeff Stevens"
+date: "2023-04-05"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Design principles
+
+
+## Edward Tufte
+
+![](../images/tufte.jpg)
+
+
+## Graphical excellence
+
+**Communicating complex ideas with clarity, precision, and efficiency**
+
+![](../images/minards_map.png){fig-align="center"}
+
+
+## Graphical excellence
+
+**Communicating complex ideas with clarity, precision, and efficiency**
+
+* Well-designed presentation of interesting data
+* Gives to the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space
+* Multivariate
+* Requires telling the truth about data
+
+
+## Graphical integrity
+
+**Tell the truth about the data**
+
+![](../images/mines_plot.png){fig-align="center"}
+
+
+## Graphical integrity
+
+**Wilke's Principle of Proportional ink**
+
+The representation of numbers, as physically measured on the surface of the graphic itself, should be directly proportional to the numerical quantities represented
+
+![](../images/proportional_ink_bad.png){.absolute width="45%" top="50%" left="0%"}
+![](../images/proportional_ink_good.png){.absolute width="45%" top="50%" left="50%"}
+
+
+
+## Graphical integrity
+
+**Perceptions of length and area do not match** (and we're bad at judging area)
+
+![](../images/length_vs_area.png)
+
+
+## Data-ink ratio
+
+Data-ink: the non-erasable core of a graphic, the non-redundant ink arranged in response to variation in the numbers represented
+
+Data-ink ratio: amount of data-ink divided by total ink used to print the graphic
+
+![](../images/data-ink-ratio.jpeg){fig-align="center"}
+
+## Data-ink ratio
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Tukey boxplot
+
+```{r echo = FALSE, out.width=400, out.height=400, fig.width=3, fig.height=3}
+library(tidyverse)
+mtcars |> 
+  ggplot(aes(x = as.factor(cyl), y = mpg)) +
+  geom_boxplot(coef = NULL) +
+  labs(x = NULL)
+```
+
+:::
+
+::: {.column width="50%"}
+Tufte "box" plot
+```{r echo = FALSE, warning = FALSE, out.width=400, out.height=400, fig.width=3, fig.height=3}
+library(ggthemes)
+mtcars |> 
+  ggplot(aes(x = as.factor(cyl), y = mpg)) +
+  geom_tufteboxplot() +
+  labs(x = NULL)
+```
+
+:::
+::::
+
+
+## Data-ink ratio
+
+* Above all else show the data
+* Maximize the data-ink ratio
+* Erase non-data-ink
+* Erase redundant data-ink
+
+
+## Chartjunk
+
+Non-data-ink or redundant data-ink that does not tell the viewer anything new
+
+![](../images/chartjunk.png){fig-align="center"}
+
+# Themes
+
+
+## Themes
+
+![](../images/ggplot_themes.png){fig-align="center"}
+
+
+## Set-up
+
+```{r}
+library(tidyverse)
+```
+
+Switch to [R script](28_themes.R)
+
+## Let's code!
+
+[Themes](../code/28_themes.html){target="_blank"} [[Rmd](../code/28_themes.Rmd){target="_blank"}]

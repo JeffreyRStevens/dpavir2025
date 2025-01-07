@@ -1,0 +1,62 @@
+---
+title: "Data types"
+author: "Jeffrey R. Stevens"
+date: "2023-02-03"
+output: html_document
+execute:
+  freeze: auto
+---
+
+## Creating objects
+
+### First, let's create some objects: 
+`aa <- 3; bb <- 3L; cc <- "3"; dd <- "TRUE"; ee <- TRUE; ff <- "NA"; gg <- NA`
+```{r}
+# >
+```
+
+## Checking data types
+
+### Guess what data type each object is then check it.
+```{r}
+# >
+```
+
+### How do we test if `aa` is an integer?
+```{r}
+# >
+```
+
+### What will `is.logical(dd)` return?
+```{r}
+# >
+```
+
+
+### How do we test if `ff` and `gg` are `NA`?
+```{r}
+# >
+```
+
+## Checking if objects are the same
+
+### Are `aa` and `bb` the same? How do we test this?
+```{r}
+# >
+```
+
+### What about `aa` and `cc`?
+```{r}
+# >
+```
+
+### A safer comparison tool is `identical()`. Test if `aa` and `bb` are identical. Then try `aa` and `cc`.
+```{r}
+# >
+```
+
+### Now see if `aa` is identical to `3` and if `bb` is identical to `3L`.
+```{r}
+# >
+```
+

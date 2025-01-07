@@ -1,0 +1,32 @@
+---
+title: "Importing data"
+author: "Jeffrey R. Stevens"
+date: "2023-02-08"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Download <https://jeffreyrstevens.quarto.pub/dpavir/data/newdata.csv> and save it in your `data/` directory.
+
+1. Import `newdata.csv` and name it `newdata` using `read.csv()`.
+```{r}
+# >
+```
+
+3. Import <https://jeffreyrstevens.quarto.pub/dpavir/data/newdata2.csv> directly from the URL using `readr::read_csv()`.
+```{r}
+# >
+```
+
+4. Repeat the previous import of `newdata2.csv`, but add the arguments `col_select = c("Breed", "links")` and `show_col_types = FALSE` and name it `newdata3`.
+```{r}
+# >
+```
+
+5. Export the `newdata3` data as a CSV file to your `data/` directory.
+```{r}
+# >
+```
+

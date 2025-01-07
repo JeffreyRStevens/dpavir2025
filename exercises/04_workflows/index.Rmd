@@ -1,0 +1,96 @@
+---
+title: "Workflows"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(devtools)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Directories
+
+### Paths
+
+Here is an absolute path to some data:
+
+`/home/jeff/projects/dog_telepathy/data/raw_data/`
+
+```{r directories}
+quiz(
+  question("If you are in the `dog_telepathy/` directory, how would you use the command line to get to `raw_data/` using a _relative path_?",
+           answer("`cd data/raw_data/`", correct = TRUE),
+           answer("`cd /home/jeff/projects/dog_telepathy/data/raw_data/`", message = "This would get you there, but it does not use a relative path."),
+           answer("`cd /data/raw_data/`", message = "Starting with `/` creates an absolute path."),
+           answer("`cd ../data/raw_data`", message = "Using `..` goes backwards in the path."),
+           answer("`cd ../../data/raw_data`", message = "Using `..` goes backwards in the path."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+  question("If you are in the `dog_telepathy/` directory, select TWO ways to use the command line to get to `jeff/`?",
+           answer("`cd /home/jeff/`", correct = TRUE),
+           answer("`cd ../../`", correct = TRUE),
+           answer("`cd ../../..`", message = "You went too far."),
+           answer("`cd ../`", message = "Not far enough."),
+           answer("`cd home/jeff/`", message = "Without an initial `/`, this is looking for a relative path from this directory."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  )
+)
+```
+
+### Directory structure
+
+The next question is based on this directory structure.
+
+![](images/directory.png)
+
+```{r working-directory}
+question("When you open the R Project shown above (`dog_telepathy.Rproj`), what will be the _working directory_ for that project?",
+         answer("`jeff/projects/dog_telepathy/`", correct = TRUE),
+         answer("`jeff/projects/`", message = "The `.Rproj` file is not in that directory."),
+         answer("`jeff/projects/dog_telepathy/.Rproj.user/`", message = "The `.Rproj` file is not in that directory."),
+         answer("`jeff/projects/dog_telepathy/dog_telepathy.Rproj`", message = "This is a file rather than a directory."),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 20
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete
+
+Copy that code into Canvas, and you're all set for this tutorial.

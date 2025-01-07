@@ -1,0 +1,124 @@
+---
+title: "Check-in 7"
+output: pdf_document
+urlcolor: blue
+---
+
+```{r global_options, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(here)
+opts_chunk$set(fig.align="center", fig.height=4, fig.width=5.5)
+```
+
+<!-- **Again, the check-ins will review material presented in class but will also require you to think about new concepts, integrate across topics, and search for information. Some will be complex and take time to figure out. Feel free to work in groups on this. ** -->
+
+**Insert answers within the code chunks. Unless specified otherwise, do not assign your output to an object. If directed to assign output to an object, wrap the pipe in parentheses to print the output.**
+
+First, import `obed_data.csv` from your `checkins` directory (or [download](https://decisionslab.unl.edu/data/stevens_etal_2020_obed_data1.csv) if needed) and save to `dog_data`.
+
+```{r echo=FALSE}
+
+```
+
+
+**Problem 1: (4 pts)** Do the following:
+
+1. Plot a scatterplot of log-transformed `cort1` and `cort2` from `dog_data`. Do the transformation inside the ggplot.
+
+2. Overlay a linear regression line on top of the points.
+
+3. Color the points _aquamarine4_, the line _dodgerblue4_, and the confidence band _dodgerblue3_.
+
+1. Make the background of the plot white.
+
+
+```{r message=FALSE, warning=FALSE}
+
+```
+
+
+\newpage
+**Problem 2: (6 pts)**  
+
+1. Log transform `cort1` and `cort2` in the data, creating `logcort1` and `logcort2`.
+
+1. Take the mean of `latency_sit_mean` and `latency_down_mean` to create a `latency` variable.
+
+1. Remove observations with NA for `latency`.
+
+1. Plot a scatterplot of `logcort1` and `logcort2`.
+
+1. Color the points based on `latency` using a viridis color scale.
+
+1. Move the legend above the plot.
+
+```{r warning=FALSE}
+
+```
+
+
+\newpage
+**Problem 3: (4 pts)**  
+
+1. Plot `mdors_score` by `dias_overall_score`.
+
+1. Color the points using the _Dark2_ color palette and set the shape based on `class`.
+
+1. Reorder the levels of `class` to chronological order: S18, U18, F18, S19, U19, F19
+
+1. Remove the minor grid lines.
+
+```{r warning=FALSE}
+
+```
+
+
+\newpage
+**Problem 4: (5 pts)** Do the following:
+
+1. Plot `dias_overall_score` by `time_train_dog_weekly_num` as black points.
+
+1. Overlay separate lines for `dog_sex` that are different colors.
+
+1. Remove the confidence bands.
+
+1. Move the legend inside the plot.
+
+1. Set the aspect ratio to 1.
+
+```{r message=FALSE, warning=FALSE}
+
+```
+
+
+\newpage
+**Problem 5: (5 pts)** Do the following:
+
+1. Plot the mean and confidence intervals of `cort1` for each level of `class` (calculate the mean and confidence interval inside the ggplot).
+
+1. Color the dots and lines based on `class`.
+
+1. Create separate subplots based on `dog_sex`.
+
+1. Remove the legend.
+
+1. Use the bw theme.
+
+
+```{r warning=FALSE}
+
+```
+
+
+\newpage
+**Problem 6: (3 pts)** In your own creative way, I would like you to **extend** beyond what the previous questions have asked you to do. Create and customize your own plot of this data set or another data set that:
+
+1. Adjusts a non-color property of the data (either inside or outside of `aes()`)
+1. Adjusts a theme element
+1. Applies a non-default color scale to the data
+
+```{r}
+
+```
+

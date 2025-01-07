@@ -1,0 +1,321 @@
+---
+title: "Adjusting axes"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+library(patchwork)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+
+bill_flipper_plot <- penguins |> 
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point(show.legend = FALSE)
+
+bill_body_plot <- penguins |> 
+  ggplot(aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  geom_point(show.legend = FALSE)
+
+flipper_body_plot <- penguins |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+    geom_point(show.legend = FALSE)
+```
+
+
+## Introduction
+
+This exercise covers finessing your plots by scaling axes and creating multiple plots.
+
+### Set-up
+
+Load `{tidyverse}` and `{palmerpenguins}`.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Scaling axes
+
+###
+
+You may want to scale axes to either zoom in or out. Both directions use the same syntax, and there are two ways to scale axes. 
+
+The plot below shows all of the data, but say we only want to show the data from penguins with flipper lengths between 200-220 mm and body masses between 4000-5000 g (illustrated in blue rectangle).
+
+```{r mass-flipper, warning=FALSE, message=FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  annotate("rect", xmin = 4000, xmax = 5000, ymin = 200, ymax = 220, fill = "blue", alpha = 0.2) +
+  geom_point() +
+  geom_smooth()
+```
+
+
+### Scaling limits
+
+The first way to do this is to scale the axis limits. This has the effect of setting all data outside of the limits to NA. While this isn't a problem for plotting raw data like points, removing data affects statistical transformations such as curve fits, boxplots, counts, etc.
+
+There are three ways to scale axis limits: `scale_x/y_continuous/discrete()`, `lims()`, and `xlim/ylim()`. Since want to scale both axes, we'll use `lims()`, which let's us scale both axes in one line.
+
+**Add the following line to the previous plot: `lims(x = c(4000, 5000), y = c(200, 220))`.**
+
+```{r scale-limits, warning=FALSE, message=FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point() +
+  geom_smooth() +
+  lims(x = c(4000, 5000), y = c(200, 220))
+```
+
+```{r exercise4, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point() +
+  geom_smooth() +
+  ...
+```
+
+```{r exercise4-solution}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point() +
+  geom_smooth() +
+  lims(x = c(4000, 5000), y = c(200, 220))
+```
+
+###
+
+Notice how the curve looks different than it does in the original plot in this range. That is because, in this plot, the curve is calculated based on only the data points within the scale ranges. The curve in the original plot was calculated based on all of the data.
+
+
+### Scaling coordinates
+
+The other way to scale your plot is to scale the coordinates directly. This has the effect of zooming in and out without altering the data or resultant statistical transformations. You can scale the coordinates with the `coord_cartesian()` function.
+
+```{r scale-coord, echo=TRUE, warning=FALSE, message=FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point() +
+  geom_smooth() +
+  coord_cartesian(xlim = c(4000, 5000), ylim = c(200, 220), expand = FALSE)
+```
+
+###
+
+Note two differences from the previous plot. First, the data outside of the limits are still visible in the slight buffer beyond the limits (to remove this buffer, set `expand = FALSE` in `coord_cartesian()`). This hints at the second difference, which is that these and all other data that are outside of these limits are still being passed to the statistical transformations; in this case, the `geom_smooth()` curve.
+
+```{r scale-comparison, warning=FALSE, message=FALSE}
+scale_axis <- penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point() +
+  geom_smooth() +
+  lims(x = c(4000, 5000), y = c(200, 220)) +
+  labs(title = "Scale axes", subtitle = "with lims()")
+
+scale_coord <- penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point() +
+  geom_smooth() +
+  coord_cartesian(xlim = c(4000, 5000), ylim = c(200, 220)) +
+  labs(title = "Scale coordinates", subtitle = "with coord_cartesian()")
+
+scale_axis + scale_coord
+```
+
+So if you have any statistical transformations in your plots, you'll probably want to use the `coord_cartesian()` method to scale your plots. But if you're just plotting raw data (points) and don't want to show any points on the periphery of your limits, then you can scale the axes with `scale_x/y_continuous`, `x/ylim()`, or `lims()`.
+
+
+## Multiple plots
+
+### Faceting
+
+When plots have too many factors included in them, they can get too busy. _Faceting_ allows you to separate out factor levels into different panels and is a powerful techique to improve your visualizations.
+
+For example, here we illustrate the species factor by using different colors to represent the three species of penguins.
+
+```{r mass-flipper2, warning=FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point() 
+```
+
+###
+
+While this is fine for this case, there maybe reasons to pull the species out into separate facets. For the case of a single factor, it is best to use the `facet_wrap()` function.
+
+```{r facet-wrap, echo=TRUE, warning=FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point() +
+  facet_wrap(vars(species))
+```
+
+###
+
+Faceting creates a panel for each level of the factor and adds a label in a rectangle up top called a _strip_. We've already seen how to customize the strip when we learned about themes. Notice that, like axes, the facet labels are drawn from the data.
+
+Also notice how the axes scales are the same in all three panels. The default behavior is to use the full range of all data in all panels. However, you can allow the panels to scale independently by passing the `scales` argument to the `facet_wrap()`.
+
+**Add `scales = "free"` to the previous plot.**
+
+```{r facet-scale-free, warning=FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  facet_wrap(vars(species), scales = "free")
+```
+
+```{r exercise5, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  facet_wrap(...)
+```
+
+```{r exercise5-solution}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  facet_wrap(vars(species), scales = "free")
+```
+
+### 
+
+Now each panel is scaled independently for both axes. If you want to freely scale only one of the axes, use `"free_x"` or `"free_y"`.
+
+###
+
+If you add a second factor to `facet_wrap()`, it will include separate panels for the factorial combinations of levels that exist in the data: `facet_wrap(vars(var1, var2))`.
+
+**Facet by both species and island.**
+
+```{r facet-wrap2, warning=FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point()  +
+  facet_wrap(vars(species, island))
+```
+
+```{r exercise6, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  facet_wrap(...)
+```
+
+```{r exercise6-solution}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  facet_wrap(vars(species, island))
+```
+
+
+
+###
+
+When you pass multiple variables to the `facet_wrap()` function, it just plots them in a single row and then wraps them onto a new row if there are more panels than will fit on a single row. Notice that it also drops factorial combinations that have no data.
+
+While you can use `facet_wrap()` for multiple variables, the `facet_grid()` function does a better job with two variables because it assigns one variable as rows and one as columns (i.e., builds a grid). Notice that it does not drop factorial combinations that have no data.
+
+```{r facet-grid, echo=TRUE, warning=FALSE}
+penguins |>
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point()  +
+  facet_grid(rows = vars(island), cols = vars(species))
+```
+
+
+### Compound plots
+
+Facets are used when you want to separate the same data set and same x/y axis variables by other categorical variables. But sometimes you have plots from completely different sets of variables or data frames that you want to combine into a single figure (e.g., subfigures). These _compound plots_ can be created using other packages. While the [{cowplot}](https://wilkelab.org/cowplot/) package from Claus Wilke gives a lot of control over compound plots, we'll focus on the  [{patchwork}](https://patchwork.data-imaginist.com/) package because it is very easy to use.
+
+To use `{patchwork}` simply assign your plots to objects and connect them with `+`.
+
+```{r compound, echo=TRUE, warning=FALSE}
+bill_flipper_plot <- penguins |>
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point(show.legend = FALSE)
+
+bill_body_plot <- penguins |>
+  ggplot(aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  geom_point(show.legend = FALSE)
+
+flipper_body_plot <- penguins |>
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+  geom_point(show.legend = FALSE)
+
+bill_flipper_plot + bill_body_plot + flipper_body_plot
+```
+
+###
+
+To stack the plots vertically instead of horizontally, use `plot_layout()` (connected with a `+` after the last plot) and set the number of rows with the `nrow` argument (e.g., `plot1 + plot2 + plot_layout(nrow = 2)`).
+
+**Stack the `bill_flipper_plot`, `bill_body_plot`, and `flipper_body_plot` plots vertically.**
+
+```{r compound2, warning = FALSE}
+bill_flipper_plot + bill_body_plot + flipper_body_plot + plot_layout(nrow = 3)
+```
+
+```{r exercise7, exercise = TRUE, warning = FALSE, message = FALSE}
+...
+```
+
+```{r exercise7-solution}
+bill_flipper_plot + bill_body_plot + flipper_body_plot + plot_layout(nrow = 3)
+```
+
+###
+
+The dimensions of the plots changed depending whether they were plotted vertically or horizontally.
+
+###
+
+With subfigures, you often want to label or 'tag' them. To do this, you need to add the `plot_annotation()` function with arguments for `tag_levels()` (`"a"` for lowercase letters, `"A"` for uppercase letters, `"1"` for numbers,, `"i"` for lowercase Roman numerals, and `"I"` for uppercase Roman numerals). You can also add prefixes and suffixes (e.g., `.` or `(` and `)`).
+
+```{r compound3, echo = TRUE, warning = FALSE}
+bill_flipper_plot + bill_body_plot + flipper_body_plot + plot_layout(nrow = 3) + plot_annotation(tag_levels = "a", tag_suffix = ".")
+```
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 22
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

@@ -1,0 +1,59 @@
+---
+title: "Separating and uniting data"
+author: "Jeffrey R. Stevens"
+date: "2023-02-27"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use a new clean version of the dog breed traits data set. 
+
+1. Load tidyverse, import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv>, and assign it to `traits`.
+
+```{r}
+# >
+```
+
+2. Create `traits2` which adds a _coat_ column that combines _coat_type_ and _coat_length_ into single column delimited by "-".
+
+```{r}
+# >
+```
+
+3. Split the _coat_ column into _type_ and _length_ and keep the original _coat_ column.
+
+```{r}
+# >
+```
+
+4. Create `traits3` from `traits` that (1) removes the coat columns, (2) turns the ratings columns into long format, and (3) removes the _children_ row for _Bulldogs_.
+
+```{r}
+# >
+```
+
+5. Create `traits4` from `traits3` that ensures a complete data set with all five ratings for all breeds (and fills in missing combinations with `NA`) and check for the missing Bulldog children row.
+
+```{r}
+# >
+```
+
+6. How could we copy the rating from the previous row into the Bulldog children row to replace the `NA`? (Note this is not a good idea in this case!)
+
+```{r}
+# >
+```
+
+7. From `traits`, generate all combinations of coat type and length **observed in the data**, excluding `NA`.
+
+```{r}
+# >
+```
+
+8. From `traits`, generate **all possible** combinations of coat type and length, excluding `NA`.
+
+```{r}
+# >
+```
+

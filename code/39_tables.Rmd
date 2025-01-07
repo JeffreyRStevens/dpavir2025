@@ -1,0 +1,51 @@
+---
+title: "Tables"
+author: "Jeffrey R. Stevens"
+date: "2023-05-03"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, create a data frame called `my_mpg` that capitalizes the manufacturer.
+
+```{r}
+# >
+```
+
+
+2. Calculate mean highway and city fuel efficiency for each manufacturer and return a table with the caption "Highway and city fuel efficiency" and column names "Manufacturer", "Highway", and "City".
+
+```{r}
+# >
+```
+
+
+3. Repeat the table from #2 but add a header that spans Highway and City that says "Fuel efficiency". Reminder, you'll need to load `{kableExtra}` to do this.
+
+```{r}
+# >
+```
+
+
+4. Calculate mean highway and city fuel efficiency for each manufacturer and year. Order the data frame by year, then remove the year column and add labels for each year that spans the rows for each year. Also, add a footnote that says "Source: mpg data set.".
+
+```{r}
+# >
+```
+
+
+5. Conduct a linear regression called `my_model` of the effects of displacement, cylinder, and year on highway fuel efficiency: `lm(hwy ~ displ + cyl + year, my_mpg)`. Apply the `summary()` function to the model object, then return the `coefficients` table from the summary.
+
+```{r}
+# >
+```
+
+
+6. Extract the `table` after applying `{papaja}`'s `apa_print()` to `my_model`, then pass this to `apa_table()`.
+
+```{r}
+# >
+```
+

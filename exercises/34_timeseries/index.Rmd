@@ -1,0 +1,181 @@
+---
+title: "Plotting x-y data: time series"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+lincoln_weather <- read_csv("lincoln_weather.csv") |> 
+  mutate(date = as.Date(date))
+lincoln_minmax_weather <- lincoln_weather |> 
+  pivot_longer(c("min_temp", "max_temp"), names_to = "measure", values_to = "temp")
+```
+
+
+
+## Time series
+
+###
+
+Let's explore time series data by working with the Lincoln temperature data used in _Fundamentals in Data Visualization_. First, let's import these data and convert the dates to a date format.
+
+```{r echo=TRUE, message=FALSE}
+lincoln_weather <- read_csv("lincoln_weather.csv") |> 
+  mutate(date = as.Date(date))
+head(lincoln_weather)
+```
+
+We have maximum, minimum, and mean temperature for every day in 2016. We'll start by plotting daily mean temperatures as points.
+
+```{r time-point, echo=TRUE}
+lincoln_weather |> 
+  ggplot(aes(x = date, y = mean_temp)) +
+  geom_point()
+```
+
+### Using lines
+
+**Change the geometric object from points to a line.**
+
+```{r time-line}
+lincoln_weather |> 
+  ggplot(aes(x = date, y = mean_temp)) +
+  geom_line()
+```
+
+```{r exercise6, exercise = TRUE, warning=FALSE, message=FALSE}
+lincoln_weather |> 
+  ...
+```
+
+```{r exercise6-solution}
+lincoln_weather |> 
+  ggplot(aes(x = date, y = mean_temp)) +
+  geom_line()
+```
+
+
+### Multiple series
+
+Let's say that we want to visualize the minimum and maximum rather than the mean. We can't do this with the current data frame because they are in different columns.
+
+**Reshape the data frame to put the minimum and maximum (only) temperatures into a single column called `temp` and the names in a column called `measure`. Call the new data frame `lincoln_minmax_weather`.**
+
+```{r}
+lincoln_minmax_weather <- lincoln_weather |> 
+  pivot_longer(c("min_temp", "max_temp"), names_to = "measure", values_to = "temp")
+```
+
+```{r exercise7, exercise = TRUE, warning=FALSE, message=FALSE}
+lincoln_minmax_weather <- 
+  ...
+```
+
+```{r exercise7-solution}
+lincoln_minmax_weather <- lincoln_weather |> 
+  pivot_longer(c("min_temp", "max_temp"), names_to = "measure", values_to = "temp")
+```
+
+###
+
+Now plot the temperature as a function of date.
+
+**Plot the time series of temperature with different colors for minimum and maximum temperature.**
+
+```{r time-multiple}
+lincoln_minmax_weather |> 
+  ggplot(aes(x = date, y = temp, color = measure)) +
+  geom_line()
+```
+
+```{r exercise8, exercise = TRUE, warning=FALSE, message=FALSE}
+lincoln_minmax_weather |> 
+  ...
+```
+
+```{r exercise8-solution}
+lincoln_minmax_weather |> 
+  ggplot(aes(x = date, y = temp, color = measure)) +
+  geom_line()
+```
+
+
+## Trends
+
+###
+
+Trends involve fitting models to capture the general patterns in data while ignoring noise. We will visualize trends with the `geom_smooth()` function, which by default uses the LOESS method of polynomial regression.
+
+Here, we'll plot the trend in daily mean temperature.
+
+```{r trend, echo=TRUE, message=FALSE}
+lincoln_weather |> 
+  ggplot(aes(x = date, y = mean_temp)) +
+  geom_point() +
+  geom_smooth()
+```
+
+###
+
+**Replicate the above plot but remove the error band.**
+
+```{r trend-nose, message=FALSE}
+lincoln_weather |> 
+  ggplot(aes(x = date, y = mean_temp)) +
+  geom_point() +
+  geom_smooth(se = FALSE)
+```
+
+```{r exercise9, exercise = TRUE, warning=FALSE, message=FALSE}
+lincoln_weather |> 
+  ...
+```
+
+```{r exercise9-solution}
+lincoln_weather |> 
+  ggplot(aes(x = date, y = mean_temp)) +
+  geom_point() +
+  geom_smooth(se = FALSE)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 3
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

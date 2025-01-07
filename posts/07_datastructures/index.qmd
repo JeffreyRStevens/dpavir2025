@@ -1,0 +1,49 @@
+---
+title: 'Data structures'
+author:
+  - Jeff Stevens
+date: '2023-02-06'
+categories: 
+  - "module 2"
+  - "week 3"
+  - data frames
+  - lists
+  - tibbles
+  - vectors
+description: "Create, modify, and subset vectors, lists, and data frames"
+draft: true
+---
+
+All data in R are vectors, but there are some special forms of vectors such as lists and data frames. We'll explore how to create, modify, and subset vectors, lists, and data frames.
+
+## Learning objectives
+
+* Create vectors, lists, and data frames
+* Learn how to subset data
+* View attributes of data
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/){target='_blank'}
+
+## Class meeting
+
+* Creating vectors
+* Sequences and repetitions
+* Vector indexes
+* Creating lists and data frames
+* Subsetting data frames
+* Dimensions
+* Tibbles
+* [Slides](../../slides/07_datastructures.qmd){target="_blank"} and [Code](../../code/07_datastructures.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_07_datastructures/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 22](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}

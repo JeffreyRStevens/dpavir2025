@@ -1,0 +1,8 @@
+format:
+  revealjs:
+    smaller: false
+    theme: moon
+    slide-number: true
+    footer: "[DPaViR 2025](https://jeffreyrstevens.github.io/dpavir2025)"
+    code-link: true
+    logo: "../logo/dpavir_hex.png"

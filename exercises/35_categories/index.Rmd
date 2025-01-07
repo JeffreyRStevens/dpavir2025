@@ -1,0 +1,412 @@
+---
+title: "Plotting x-y data: categories"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+library(Hmisc)
+library(ggbeeswarm)
+library(gghalves)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+within_penguins <- penguins |> 
+  filter(year != 2008) |> 
+  group_by(year, species) |> 
+  slice_head(n = 24) |> 
+  ungroup() |> 
+  mutate(id = rep(1:72, 2), .before = 1) |> 
+  mutate(year = as.factor(year))
+species_year <- penguins |> 
+   group_by(species, year) |> 
+   summarise(mean_bill = mean(bill_length_mm, na.rm = TRUE), 
+             sd_bill = sd(bill_length_mm, na.rm = TRUE), 
+             n = n()) |> 
+  mutate(ci = qt(0.975, df = n - 1) * sd_bill / sqrt(n))
+```
+
+
+## Introduction
+
+### Plotting raw data
+
+We covered these a bit earlier, but a nice way to plot continuous data for categories is to plot the raw data. Let's look at the penguin bill lengths for each species.
+
+```{r echo = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_point()
+```
+
+### Overplotting
+
+Looks like a lot of overplotting there. Jittering will add a little random variation to spread out the data a bit. 
+
+**Replace `geom_point()` with `geom_jitter()` to add some noise to the data.**
+
+```{r jitter, warning = FALSE, message = FALSE}
+set.seed(10)
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_jitter()
+```
+
+```{r exercise1, exercise = TRUE, warning = FALSE, message = FALSE}
+set.seed(10)
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_point()
+```
+
+```{r exercise1-solution}
+set.seed(10)
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_jitter()
+```
+
+###
+
+That might be too much noise. We can control the jitter separately for the x- and y-axes. In fact, let's only jitter horizontally and not vertically.
+
+```{r jitter2, warning = FALSE, message = FALSE, echo = TRUE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_jitter(width = 0.1, height = 0)
+```
+
+
+### Beeswarm plots
+
+Another way to reduce over plotting is to use beeswarm plots, which places dots next to one another. For this, we need the [{ggbeeswarm}](https://github.com/eclarke/ggbeeswarm) package.
+
+**Replace `geom_point()` with `geom_beeswarm()` to add some noise to the data.**
+
+```{r beeswarm, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_beeswarm()
+```
+
+```{r exercise2, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_point()
+```
+
+```{r exercise2-solution}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_beeswarm()
+```
+
+
+## Raincloud plots
+
+###
+
+In addition to raw data, we may want to add a density plot. Combined these are called raincloud plots. There are a number of packages that allow you to create raincloud plots. We'll focus on the [{gghalves}](https://erocoar.github.io/gghalves/) package, though the [{ggdist}](https://mjskay.github.io/ggdist/) package is very good, too.
+
+In {gghalves}, we use the `geom_half_violin()` function for the density plot and the `geom_half_dotplot()` function for the raw data.
+
+```{r echo = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_half_violin() +
+  geom_half_dotplot()
+```
+
+###
+
+Just like with histograms, the `geom_half_dotplot()` function starts with a default bin width but warns us to adjust that ourselves.
+
+**Add a binwidth of 0.35 to get a better distribution of raw data.**
+
+```{r binwidth, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_half_violin() +
+  geom_half_dotplot(binwidth = 0.35)
+```
+
+```{r exercise3, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_half_violin() +
+  geom_half_dotplot()
+```
+
+```{r exercise3-solution}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_half_violin() +
+  geom_half_dotplot(binwidth = 0.35)
+```
+
+###
+
+If you want a proper raincloud plot that is oriented horizontally, you'll need to flip the coordinates, set `stackdir = "down"` in the dotplot, and set `side = "r"` in the violin plot.
+
+**Orient the previous plot horizontally.**
+
+```{r horizontal, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_half_violin(side = "r") +
+  geom_half_dotplot(binwidth = 0.35, stackdir = "down") +
+  coord_flip()
+```
+
+```{r exercise4, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_half_violin(...) +
+  geom_half_dotplot(...) +
+  ...
+```
+
+```{r exercise4-solution}
+penguins |> 
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_half_violin(side = "r") +
+  geom_half_dotplot(binwidth = 0.35, stackdir = "down") +
+  coord_flip()
+```
+
+
+## Slopegraphs
+
+###
+
+Another useful kind of plot is the slopegraph, which shows individual data as lines connecting values across categories. Also called spaghetti plots, they are often used to show individual participant/subject data across categories such as conditions. So rather than just showing within-subjects means and error, we can include the participant data to illustrate the distribution of differences across conditions.
+
+### Create within-subjects data
+
+Unfortunately, we don't have with-subjects data for the `penguins` data set. So we're going to wrangle the data to create this by focusing on the 2007 and 2009 data. Even though it is not actually the case, we're going to assume that the 2009 data include the same individuals recorded in 2007 (based on the order in the data). So let's create the data.
+
+```{r echo = TRUE}
+(within_penguins <- penguins |> 
+  filter(year != 2008) |> 
+  group_by(year, species) |> 
+  slice_head(n = 24) |> 
+  ungroup() |> 
+  mutate(id = rep(1:72, 2), .before = 1) |> 
+  mutate(year = as.factor(year)))
+```
+
+### Creating a slopegraph
+
+To create a slopegraph, we just need to use a line to connect data between the category levels for each participant/subject. Therefore, we just need to use the `geom_line()` function and include the participant ID as a grouping variable.
+
+```{r echo = TRUE, warning = FALSE}
+within_penguins |> 
+  ggplot(aes(x = year, y = bill_length_mm)) +
+  geom_line(aes(group = id))
+```
+
+###
+
+There we go! But the lines are very bold and look cluttered with so many lines. We should lighten those up a bit. Also, we usually also want to include some measure of central tendency and error.
+
+**Change the line colors to _grey70_ and overlay the mean and standard deviation for the two years.**
+
+```{r slopegraph, warning = FALSE, message = FALSE}
+within_penguins |> 
+  ggplot(aes(x = year, y = bill_length_mm)) +
+  geom_line(aes(group = id), color = "grey70") +
+  stat_summary()
+```
+
+```{r exercise5, exercise = TRUE, warning = FALSE, message = FALSE}
+within_penguins |> 
+  ggplot(aes(x = year, y = bill_length_mm)) +
+  geom_line(aes(group = id), color = "grey70") +
+  ...
+```
+
+```{r exercise5-solution}
+within_penguins |> 
+  ggplot(aes(x = year, y = bill_length_mm)) +
+  geom_line(aes(group = id), color = "grey70") +
+  stat_summary()
+```
+
+
+## Interaction plots
+
+###
+
+If you want to plot data from multiple factors, it can be hard to include the raw data. Interaction plots show the interaction between factors, and it is usually easiest to just show the summary statistics and connect them with lines to illustrate interactions better.
+
+### Interactions with `stat_summary()`
+
+Probably the simplest way to create an interaction plot is to use `stat_summary()` to automatically calculate your summary statistics for you. Then you just need to add a line connecting the appropriate levels and maybe add color.
+
+It's pretty easy to get the means and error bars for the factor levels by setting on factor as the x-axis variable and grouping by the other factor. Let's create an interaction plot for possible species and year differences in bill length.
+
+```{r echo = TRUE,  warning = FALSE}
+penguins |> 
+  ggplot(aes(x = year, y = bill_length_mm, group = species)) +
+  stat_summary(fun.data = mean_cl_normal)
+```
+
+### 
+
+It looks like we may have an interaction where two species' bill lengths don't seem to change over the years, but the third may increase in year 2009. But it's a little difficult to see these potential differences---we need to add lines connecting across years. We do this by adding another `stat_summary()` where we specify which function to calculate in order to connect the dots (in this case, means) and specify line as the geom. Also, we need to add color to know which species are which.
+
+**Connect the mean bill lengths across years for each species with lines. Also, color the lines, points, and error bars by species and change year to a factor to clean up the x-axis.**
+
+```{r warning = FALSE}
+penguins |> 
+  mutate(year = as.factor(year)) |> 
+  ggplot(aes(x = year, y = bill_length_mm, color = species, group = species)) +
+  stat_summary(fun.data = mean_cl_normal) +
+  stat_summary(fun = mean, geom = "line")
+```
+
+```{r exercise6, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ... |> 
+  ggplot(aes(x = year, y = bill_length_mm, group = species)) +
+  stat_summary(fun.data = mean_cl_normal) +
+  ...
+```
+
+```{r exercise6-solution}
+penguins |> 
+  mutate(year = as.factor(year)) |> 
+  ggplot(aes(x = year, y = bill_length_mm, color = species, group = species)) +
+  stat_summary(fun.data = mean_cl_normal) +
+  stat_summary(fun = mean, geom = "line")
+```
+
+###
+
+Not a fan of the overlapping error bars, so let's shift them a bit with dodge. Note we have to apply it to both `stat_summary()` functions.
+
+```{r echo = TRUE, warning = FALSE}
+penguins |> 
+  mutate(year = as.factor(year)) |> 
+  ggplot(aes(x = year, y = bill_length_mm, color = species, group = species)) +
+  stat_summary(fun.data = mean_cl_normal, position = position_dodge(width = 0.1)) +
+  stat_summary(fun = mean, geom = "line", position = position_dodge(width = 0.1))
+```
+
+
+### Interactions with existing summary statistics
+
+The nice thing about creating interaction plots with `stat_summary()` is that it just uses raw tidy data to calculate the summary statistics. But if you want statistics not offered by `stat_summary()` (e.g., within-subjects confidence intervals) or if you just already have the statistics calculated, you can plot them directly with `geom_pointrange()`. Note that this function requires the lower and upper bounds to be specified, so you can't just pass the overall measure of error to it.
+
+### 
+
+So let's prepare some data for to try this out. In fact, let's replicate the previous plot, so we need to calculate the mean and confidence interval for each species and year.
+
+```{r echo = TRUE, warning = FALSE, message = FALSE}
+(species_year <- penguins |> 
+   group_by(species, year) |> 
+   summarise(mean_bill = mean(bill_length_mm, na.rm = TRUE), 
+             sd_bill = sd(bill_length_mm, na.rm = TRUE), 
+             n = n()) |> 
+  mutate(ci = qt(0.975, df = n - 1) * sd_bill / sqrt(n)))
+```
+
+###
+
+You can create the lower and upper bounds in the data set or just calculate them on the fly in the plot.
+
+```{r echo = TRUE}
+species_year |> 
+  mutate(year = as.factor(year)) |> 
+  ggplot(aes(x = year, y = mean_bill, color = species, group = species)) +
+  geom_pointrange(aes(ymin = mean_bill - ci, ymax = mean_bill + ci), position = position_dodge(width = 0.1)) +
+  geom_line()
+```
+
+###
+
+Nice! And it looks just like the figures that use `stat_summary()`.
+
+
+### Redundant coding
+
+A good practice when plotting data is to redundantly code groups with multiple object properties. For example, people with color vision deficiency may not easily discern color differences, so varying shape (for points) or line type (for lines) can help readers discriminate the groups.
+
+First, we'll start with an interaction plot that shows flipper length as a function of year, with separate lines for species. This example includes both lines and points, which offers several opportunities for redundant coding.
+
+```{r year-flipper, echo=TRUE, warning=FALSE}
+penguins |> 
+  ggplot(aes(x = factor(year), y = flipper_length_mm, group = species)) +
+  stat_summary(fun = mean) +
+  stat_summary(fun = mean, geom = "line")
+```
+
+###
+
+**Map color, point shape, and line type to species.**
+
+```{r interaction, warning=FALSE}
+penguins |> 
+  ggplot(aes(x = factor(year), y = flipper_length_mm, group = species, color = species, shape = species, linetype = species)) +
+  stat_summary(fun = mean) +
+  stat_summary(fun = mean, geom = "line")
+```
+
+```{r exercise3, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ...
+```
+
+```{r exercise3-solution}
+penguins |> 
+  ggplot(aes(x = factor(year), y = flipper_length_mm, group = species, color = species, shape = species, linetype = species)) +
+  stat_summary(fun = mean) +
+  stat_summary(fun = mean, geom = "line")
+```
+
+###
+
+Notice that color, point shape, and line type are also all shown in the legend. This is a fairly simple plot, but plots where the lines cross can make it difficult to track the groups, so redundant coding is especially useful then.
+
+Here is an example of a plot of mine that uses redundant coding but also codes factorially with skew level coded by color and shape and skipping/guessing coded by line type.
+
+![](https://royalsocietypublishing.org/cms/asset/a8673d70-e91f-4b5d-8d27-e6dca8daf3b7/rspb20180407f02.jpg){ width=100% }
+
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 10
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

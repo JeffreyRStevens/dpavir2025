@@ -1,0 +1,50 @@
+---
+title: "Plotting distributions: histograms"
+author: "Jeffrey R. Stevens"
+date: "2023-04-10"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mtcars` data, create a histogram of the fuel efficiency values.
+
+```{r}
+# >
+```
+
+2. Not a great histogram. Mess with the number of bins until you get a nice histogram.
+
+```{r}
+# >
+```
+
+3. Now change the bin width to generate the same plot as #2.
+
+```{r}
+# >
+```
+
+4. Using the same binwidth from #3, plot a histogram with _lightseagreen_ lines and _aquamarine3_ shaded areas. Then overlay a density plot with a _aquamarine4_ line with width 2.
+
+```{r}
+# >
+```
+
+5. What is the difference between a frequency polygon and a density plot?
+
+
+6. Make a density plot with bandwidth of 3 and separate line colors for different cylinder levels.
+
+```{r}
+# >
+```
+
+
+7. Repeat #6 but also include separate colors for the shaded areas with a transparency of 0.5. Use viridis colors for both lines and shaded areas, and reverse the direction of the colors where 4 is yellow, 6 is greenish, and 8 is purplish.
+
+```{r}
+# >
+```
+

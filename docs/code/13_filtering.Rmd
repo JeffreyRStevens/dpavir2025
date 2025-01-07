@@ -1,0 +1,71 @@
+---
+title: "Filtering rows"
+author: "Jeffrey R. Stevens"
+date: "2023-02-20"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use a new clean version of the dog breed traits data set. 
+
+1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.
+
+```{r}
+# >
+```
+
+2. View dogs only with short coats.
+
+```{r}
+# >
+```
+
+3. View a data frame excluding dogs with short coats.
+
+```{r}
+# >
+```
+
+4. View dogs with double or silky coats.
+
+```{r}
+# >
+```
+
+5. View dogs with double or silky coats and shedding ratings 3 or below.
+
+```{r}
+# >
+```
+
+6. View dogs with `NA` for _coat_type_.
+
+```{r}
+# >
+```
+
+7. View dogs with `NA` for any column.
+
+```{r}
+# >
+```
+
+8. View dogs not missing any data.
+
+```{r}
+# >
+```
+
+9. View dogs sorted by breed name.
+
+```{r}
+# >
+```
+
+10. View dogs sorted by coat type then coat length then affectionate rating.
+
+```{r}
+# >
+```
+

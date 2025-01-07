@@ -1,0 +1,59 @@
+---
+title: 'Course introduction'
+author:
+  - Jeff Stevens
+date: '2025-01-22'
+categories: 
+  - "module 1"
+  - "week 1"
+  - course-admin
+  - R
+  - RStudio
+description: "Introduction to Data Processing and Visualization in R"
+execute:
+  freeze: true
+draft: true
+---
+
+Our first lesson will introduce the course to you and get you started using R. If you've used R before, some of this may be review. But I bet everyone learns something new!
+
+## Learning objectives
+
+* Install R and RStudio on your local computer
+* Learn how to install, uninstall, load, and unload packages
+* Understand the tidyverse philosophy
+* Build a mental model of R
+* Code in the console
+
+## Pre-meeting: Getting started
+
+To prepare for the course, please do the following:
+
+* View presentation on [Getting Started with R](https://canvas.unl.edu/courses/149637/files/folder/presentations?preview=14236447){target='_blank'} (17 min; [slides](../../slides/00_getting_started.qmd){target='_blank'})
+* Install R from [https://r-project.org](https://cloud.r-project.org/){target='_blank'}
+* Install RStudio from [Posit](https://posit.co/downloads/){target='_blank'}
+* Install `{tidyverse}` package
+* If you have any trouble installing these, contact me.
+* Read the [syllabus](../../syllabus.html)
+* Complete [course introduction form](https://canvas.unl.edu/courses/149637/pages/course-resources){target='_blank'}
+* Read [SIDS 1](https://moderndive.netlify.app/1-getting-started.html){target='_blank'}, [Wickham 2020](https://tidyverse.tidyverse.org/articles/manifesto.html){target='_blank'}
+
+## Class meeting
+
+[[Slides](../../slides/01_introduction.qmd){target="_blank"}] [[Code](../../code/01_introduction.html)]
+
+* Review syllabus
+* Mental model of R
+* Base R vs. tidyverse
+* [Slides](../../slides/01_introduction.qmd){target="_blank"} and [Code](../../code/01_introduction.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_01_introduction/){target='_blank'}
+
+### For next class meeting
+
+* Troubleshoot any installation issues (contact me)
+* Install [R packages needed for the course](../../resources.qmd#packages)
+* Read [RYWM 1](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/){target='_blank'}

@@ -1,0 +1,250 @@
+---
+title: "Piping"
+author: "Jeff Stevens"
+date: "2023-02-17"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Review
+
+## Data wrangling
+
+![](../images/dplyr_summary.png){fig-align=center width=80%}
+
+
+# Piping
+
+## Set-up
+
+```{r}
+library(dplyr)
+library(nycflights13)
+glimpse(flights)
+```
+
+
+## Base R pipelines
+
+```{r}
+myflights <- flights[c("year", "month", "day", "air_time", "distance", 
+                       "hour", "minute")]
+myflights$month <- as.character(myflights$month)
+myflights$month <- ifelse(myflights$month < 10, 
+                          paste0("0", myflights$month), myflights$month)
+myflights$day <- ifelse(myflights$day < 10, 
+                        paste0("0", myflights$day), myflights$day)
+myflights$date <- paste(myflights$year, myflights$month, myflights$day, 
+                        sep = "-")
+myflights$speed <- myflights$distance / myflights$air_time * 60
+myflights <- myflights[c("year", "month", "day", "date", "air_time", 
+                         "distance", "speed", "hour", "minute")]
+```
+
+:::{.fragment}
+What do you like and dislike about this pipeline?
+:::
+
+
+## tidyverse pipelines
+
+```{r}
+myflights2 <- flights |> 
+  select(year:day, air_time, distance, hour, minute) |> 
+  mutate(month = as.character(month),
+         month = if_else(month < 10, paste0("0", month), as.character(month)),
+         day = if_else(day < 10, paste0("0", day), as.character(day)),
+         date = paste(year, month, day, sep = "-"),
+         speed = distance / air_time * 60) |> 
+  select(year:day, date, air_time, distance, speed, everything())
+```
+
+:::{.fragment}
+What do you like and dislike about this pipeline?
+:::
+
+
+## tidyverse pipelines
+
+```{r}
+myflights3 <- flights |> 
+  select(year:day, air_time, distance, hour, minute) |> 
+  mutate(month = as.character(month),
+         month = if_else(month < 10, paste0("0", month), as.character(month)),
+         day = if_else(day < 10, paste0("0", day), as.character(day)),
+         date = paste(year, month, day, sep = "-"),
+         .after = day) |> 
+  mutate(speed = distance / air_time * 60,
+         .after = distance)
+```
+
+:::{.fragment}
+What do you like and dislike about this pipeline?
+:::
+
+
+## Pipeline comparison
+
+```{r}
+identical(myflights, myflights2)
+identical(myflights, myflights3)
+identical(myflights2, myflights3)
+```
+
+:::{.fragment}
+#### Character counts
+```{r echo = FALSE}
+char_counts <- data.frame(Pipeline = c("`myflights`", "`myflights2`", "`myflights3`"),
+                          Characters = c(566, 423, 406))
+knitr::kable(char_counts)
+```
+:::
+
+
+## Pipes 
+
+* Base R pipe `|>` 
+    - added in R 4.1.0 but key functionality started in 4.2.0
+    - works following most base R and tidyverse functions
+
+:::{.fragment}
+* tidyverse pipe `%>%` 
+    - from [{magrittr}](https://magrittr.tidyverse.org/) package
+    - works following tidyverse verbs
+:::
+
+:::{.fragment}
+* Hadley Wickham recommends using the base R pipe `|>`, so we'll use that here.
+:::
+
+## Piping basics
+
+#### Start with the data object...
+
+```{r eval = FALSE}
+flights |> 
+  select(year:dep_delay, origin) |> # include these columns
+  select(-sched_dep_time) # exclude this column
+```
+
+:::{.fragment}
+#### Or use data object as the first argument...
+
+```{r, eval = FALSE}
+select(flights, year:dep_delay, origin) |> # include these columns
+  select(-sched_dep_time) # exclude this column
+```
+:::
+
+:::{.fragment}
+#### But don't use data object after first pipe
+```{r, eval = FALSE}
+select(flights, year:dep_delay, origin) |> # include these columns
+  select(flights, -sched_dep_time) # exclude this column
+```
+```
+Error in `select()`:
+! Can't subset columns with `flights`.
+✖ `flights` must be numeric or character, not a <tbl_df/tbl/data.frame> object.
+```
+:::
+
+---
+
+## Piping basics
+
+#### Like any object, assigning it does not output to console
+
+```{r}
+myflights <- flights |> 
+  select(year:dep_delay, origin) |>
+  select(-sched_dep_time)
+```
+
+:::{.fragment}
+#### But omitting assignment does
+
+```{r}
+flights |> 
+  select(year:dep_delay, origin) |>
+  select(-sched_dep_time)
+```
+:::
+
+
+## Piping basics
+
+#### As does wrapping assignment in parentheses
+
+```{r}
+(myflights <- flights |> 
+  select(year:dep_delay, origin) |>
+  select(-sched_dep_time))
+```
+
+
+## Advanced piping
+
+* Sometimes, non-tidyverse functions don't take the data object as the first argument
+
+* This requires a "placeholder" signaling where the data object goes
+
+:::{.fragment}
+* The placeholder for the `|>` pipe is `_`
+
+* The placeholder for the `%>%` pipe is `.`
+:::
+
+
+## Advanced piping
+
+### Base R pipe
+
+```{r eval = FALSE}
+mtcars |> 
+  select(mpg, cyl) |> 
+  lm(mpg ~ cyl)
+```
+:::{.fragment}
+```
+Error in as.data.frame.default(data) : 
+  cannot coerce class ‘"formula"’ to a data.frame
+```
+:::
+  
+:::{.fragment}
+```{r}
+mtcars |> 
+  select(mpg, cyl) |> 
+  lm(mpg ~ cyl, data = _)
+```
+
+* You must specify the argument name to use placeholder
+:::
+
+
+## Advanced piping
+
+### tidyverse pipe
+
+```{r}
+mtcars %>% 
+  select(mpg, cyl) %>% 
+  lm(mpg ~ cyl, data = .)
+```
+
+## Let's code!
+
+[Piping](../code/12_piping.html){target="_blank"} [[Rmd](../code/12_piping.Rmd){target="_blank"}]

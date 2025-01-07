@@ -1,0 +1,45 @@
+---
+title: 'Advanced R Markdown'
+author:
+  - Jeff Stevens
+date: '2023-05-08'
+categories: 
+  - "module 10"
+  - "week 16"
+  - bibliography
+  - citations
+  - "code chunks"
+  - "cross-references"
+  - figures
+description: "Master advanced uses of R Markdown"
+execute:
+  freeze: auto
+draft: true
+---
+
+We can make better, more automated R Markdown files by customizing code chunks, figures, cross-references, and citations.
+
+## Learning objectives
+
+* Customized code chunk output
+* Control figure size, scale, captions
+* Cross-reference figures, tables, and sections
+* Insert citations to automatically generate formatted bibliographies
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 30](https://r4ds.hadley.nz/quarto.html){target='_blank'}
+* Consider installing [Zotero](https://www.zotero.org/) and [Better BibTeX](https://retorque.re/zotero-better-bibtex/) extension (optional)
+
+## Class meeting
+
+* [Slides](../../slides/41_advrmarkdown.qmd){target="_blank"}
+
+## Homework after the class meeting
+
+### For next class meeting
+
+* Install [Quarto](https://quarto.org/docs/get-started/)
+* Read [Quarto demo slides](https://quarto.org/docs/presentations/revealjs/demo/#/title-slide)

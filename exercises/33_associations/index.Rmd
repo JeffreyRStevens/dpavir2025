@@ -1,0 +1,226 @@
+---
+title: "Plotting x-y data: associations"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+library(Hmisc)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Introduction
+
+This exercise covers visualizing x-y data, focusing on associations.
+
+### Set-up
+
+Load `{tidyverse}` and `{palmerpenguins}`.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Scatterplots
+
+###
+
+Scatterplots plot paired continuous data. Here we see (again) the penguin bill length plotted against bill depth.
+
+```{r scatter, echo = TRUE, warning = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm)) +
+  geom_point()
+```
+
+### Adding regression lines
+
+Just as a refresher, you can add regression lines with `geom_smooth(method = "lm")`.
+
+```{r scatter-lm, echo = TRUE, warning = FALSE, message = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+###
+
+**Now add separate regression lines for each species.**
+
+```{r scatter-lm2, warning = FALSE, message = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+```{r exercise1, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins %>% 
+  ...
+```
+
+```{r exercise1-solution}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+### Adding diagonal lines
+
+If you are plotting two variables that are on the same scale (e.g., pre/post, measure 1 vs. measure 2), you may want to add a diagonal line in which _x=y_. For this, we can use the `geom_abline()` function and specify the `intercept` as 0 and the `slope` as 1. Unfortunately, there are no paired variables on the same scale in the `penguins` dataset, so we'll draw a line where _2.5x=y_. That is, let's imagine that we want to plot the line showing where bill length is 2.5 times bill depth. 
+
+**Plot the bill depth and length data including a line with slope is 2.5 and y-intercept is 0.**
+
+```{r scatter-line, warning = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 2.5)
+```
+
+```{r exercise2, exercise = TRUE, warning = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm)) +
+  ...
+```
+
+```{r exercise2-solution}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 2.5)
+```
+
+## Correlation plots
+
+Since `{ggplot2}` does not have a built in way to easily generate a correlation plot, we're going to use base R's `pairs()` function. You can also use the `{GGally}` function `ggpairs()`.
+
+We'll plot the correlations between all of the size measurements in `penguins`.
+
+```{r pairs, echo = TRUE}
+penguins %>% 
+  select(contains("_mm") | contains("_g")) %>% 
+  pairs(upper.panel = NULL)
+```
+
+
+
+## Bubble charts
+
+### Size as a third variable
+
+Bubble charts vary the size of points to represent information and can be used in two ways. First, they can be used with continuous data in scatterplots to represent a third variable with the size of the data points. Here we plot bill depth and length of Adelie penguins as the x and y axes. Then we map the point size to body mass to generate the bubble chart.
+
+```{r bubble1, echo=TRUE, warning=FALSE}
+penguins %>% 
+  filter(species == "Adelie") %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, size = body_mass_g)) +
+  geom_point()
+```
+
+###
+
+It is difficult to see all of the individual points.
+
+**Replicate the above plot, but make the points 50% transparent.**
+
+```{r bubble2, warning=FALSE}
+penguins %>% 
+  filter(species == "Adelie") %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, size = body_mass_g)) +
+  geom_point(alpha = 0.5)
+```
+
+```{r exercise3, exercise = TRUE, warning = FALSE}
+penguins %>% 
+  filter(species == "Adelie") %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm)) +
+  ...
+```
+
+```{r exercise3-solution}
+penguins %>% 
+  filter(species == "Adelie") %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, size = body_mass_g)) +
+  geom_point(alpha = 0.5)
+```
+
+### Size as count
+
+Bubble charts can also show the number of observations that fall within each x-y position. These can be used for both continuous and discrete data. For these plots, we use the `geom_count()` function.
+
+```{r bubble3, echo=TRUE}
+penguins %>%
+  ggplot(aes(x = island, y = year)) +
+  geom_count()
+```
+
+### 
+
+In this case, year is treated as a numeric, which creates strange y-axis values. We'll learn other ways to deal with this later, but for now, let's convert year to a factor and replot.
+
+**Coerce year to a factor and plot the above bubble chart.**
+
+```{r bubble4}
+penguins %>%
+  mutate(year = factor(year)) %>% 
+  ggplot(aes(x = island, y = year)) +
+  geom_count()
+```
+
+```{r exercise4, exercise = TRUE, warning = FALSE}
+penguins %>%
+  ...
+```
+
+```{r exercise4-solution}
+penguins %>%
+  mutate(year = factor(year)) %>% 
+  ggplot(aes(x = island, y = year)) +
+  geom_count()
+```
+
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 13
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

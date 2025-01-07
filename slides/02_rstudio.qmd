@@ -1,0 +1,95 @@
+---
+title: "Working in RStudio"
+author: "Jeff Stevens"
+date: "2023-01-25"
+date-format: iso
+execute:
+  echo: true
+  freeze: false
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-link: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir2025)"
+    logo: "../logo/dpavir_hex.png"
+---
+
+## Review: Mental model of R
+
+![](../images/mentalmodel_r.png)
+
+
+## Tour of RStudio
+
+![](../images/rstudio_ide.png){fig-align="center"}
+
+
+## Mental model of RStudio
+
+![](../images/mentalmodel_rstudio.png){fig-align="center"}
+
+
+## Keyboard shortcuts
+
+Here are some of my favorite things!
+
+_Tools > Keyboard Shortcuts Help_ or <kbd>Alt/Opt</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>
+
+| Function | Keyboard shortcut |
+| ----------------- | ----------------- |
+| Run current line | <kbd>Ctrl/Cmd</kbd>+<kbd>Enter/Return</kbd>|
+| Source entire script | <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>|
+| Insert assignment operator | <kbd>Alt/Opt</kbd>+<kbd>-</kbd> |
+| Insert pipe | <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>|
+| Comment lines | <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>|
+
+
+## Options
+
+* Turn off restore workspace
+* Turn off save history
+* Turn on soft wrap
+* Turn on rainbow parentheses
+* Change your theme
+
+
+## Installing packages
+
+[![](../images/reprex_hex.png){width="30%" height="30%" fig-align="center"}](https://reprex.tidyverse.org/){target="_blank"}
+
+
+## Getting help
+
+### Online forums
+
+* [RStudio Community](https://community.rstudio.com){target="_blank"}--RStudio-specific forum (e.g., tidyverse)
+* [Stack Overflow](https://stackoverflow.com){target="_blank"}--Coding-related questions 
+* [Cross Validated](https://stats.stackexchange.com/){target="_blank"}--Statistics questions (not R-specific)
+
+### Online portals/books
+
+* [Cheatsheets](https://rstudio.com/resources/cheatsheets/){target="_blank"}
+* [Tidyverse](https://www.tidyverse.org/){target="_blank"}
+* [RStudio books](https://rstudio.com/resources/books/){target="_blank"}
+
+
+## Tips
+
+* Learn to use keyboard shortcuts
+
+* You can remap keyboard shortcuts (I've remapped *Insert assignment operator* to <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>,</kbd>)
+
+* Restart R often
+
+
+## Let's explore!
+
+[Working in RStudio](../code/02_rstudio.html)
+
+## Mental model of RStudio
+
+![](../images/mentalmodel_rstudio.png){fig-align="center"}

@@ -1,0 +1,50 @@
+---
+title: "Piping"
+author: "Jeffrey R. Stevens"
+date: "2023-02-17"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the dog breed traits data set. 
+
+1. Create a pipeline to do all of the following:
+
+* assign pipeline to `traits`
+* import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv>
+* subset only the columns _Breed_ through _Coat Length_
+* remove the _Drooling Level_ column
+
+
+```{r}
+# >
+```
+
+2. Rename the column names to `"breed", "affectionate", "children", "other_dogs", "shedding", "grooming", "coat_type", "coat_length"`.
+```{r}
+# >
+```
+
+3. Do the following using `traits`. 
+
+* assign to `traits2`
+* rescale all of the ratings columns by subtracting 1 from all of the values
+* create a new column called _coat_ that combines the _coat_type_ and _coat_length_ columns by pasting the values of those two columns separated by `-`
+* create a new column called _shed_ that dichotomizes _shedding_ such that values of 3 and above are "A lot" and values below 3 are "Not much" and places the new column after _shedding_
+* calculate the mean rating for the _children_ and _other_dogs_ columns in a column called `mean_rating` and place it after _other_dogs_
+```{r}
+# >
+```
+
+4. Do the following using `traits2`. 
+
+* assign to `coat_grooming`
+* subset only the _grooming_ and _coat_type_ columns
+* run a linear model (`lm`) using the formula `grooming ~ coat_type` (remember to use a placeholder for the data)
+* apply the `summary()` function
+* print the results to console
+```{r}
+# >
+```
+

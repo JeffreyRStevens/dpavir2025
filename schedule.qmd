@@ -1,0 +1,97 @@
+---
+title: ""
+# execute:
+#   freeze: auto
+format:
+  html:
+    toc: true
+urlcolor: blue
+---
+``` {r echo = FALSE, message = FALSE}
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+```
+
+## Course schedule
+
+<center>
+**Note this is tentative!**
+</center>
+
+``` {r schedule, echo = FALSE}
+unfill_vec <- function(x) {
+  same <- x == dplyr::lag(x)
+  ifelse(!is.na(same) & same, NA, x)
+}
+
+weeks <- c(rep(1:16, each = 3)) |> 
+  unfill_vec()
+
+start <- as.Date("2025-01-20")
+stop <- as.Date("2025-05-10")
+all_days <- seq(start, stop, 1)
+days <- wday(all_days, label = TRUE)
+mwf_days <- days %in% c("Mon", "Wed", "Fri")
+mwf_dates <- c(all_days[mwf_days])
+
+topics <- c("**MLK Day**", "Course introduction", "Working in RStudio", "Coding basics", "Workflows", "Literate programming", "Data types", "Data structures", "Importing data", "Validating data", "Selecting columns", "Mutating columns", "Piping commands", "Filtering rows", "Summarizing rows", "Pivoting data", "Separating data", "Merging columns", "Merging rows", "Numbers", "Strings", "Matching patterns", "Factors", "Project workday", "**Spring break**", "**Spring break**", "**Spring break**", "Functions", "Iteration", "Grammar of graphics I", "Grammar of graphics II", "Design and themes", "Color", "Plotting distributions: histograms", "Plotting distributions: boxplots", "Plotting amounts: bar charts", "Plotting x-y data: associations", "**Nebraska Symposium**", "Plotting x-y data: time series", "Plotting x-y data: categories", "Adjusting axes", "Annotating plots", "Plotting challenge", "Tables", "Publications", "Advanced R Markdown", "Statistics I", "Statistics II")
+
+modules <- c(rep(1, 6), rep(2, 4), rep(3, 5), rep(4, 4), rep(5, 5), rep(NA, 3), rep(6, 2), rep(7, 4), rep(8, 4), NA, 8, 8, rep(9, 3), rep(10, 3), 11, 11)
+
+# readings <- c("[SIDS 1](https://moderndive.netlify.app/1-getting-started.html){target='_blank'}, [Wickham 2020](https://tidyverse.tidyverse.org/articles/manifesto.html){target='_blank'}", 
+              # "[R4DS2 1](https://r4ds.hadley.nz/intro.html){target='_blank'}", 
+              # "[RYWM 1](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/){target='_blank'}",
+              # "[R4DS2 3](https://r4ds.hadley.nz/workflow-basics.html){target='_blank'}, [7.1 - 7.2](https://r4ds.hadley.nz/workflow-style.html){target='_blank'}", 
+              # "[R4DS2 9](https://r4ds.hadley.nz/workflow-scripts.html){target='_blank'}", 
+              # "[R Markdown](https://rmarkdown.rstudio.com/articles_intro.html), [Markdown tutorial](https://commonmark.org/help/tutorial/){target='_blank'}", 
+              # "[R4DS1 20](https://r4ds.had.co.nz/vectors.html){target='_blank'}", 
+              # "[PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/){target='_blank'}",
+              # "[R4DS2 22](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}", 
+              # "[Wikipedia](https://en.wikipedia.org/wiki/Data_validation){target='_blank'}",
+              # "[R4DS2 4.3.2 - 4.3.4](https://r4ds.hadley.nz/data-transform.html#sec-select){target='_blank'}", 
+              # "[R4DS2 4.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'}", 
+              # "[R4DS2 5](https://r4ds.hadley.nz/workflow-pipes.html){target='_blank'}",
+              # "[R4DS2 4.2](https://r4ds.hadley.nz/data-transform.html#filter){target='_blank'}",
+              # "[R4DS2 4.4](https://r4ds.hadley.nz/data-transform.html#groups){target='_blank'}",
+              # "[R4DS2 6](https://r4ds.hadley.nz/data-tidy.html){target='_blank'}", 
+              # "[R4DS1 12.4 - 12.5](https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting){target='_blank'}", 
+              # "[R4DS2 21.1 - 21.3.2](https://r4ds.hadley.nz/joins.html){target='_blank'}", 
+              # "[R4DS2 21.3.3 - 21.5](https://r4ds.hadley.nz/joins.html#filtering-joins){target='_blank'}", 
+              # "[R4DS2 14](https://r4ds.hadley.nz/numbers.html){target='_blank'}", 
+              # "[R4DS2 15](https://r4ds.hadley.nz/strings.html){target='_blank'}", 
+              # "[R4DS2 16](https://r4ds.hadley.nz/regexps.html){target='_blank'}", 
+              # "[R4DS2 17](https://r4ds.hadley.nz/factors.html){target='_blank'},", 
+              # # "[R4DS2 18](https://r4ds.hadley.nz/datetimes.html){target='_blank'},", 
+              # "",
+              # "", "", "",
+              # "[R4DS1 19](https://r4ds.had.co.nz/functions.html){target='_blank'}",
+              # "[R4DS2 27](https://r4ds.hadley.nz/iteration.html){target='_blank'}", 
+              # "[R4DS2 2](https://r4ds.hadley.nz/data-visualize.html){target='_blank'}, [11](https://r4ds.hadley.nz/layers.html){target='_blank'}", 
+              # "[FDV 1](https://clauswilke.com/dataviz/introduction.html){target='_blank'}, [2](https://clauswilke.com/dataviz/aesthetic-mapping.html){target='_blank'}, [3](https://clauswilke.com/dataviz/coordinate-systems-axes.html){target='_blank'}", 
+              # "[FDV 17](https://clauswilke.com/dataviz/proportional-ink.html){target='_blank'}, [25](https://clauswilke.com/dataviz/avoid-line-drawings.html){target='_blank'}, [26](https://clauswilke.com/dataviz/no-3d.html){target='_blank'}, [29](https://clauswilke.com/dataviz/telling-a-story.html){target='_blank'}", 
+              # "[FDV 4](https://clauswilke.com/dataviz/color-basics.html){target='_blank'}, [19](https://clauswilke.com/dataviz/color-pitfalls.html){target='_blank'}, [Cookbook for R](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){target='_blank'}",
+              # "[FDV 7](https://clauswilke.com/dataviz/histograms-density-plots.html){target='_blank'}", 
+              # "[FDV 9](https://clauswilke.com/dataviz/boxplots-violins.html){target='_blank'}", 
+              # "[FDV 6](https://clauswilke.com/dataviz/visualizing-amounts.html){target='_blank'}", 
+              # "[FDV 12](https://clauswilke.com/dataviz/visualizing-associations.html){target='_blank'}", 
+              # "[FDV 13](https://clauswilke.com/dataviz/time-series.html){target='_blank'}, [14](https://clauswilke.com/dataviz/visualizing-trends.html){target='_blank'}",
+              # "[Raincloud Plots](https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/)",
+              # "[FDV 21](https://clauswilke.com/dataviz/multi-panel-figures.html){target='_blank'}, [24](https://clauswilke.com/dataviz/small-axis-labels.html){target='_blank'}", 
+              # "[FDV 22.1 - 22.2](https://clauswilke.com/dataviz/figure-titles-captions.html){target='_blank'}, [R4DS2 13](https://r4ds.hadley.nz/communication.html){target='_blank'}", 
+              # "[FDV 18](https://clauswilke.com/dataviz/overlapping-points.html){target='_blank'}, [20](https://clauswilke.com/dataviz/redundant-coding.html){target='_blank'}", 
+              # "",
+              # "[FDV 22.3](https://clauswilke.com/dataviz/figure-titles-captions.html#tables){target='_blank'}, [RMC 10.1](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html){target='_blank'}", 
+              # "[papaja manual 1](https://frederikaust.com/papaja_man/introduction.html){target='_blank'}",
+              # "[R4DS2 30](https://r4ds.hadley.nz/quarto.html){target='_blank'}",
+              # "[Quarto demo slides](https://quarto.org/docs/presentations/revealjs/demo/#/title-slide){target='_blank'}",
+              # NA)
+
+schedule <- tibble(Week = weeks, Date = mwf_dates, Module = modules, Topic = topics)
+options(knitr.kable.NA = '')
+kable(schedule, format = "markdown", align = "cccl")
+```
+<!-- \vspace{-5mm} -->
+<!-- FDV = [Fundamentals of Data Visualization](https://clauswilke.com/dataviz), R4DS1 = [R for Data Science 1st edition](https://r4ds.had.co.nz/), R4DS1 = [R for Data Science 2nd edition](https://r4ds.hadley.nz/), PWR = [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/), RMC = [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook), RYWM = [RYouWithMe](https://rladiessydney.org/courses/ryouwithme/), SIDS = [Statistical Inference via Data Science](https://moderndive.netlify.app/) -->
+
+<!-- P = Presentation, S = Slides, C = Code, E = Exercises -->

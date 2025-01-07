@@ -1,0 +1,46 @@
+---
+title: 'Grammar of graphics II'
+author:
+  - Jeff Stevens
+date: '2023-04-03'
+categories: 
+  - "module 7"
+  - "week 11"
+  - aesthetics
+  - facets
+  - ggplot
+  - "grammar of graphics"
+  - "statistical transformations"
+description: "Use the grammar of graphics to organize plot creation"
+execute:
+  freeze: auto
+draft: true
+---
+
+The tidyverse package `{ggplot2}` uses the 'grammar of graphics' to separate plots into seven components. Here we focus on mapping aesthetics, statistical tranformations, and facets.
+
+## Learning objectives
+
+* Apply properties across all geometric objects
+* Map aesthetics to geometrics objects globally or locally
+* Plot statistical summaries of data
+* Make subplots of data with facets.
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [FDV 1](https://clauswilke.com/dataviz/introduction.html){target='_blank'}, [2](https://clauswilke.com/dataviz/aesthetic-mapping.html){target='_blank'}, [3](https://clauswilke.com/dataviz/coordinate-systems-axes.html){target='_blank'}
+
+## Class meeting
+
+* [Slides](../../slides/27_grammar2.qmd){target="_blank"} and [Code](../../code/27_grammar2.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_27_grammar2/){target='_blank'}
+
+### For next class meeting
+
+* Read [FDV 17](https://clauswilke.com/dataviz/proportional-ink.html){target='_blank'}, [25](https://clauswilke.com/dataviz/avoid-line-drawings.html){target='_blank'}, [26](https://clauswilke.com/dataviz/no-3d.html){target='_blank'}, [29](https://clauswilke.com/dataviz/telling-a-story.html){target='_blank'}

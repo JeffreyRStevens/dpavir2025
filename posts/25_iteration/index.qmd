@@ -1,0 +1,45 @@
+---
+title: 'Iteration'
+author:
+  - Jeff Stevens
+date: '2023-03-29'
+categories: 
+  - "module 6"
+  - "week 10"
+  - "for loops"
+  - iteration
+  - map
+description: "Use iteration for applying functions across data"
+execute:
+  freeze: auto
+draft: true
+---
+
+Functions reduce repetition in code, but you may need to iterate to apply the function across multiple objects.
+
+## Learning objectives
+
+* Create for loops
+* Apply functions repeatedly across data with map()
+* Apply the same model across multiple data sets
+* Apply the same plot across multiple data sets
+* Import multiple data files simultaneously
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 27](https://r4ds.hadley.nz/iteration.html){target='_blank'}
+
+## Class meeting
+
+* [Slides](../../slides/25_iteration.qmd){target="_blank"} and [Code](../../code/25_iteration.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_25_iteration/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 2](https://r4ds.hadley.nz/data-visualize.html){target='_blank'}, [11](https://r4ds.hadley.nz/layers.html){target='_blank'}

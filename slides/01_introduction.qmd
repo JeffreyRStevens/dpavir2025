@@ -1,0 +1,122 @@
+---
+title: "Data Processing and Visualization in R"
+author: "Jeff Stevens (he/him)"
+date: "2025-01-22"
+date-format: iso
+execute:
+  echo: true
+  freeze: false
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-link: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir2025)"
+    logo: "../logo/dpavir_hex.png"
+---
+
+# Course introduction
+
+## Course goal
+
+![Source: <a href = "https://allisonhorst.com">Allison Horst</a>](../images/code_hero_allisonhorst.jpg){width="40%"}
+
+
+## Course information
+
+### Course structure and materials
+
+::: {.incremental}
+* Before class: Readings and presentations
+
+* During class: Coding
+
+* After class: Exercises
+
+* Course website: [dpavir.org](http://dpavir.org)
+  - Resources
+:::
+
+
+## Course information
+
+### Assignments
+
+:::{.incremental}
+* Learning journal
+* Exercises
+* Check-ins
+* Projects
+:::
+
+
+## Course information
+
+### Assignments
+
+* CReativity
+
+![](../images/r-packages.png){.absolute width="35%" top="12%" left="28%"}
+
+![](../images/rstats_meme2.jpg){.absolute width="35%" top="10%" left="65%"}
+<!-- ![](../images/rstats_meme3.jpg){.absolute width="35%" top="32%" left="65%"} -->
+
+![](../images/generativeart1.png){.absolute width="20%" top="45%" left="0%"}
+![](../images/generativeart2.png){.absolute width="20%" top="72%" left="0%"}
+![](../images/generativeart4.jpg){.absolute width="18%" top="48%" left="21%"}
+
+![](../images/r_pancakes.jpg){.absolute width="40%" top="55%" left="60%"}
+
+
+## Course information
+
+### Diversity, inclusion, wellness
+
+![Source: <a href = "https://allisonhorst.com">Allison Horst</a>](../images/r_inclusion.png){width="60%"}
+
+
+## Questions
+
+### Questions about R or the course?
+
+# R Introduction
+
+## Conventions
+
+* All `code` is in monospace font text
+
+* R functions end with parentheses: `function()`
+
+* Directory names end with slash: `home/`
+
+* Package names are surrounded by curly braces: `{tidyverse}`
+
+* Keyboard buttons separate keys with a plus: <kbd>Ctrl</kbd>+<kbd>S</kbd>
+
+* These are parentheses `()`, brackets `[]`, and braces `{}`
+
+* Links are in [light blue text]()
+
+
+## Mental model of R
+
+:::{.fragment}
+![](../images/mentalmodel_r.png){fig-align="center"}
+:::
+
+
+## Base R vs. tidyverse
+
+![](../images/baser_tidyverse.jpeg){.absolute height="55%" left="0%" top="20%"}
+
+:::{.fragment}
+![](../images/hadley_baser.png){.absolute height="35%" left="45%" top="30%"}
+:::
+
+
+## Let's code!
+
+[Introduction coding](../code/01_introduction.html){target="_blank"} [[Rmd file](../code/01_introduction.Rmd){target="_blank"}]

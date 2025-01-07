@@ -1,0 +1,178 @@
+---
+title: "Summarizing rows"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyr)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Data wrangling
+
+### Setup
+
+We're working with `{dplyr}` again, so let's load the `{dplyr}` package along with the `{palmerpenguins}` package to use the `penguins` data set.
+
+```{r echo = TRUE, message = FALSE}
+library(dplyr)
+library(palmerpenguins)
+head(penguins)
+```
+
+Now we're interested in aggregating data over rows.
+
+
+## Summarizing data
+
+### Overall summaries
+
+While you can simply input data frame columns to functions to summarize them (e.g., `mean(penguins$bill_length_mm, na.rm = TRUE)`, you can also use `summarise()` to do this: `summarise(penguins, mean_bill = mean(bill_length_mm, na.rm = TRUE))`. One key advantage of using `summarise()` is that it can apply multiple functions and can apply to multiple columns.
+
+**Calculate the mean and standard deviation of body mass (ignoring NAs) and label them as `mean` and `sd` respectively.**
+```{r exercise8, exercise = TRUE}
+summarise(penguins, ...)
+```
+
+```{r exercise8-check}
+grade_result(
+  pass_if(~identical(.result, summarise(penguins, mean = mean(body_mass_g, na.rm = TRUE), sd = sd(body_mass_g, na.rm = TRUE))))
+)
+```
+
+###
+
+**Calculate the mean of all of the bill and flipper measurements that include the text `_mm` in their column names (ignoring NAs).**
+
+```{r exercise9, exercise = TRUE}
+summarise(penguins, ...)
+```
+
+```{r exercise9-check}
+grade_result(
+  pass_if(~identical(.result, summarise(penguins, across(contains("_mm"), ~mean(.x, na.rm = TRUE)))))
+)
+```
+
+## Summarizing groups
+
+### 
+
+The `summarise()` function is probably most useful when paired with the `group_by()` function, which allows separate summaries for each group or combination of groups. 
+
+But since this involves applying multiple functions, before we do this, we need to review the pipe operator `|>`. The pipe allows us to chain multiple functions together to apply them to data in the specified order. Basically, a pipe takes the output from the previous command and submits it to the next command. Therefore, we typically use `group_by()` to group the data by columns then pipe the output to a `summarise()` statement to generate summaries per group.
+
+**Calculate the mean and standard deviation of body size (labeled as `mean` and `sd` respectively) for male, female, and unknown sex penguins (ignoring NAs in body size).**
+```{r exercise10, exercise = TRUE}
+penguins |> 
+  group_by(...) |> 
+  summarise(...)
+```
+
+```{r exercise10-check}
+grade_result(
+  pass_if(~identical(.result, group_by(penguins, sex) %>% summarise(mean = mean(body_mass_g, na.rm = TRUE), sd = sd(body_mass_g, na.rm = TRUE))))
+)
+```
+
+### 
+
+**Calculate the mean body size (labeled as `mean`) for each species and sex (in that order) of penguin (ignoring NAs in body size).**
+
+```{r exercise11, exercise = TRUE}
+penguins |> 
+  group_by(...) |> 
+  summarise(...)
+```
+
+```{r exercise11-check}
+grade_result(
+  pass_if(~identical(.result, group_by(penguins, species, sex) %>% summarise(mean = mean(body_mass_g, na.rm = TRUE))))
+)
+```
+
+## Slicing groups
+
+### 
+
+The `slice_()` functions allow you subset specific rows within each group. You can grab the first row(s) (`slice_head()`), last row(s) (`slice_tail()`), row(s) with smallest values in a column (`slice_min()`), row(s) with largest values in a column (`slice_max()`), or a random sample of rows  (`slice_sample()`). The `n` argument lets you select a specific number of rows per group, but the default is `n = 1`.
+
+**Find the rows with the three subjects with the shortests bills for each year.**
+```{r exercise12, exercise = TRUE}
+penguins |> 
+  group_by(...) |> 
+  slice_...(...)
+```
+
+```{r exercise12-check}
+grade_result(
+  pass_if(~identical(.result, penguins |> group_by(year) |> slice_min(bill_length_mm, n = 3)))
+)
+```
+
+### 
+
+**Find the rows with each species' heaviest male and heaviest female (dropping `NA`s).**
+```{r exercise13, exercise = TRUE}
+penguins |> 
+  drop_na(sex) |> 
+  group_by(...) |> 
+  slice_...(...)
+```
+
+```{r exercise13-check}
+grade_result(
+  pass_if(~identical(.result, penguins |> drop_na(sex) |> group_by(species, sex) |> slice_max(body_mass_g)))
+)
+```
+```{r exercise13-solution}
+penguins |> 
+  drop_na(sex) |> 
+  group_by(species, sex) |> 
+  slice_max(body_mass_g)
+```
+
+```{r exercise13-code-check}
+grade_code()
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 9
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

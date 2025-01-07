@@ -1,0 +1,205 @@
+---
+title: "Functions"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+## Introduction
+
+R is a functional programming language, meaning it provides many tools for creating functions. Though mostly we rely on other people's functions, sometimes we need to write our own to automate repetitive tasks. Writing functions can be difficult, but it will save you time in the long run. Hadley's rule of thumb for when to consider writing a function is "whenever you’ve copied and pasted a block of code more than twice".
+
+### Setup
+
+Most of R's functional programming comes from base R, but we'll use a few tidyverse functions, so let's load it and the {palmerpenguins} package.
+
+```{r message = FALSE, echo = TRUE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Functions
+
+###
+
+Functions are composed of _names_, _arguments_, and the _body_ of the function. Including arguments in functions is useful because the make the functions more flexible for your user.
+
+
+**Create a function called `divider` that takes two arguments (`dividend` and `divisor`) and divides the dividend by the divisor. Then run the function with the vector `numbers1` as the dividend and `numbers2` as the divisor.**
+```{r exercise1, exercise = TRUE}
+numbers1 <- c(19, 84, 20, 1, 7, 10)
+numbers2 <- c(5, 21, 4, 10, 7, 5)
+...
+divider(numbers1, numbers2)
+```
+
+```{r exercise1-solution}
+divider <- function(dividend, divisor) {
+  dividend / divisor
+}
+divider(numbers1, numbers2)
+```
+
+```{r exercise1-check}
+grade_result(
+  pass_if(~identical(.result, divider(numbers1, numbers2)
+  ))
+)
+```
+
+###
+
+It's often useful to set default argument values. Of course, you want to be thoughtful about what those default values are.
+
+**Copy the `divider()` function from above and paste it below. Then alter the function to set the default value of the divisor argument to 3. Run the function on the `numbers1` vector with default argument values.**
+```{r exercise2, exercise = TRUE}
+numbers1 <- c(19, 84, 20, 1, 7, 10)
+...
+divider(numbers1)
+```
+
+```{r exercise2-solution}
+divider <- function(dividend, divisor = 3) {
+  dividend / divisor
+}
+divider(numbers1)
+```
+
+```{r exercise2-check}
+grade_result(
+  pass_if(~identical(.result, divider(numbers1)
+  ))
+)
+```
+
+###
+
+Refer to the following function to answer the next questions:
+```{r echo = TRUE}
+square <- function(df) {
+  nrows <<- nrow(df)
+  ncols <- ncol(df)
+  if (nrows > ncols) {
+    square_df <- df[1:ncols, ]
+  } else if (ncols > nrows) {
+    square_df <- df[, 1:nrows]
+  } else {
+    square_df <- df
+  }
+}
+```
+
+```{r function-output}
+quiz(
+  question(
+    'What does this function do?',
+    answer('Make data frames have the same number of rows and columns', correct = TRUE),
+    answer('Draw a square'),
+    answer('Divide the number of rows by the number of columns in a data frame'),
+    answer('Take the square root of all elements in a data frame'),
+    answer('Square (\\^2) all elements in a data frame'),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question(
+    'Which of the following objects will be created in the global environment when the following command is run: `square(mtcars)`?',
+    answer('`nrows`', correct = TRUE),
+    answer('`ncols`'),
+    answer('`df`'),
+    answer('`square_df`'),
+    answer('`function`'),
+    answer('`square`'),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+## Conditional execution
+
+### Writing conditionals
+
+Often when writing functions, there are different possibilities that we want to account for, so we need to execute different code depend (conditional) on certain inputs. The `square()` function that we saw previously includes this conditional execution by assessing whether the number of rows is greater than, less than, or equal to the number of columns. In each of those three cases, we need to conduct different computations. For conditional execution, we use the `if()` and `else()` functions.
+
+**Write a function called `season_greeting()` that does the following:**
+
+1. **Takes as an argument a date vector written in ISO 8601 standard format.**
+1. **Uses the current date as a default if no date is entered.**
+1. **Extracts the month from the date.**
+1. **Checks which season the month falls in and assigns to the variable `season` the appropriate season (3-5 = spring, 6-8 = summer, 9-11 = fall, 12-2 = winter).**
+1. **Prints to the console "Happy [insert season]!" for that month's season using `paste0()` and the `season` variable.**
+
+Checking custom functions in these exercises is difficult in `{learnr}`, so there is no exercise check here. Please just complete the function and check that it works before continuing.
+
+### 
+
+Here's my version of this function. Yours may be different, and that is fine as long as it works.
+
+```{r echo = TRUE}
+season_greeting <- function(date = Sys.Date()) {
+  mon <- lubridate::month(date)  # extract month
+  if (mon >= 3 & mon < 6) {  # if month is between 3-5
+    season <- "spring"
+  } else if (mon >= 6 & mon < 9) {  # if month is between 6-8
+    season <- "summer"
+  } else if (mon >= 9 & mon < 12) {  # if month is between 9-11
+    season <- "fall"
+  } else {  # if month is not between 3-11
+    season <- "winter"
+  }
+  message(paste0("Happy ", season, "!"))  # paste greeting with season
+} 
+```
+
+I can think of two changes to this function that would improve it dramatically. How would you go about implementing these two changes?
+
+* What will happen if someone enters a non-ISO 8601 standard date? Try different formats of dates. Which ones work and which ones fail? How could the function help users that input invalid formats?
+
+* The seasons are really defined by certain days (equinoxes, solstices) rather than months. How could you adapt your function to use days of the year instead of months?
+
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 8
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

@@ -1,0 +1,64 @@
+---
+title: "Check-in 2"
+output: pdf_document
+urlcolor: blue
+---
+
+```{r global_options, include = FALSE, echo = TRUE}
+library(knitr)
+library(ggplot2)
+opts_chunk$set(fig.align="center", fig.height=4, fig.width=5.5)
+```
+
+**Again, the check-ins will review material presented in class but will also require you to think about new concepts, integrate across topics, and search for information. Some will be complex and take time to figure out. Feel free to work in groups on this. **
+
+**Save this Rmd file in your `checkins` directory. Please submit the assignment as a pdf file on Canvas. Insert answers within the asterisks, backticks, or code chunks unless directed otherwise.**
+
+**Problem 1: (2 pts)**   Type in (and run) the code that uses base R's function to import `stevens_etal_2021_data1.csv` from the following URL:
+
+`https://decisionslab.unl.edu/data/stevens_etal_2020_obed_data1.csv` and assigns it to the object `dog_data`. Do the same thing using `{readr}`'s import function but without printing the data type information to the console and assign the output to the object `dog_data2`. To clarify, you should type two lines of code and import the data twice---once using base R's import function and once using `{readr}`'s import function. Feel free to hit enter to wrap an argument onto the next line, but don't worry if the code runs off of the page.
+
+```{r}
+# Replace this entire line (including the #) with the code.
+```
+
+
+**Problem 2: (2 pts)** Examine the data types of the columns in `dog_data` and `dog_data2`. How do they differ? That is, how do the two import functions differ in how they parse different data types? What did you use to check for differences?
+
+*Your text goes here.*
+
+
+**Problem 3: (3 pts)**  Type (and run) the code to subset the `dog_data` data frame using base R indexing to only include columns 1-8, 29, 30, and 37 and the first 20 rows and assign it to `dog_trimmed`.
+
+```{r}
+# Replace this entire line (including the #) with the code.
+```
+
+
+
+**Problem 4: (2 pts)**  Sometimes you may want your subject ID column to be a factor for modeling purposes. Type (and run) base R code using the `$` operator to convert the `id` column to a factor and create a new column in `dog_trimmed` called `id_fac`.
+
+```{r}
+# Replace this entire line (including the #) with the code.
+```
+
+
+
+**Problem 5: (3 pts)**  Let say that you know for a fact that you recruited only owners who identified as female for your study. While validating your data, you see that one of your participants is listed as male in the `dog_trimmed` data frame. This must be a data entry mistake. Type (and run) the code that you would use to (1) find and (2) fix the mistake by first creating a new data frame called `dog_validated` (remember computer storage space is cheap, so create new objects when you make substantial changes) and then replacing the `Male` entry with `Female`. *Hint: Fixing the mistake will take two lines of code.*
+
+```{r}
+# Replace this entire line (including the #) with the code.
+```
+
+
+
+**Problem 6: (3 pts)**  Using the [`{dataReporter}`](https://github.com/ekstroem/dataReporter/) package, create a codebook for `dog_validated` (including the argument `file = "mycodebook.Rmd"`). Copy/move the codebook in the same directory as this file, and uncomment the following code (highlight the four lines and press Ctrl/Cmd+Shift+C) to append the codebook to this document.
+
+```{r}
+# Replace this entire line (including the #) with the code.
+```
+
+<!-- \includegraphics[page=1]{mycodebook.pdf}  -->
+<!-- \includegraphics[page=2]{mycodebook.pdf}  -->
+<!-- \includegraphics[page=3]{mycodebook.pdf}  -->
+<!-- \includegraphics[page=4]{mycodebook.pdf}  -->

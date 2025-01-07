@@ -1,0 +1,371 @@
+---
+title: "Pivoting data"
+author: "Jeff Stevens"
+date: "2023-02-24"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+# Review
+
+
+## How do I wrangle that?
+
+::: {.incremental}
+* return subset of rows based on position in data frame
+* return subset of rows based on column values
+* return subset of columns based on position in data frame
+* return subset of columns based on name
+* reorder rows by column values
+* reorder columns manually
+* create new columns
+* aggregate rows with summary functions
+:::
+
+
+## Mental model of data analysis
+
+![](../images/data_analysis_workflow.png){fig-align="center"}
+
+
+## The problem
+
+```{r echo = FALSE}
+library(tidyverse)
+nrows <- 12
+data2 <- data.frame(id = rep(1:4, each = 3), condition = paste0("cond", rep(1:3, times = 4)), response = runif(nrows)
+)
+data1 <- data2 |> 
+  pivot_wider(id_cols = id, names_from = condition, values_from = response)
+```
+
+What's different between these data sets? 
+
+What needs to happen to create `data2` from `data1`?
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+data1
+```
+:::
+:::{.column width="50%}
+```{r}
+data2
+```
+:::
+::::
+
+
+# Tidy data
+
+
+## Mental model of tidy data
+
+![](../images/tidy_data2.png){fig-align=center width=80%}
+
+
+## Tidying data with {tidyr} and {dplyr}
+
+```{r, message = FALSE}
+library(tidyr)
+library(dplyr)
+```
+
+![](../images/tidyr_hex.png){.absolute width="15%" top="0%" left="105%"}
+
+![](../images/tidy_data.png){.absolute width="45%" top="30%" left="-5%"}
+
+![](../images/tidyr_spread_gather_allisonhorst.png){.absolute width="55%" top="10%" left="50%"}
+
+:::{.aside}
+Source: <a href = "https://github.com/allisonhorst/stats-illustrations">Allison Horst</a>
+:::
+
+
+---
+
+## What is tidy data?
+
+1. Each variable has its own column
+
+1. Each observation has its own row
+
+1. Each value has its own cell
+
+![](../images/tidy_data_1.png){fig-align="center" width="80%"}
+
+---
+
+## Tidy data
+
+#### Every variable is a column, every observation is a row, and every value is a cell
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+::: {style="font-size:90%"}
+```{r}
+#| class-output: output
+table1
+```
+:::
+
+:::
+
+::: {.column width="55%"}
+
+::: {.fragment}
+::: {style="font-size:90%"}
+```{r}
+table2
+```
+:::
+:::
+
+:::
+
+::::
+
+---
+
+## Tidy data
+
+#### Every variable is a column, every observation is a row, and every value is a cell
+
+```{r}
+table3
+```
+
+---
+
+## Tidy data
+
+#### Every variable is a column, every observation is a row, and every value is a cell
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+table4a
+```
+:::
+:::{.column width="50%}
+```{r}
+table4b
+```
+:::
+::::
+
+---
+
+## Tidy data
+
+* Think about tidy from a model perspective
+
+* Tidyverse assumes tidy data
+
+* Easier to analyze and plot tidy data
+
+* But sometimes easier to store non-tidy data
+
+
+<!-- --- -->
+
+<!-- ## Tidy data -->
+
+<!-- * But sometimes easier to store non-tidy data -->
+
+<!-- ::::{.columns} -->
+<!-- :::{.column width="50%} -->
+
+<!-- ::: {style="font-size:90%"} -->
+<!-- ```{r echo = FALSE} -->
+<!-- set.seed(20210514) -->
+<!-- hai_data1 <- tibble(id = rep(1:5, each = 2), age = rep(round(rnorm(5, 20, 1)), each = 2), pre_post = rep(c("Pre", "Post"), 5), nback = round(rnorm(10, 0, 1), 2)) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- hai_data1 -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- :::{.column width="50%} -->
+
+<!-- ::: {.fragment} -->
+<!-- ::: {style="font-size:90%"} -->
+<!-- ```{r echo = FALSE} -->
+<!-- hai_data2 <- tibble(id = rep(100:104, each = 2), age = rep(round(rnorm(5, 20, 1)), each = 2), pre_post = rep(c("Pre", "Post"), 5), nback = round(rnorm(10, 0, 1), 2), panas = round(rnorm(10, 2.5, 1), 2), span = round(rnorm(10, 6, 1.5))) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- hai_data2 -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- ::: -->
+<!-- :::: -->
+
+<!-- --- -->
+
+<!-- ## Tidy data -->
+
+<!-- * But sometimes easier to store non-tidy data -->
+
+<!-- .columns} -->
+<!-- :::{.column width="50%} -->
+
+<!-- ::: {style="font-size:90%"} -->
+<!-- ```{r echo = FALSE, message = FALSE} -->
+<!-- library(tidyverse) -->
+<!-- hai_data_combined <- bind_rows(hai_data1, hai_data2) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- hai_data_combined -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- :::{.column width="50%} -->
+
+<!-- ::: {.fragment} -->
+<!-- ::: {style="font-size:85%"} -->
+<!-- ```{r echo = FALSE} -->
+<!-- hai_data1_long <- pivot_longer(hai_data1, -c(id, age, pre_post), names_to = "measure", values_to = "response") -->
+<!-- hai_data2_long <- pivot_longer(hai_data2, -c(id, age, pre_post), names_to = "measure", values_to = "response") -->
+<!-- hai_data_combined_long <- bind_rows(hai_data1_long, hai_data2_long) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- head(hai_data_combined_long, 20) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- :::: -->
+
+
+# Pivoting data
+
+
+## Pivoting data
+
+![](../images/tidy_data.png){fig-align="center" width="50%"}
+
+
+---
+
+## Pivoting data
+
+![](../images/tidyr-pivoting.gif){.absolute width="55%" top="0%" left="50%"}
+
+:::{.aside}
+Source: [Garrick Aden-Buie](https://github.com/gadenbuie/tidyexplain)
+:::
+
+
+---
+
+## Wide data
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+table4a
+```
+:::
+:::{.column width="50%}
+#### Why is `table4a` not tidy?
+:::
+::::
+
+::: {.fragment}
+![](../images/tidyr_pivot_longer.png){.absolute width="90%" top="45%" left="5%"}
+:::
+
+---
+
+## Wide data
+
+#### Use `pivot_longer()`
+
+```{r}
+pivot_longer(table4a, cols = c(`1999`, `2000`), 
+             names_to = "year", values_to = "cases")
+```
+
+![](../images/tidyr_pivot_longer.png){.absolute width="60%" top="35%" left="45%"}
+
+
+---
+
+## Long data
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+::: {style="font-size:90%"}
+```{r}
+table2
+```
+:::
+
+:::
+
+::: {.column width="45%"}
+
+#### Why is `table2` not tidy?
+
+:::
+
+::::
+
+::: {.fragment}
+![](../images/tidyr_pivot_wider.png){.absolute width="60%" top="35%" left="55%"}
+:::
+
+---
+
+## Long data
+
+#### Use `pivot_wider()`
+
+```{r}
+pivot_wider(table2, id_cols = c("country", "year"), 
+            names_from = type, values_from = count)
+```
+
+![](../images/tidyr_pivot_wider.png){.absolute width="60%" top="35%" left="55%"}
+
+
+## Solving the problem
+
+What code turns `data1` into `data2`? And vice versa?
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+data1
+```
+:::
+:::{.column width="50%}
+```{r}
+data2
+```
+:::
+::::
+
+## Let's code!
+
+[Pivoting data](../code/15_pivoting.html){target="_blank"} [[Rmd](../code/15_pivoting.Rmd){target="_blank"}]

@@ -1,0 +1,53 @@
+---
+title: 'Working in RStudio'
+author:
+  - Jeff Stevens
+date: '2025-01-24'
+categories: 
+  - "module 1"
+  - "week 1"
+  - help
+  - reprex
+  - RStudio
+description: "Introduction to RStudio Integrated Development Environment"
+execute:
+  freeze: true
+draft: true
+---
+
+Let's figure out how to work in RStudio.
+
+## Learning objectives
+
+* Learn what the RStudio panels are used for, how to customize RStudio, and where to find keyboard shortcuts
+* Build a mental model of RStudio
+* Learn how to get help from R, RStudio, and online forums when you need help
+* Learn now to create a reproducible example
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Troubleshoot any installation issues (contact me)
+* Install [R packages needed for the course](../../resources.qmd#packages)
+* Read [RYWM 1](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/){target='_blank'}
+
+## Class meeting
+
+[[Slides](../../slides/02_rstudio.qmd){target="_blank"}]
+
+* Tour of RStudio
+* Mental model of RStudio
+* Options
+* Installing packages
+* Getting help
+* [Slides](../../slides/02_rstudio.qmd){target="_blank"} and [Code](../../code/02_rstudio.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_02_rstudio/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 3](https://r4ds.hadley.nz/workflow-basics.html){target='_blank'} and  [R4DS2 7.1 - 7.2](https://r4ds.hadley.nz/workflow-style.html){target='_blank'}

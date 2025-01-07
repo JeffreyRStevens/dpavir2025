@@ -1,0 +1,47 @@
+---
+title: 'Annotating plots'
+author:
+  - Jeff Stevens
+date: '2023-04-26'
+categories: 
+  - "module 9"
+  - "week 14"
+  - labels
+  - lines
+  - segments
+  - shapes
+  - text
+  - titles
+description: "Edit labels and titles and add text, lines, and shapes"
+execute:
+  freeze: auto
+draft: true
+---
+
+We will annotate plots with titles, subtitles, captions, and plot text. We'll also add lines and shapes to the plot area.
+
+## Learning objectives
+
+* Add titles, subtitles, and captions to plots
+* Adjust axes labels
+* Add custom and data-mapped text to plot area
+* Add diagonal, vertical, and horizontal lines, line segments, and shapes to plot area
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read Read [FDV 22.1 - 22.2](https://clauswilke.com/dataviz/figure-titles-captions.html){target='_blank'}, [R4DS2 13](https://r4ds.hadley.nz/communication.html){target='_blank'}
+
+## Class meeting
+
+* [Script](../../slides/37_annotating.R){target="_blank"} and [Code](../../code/37_annotating.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_37_annotating/){target='_blank'}
+
+### For next class meeting
+
+* Read [FDV 18](https://clauswilke.com/dataviz/overlapping-points.html){target='_blank'}, [20](https://clauswilke.com/dataviz/redundant-coding.html){target='_blank'}

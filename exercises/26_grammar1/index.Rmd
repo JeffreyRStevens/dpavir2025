@@ -1,0 +1,302 @@
+---
+title: "Grammar of graphics I"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Introduction
+
+### Set-up
+
+The `{ggplot2}` package is a core package in `{tidyverse}` that provides the foundation for plotting. There are many package extensions built on `{ggplot2}`, but we'll focus on the core package for now. 
+
+Let's go ahead and load the full `{tidyverse}` so we can use other packages, too. Also, we'll load `{palmerpenguins}` for the `penguins` data set.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Building plots
+
+###
+
+`{ggplot2}` is based on the notion of a grammar of graphics, which emphasizes seven components: data, coordinate systems, geometric objects, positions of geometric objects, mappings of aesthetics, statistical transformations, and facets. While each of these is needed to build a plot, several of them have implicit/default values that we don't need to worry about (e.g., a Cartesian coordinate system). The minimum elements that need to be included are data, a geometric object, and mappings of variables to axes. To do this, we use the `ggplot()` function (note the package is `{ggplot2}` but the function is `ggplot()`).
+
+### Creating a plot space
+
+Passing data to `ggplot()` generates a plot space but does not plot anything specific.
+
+```{r}
+ggplot(data = penguins)
+```
+
+### Mapping data to a plot space
+
+Without data columns, the plot space can't contain anything in particular. However, once you include data columns, ggplot can extract categories for factor/character variables and ranges for numeric data. This adds axes to the plot space but no data. After all, you haven't specified _how_ to represent the data on the plot. 
+
+```{r}
+ggplot(data = penguins, mapping = aes(x = species, y = body_mass_g))
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g))
+```
+
+Note these blank plots can be useful if you want to have a blank plot in a presentation before showing the actual plot. They're super easy to make in ggplot!
+
+### Plotting data
+
+Once we have data and variable columns, we just need to add a geometric object to generate an actual plot---in this case, a scatterplot of penguin body mass vs. flipper length.
+
+```{r point, echo = TRUE}
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+Notice the warning about two rows have NAs, so they are not plotted. We'll turn off the warning for the remaining plots, but it is good to pay attention to these warnings.
+
+### Piping data to plots
+
+We can pull out the data from the function and start a pipeline with it before piping to the plot function. Remember that pipes outside of ggplots use `|>` (or `%>%`) but once you start a ggplot, use `+` to connect commands. Also, we don't need the `mapping` argument in the ggplot and can go straight to `ggplot(aes(...))`.
+
+**Start a plot with the data and plot the bill length on the x axis and the bill depth on the y axis.**
+
+```{r exercise1, exercise = TRUE, warning = FALSE}
+penguins |> 
+...
+```
+
+```{r exercise1-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point()
+```
+
+### 
+To my knowledge, `{learnr}` cannot check if code entered for plots is correct. So going forward, I'll provide the correct plot, and you need to check if your plot matches it before continuing. Does the plot below match what you generated above? If so, continue. Otherwise, check your code and try again until you replicate this plot.
+
+```{r point2, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point()
+```
+
+### Processing data before plotting
+
+Because ggplots are part of the tidyverse, we can pipe other tidyverse commands into them. This is particularly useful if you want to filter your data for a plot but don't want to create a new object with the filtered data. Remember the rules of piping: once you include your data once, you shouldn't include it again.
+
+**In a single pipeline, filter the `penguins` data to remove observations of the chinstrap penguins, then plot the bill length by bill depth as shown above.**
+
+```{r exercise2, exercise = TRUE, warning = FALSE}
+penguins |> 
+...
+```
+
+```{r exercise2-solution}
+penguins |> 
+  filter(species != "Chinstrap") |> 
+  ggplot(aes(bill_length_mm, bill_depth_mm)) +
+  geom_point()
+```
+
+### 
+
+```{r filter, warning = FALSE}
+penguins |> 
+  filter(species != "Chinstrap") |> 
+  ggplot(aes(bill_length_mm, bill_depth_mm)) +
+  geom_point()
+```
+
+## Geometric objects
+
+### 
+
+There are a number of ways to plot data. That is, there are a number of different geometric objects that you can use to represent data in a plot. So far, we've plotted points with `geom_point()`. Here's our scatterplot of flipper length and body mass again.
+
+```{r warning = FALSE}
+penguins |> 
+ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+###
+
+But what if we don't want the actual points but rather a summary of the data---like a linear regression line? We just need to switch out the geom to `geom_smooth()`.
+
+```{r warning = FALSE}
+penguins |> 
+ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_smooth()
+```
+
+###
+
+Shoot! We got a line, but this is a polynomial regression (LOESS---locally estimated scatterplot smoothing) that smooths over the data. To get a linear regression, we need to specify the `method` argument to be `"lm"` for linear model.
+
+```{r warning = FALSE, message = FALSE}
+penguins |> 
+ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_smooth(method = "lm")
+```
+
+###
+
+Trying our other plot:
+
+```{r warning = FALSE}
+penguins |> 
+ggplot(aes(x = species, y = body_mass_g)) +
+  geom_point()
+```
+
+This isn't a great plot because the data overlap a lot, and we can't really see what's going on too much.
+
+###
+
+An alternative would be to make a boxplot or violin plot. Here, we'll try a violin plot with `geom_violin()`.
+
+```{r warning = FALSE}
+penguins |> 
+ggplot(aes(x = species, y = body_mass_g)) +
+  geom_violin()
+```
+
+This shows the distribution of the data better.
+
+###
+
+Now make a boxplot instead of a violin plot.
+
+```{r exercise3, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = body_mass_g)) +
+  ...
+```
+
+```{r exercise3-solution}
+penguins |> 
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+```
+
+###
+
+Does yours match this?
+
+```{r warning = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+```
+
+
+### Multiple geometric objects
+
+We can include multiple geometric objects in our plots, and the order that they are produced in the plot depends on the order that we present them in our code. Let's plot the points for bill length and depth then overlay a regression line.
+
+```{r point-smooth, echo = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+###
+
+Notice that there are some data points that are visibly underneath the regression line. 
+
+**Now reverse the order the geoms to plot the regression line first.**
+
+```{r exercise5, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+...
+```
+
+```{r exercise5-solution}
+penguins |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_smooth(method = "lm") +
+  geom_point()
+```
+
+###
+
+Do the points cover up the line now?
+
+```{r smooth-point, warning = FALSE, message = FALSE}
+penguins |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_smooth(method = "lm") +
+  geom_point()
+```
+
+###
+
+Now plot the penguin body mass data for each species, first with a violin plot then with the data points overlaid.
+
+```{r exercise6, exercise = TRUE, warning = FALSE, message = FALSE}
+penguins |> 
+...
+```
+
+```{r exercise6-solution}
+penguins |> 
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_violin() +
+  geom_point()
+```
+
+###
+
+Does yours match?
+```{r warning = FALSE}
+penguins |> 
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_violin() +
+  geom_point()
+```
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 28
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

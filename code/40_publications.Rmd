@@ -1,0 +1,50 @@
+---
+title: "Publications"
+author: "Jeffrey R. Stevens"
+date: "2023-05-05"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, create a data frame called `mpg46` that only includes 4 and 6 cylinder cars. Conduct a t-test that compares highway fuel efficiency between the 4 and 6 cylinder cars and save the output as `mpg_ttest`.
+
+```{r}
+# >
+```
+
+
+2. Load `{papaja}` and use the `apa_print()` function to extract the mean difference between cylinder numbers and the 95% confidence interval from `mpg_ttest`.
+```{r}
+# >
+```
+
+
+3. Extract the t-statistic and p-value for `mpg_ttest`.
+
+```{r}
+# >
+```
+
+
+4. Extract the mean difference, 95% CI, t-statistic, and p-value in one string.
+
+```{r}
+# >
+```
+
+
+5. Use `printp()` to format 0.0000001 as a p-value in APA format.
+
+```{r}
+# >
+```
+
+
+6. Dropping the leading zero is silly. Use `printnum()` to return the same output as #5 but include the leading zero.
+
+```{r}
+# >
+```
+

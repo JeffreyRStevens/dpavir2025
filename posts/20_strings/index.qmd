@@ -1,0 +1,50 @@
+---
+title: 'Strings'
+author:
+  - Jeff Stevens
+date: '2023-03-08'
+categories: 
+  - "module 5"
+  - "week 7"
+  - characters
+  - paste
+  - strings
+description: "Work with character strings"
+execute:
+  freeze: true
+draft: true
+---
+
+We'll use the {stringr} package to extract and combine character strings.
+
+## Learning objectives
+
+* Learn the basics of working with strings
+* Combine strings with output
+
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 15](https://r4ds.hadley.nz/strings.html){target='_blank'}
+
+## Class meeting
+
+* Useful character vectors
+* Quotes and escaping
+* String length
+* Combine two or more strings
+* Extracting strings
+* Changing case
+* Combining strings with output
+* [Slides](../../slides/20_strings.qmd){target="_blank"} and [Code](../../code/20_strings.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_20_strings/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 16](https://r4ds.hadley.nz/regexps.html){target='_blank'}

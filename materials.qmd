@@ -1,0 +1,170 @@
+---
+title: "Readings, slides, code, exercises"
+execute:
+  freeze: auto
+---
+
+<details open>
+
+<summary> Module 1: R basics </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| [Getting started with R](https://canvas.unl.edu/courses/149637/files/folder/presentations?preview=14236447) | Before 2025-01-22 | [SIDS 1](https://moderndive.netlify.app/1-getting-started.html){target='_blank'} <br>  [Wickham 2020](https://tidyverse.tidyverse.org/articles/manifesto.html){target='_blank'}  | [Slides](slides/00_getting_started.qmd){target="_blank"} | None | None |
+| Introduction | 2025-01-22 | [R4DS2 1](https://r4ds.hadley.nz/intro.html){target='_blank'} | [Slides](slides/01_introduction.qmd){target="_blank"} | [Code](code/01_introduction.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/01_introduction/){target="_blank"} |
+| Working with RStudio | 2025-01-24 | [RYWM 1](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/){target='_blank'} | [Slides](slides/02_rstudio.qmd){target="_blank"} | [Code](code/02_rstudio.qmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/02_rstudio/){target="_blank"} |
+| Coding basics | 2025-01-27 | [R4DS2 3](https://r4ds.hadley.nz/workflow-basics.html){target='_blank'} <BR> [7.1 - 7.2](https://r4ds.hadley.nz/workflow-style.html){target='_blank'} | [Slides](slides/03_coding.qmd){target="_blank"} | [Code](code/03_coding.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/03_coding/){target="_blank"} |
+| Workflows | 2025-01-29 | [R4DS2 9](https://r4ds.hadley.nz/workflow-scripts.html){target='_blank'} | [Slides](slides/04_workflows.qmd){target="_blank"} | None | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/04_workflows/){target="_blank"} |
+| Literate programming | 2025-01-31 | [R Markdown](https://rmarkdown.rstudio.com/articles_intro.html) <BR> [Markdown tutorial](https://commonmark.org/help/tutorial/){target='_blank'} | [Slides](slides/05_rmarkdown.qmd){target="_blank"} | [Code](code/05_rmarkdown.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/05_rmarkdown/){target="_blank"} |
+
+</details>
+
+<details>
+
+<summary> Module 2: Working with data </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Data types | 2025-02-03 | [R4DS1 20](https://r4ds.had.co.nz/vectors.html){target='_blank'} | [Slides](slides/06_datatypes.qmd){target="_blank"} | [Code](code/06_datatypes.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/06_datatypes){target="_blank"} |
+| Data structures | 2025-02-05 | [PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/){target='_blank'} | [Slides](slides/07_datastructures.qmd){target="_blank"} | [Code](code/07_datastructures.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/07_datastructures){target="_blank"} |
+| Importing data | 2025-02-07 | [R4DS2 22](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'} | [Slides](slides/08_importing.qmd){target="_blank"} | [Code](code/08_importing.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/08_importing){target="_blank"} |
+| Validating data | 2025-02-10 | [Wikipedia](https://en.wikipedia.org/wiki/Data_validation){target='_blank'} | [Slides](slides/09_validating.qmd){target="_blank"} | [Code](code/09_validating.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/09_validating){target="_blank"} |
+
+</details>
+
+<details>
+
+<summary> Module 3: Cleaning and wrangling data </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Selecting columns | 2025-02-12 | [R4DS2 4.3.2 - 4.3.4](https://r4ds.hadley.nz/data-transform.html#sec-select){target='_blank'} | [Slides](slides/10_selecting.qmd){target="_blank"} | [Code](code/10_selecting.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/10_selecting){target="_blank"} |
+| Mutating columns | 2025-02-14 | [R4DS2 4.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'} | [Slides](slides/11_mutating.qmd){target="_blank"} | [Code](code/11_mutating.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/11_mutating){target="_blank"} |
+| Piping commands | 2025-02-17 | [R4DS2 5](https://r4ds.hadley.nz/workflow-pipes.html){target='_blank'} | [Slides](slides/12_piping.qmd){target="_blank"} | [Code](code/12_piping.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/12_piping){target="_blank"} |
+| Filtering rows | 2025-02-19 | [R4DS2 4.2](https://r4ds.hadley.nz/data-transform.html#filter){target='_blank'} | [Slides](slides/13_filtering.qmd){target="_blank"} | [Code](code/13_filtering.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/13_filtering){target="_blank"} |
+| Summarizing rows | 2025-02-21 | [R4DS2 4.4](https://r4ds.hadley.nz/data-transform.html#groups){target='_blank'} | [Slides](slides/14_summarizing.qmd){target="_blank"} | [Code](code/14_summarizing.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/14_summarizing){target="_blank"} |
+
+ </details>
+
+<details>
+
+<summary> Module 4: Tidy data </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Pivoting data | 2023-02-24 | [R4DS2 6](https://r4ds.hadley.nz/data-tidy.html){target='_blank'} | [Slides](slides/15_pivoting.qmd){target="_blank"} | [Code](code/15_pivoting.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/15_pivoting){target="_blank"} |
+| Separating data | 2025-02-26 | [R4DS1 12.4 - 12.5](https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting){target='_blank'} | [Slides](slides/16_separating.qmd){target="_blank"} | [Code](code/16_separating.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/16_separating){target="_blank"} |
+| Merging columns | 2025-02-28 | [R4DS2 21.1 - 21.3.2](https://r4ds.hadley.nz/joins.html){target='_blank'} | [Slides](slides/17_mergingcolumns.qmd){target="_blank"} | [Code](code/17_mergingcolumns.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/17_mergingcolumns){target="_blank"} |
+| Merging rows | 2025-03-03 | [R4DS2 21.3.3 - 21.5](https://r4ds.hadley.nz/joins.html#filtering-joins){target='_blank'} | [Slides](slides/18_mergingrows.qmd){target="_blank"} | [Code](code/18_mergingrows.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/18_mergingrows){target="_blank"} |
+
+</details>
+
+<details>
+
+<summary> Module 5: Transforming data values </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Numbers | 2025-03-05 | [R4DS2 14](https://r4ds.hadley.nz/numbers.html){target='_blank'} | [Slides](slides/19_numbers.qmd){target="_blank"} | [Code](code/19_numbers.Rmd){target="_blank"} | None |
+| Strings | 2025-03-07 | [R4DS2 15](https://r4ds.hadley.nz/strings.html){target='_blank'} | [Slides](slides/20_strings.qmd){target="_blank"} | [Code](code/20_strings.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/20_strings){target="_blank"} |
+| Matching patterns | 2025-03-10 | [R4DS2 16](https://r4ds.hadley.nz/regexps.html){target='_blank'} | [Slides](slides/21_patterns.qmd){target="_blank"} | [Code](code/21_patterns.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/21_patterns){target="_blank"} |
+| Factors | 2025-03-12 | [R4DS2 17](https://r4ds.hadley.nz/factors.html){target='_blank'} | [Slides](slides/22_factors.qmd){target="_blank"} | [Code](code/22_factors.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/22_factors){target="_blank"} |
+| Dates and times | 2025-03-14 | [R4DS2 18](https://r4ds.hadley.nz/datetimes.html){target='_blank'} | [Slides](slides/23_dates.qmd){target="_blank"} | [Code](code/23_dates.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/23_dates){target="_blank"} |
+
+</details>
+
+<details>
+
+<summary> Module 6: Programming </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Functions | 2025-03-24 | [R4DS1 19](https://r4ds.had.co.nz/functions.html){target='_blank'} | [Slides](slides/24_functions.qmd){target="_blank"} | [Code](code/24_functions.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/24_functions){target="_blank"} |
+| Iteration | 2025-03-26 | [R4DS2 27](https://r4ds.hadley.nz/iteration.html){target='_blank'} | [Slides](slides/25_iteration.qmd){target="_blank"} | [Code](code/25_iteration.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/25_iteration){target="_blank"} |
+
+</details>
+
+<details>
+
+<summary> Module 7: Grammar of graphics </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Grammar of graphics I | 2025-03-28 | [R4DS2 2](https://r4ds.hadley.nz/data-visualize.html){target='_blank'} <BR> [11](https://r4ds.hadley.nz/layers.html){target='_blank'} | [Slides](slides/26_grammar1.qmd){target="_blank"} | [Code](code/26_grammar1.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/26_grammar1){target="_blank"} |
+| Grammar of graphics II | 2025-03-31 | [FDV 1](https://clauswilke.com/dataviz/introduction.html){target='_blank'}, [2](https://clauswilke.com/dataviz/aesthetic-mapping.html){target='_blank'} <BR> [3](https://clauswilke.com/dataviz/coordinate-systems-axes.html){target='_blank'} | [Slides](slides/27_grammar2.qmd){target="_blank"} | [Code](code/27_grammar2.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/27_grammar2){target="_blank"} |
+| Design and themes | 2025-04-02 | [FDV 17](https://clauswilke.com/dataviz/proportional-ink.html){target='_blank'}, [25](https://clauswilke.com/dataviz/avoid-line-drawings.html){target='_blank'}, [26](https://clauswilke.com/dataviz/no-3d.html){target='_blank'}, [29](https://clauswilke.com/dataviz/telling-a-story.html){target='_blank'} | [Slides](slides/28_themes.qmd){target="_blank"}, [Script](slides/28_themes.R){target="_blank"} | [Code](code/28_themes.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/28_themes){target="_blank"} |
+| Color | 2025-04-04 | [FDV 4](https://clauswilke.com/dataviz/color-basics.html){target='_blank'}, [19](https://clauswilke.com/dataviz/color-pitfalls.html){target='_blank'} <BR> [Cookbook for R](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){target='_blank'} | [Slides](slides/29_color.qmd){target="_blank"} | [Code](code/29_color.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/29_color){target="_blank"} |
+
+</details>
+
+
+<details>
+
+<summary> Module 8: Plotting data </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Plotting distributions: histograms | 2025-04-07 | [FDV 7](https://clauswilke.com/dataviz/histograms-density-plots.html){target='_blank'} | [Script](slides/30_histograms.R){target="_blank"} | [Code](code/30_histograms.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/30_histograms){target="_blank"} |
+| Plotting distributions: boxplots | 2025-04-09 | [FDV 9](https://clauswilke.com/dataviz/boxplots-violins.html){target='_blank'} | [Script](slides/31_boxplots.R){target="_blank"} | [Code](code/31_boxplots.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/31_boxplots){target="_blank"} |
+| Plotting amounts: bar charts | 2025-04-11 | [FDV 6](https://clauswilke.com/dataviz/visualizing-amounts.html){target='_blank'} | [Script](slides/32_barcharts.R){target="_blank"} | [Code](code/32_barcharts.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/32_barcharts){target="_blank"} |
+| Plotting x-y data: associations | 2025-04-14 | [FDV 12](https://clauswilke.com/dataviz/visualizing-associations.html){target='_blank'} | [Script](slides/33_associations.R){target="_blank"} | [Code](code/33_associations.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/33_associations){target="_blank"} |
+| Plotting x-y data: time series | 2025-04-16 | [FDV 13](https://clauswilke.com/dataviz/time-series.html){target='_blank'}, [14](https://clauswilke.com/dataviz/visualizing-trends.html){target='_blank'} | [Script](slides/34_timeseries.R){target="_blank"} | [Code](code/34_timeseries.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/34_timeseries){target="_blank"} |
+| Plotting x-y data: categories | 2025-04-18 | [Raincloud Plots](https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/) | [Script](slides/35_categories.R){target="_blank"} | [Code](code/35_categories.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/35_categories){target="_blank"} |
+
+</details>
+
+
+
+<details>
+
+<summary> Module 9: Customizing plots </summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Adjusting axes | 2025-04-21 | [FDV 21](https://clauswilke.com/dataviz/multi-panel-figures.html){target='_blank'}, [24](https://clauswilke.com/dataviz/small-axis-labels.html){target='_blank'} | [Script](slides/36_axes.R){target="_blank"} | [Code](code/36_axes.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/36_axes){target="_blank"} |
+| Annotating plots | 2025-04-23 | [FDV 22.1 - 22.2](https://clauswilke.com/dataviz/figure-titles-captions.html){target='_blank'}, [R4DS2 13](https://r4ds.hadley.nz/communication.html){target='_blank'} | [Script](slides/37_annotating.R){target="_blank"} | [Code](code/37_annotating.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/37_annotating){target="_blank"} |
+| Dealing with overlap | 2025-04-25 | [FDV 18](https://clauswilke.com/dataviz/overlapping-points.html){target='_blank'}, [20](https://clauswilke.com/dataviz/redundant-coding.html){target='_blank'} | [Script](slides/38_overplotting.R){target="_blank"} |  | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/38_overplotting){target="_blank"} |
+| Plotting challenge | 2023-05-01 |  | [Code](code/plot_challenge.Rmd){target="_blank"} |  |
+
+</details>
+
+
+<details>
+
+<summary> Module 10:  Tables, documents, and presentations</summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Tables | 2025-04-28 | [FDV 22.3](https://clauswilke.com/dataviz/figure-titles-captions.html#tables){target='_blank'} <BR> [RMC 10.1](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html){target='_blank'} | [Slides](slides/39_tables.Rmd){target="_blank"} | [Code](code/39_tables.Rmd){target="_blank"} |  |
+| Publications | 2025-05-02 | [papaja manual 1](https://frederikaust.com/papaja_man/introduction.html){target='_blank'} | [Slides](slides/40_publications.qmd){target="_blank"} | [Code](code/40_publications.Rmd){target="_blank"} |  |
+| Advanced R Markdown | 2025-05-05 | [R4DS2 30](https://r4ds.hadley.nz/quarto.html){target='_blank'} | [Slides](slides/41_advrmarkdown.qmd){target="_blank"} |  |  |
+
+</details>
+
+<details>
+
+<summary> Module 11:  Statistics</summary>
+
+| Topic | Date | Readings | Slides | Code | Exercises |
+|---------------|--------|--------|---------|------|-----------|
+| Statistics I | 2025-05-07 |  |  |  |  |
+| Statistics II | 2025-05-09 |  |  |  |  |
+
+</details>
+
+FDV = [Fundamentals of Data Visualization](https://clauswilke.com/dataviz), R4DS1 = [R for Data Science 1st edition](https://r4ds.had.co.nz/), R4DS1 = [R for Data Science 2nd edition](https://r4ds.hadley.nz/), PWR = [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/), RMC = [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook), RYWM = [RYouWithMe](https://rladiessydney.org/courses/ryouwithme/), SIDS = [Statistical Inference via Data Science](https://moderndive.netlify.app/)
+
+<!-- <details> -->
+
+<!-- <summary> Module :  </summary> -->
+
+<!-- | Topic | Date | Readings | Slides | Code | Exercises | -->
+<!-- |---------------|--------|--------|---------|------|-----------| -->
+<!-- | Topic | 2023-??-?? |  | [Slides](slides/.qmd){target="_blank"} | [Code](code/.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/){target="_blank"} | -->
+<!-- | Topic | 2023-??-?? |  | [Slides](slides/.qmd){target="_blank"} | [Code](code/.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/){target="_blank"} | -->
+<!-- | Topic | 2023-??-?? |  | [Slides](slides/.qmd){target="_blank"} | [Code](code/.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/){target="_blank"} | -->
+<!-- | Topic | 2023-??-?? |  | [Slides](slides/.qmd){target="_blank"} | [Code](code/.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/){target="_blank"} | -->
+<!-- | Topic | 2023-??-?? |  | [Slides](slides/.qmd){target="_blank"} | [Code](code/.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/){target="_blank"} | -->
+
+<!-- </details> -->
+

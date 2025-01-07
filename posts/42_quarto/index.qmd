@@ -1,0 +1,42 @@
+---
+title: 'Quarto'
+author:
+  - Jeff Stevens
+date: '2023-05-10'
+categories: 
+  - "module 10"
+  - "week 16"
+  - presentations
+  - Quarto
+  - websites
+description: "Advance to the next level with Quarto"
+execute:
+  freeze: auto
+draft: true
+---
+
+You can do a lot with R Markdown, and [it will stick around](https://yihui.org/en/2022/04/quarto-r-markdown/). But the future of document preparation for R users is [Quarto](https://quarto.org/).
+
+## Learning objectives
+
+* Customized code chunk output
+* Control figure size, scale, captions
+* Cross-reference figures, tables, and sections
+* Insert citations to automatically generate formatted bibliographies
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Install [Quarto](https://quarto.org/docs/get-started/)
+* Read [Quarto demo slides](https://quarto.org/docs/presentations/revealjs/demo/#/title-slide)
+
+## Class meeting
+
+* [Slides](../../slides/42_quarto.qmd){target="_blank"}
+
+## Homework after the class meeting
+
+### For next class meeting
+
+Nothing!

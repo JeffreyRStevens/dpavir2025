@@ -1,0 +1,398 @@
+---
+title: "Grammar of graphics II"
+author: "Jeff Stevens"
+date: "2023-04-03"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Introduction
+
+
+## Set-up
+
+```{r}
+library(tidyverse)
+```
+
+
+## Seven components/layers of ggplots
+* Data
+* Mappings -- maps data to properties of geom
+* Geom -- represents data
+* Stat -- transforms data
+* Position -- control placement of data on coordinate
+* Facet -- split graph into subplots
+* Coordinate -- places data in coordinate system
+
+
+# Aesthetics
+
+## Map data to visual properties
+
+![](../images/ggplot2_simplified.png){fig-align="center"}
+
+
+## Map data columns to plot
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point()
+```
+
+
+## Size
+
+:::: {.columns}
+
+:::{.column size="50%"}
+Map data to aesthetic
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, size = cty)) +
+  geom_point()
+```
+:::
+
+:::{.column size="50%"}
+
+::: {.fragment}
+Apply to all points
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point(size = 0.5)
+```
+:::
+
+:::
+::::
+
+
+## Transparency
+
+:::: {.columns}
+
+:::{.column size="50%"}
+Map data to aesthetic
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, alpha = cty)) +
+  geom_point()
+```
+:::
+
+:::{.column size="50%"}
+
+::: {.fragment}
+Apply to all points
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point(alpha = 0.25)
+```
+:::
+
+:::
+::::
+
+
+## Shape
+
+:::: {.columns}
+
+:::{.column size="50%"}
+Map data to aesthetic
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, shape = class)) +
+  geom_point()
+```
+:::
+
+:::{.column size="50%"}
+
+::: {.fragment}
+Apply to all points
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point(shape = 5)
+```
+:::
+
+:::
+::::
+
+
+## Shapes
+
+<!-- Tattoo to forearm -->
+
+![](../images/r_point_symbols.png){fig-align="center"}
+
+
+## Color
+
+:::: {.columns}
+
+:::{.column size="50%"}
+Map data to aesthetic
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, color = class)) +
+  geom_point()
+```
+:::
+
+:::{.column size="50%"}
+
+::: {.fragment}
+Apply to all points
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point(color = "dodgerblue")
+```
+:::
+
+:::
+::::
+
+
+## Color
+
+What happens if we put it in the aesthetic?
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, color = "dodgerblue")) +
+  geom_point()
+```
+
+## Color: points, lines, text, and borders
+
+:::: {.columns}
+
+:::{.column size="50%"}
+Map data to aesthetic
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = class, color = class)) +
+  geom_bar(show.legend = FALSE, linewidth = 2)
+```
+:::
+
+:::{.column size="50%"}
+
+::: {.fragment}
+Apply to everything
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = class)) +
+  geom_bar(color = "blue", linewidth = 2)
+```
+:::
+
+:::
+::::
+
+
+## Fill: filled areas
+
+:::: {.columns}
+
+:::{.column size="50%"}
+Map data to aesthetic
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400, fig.align = "center"}
+mpg |>
+  ggplot(aes(x = class, fill = class)) +
+  geom_bar(show.legend = FALSE)
+```
+:::
+:::{.column size="50%"}
+
+::: {.fragment}
+Apply to everything
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+mpg |>
+  ggplot(aes(x = class)) +
+  geom_bar(fill = "blue")
+```
+:::
+
+:::
+::::
+
+
+## Lines 
+
+Separated by groups
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, group = drv)) +
+  geom_smooth()
+```
+
+## Linetype
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, linetype = drv)) +
+  geom_smooth()
+```
+
+## Apply line aesthetics to groups
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, color = drv)) +
+  geom_smooth(show.legend = FALSE)
+```
+
+<!-- ## We can specify geom-specific aesthetics like only to lines -->
+<!-- ```{r fig.align = "center"} -->
+<!-- mpg |> -->
+<!--   ggplot(aes(x = displ, y = hwy)) + -->
+<!--   geom_point() + -->
+<!--   geom_smooth(aes(linetype = drv)) -->
+<!-- ``` -->
+
+## Apply aesthetics to one geom
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth()
+```
+
+## Apply aesthetics differently to geoms
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, color = drv)) +
+  geom_point() +
+  geom_smooth(aes(linetype = drv))
+```
+
+## Bands have aesthetics, too
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point() +
+  geom_smooth(aes(color = drv, fill = drv))
+```
+
+
+
+# Statistical transformations
+
+## Statistical transformations
+
+* ggplot can calculate statistics on the fly
+* many geoms have underlying statistical transformation
+```{r}
+diamonds
+```
+
+
+## Bar plots 
+
+Count observations of variable types with `stat_count()`
+```{r fig.align = "center"}
+diamonds |>
+  ggplot(aes(x = cut)) +
+  geom_bar()
+```
+
+
+## Summarize data 
+
+:::: {.columns}
+
+:::{.column size="50%"}
+`stat_summary()`
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+diamonds |>
+  ggplot(aes(x = cut, y = depth)) +
+  geom_point()
+```
+:::
+
+:::{.column size="50%"}
+
+::: {.fragment}
+Plot mean and standard error
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400, fig.align = "center"}
+diamonds |>
+  ggplot(aes(x = cut, y = depth)) +
+  stat_summary()
+```
+:::
+
+:::
+::::
+
+
+## Summarize data 
+
+:::: {.columns}
+
+:::{.column size="50%"}
+Plot mean and 95% CI
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400, fig.align = "center"}
+diamonds |>
+  ggplot(aes(x = cut, y = depth)) +
+  stat_summary(fun.data = mean_cl_normal)
+```
+:::
+
+:::{.column size="50%"}
+
+::: {.fragment}
+Plot median and range
+```{r fig.width = 5, fig.height = 4, out.width = 500, out.height = 400,  fig.align = "center"}
+diamonds |>
+  ggplot(aes(x = cut, y = depth)) +
+  stat_summary(fun.min = min, fun.max = max, fun = median)
+```
+:::
+
+:::
+::::
+
+
+
+# Facets
+
+## Facets
+
+Coloring by group difficult to visualize with many groups
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy, color = class)) +
+  geom_point()
+```
+
+## Facet
+
+Pulls out groups into separate panels
+```{r fig.align = "center"}
+mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_wrap(~ class)
+```
+
+
+## Let's code!
+
+[Grammar of graphics II](../code/27_grammar2.html){target="_blank"} [[Rmd](../code/27_grammar2.Rmd){target="_blank"}]

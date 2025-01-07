@@ -1,0 +1,195 @@
+---
+title: "Coding basics"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(devtools)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Terminology
+
+Understanding the terminology used when coding in R will help you communicate with other R users and ask better questions when seeking help.
+
+Answer the following questions about this code:
+
+`mydata <- readr::read_csv(file = "data/mydata.csv")`
+
+```{r terminology}
+quiz(
+  question("Which is the function name?",
+           answer("`read_csv`", correct = TRUE),
+           answer("`readr`", message = "Words before `::` refer to the package name."),
+           answer("`file`", message = "This is the argument name."),
+           answer("`data/mydata.csv`", message = "This is the argument value."),
+           answer("`mydata`", message = "This is the object that the data are assigned to."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+  question("Which is the argument value?",
+           answer("`read_csv`", message = "This is the function value."),
+           answer("`readr`", message = "Words before `::` refer to the package name."),
+           answer("`file`", message = "This is the argument name."),
+           answer("`data/mydata.csv`", correct = TRUE),
+           answer("`mydata`", message = "This is the object that the data are assigned to."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+  question("Which is the package name?",
+           answer("`read_csv`", message = "This is the function value."),
+           answer("`readr`", correct = TRUE),
+           answer("`file`", message = "This is the argument name."),
+           answer("`data/mydata.csv`", message = "This is the argument value."),
+           answer("`mydata`", message = "This is the object that the data are assigned to."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+  question("Which is the object?",
+           answer("`read_csv`", message = "This is the function value."),
+           answer("`mydata`", correct = TRUE),
+           answer("`readr`", message = "Words before `::` refer to the package name."),
+           answer("`file`", message = "This is the argument name."),
+           answer("`data/mydata.csv`", message = "This is the argument value."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+  question("Which is the argument name?",
+           answer("`read_csv`", message = "This is the function value."),
+           answer("`readr`", message = "Words before `::` refer to the package name."),
+           answer("`file`", correct = TRUE),
+           answer("`data/mydata.csv`", message = "This is the argument value."),
+           answer("`mydata`", message = "This is the object that the data are assigned to."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  )
+)
+```
+
+
+## Assignment
+
+Most of your coding in R will involve assigning values or output from functions to an object.
+
+
+```{r assignment}
+quiz(
+  question("Which is the preferred method to assign a value to an object?",
+           answer("`x <- 9`", correct = TRUE),
+           answer("`x = 9`", message = "This can be confused with argument definition."),
+           answer("`x == 9`", message = "This is the syntax for a conditional equals."),
+           answer("`9 -> x`", message = "This is backwards."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+  question("Which method is preferred for assigning the same value to multiple objects?",
+           answer("`a <- b <- c <- NA`", correct = TRUE),
+           answer("`a <- NA, b <- NA, c <- NA`"),
+           answer("`a <- NA; b <- NA; c <- NA`"),
+           answer("`NA -> c -> b -> a`"),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  )
+)
+```
+
+
+## Coding style
+
+R is a flexible language with different ways of coding the same thing. While coding *style* is a matter of preference, some techniques can make your code more readable (especially to your instructor!).
+
+```{r coding-style}
+question("Which uses the preferred coding style?",
+         answer("`sum(mydata, na.rm = TRUE) / 5`", correct = TRUE),
+         answer("`sum(mydata,na.rm=TRUE)/5`", message = "This needs more space."),
+         answer("`sum(mydata, na.rm = T) / 5`", message = "Avoid abbreviating TRUE."),
+         answer("`sum (mydata, na.rm = TRUE) / 5`", message = "Don't put a space after fucntions."),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
+
+## Naming things
+
+How you name objects, columns, files, and directories is also a preference, but there are best practices that make these things more human readable, machine readable, searchable, and sortable.
+
+### 
+
+```{r naming}
+quiz(
+  question("Which is an example of snake case?",
+           answer("`my_data`", correct = TRUE),
+           answer("`MyData`", message = "This is upper camel case."),
+           answer("`myData`", message = "This is camel case."),
+           answer("`MY_DATA`", message = "This is screaming snake case."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+  question("Which is a preferred name for an object that contains the t-test results for data from experiment 1?",
+           answer("`expt1_ttest`", correct = TRUE),
+           answer("`e1t`", message = "Not descriptive enough."),
+           answer("`the_ttest_used_on_my_experiment_1_data`", message = "Waaaaaay too descriptive."),
+           answer("`ttestforexpt1`", message = "Too cramped. Needs to separate words."),
+           answer("`Experiment1TTest`", message = "Avoid upper case."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+    question("Why should you avoid have both `foo.R` and `Foo.R` files in the same directory?",
+           answer("Not all operating systems can tell the difference", correct = TRUE),
+           answer("They have redundant content"),
+           answer("No one should have two foos"),
+           answer("What the heck is a foo?"),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  ),
+    question("Which is in the ISO 8601 standard date format?",
+           answer("2021-04-07", correct = TRUE),
+           answer("04-07-2021"),
+           answer("07-04-2021"),
+           answer("07-Apr-2021"),
+           answer("Apr. 7, 2021"),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
+  )
+)
+```
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 7
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete
+
+Copy that code into Canvas, and you're all set for this tutorial.

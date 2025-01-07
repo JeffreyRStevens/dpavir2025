@@ -1,0 +1,49 @@
+---
+title: 'Factors'
+author:
+  - Jeff Stevens
+date: '2023-03-20'
+categories: 
+  - "module 5"
+  - "week 9"
+  - collapse
+  - factors
+  - labels
+  - levels
+  - recode
+description: "Work with categorical variables (factors)"
+execute:
+  freeze: auto
+draft: true
+---
+
+We often work with categorical variables, and R coerces them into a special data type called a factor. Factors are augmented integers with levels and labels.
+
+## Learning objectives
+
+* Check levels of factors
+* Reorder factor levels
+* Recode factor labels
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 17](https://r4ds.hadley.nz/factors.html){target='_blank'}
+
+## Class meeting
+
+* Creating factors and checking levels
+* Reordering levels in order of frequency, presence in the vector, or reverse order
+* Recoding factor labels
+* Collapseing and lumping factor labels
+* [Slides](../../slides/22_factors.qmd){target="_blank"} and [Code](../../code/22_factors.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_22_factors/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 18](https://r4ds.hadley.nz/datetimes.html){target='_blank'}

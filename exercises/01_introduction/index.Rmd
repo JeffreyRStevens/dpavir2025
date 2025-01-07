@@ -1,0 +1,124 @@
+---
+title: "Introduction to R"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(devtools)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Welcome
+
+### Welcome to your first R tutorial! 
+
+These tutorials will review information about R content for class meetings and provide exercises for you to practice coding and demonstrate your knowledge. 
+
+The tutorials are set to require completion of an exercise before continuing to the next exercise. <!-- Your progress is automatically saved, so if you want to close your browser and/or RStudio and complete your exercises later, you should be able to start where you left off (but no promises!).--> Also, if you want to clear your answers and start over, click the Start Over link below the topic menu to the left. 
+
+### Reminders
+The last exercise for each tutorial will provide the text that you need to submit to Canvas to get credit for completing the exercises. So don't forget to copy that text over to Canvas each time.
+
+If you find any typos or bugs, let Jeff know. If you have other questions or suggestions, please email Jeff through Canvas.
+
+I hope you enjoy your first tutorial!
+
+## Packages
+
+### Installing packages from CRAN
+
+Installing packages from CRAN is super easy with RStudio, but it is helpful to know how to do it from the R console. 
+
+```{r cran_package_install}
+question("Which function do we use to install packages from CRAN?",
+         answer("`install.package()`", message = "Remember that this function allows you to install multiple packages simultaneously."),
+         answer("`installed.packages()`", message = "This function returns the packages already installed on your computer."),
+         answer("`install.packages()`", correct = TRUE),
+         answer("`install_package()`", message = "The correct function does not include an underscore."),
+         allow_retry = TRUE
+)
+```
+
+
+### Installing packages from GitHub
+
+Installing from sources other than CRAN can be a little bit trickier. It is common, for example, for packages to be published on GitHub before they are available on CRAN. The `{devtools}` package has a `install_github()` function that easily installs packages from GitHub with just the user name and package name. 
+
+<!-- Without loading the `{devtools}` package, type in the code that would use the `install_github()` function to install `"rstudio/learnr"`.  -->
+
+```{r install_github}
+question_text(
+  'Without loading the `{devtools}` package, type in the code that would use the `install_github()` function to install `"rstudio/learnr"`.',
+  answer('devtools::install_github("rstudio/learnr")', correct = TRUE),
+  answer("devtools::install_github('rstudio/learnr')", correct = TRUE),
+  answer('devtools:install_github("rstudio/learnr")', message = "Oops, you need two colons between the package and function: package_name::function."),
+  answer("devtools:install_github('rstudio/learnr')", message = "Oops, you need two colons between the package and function: package_name::function."),
+  answer('install_github("rstudio/learnr")', message = "Don't forget that, if you don't load the package, you need to prepend a function with the package name: package_name::function."),
+  answer('install_github(rstudio/learnr)', message = "Don't forget that, if you don't load the package, you need to prepend a function with the package name: package_name::function."),
+  answer('devtools::install_github(rstudio/learnr)', message = "Don't forget the quotations around the to-be-installed package."),
+  answer('devtools::install_github("rstudio", "learnr")', message = "This function requires the user name and package name to be separated by a / rather than separate arguments."),
+  answer('devtools::install_github()', message = "Oops, you need to include the information about the to-be-installed package."),
+  allow_retry = TRUE
+)
+```
+
+
+### Loading packages
+
+Though you can load packages through RStudio, you should know how to do it with a function, so you can include this in scripts. 
+
+<!-- Type in the code that would load the `{devtools}` package.  -->
+
+```{r load_devtools}
+question_text(
+  "Type in the code that would load the `{devtools}` package. ",
+  answer('library("devtools")', correct = TRUE),
+  answer('library(devtools)', correct = TRUE),
+  answer("library('devtools')", correct = TRUE),
+  answer('load("devtools")', message = "The load() function loads data rather than packages."),
+  answer("load('devtools')", message = "The load() function loads data rather than packages."),
+  answer('load(devtools)', message = "The load() function loads data rather than packages."),
+  answer('require("devtools")', message = "While require() does similar things as library(), we're using library() in this course."),
+  answer('require(devtools)', message = "While require() does similar things as library(), we're using library() in this course."),
+  answer("require('devtools')", message = "While require() does similar things as library(), we're using library() in this course."),
+  allow_retry = TRUE
+)
+```
+
+### Wrap-up
+
+Congratulations, you finished your first tutorial!  Again, if you found any typos or bugs, email Jeff.
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 13
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

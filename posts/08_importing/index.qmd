@@ -1,0 +1,50 @@
+---
+title: 'Importing data'
+author:
+  - Jeff Stevens
+date: '2023-02-08'
+categories: 
+  - "module 2"
+  - "week 3"
+  - CSV
+  - Excel
+  - export
+  - import
+  - Qualtrics
+description: "Import and export data from different sources"
+draft: true
+---
+
+Importing data is often the first step in data processing. These data may be saved as CSV, Excel, SPSS, or Qualtrics formats, just to name a few. R allows you to import data from a wide variety of sources. You can also easily save those files locally.
+
+## Learning objectives
+
+* Import CSV, Excel, and data files from other statistics programs
+* Import data from local files, URLs, Qualtrics, and cloud storage systems
+* Export CSV files
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* [R4DS2 22](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}
+
+## Class meeting
+
+* Distinguish file types
+* Import CSV data
+* Export CSV data
+* Import Excel data
+* Import SPSS, SAS, and STATA data
+* Import Qualtrics data
+* Import data from cloud storage
+* [Slides](../../slides/08_importing.qmd){target="_blank"} and [Code](../../code/08_importing.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_08_importing/){target='_blank'}
+
+### For next class meeting
+
+* Read [Wikipedia](https://en.wikipedia.org/wiki/Data_validation){target='_blank'}

@@ -1,0 +1,51 @@
+---
+title: 'Merging rows'
+author:
+  - Jeff Stevens
+date: '2023-03-03'
+categories: 
+  - "module 4"
+  - "week 6"
+  - bind
+  - "filtering joins"
+  - join
+  - merge
+  - rows
+  - "set operations"
+description: "Merge rows with filtering joins"
+draft: true
+---
+
+While mutating joins actually merge the two data sets, filtering joins use information in one data set to filter observations in another data set.
+
+## Learning objectives
+
+* Conduct filtering joins
+* Bind columns and rows
+* Familarize with set operations
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 21.3.3 - 21.5](https://r4ds.hadley.nz/joins.html#filtering-joins){target='_blank'}
+
+## Class meeting
+
+* Join with multiple columns as keys
+* semi_join()
+* anti_join()
+* add_rows(), bind_rows()
+* bind_cols()
+* Set operations
+* [Slides](../../slides/18_mergingrows.qmd){target="_blank"} and [Code](../../code/18_mergingrows.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_18_mergingrows){target='_blank'}
+
+### For next class meeting
+
+* Update {dplyr} to version 1.1.0
+* Read [R4DS2 14](https://r4ds.hadley.nz/numbers.html){target='_blank'}

@@ -1,0 +1,267 @@
+---
+title: "Filtering rows"
+author: "Jeff Stevens"
+date: "2023-02-20"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Review
+
+## The problem
+
+```{r echo = FALSE, resuts = FALSE}
+library(tidyverse)
+data1 <- data.frame(cond = sample(c(1:3), 8, replace = TRUE), id = 1:8, date = sample(seq(as.Date('2022-01-01'), as.Date('2022-02-28'), by="day"), 8)
+)
+data2 <- data1 |> 
+  mutate(cond = paste("Condition", cond),
+         month = case_when(lubridate::month(data1$date) == 1 ~ "January",
+                           lubridate::month(data1$date) == 2 ~ "February"),
+                           .before = date)
+data3 <- data1 |> 
+  select(id, cond)
+
+data4 <- data1 |> 
+  filter(cond < 3) |> 
+  arrange(date)
+  
+```
+
+What's different between these data sets? What can we use to create `data2` from `data1`?
+
+::::{.columns}
+:::{.column width="40%}
+```{r}
+data1
+```
+:::
+:::{.column width="40%}
+```{r}
+data2
+```
+:::
+::::
+
+
+## The problem
+
+What's different between these data sets? What can we use to create `data3` from `data1`?
+
+::::{.columns}
+:::{.column width="40%}
+```{r}
+data1
+```
+:::
+:::{.column width="40%}
+```{r}
+data3
+```
+:::
+::::
+
+
+## The problem
+
+What's different between these data sets? What needs to happen to create `data4` from `data1`?
+
+::::{.columns}
+:::{.column width="40%}
+```{r}
+data1
+```
+:::
+:::{.column width="40%}
+```{r}
+data4
+```
+:::
+::::
+
+
+## Data wrangling
+
+![](../images/dplyr_summary.png){fig-align=center width=80%}
+
+
+## Set-up
+
+```{r}
+library(dplyr)
+library(nycflights13)
+(flights2 <- select(flights, year:dep_delay, air_time))
+```
+
+
+# Filtering rows
+
+## `filter()`
+
+![](../images/dplyr_filter.png){fig-align="center" height=45%}
+
+---
+
+## `filter()`
+
+```{r}
+filter(flights2, dep_time == sched_dep_time)
+```
+
+---
+
+## `filter()`
+
+### Multiple conditions
+
+```{r}
+filter(flights2, dep_delay < 0 & month == 2)
+```
+
+---
+
+## `filter()`
+
+### Logical OR
+
+```{r}
+filter(flights2, month == 11 | month == 12)
+```
+
+---
+
+## `filter()`
+
+### Logical %in%
+
+```{r}
+filter(flights2, month %in% c(11, 12))
+```
+
+---
+
+## `filter()`
+
+### Negating conditional
+
+```{r}
+filter(flights2, month != 1)
+```
+
+---
+
+## `filter()`
+
+### Negating multiple conditionals
+
+```{r}
+filter(flights2, month != 1 & day != 1)
+```
+
+---
+
+## `filter()`
+
+### Check if `NA` with `is.na()`
+
+```{r}
+filter(flights2, is.na(dep_time))
+```
+
+
+## `filter()`
+
+### Check if `NA` across multiple columns with `is.na()` and `if_any()`
+
+```{r}
+filter(flights2, if_any(everything(), is.na))
+```
+
+
+## `drop_na()`
+
+### Filter column with **any** `NA`s with `drop_na()`
+
+```{r}
+nrow(flights2)
+nrow(drop_na(flights2))
+```
+
+:::{.fragment}
+```{r}
+nrow(drop_na(flights, dep_time))
+```
+:::
+
+
+
+# Sorting rows
+
+## `arrange()`
+
+![](../images/dplyr_arrange.png){fig-align="center" height=45%}
+
+
+---
+
+## `arrange()`
+
+```{r}
+arrange(flights2, sched_dep_time)
+```
+
+---
+
+## `arrange()`
+
+### Sort multiple rows
+
+```{r}
+arrange(flights2, sched_dep_time, dep_time)
+```
+
+
+---
+
+## `arrange()`
+
+### Sort in descending order
+
+```{r}
+arrange(flights2, desc(dep_time))
+```
+
+
+## Solving the problem
+
+What code turns `data1` into `data4`?
+
+::::{.columns}
+:::{.column width="40%}
+```{r}
+data1
+```
+:::
+:::{.column width="40%}
+```{r}
+data4
+```
+:::
+::::
+
+
+## Let's code!
+
+[Filtering rows](../code/13_filtering.html){target="_blank"} [[Rmd](../code/13_filtering.Rmd){target="_blank"}]

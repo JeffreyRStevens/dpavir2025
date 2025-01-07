@@ -1,0 +1,18 @@
+---
+title: "Working in RStudio"
+author: "Jeffrey R. Stevens"
+date: "2023-01-25"
+output: html_document
+execute:
+  freeze: auto
+---
+
+* Install the [`{papaja}`](https://frederikaust.com/papaja_man/) package.
+
+* Find the help page for the `apa_num()` function from `{papaja}`. What does it do?
+
+* What is the keyboard shortcut for restarting R?
+
+* What does the keyboard shortcut `Ctrl/Cmd`+`Enter/Return` do?
+
+* Type `cor()` in the console, and place your cursor in the word `cor`. Now press `F1`. What happened? Place your cursor back on `cor` and press `F2`. What happened?

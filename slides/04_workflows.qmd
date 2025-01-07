@@ -1,0 +1,286 @@
+---
+title: "Workflows"
+author: "Jeff Stevens"
+date: "2023-01-30"
+date-format: iso
+execute:
+  echo: true
+  freeze: false
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-link: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir2025)"
+    logo: "../logo/dpavir_hex.png"
+---
+
+## Review: Mental model of coding
+
+![](../images/mentalmodel_coding.png){fig-align="center"}
+
+---
+
+
+## Mental model of file directories
+
+![](../images/mentalmodel_workflow.png){fig-align="center"}
+
+
+
+# Directories/folders
+
+## File system
+
+### Structure of directories and files stored on your computer
+
+```{r echo = FALSE}
+fs::dir_tree(path = here::here("slides"))
+```
+
+
+---
+
+## File managers
+
+* Apps/GUIs to interact with file system
+  * Windows File Explorer
+  * MacOS Finder
+
+![](../images/windows_file_explorer.png){.absolute width="45%" top="10%" left="70%"}
+![](../images/macos_finder.png){.absolute width="70%" top="60%" left="10%"}
+
+
+---
+
+## File managers
+
+* RStudio
+
+![](../images/rstudio_file_manager.png){.absolute width="70%" top="25%" left="30%"}
+
+
+---
+
+## Terminals
+
+* Interact with file system through prompt/command line
+* If not familiar with terminal, read primer for [Windows](https://www.computerhope.com/issues/chusedos.htm) or [MacOS](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html)
+
+![](../images/terminal.png){.absolute width="80%" top="50%" left="10%"}
+
+
+---
+
+## Mental model of file directories
+
+![](../images/mentalmodel_workflow.png){fig-align="center"}
+
+
+# Paths
+
+## Paths
+
+### Convert tree structure to character string
+
+:::{.fragment}
+* `exercises/01_introduction/rsconnect/documents/01_introduction.Rmd`<BR>`/shinapps.io/jeffreyrstevens/01_introduction.dcf`
+:::
+
+![](../images/directory_dpavir.png){.absolute width="30%" top="30%" left="87%"}
+
+
+---
+
+## Absolute paths
+
+### From root directory
+
+* Starts with drive letter or `/`
+
+  * Windows: `C:\users\jeff\Documents\projects\dpavir_2023\R\`
+  
+  * Linux and MacOS: `/home/jeff/projects/dpavir_2023/R/`
+
+
+---
+
+## Relative paths
+
+###  From current directory
+
+* Starts with first subdirectory name
+
+  * If in `projects/`, relative path to `R/` is `dpavir_2023/R`
+  
+:::{.fragment}
+* **Use relative paths!**
+* Why?
+:::
+  
+
+---
+
+
+## Changing directories
+
+### Change directories with `cd`
+
+* `/home/jeff/projects/dpavir_2023/`
+
+:::{.incremental}
+* To move from `dpavir_2023/` to `rsconnect/`, type <br> `cd exercises/01_introduction/rsconnect/`
+:::
+
+![](../images/directory_dpavir.png){.absolute width="30%" top="-8%" left="92%"}
+
+
+---
+
+## Go backwards
+
+### Move backwards with `cd ..`
+
+:::{.incremental}
+* One set of `..` for each directory going backwards
+
+* To move from `rsconnect/` to `01_introduction/`, <br> type `cd ..`
+
+* To move from `01_introduction/` to `code/`, <br> type `cd ../../code/`
+:::
+![](../images/directory_dpavir.png){.absolute width="30%" top="-8%" left="92%"}
+
+
+---
+
+## Let's try it!
+
+:::{.incremental}
+* Go to _Files_ in RStudio
+* Add folder named `test` and a subfolder named `R`.
+* Go to _Terminal_.
+* Type `ls` or `dir`.
+* How do we go to `test/`?
+* How do we go back?
+* How do we go to `test/R/`?
+* How do we go back up to `test/`?
+:::
+
+
+---
+
+## Mental model of file directories
+
+![](../images/mentalmodel_workflow.png){fig-align="center"}
+
+
+# Workflows
+
+
+## Project directory structure
+
+:::: {.columns}
+::: {.column width="40%"}
+![](../images/directory_structure.png){fig-align="center" width="300"}
+:::
+
+::: {.column width="60%"}
+:::{.incremental}
+* Build a consistent directory structure
+
+* Why?
+
+* Consistency for you
+
+* Adapt structure to your needs or lab requirements 
+
+* Consistency for the lab
+
+* Make a template directory
+:::
+:::
+::::
+
+## Working directories
+
+### Base directory for R session
+
+:::{.fragment}
+* View your working directory
+
+  * Console: `getwd()`
+  * RStudio: top of Console
+  
+  ![](../images/working_directory.png){.absolute width="70%" top="25%" left="55%"}
+:::
+
+:::{.fragment}
+What is your working directory?
+:::
+
+
+---
+
+## RStudio Projects
+
+:::{.fragment}
+### Convenient system to:
+
+* Set working directory
+
+* Open files you had open before closing RStudio
+
+* Focus on relative paths
+
+* Enable version control
+
+### Use them! Always!
+:::
+
+![](../images/rproject.webp){.absolute width="20%" top="0%" left="70%"}
+
+---
+
+## RStudio Projects
+
+* Let's create an RStudio Project for this course
+
+![](../images/rprojects_new.png){fig-align="center"}
+
+
+---
+
+## RStudio Projects
+
+* Create an RStudio Project in the existing `test/` directory
+
+:::{.incremental}
+* Create your typical project structure
+
+* Use the terminal to change directories in your project
+:::
+
+
+---
+
+## Project working directories
+
+[`{here}`](https://here.r-lib.org/): The package that sets your working directory to the RStudio Project root directory
+
+* `read_csv(here("data/a.csv"))`
+
+![](../images/here_allisonhorst.png){.absolute width="53%" top="25%" left="70%"}
+
+:::{.aside}
+Source: <a href = "https://github.com/allisonhorst/stats-illustrations">Allison Horst</a></figcaption>
+:::
+
+
+## Mental model of file directories
+
+![](../images/mentalmodel_workflow.png){fig-align="center"}
+
+

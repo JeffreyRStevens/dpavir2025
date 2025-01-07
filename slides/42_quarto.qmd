@@ -1,0 +1,44 @@
+---
+title: "Quarto"
+author: "Jeff Stevens"
+date: "2023-05-10"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Set-up
+
+First, install [Quarto](https://quarto.org/docs/get-started/) as a stand-alone app on your computer
+
+## Quarto
+
+Quarto is an open-source scientific and technical publishing system built on Pandoc
+
+![](../images/quarto_workflow.png)
+
+
+# Documents
+
+
+# Presentations
+
+
+# Websites
+
+
+# Quarto Pub
+<https://quarto.pub>

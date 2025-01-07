@@ -1,0 +1,45 @@
+---
+title: "Literate programming"
+author: "Jeffrey R. Stevens"
+date: "2023-02-01"
+output: html_document
+execute:
+  freeze: auto
+---
+
+## Creating and working in scripts
+
+* Open course RStudio project.
+
+* Create new R script.
+
+* Type `library(palmerpenguins)`.
+
+* Is `palmerpenguins` loaded? How can you check?
+
+* Run the line to load `palmerpenguins`.
+
+* Type `print(penguins)`.
+
+* Source the whole script.
+
+* Comment out the `print(penguins)` line.
+
+* Source the script.
+
+## Creating and working with R Markdown files
+
+* Create new R Markdown file.
+
+* Type "<code>The mean of the first 9 digits is &#96;r mean(1:9)&#96;.</code>"
+
+* Knit/render the document.
+
+* Create a new code chunk.
+
+* Inside the code chunk, load the `palmerpenguins` package and print the `penguins` data set.
+
+* Run the code chunk without knitting the file.
+
+* Knit/render the file.
+

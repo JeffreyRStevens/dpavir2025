@@ -1,0 +1,54 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - "code/*.Rmd"
+    - "data/*"
+    - "decks/*"
+    - "slides/*.pdf"
+    - "slides/*.R"
+    - "slides/*.Rmd"
+  render:
+    - "*.qmd"
+    - "*.Rmd"
+    - "!checkins/"
+    - "!exercises/"
+    - "code/codebook_mtcars.Rmd"
+    - "group_challenges.Rmd"
+    - "code/23_dates.Rmd"
+
+website:
+  title: "Data Processing and Visualization in R"
+  favicon: "logo/dpavir_icon.ico"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - text: Course information
+        menu:
+        - href: syllabus.qmd
+          text: Syllabus
+        - href: schedule.qmd
+          text: Schedule
+      - text: Course materials
+        menu:
+        - href: meetings.qmd
+          text: Class meetings
+        - href: materials.qmd
+          text: Readings, slides, code, exercises
+        - href: resources.qmd
+          text: Resources
+
+  page-footer:
+    background: light
+    left: "&copy; 2024-2025 Jeffrey R. Stevens. Powered by <a href='https://www.quarto.org'>Quarto</a>."
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true
+
+
+
+

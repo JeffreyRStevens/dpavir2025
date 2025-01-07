@@ -1,0 +1,282 @@
+---
+title: "Grammar of graphics II"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Set-up
+
+We'll load the full `{tidyverse}` and `{palmerpenguins}` for the `penguins` data set.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+
+## Geometric object properties
+
+###
+
+Often we want to adjust aspects of the geometric object properties (e.g., color, fill, size, shape, transparency) to change the appearance of our plots. In this case, let's change the color of our points. To do that, we set the `color` argument inside the `geom_point()` function.
+
+```{r point-color, echo = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(color = "seagreen")
+```
+
+###
+
+**Now, in addition to making the points *seagreen*, set the symbol shape to filled triangles, the size to 3, and the transparency to 0.75 to match this plot:**
+
+```{r point-shape-size-alpha, warning = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(color = "seagreen", shape = 17, size = 3, alpha = 0.75)
+```
+
+```{r exercise3, exercise = TRUE, warning = FALSE}
+penguins |> 
+...
+```
+
+```{r exercise3-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(color = "seagreen", shape = 17, size = 3, alpha = 0.75)
+```
+
+
+## Mapping aesthetics
+
+###
+
+While the previous examples changed geometric object properties for the whole plot, sometimes we want to map data onto properties of our plots. These *aesthetic* mappings must be defined in an `aes()` function.
+
+First, let's recreate our bill length/depth plot but color the individual data points based on the penguin species.
+
+```{r color-species, echo = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point()
+```
+
+Notice that just adding color as an aesthetic and mapping it to species both specifies different colors for different levels of species and automatically creates a legend.
+
+###
+
+**Now create a version of the plot that includes both different colors and different symbols for the different species to generate this plot:**
+
+```{r color-shape-species, warning = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+  geom_point()
+```
+
+```{r exercise4, exercise = TRUE, warning = FALSE}
+penguins |> 
+...
+```
+
+```{r exercise4-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+  geom_point()
+```
+
+### Controlling properties across multiple geometric objects
+
+
+We can now combine the last several sections to control object properties across multiple geometric objects. There are three ways to control object properties:
+
+1. Properties are not mapped to data and therefore apply to all plot elements within a geometric object (e.g., every point)
+1. Properties are mapped to data and apply to all geometric objects (e.g, points and lines)
+1. Properties are mapped to data but apply to a subset of geometric objects (e.g., points or lines)
+
+As we have already seen, non-mapped properties are defined in the geometric object function (e.g., `geom_point()`). Mapped aesthetic properties can either apply globally to all geometric objects in the plot or locally to specific geometric objects. To map aesthetics globally, include them in an `aes()` function in the `ggplot()` function at the top of the plot. To map them locally, include them in an `aes()` function in the individual geometric object functions (e.g., `geom_point()`). These can be mixed in the same plot (e.g., some aesthetics mapped globally and others locally).
+
+### Non-mapped properties
+
+Let's start with multiple geometric objects where we define the non-mapped object property color to all geoms. To do this, we must include the color argument in all geoms that we want it to apply to.
+
+```{r color-all, echo=TRUE, message=FALSE, warning=FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(color = "darkorchid") +
+  geom_smooth(method = "lm", color = "darkorchid")
+```
+
+###
+
+**Change the color of all geoms to be *tomato*.**
+
+```{r color-all2, message = FALSE, warning = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(color = "tomato") +
+  geom_smooth(method = "lm", color = "tomato")
+```
+
+```{r exercise6, exercise = TRUE, warning = FALSE, message=FALSE}
+penguins |> 
+...
+```
+
+```{r exercise6-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(color = "tomato") +
+  geom_smooth(method = "lm", color = "tomato")
+```
+
+### Globally mapped properties
+
+For mapped aesthetic properties, we need to include the property argument in the `aes()` function that is in the `ggplot()` function (e.g., where `x` and `y` properties are defined). 
+
+**Remove the color arguments from the geoms in the previous code. Then define color based on species in the top-level aesthetic function to generate this plot:**
+
+```{r color-species-smooth, warning = FALSE, message = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+```{r exercise7, exercise = TRUE, warning = FALSE, message=FALSE}
+penguins |> 
+...
+```
+
+```{r exercise7-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+###
+
+Notice how putting color in the top-level aesthetic not only used different colors for the three species' points but also created three separate regression lines---one for each species. Moreover, both the point and the regression line colors were mapped to the species. This is because we globally mapped the aesthetic color.
+
+### Locally mapped properties
+
+What if we want to map the aesthetics differently in different geoms? First, let's go back to having a single regression line rather than one per species. But let's keep the separate colors of points for different species. This means that we will not use global aesthetics. Instead, we will map color to species in the points and have no mapped aesthetics for the regression line.
+
+**Move the color aesthetic mapped to species from the top-level to the `geom_point()` to generate this plot:**
+
+```{r color-species-smooth2, warning = FALSE, message = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm")
+```
+
+```{r exercise8, exercise = TRUE, warning = FALSE, message=FALSE}
+penguins |> 
+...
+```
+
+```{r exercise8-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm")
+```
+
+### Grouping without changing properties
+
+Let's say that we like the plot with separate regression lines for each species, but we don't want the line colors to be different for each species. We can *group* the data based on species but not change any of the properties of the regression lines, while still allowing the data point colors to map to species.
+
+```{r group-smooth, warning = FALSE, message = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, group = species)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm")
+```
+
+**To generate this plot, add `group = species` to the top-level aesthetic, add `color = species` to the `geom_point()` aesthetic, and no aesthetics in the `geom_smooth()`.**
+
+```{r exercise9, exercise = TRUE, warning = FALSE, message=FALSE}
+penguins |> 
+...
+```
+
+```{r exercise9-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, group = species)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm")
+```
+
+###
+
+I don't like having the blue regression lines because they blend in with the gentoo penguin data.
+
+**Replicate the previous plot, but make the regression lines *black*.**
+
+```{r group-smooth2, warning = FALSE, message = FALSE, echo = FALSE}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, group = species)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm", color = "black")
+```
+
+
+```{r exercise10, exercise = TRUE, warning = FALSE, message=FALSE}
+penguins |> 
+...
+```
+
+```{r exercise10-solution}
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, group = species)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm", color = "black")
+```
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 6
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

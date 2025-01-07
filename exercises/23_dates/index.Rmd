@@ -1,0 +1,200 @@
+---
+title: "Dates and times"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Dates
+
+### Set-up
+
+Working with dates requires the `{lubridate}` package, which is now part of the core tidyverse packages if you use tidyverse version 2.0.0 or above (I recommend it!). Otherwise, you need to load it separately.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+```
+
+### Today's date
+
+```{r todays-date}
+question(
+  'Which of the following commands return today\'s date (and only the date)?',
+  answer('`Sys.Date()`', correct = TRUE),
+  answer('`today()`', correct = TRUE),
+  answer('`Sys.Time()`'),
+  answer('`Sys.date()`'),
+  answer('`Sys.time()`'),
+  answer('`now()`'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+## Creating dates and times
+
+Remember the standard way to format dates is the ISO 8601 format: YYYY-MM-DD. Type the code to convert the following dates or date/times to the standard format (e.g., 2021-06-11).
+
+**11 Jun 21**
+```{r exercise4, exercise = TRUE}
+mydate <- "11 Jun 21"
+...
+```
+ 
+```{r exercise4-check}
+grade_result(
+  pass_if(~identical(.result, dmy(mydate)))
+)
+```
+
+**2021-6-11**
+```{r exercise5, exercise = TRUE}
+mydate <- "2021-6-11"
+...
+```
+ 
+```{r exercise5-check}
+grade_result(
+  pass_if(~identical(.result, ymd(mydate)))
+)
+```
+
+**June 11th 2021**
+```{r exercise6, exercise = TRUE}
+mydate <- "June 11th 2021"
+...
+```
+ 
+```{r exercise6-check}
+grade_result(
+  pass_if(~identical(.result, mdy(mydate)))
+)
+```
+
+**06/11/2021 15:00**
+```{r exercise7, exercise = TRUE}
+mydate <- "06/11/2021 15:00"
+...
+```
+ 
+```{r exercise7-check}
+grade_result(
+  pass_if(~identical(.result, mdy_hm(mydate)))
+)
+```
+
+## Extracting date/time components
+
+Once your dates and times are formatted correctly, it is easy to extract individual components with the provided functions in `{lubridate}`.
+
+**Find today's date and extract the full word for the month (no abbreviations) using a `{lubridate}` function.**
+```{r exercise8, exercise = TRUE}
+mydate <- today()
+...
+```
+ 
+```{r exercise8-check}
+grade_result(
+  pass_if(~identical(.result, month(mydate, label = TRUE, abbr = FALSE)))
+)
+```
+
+**Find today's date and extract the abbreviation for the day of the week using a `{lubridate}` function.**
+```{r exercise9, exercise = TRUE}
+mydate <- today()
+...
+```
+ 
+```{r exercise9-check}
+grade_result(
+  pass_if(~identical(.result, wday(mydate, label = TRUE)))
+)
+```
+
+**Create a character vector (not factors) of the full names of the _weekdays_ (not weekend days) using a `{lubridate}` function.**
+```{r exercise10, exercise = TRUE}
+...
+```
+ 
+```{r exercise10-solution}
+as.character(wday(2:6, label = TRUE, abbr = FALSE))
+```
+
+```{r exercise10-check}
+grade_result(
+  pass_if(~identical(.result, as.character(wday(2:6, label = TRUE, abbr = FALSE))))
+)
+```
+
+## Time spans
+
+###
+
+One of the great things about working with dates is that you can use math to calculate time spans.
+
+**Calculate the number of days that have passed since the class started on January 23, 2023.**
+```{r exercise11, exercise = TRUE}
+...
+```
+ 
+```{r exercise11-check}
+grade_result(
+  pass_if(~identical(.result, today() - ymd("2023-01-23")))
+)
+```
+
+**Find the date 123 days from now.**
+```{r exercise12, exercise = TRUE}
+...
+```
+ 
+```{r exercise12-check}
+grade_result(
+  pass_if(~identical(.result, today() + 123))
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 31
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

@@ -1,0 +1,43 @@
+---
+title: 'Tables'
+author:
+  - Jeff Stevens
+date: '2023-05-03'
+categories: 
+  - "module 10"
+  - "week 15"
+  - apa
+  - kable
+  - knitr
+  - papaja
+  - "R Markdown"
+  - table
+description: "Create tables in R Markdown"
+execute:
+  freeze: auto
+draft: true
+---
+
+Here we'll convert those data frames to nicely formatted tables for publications and presentations.
+
+## Learning objectives
+
+* Use `kable()` to make basic tables
+* Supplement `kable()` with `{kableExtra}` functions
+* Make APA-formatted tables with `{papaja}`'s `apa_table()`
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [FDV 22.3](https://clauswilke.com/dataviz/figure-titles-captions.html#tables){target='_blank'}, [RMC 10.1](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html){target='_blank'}
+
+## Class meeting
+
+* [Script](../../slides/39_tables.Rmd){target="_blank"} and [Code](../../code/39_tables.html){target="_blank"}
+
+## Homework after the class meeting
+
+### For next class meeting
+
+* Read [papaja manual 1](https://frederikaust.com/papaja_man/introduction.html){target='_blank'}

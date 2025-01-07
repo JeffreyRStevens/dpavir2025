@@ -1,0 +1,308 @@
+---
+title: "Validating data"
+author: "Jeff Stevens"
+date: "2023-02-10"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+# Review
+
+## Mental model of importing data
+
+![](../images/mentalmodel_import.png){fig-align="center"}
+
+
+## Set up
+
+### Import dog breed traits data
+```{r}
+(mydf <- readr::read_csv(here::here("data/dog_breed_traits.csv")))
+```
+
+## Set up
+
+### Also load {palmerpenguins} for access to `penguins`
+
+```{r}
+library(palmerpenguins)
+```
+
+
+
+# Data validation
+
+## Data validation
+
+#### Check that your imported data are correct/valid/reasonable
+
+* Dimensions
+
+* Data types
+
+* Ranges and constraints
+
+* Allowed values (code lists)
+
+* Column dependencies
+
+* Completeness/uniqueness
+
+* Missing values
+
+
+---
+
+## Dimensions
+
+### Does the data frame have the correct dimensions?
+
+#### How do we check dimensions of a data frame?
+
+:::{.fragment}
+```{r}
+dim(mydf)
+```
+:::
+
+## Data types
+
+### Do the data columns have the correct data types?
+
+#### How do we check data types of a data frame?
+
+:::{.fragment}
+```{r}
+str(mydf)
+```
+:::
+
+## Data types
+
+### Do the data columns have the correct data types?
+
+#### Test specific data type for individual columns
+```{r}
+is.numeric(mydf$`2013 Rank`)
+```
+
+
+
+## Ranges and constraints
+
+### Do numerical column values have the correct range and/or other constraints?
+
+:::{.fragment}
+:::{.callout-note}
+Useful to check for Likert scales and measures of age (especially coming out of Qualtrics).
+:::
+
+```{r}
+range(mydf$`Drooling Level`)
+```
+:::
+
+
+## Allowed values (code lists)
+
+### Do categorical column values have the correct possible values?
+
+:::{.fragment}
+:::{.callout-note}
+Useful to check for when users can enter text instead of choose options.
+:::
+
+```{r}
+(recorded_coats <- unique(mydf$`Coat Type`))
+```
+
+```{r}
+allowed_coats <- c("Smooth", "Curly", "Silky", "Wavy", "Wiry", "Rough")
+recorded_coats %in% allowed_coats
+```
+:::
+
+
+## Column dependencies
+
+### Do column dependencies match up?
+
+E.g., if "other" is selected in `choice` column, does `other` column have an entry?
+```{r eval = FALSE}
+df$choice == "other" & !is.na(df$other)
+```
+
+
+## Completeness
+
+### Are all expected observations included?
+
+#### How do we test this?
+
+:::{.fragment}
+```{r eval = FALSE}
+observed_subjects %in% expected_subjects
+```
+:::
+
+## Uniqueness
+
+### Are there duplicate observations?
+
+```{r}
+duplicated(mydf$Breed)
+```
+
+:::{.fragment}
+```{r}
+mydf[duplicated(mydf$Breed), ]
+```
+:::
+
+
+## Missing values
+
+### Are there values with missing data?
+
+```{r eval = FALSE}
+is.na(penguins$bill_length_mm)
+```
+
+:::{.fragment}
+```{r}
+penguins[is.na(penguins$bill_length_mm), ]
+```
+:::
+
+
+## Missing values
+
+### Are there values with missing data?
+
+```{r}
+penguins[!complete.cases(penguins), ]
+```
+
+
+# Summarizing data
+
+## Summarizing data
+
+### `head()`
+
+```{r}
+head(mydf)
+```
+
+
+## Summarizing data
+
+### `glimpse()`
+
+```{r}
+tibble::glimpse(mydf)
+```
+
+
+## Summarizing data
+
+### `summary()`
+
+```{r}
+summary(penguins)
+```
+
+
+## [{skimr}](https://docs.ropensci.org/skimr/)
+
+#### View info about your data
+
+```{r}
+library(skimr)
+skim(penguins)
+```
+
+
+# Testing data
+
+## [{validate}](https://github.com/data-cleaning/validate)
+
+* Create **rules** about dimensions, data types, ranges, code lists, etc.
+
+* Confront your data with the rules
+
+* Summarize/visualize validation
+
+![](../images/validate.png){.absolute width="40%" top="25%" left="65%"}
+
+
+---
+
+## [{assertr}](https://docs.ropensci.org/assertr/)
+
+* Assertions: tests of data embedded in functions
+
+```{r eval = FALSE}
+library(assertr)
+verify(penguins, has_all_names("species", "island", "sex"))
+verify(penguins, nrow(penguins) > 100)
+verify(penguins, bill_length_mm > 0)
+insist(penguins, within_n_sds(4), bill_length_mm)
+assert(penguins, in_set(2007, 2008, 2009), year)
+```
+
+
+# Excluding data
+
+## [{excluder}](https://docs.ropensci.org/excluder/)
+
+### Working with Qualtrics data can be ... challenging. 
+
+{excluder} helps:
+
+:::{.incremental}
+* get rid of initial rows with `remove_label_rows()`
+* use Qualtrics labels as column names with `use_labels()`
+* deidentify data with `deidentify()`
+* view, mark, or exclude data based on: preview status, survey progress, survey completion time, IP address country, geolocation, duplicate IP address, and screen resolution
+:::
+
+
+# Codebooks
+
+## [{dataReporter}](https://github.com/ekstroem/dataReporter)
+
+![](../images/codebook.png){fig-align="center" width="85%"}
+
+
+
+---
+
+## [{dataReporter}](https://github.com/ekstroem/dataReporter)
+
+![](../images/codebook2.png){fig-align="center" width="85%"}
+
+
+---
+
+## [{dataReporter}](https://github.com/ekstroem/dataReporter)
+
+```{r eval = FALSE}
+dataReporter::makeCodebook(mydf3, file = here("06_codebook.Rmd"))
+```
+
+
+## Let's code!
+
+[Validating data](../code/09_validating.html){target="_blank"} [[Rmd](../code/09_validating.Rmd){target="_blank"}]

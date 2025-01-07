@@ -1,0 +1,210 @@
+---
+title: "Plotting distributions: histograms and density plots"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+penguins <- penguins |> 
+  filter(!is.na(sex)) |> 
+  unite("type", c(species, sex), remove = FALSE) |> 
+  unite("species_island", c(species, island), remove = FALSE)
+
+```
+
+
+## Introduction
+
+This exercise covers plotting distributions including histograms and density plots.
+
+### Set-up
+
+Let's load `{tidyverse}` and `{palmerpenguins}`.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Histograms
+
+###
+
+We make histograms with the `geom_histogram()` geometric object.
+
+```{r hist, echo=TRUE, warning=FALSE}
+penguins |> 
+  ggplot(aes(x = body_mass_g)) +
+  geom_histogram()
+```
+
+### Adjust bins
+
+As the message mentions, the default number of bins for histograms is 30. This is not necessarily ideal, so let's see what the histogram looks like with 15 bins.
+
+```{r hist-bin, warning=FALSE}
+penguins |>    
+  ggplot(aes(x = body_mass_g)) +
+  geom_histogram(bins = 15)
+```
+
+**Reproduce this figure by making a histogram with 15 bins.**
+
+```{r exercise1, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise1-solution}
+penguins |> 
+  ggplot(aes(x = body_mass_g)) +
+  geom_histogram(bins = 15)
+```
+
+
+### Adding color to histograms
+
+The default colors for histograms are boring. They use a dark gray both for the bars and the borders. Let's liven it up a bit.
+
+```{r hist-color, warning=FALSE}
+penguins |>    
+  ggplot(aes(x = body_mass_g)) +
+  geom_histogram(bins = 15, color = "black", fill = "steelblue")
+```
+
+**Reproduce this figure by making the bars *steelblue* and the borders *black* (and keep bins at 15).**
+
+```{r exercise2, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise2-solution}
+penguins |> 
+  ggplot(aes(x = body_mass_g)) +
+  geom_histogram(bins = 15, color = "black", fill = "steelblue")
+```
+
+## Density plots
+
+###
+
+Histograms can be tricky to tweak to get a good bin size. An alternative that smooths over the data more is the density plot that uses the `geom_density()` function.
+
+```{r density, echo=TRUE, warning=FALSE}
+penguins |>    
+  ggplot(aes(x = body_mass_g)) +
+  geom_density()
+```
+
+### Adding color to density plots
+
+By default,  only the density line is plotted, so you may want to add color to the area below the line. If we're adding color to an area, which argument controls this?
+
+```{r density-fill, warning=FALSE}
+penguins |>    
+  ggplot(aes(x = body_mass_g)) +
+  geom_density(fill = "steelblue")
+```
+
+**Color the area below the line *steelblue*.**
+
+```{r exercise3, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise3-solution}
+penguins |>    
+  ggplot(aes(x = body_mass_g)) +
+  geom_density(fill = "steelblue")
+```
+
+### Mapping colors with multiple distributions
+
+The plots so far have included data from all three penguins species combined. But we may want to see if the species have different distributions of body mass. How do we create density plots for each of the species?
+
+```{r density-species, warning=FALSE}
+penguins |>    
+  ggplot(aes(x = body_mass_g, fill = species)) +
+  geom_density()
+```
+
+**Create this plot where each species has its own density plot of a different color but all lines are black.**
+
+```{r exercise4, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise4-solution}
+penguins |>    
+  ggplot(aes(x = body_mass_g, fill = species)) +
+  geom_density()
+```
+
+### Changing transparency
+
+Though the distributions are separated for each species, there is a lot of overlap between the species, with some data hidden behind others. Let's use transparency to better visualize the distributions.
+
+```{r density-transparency, warning=FALSE}
+penguins |>    
+  ggplot(aes(x = body_mass_g, fill = species)) +
+  geom_density(alpha = 0.25)
+```
+
+**Create this plot where each species has its own density plot of a different color and transparency is set to 0.25.**
+
+```{r exercise5, exercise = TRUE, warning = FALSE}
+penguins |> 
+  ggplot(...)
+```
+
+```{r exercise5-solution}
+penguins |>    
+  ggplot(aes(x = body_mass_g, fill = species)) +
+  geom_density(alpha = 0.25)
+```
+
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 5
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

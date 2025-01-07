@@ -1,0 +1,237 @@
+---
+title: "Working in RStudio"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(devtools)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Help with code
+
+### Help from the experts
+
+Sometimes, you know the function that you need, and you (think you) are using the function correctly, but the code generates an error or doesn't work as expected. Of course, the first thing to do is google the error message or a general description of the problem. I find that >98% of the time, that generates a solution to the problem (though it might take multiple rounds of search terms or crawling down rabbit holes of recursive help pages before landing on the solution).
+
+But for that <2% of the time, the information is just not available. Now you may need to post a question on a forum (e.g., [RStudio Community](https://community.rstudio.com) or [Stack Overflow](https://stackoverflow.com/)) or even submit a bug report to a package's GitHub repository. Keep in mind, these options should be last resorts after you've scoured the internet (and asked me!). Code developers are busy people, and personally I want them developing amazing new tools rather than answering questions that have already been answered in documentation or help forums.
+
+### Posting to forums
+
+Before you post something on a forum, you should learn [how to ask a good question](https://stackoverflow.com/help/how-to-ask). This involves writing an informative title, including relevant tags, and describing the problem, the expected behavior, and the actual behavior. But a critical piece of asking for help is including a reproducible example---that is, a minimal amount of code that someone else can use to reproduce the problem. This is such an important component of getting help that...of course...there's a [package for that: `{reprex}`](https://reprex.tidyverse.org/index.html).
+
+### Data for reproducible examples
+
+Step one of creating a reproducible example is to create the code that you want to post that demonstrates the problem with the least amount of code that you can make public. This means that you cannot post your data or the entire workflow getting to this part of your data analysis. Probably the best option here is to use an example data set loaded to base R (e.g., `mtcars`) or a data set included in a commonly used package (e.g., [`{palmerpenguins}`](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)). To see the data sets included in base R, type `data()`. Alternatively, you can type a small data frame into your example.
+
+Go ahead and install and load the `{palmerpenguins}` package on your computer in RStudio, as we'll use it here and in future sessions.
+
+```
+install.packages("palmerpenguins")
+library("palmerpenguins")
+```
+
+### Creating a reproducible example
+
+Now that you have an available data set, you need to write the smallest chunk of code that generates the problem. Once you have that, you're ready to evaluate your code. Now, you need to install and load the `{reprex}` package in RStudio.
+
+```
+install.packages("reprex")
+library("reprex")
+```
+
+The `{reprex}` packages basically spins up a new R session, runs your code in it, and returns the output from that code. So the first thing that you need to do in your reproducible example is load any packages that are required for the code to run (because, remember, the people testing your code don't necessarily have the packages loaded already). If you forget to include the packages, you'll see this very quickly when you run `reprex()`. Next, you need to make sure that the data are available.
+
+Once you have your code ready, copy it to the clipboard, and run `reprex()` from the R console. This will run the copied code in a new R session. Then it will post the output to the Viewer pane in RStudio and copy it to the clipboard so you can paste it into your forum form or text document.
+
+### Testing a reprex
+
+OK, let's try it! Let's assume that for our reprex, we just want to show the first three rows of the `penguins` data set using the `head()` function. After you've installed and loaded `{reprex}`, copy the following code and then type `reprex()` in the RStudio R console. 
+
+```
+head(penguins, 3)
+```
+
+After you run the code, click Continue to see what went wrong.
+
+### Running a reprex
+
+OK, I set you up to fail there. You likely received an error. Here's what happened, if you received one of the following errors.
+
+If you received `Error in reprex() : could not find function "reprex"` in the R console, this means either you did not install or load the `{reprex}` package. Please install and load the package.
+
+If `reprex()` worked properly, you should have had this output in the Viewer tab:
+
+``` r
+head(penguins, 3)
+#> Error in head(penguins, 3): object 'penguins' not found
+```
+
+<sup>Created on 2023-01-14 with [reprex v2.0.2](https://reprex.tidyverse.org)</sup>
+
+This is the expected behavior. 
+
+```{r reprex_fail}
+question("Why did you receive this error?",
+         answer("I didn't load `{palmerpenguins}` in my RStudio session.", message = "Remember `{reprex}` spins up its own R session."),
+         answer("I didn't load the `head()` function.", message = "We load packages not functions."),
+         answer("I didn't load `{palmerpenguins}` in the reprex.", correct = TRUE),
+         answer("I don't believe penguins really exist.", message = "OK, I can't help you there."),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
+### Running a reprex
+
+Remember, we need to include all packages that are required to run the reprex. Now copy the following text and run `reprex()`.
+
+```
+library("palmerpenguins")
+head(penguins, 3)
+```
+
+You should have generated the following:
+
+``` r
+library("palmerpenguins")
+head(penguins, 3)
+#> # A tibble: 3 × 8
+#>   species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
+#>   <fct>   <fct>              <dbl>         <dbl>       <int>   <int> <fct> <int>
+#> 1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
+#> 2 Adelie  Torgersen           39.5          17.4         186    3800 fema…  2007
+#> 3 Adelie  Torgersen           40.3          18           195    3250 fema…  2007
+#> # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
+
+<sup>Created on 2023-01-14 with [reprex v2.0.2](https://reprex.tidyverse.org)</sup>
+
+Congratulations, you just created your first reproducible example! Not only is this important for posting questions to forums, but I would like you to run `reprex()` before sending questions to me, too.
+
+
+## RStudio
+
+### Panels
+
+Spend some time exploring the RStudio menus and panels. While you can customize the positions of the panels, using the standard configuration will make it easier for other people (read: me) to understand what you are doing if you ask for help.
+
+Here is a list the tabs that you'll be using most often. Make sure you are familiar with them.
+ 
+* Editor
+* Console
+* Environment
+* History
+* Plots
+* Packages
+* Help
+
+```{r rstudio_tabs}
+quiz(
+  question("Where do you type up your code in scripts to save it in a file?",
+           answer("Console"),
+           answer("Help"),
+           answer("Editor/Source", correct = TRUE),
+           answer("Microsoft Word", message = "Ugh! [shutter]"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+  ),
+  question("Where is R code executed?",
+           answer("Console", correct = TRUE),
+           answer("Editor"),
+           answer("History"),
+           answer("Terminal"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+  ),
+  question("What does the Environment tab do?",
+           answer("Shows objects available in the workspace", correct = TRUE),
+           answer("Shows the files and subdirectories in the working directory"),
+           answer("Shows a list of the previous commands that you have run in the console"),
+           answer("Shows you how to be more ecologically sustainable"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+  )
+)
+```
+
+
+### Keyboard shortcuts
+
+Using keyboard shortcuts will greatly simplify your RStudio workflow and allow you to work more quickly. There are dozens of keyboard shortcuts in RStudio. You can find them by going to the menu bar *Tools* > *Keyboard Shortcuts Help*. Explore the keyboard shortcuts and answer the following questions:
+
+```{r keyboard_shortcuts}
+quiz(
+  question("What is the keyboard shortcut for finding the keyboard shortcuts?",
+           answer("Control+Shift+K"),
+           answer("Control+Alt+K"),
+           answer("Alt+Shift+K", correct = TRUE),
+           answer("kk"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+  ),
+  question("What is the keyboard shortcut for restarting R?",
+           answer("Control+Shift+F10", correct = TRUE),
+           answer("Control+Shift+R"),
+           answer("Control+Shift+S"),
+           answer("Control+Shift+F11"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+  ),
+  question("What does Alt+- do?",
+           answer("Inserts assignment operator", correct = TRUE),
+           answer("Focuses console input"),
+           answer("Moves lines down"),
+           answer("Moves lines up"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+  ),
+  question("What does Control+Shift+M do?",
+           answer("Moves focus to terminal"),
+           answer("Inserts pipe operator", correct = TRUE),
+           answer("Commits changes"),
+           answer("Renames symbol in scope"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+  )
+)
+```
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 5
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete
+
+Copy that code into Canvas, and you're all set for this tutorial.
+

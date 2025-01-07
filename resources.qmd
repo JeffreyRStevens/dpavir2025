@@ -1,0 +1,340 @@
+---
+title: "Resources"
+execute:
+  freeze: auto
+format:
+  html:
+    code-copy: true
+    code-overflow: wrap
+    code-block-border-left: true
+    code-link: true
+---
+
+## Packages
+
+To install all of the course packages:
+
+* If you are using Windows, first install [RTools](https://cloud.r-project.org/bin/windows/Rtools/rtools44/rtools.html){target="_blank"}.
+
+* Then copy and paste the following line to install most of the packages needed for the course (click the little clipboard in top right corner to copy everything).
+
+* **Warning: it may take a while for these to install, so don’t start this if you need access to your R session (or open another R session to do this).**
+
+```{r eval = FALSE}
+install.packages(c("here", "palmerpenguins", "remotes", "tidyverse", "knitr", "rmarkdown", "papaja", "tinytex", "dataReporter", "qualtRics", "readxl", "nycflights13", "ggthemes", "patchwork", "gt"))
+```
+
+Click _Full package list_ below to see all packages with links to their websites.
+
+<details>
+
+<summary>Full package list</summary>
+
+### Getting started
+* [`{here}`](https://here.r-lib.org/){target="_blank"}
+* [`{palmerpenguins}`](https://allisonhorst.github.io/palmerpenguins/){target="_blank"}
+* [`{remotes}`](https://remotes.r-lib.org/){target="_blank"}
+* [`{tidyverse}`](https://www.tidyverse.org/){target="_blank"}
+
+### Literate programming
+* [`{knitr}`](https://yihui.org/knitr/){target="_blank"}
+* [`{rmarkdown}`](https://rmarkdown.rstudio.com/docs/){target="_blank"}
+* [`{papaja}`](https://github.com/crsh/papaja){target="_blank"}
+* [`{tinytex}`](https://yihui.org/tinytex/){target="_blank"}
+
+### Data import/validation
+* [`{dataReporter}`](https://github.com/ekstroem/dataReporter){target="_blank"}
+* [`{qualtRics}`](https://docs.ropensci.org/qualtRics/){target="_blank"}
+* [`{readxl}`](https://readxl.tidyverse.org/){target="_blank"}
+
+### Data processing
+* [`{nycflights13}`](https://github.com/tidyverse/nycflights13){target="_blank"}
+
+### Plotting and tables
+* [`{ggthemes}`](https://github.com/jrnold/ggthemes){target="_blank"}
+* [`{patchwork}`](https://patchwork.data-imaginist.com/){target="_blank"}
+* [`{gt}`](https://gt.rstudio.com/){target="_blank"}
+
+</details>
+
+
+## Glossary
+
+If you want to find definitions of the terms that we use in the course, check out the [PsyTeachR Glossary](https://psyteachr.github.io/glossary/index.html){target="_blank"}
+
+## Function list
+
+This is a list of all of the functions that we will be learning throughout the course. Note these may change as we progress through the course. Click _Full function list_ below to see all functions with links to their websites.
+
+<details>
+
+<summary>Full function list</summary>
+
+### Packages
+
+- [`install.packages()`](https://rdrr.io/r/utils/install.packages.html){target="_blank"}: install R packages
+- [`library()`](https://rdrr.io/r/base/library.html){target="_blank"}: load R packages
+- [`::`](https://rdrr.io/r/base/ns-dblcolon.html){target="_blank"} export variable from package for use
+
+### Data types
+
+- `>`, `>=`, `<`, `<=`, `==`, `!=`, `%in%`: logical operators that output `TRUE` or `FALSE`
+- [`typeof()`](https://rdrr.io/r/base/typeof.html){target="_blank"}, [`class()`](https://rdrr.io/r/base/class.html){target="_blank"}, [`str()`](https://rdrr.io/r/utils/str.html){target="_blank"}: outputs object type, class, and structure
+- [`is.numeric()`](https://rdrr.io/r/base/numeric.html){target="_blank"}, [`is.character()`](https://rdrr.io/r/base/character.html){target="_blank"}, [`is.factor()`](https://rdrr.io/r/base/factor.html){target="_blank"}: checks whether object is numeric, character, factor
+- [`as.numeric()`](https://rdrr.io/r/base/numeric.html){target="_blank"}, [`as.character()`](https://rdrr.io/r/base/character.html){target="_blank"}, [`as.factor()`](https://rdrr.io/r/base/factor.html){target="_blank"}: coerces (converts) object to numeric, character, factor
+- [`is.na()`](https://rdrr.io/r/base/NA.html){target="_blank"}: checks whether object is `NA` and outputs logical
+
+### Data structures
+
+- [`[]`](https://rdrr.io/r/base/Extract.html){target="_blank"}: index elements in vector, matrix, data frame, tibble
+- [`$`](https://rdrr.io/r/base/Extract.html){target="_blank"}: index column by name in data frame, tibble, list
+- [`:`](https://rdrr.io/r/base/Colon.html){target="_blank"}, [`seq()`](https://rdrr.io/r/base/seq.html){target="_blank"},  [`rep()`](https://rdrr.io/r/base/rep.html){target="_blank"}: creates sequences and repetitions of numbers
+- [`length()`](https://rdrr.io/r/base/length.html){target="_blank"}: outputs length of vector
+- [`dim()`](https://rdrr.io/r/base/dim.html){target="_blank"}, [`nrow()`](https://rdrr.io/r/base/nrow.html){target="_blank"}, [`ncol()`](https://rdrr.io/r/base/nrow.html){target="_blank"}: outputs dimensions, number of rows, number of columns of matrices, data frames, tibbles
+- [`colnames()`](https://rdrr.io/r/base/colnames.html){target="_blank"}: outputs (and can assign) column names
+- [`head()`](https://rdrr.io/r/utils/head.html){target="_blank"}, [`tail()`](https://rdrr.io/r/utils/head.html){target="_blank"}, [`dplyr::glimpse()`](https://pillar.r-lib.org/reference/glimpse.html){target="_blank"}: outputs compressed views of data frames, tibbles
+- [`c()`](https://rdrr.io/r/base/c.html){target="_blank"}, [`list()`](https://rdrr.io/r/base/list.html){target="_blank"}, [`data.frame()`](https://rdrr.io/r/base/data.frame.html){target="_blank"}, [`tibble::tibble()`](https://tibble.tidyverse.org/reference/tibble.html){target="_blank"}: creates vectors, matrices, data frames, tibbles
+
+### Importing data
+
+- [`here::here()`](https://here.r-lib.org//reference/here.html){target="_blank"}: starts path at project directory
+- [`read.csv()`](https://rdrr.io/r/utils/read.table.html){target="_blank"}, [`write.csv()`](https://rdrr.io/r/utils/write.table.html){target="_blank"}, [`readr::read_csv()`](https://readr.tidyverse.org/reference/read_delim.html){target="_blank"}, [`readr::write_csv()`](https://readr.tidyverse.org/reference/write_delim.html){target="_blank"}: imports and writes CSV files
+- [`readxl::read_excel()`](https://readxl.tidyverse.org/reference/read_excel.html){target="_blank"}: imports Excel files
+
+### Validating data
+- `range()`, `min()`, `max()`: finds range, minimum, and maximum of vector
+- `unique()`: returns vector of unique (not duplicated) elements
+- `duplicated()`: returns logical vector of duplicated elements
+- `which()`: returns indices of which elements of a logical vector are `TRUE`
+- `summary()`: when applied to day, gives summary statistics
+- [`skimr::skim()`](https://docs.ropensci.org/skimr/reference/skim.html){target="_blank"}: outputs overview of data
+- [`dataReporter::makeCodebook()`](https://rdrr.io/pkg/dataReporter/man/makeCodebook.html){target="_blank"}: creates codebook of data
+
+### Cleaning columns
+
+- [`dplyr::select()`](https://dplyr.tidyverse.org/reference/select.html){target="_blank"}: selects subset of columns from data frame, tibble
+- [`dplyr::everything()`](https://tidyselect.r-lib.org/reference/everything.html){target="_blank"}, [`dplyr::contains()`](https://tidyselect.r-lib.org/reference/starts_with.html){target="_blank"}, [`dplyr::starts_with()`](https://tidyselect.r-lib.org/reference/starts_with.html){target="_blank"}, `dplyr::ends_with()`: helper functions for `select()`
+- [`dplyr::relocate()`](https://dplyr.tidyverse.org/reference/relocate.html){target="_blank"}, [`dplyr::rename()`](https://dplyr.tidyverse.org/reference/rename.html){target="_blank"}: moves and renames columns in data frame, tibble
+- [`dplyr::mutate()`](https://dplyr.tidyverse.org/reference/mutate.html){target="_blank"}, [`dplyr::transmute()`](https://dplyr.tidyverse.org/reference/mutate.html){target="_blank"}: applies function to change existing column or create new column
+- [`dplyr::across()`](https://dplyr.tidyverse.org/reference/across.html){target="_blank"}: applies function across multiple columns inside `mutate()`
+- [`dplyr::rowwise()`](https://dplyr.tidyverse.org/reference/rowwise.html){target="_blank"}: applies function to each row
+- [`%>%`](https://magrittr.tidyverse.org/reference/pipe.html){target="_blank"}: pipe operator that transfers output to the next command
+- [`dplyr::pull()`](https://dplyr.tidyverse.org/reference/pull.html){target="_blank"}: creates a vector from a data frame/tibble column
+
+### Wrangling rows
+
+- [`dplyr::filter()`](https://dplyr.tidyverse.org/reference/filter.html){target="_blank"}: filters subset of rows from data frame, tibble
+- `dplyr::if_any()`: apply function to columns and return TRUE if any values are TRUE
+- `tidyr::drop_na()`: drop rows containing missing values
+- [`dplyr::arrange()`](https://dplyr.tidyverse.org/reference/arrange.html){target="_blank"}, [`dplyr::desc()`](https://dplyr.tidyverse.org/reference/desc.html){target="_blank"}: sorts rows by column variable, in descending order
+- [`dplyr::group_by()`](https://dplyr.tidyverse.org/reference/group_by.html){target="_blank"}: groups data by column levels
+- [`dplyr::summarise()`](https://dplyr.tidyverse.org/reference/summarise.html){target="_blank"}: applies function over whole column or group
+
+### Tidy data
+
+- [`tidyr::pivot_longer()`](https://tidyr.tidyverse.org/reference/pivot_longer.html){target="_blank"}, [`tidyr::pivot_wider()`](https://tidyr.tidyverse.org/reference/pivot_wider.html){target="_blank"}: reshapes data to be longer or wider
+- [`tidyr::separate()`](https://tidyr.tidyverse.org/reference/separate.html){target="_blank"}, [`tidyr::unite()`](https://tidyr.tidyverse.org/reference/unite.html){target="_blank"}: separates or combines column data with separator
+- [`dplyr::coalesce()`](https://dplyr.tidyverse.org/reference/coalesce.html){target="_blank"}: find the first non-missing element
+- [`tidyr::complete()`](https://tidyr.tidyverse.org/reference/complete.html){target="_blank"}, [`tidyr::expand()`](https://tidyr.tidyverse.org/reference/expand.html){target="_blank"}, [`tidyr::nesting()`](https://tidyr.tidyverse.org/reference/expand.html){target="_blank"}: finds all unique combinations of levels
+
+### Merging data
+
+- [`dplyr::inner_join()`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"}, [`dplyr::left_join()`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"}, [`dplyr::right_join()`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"}{target="_blank"}, [`dplyr::full_join()`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"}: mutating joins that merge data frames
+- [`dplyr::semi_join()`](https://dplyr.tidyverse.org/reference/filter-joins.html){target="_blank"}, [`dplyr::anti_join()`](https://dplyr.tidyverse.org/reference/filter-joins.html){target="_blank"}: filtering joins that filter data frame based on another data frame
+- [`dplyr::join_by()`](https://dplyr.tidyverse.org/reference/join_by.html){target="_blank"}: join data frames with different names for key columns (**requires `{dplyer}` v. 1.1.0 or higher**)
+- [`tibble::add_row()`](https://tibble.tidyverse.org/reference/add_row.html){target="_blank"}: manually add rows of data
+- [`dplyr::bind_rows()`](https://dplyr.tidyverse.org/reference/bind.html){target="_blank"}, [`dplyr::bind_cols()`](https://dplyr.tidyverse.org/reference/bind.html){target="_blank"}: binds rows or columns to data frame
+- [`dplyr::intersect()`](https://dplyr.tidyverse.org/reference/setops.html){target="_blank"}, [`dplyr::setdiff()`](https://dplyr.tidyverse.org/reference/setops.html){target="_blank"}, [`dplyr::union()`](https://dplyr.tidyverse.org/reference/setops.html){target="_blank"}, [`dplyr::union_all()`](https://dplyr.tidyverse.org/reference/setops.html){target="_blank"}: set operations to find overlap, differences, and combinations of data sets
+
+### Numbers
+
+- [`dplyr::count()`](https://dplyr.tidyverse.org/reference/count.html){target="_blank"}, [`dplyr::n()`](https://dplyr.tidyverse.org/reference/context.html){target="_blank"}, [`dplyr::n_distinct()`](https://dplyr.tidyverse.org/reference/n_distinct.html){target="_blank"}: count instances of group levels
+- [`round()`](https://rdrr.io/r/base/Round.html){target="_blank"}: round digits
+- [`format()`](https://rdrr.io/r/base/format.html){target="_blank"}: format numbers
+- [`cut()`](https://rdrr.io/r/base/cut.html){target="_blank"}: bin numbers into ranges
+
+### Strings
+
+- [`stringr::str_length()`](https://stringr.tidyverse.org/reference/str_length.html){target="_blank"}: finds the number of characters in a string
+- [`stringr::str_sub()`](https://stringr.tidyverse.org/reference/str_sub.html){target="_blank"}: extracts parts of strings based on character position
+- [`stringr::str_to_lower()`](https://stringr.tidyverse.org/reference/case.html){target="_blank"}, [`stringr::str_to_upper()`](https://stringr.tidyverse.org/reference/case.html){target="_blank"}: converts all letters to lowercase or uppercase
+- [`stringr::str_to_title()`](https://stringr.tidyverse.org/reference/case.html){target="_blank"}, [`stringr::str_to_sentence()`](https://stringr.tidyverse.org/reference/case.html){target="_blank"}: converts strings to title or sentence case
+- [`stringr::str_c()`](https://stringr.tidyverse.org/reference/str_c.html){target="_blank"}: combine character vectors into single string
+- [`stringr::str_glue()`](https://stringr.tidyverse.org/reference/str_glue.html){target="_blank"}: combines strings with R output
+- [`paste()`](https://rdrr.io/r/base/paste.html){target="_blank"}, [`paste0()`](https://rdrr.io/r/base/paste.html){target="_blank"}: combines strings with R output
+- [`stringr::str_detect()`](https://stringr.tidyverse.org/reference/str_detect.html){target="_blank"}, [`stringr::str_subset()`](https://stringr.tidyverse.org/reference/str_subset.html){target="_blank"}, [`stringr::str_extract()`](https://stringr.tidyverse.org/reference/str_extract.html){target="_blank"}: detects, subsets, and extracts strings
+- [`stringr::str_replace()`](https://stringr.tidyverse.org/reference/str_replace.html){target="_blank"}, [`stringr::str_replace_all()`](https://stringr.tidyverse.org/reference/str_replace.html){target="_blank"}: replaces patterns with strings
+- [`stringr::str_split()`](https://stringr.tidyverse.org/reference/str_split.html){target="_blank"}: splits strings based on separators
+
+### Factors
+
+- [`levels()`](https://rdrr.io/r/base/levels.html){target="_blank"}: prints factor levels
+- [`forcats::fct_inorder()`](https://forcats.tidyverse.org/reference/fct_inorder.html){target="_blank"}, [`forcats::fct_rev()`](https://forcats.tidyverse.org/reference/fct_rev.html){target="_blank"}: orders levels by order in data or in reverse of current order
+- [`forcats::fct_relevel()`](https://forcats.tidyverse.org/reference/fct_relevel.html){target="_blank"}: manually reorders levels
+- [`forcats::fct_reorder()`](https://forcats.tidyverse.org/reference/fct_reorder.html){target="_blank"}: orders levels based on another variable
+- [`forcats::fct_recode()`](https://forcats.tidyverse.org/reference/fct_recode.html){target="_blank"}: recodes level with new value
+- [`forcats::fct_collapse()`](https://forcats.tidyverse.org/reference/fct_collapse.html){target="_blank"}: recodes multiple levels into single new value
+- [`forcats::fct_lump_n()`](https://forcats.tidyverse.org/reference/fct_lump.html){target="_blank"}, [`forcats::fct_lump_prop()`](https://forcats.tidyverse.org/reference/fct_lump.html){target="_blank"},[`forcats::fct_lump_min()`](https://forcats.tidyverse.org/reference/fct_lump.html){target="_blank"}: lumps infrequent levels into level "Other"
+
+### Dates and times
+
+- [`lubridate::today()`](https://lubridate.tidyverse.org/reference/now.html){target="_blank"}, [`lubridate::now()`](https://lubridate.tidyverse.org/reference/now.html){target="_blank"}: print today's date or time
+- [`lubridate::as_date()`](https://lubridate.tidyverse.org/reference/as_date.html){target="_blank"}, [`lubridate::as_datetime()`](https://lubridate.tidyverse.org/reference/as_date.html){target="_blank"}: create date or date-time object
+- [`lubridate::mdy()`](https://lubridate.tidyverse.org/reference/ymd.html){target="_blank"}, [`lubridate::dmy()`](https://lubridate.tidyverse.org/reference/ymd.html){target="_blank"}, [`lubridate::ymd()`](https://lubridate.tidyverse.org/reference/ymd.html){target="_blank"}: convert various date formats to YYYY-MM-DD
+- [`lubridate::hms()`](https://lubridate.tidyverse.org/reference/hms.html){target="_blank"}, [`lubridate::hm()`](https://lubridate.tidyverse.org/reference/hms.html){target="_blank"}: convert times to HH:MM:SS
+- [`lubridate::mdy_hm()`](https://lubridate.tidyverse.org/reference/ymd_hms.html){target="_blank"}, [`lubridate::mdy_hms()`](https://lubridate.tidyverse.org/reference/ymd_hms.html){target="_blank"}: converts various date-time formats to YYYY-MM-DD HH:MM:SS
+- [`lubridate::year()`](https://lubridate.tidyverse.org/reference/year.html){target="_blank"}, [`lubridate::month()`](https://lubridate.tidyverse.org/reference/month.html){target="_blank"}, [`lubridate::day()`](https://lubridate.tidyverse.org/reference/day.html){target="_blank"}, [`lubridate::wday()`](https://lubridate.tidyverse.org/reference/day.html){target="_blank"}: extracts year, month, day, or weekday from date
+- [`lubridate::hour()`](https://lubridate.tidyverse.org/reference/hour.html){target="_blank"}, [`lubridate::minute()`](https://lubridate.tidyverse.org/reference/minute.html){target="_blank"}, [`lubridate::second()`](https://lubridate.tidyverse.org/reference/second.html){target="_blank"}: extracts hour, minute, second from date
+
+### Iteration
+
+- [`for()`](https://rdrr.io/r/base/Control.html){target="_blank"}: create for loops
+- [`purrr::map()`](https://purrr.tidyverse.org/reference/map.html){target="_blank"}, [`purrr::map_dbl()`](https://purrr.tidyverse.org/reference/map.html){target="_blank"}, [`purrr::map_chr()`](https://purrr.tidyverse.org/reference/map.html){target="_blank"}, [`purrr::map_df()`](https://purrr.tidyverse.org/reference/map_dfr.html){target="_blank"}: map functions to vector, data frame, or list and return list, numeric vector, character vector, or data frame
+- [`split()`](https://rdrr.io/r/base/split.html){target="_blank"}: divide data frame into groups in a list
+- [`dir()`](https://rdrr.io/r/base/list.files.html){target="_blank"}: return files in a directory
+
+
+### Grammar of graphics
+
+- [`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html){target="_blank"}: creates a ggplot
+- [`+`](https://ggplot2.tidyverse.org/reference/gg-add.html){target="_blank"}: pipe operator for ggplots
+- [`ggplot2::aes()`](https://ggplot2.tidyverse.org/reference/aes.html){target="_blank"}: defines aesthetic properties of plot
+- `alpha`, `color`, `fill`, `linesize`, `linetype`, `shape`, `size` arguments: properties for geometric objects
+- [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html){target="_blank"}: Modify components of a theme
+- [`ggplot2::ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html){target="_blank"}: saves ggplot to file
+
+### Color
+
+- [`ggplot2::scale_color_brewer()`](https://ggplot2.tidyverse.org/reference/scale_brewer.html){target="_blank"}, [`ggplot2::scale_fill_brewer()`](https://ggplot2.tidyverse.org/reference/scale_brewer.html){target="_blank"}: uses existing qualitative colors scales for color and fill
+- [`ggplot2::scale_color_manual()`](https://ggplot2.tidyverse.org/reference/scale_manual.html){target="_blank"}, [`ggplot2::scale_fill_manual()`](https://ggplot2.tidyverse.org/reference/scale_manual.html){target="_blank"}: sets manual colors for color and fill
+- [`ggplot2::scale_color_gradient()`](https://ggplot2.tidyverse.org/reference/scale_gradient.html){target="_blank"}, [`ggplot2::scale_fill_gradient()`](https://ggplot2.tidyverse.org/reference/scale_gradient.html){target="_blank"}: sets sequential color gradient for color and fill
+- [`ggplot2::scale_color_distiller()`](https://ggplot2.tidyverse.org/reference/scale_brewer.html){target="_blank"}, [`ggplot2::scale_fill_distiller()`](https://ggplot2.tidyverse.org/reference/scale_brewer.html){target="_blank"}: sets diverging color scale for color and fill
+
+### Visualizing distributions
+
+- [`ggplot2::geom_histogram()`](https://ggplot2.tidyverse.org/reference/geom_histogram.html){target="_blank"}: plots histograms
+- [`ggplot2::geom_freqpoly()`](https://ggplot2.tidyverse.org/reference/geom_histogram.html){target="_blank"}: plots frequency polygons
+- [`ggplot2::geom_density()`](https://ggplot2.tidyverse.org/reference/geom_density.html){target="_blank"}: plots density plot
+- [`ggplot2::geom_boxplot()`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html){target="_blank"}: plots boxplot
+- [`ggplot2::geom_violin()`](https://ggplot2.tidyverse.org/reference/geom_violin.html){target="_blank"}: plots violin plot
+- [`ggplot2::stat_summary()`](https://ggplot2.tidyverse.org/reference/stat_summary.html){target="_blank"}: plots summaries of data (e.g., means $\pm$ standard error)
+
+### Visualizing amounts and proportions
+
+- [`dplyr::count()`](https://dplyr.tidyverse.org/reference/count.html){target="_blank"}: calculates counts of data by variables
+- [`ggplot2::geom_bar()`](https://ggplot2.tidyverse.org/reference/geom_bar.html){target="_blank"}: plots bar plot with raw data
+- [`ggplot2::geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html){target="_blank"}: plots bar plot with counts
+- `position` argument: controls whether data are stacked, dodged, jittered, nudged
+- [`ggplot2::geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html){target="_blank"}: plots scatterplots
+- [`ggplot2::coord_flip()`](https://ggplot2.tidyverse.org/reference/coord_flip.html){target="_blank"}: flips x and y coordinates
+
+### Visualizing x-y data
+
+- [`ggplot2::geom_abline()`](https://ggplot2.tidyverse.org/reference/geom_abline.html){target="_blank"}: plots line with slope and intercept
+- [`pairs()`](https://rdrr.io/r/graphics/pairs.html){target="_blank"}: plots correlation plots
+- [`GGally::ggpairs()`](https://ggobi.github.io/ggally/reference/ggpairs.html){target="_blank"}: plots correlation plots
+- [`ggplot2::geom_tile()`](https://ggplot2.tidyverse.org/reference/geom_tile.html){target="_blank"}: plots tile plot
+- [`ggcorrplot::ggcorrplot()`](https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html){target="_blank"}: plots correlation heatmaps
+- [`ggplot2::geom_line()`](https://ggplot2.tidyverse.org/reference/geom_path.html){target="_blank"}: plots line plot
+- [`ggplot2::geom_area()`](https://ggplot2.tidyverse.org/reference/geom_ribbon.html){target="_blank"}: plots area under curve or line plot
+- [`ggplot2::geom_count()`](https://ggplot2.tidyverse.org/reference/geom_count.html){target="_blank"}: plots overlapping points as size
+- [`ggplot2::geom_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html){target="_blank"}: plots fitted lines and curves
+- [`ggplot2::geom_rug()`](https://ggplot2.tidyverse.org/reference/geom_rug.html){target="_blank"}: plots rug plot
+- [`ggplot2::geom_pointrange()`](https://ggplot2.tidyverse.org/reference/geom_linerange.html){target="_blank"}: plots point and error bar
+- [`ggplot2::geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html){target="_blank"}: plots jittered points
+- `ggbeeswarm::geom_beeswarm()`: plots beeswarm plots
+- `gghalves::geom_half_violin()`, `gghalves::geom_half_dotplot()`: plots raincloud plots
+
+
+### Finessing plots
+
+- [`ggplot2::geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html){target="_blank"}: plots jittered scatterplot
+- [`ggbeeswarm::geom_beeswarm()`](https://rdrr.io/pkg/ggbeeswarm/man/geom_beeswarm.html){target="_blank"}: plots beeswarm plot
+- [`ggplot2::scale_x_discrete()`](https://ggplot2.tidyverse.org/reference/scale_discrete.html){target="_blank"}, [`ggplot2::scale_y_discrete()`](https://ggplot2.tidyverse.org/reference/scale_discrete.html){target="_blank"}: adjusts discrete scale properties (e.g., limits, ticks)
+- [`ggplot2::scale_x_continuous()`](https://ggplot2.tidyverse.org/reference/scale_continuous.html){target="_blank"}, [`ggplot2::scale_y_continuous()`](https://ggplot2.tidyverse.org/reference/scale_continuous.html){target="_blank"}: adjusts continuous scale properties (e.g., limits, ticks)
+- [`ggplot2::lims()`](https://ggplot2.tidyverse.org/reference/lims.html){target="_blank"}, [`ggplot2::xlim()`](https://ggplot2.tidyverse.org/reference/lims.html){target="_blank"}, [`ggplot2::ylim()`](https://ggplot2.tidyverse.org/reference/lims.html){target="_blank"}: adjusts axis limits
+- [`ggplot2::facet_wrap()`](https://ggplot2.tidyverse.org/reference/facet_wrap.html){target="_blank"}, [`ggplot2::facet_grid()`](https://ggplot2.tidyverse.org/reference/facet_grid.html){target="_blank"}: creates facets based on discrete variables
+
+### Adorning plots
+
+- [`ggplot2::labs()`](https://ggplot2.tidyverse.org/reference/labs.html){target="_blank"}, [`ggplot2::xlab()`](https://ggplot2.tidyverse.org/reference/labs.html){target="_blank"}, [`ggplot2::ylab()`](https://ggplot2.tidyverse.org/reference/labs.html){target="_blank"}: replaces axis labels
+- [`ggplot2::annotate()`](https://ggplot2.tidyverse.org/reference/annotate.html){target="_blank"}: annotates plot with text, segments, rectangles, etc.
+- [`ggplot2::geom_text()`](https://ggplot2.tidyverse.org/reference/geom_text.html){target="_blank"}: plots text as aesthetic property
+- [`ggplot2::geom_hline()`](https://ggplot2.tidyverse.org/reference/geom_abline.html){target="_blank"}, [`ggplot2::geom_vline()`](https://ggplot2.tidyverse.org/reference/geom_abline.html){target="_blank"}: plots horizontal and vertical reference lines
+- [`ggplot2::stat_ellipse()`](https://ggplot2.tidyverse.org/reference/stat_ellipse.html){target="_blank"}: plots ellipse around data
+
+### Tables
+
+- [`knitr::kable()`](https://rdrr.io/pkg/knitr/man/kable.html){target="_blank"}: creates table from data frame
+- [`kableExtra::kable_styling()`](https://rdrr.io/pkg/kableExtra/man/kable_styling.html){target="_blank"}: styles table
+- [`kableExtra::pack_rows()`](https://rdrr.io/pkg/kableExtra/man/group_rows.html){target="_blank"}, [`kableExtra::add_header_above()`](https://rdrr.io/pkg/kableExtra/man/add_header_above.html){target="_blank"}: adds grouping variables to rows or columns
+- [`kableExtra::footnote()`](https://rdrr.io/pkg/kableExtra/man/footnote.html){target="_blank"}: adds table note
+- [`kableExtra::landscape()`](https://rdrr.io/pkg/kableExtra/man/landscape.html){target="_blank"}: rotates table to landscape orientation
+- [`papaja::apa_table()`](https://rdrr.io/pkg/papaja/man/apa_table.html){target="_blank"}: formats data frame to APA style table
+- [`papaja::apa_print()`](https://rdrr.io/pkg/papaja/man/apa_print.html){target="_blank"}: formats statistics to APA style
+
+</details>
+
+## Flashcards
+
+Flashcards can be a useful way to help learning functions and their descriptions. I created a package called [`{flashr}`](https://jeffreyrstevens.github.io/flashr/){target="_blank"} that builds decks of HTML flashcards. You're welcome to build your own decks of flashcards by installing the package and following the instructions for building decks. Or, you can use existing decks built for the course or for each of the chapters of [_R for Data Science_](https://r4ds.hadley.nz/){target="_blank"} (1st edition).
+
+<details>
+
+<summary>DPaViR flashcards</summary>
+
+- Introduction ([terms first](decks/01_introduction.html){target="_blank"}) ([definitions first](decks/01_introductionb.html){target="_blank"})
+- Coding and workflows ([terms first](decks/03_coding.html){target="_blank"}) ([definitions first](decks/03_codingb.html){target="_blank"})
+- Data types ([terms first](decks/06_datatypes.html){target="_blank"}) ([definitions first](decks/06_datatypesb.html){target="_blank"})
+- Data structures ([terms first](decks/07_datastructures.html){target="_blank"}) ([definitions first](decks/07_datastructuresb.html){target="_blank"})
+- Importing data ([terms first](decks/08_importing.html){target="_blank"}) ([definitions first](decks/08_importingb.html){target="_blank"})
+- Validating data ([terms first](decks/09_validating.html){target="_blank"}) ([definitions first](decks/09_validatingb.html){target="_blank"})
+- Cleaning columns ([terms first](decks/10_cleaning_columns.html){target="_blank"}) ([definitions first](decks/10_cleaning_columnsb.html){target="_blank"})
+- Wrangling rows ([terms first](decks/13_wrangling_rows.html){target="_blank"}) ([definitions first](decks/13_wrangling_rowsb.html){target="_blank"})
+- Tidy data ([terms first](decks/15_tidy_data.html){target="_blank"}) ([definitions first](decks/15_tidy_datab.html){target="_blank"})
+- Merging data ([terms first](decks/17_merging_data.html){target="_blank"}) ([definitions first](decks/17_merging_datab.html){target="_blank"})
+- Numbers ([terms first](decks/19_numbers.html){target="_blank"}) ([definitions first](decks/19_numbersb.html){target="_blank"})
+- Strings ([terms first](decks/20_strings.html){target="_blank"}) ([definitions first](decks/20_stringsb.html){target="_blank"})
+- Factors ([terms first](decks/22_factors.html){target="_blank"}) ([definitions first](decks/22_factorsb.html){target="_blank"})
+- Dates and times ([terms first](decks/23_dates.html){target="_blank"}) ([definitions first](decks/23_datesb.html){target="_blank"})
+- Iteration ([terms first](decks/25_iteration.html){target="_blank"}) ([definitions first](decks/25_iterationb.html){target="_blank"})
+<!-- - ([terms first](decks/.html){target="_blank"}) ([definitions first](decks/b.html){target="_blank"})-->
+<!-- - ([terms first](decks/.html){target="_blank"}) ([definitions first](decks/b.html){target="_blank"})-->
+
+</details>
+
+
+
+<details>
+
+<summary>R4DS flashcards</summary>
+
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds1.html" target="_blank">Ch. 1 Introduction</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds3.html" target="_blank">Ch. 3 Data visualization</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds5.html" target="_blank">Ch. 5 Data transformation</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds7.html" target="_blank">Ch. 7 Exploratory data analysis</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds8.html" target="_blank">Ch. 8 Workflow: projects</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds10.html" target="_blank">Ch. 10 Tibbles</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds11.html" target="_blank">Ch. 11 Data import</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds12.html" target="_blank">Ch. 12 Tidy data</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds13.html" target="_blank">Ch. 13 Relational data</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds14.html" target="_blank">Ch. 14 Strings</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds15.html" target="_blank">Ch. 15 Factors</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds16.html" target="_blank">Ch. 16 Dates and times</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds18.html" target="_blank">Ch. 18 Pipes</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds20.html" target="_blank">Ch. 20 Vectors</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds21.html" target="_blank">Ch. 21 Iteration</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds23.html" target="_blank">Ch. 23 Model basics</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds25.html" target="_blank">Ch. 25 Many models</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds27.html" target="_blank">Ch. 27 R Markdown</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds28.html" target="_blank">Ch. 28 Graphics for communication</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds29.html" target="_blank">Ch. 29 R Markdown formats</a>
+-   <a href = "https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds30.html" target="_blank">Ch. 30 R Markdown workflow</a>
+
+</details>
+
+## Miscellaneous
+
+* [Cheatsheets](https://posit.co/resources/cheatsheets/){target="_blank"}
+* [Tidyverse style](https://style.tidyverse.org/){target="_blank"}
+* [PsyTeachR books](https://psyteachr.github.io/){target="_blank"}

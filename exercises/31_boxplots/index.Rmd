@@ -1,0 +1,242 @@
+---
+title: "Plotting distributions: boxplots and violin plots"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+library(Hmisc)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Introduction
+
+This exercise covers plotting distributions including boxplots and violin plots.
+
+### Set-up
+
+Let's load `{tidyverse}` and `{palmerpenguins}`.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Violin plots
+
+### 
+
+Histograms and density plots can represent one or a few distributions, but comparing multiple distributions can be difficult with these plots. Violin plots provide a better visualization of multiple distributions. Violin plots are basically density plots that are rotated and mirrored to provide a symmetrical distribution of the data.
+
+Violin plots use the `geom_violin()` geometric object, and here we create one for the body mass data for each species.
+
+```{r violin, echo=TRUE, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_violin()
+```
+
+### Properties refresher
+
+Just as a refresher, let's adjust both global and mapped properties of the plot.
+
+```{r violin-color, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g, fill = species, color = species)) +
+  geom_violin(alpha = 0.25, show.legend = FALSE)
+```
+
+**Map both violin area and borders to species, reduce transparency to 0.25, and remove the legend.**
+
+```{r exercise1, exercise = TRUE, warning = FALSE}
+penguins %>% 
+  ggplot(...)
+```
+
+```{r exercise1-solution}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g, fill = species, color = species)) +
+  geom_violin(alpha = 0.25, show.legend = FALSE)
+```
+
+### Adding other stats
+
+Often it is useful to add other statistics to the plot instead of just violin plots.
+
+```{r violin-statsummary, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_violin(fill = "lightblue", color = "steelblue", size = 1.25) +
+  stat_summary(fun.data = mean_cl_normal, color = "steelblue")
+```
+
+**Add a point for the mean and error bars for 95% confidence intervals to each violin. Make the area color *lightblue*, the borders *steelblue* and line width 1.25, and points/error bars *steelblue* for all violins.**
+
+```{r exercise6, exercise = TRUE, warning = FALSE}
+penguins %>% 
+  ggplot(...)
+```
+
+```{r exercise6-solution}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_violin(fill = "lightblue", color = "steelblue", linewidth = 1.25) +
+  stat_summary(fun.data = mean_cl_normal, color = "steelblue")
+```
+
+
+## Boxplots
+
+###
+
+While histograms, density plots, and violin plots show fairly fine-grained representations, sometimes you want a courser representation. Boxplot provide these by showing the median, interquartile range, and other measures of range.
+
+```{r boxplot, echo=TRUE, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(fill = "lightblue", color = "steelblue")
+```
+
+The default behavior of boxplots is for the bar to represent the median, the box to represent the interquartile range (25th-75th percentile of the data), the whiskers to represent 1.5 times the interquartile range, and the points represent outliers (data outside of 1.5 times the interquartile range).
+
+### Whisker length
+
+You can change the whiskers to be the full range by specifying a very high value in `coef`, which is the value multiplied by the interquartile range to produce the whiskers (by default, `coef = 1.5`).
+
+```{r boxplot-coef, echo=TRUE, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(coef = 5)
+```
+
+### Outlier properties
+
+To change properties of the outlier data points, you can prepend `outlier.` to the standard properties (e.g., `outlier.color`, `outlier.shape`).
+
+```{r boxplot-outlier, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(outlier.shape = 8, outlier.size = 3)
+```
+
+**Reproduce the outlier symbols and increase the size to 3. You may have to search for R symbols to find the symbol number.**
+
+```{r exercise7, exercise = TRUE, warning = FALSE}
+penguins %>% 
+  ggplot(...)
+```
+
+```{r exercise7-solution}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(outlier.shape = 8, outlier.size = 3)
+```
+
+
+### Notched boxplots
+
+You can add notches to boxplots that represent roughly 95% confidence intervals around the median by setting `notch = TRUE`.
+
+```{r boxplot-notched, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(notch = TRUE)
+```
+
+**Set `notch = TRUE`.**
+
+```{r exercise8, exercise = TRUE, warning = FALSE}
+penguins %>% 
+  ggplot(...)
+```
+
+```{r exercise8-solution}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(notch = TRUE)
+```
+
+### Box width
+
+Sometimes we want the boxes to be wider or narrow than the default. You can control box width with the `width` argument.
+
+```{r box-width, echo=TRUE, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(notch = TRUE, width = 0.5)
+```
+
+By default, the notch width is set to be 50% of the box width. You can change that with the `notchwidth` argument.
+
+```{r notch-width, echo=TRUE, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(notch = TRUE, width = 0.5, notchwidth = 0.75)
+```
+
+### Combining violin plots and boxplots
+
+You may want to overlay boxplots over violin plots to illustrate the full distribution as well as summary statistics.
+
+
+```{r violin-boxplot, warning=FALSE}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g, color = species, fill = species)) +
+  geom_violin(alpha = 0.5, show.legend = FALSE) +
+  geom_boxplot(alpha = 0.25, show.legend = FALSE)
+```
+
+**Overlay a boxplot on top of a violin plot for the penguin species' body masses. Color the lines and shaded areas based on the species but don't include a legend. Make the transparency 0.5 for the violin plot and 0.25 for the boxplot.**
+
+```{r exercise9, exercise = TRUE, warning = FALSE}
+penguins %>% 
+  ggplot(...)
+```
+
+```{r exercise9-solution}
+penguins %>%    
+  ggplot(aes(x = species, y = body_mass_g, color = species, fill = species)) +
+  geom_violin(alpha = 0.5, show.legend = FALSE) +
+  geom_boxplot(alpha = 0.25, show.legend = FALSE)
+```
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 9
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

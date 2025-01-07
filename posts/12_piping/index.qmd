@@ -1,0 +1,44 @@
+---
+title: 'Piping'
+author:
+  - Jeff Stevens
+date: '2023-02-17'
+categories: 
+  - "module 3"
+  - "week 4"
+  - mutate
+  - pipes
+  - select
+description: "Pipes let us combine chains of functions"
+draft: true
+---
+
+Often we have many steps of data processing to wrangle it appropriately. Rather than having to save every intermediate step, we can use pipes to create chains of steps.
+
+## Learning objectives
+
+* Learn when to use pipes
+* Compare base R and tidyverse pipes
+* Apply pipes to optimize coding
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 5](https://r4ds.hadley.nz/workflow-pipes.html){target='_blank'}
+
+## Class meeting
+
+* Base R vs. tidyverse pipes
+* Piping basics
+* Advanced piping
+* [Slides](../../slides/12_piping.qmd){target="_blank"} and [Code](../../code/12_piping.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_12_piping/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 4.2](https://r4ds.hadley.nz/data-transform.html#filter){target='_blank'}

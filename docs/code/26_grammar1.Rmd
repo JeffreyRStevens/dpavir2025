@@ -1,0 +1,45 @@
+---
+title: "Grammar of graphics I"
+author: "Jeffrey R. Stevens"
+date: "2023-03-31"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight.
+
+```{r}
+# >
+```
+
+2. Repeat the plot but only with vehicles having 4 or 6 cylinders.
+
+```{r}
+# >
+```
+
+3. Repeat plot #1 but add a smooth line **underneath** the data points.
+
+```{r}
+# >
+```
+
+4. Make a boxplot of fuel efficiency for each cylinder size.
+
+```{r}
+# >
+```
+
+5. Add " cylinders" to the end of each value in the cylinder column of data and replot #4.
+
+```{r}
+# >
+```
+
+6. Replot #4 ordering the cylinders such that the median mpg increases from left to right.
+
+```{r}
+# >
+```

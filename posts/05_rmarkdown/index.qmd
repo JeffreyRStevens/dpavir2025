@@ -1,0 +1,50 @@
+---
+title: 'Literate programming'
+author:
+  - Jeff Stevens
+date: '2023-02-01'
+categories: 
+  - "module 1"
+  - "week 2"
+  - knitr
+  - "R Markdown"
+  - scripts
+description: "Combining text, data, and code in R Markdown"
+draft: true
+---
+
+Literate programming involves embedding all of the code used to generate statistics and figures into the documents used to present them. We will learn how to use R Markdown to embed data and code into our documents.
+
+## Learning objectives
+
+* Distinguish between plaintext and binary file types
+* Create and work with R scripts
+* Learn basic Markdown syntax
+* Create new R Markdown documents
+* Insert R code into R Markdown documents both inline and as code chunks
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R Markdown](https://rmarkdown.rstudio.com/articles_intro.html), complete [Markdown tutorial](https://commonmark.org/help/tutorial/){target='_blank'}
+
+## Class meeting
+
+* File types
+* Interacting with R
+* Writing scripts
+* Literate programming
+* Markdown
+* R Markdown
+* [Slides](../../slides/05_rmarkdown.qmd){target="_blank"} and [Code](../../code/05_rmarkdown.html){target="_blank"}
+
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_05_rmarkdown/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS1 20](https://r4ds.had.co.nz/vectors.html){target='_blank'}

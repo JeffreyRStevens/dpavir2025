@@ -1,0 +1,47 @@
+---
+title: "Plotting distributions: boxplots"
+author: "Francine Goh"
+date: "2023-04-12"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `penguins` data, create a boxplot that shows penguin flipper length by island without outliers.
+
+```{r}
+# >
+```
+
+2. Add the means and standard error for each boxplot.
+
+```{r}
+# >
+```
+
+3. Switch from standard errors to confidence intervals, increase the size of the point, and color the box shading _chocolate_.
+
+```{r}
+# >
+```
+
+4. Fill the boxplots with color separately for each island and remove the legend.
+
+```{r}
+# >
+```
+
+
+5. Create a boxplot to show how flipper length differs for each species by island.
+
+```{r}
+# >
+```
+
+
+6. Recreate the boxplot #5 as a violin plot with a white background.
+
+```{r}
+# >
+```

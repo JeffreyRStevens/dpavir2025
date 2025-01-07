@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeffrey R. Stevens">
+<meta name="dcterms.date" content="2023-03-08">
+
+<title>Strings – Data Processing and Visualization in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../logo/dpavir_icon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-910b134b5e44d610393d62d656f87890.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Data Processing and Visualization in R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-course-information" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Course information</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-course-information">    
+        <li>
+    <a class="dropdown-item" href="../syllabus.html">
+ <span class="dropdown-text">Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../schedule.html">
+ <span class="dropdown-text">Schedule</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-course-materials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Course materials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-course-materials">    
+        <li>
+    <a class="dropdown-item" href="../meetings.html">
+ <span class="dropdown-text">Class meetings</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../materials.html">
+ <span class="dropdown-text">Readings, slides, code, exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../resources.html">
+ <span class="dropdown-text">Resources</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Strings</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeffrey R. Stevens </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 8, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>For these exercises, we’ll use the dog breed traits data set.</p>
+<ol type="1">
+<li>Load tidyverse and import <a href="https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv"><code>dog_breed_traits_clean.csv</code></a> to <code>traits</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>traits <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/dog_breed_traits_clean.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Return the first ten letters of the alphabet in upper case.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J"</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Create this character string and assign it to <code>mystring</code>: The elephant said “Hello” then ‘Bye!’ Then view how it would be printed.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(mystring <span class="ot">&lt;-</span> <span class="st">"The elephant said </span><span class="sc">\"</span><span class="st">Hello</span><span class="sc">\"</span><span class="st"> then 'Bye'!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The elephant said \"Hello\" then 'Bye'!"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(mystring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The elephant said "Hello" then 'Bye'!</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Find how many characters are in <code>mystring</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(mystring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 37</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Create a vector of the first four characters of the <em>coat_length</em> column from <code>traits</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(traits<span class="sc">$</span>coat_length, <span class="dv">1</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "Shor" "Shor" "Medi" "Medi" "Shor" "Long" "Shor" "Shor" "Shor" "Shor"
+ [11] "Shor" "Medi" "Long" "Shor" "Shor" "Medi" "Medi" "Shor" "Medi" "Long"
+ [21] "Shor" "Medi" "Long" "Long" "Shor" "Medi" "Long" "Shor" "Shor" "Long"
+ [31] "Medi" "Medi" "Shor" "Shor" "Shor" "Shor" "Shor" "Long" "Shor" "Shor"
+ [41] "Medi" "Shor" "Shor" "Medi" "Long" "Shor" "Medi" "Medi" "Long" "Medi"
+ [51] "Shor" "Shor" "Medi" "Shor" "Shor" "Long" "Medi" "Medi" "Shor" "Medi"
+ [61] "Shor" "Shor" "Medi" "Shor" "Medi" "Medi" "Medi" "Long" "Shor" "Medi"
+ [71] "Shor" "Shor" "Medi" "Medi" "Medi" "Shor" "Shor" "Long" "Shor" "Long"
+ [81] "Shor" "Shor" "Shor" "Medi" "Shor" "Shor" "Medi" "Medi" "Shor" "Medi"
+ [91] "Medi" "Medi" "Shor" "Medi" "Long" "Long" "Shor" "Long" "Long" "Shor"
+[101] "Medi" "Medi" "Medi" "Medi" "Shor" "Medi" "Medi" "Long" "Shor" "Medi"
+[111] "Medi" "Medi" "Shor" "Shor" "Shor" "Shor" "Medi" "Medi" "Medi" "Medi"
+[121] "Shor" "Long" "Shor" "Shor" "Long" "Medi" "Shor" "Medi" "Shor" "Shor"
+[131] "Shor" "Shor" "Medi" "Shor" "Medi" "Shor" "Shor" "Medi" "Shor" "Medi"
+[141] "Medi" "Shor" "Long" "Shor" "Medi" "Shor" "Shor" "Medi" "Medi" "Long"
+[151] "Medi" "Shor" "Shor" "Medi" "Shor" "Medi" "Medi" "Medi" "Shor" "Medi"
+[161] "Long" "Medi" "Shor" "Long" "Medi" "Medi" "Shor" "Medi" "Medi" "Medi"
+[171] "Shor" "Medi" "Long" "Medi" "Long" "Medi" "Medi" "Long" "Shor" "Shor"
+[181] "Medi" "Medi" "Long" "Shor" "Shor" "Medi" "Medi" "Medi" "Shor" "Shor"
+[191] "Medi" "Shor" "Shor" "Shor" "Shor" "Medi" NA    </code></pre>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Convert the <em>breed</em> column of <code>traits</code> to sentence case.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_sentence</span>(traits<span class="sc">$</span>breed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "Retrievers (labrador)"                
+  [2] "French bulldogs"                      
+  [3] "German shepherd dogs"                 
+  [4] "Retrievers (golden)"                  
+  [5] "Bulldogs"                             
+  [6] "Poodles"                              
+  [7] "Beagles"                              
+  [8] "Rottweilers"                          
+  [9] "Pointers (german shorthaired)"        
+ [10] "Dachshunds"                           
+ [11] "Pembroke welsh corgis"                
+ [12] "Australian shepherds"                 
+ [13] "Yorkshire terriers"                   
+ [14] "Boxers"                               
+ [15] "Great danes"                          
+ [16] "Siberian huskies"                     
+ [17] "Cavalier king charles spaniels"       
+ [18] "Doberman pinschers"                   
+ [19] "Miniature schnauzers"                 
+ [20] "Shih tzu"                             
+ [21] "Boston terriers"                      
+ [22] "Bernese mountain dogs"                
+ [23] "Pomeranians"                          
+ [24] "Havanese"                             
+ [25] "Cane corso"                           
+ [26] "Spaniels (english springer)"          
+ [27] "Shetland sheepdogs"                   
+ [28] "Brittanys"                            
+ [29] "Pugs"                                 
+ [30] "Spaniels (cocker)"                    
+ [31] "Miniature american shepherds"         
+ [32] "Border collies"                       
+ [33] "Mastiffs"                             
+ [34] "Chihuahuas"                           
+ [35] "Vizslas"                              
+ [36] "Basset hounds"                        
+ [37] "Belgian malinois"                     
+ [38] "Maltese"                              
+ [39] "Weimaraners"                          
+ [40] "Collies"                              
+ [41] "Newfoundlands"                        
+ [42] "Rhodesian ridgebacks"                 
+ [43] "Shiba inu"                            
+ [44] "West highland white terriers"         
+ [45] "Bichons frises"                       
+ [46] "Bloodhounds"                          
+ [47] "Spaniels (english cocker)"            
+ [48] "Akitas"                               
+ [49] "Portuguese water dogs"                
+ [50] "Retrievers (chesapeake bay)"          
+ [51] "Dalmatians"                           
+ [52] "St. Bernards"                         
+ [53] "Papillons"                            
+ [54] "Australian cattle dogs"               
+ [55] "Bullmastiffs"                         
+ [56] "Samoyeds"                             
+ [57] "Scottish terriers"                    
+ [58] "Soft coated wheaten terriers"         
+ [59] "Whippets"                             
+ [60] "Pointers (german wirehaired)"         
+ [61] "Chinese shar-pei"                     
+ [62] "Airedale terriers"                    
+ [63] "Wirehaired pointing griffons"         
+ [64] "Bull terriers"                        
+ [65] "Alaskan malamutes"                    
+ [66] "Cardigan welsh corgis"                
+ [67] "Giant schnauzers"                     
+ [68] "Old english sheepdogs"                
+ [69] "Italian greyhounds"                   
+ [70] "Great pyrenees"                       
+ [71] "Dogues de bordeaux"                   
+ [72] "Russell terriers"                     
+ [73] "Cairn terriers"                       
+ [74] "Irish wolfhounds"                     
+ [75] "Setters (irish)"                      
+ [76] "Greater swiss mountain dogs"          
+ [77] "Miniature pinschers"                  
+ [78] "Lhasa apsos"                          
+ [79] "Chinese crested"                      
+ [80] "Coton de tulear"                      
+ [81] "Staffordshire bull terriers"          
+ [82] "American staffordshire terriers"      
+ [83] "Rat terriers"                         
+ [84] "Chow chows"                           
+ [85] "Anatolian shepherd dogs"              
+ [86] "Basenjis"                             
+ [87] "Spaniels (boykin)"                    
+ [88] "Lagotti romagnoli"                    
+ [89] "Brussels griffons"                    
+ [90] "Retrievers (nova scotia duck tolling)"
+ [91] "Norwegian elkhounds"                  
+ [92] "Standard schnauzers"                  
+ [93] "Dogo argentinos"                      
+ [94] "Bouviers des flandres"                
+ [95] "Pekingese"                            
+ [96] "Keeshonden"                           
+ [97] "Border terriers"                      
+ [98] "Leonbergers"                          
+ [99] "Tibetan terriers"                     
+[100] "Neapolitan mastiffs"                  
+[101] "Setters (english)"                    
+[102] "Retrievers (flat-coated)"             
+[103] "Borzois"                              
+[104] "Fox terriers (wire)"                  
+[105] "Miniature bull terriers"              
+[106] "Belgian tervuren"                     
+[107] "Setters (gordon)"                     
+[108] "Silky terriers"                       
+[109] "Norwich terriers"                     
+[110] "Spinoni italiani"                     
+[111] "Japanese chin"                        
+[112] "Welsh terriers"                       
+[113] "Toy fox terriers"                     
+[114] "Schipperkes"                          
+[115] "Parson russell terriers"              
+[116] "Pointers"                             
+[117] "Belgian sheepdogs"                    
+[118] "Tibetan spaniels"                     
+[119] "American eskimo dogs"                 
+[120] "Irish terriers"                       
+[121] "Beaucerons"                           
+[122] "Afghan hounds"                        
+[123] "Boerboels"                            
+[124] "Fox terriers (smooth)"                
+[125] "Bearded collies"                      
+[126] "Black russian terriers"               
+[127] "Black and tan coonhounds"             
+[128] "Spaniels (welsh springer)"            
+[129] "American hairless terriers"           
+[130] "Norfolk terriers"                     
+[131] "Xoloitzcuintli"                       
+[132] "Manchester terriers"                  
+[133] "Kerry blue terriers"                  
+[134] "Australian terriers"                  
+[135] "Spaniels (clumber)"                   
+[136] "Lakeland terriers"                    
+[137] "Bluetick coonhounds"                  
+[138] "English toy spaniels"                 
+[139] "German pinschers"                     
+[140] "Tibetan mastiffs"                     
+[141] "Bedlington terriers"                  
+[142] "Greyhounds"                           
+[143] "Pulik"                                
+[144] "Salukis"                              
+[145] "Barbets"                              
+[146] "Redbone coonhounds"                   
+[147] "Swedish vallhunds"                    
+[148] "Sealyham terriers"                    
+[149] "Spanish water dogs"                   
+[150] "Briards"                              
+[151] "Berger picards"                       
+[152] "Entlebucher mountain dogs"            
+[153] "Treeing walker coonhounds"            
+[154] "Icelandic sheepdogs"                  
+[155] "Wirehaired vizslas"                   
+[156] "Pumik"                                
+[157] "Portuguese podengo pequenos"          
+[158] "Spaniels (american water)"            
+[159] "Retrievers (curly-coated)"            
+[160] "Spaniels (field)"                     
+[161] "Lowchen"                              
+[162] "Nederlandse kooikerhondjes"           
+[163] "Affenpinschers"                       
+[164] "Petits bassets griffons vendeens"     
+[165] "Finnish lapphunds"                    
+[166] "Scottish deerhounds"                  
+[167] "Plott hounds"                         
+[168] "Norwegian buhunds"                    
+[169] "Glen of imaal terriers"               
+[170] "Setters (irish red and white)"        
+[171] "Ibizan hounds"                        
+[172] "Spaniels (sussex)"                    
+[173] "Bergamasco sheepdogs"                 
+[174] "Spaniels (irish water)"               
+[175] "Polish lowland sheepdogs"             
+[176] "Otterhounds"                          
+[177] "Kuvaszok"                             
+[178] "Komondorok"                           
+[179] "Cirnechi dell etna"                   
+[180] "Pharaoh hounds"                       
+[181] "Dandie dinmont terriers"              
+[182] "Pyrenean shepherds"                   
+[183] "Skye terriers"                        
+[184] "Canaan dogs"                          
+[185] "American english coonhounds"          
+[186] "Chinooks"                             
+[187] "Finnish spitz"                        
+[188] "Grand basset griffon vendeens"        
+[189] "Sloughis"                             
+[190] "Harriers"                             
+[191] "Cesky terriers"                       
+[192] "American foxhounds"                   
+[193] "Azawakhs"                             
+[194] "English foxhounds"                    
+[195] "Norwegian lundehunds"                 
+[196] "American rearsniffer"                 
+[197] "English buttdragger"                  </code></pre>
+</div>
+</div>
+<ol start="7" type="1">
+<li>Create series of sentences using <em>breed</em> and <em>coat_length</em> that states “[insert breed name] have a [insert coat length] coat” that uses the proper cases.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_glue</span>(<span class="st">"{traits$breed} have a {str_to_lower(traits$coat_length)} coat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Retrievers (Labrador) have a short coat
+French Bulldogs have a short coat
+German Shepherd Dogs have a medium coat
+Retrievers (Golden) have a medium coat
+Bulldogs have a short coat
+Poodles have a long coat
+Beagles have a short coat
+Rottweilers have a short coat
+Pointers (German Shorthaired) have a short coat
+Dachshunds have a short coat
+Pembroke Welsh Corgis have a short coat
+Australian Shepherds have a medium coat
+Yorkshire Terriers have a long coat
+Boxers have a short coat
+Great Danes have a short coat
+Siberian Huskies have a medium coat
+Cavalier King Charles Spaniels have a medium coat
+Doberman Pinschers have a short coat
+Miniature Schnauzers have a medium coat
+Shih Tzu have a long coat
+Boston Terriers have a short coat
+Bernese Mountain Dogs have a medium coat
+Pomeranians have a long coat
+Havanese have a long coat
+Cane Corso have a short coat
+Spaniels (English Springer) have a medium coat
+Shetland Sheepdogs have a long coat
+Brittanys have a short coat
+Pugs have a short coat
+Spaniels (Cocker) have a long coat
+Miniature American Shepherds have a medium coat
+Border Collies have a medium coat
+Mastiffs have a short coat
+Chihuahuas have a short coat
+Vizslas have a short coat
+Basset Hounds have a short coat
+Belgian Malinois have a short coat
+Maltese have a long coat
+Weimaraners have a short coat
+Collies have a short coat
+Newfoundlands have a medium coat
+Rhodesian Ridgebacks have a short coat
+Shiba Inu have a short coat
+West Highland White Terriers have a medium coat
+Bichons Frises have a long coat
+Bloodhounds have a short coat
+Spaniels (English Cocker) have a medium coat
+Akitas have a medium coat
+Portuguese Water Dogs have a long coat
+Retrievers (Chesapeake Bay) have a medium coat
+Dalmatians have a short coat
+St. Bernards have a short coat
+Papillons have a medium coat
+Australian Cattle Dogs have a short coat
+Bullmastiffs have a short coat
+Samoyeds have a long coat
+Scottish Terriers have a medium coat
+Soft Coated Wheaten Terriers have a medium coat
+Whippets have a short coat
+Pointers (German Wirehaired) have a medium coat
+Chinese Shar-Pei have a short coat
+Airedale Terriers have a short coat
+Wirehaired Pointing Griffons have a medium coat
+Bull Terriers have a short coat
+Alaskan Malamutes have a medium coat
+Cardigan Welsh Corgis have a medium coat
+Giant Schnauzers have a medium coat
+Old English Sheepdogs have a long coat
+Italian Greyhounds have a short coat
+Great Pyrenees have a medium coat
+Dogues de Bordeaux have a short coat
+Russell Terriers have a short coat
+Cairn Terriers have a medium coat
+Irish Wolfhounds have a medium coat
+Setters (Irish) have a medium coat
+Greater Swiss Mountain Dogs have a short coat
+Miniature Pinschers have a short coat
+Lhasa Apsos have a long coat
+Chinese Crested have a short coat
+Coton de Tulear have a long coat
+Staffordshire Bull Terriers have a short coat
+American Staffordshire Terriers have a short coat
+Rat Terriers have a short coat
+Chow Chows have a medium coat
+Anatolian Shepherd Dogs have a short coat
+Basenjis have a short coat
+Spaniels (Boykin) have a medium coat
+Lagotti Romagnoli have a medium coat
+Brussels Griffons have a short coat
+Retrievers (Nova Scotia Duck Tolling) have a medium coat
+Norwegian Elkhounds have a medium coat
+Standard Schnauzers have a medium coat
+Dogo Argentinos have a short coat
+Bouviers des Flandres have a medium coat
+Pekingese have a long coat
+Keeshonden have a long coat
+Border Terriers have a short coat
+Leonbergers have a long coat
+Tibetan Terriers have a long coat
+Neapolitan Mastiffs have a short coat
+Setters (English) have a medium coat
+Retrievers (Flat-Coated) have a medium coat
+Borzois have a medium coat
+Fox Terriers (Wire) have a medium coat
+Miniature Bull Terriers have a short coat
+Belgian Tervuren have a medium coat
+Setters (Gordon) have a medium coat
+Silky Terriers have a long coat
+Norwich Terriers have a short coat
+Spinoni Italiani have a medium coat
+Japanese Chin have a medium coat
+Welsh Terriers have a medium coat
+Toy Fox Terriers have a short coat
+Schipperkes have a short coat
+Parson Russell Terriers have a short coat
+Pointers have a short coat
+Belgian Sheepdogs have a medium coat
+Tibetan Spaniels have a medium coat
+American Eskimo Dogs have a medium coat
+Irish Terriers have a medium coat
+Beaucerons have a short coat
+Afghan Hounds have a long coat
+Boerboels have a short coat
+Fox Terriers (Smooth) have a short coat
+Bearded Collies have a long coat
+Black Russian Terriers have a medium coat
+Black and Tan Coonhounds have a short coat
+Spaniels (Welsh Springer) have a medium coat
+American Hairless Terriers have a short coat
+Norfolk Terriers have a short coat
+Xoloitzcuintli have a short coat
+Manchester Terriers have a short coat
+Kerry Blue Terriers have a medium coat
+Australian Terriers have a short coat
+Spaniels (Clumber) have a medium coat
+Lakeland Terriers have a short coat
+Bluetick Coonhounds have a short coat
+English Toy Spaniels have a medium coat
+German Pinschers have a short coat
+Tibetan Mastiffs have a medium coat
+Bedlington Terriers have a medium coat
+Greyhounds have a short coat
+Pulik have a long coat
+Salukis have a short coat
+Barbets have a medium coat
+Redbone Coonhounds have a short coat
+Swedish Vallhunds have a short coat
+Sealyham Terriers have a medium coat
+Spanish Water Dogs have a medium coat
+Briards have a long coat
+Berger Picards have a medium coat
+Entlebucher Mountain Dogs have a short coat
+Treeing Walker Coonhounds have a short coat
+Icelandic Sheepdogs have a medium coat
+Wirehaired Vizslas have a short coat
+Pumik have a medium coat
+Portuguese Podengo Pequenos have a medium coat
+Spaniels (American Water) have a medium coat
+Retrievers (Curly-Coated) have a short coat
+Spaniels (Field) have a medium coat
+Lowchen have a long coat
+Nederlandse Kooikerhondjes have a medium coat
+Affenpinschers have a short coat
+Petits Bassets Griffons Vendeens have a long coat
+Finnish Lapphunds have a medium coat
+Scottish Deerhounds have a medium coat
+Plott Hounds have a short coat
+Norwegian Buhunds have a medium coat
+Glen of Imaal Terriers have a medium coat
+Setters (Irish Red and White) have a medium coat
+Ibizan Hounds have a short coat
+Spaniels (Sussex) have a medium coat
+Bergamasco Sheepdogs have a long coat
+Spaniels (Irish Water) have a medium coat
+Polish Lowland Sheepdogs have a long coat
+Otterhounds have a medium coat
+Kuvaszok have a medium coat
+Komondorok have a long coat
+Cirnechi dell Etna have a short coat
+Pharaoh Hounds have a short coat
+Dandie Dinmont Terriers have a medium coat
+Pyrenean Shepherds have a medium coat
+Skye Terriers have a long coat
+Canaan Dogs have a short coat
+American English Coonhounds have a short coat
+Chinooks have a medium coat
+Finnish Spitz have a medium coat
+Grand Basset Griffon Vendeens have a medium coat
+Sloughis have a short coat
+Harriers have a short coat
+Cesky Terriers have a medium coat
+American Foxhounds have a short coat
+Azawakhs have a short coat
+English Foxhounds have a short coat
+Norwegian Lundehunds have a short coat
+American Rearsniffer have a medium coat
+English Buttdragger have a NA coat</code></pre>
+</div>
+</div>
+<ol start="8" type="1">
+<li>In the <code>mtcars</code> data set, extract the first two digits of the <em>mpg</em> variable and the last three digits of the car names and combine them into a single string.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_glue</span>(<span class="st">"{str_sub(mtcars$mpg, 1, 2)}{str_sub(row.names(mtcars), -3, -1)}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>21RX4
+21Wag
+22710
+21ive
+18out
+18ant
+14360
+2440D
+22230
+19280
+1780C
+160SE
+170SL
+15SLC
+10ood
+10tal
+14ial
+32128
+30vic
+33lla
+21ona
+15ger
+15lin
+13Z28
+19ird
+271-9
+264-2
+30opa
+15a L
+19ino
+15ora
+2142E</code></pre>
+</div>
+</div>
+<ol start="9" type="1">
+<li>Print the <code>fruit</code> data set, then capitalize all first word letters in the data set, then capitalize all words in the data set.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fruit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "apple"             "apricot"           "avocado"          
+ [4] "banana"            "bell pepper"       "bilberry"         
+ [7] "blackberry"        "blackcurrant"      "blood orange"     
+[10] "blueberry"         "boysenberry"       "breadfruit"       
+[13] "canary melon"      "cantaloupe"        "cherimoya"        
+[16] "cherry"            "chili pepper"      "clementine"       
+[19] "cloudberry"        "coconut"           "cranberry"        
+[22] "cucumber"          "currant"           "damson"           
+[25] "date"              "dragonfruit"       "durian"           
+[28] "eggplant"          "elderberry"        "feijoa"           
+[31] "fig"               "goji berry"        "gooseberry"       
+[34] "grape"             "grapefruit"        "guava"            
+[37] "honeydew"          "huckleberry"       "jackfruit"        
+[40] "jambul"            "jujube"            "kiwi fruit"       
+[43] "kumquat"           "lemon"             "lime"             
+[46] "loquat"            "lychee"            "mandarine"        
+[49] "mango"             "mulberry"          "nectarine"        
+[52] "nut"               "olive"             "orange"           
+[55] "pamelo"            "papaya"            "passionfruit"     
+[58] "peach"             "pear"              "persimmon"        
+[61] "physalis"          "pineapple"         "plum"             
+[64] "pomegranate"       "pomelo"            "purple mangosteen"
+[67] "quince"            "raisin"            "rambutan"         
+[70] "raspberry"         "redcurrant"        "rock melon"       
+[73] "salal berry"       "satsuma"           "star fruit"       
+[76] "strawberry"        "tamarillo"         "tangerine"        
+[79] "ugli fruit"        "watermelon"       </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_sentence</span>(fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Apple"             "Apricot"           "Avocado"          
+ [4] "Banana"            "Bell pepper"       "Bilberry"         
+ [7] "Blackberry"        "Blackcurrant"      "Blood orange"     
+[10] "Blueberry"         "Boysenberry"       "Breadfruit"       
+[13] "Canary melon"      "Cantaloupe"        "Cherimoya"        
+[16] "Cherry"            "Chili pepper"      "Clementine"       
+[19] "Cloudberry"        "Coconut"           "Cranberry"        
+[22] "Cucumber"          "Currant"           "Damson"           
+[25] "Date"              "Dragonfruit"       "Durian"           
+[28] "Eggplant"          "Elderberry"        "Feijoa"           
+[31] "Fig"               "Goji berry"        "Gooseberry"       
+[34] "Grape"             "Grapefruit"        "Guava"            
+[37] "Honeydew"          "Huckleberry"       "Jackfruit"        
+[40] "Jambul"            "Jujube"            "Kiwi fruit"       
+[43] "Kumquat"           "Lemon"             "Lime"             
+[46] "Loquat"            "Lychee"            "Mandarine"        
+[49] "Mango"             "Mulberry"          "Nectarine"        
+[52] "Nut"               "Olive"             "Orange"           
+[55] "Pamelo"            "Papaya"            "Passionfruit"     
+[58] "Peach"             "Pear"              "Persimmon"        
+[61] "Physalis"          "Pineapple"         "Plum"             
+[64] "Pomegranate"       "Pomelo"            "Purple mangosteen"
+[67] "Quince"            "Raisin"            "Rambutan"         
+[70] "Raspberry"         "Redcurrant"        "Rock melon"       
+[73] "Salal berry"       "Satsuma"           "Star fruit"       
+[76] "Strawberry"        "Tamarillo"         "Tangerine"        
+[79] "Ugli fruit"        "Watermelon"       </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_title</span>(fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Apple"             "Apricot"           "Avocado"          
+ [4] "Banana"            "Bell Pepper"       "Bilberry"         
+ [7] "Blackberry"        "Blackcurrant"      "Blood Orange"     
+[10] "Blueberry"         "Boysenberry"       "Breadfruit"       
+[13] "Canary Melon"      "Cantaloupe"        "Cherimoya"        
+[16] "Cherry"            "Chili Pepper"      "Clementine"       
+[19] "Cloudberry"        "Coconut"           "Cranberry"        
+[22] "Cucumber"          "Currant"           "Damson"           
+[25] "Date"              "Dragonfruit"       "Durian"           
+[28] "Eggplant"          "Elderberry"        "Feijoa"           
+[31] "Fig"               "Goji Berry"        "Gooseberry"       
+[34] "Grape"             "Grapefruit"        "Guava"            
+[37] "Honeydew"          "Huckleberry"       "Jackfruit"        
+[40] "Jambul"            "Jujube"            "Kiwi Fruit"       
+[43] "Kumquat"           "Lemon"             "Lime"             
+[46] "Loquat"            "Lychee"            "Mandarine"        
+[49] "Mango"             "Mulberry"          "Nectarine"        
+[52] "Nut"               "Olive"             "Orange"           
+[55] "Pamelo"            "Papaya"            "Passionfruit"     
+[58] "Peach"             "Pear"              "Persimmon"        
+[61] "Physalis"          "Pineapple"         "Plum"             
+[64] "Pomegranate"       "Pomelo"            "Purple Mangosteen"
+[67] "Quince"            "Raisin"            "Rambutan"         
+[70] "Raspberry"         "Redcurrant"        "Rock Melon"       
+[73] "Salal Berry"       "Satsuma"           "Star Fruit"       
+[76] "Strawberry"        "Tamarillo"         "Tangerine"        
+[79] "Ugli Fruit"        "Watermelon"       </code></pre>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2024-2025 Jeffrey R. Stevens. Powered by <a href="https://www.quarto.org">Quarto</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,465 @@
+---
+title: "Functions"
+author: "Jeff Stevens"
+date: "2023-03-27"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Introduction
+
+
+<!-- ## The problem -->
+
+<!-- ```{r echo = FALSE} -->
+<!-- library(tidyverse) -->
+<!-- nrows <- 12 -->
+<!-- set.seed(12) -->
+<!-- data1 <- tibble(test_date = as_date(sample(as_date("2023-01-01"):as_date("2023-01-31"), nrows, replace = TRUE)), -->
+<!--                     birth_date = as.character(as_date(sample(as_date("1950-01-01"):as_date("2005-01-31"), nrows, replace = TRUE))) -->
+<!--                     ) |>  -->
+<!--   arrange(test_date) -->
+<!-- data1$birth_date[4] <- "Jan 9, 1960" -->
+<!-- data2 <- data1 |>  -->
+<!--   mutate(birth_date = as_date(birth_date, format = c("%Y-%m-%d", "%b %d, %Y"))) |>  -->
+<!--   filter(birth_date < "1990-01-01") |>  -->
+<!--   mutate(age_at_testing = test_date - birth_date, -->
+<!--          day_of_birth = wday(birth_date, label = TRUE, abbr = FALSE)) -->
+<!-- ``` -->
+
+<!-- What's different between these data sets?  -->
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="35%"} -->
+
+<!-- ::: {style="font-size:90%"} -->
+<!-- ```{r} -->
+<!-- data1 -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- ::: {.column width="65%"} -->
+
+<!-- ::: {style="font-size:90%"} -->
+<!-- ```{r} -->
+<!-- data2 -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- :::: -->
+
+
+## Set-up
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Why write your own functions?
+
+
+# Creating functions
+
+## Creating functions
+
+```{r}
+functionname <- function(argument1, argument2) {
+  # Function contents
+}
+```
+
+
+## Creating functions
+
+```{r}
+mymean <- function(x) {
+  sum(x) / length(x)
+}
+```
+
+:::{.fragment}
+```{r}
+mymean(mtcars$mpg)
+mean(mtcars$mpg)
+```
+:::
+
+
+## Multi-line functions
+```{r}
+mymean2 <- function(x) {
+  mysum <- sum(x)
+  mysum_divided <- mysum / length(x)
+}
+```
+
+::: {.fragment}
+```{r}
+mymean2(mtcars$mpg)
+```
+
+Why no output?
+:::
+
+::: {.fragment}
+```{r}
+(mymean_obj <- mymean2(mtcars$mpg))
+```
+:::
+
+
+## Returning output
+
+Don't assign last step to object
+```{r}
+mymean3 <- function(x) {
+  mysum <- sum(x)
+  mysum / length(x)
+}
+
+mymean3(mtcars$mpg)
+```
+
+## Returning output
+
+Or use `return()`
+```{r}
+mymean4 <- function(x) {
+  mysum <- sum(x)
+  mysum_divided <- mysum / length(x)
+  return(mysum_divided)
+}
+
+mymean4(mtcars$mpg)
+```
+
+
+## Return multiple output values
+
+`list()`
+
+```{r}
+mymean5 <- function(x) {
+  mysum <- sum(x)
+  mysum_divided <- mysum / length(x)
+  list(sum = mysum, mean = mysum_divided)
+}
+
+mymean5(mtcars$mpg)
+```
+
+
+## Save intermediate objects
+
+```{r}
+mymean6 <- function(x) {
+  mysum <<- sum(x)
+  mysum / length(x)
+}
+
+mymean6(mtcars$mpg)
+```
+
+::: {.callout-note}
+This is fine when testing out a function but probably not great practice 'in production'. Why?
+:::
+
+
+## Print messages to console
+
+```{r}
+mymean7 <- function(x) {
+  mysum <- sum(x)
+  print(mysum)
+  mysum / length(x)
+}
+
+mymean7(mtcars$mpg)
+```
+
+
+## Print messages to console
+
+```{r}
+mymean8 <- function(x) {
+  mysum <- sum(x)
+  print(paste0("The sum is: ", mysum))
+  mysum / length(x)
+}
+
+mymean8(mtcars$mpg)
+```
+
+
+## Print messages to console
+
+```{r message = TRUE}
+mymean9 <- function(x) {
+  mysum <- sum(x)
+  message(paste0("The sum is: ", mysum))
+  mysum / length(x)
+}
+
+mymean9(mtcars$mpg)
+```
+
+::: {.callout-note}
+Check out [`{cli}`](https://cli.r-lib.org/) package for powerful messaging.
+:::
+
+# Arguments
+
+## Arguments
+
+```{r}
+multiplier <- function(x, constant) {
+  x * constant
+}
+```
+
+::: {.fragment}
+```{r}
+multiplier(x = 7, constant = 3)
+multiplier(x = 1:10, constant = 3)
+```
+
+```{r eval = FALSE}
+multiplier(x = 1:10)
+```
+```
+Error in multiplier(x = 1:10) : 
+argument "constant" is missing, with no default
+```
+:::
+
+
+## Argument default values
+
+```{r}
+multiplier2 <- function(x, constant = 3) {
+  x * constant
+}
+```
+
+```{r}
+multiplier2(x = 1:10)
+multiplier2(x = 1:10, constant = 5)
+```
+
+## Let's write a function!
+
+Here's the formula that reverse codes scale values
+
+`Value`~`max`~ `+` `Value`~`min`~ ` -Score`
+
+Write a function that calculates the reversed code score. What arguments do you need?
+
+
+# Conditional execution
+
+## Conditional execution
+
+```{r}
+head(penguins[, 1:5])
+```
+
+```{r}
+mymean6(penguins$bill_length_mm)
+```
+
+
+
+## Conditional execution
+
+```{r}
+head(penguins[, 1:5])
+```
+
+```{r}
+mymean10 <- function(x) {
+  sum(x, na.rm = TRUE) / sum(!is.na(x))
+}
+```
+
+```{r}
+mymean10(penguins$bill_length_mm)
+```
+
+
+## Conditional execution
+
+But if you want the user to control whether `NA` is ignored
+```{r}
+mymean11 <- function(x, ignore_na = TRUE) {
+  if (ignore_na) {
+    sum(x, na.rm = TRUE) / sum(!is.na(x))
+  } else {
+    sum(x) / length(x)
+  }
+}
+```
+
+```{r}
+mymean11(penguins$bill_length_mm)
+mymean11(penguins$bill_length_mm, ignore_na = FALSE)
+```
+
+## Multiple conditions
+
+Use `else if`
+
+```{r}
+age_cutoffs <- function(x) {
+  if(x <= 1.5) {
+    "puppy"
+  } else if (x <= 3) {
+    "adolescent"
+  } else if (x <= 10) {
+    "adult"
+  } else {
+    "senior"
+  }
+}
+```
+
+::: {.fragment}
+```{r}
+age_cutoffs(1)
+age_cutoffs(2)
+age_cutoffs(5)
+```
+:::
+
+
+## Stopping based on conditionals
+
+```{r}
+age_cutoffs2 <- function(x) {
+  if(x <= 1.5) {
+    "puppy"
+  } else if (x <= 3) {
+    "adolescent"
+  } else if (x <= 10) {
+    "adult"
+  } else if (x <= 20) {
+    "senior"
+  } else {
+    stop("Age exceeded 20.")
+  }
+}
+```
+
+::: {.fragment}
+```{r}
+age_cutoffs2(15)
+```
+```{r eval = FALSE}
+age_cutoffs2(22)
+```
+```
+Error in age_cutoffs2(22) : Age exceeded 20.
+```
+:::
+
+
+## Multiple conditions
+
+Use `switch()`
+
+```{r}
+central_tend <- function(x, type) {
+  switch(type,
+         mean = mean(x),
+         median = median(x),
+         trimmed = mean(x, trim = .1))
+}
+```
+
+::: {.fragment}
+```{r}
+vector <- rcauchy(100)
+central_tend(x = vector, type = "mean")
+central_tend(x = vector, type = "median")
+central_tend(x = vector, type = "trimmed")
+```
+:::
+
+
+# Data frame functions
+
+## Creating functions in tidyverse
+
+```{r}
+mean_species_bill <- function(df) {
+  df |> 
+    group_by(species) |> 
+    summarise(mean(bill_length_mm, na.rm = TRUE))
+}
+
+mean_species_bill(penguins)
+```
+
+
+## Creating functions in tidyverse
+
+What if we want user to input grouping and response variable?
+
+```{r}
+grouped_mean <- function(df, group_var, mean_var) {
+  df |> 
+    group_by(group_var) |> 
+    summarise(mean(mean_var, na.rm = TRUE))
+}
+```
+
+::: {.fragment}
+```{r eval = FALSE}
+penguins |> 
+  grouped_mean(group_var = species, mean_var = bill_length_mm)
+```
+```
+Error in `group_by()`:
+! Must group by variables found in `.data`.
+✖ Column `group_var` is not found.
+Run `rlang::last_trace()` to see where the error occurred.
+```
+:::
+
+## Embracing
+
+Embrace variables in `{{ }}`
+
+```{r}
+grouped_mean2 <- function(df, group_var, mean_var) {
+  df |> 
+    group_by({{ group_var }}) |> 
+    summarize(mean({{ mean_var }}, na.rm = TRUE))
+}
+```
+
+```{r}
+penguins |> 
+  grouped_mean2(group_var = species, mean_var = bill_length_mm)
+```
+
+
+## Let's code!
+
+[Functions](../code/24_functions.html){target="_blank"} [[Rmd](../code/24_functions.Rmd){target="_blank"}]

@@ -1,0 +1,516 @@
+---
+title: "Merging columns"
+author: "Jeff Stevens"
+date: "2023-03-01"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+# Introduction
+
+
+## The problem
+
+```{r echo = FALSE}
+library(tidyverse)
+nrows <- 12
+data1 <- tibble(id = rep(1:4, each = 3), cond = rep(1:3, times = 4), resp = round(runif(nrows), 3)
+)
+data2 <- tibble(id = 1:6, age = sample(19:75, 6, replace = TRUE))
+data3 <- data2 |> 
+  right_join(data1, by = "id")
+```
+
+What's different between these data sets? 
+
+What is needed to create `data3` from `data1` and `data2`?
+
+:::: {.columns}
+
+::: {.column width="31%"}
+
+```{r}
+data1
+```
+:::
+
+::: {.column width="28%"}
+
+```{r}
+data2
+```
+:::
+
+::: {.column width="40%"}
+
+```{r}
+data3
+```
+:::
+
+::::
+
+
+## Mental model of merging
+
+![](../images/mentalmodel_merging.png){fig-align=center width=80%}
+
+
+## Set-up
+
+```{r}
+library(dplyr)
+library(nycflights13)
+(flights2 <- select(flights, year:dep_time, carrier, tailnum))
+```
+
+
+## Set-up
+
+```{r}
+(planes2 <- select(planes, tailnum, year, model, seats))
+```
+
+
+# Merging data
+
+
+## Joining with {dplyr}
+
+```{r, message = FALSE}
+library(dplyr)
+```
+
+![](../images/joins_full.gif){fig-align="center" width="45%"}
+
+![](../images/dplyr_hex.png){.absolute width="15%" top="0%" left="100%"}
+
+
+::: {.aside}
+Source: [Garrick Aden-Buie](https://github.com/gadenbuie/tidyexplain)
+:::
+<!-- <img src="images/white_bar.png", width = 40%, style = "position:absolute; top: 19%; left: 40%"></img> -->
+<!-- <img src="images/white_bar.png", width = 40%, style = "position:absolute; top: 19%; left: 60%"></img> -->
+
+
+<!-- ## Merging data -->
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- ```{r echo = FALSE} -->
+<!-- set.seed(20210518) -->
+<!-- hai_data <- tibble(id = rep(1:5, each = 2), age = rep(round(rnorm(5, 20, 1)), each = 2), pre_post = rep(c("Pre", "Post"), 5), nback = round(rnorm(10, 0, 1), 2)) -->
+
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- hai_data -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- ```{r echo = FALSE} -->
+<!-- hr_data <- tibble(id = rep(c(3:5), each = 2), pre_post = rep(c("Pre", "Post"), 3), hr = round(rnorm(6, 100, 10))) -->
+<!-- interest_data <- tibble(id = 1:5, percent = c(100, 80, 75, 95, 100)) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- hr_data -->
+<!-- interest_data -->
+<!-- ``` -->
+<!-- ::: -->
+
+<!-- :::: -->
+
+
+
+## Merging data
+
+```{r}
+library(nycflights13)
+```
+
+![](../images/relational-nycflights.png){fig-align=center width=60%}
+
+
+## Keys
+
+* Unique identifiers of observations
+
+* Keys may take some work to clean first
+
+* Double check keys for uniqueness/duplicates
+
+* Create **surrogate key** if no primary key exists
+
+
+## Joins
+
+![](../images/join-setup.png){.absolute width="30%" top="30%" left="10%"}
+
+![](../images/join-setup2.png){.absolute width="40%" top="20%" left="50%"}
+
+
+## Mutating joins
+
+#### Affects columns
+
+![](../images/joins_left.gif){fig-align=center width=50%}
+
+
+## Mutating joins
+
+#### Affects columns
+
+![](../images/join-venn.png){fig-align=center width=100%}
+
+
+## Inner joins
+
+#### Keep only matching observations
+
+![](../images/join-inner.png){.absolute width="60%" top="35%" left="0%"}
+
+::: {.fragment}
+![](../images/joins_inner.gif){.absolute width="40%" top="20%" left="65%"}
+:::
+
+
+## Inner joins
+
+![](../images/join-inner.png){.absolute width="30%" top="-10%" left="50%"}
+
+```{r echo = FALSE}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+```{r}
+x
+y
+```
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+
+```{r}
+inner_join(x, y, by = "key")
+
+```
+
+```{r}
+x |> 
+  inner_join(y, by = "key")
+```
+:::
+:::
+
+::::
+
+
+## Inner joins
+
+::: {style="font-size:90%"}
+```{r}
+glimpse(flights2)
+glimpse(planes2)
+```
+:::
+
+
+## Inner joins
+
+```{r}
+flights2 |>
+  inner_join(planes2, by = "tailnum")
+```
+
+::: {.fragment}
+What do you notice about the result?
+:::
+
+
+## Inner joins
+
+::: {.callout-warning}
+Only use inner joins when you want the **intersection** of the two data sets!
+:::
+
+![](../images/joins_inner.gif){fig-align="center" width="60%"}
+
+
+## Outer joins
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+#### Keep observations that appear in at least one of the tables
+
+* Left
+
+* Right
+
+* Full
+:::
+
+::::
+
+![](../images/join-outer.png){.absolute width="50%" top="0%" left="65%"}
+
+
+## Left joins
+
+#### Keep only left observations
+
+![](../images/join-left.png){.absolute width="60%" top="35%" left="0%"}
+
+::: {.fragment}
+![](../images/joins_left.gif){.absolute width="40%" top="20%" left="65%"}
+:::
+
+
+## Left joins
+
+![](../images/join-left.png){.absolute width="30%" top="-10%" left="50%"}
+
+```{r echo = FALSE}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+x
+y
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+left_join(x, y, by = "key")
+
+```
+:::
+
+::::
+
+
+## Left joins
+
+```{r}
+head(flights2)
+head(planes2)
+```
+
+
+## Left joins
+
+```{r}
+flights2 |>
+  left_join(planes2, by = "tailnum")
+```
+
+::: {.fragment}
+::: {.callout-warning}
+Select columns used to join with argument `by`
+:::
+:::
+
+
+## Inner joins
+
+Otherwise, it uses all shared columns, which may be wrong
+
+```{r}
+flights2 |>
+  left_join(planes2)
+```
+
+
+## Right joins
+
+#### Keep only right observations
+
+![](../images/join-right.png){.absolute width="60%" top="35%" left="0%"}
+
+::: {.fragment}
+![](../images/joins_right.gif){.absolute width="40%" top="20%" left="65%"}
+:::
+
+
+## Right joins
+
+![](../images/join-right.png){.absolute width="30%" top="-10%" left="50%"}
+
+```{r echo = FALSE}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+```{r}
+x
+y
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+right_join(x, y, by = "key")
+
+```
+:::
+
+::::
+
+
+## Full joins
+
+#### Keep all observations
+
+![](../images/join-full.png){.absolute width="60%" top="35%" left="0%"}
+
+::: {.fragment}
+![](../images/joins_full.gif){.absolute width="40%" top="20%" left="65%"}
+:::
+
+
+## Full joins
+
+![](../images/join-full.png){.absolute width="30%" top="-10%" left="50%"}
+
+```{r echo = FALSE}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+x
+y
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+full_join(x, y, by = "key")
+
+```
+:::
+
+::::
+
+
+## Solving the problem
+
+What code combines `data1` and `data2` into `data3`?
+
+:::: {.columns}
+
+::: {.column width="31%"}
+
+```{r}
+data1
+```
+:::
+
+::: {.column width="28%"}
+
+```{r}
+data2
+```
+:::
+
+::: {.column width="40%"}
+
+```{r}
+data3
+```
+:::
+
+::::
+
+
+## Let's code!
+
+[Merging columns](../code/17_mergingcolumns.html){target="_blank"} [[Rmd](../code/17_mergingcolumns.Rmd){target="_blank"}]

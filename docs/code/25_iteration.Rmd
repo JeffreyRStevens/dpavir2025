@@ -1,0 +1,47 @@
+---
+title: "Iteration"
+author: "Jeffrey R. Stevens"
+date: "2023-03-29"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Write a for loop that calculates the mean bill length for each species in the `penguins` data set (don't use `group_by()`) and saves them as `species_means`.
+
+```{r}
+# >
+```
+
+2. Turn #1 into a function called `species_mean` that lets the user determine which variable to calculate the mean over.
+
+```{r}
+# >
+```
+
+3. Create a list `penguins_island` that separates the penguins data by island.
+
+```{r}
+# >
+```
+
+4. Apply `map()` to find the number of observations for each year.
+
+```{r}
+# >
+```
+
+
+5. Apply `map()` to calculate the mean body weight for each island.
+
+```{r}
+# >
+```
+
+6. Rework #5 to return a numeric vector with values rounded to 1 decimal place.
+
+```{r}
+# >
+```
+

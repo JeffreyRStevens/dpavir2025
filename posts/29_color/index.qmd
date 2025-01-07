@@ -1,0 +1,44 @@
+---
+title: 'Color'
+author:
+  - Jeff Stevens
+date: '2023-04-07'
+categories: 
+  - "module 7"
+  - "week 11"
+  - color
+  - gradients
+  - palettes
+description: "Learn about color spaces and controlling color in plots"
+execute:
+  freeze: auto
+draft: true
+---
+
+Color is a critical component of data visualizations, but users often rely on default colors. Here we'll learn about how to choose good colors and how to implement them in ggplot.
+
+## Learning objectives
+
+* Learn about different uses of color in data visualization
+* Learn about color spaces
+* Make color-vision deficiency-safe plots
+* Use color palettes in ggplot2
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [FDV 4](https://clauswilke.com/dataviz/color-basics.html){target='_blank'}, [19](https://clauswilke.com/dataviz/color-pitfalls.html){target='_blank'}, [Cookbook for R](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){target='_blank'}
+
+## Class meeting
+
+* [Slides](../../slides/29_color.qmd){target="_blank"} and [Code](../../code/29_color.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_29_color/){target='_blank'}
+
+### For next class meeting
+
+* Read [FDV 7](https://clauswilke.com/dataviz/histograms-density-plots.html){target='_blank'}

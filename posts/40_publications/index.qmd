@@ -1,0 +1,44 @@
+---
+title: 'Publications'
+author:
+  - Jeff Stevens
+date: '2023-05-05'
+categories: 
+  - "module 10"
+  - "week 15"
+  - apa
+  - dissertations
+  - "journal articles"
+  - papaja
+  - "R Markdown"
+  - templates
+description: "Prepare journal articles in R Markdown"
+execute:
+  freeze: auto
+draft: true
+---
+
+Formatting research articles for specific journals is a pain. Fortunately, there are templates that make this much easier, along with templates for other publications.
+
+## Learning objectives
+
+* Use `{papaja}` templates to format APA manuscripts
+* Use `{papaja}`'s functions to format statistics and numbers
+* Use templates for pre-registrations, revision letters, and dissertations
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [papaja manual 1](https://frederikaust.com/papaja_man/introduction.html){target='_blank'}
+
+## Class meeting
+
+* [Slides](../../slides/40_publications.qmd){target="_blank"} and [Code](../../code/40_publications.html){target="_blank"}
+
+## Homework after the class meeting
+
+### For next class meeting
+
+* Install [Quarto](https://quarto.org/docs/get-started/)
+* Read [R4DS2 30](https://r4ds.hadley.nz/quarto.html){target='_blank'}

@@ -1,0 +1,59 @@
+---
+title: "Summarizing rows"
+author: "Jeffrey R. Stevens"
+date: "2023-02-22"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use a new clean version of the dog breed traits data set. 
+
+1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.
+
+```{r}
+# >
+```
+
+2. What is the overall mean rating for _affectionate_?
+
+```{r}
+# >
+```
+
+3. What is the overall mean rating for all rating columns ignoring `NA`s? 
+
+```{r}
+# >
+```
+
+4. How many breeds are there in each coat type?
+
+```{r}
+# >
+```
+
+5. What is the median grooming rating for each coat type?
+
+```{r}
+# >
+```
+
+6. What is the lowest rating per coat length for each of the rating columns, ignoring `NA`s?
+
+```{r}
+# >
+```
+
+7. What are the sample size, mean, and standard deviation of shedding ratings for medium coat length dogs per coat type sorted from largest to smallest sample size and only including coat types with 5 or more samples?
+
+```{r}
+# >
+```
+
+8. Calculate each breed's mean rating across all ratings columns and return a data frame with the highest rating for each coat type. Don't forget to undo `rowwise()` with `ungroup()` before further calculations.
+
+```{r}
+# >
+```
+

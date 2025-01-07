@@ -1,0 +1,53 @@
+---
+title: 'Separating data'
+author:
+  - Jeff Stevens
+date: '2023-02-27'
+categories: 
+  - "module 4"
+  - "week 6"
+  - coalesce
+  - complete
+  - expand
+  - fill
+  - "missing data"
+  - nesting
+  - separate
+  - unite
+description: "Separate or unite values in columns"
+draft: true
+---
+
+One of the key principles of tidy data is that _each value has its own cell_. To achieve that, you may need to split values in column into multiple columns or combine values across columns.
+
+## Learning objectives
+
+* Separate values from single column into multiple columns
+* Unite multiple columns into single column
+* Coalesce multiple columns with missing data into single column
+* Find all possible combinations of factors and all existing combinations
+* Fill in missing data
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS1 12.4 - 12.5](https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting){target='_blank'}
+
+## Class meeting
+
+* Separating data
+* Uniting data
+* Coalescing data
+* Combinations of factors
+* Filling missing data
+* [Slides](../../slides/16_separating.qmd){target="_blank"} and [Code](../../code/16_separating.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_16_separating/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 21.1 - 21.3.2](https://r4ds.hadley.nz/joins.html){target='_blank'}

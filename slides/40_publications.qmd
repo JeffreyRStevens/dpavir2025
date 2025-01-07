@@ -1,0 +1,204 @@
+---
+title: "Publications"
+author: "Jeff Stevens"
+date: "2023-05-05"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+
+
+# Journal article templates
+
+
+## Templates
+
+[{rticles}](https://pkgs.rstudio.com/rticles/)
+
+![](../images/rticles_hex.png){.absolute width="15%" top="-5%" left="85%"}
+
+![](../images/rticles-templates.png){fig-align="center" width="55%"}
+
+
+## APA template
+
+[{papaja}](http://frederikaust.com/papaja_man/)
+
+![](../images/papaja_hex.png){.absolute width="15%" top="-5%" left="85%"}
+
+![](../images/papaja-template.png){fig-align="center" width="55%"}
+
+
+## APA template
+
+[{papaja}](http://frederikaust.com/papaja_man/)
+
+![](../images/papaja_hex.png){.absolute width="15%" top="-5%" left="85%"}
+
+* YAML header
+
+* `r_refs()` and `cite_r()`
+
+* [APA 7](https://github.com/crsh/papaja/issues/342)
+
+
+## Quarto APA template
+
+* [qapaja](https://github.com/crsh/qapaja/)
+
+* [apaquarto](https://github.com/wjschne/apaquarto)
+
+* [Hikmah Quarto templates](https://github.com/andrewheiss/hikmah-academic-quarto)
+
+
+# Extracting statistics
+
+## Extracting statistics
+
+![](../images/papaja_hex.png){.absolute width="15%" top="-5%" left="85%"}
+
+`apa_print()`
+
+## Run a t-test
+
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+(penguin_ttest <- t.test(formula = bill_length_mm ~ sex, data = penguins))
+```
+
+## View structure of a t-test
+
+```{r}
+str(penguin_ttest)
+```
+
+
+## Extract information from t-test
+
+```{r}
+library(papaja)
+apa_print(penguin_ttest)
+```
+
+
+## Extract information from t-test
+
+```{r}
+apa_print(penguin_ttest)$full_result
+```
+
+
+## Insert statistics as inline code
+
+<code>
+Male and female penguins differ in their bill length (&#96;r apa_print(penguin_ttest)$full_result&#96;).
+</code>
+
+::: {.fragment}
+Male and female penguins differ in their bill length (`r apa_print(penguin_ttest)$full_result`).
+:::
+
+
+## `apa_print()` objects
+
+::: {style="font-size:90%"}
+
+:::: {.columns}
+
+::: {.column width=50%}
+* Non-parametrics (`wilcox.test()`)
+* Correlations (`cor.test()`)
+* T-tests (`t.test()`)
+* ANOVA (`aov()`, `Anova()`, `afex_aov()`)
+* MANOVA (`manova()`)
+* Linear regressions (`lm()`)
+* Generalized linear models (`glm()`)
+:::
+
+::: {.column width=50%}
+* Mixed models (`lmer()`, `glmer()`)
+* Non-linear  models (`nlme()`)
+* Estimated marginal means (`emm()`)
+* Within-subjects confidence intervals (`wsci()`)
+* Bayes factors (from `{BayesFactor}` package)
+:::
+::::
+
+:::
+
+## Printing p-values
+
+`printp()`
+
+```{r}
+printp(0.23456)
+printp(0.23456, add_equals = TRUE)
+printp(0.000000000000001)
+```
+
+
+## Printing other numbers
+
+`printnum()`
+
+```{r}
+printnum(0.5555555)
+printnum(0.5555555, digits = 4)
+printnum(0.5555555, gt1 = FALSE)
+printnum(0.00000000000001)
+printnum(0.00000000000001, zero = FALSE)
+```
+
+
+## Examples of extracting statistics
+
+* [Rmd](https://osf.io/2xhzu)
+
+* [PDF](https://osf.io/pxmf6)
+
+
+# Before and after journal articles
+
+## Pre-registration templates
+
+[{prereg}](https://github.com/crsh/prereg)
+
+
+[{preregr}](https://preregr.opens.science/)
+
+
+## Revision letter template
+
+![](../images/papaja_hex.png){.absolute width="15%" top="-5%" left="85%"}
+
+![](../images/revision-letter-template.png){fig-align="center" width="55%"}
+
+[Friends don't let friends copy-paste](https://frederikaust.com/papaja-workshop/slides/5_revision.html)
+
+
+# Dissertations
+
+## Dissertations in R Markdown
+
+![](../images/thesisdown_hex.png){.absolute width="15%" top="-5%" left="85%"}
+
+![](../images/thesisdown-project.png){fig-align="center" width="55%"}
+
+
+
+## Let's code!
+
+[Journal articles](../code/40_publications.html){target="_blank"} [[Rmd](../code/40_publications.Rmd){target="_blank"}]

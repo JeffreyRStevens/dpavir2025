@@ -1,0 +1,309 @@
+---
+title: "Literate programming"
+author: "Jeff Stevens"
+date: "2023-02-01"
+date-format: iso
+execute:
+  echo: true
+  freeze: false
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-link: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir2025)"
+    logo: "../logo/dpavir_hex.png"
+---
+
+# Review
+
+## Mental model of file directories
+
+![](../images/mentalmodel_workflow.png){fig-align="center"}
+
+
+
+# File types
+
+
+
+## Computer files
+
+#### All files are collections of 1s and 0s
+
+![](../images/binary1s0s.jpg){.absolute width="80%" top="30%" left="10%"}
+
+---
+
+## Plain text
+
+* Only characters with no formatting
+
+* Viewable in text editor
+
+* Used for plain text storage (`.txt`, `.csv`) and coding (`.R`, `.Rmd`, `.py`, `.m`, `.cpp`)
+
+![](../images/cv_text.png){.absolute width="80%" top="50%" left="10%"}
+
+---
+
+## Binary
+
+* 1s and 0s are converted to images, audio, formatted text
+
+* WSYIWYG
+
+* Binary document files: `.docx`, `.xlsx`, `.pptx`, `.pdf`, `.png`, `.jpg`
+
+![](../images/cv_pdf.png){.absolute width="68%" top="50%" left="15%"}
+
+
+
+# Interacting with R
+
+## Interacting with R
+
+* Console
+
+* R scripts (`.R`)
+
+* R Markdown files (`.Rmd`)
+
+---
+
+## Console
+
+![](../images/console.png){fig-align="center"}
+
+
+
+---
+
+## Scripts
+
+![](../images/r_script.png)
+
+
+---
+
+## Scripts
+
+### Run commands
+
+#### Line-by-line or selected code
+
+<kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd>
+
+#### All code above cursor
+
+<kbd>Ctrl/Cmd</kbd>+<kbd>Alt/Opt</kbd>+<kbd>B</kbd>
+
+#### All code below cursor
+
+<kbd>Ctrl/Cmd</kbd>+<kbd>Alt/Opt</kbd>+<kbd>E</kbd>
+
+
+
+---
+
+## Scripts
+
+### Run commands
+
+#### Sourcing runs whole script
+
+<kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>
+
+
+---
+
+## Comments
+
+### Comments are not executed by R
+
+```{r eval = FALSE}
+2+2 # this is a comment--I can say stuff that isn't run. use me often!
+# this is also a comment--I can be on my own line!
+```
+
+---
+
+## Let's code!
+
+:::{.incremental}
+* Open course RStudio project.
+
+* Create new R script and save as `test.R`.
+
+* Type `library(palmerpenguins)`.
+
+* Is `palmerpenguins` loaded? How can you check?
+
+* Run the line to load `palmerpenguins`.
+
+* Type `print(penguins)`.
+
+* Source the whole script.
+
+* Comment out the `print(penguins)` line.
+
+* Source the script.
+
+:::
+
+# Literate programming
+
+---
+
+## Literate programming
+
+> An article [. . . ] in a scientific publication is not the scholarship
+itself, it is merely advertising of the scholarship. The actual
+scholarship is the complete software development environment and
+the complete set of instructions which generated the figures
+— Buckheit & Donoho (1995)
+
+:::{.aside}
+Buckheit, J., & Donoho, D. L. (1995). WaveLab and reproducible research. In A. Antoniadis & G. Oppenheim (Eds.), *Wavelets and Statistics* (pp. 55–81). Springer-Verlag.
+:::
+
+![](../images/literate_programming.jpg){.absolute width="25%" top="7%" left="95%"}
+
+## Why use literate programming?
+
+1. Direct connection between computations and presentation
+
+1. Updating presentation is a breeze
+
+1. Transparent and reproducible
+
+1. Plain text less corruptable
+
+1. Easily create different kinds of output styles and files
+
+1. Easily switch between different templates
+
+---
+
+## Mental model of R Markdown
+
+![](../images/mentalmodel_rmarkdown.png){fig-align="center"}
+
+
+---
+
+## Markdown
+
+#### Human-readable markup that can be converted to formatted file types
+
+![](../images/markdown.png)
+
+---
+
+## Markdown
+
+#### See [Markdown tutorial](https://commonmark.org/help/tutorial/) for Markdown syntax
+
+### Comments
+
+Markdown uses HTML syntax for comments 
+
+`<!-- comment here -->`
+
+
+## Visual editor
+
+![](../images/visual_editor.png){fig-align="center"}
+
+---
+
+## R Markdown
+
+#### Human-readable markup that embeds R code and output into formatted file types
+
+![](../images/rmarkdown_hex.png){.absolute width="15%" top="2%" left="95%"}
+![](../images/myrmarkdown.png){width="100%" fig-align="center"}
+
+---
+
+## From text to document
+
+![](../images/rmarkdown_allisonhorst.png){width="100%" fig-align="center"}
+
+:::{.aside}
+Source: <a href = "https://github.com/allisonhorst/stats-illustrations">Allison Horst</a></figcaption>
+:::
+
+---
+
+## Inline R code
+
+#### Embed R code directly within your text with <code>&#96;r &#96;</code>
+
+:::{.fragment}
+#### Code:
+
+<code>The answer to 2 + 2 is &#96;r 2 + 2&#96;</code>
+:::
+
+:::{.fragment}
+#### Output:
+
+The answer to 2 + 2 is `r 2 + 2`.
+:::
+
+---
+
+## R code chunks
+
+#### Write large chunks of R code outside of text
+
+:::{.fragment}
+#### Code:
+<code>&#96;&#96;&#96;{r}<br>rnorm(10, mean = 0, sd = 1)<br>&#96;&#96;&#96;</code>
+:::
+
+:::{.fragment}
+#### Output:
+
+```{r echo = FALSE}
+rnorm(10, mean = 0, sd = 1)
+```
+:::
+
+---
+
+## Embed figures
+
+<code>&#96;&#96;&#96;{r}<br>plot(1:10, 2:11)<br>&#96;&#96;&#96;</code>
+```{r echo = FALSE}
+plot(1:10, 2:11)
+```
+
+## Mental model of R Markdown
+
+![](../images/mentalmodel_rmarkdown.png){fig-align="center"}
+
+
+## Let's code!
+
+:::{.incremental}
+* Create new R Markdown file.
+
+* Type "<code>The mean of the first 9 digits is &#96;r mean(1:9)&#96;.</code>"
+
+* Knit/render the document.
+
+* Create a new code chunk.
+
+* Inside the code chunk, load the `palmerpenguins` package and print the `penguins` data set.
+
+* Run the code chunk without knitting the file.
+
+* Knit/render the file.
+
+:::
+

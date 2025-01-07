@@ -1,0 +1,364 @@
+---
+title: "Strings"
+author: "Jeff Stevens"
+date: "2023-03-08"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Introduction
+
+
+## The problem
+
+```{r echo = FALSE}
+library(tidyverse)
+nrows <- 12
+set.seed(311)
+data1 <- tibble(id = 1:nrows, cond = rep(c("cond1", "cond2"), times = 6), resp = sample(c("yes", "no"), nrows, replace = TRUE))
+data2 <- data1 |> 
+  mutate(cond = str_sub(cond, 5, 5), 
+         resp = str_to_sentence(resp),
+         output = str_glue("{id} had condition {cond} and said \"{resp}\""))
+```
+
+What's different between these data sets? 
+
+What is needed to create `data2` from `data1`?
+
+:::: {.columns}
+
+::: {.column width="28%"}
+
+```{r}
+data1
+```
+:::
+
+::: {.column width="72%"}
+
+```{r}
+data2
+```
+:::
+
+::::
+
+
+## Set-up
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Mental model
+
+![](../images/mentalmodel_strings.png){fig-align="center"}
+
+
+# Character string basics
+
+
+## Useful character vectors 
+
+```{r}
+letters
+LETTERS
+month.name
+month.abb
+```
+
+## Quotes 
+
+Create strings with either single quotes or double quotes
+
+```{r}
+(string1 <- "This is a string")
+writeLines(string1)
+(string2 <- 'So is this.')
+writeLines(string2)
+```
+
+
+## Quotes
+
+Including quotes in strings
+
+```{r}
+(string3 <- 'If I want to include a "double quote" inside a string, I use single quotes')
+writeLines(string3)
+(string4 <- "And 'vice versa'")
+writeLines(string4)
+
+```
+
+
+## Escaping quotes
+
+Or use `\` to "escape" it
+
+```{r}
+double_quote <- "\""
+writeLines(double_quote)
+single_quote <- '\''
+writeLines(single_quote)
+```
+
+
+## Escaping quotes
+
+Because `\` escapes, you can't just wrap it in quotes
+
+If you want an actual backslash printed, you need two `\\`
+```{r}
+backslash <- "\\"
+writeLines(backslash)
+```
+
+![](../images/backslashes.png){fig-align="center" width="40%"}
+
+
+# Working with strings
+
+
+## Strings with {stringr}
+
+```{r, message = FALSE}
+library(stringr)
+```
+
+![](../images/stringr_allisonhorst.png){fig-align="center" width="58%"}
+
+![](../images/stringr_hex.png){.absolute width="15%" top="0%" left="90%"}
+
+
+::: {.aside}
+Source: [Allison Horst](https://allisonhorst.com/r-packages-functions)
+:::
+
+
+## String length
+
+Return number of characters in a string with `stringr::str_length()`
+```{r}
+(r4ds_string <- c("a", "R for data science", NA))
+str_length(r4ds_string)  # nchar() in base R
+# This differs from length...
+length(r4ds_string)
+```
+
+
+<!-- ## Truncating strings -->
+
+<!-- Truncate strings with `stringr::str_trunc()` -->
+<!-- ```{r} -->
+<!-- x <- "This string is moderately long" -->
+<!-- str_trunc(x, 20, side = "right") -->
+<!-- str_trunc(x, 20, side = "left") -->
+<!-- str_trunc(x, 20, side = "right", ellipsis = "") -->
+<!-- ``` -->
+
+
+## Extracting strings
+
+Extract parts of a string based on position with `stringr::str_sub()`
+```{r}
+x <- c("apple", "banana", "pear")
+str_sub(x, 1, 3)  # substr() in base R
+# Negative numbers count backwards from end
+str_sub(x, -3, -1)
+```
+
+
+## Extracting strings
+
+Useful when you don't have delimiters. But use delimiters!
+```{r}
+penguins |>
+  mutate(species = str_sub(species, 1, 1),
+         island = str_sub(island, 1, 3),
+         year = str_sub(year, -2, -1), .keep = "used")
+```
+
+
+## Extracting strings
+
+Also can substitute characters based on position
+```{r}
+x
+str_sub(x, 1, 1) <- "#"  # replace first character
+x
+str_sub(x, -1, -1) <- "*"  # replace last character
+x
+str_sub(x, 0, 0) <- "~"  # add before first character
+x
+```
+
+
+## Changing case
+
+Control capitalization with `stringr::str_to_lower()` and `stringr::str_to_upper()`
+```{r}
+(y <- "hello, World")
+str_to_lower(y)  # tolower() in base R
+str_to_upper(y)  # toupper() in base R
+```
+
+
+## Changing case
+
+Plus super useful `stringr::str_to_title()` and `stringr::str_to_sentence()`
+```{r}
+str_to_title(y)
+str_to_sentence(y)
+```
+
+
+## Changing case
+
+Useful for column names
+```{r}
+names(iris)
+str_to_lower(names(iris))
+```
+
+
+## Changing case
+
+Or to change case of column entries
+```{r}
+penguins |>
+  mutate(sex_upper = str_to_sentence(sex), .keep = "used")
+
+```
+But notice what happened to data type
+
+# Combining strings
+
+
+## Combining strings
+
+Combine **multiple strings** into a single string with `stringr::str_c()`:
+```{r}
+c("x", "y", "z")
+str_c("x", "y", "z")
+str_c("x", "y", "z", sep = ", ")
+```
+
+
+## Collapsing strings
+
+Collapse a **vector** of strings into a single string with `collapse` argument
+```{r}
+str_c(c("x", "y", "z"), collapse = ", ")
+```
+
+::: {.fragment}
+How is this different from using `sep` argument?
+```{r}
+str_c("x", "y", "z", sep = ", ")
+```
+:::
+
+
+## Collapsing strings
+
+When would this be useful?
+```{r}
+str_c(month.name, collapse = ", ")
+unique(penguins$species)
+str_c(sort(unique(penguins$species)), collapse = ", ")
+```
+
+
+## Combining strings with output 
+
+Pasting character vectors with base R `paste()`
+```{r}
+name <- "Fred"
+age <- 50
+paste("My name is", name, ", and my age next year is", age + 1, ".")
+paste0("My name is", name, ", and my age next year is", age + 1, ".")
+paste0("My name is ", name, ", and my age next year is ", age + 1, ".")
+paste("My name is ", name, ", and my age next year is ", age + 1, ".", sep = "")
+```
+
+
+## Combining strings with output 
+
+Gluing character vectors with `stringr::str_glue()`
+```{r}
+str_glue("My name is {name}, and my age next year is {age + 1}.")
+str_glue("My name is {name}, and my age next year is {age + 1}.", 
+         name = "Jane", age = 40)
+```
+
+
+## Combining strings with output 
+
+Apply to each row of a data frame
+```{r}
+penguins |>
+  mutate(full_island = str_glue("{island} Island")) |> 
+  arrange(bill_length_mm) |> 
+  select(species, island, full_island)
+```
+
+
+<!-- ## Combining strings with output  -->
+
+<!-- Apply to multiple elements of a vector with `str_glue_data()` -->
+<!-- ```{r} -->
+<!-- str_glue_data(mtcars, "{rownames(.)} has {hp} hp") -->
+<!-- ``` -->
+
+<!-- ::: {.fragment} -->
+<!-- What is the difference between these two examples? -->
+<!-- ::: -->
+
+
+## Cheatsheet
+
+
+![](../images/stringr_cheatsheet.png){fig-align="center"}
+
+
+
+## Solving the problem
+
+:::: {.columns}
+
+::: {.column width="28%"}
+
+```{r}
+data1
+```
+:::
+
+::: {.column width="72%"}
+
+```{r}
+data2
+```
+:::
+
+::::
+
+
+## Let's code!
+
+[Strings](../code/20_strings.html){target="_blank"} [[Rmd](../code/20_strings.Rmd){target="_blank"}]

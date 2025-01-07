@@ -1,0 +1,216 @@
+---
+title: "Merging columns"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(nycflights13)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+set.seed(1)
+flights2 <- select(flights, carrier, flight, origin, dest) |> 
+    slice_sample(n = 30)
+airlines2 <- rename(airlines, airline = carrier)
+```
+
+
+## Mutating joins
+
+###
+
+Often our data are spread out over different data frames, and we need to merge them together. There are several ways to do this depending on how the data are arranged.
+
+Mutating joins merge columns. Inner joins keep observations that show up in both data frames. Outer joins keep observations from one or both data frames. Left and right joins maintain observations from the respective side, and full joins maintain all observations.
+
+### Questions
+
+Here are two data frames:
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3",
+     4, "x4"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3",
+     5, "y4"
+)
+```
+```{r echo = TRUE}
+x
+y
+```
+
+**Which type of join would produce the following data frame?**
+```{r, message = FALSE}
+z <- left_join(x, y, by = "key")
+z
+```
+
+```{r left-join}
+question(
+  "",
+  answer('`left_join(x, y, by = "key")`', correct = TRUE),
+  answer('`right_join(x, y, by = "key")`'),
+  answer('`inner_join(x, y, by = "key")`'),
+  answer('`full_join(x, y, by = "key")`'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+**Which type of join would produce the following data frame?**
+```{r, message = FALSE}
+z <- full_join(x, y, by = "key")
+z
+```
+
+```{r full-join}
+question(
+  "",
+  answer('`full_join(x, y, by = "key")`', correct = TRUE),
+  answer('`right_join(x, y, by = "key")`'),
+  answer('`inner_join(x, y, by = "key")`'),
+  answer('`left_join(x, y, by = "key")`'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+**Which type of join would produce the following data frame?**
+```{r, message = FALSE}
+z <- inner_join(x, y, by = "key")
+z
+```
+
+```{r inner-join}
+question(
+  "",
+  answer('`inner_join(x, y, by = "key")`', correct = TRUE),
+  answer('`right_join(x, y, by = "key")`'),
+  answer('`left_join(x, y, by = "key")`'),
+  answer('`full_join(x, y, by = "key")`'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+## Merging flight data
+
+###
+
+Now let's work with the `nycflights13` data sets.
+
+```{r echo = TRUE, message = FALSE}
+library(nycflights13)
+library(dplyr)
+```
+
+We're used to working with the `flights` data set, but let's also look at the `airlines` data set, which includes the carrier abbreviations and the full names of the carriers.
+
+```{r}
+airlines
+```
+
+###
+
+Let's trim down the `flights` data to make it more manageable.
+
+```{r echo = TRUE}
+set.seed(1)
+(flights2 <- select(flights, carrier, flight, origin, dest) |> 
+    slice_sample(n = 30))
+```
+
+###  {data-allow-skip=TRUE}
+
+Check whether all of the carriers in `airlines` are included in `flights2`.
+
+```{r exercise0, exercise = TRUE}
+
+```
+
+**Do `airlines` and `flights2` have the same or different carriers?**
+
+```{r carriers}
+question(
+  "",
+  answer('They have the same carriers'),
+  answer('`airlines` has carriers not included in `flights2`', correct = TRUE),
+  answer('`flights2` has carriers not included in `airlines`'),
+  answer('They both have carriers not included in the other'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+Now, what if we want to merge the airline names into our `flights2` data set? Which join would we use for this? Join the `airlines` data into the `flights2` data.
+
+```{r exercise1, exercise = TRUE}
+flights2 |> 
+  ???_join(...)
+```
+ 
+```{r exercise1-check}
+grade_result(
+  pass_if(~identical(.result, flights2 |> left_join(airlines, by = "carrier")))
+)
+```
+
+###
+
+What happens if you try a `right_join()`? How many rows are there, and where did the extra rows come from?
+
+```{r exercise00, exercise = TRUE}
+
+```
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 10
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

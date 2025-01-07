@@ -1,0 +1,260 @@
+---
+title: "Advanced R Markdown"
+author: "Jeff Stevens"
+date: "2023-05-08"
+date-format: iso
+execute:
+  echo: true
+  freeze: auto
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Set-up
+
+First, load `{tidyverse}` and `{palmerpenguin}` packages
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+# Code chunks
+
+## Code chunk options
+
+Go in the `{r}` header of code chunks (in one line)
+
+::: {.incremental}
+* `label = my-chunk` - chunk label
+* `eval = TRUE` - evaluates code chunk
+* `echo = TRUE` - displays source code in document
+* `include = TRUE` - displays chunk output in document
+* `message = TRUE` - displays messages in document
+* `warning = TRUE` - displays warnings in document
+* `error = TRUE` - displays errors in document
+:::
+
+
+## Code chunk options
+
+Go in the `{r}` header of code chunks (in one line)
+
+<code>&#96;&#96;&#96;{r my-chunk, echo = FALSE, message = FALSE, warning = FALSE}</code>
+
+<code>&#96;&#96;&#96;</code>
+
+
+## Code chunk options
+
+Can also be separated from header using `#|`
+
+<code>&#96;&#96;&#96;{r}</code>
+
+<code>#| my-chunk, echo = FALSE, message = FALSE</code>
+
+<code>#| warning = FALSE</code>
+
+<code>&#96;&#96;&#96;</code>
+
+
+## Global options
+
+Set options globally with `knitr::opts_chunk$set()`
+
+<code>&#96;&#96;&#96;{r setup, include = FALSE}</code>
+
+<code>knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)</code>
+
+<code>&#96;&#96;&#96;</code>
+
+
+# Figures
+
+## Figures generated in chunks
+
+```{r}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) + geom_point()
+```
+
+
+## Figure scaling
+
+`fig.width = 5, fig.height = 5`
+
+```{r fig.width = 5, fig.height = 5}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) + geom_point()
+```
+
+
+## Figure scaling
+
+`fig.width = 3, fig.height = 3`
+
+```{r fig.width = 3, fig.height = 3}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) + geom_point()
+```
+
+
+## Output width/height
+
+`out.width = "30%", out.height = "30%"`
+
+```{r fig.width = 5, out.width = "30%", out.height = "30%"}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) + geom_point()
+```
+
+
+## Figure alignment
+
+`fig.align = "center"`
+
+```{r fig.width = 5, fig.align="center"}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) + geom_point()
+```
+
+
+## Figure caption
+
+`fig.cap = "My figure caption"`
+
+```{r fig-cap, fig.width = 5, fig.align="center", fig.cap="My figure caption"}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) + geom_point()
+```
+
+
+## Figure alt text
+
+`fig.alt = "Scatterplot of penguin bill length by depth."`
+
+```{r alt-text, fig.width = 5, fig.align="center", fig.cap="My figure caption", fig.alt="Scatterplot of penguin bill length by depth."}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) + geom_point()
+```
+
+
+## Figure files
+
+`knitr::include_graphics()`
+
+```{r fig.align="center"}
+knitr::include_graphics("https://quarto.org/docs/authoring/images/crossref-figure.png")
+```
+
+
+# Cross-referencing
+
+## Cross reference figures/tables {#sec-cross-reference}
+
+::: {.incremental}
+* Make sure code chunk has a label and a caption
+
+* Use a `bookdown` output format (e.g., `bookdown::pdf_document2`, `papaja::apa6_pdf`, `thesisdown`)
+
+* Insert `\ref{fig:chunk-label}` for figures and `\ref{tab:chunk-label}` for tables
+
+* Note for Quarto, labels must start with `fig-` or `tbl-` and reference with `@fig-label` or `@tbl-label`  (e.g., @fig-cap)
+:::
+
+
+## Cross reference sections
+
+::: {.incremental}
+* Label sections with `{#slug}` <br> (e.g., `## Cross reference figures/tables {#sec-cross-reference}`)
+
+* Cross reference with `\@ref(slug)`
+
+* For Quarto, cross references must start with `#sec-` and are referenced with `@sec-label` (e.g., @sec-cross-reference) 
+:::
+
+
+# Citations and bibliographies
+
+## Zotero
+
+![](../images/zotero.jpeg){fig-align="center"}
+
+
+## Zotero
+
+* Install [Better BibTeX](https://retorque.re/zotero-better-bibtex/) extension
+* Create collection for project
+* Add references to collection
+* Export Collection (check Keep Updated) to BibTeX
+
+
+## Set bibliography
+
+* In YAML header, assign `bibliography` to the project's `.bib` file
+
+```{YAML}
+bibliography: zotero-output.bib
+```
+
+::: {.fragment}
+* If using {papaja}'s `r_ref()` output
+
+```{YAML}
+bibliography: ["zotero-output.bib", "r-references.bib"]
+```
+:::
+
+
+## Insert citations manually
+
+::: {.incremental}
+* Find BibTex key in Zotero (e.g., Stevens.etal.2023)
+* Insert with `[@citation.key]`: `[@Stevens.etal.2023]` yields (Stevens et al., 2023)
+* Separate multiple citations with `;`: `[@Stevens.etal.2022; @Stevens.etal.2023]` yields (Stevens et al., 2022, 2023)
+* Add prefixes and suffixes: `[see @Stevens.etal.2023, pp. 25]` yields (see Stevens et al., 2023, pp. 25)
+:::
+
+
+## Insert citations manually
+
+::: {.incremental}
+* Use parentheses only for date by removing brackets: `@Stevens.etal.2023` yields Stevens et al. (2023)
+* Use only year by adding `-`: `[-@Stevens.etal.2023]` yields (2023)
+* Add reference to bibliography without adding citation with
+:::
+::: {.fragment}
+```
+---
+nocite: |
+  @Barela.etal.2023
+...
+```
+:::
+
+
+## Insert with {citr} add-in
+
+* Install {citr} with `remotes::install_github("crsh/citr")`
+* Restart RStudio
+* Start Zotero
+* Start citr add-in, select Insert citations
+
+
+## Set citation style
+
+* In YAML header, assign `csl` to citation style `.csl` file
+
+```{YAML}
+csl: apa7.csl
+```
+
+::: {.fragment}
+* Get CSL files from [Zotero Style Repository](https://www.zotero.org/styles)
+:::
+
+

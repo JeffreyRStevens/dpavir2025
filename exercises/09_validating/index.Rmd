@@ -1,0 +1,186 @@
+---
+title: "Validating data"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+## Data validation
+
+Validating that your data are as you expect is a critical step before processing them. Minimally, you should inspect your data sets with `str()` or `glimpse()` or look at them in the _Environment_ tab. You can build validation rules to check your data with assertions and testing.
+
+## Summarizing data
+
+There are many different ways to summarize data in R. `head()` is a way to see the first few rows of a data set using base R, whereas `glimpse()` is the tidyverse way. Try both `head()` and `glimpse()` on the `airquality` data set (built into base R).
+
+```{r head-quiz}
+quiz(
+  question(
+    "In what ways are the outputs of `head()` and `glimpse()` different for this data set?",
+    answer("Only `glimpse()` gives the dimensions of the data", correct = TRUE),
+    answer("`head()` organizes columns vertically, but `glimpse()` organizes them horizontally", correct = TRUE),
+    answer("Only `glimpse()` gives the data types for columns", correct = TRUE),
+    answer("Only `glimpse()` truncates the data"),
+    answer("`glimpse()` only outputs the first six rows of data"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  )
+)
+```
+
+Now run the `summary()` function on the `airquality` data. 
+```{r exercise1, exercise = TRUE}
+
+```
+ 
+```{r exercise1-solution}
+summary(airquality)
+```
+
+```{r exercise1-code-check}
+grade_code()
+```
+
+
+```{r summary-quiz}
+quiz(
+  question(
+    "What is the median value for the `Solar.R` data column?",
+    answer("205.0", correct = TRUE),
+    answer("185.9"),
+    answer("31.50"),
+    answer("9.958"),
+    answer("`NA`"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  ),
+  question(
+    "How many `NA`s does the Wind column have?",
+    answer("0", correct = TRUE),
+    answer("37"),
+    answer("7"),
+    answer("20.7"),
+    answer("NA"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  ),
+  question(
+    "What does `NA` mean in R?",
+    answer("Missing data", correct = TRUE),
+    answer("Undefined numbers"),
+    answer("Not a number"),
+    answer("Numbers divided by 0"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  )
+)
+```
+
+## Validating with `{dataReporter}`
+
+The [`{dataReporter}`](https://github.com/ekstroem/dataReporter) package provides a nice way of generating a data dictionary (they call them codebooks) while giving you a nice overview of your data. Install and load [`{dataReporter}`](https://github.com/ekstroem/dataReporter). Run `makeCodebook()` on `toyData` to explore this data set.
+
+
+```{r validation-quiz}
+quiz(
+question(
+  'How many rows does the `toyData` have?',
+  answer('15', correct = TRUE),
+  answer('6'),
+  answer('7'),
+  answer('9'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+question(
+  'What data type is the `pill` column?',
+  answer('factor', correct = TRUE),
+  answer('numeric'),
+  answer('character'),
+  answer('logical'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+question(
+  'How many unique values does the `events` column have?',
+  answer('9', correct = TRUE),
+  answer('15'),
+  answer('7'),
+  answer('1'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+question(
+  'What percent of the `events` column is missing?',
+  answer('20%', correct = TRUE),
+  answer('13.33%'),
+  answer('0%'),
+  answer('100%'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+question(
+  'What is the median value of the `change` column?',
+  answer('0.33', correct = TRUE),
+  answer('-0.62'),
+  answer('0.66'),
+  answer('1.6'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+question(
+  'Which variable is described as a key with distinct values for each observation?',
+  answer('`id`', correct = TRUE),
+  answer('`region`'),
+  answer('`events`'),
+  answer('`pill`'),
+  answer('`spotifysong`'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 11
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

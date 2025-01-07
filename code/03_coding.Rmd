@@ -1,0 +1,56 @@
+---
+title: "Coding basics"
+author: "Jeffrey R. Stevens"
+date: "2023-01-27"
+output: html_document
+execute:
+  freeze: auto
+---
+
+Let's go to R's console, which is the direct connection to the R engine. In the console, you give R a command, and it returns the output.
+
+## Assignment
+
+Remember our text string with our names?
+```
+"My name is Jeff!"
+```
+
+It is repetitive to have to copy/paste text. We can _assign_ things to _objects_, which store the contents in a variable. The assignment operator `<-` assigns the value of the right hand side to the object on the left hand side. Use the `<-` operator to assign the name text to an object called `my_name`.
+```{r}
+# >
+```
+
+Now print the contents of `my_name` by just typing it into the console.
+```{r}
+# >
+```
+
+Now apply the `toupper()` function to `my_name` rather than the actual character string.
+```{r}
+# >
+```
+
+How do we find out all of the arguments for the `toupper()` function?
+
+Let's specify the argument names not just the value.
+```{r}
+# >
+```
+
+Press the up arrow to navigate to the assignment command and change the object name to something different.
+
+## Names
+
+Why did I assign the text to the object `my_name` and not, for example, `names`?
+
+What all is wrong with the file name `Qualtrics experiment 3 ~ 01/05/22 [final_FINAL].xlsx`?
+
+What would be a better name for this file?
+
+Why is this date problematic? 01/05/22
+
+What would be an ISO 8601 format for this date?
+
+Why is it useful to include dates in files names?
+

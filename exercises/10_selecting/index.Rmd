@@ -1,0 +1,173 @@
+---
+title: "Selecting data"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Data wrangling
+
+### Setup
+
+Here, we're focusing on data wrangling using the core functions from `{dplyr}`. To start, let's load the `{dplyr}` package along with the `{palmerpenguins}` package to use the `penguins` data set.
+
+```{r echo = TRUE, message = FALSE}
+library(dplyr)
+library(palmerpenguins)
+head(penguins)
+```
+
+Now we'll start working with columns for this lesson.
+
+## Selecting columns
+
+First, we'll work with columns of our data frames and start with selecting a subsample of them. Often data frames have many columns that we don't want or simply don't want to work with. We use the `select()` function to build data frames with a subset of columns.
+
+**For the `penguins` data set, select only the columns for species, body mass, sex, and year using `:`. Replace the `...` in the code below with the proper arguments.**
+
+```{r exercise1, exercise = TRUE}
+select(penguins, ...)
+```
+ 
+```{r exercise1-check}
+grade_result(
+  pass_if(~identical(.result, select(penguins, species, body_mass_g:year)))
+)
+```
+
+**Now just exclude the island column.**
+```{r exercise2, exercise = TRUE}
+select(penguins, ...)
+```
+ 
+```{r exercise2-check}
+grade_result(
+  pass_if(~identical(.result, select(penguins, -island)))
+)
+```
+
+**Using a `{dplyr}` helper function, select only columns that ends in `_mm`.**
+```{r exercise3, exercise = TRUE}
+select(penguins, ...)
+```
+ 
+```{r exercise3-check}
+grade_result(
+  pass_if(~identical(.result, select(penguins, ends_with("_mm"))))
+)
+```
+
+**Using a `{dplyr}` helper function, select only columns that include the string `length`.**
+```{r exercise4, exercise = TRUE}
+select(penguins, ...)
+```
+ 
+```{r exercise4-check}
+grade_result(
+  pass_if(~identical(.result, select(penguins, contains("length"))))
+)
+```
+
+## Moving columns
+
+There are several ways to move columns in a data frame. `select()` works fine when there are a few columns, but `relocate()` is better when there are many columns.
+
+Here's list of the column names:
+```{r echo = TRUE}
+names(penguins)
+```
+
+
+**Use `select()` and a helper function to move the _year_ after the _island_ column.**
+```{r exercise5, exercise = TRUE}
+select(penguins, ...)
+```
+ 
+```{r exercise5-check}
+grade_result(
+  pass_if(~identical(.result, select(penguins, species, island, year, everything())))
+)
+```
+
+**Now use `relocate()` to do the same thing.**
+```{r exercise6, exercise = TRUE}
+relocate(penguins, ...)
+```
+ 
+```{r exercise6-check}
+grade_result(
+  pass_if(~identical(.result, relocate(penguins, year, .after = island)))
+)
+```
+
+## Renaming columns
+
+Like moving columns, there are multiple ways to rename them. Our trusty `select()` can do this, but if you're renaming just a few columns, you have to include all of them. The `rename()` function keeps the rest of the columns intact while only renaming the columns listed.
+
+```{r echo = TRUE}
+names(penguins)
+```
+**Use `select()` to keep the data frame intact but rename `body_mass_g` to `body_mass`.**
+```{r exercise7, exercise = TRUE}
+select(penguins, ...)
+```
+ 
+```{r exercise7-check}
+grade_result(
+  pass_if(~identical(.result, select(penguins, species:flipper_length_mm, body_mass = body_mass_g, sex:year)))
+)
+```
+
+**Now use `rename`()` to do the same thing.**
+```{r exercise8, exercise = TRUE}
+rename(penguins, ...)
+```
+ 
+```{r exercise8-check}
+grade_result(
+  pass_if(~identical(.result, rename(penguins, body_mass = body_mass_g)))
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 22
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

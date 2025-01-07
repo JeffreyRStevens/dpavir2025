@@ -1,0 +1,157 @@
+---
+title: "Importing data"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+## Importing data
+
+There are numerous ways of importing data depending on if you have the files locally on your computer or if they are available on the internet. Different functions (and packages) are needed to import data based on it's location and file type. The two functions you will probably use most often are base R's `read.csv()` and `{readr}`'s `read_csv()`. I recommend reading the documentation for both of these (`?read.csv()` and `?readr::read_csv`).
+
+And don't forget that `here::here()` will help facilitate data import when you are using R Projects (which you should!). 
+
+```{r importing-quiz}
+quiz(
+question(
+  'Which of the following are plain text files?',
+  answer('`.txt`', correct = TRUE),
+  answer('`.csv`', correct = TRUE),
+  answer('`.R`', correct = TRUE),
+  answer('`.Rmd`', correct = TRUE),
+  answer('`.xlsx`'),
+  answer('`.xls`'),
+  answer('`.sav`'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+question(
+  'Which of the following would produce a tibble?',
+  answer('`read_csv()`', correct = TRUE),
+  answer('`read.csv()`', message = "Oops, that produces a data frame."),
+  answer('`write.csv()`', message = "Oops, that writes a data frame to a CSV file."),
+  answer('`write_csv()`', message = "Oops, that writes a data frame to a CSV file."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+question(
+  'If your file does not have the first row as column names, which of the following argument should you specify for `read.csv()`?',
+  answer('`header = FALSE`', correct = TRUE),
+  answer('`skip = 1`', message = "Oops, that skips the first row of data."),
+  answer('`col_names = FALSE`', message = "Oops, that's an argument for `read_csv()` not `read.csv()`."),
+  answer('`col_select = 1`', message = "Oops, that's an argument for `read_csv()` not `read.csv()`."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+question_text(
+  "Write the code that _imports_ a fictional `mydata.csv` file from the path `data/raw_data/` using base R syntax but does not use the `{here}` package.",
+  answer('read.csv(file = "data/raw_data/mydata.csv")', correct = TRUE),
+  answer('read.csv("data/raw_data/mydata.csv")', correct = TRUE),
+  answer('read.csv(file = "data/raw_data/mydata")', message = "Oops, you forgot the `.csv` extension."),
+  answer('read.csv("data/raw_data/mydata")', message = "Oops, you forgot the `.csv` extension."),
+  answer('read.csv(file = "mydata.csv")', message = "Oops, you forgot the path."),
+  answer('read.csv("mydata.csv")', message = "Oops, you forgot the path."),
+  answer('read.csv(file = here("data/raw_data/mydata.csv"))', message = "Oops, that uses `{here}`."),
+  answer('read.csv(here("data/raw_data/mydata.csv"))', message = "Oops, that uses `{here}`."),
+  answer('read_csv(file = "data/raw_data/mydata.csv")', message = "Oops, that uses `{readr}'s `read_csv()` function."),
+  answer('read_csv("data/raw_data/mydata.csv")', message = "Oops, that uses `{readr}'s `read_csv()` function."),
+  allow_retry = TRUE
+),
+question(
+  'Which package can import Excel files?',
+  answer('`{readxl}`', correct = TRUE),
+  answer('`{haven}`', message = "Oops, that package is for SAS, SPSS, and STATA data files."),
+  answer('`{qualtRics}`', message = "Oops, that package is for Qualtrics data files."),
+  answer('`{microsoft365R}`', message = "Oops, that package is for importing data files from Microsoft OneDrive."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+)
+```
+
+
+## Exporting data
+
+Typically, exporting data to files is more straightforward because most of the time, you will be exporting CSV files. Again, the two functions you will probably use most often are base R's `write.csv()` and `{readr}`'s `write_csv()` (`?write.csv()` and `?readr::write.csv`).
+
+```{r exporting-quiz}
+quiz(
+question(
+  'Which of the following is a default argument value for `write.csv()`?',
+  answer('`row.names = TRUE`', correct = TRUE),
+  answer('`sep = ";"`'),
+  answer('`dec = ","`'),
+  answer('`quote = FALSE`'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+),
+# question(
+#   'Which of the following would save your workspace?',
+#   answer('`save.image("workspace.Rdata")`', correct = TRUE),
+#   answer('`save("workspace.Rdata")`', message = "Oops, that uses the wrong function."),
+#   answer('`save.image("workspace.rds")`', message = "Oops, that saves to the wrong file type."),
+#   answer('`saveRDS("workspace.rds")`', message = "Oops, that uses the wrong function."),
+#   allow_retry = TRUE,
+#   random_answer_order = TRUE
+# ),
+question_text(
+  "Write the code that _exports_ the `mydata` object to a file called `mydata2.csv` in the path `data/` using `{readr}` syntax and using the `here::here()` function.",
+  answer('write_csv(mydata, file = here("data/mydata2.csv"))', correct = TRUE),
+  answer('write_csv(mydata, here("data/mydata2.csv"))', correct = TRUE),
+  answer('write_csv(mydata, file = here::here("data/mydata2.csv"))', correct = TRUE),
+  answer('write_csv(mydata, here::here("data/mydata2.csv"))', correct = TRUE),
+  answer('write_csv(mydata, file = here("data/mydata2.csv"))', correct = TRUE),
+  answer('readr::write_csv(mydata, here("data/mydata2.csv"))', correct = TRUE),
+  answer('readr::write_csv(mydata, file = here::here("data/mydata2.csv"))', correct = TRUE),
+  answer('readr::write_csv(mydata, here::here("data/mydata2.csv"))', correct = TRUE),
+  answer('readr::write_csv(mydata, file = here("data/mydata2.csv"))', correct = TRUE),
+  answer('write_csv(mydata, file = "data/mydata2.csv")', message = "Oops, you forget to use `here()`."),
+  answer('write_csv(mydata, "data/mydata2.csv")', message = "Oops, you forget to use `here()`."),
+  allow_retry = TRUE
+)
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 1
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

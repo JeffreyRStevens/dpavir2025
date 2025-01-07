@@ -1,0 +1,48 @@
+---
+title: 'Merging columns'
+author:
+  - Jeff Stevens
+date: '2023-03-01'
+categories: 
+  - "module 4"
+  - "week 6"
+  - columns
+  - join
+  - merge
+  - "mutating joins"
+description: "Merge columns with mutating joins"
+draft: true
+---
+
+Often, we have data spread across multiple data sets that need to be merged into a single data set. We'll do this in a way that merges columns using mutating join functions from `{dplyr}`.
+
+## Learning objectives
+
+* Understand the concept of a key column
+* Conduct inner joins
+* Conduct outer joins
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 21.1 - 21.3.2](https://r4ds.hadley.nz/joins.html){target='_blank'}
+
+## Class meeting
+
+* Introduce merging data
+* Key columns
+* inner_join()
+* full_join()
+* left_join()
+* right_join()
+* [Slides](../../slides/17_mergingcolumns.qmd){target="_blank"} and [Code](../../code/17_mergingcolumns.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_17_mergingcolumns/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 21.3.3 - 21.5](https://r4ds.hadley.nz/joins.html#filtering-joins){target='_blank'}

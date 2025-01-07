@@ -1,0 +1,53 @@
+---
+title: 'Data types'
+author:
+  - Jeff Stevens
+date: '2023-02-03'
+categories: 
+  - "module 2"
+  - "week 2"
+  - characters
+  - coercion
+  - dates
+  - factors
+  - logicals
+  - "missing data"
+  - numerics
+description: "Create and convert numerics, character strings, logicals, factors, and dates."
+draft: true
+---
+
+There are four core types of data in R: doubles, integers, character strings, and logicals. Those can be augmented to form other data types such as factors and dates. We'll explore how to create, check, and convert these data types.
+
+## Learning objectives
+
+* Learn characteristics of the different data types
+* Convert between data types
+* Work with special data values
+ 
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS1 20](https://r4ds.had.co.nz/vectors.html){target='_blank'}
+
+## Class meeting
+
+* Numerics
+* Characters
+* Logicals
+* Factors
+* Dates
+* Converting data types
+* Special values
+* [Slides](../../slides/06_datatypes.qmd){target="_blank"} and [Code](../../code/06_datatypes.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_06_datatypes/){target='_blank'}
+
+### For next class meeting
+
+* Read [PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/){target='_blank'}

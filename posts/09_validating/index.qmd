@@ -1,0 +1,48 @@
+---
+title: 'Validating data'
+author:
+  - Jeff Stevens
+date: '2023-02-10'
+categories: 
+  - "module 2"
+  - "week 3"
+  - "codebooks"
+  - "data types"
+  - duplicates
+  - "missing data"
+  - "validate"
+description: "Tools for ensuring your data are valid"
+draft: true
+---
+
+Typically, the first step of data cleaning after importing data is to check that they data are valid. 
+
+## Learning objectives
+
+* Describe characteristics of valid data
+* Summarize, test, and exclude data
+* Create a codebook
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* [Wikipedia](https://en.wikipedia.org/wiki/Data_validation){target='_blank'}
+
+## Class meeting
+
+* Checking for valid data
+* Summarizing data
+* Testing data
+* Excluding data
+* Codebooks 
+* [Slides](../../slides/09_validating.qmd){target="_blank"} and [Code](../../code/09_validating.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_09_validating/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 4.3.2 - 4.3.4](https://r4ds.hadley.nz/data-transform.html#sec-select){target='_blank'}

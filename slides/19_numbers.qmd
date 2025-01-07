@@ -1,0 +1,428 @@
+---
+title: "Numbers"
+author: "Jeff Stevens"
+date: "2023-03-06"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+
+# Introduction
+
+
+## The problem
+
+```{r echo = FALSE}
+library(tidyverse)
+nrows <- 12
+set.seed(311)
+data1 <- tibble(val1 = runif(nrows), val2 = runif(nrows), val3 = runif(nrows, 0.001, 0.01))#, val4 = paste0("$", format(runif(nrows, 10, 100), digits = 4)))
+data2 <- data1 |> 
+  # mutate(min = sec / 60) |> 
+  mutate(percent_val1 = round(val1 * 100, 2), .keep = "unused", .before = 1) |> 
+  mutate(log_val2 = log(val2), .keep = "unused", .after = percent_val1) |> 
+  mutate(val3 = format(val3, scientific = TRUE, digits = 2)) #|> 
+  # mutate(val4 = parse_number(val4))
+```
+
+What's different between these data sets? 
+
+What is needed to create `data2` from `data1`?
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+```{r}
+data1
+```
+:::
+
+::: {.column width="55%"}
+
+```{r}
+data2
+```
+:::
+
+::::
+
+
+## Set-up
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+```
+
+
+## Types of numbers
+
+Doubles are floating point numbers
+
+::: {.callout-note}
+**Floating point number:** a number without a fixed number of digits after the decimal point
+:::
+
+Floating point numbers ≈ scientific notation
+
+
+## Types of numbers
+
+Computer memory is limited, so you cannot store numbers with infinite precision and floating points are stored imprecisely
+
+```{r}
+sqrt(2) ^ 2 == 2
+1 / 49 * 49 == 1
+```
+
+
+# Comparing and counting
+
+
+## Comparing numbers
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+x <- 1
+y <- 1.00000000000001
+z <- 1.001
+```
+
+::: {.fragment}
+```{r}
+x == y
+all.equal(x, y)
+all.equal(x, z)
+all.equal(x, z, tolerance = 1e-2)
+```
+:::
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r}
+sqrt(2) ^ 2 == 2
+all.equal(sqrt(2) ^ 2, 2)
+dplyr::near(sqrt(2) ^ 2, 2)
+```
+:::
+
+:::
+::::
+
+<!-- ## Parsing numbers -->
+
+<!-- Sometimes, numbers come in as character string, occasionally with weird formatting. -->
+
+<!-- To parse numbers that come in with scientific notation, use `readr::parse_double()`: -->
+<!-- ```{r} -->
+<!-- (num_char <- "1e3") -->
+<!-- typeof(num_char) -->
+<!-- parse_double(num_char) -->
+<!-- ``` -->
+
+
+<!-- ## Parsing numbers -->
+
+<!-- To parse numbers that come in with monetary units or percent signs, use `readr::parse_number()`: -->
+<!-- ```{r} -->
+<!-- (num_char <- c("$1,234", "USD 3,513", "59%")) -->
+<!-- typeof(num_char) -->
+<!-- parse_number(num_char) -->
+<!-- ``` -->
+
+
+## Counts
+
+As a reminder, we've already seen how to use `dplyr::count()`
+```{r}
+count(flights, carrier)
+```
+
+
+## Counts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+We can also automatically sort by count.
+
+```{r}
+count(flights, carrier, sort = TRUE)
+```
+:::
+
+::: {.column width="50%"}
+And sum up totals instead of just count
+
+```{r}
+count(flights, carrier, wt = distance)
+```
+:::
+
+::::
+
+
+## Counts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Remember `n()` counts inside a `summarise()`
+
+```{r}
+flights |> 
+  group_by(carrier) |> 
+  summarise(n = n())
+```
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+
+`n_distinct()` counts instances within a group
+```{r}
+flights |> 
+  group_by(dest) |> 
+  summarise(carriers = n_distinct(carrier))
+```
+:::
+:::
+
+::::
+
+
+## Counting NAs
+
+To count `NA`s, you can `sum()` up `TRUE` responses to `is.na()`
+
+```{r}
+flights |> 
+  group_by(dest) |> 
+  summarize(n_cancelled = sum(is.na(dep_time)))
+```
+
+
+## Counting NAs
+
+This trick can be used for any logical vector
+
+```{r}
+sum(flights$month == 1)
+nrow(filter(flights, month == 1))
+```
+
+
+# Transforming numbers
+
+## Operations
+
+Mathematical operators are recycled across all elements in a vector
+
+```{r}
+0:10 * 5
+```
+
+::: {.fragment}
+You can operate with vectors > 1, but the larger vector must be a multiple of the smaller vector
+```{r warning = TRUE}
+0:10 * c(5, 6)
+```
+```{r}
+0:11 * c(5, 6)
+```
+:::
+
+
+## Mathematical transformations
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+* `sqrt()`
+* `log()`
+* `log10()`
+* `log2()`
+* `sin()`
+* `asin()`
+:::
+
+::: {.column width="70%"}
+
+```{r}
+sqrt(seq(0, 100, 10))
+log(runif(10))
+asin(sqrt(runif(10)))
+```
+:::
+::::
+
+## Rounding
+
+Control significant digits with `round()`
+
+```{r}
+round(123.456, 2)  # two digits
+round(123.456, 1)  # one digit
+round(123.456) # whole number
+round(123.456, -1) # round to nearest ten
+round(123.456, -2) # round to nearest hundred
+```
+
+<!-- ## Rounding -->
+
+<!-- But weirdness for 0.5s with even digits -->
+
+<!-- ```{r} -->
+<!-- round(c(1.5, 2.5)) -->
+<!-- ``` -->
+
+<!-- To avoid, use `ceiling()` -->
+
+<!-- ```{r} -->
+<!-- ceiling(c(1.5, 2.5)) -->
+<!-- ``` -->
+
+
+# Formatting numbers
+
+
+## Formatting
+
+When numbers get too big, too small,  or need other formatting, use `format()`
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+(x <- 0.0020)
+format(x, scientific = TRUE)
+format(x, nsmall = 4)
+```
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+
+
+```{r}
+(y <- 12345678.9)
+format(y, scientific = TRUE, 
+       digits = 3)
+format(y, big.mark = ",")
+```
+:::
+:::
+::::
+
+
+## Cutting numbers into ranges
+
+If you need to bin numbers into ranges, use `cut()`
+
+```{r}
+set.seed(1)
+(x <- runif(12, min = 0, max = 100))
+cut(x, breaks = c(0, 33, 66, 100))
+```
+::: {.fragment}
+```{r}
+cut(x, breaks = c(0, 33, 66, 100), labels = c("Low", "Medium", "High"))
+```
+:::
+
+
+<!-- ## Offsets -->
+
+<!-- You many need to work with numbers after (`dplyr::lag()`) or before (`dplyr::lead()`) the current element -->
+
+<!-- ```{r} -->
+<!-- (x <- c(2, 5, 11, 11, 19, 35)) -->
+<!-- lag(x) -->
+<!-- x - lag(x) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- lead(x) -->
+<!-- x - lead(x) -->
+<!-- ``` -->
+
+
+<!-- # Summarizing numbers -->
+
+<!-- ## Summary functions -->
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- * `mean()` -->
+<!-- * `median()` -->
+<!-- * `min()` -->
+<!-- * `max()` -->
+<!-- * `sd()` -->
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- * `IQR()` -->
+
+<!-- ```{r} -->
+<!-- IQR(x) -->
+<!-- ``` -->
+
+<!-- * `quantile()` -->
+
+<!-- ```{r} -->
+<!-- quantile(x) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- :::: -->
+
+
+## Solving the problem
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+```{r}
+data1
+```
+:::
+
+::: {.column width="55%"}
+
+```{r}
+data2
+```
+:::
+
+::::
+
+
+## Let's code!
+
+[Numbers](../code/19_numbers.html){target="_blank"} [[Rmd](../code/19_numbers.Rmd){target="_blank"}]

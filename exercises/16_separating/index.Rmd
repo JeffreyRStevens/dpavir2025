@@ -1,0 +1,223 @@
+---
+title: "Separating and uniting data"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+my_dates <- tibble::tibble(date = c("2023-01-01", "2023-02-01", "2023-03-01", "2023-04-01", "2023-05-01"))
+my_dates2 <- separate(my_dates, col = date, into = c("year", "month", "day"))
+```
+
+
+## Separating data
+
+### Set-up
+
+For this exercise, we'll use functions from the `{tidyr}` and `{dplyr}` packages, so let's load those as well as the `{palmerpenguins}` package for example data.
+
+```{r echo = TRUE, message = FALSE}
+library(tidyr)
+library(dplyr)
+library(palmerpenguins)
+```
+
+###
+
+Remember, **tidy data** refers to a specific format of data (not just being 'clean'). Tidy data meet the following criteria:
+
+1. Each variable must have its own column.
+1. Each observation must have its own row.
+1. Each value must have its own cell.
+
+To create tidy data, you may need to separate values from a single column into multiple columns or combine multiple columns into a a single one to make a tidy data frame. 
+
+### Separating data by delimiters
+
+If there are multiple values inside a single cell, you may want to `separate()` them. An important concept for this is the notion of a _delimiter_, which is the character(s) used to separate independent elements. For instance, if you wanted to separate an ISO 8601 date into the year, month, and day, the delimiter would be a dash `-`. But in this date style 05/17/2021, the delimiter is a slash `/`. Other times, there may not be a specific character that separates the elements, but position in a string may determine the elements. 
+
+The `separate()` function looks for standard delimiters as delimiters and if there is only one type will separate based on that. Separate the `date` column into three new columns called `year`, `month`, and `day`.
+
+```{r mydates}
+my_dates
+```
+
+```{r exercise4, exercise = TRUE}
+separate(my_dates, ...)
+```
+ 
+```{r exercise4-check}
+grade_result(
+  pass_if(~identical(.result, tidyr::separate(my_dates, col = date, into = c("year", "month", "day"))))
+)
+```
+
+
+###
+
+Let's work on a more complicated task. Some characters/symbols have special meanings when we are searching for patterns in strings. We'll see more about this later, but trust me for now. One of those characters is the period or dot. If we want to use `.` as a delimiter, we have to 'escape' the special meaning that it has by placing two `\` in front of it (`\\.`). Let's say we want to carve up a number in its whole number and decimal parts. We want to use the decimal as the delimiter.
+
+Split the _bill_length_mm_ column into _mm_ and _decimal_ columns using `\\.` as the delimiter.
+
+```{r exercise5, exercise = TRUE}
+separate(penguins, ...)
+```
+ 
+```{r exercise5-check}
+grade_result(
+  pass_if(~identical(.result, tidyr::separate(penguins, col = bill_length_mm, into = c("mm", "decimal"), sep = "\\.")))
+)
+```
+
+### Separating by position
+
+We can also separate by position instead of a delimiter. Let's say we want to abbreviate _species_ to only the first three letters of the species. We can separate the species name after the first three characters and then throw away the column with the characters beyond the first three. Note this is not the most efficient way to do this, and we'll learn better ways later. But for now, it illustrates how to separate based on position.
+
+When separating by position, we give the number of characters we want in the first column to the `sep` argument.
+
+For the `penguins` data, split _species_ into _species_ and _trash_ after the third character, then remove the _trash_ column.
+
+```{r exercise6, exercise = TRUE}
+penguins |> 
+  separate(...) |> 
+  ...(...)
+```
+ 
+```{r exercise6-solution}
+penguins |> 
+  separate(species, into = c("species", "trash"), sep = 3) |> 
+  select(-trash)
+```
+
+```{r exercise6-check}
+grade_result(
+  pass_if(~identical(.result, tidyr::separate(penguins, species, into = c("species", "trash"), sep = 3) |> select(-trash)))
+)
+```
+
+
+###
+
+If you want to count the characters from right to left instead of left to right, simply use a negative number.
+
+```{r echo = TRUE}
+penguins |> 
+  separate(sex, into = c("firstpart", "secondpart"), sep = -4) |> 
+  select(-c(bill_length_mm:body_mass_g))
+```
+
+
+## Uniting data
+
+### 
+
+If you need to combine multiple columns into a single one, use `unite()`. The default delimiter is an underscore `_`, so if you want something different, you need to specify it with the `sep` argument.
+
+Let's take our data frame with the date separated out and combine it to reproduce `my_dates` by combining _year_, _month_, and _day_ into a column called _date_. Make sure you run your code to check it before submitting.
+
+```{r mydates2}
+my_dates2
+```
+
+```{r exercise7, exercise = TRUE}
+unite(my_dates2, ...)
+```
+ 
+```{r exercise7-check}
+grade_result(
+  pass_if(~identical(.result, tidyr::unite(my_dates2, col = "date", year:day, sep = "-")))
+)
+```
+
+###
+
+Now combine the two bill measures separated by an `x` to show the length by the width in a column called `bill_area` but keep the original columns. Also, make sure `NA`s don't show up in the column (check `unite()` documentation). It should look like this:
+```{r}
+unite(penguins, "bill_area", contains("bill_"), sep = "x", remove = FALSE, na.rm = TRUE)
+```
+
+```{r exercise8, exercise = TRUE}
+unite(penguins, ...)
+```
+ 
+```{r exercise8-check}
+grade_result(
+  pass_if(~identical(.result, unite(penguins, "bill_area", contains("bill_"), sep = "x", remove = FALSE, na.rm = TRUE)))
+)
+```
+
+
+## Combinations of factors
+
+###
+
+<!-- When data are _implicitly_ missing from our data set, they simply don't exist in the data. This contrasts with _explicitly_ missing data which are present in the data and signaled by `NA`s.  -->
+
+We can find all possible combinations of factors in the data by using the `expand()` function. What are all possible combinations of the penguin species and island?
+
+```{r exercise9, exercise = TRUE}
+penguins |> 
+  expand(...)
+```
+ 
+```{r exercise9-check}
+grade_result(
+  pass_if(~identical(.result, expand(penguins, species, island)))
+)
+```
+
+###
+
+We can find all combinations of factors *existing* in the data by adding the `nesting()` function inside the `expand()` function. What are all existing combinations of the penguin species and island?
+
+```{r exercise10, exercise = TRUE}
+penguins |> 
+  expand(...)
+```
+ 
+```{r exercise10-check}
+grade_result(
+  pass_if(~identical(.result, expand(penguins, nesting(species, island))))
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 3
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

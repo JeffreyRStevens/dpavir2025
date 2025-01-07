@@ -1,0 +1,152 @@
+---
+format:
+  html:
+    toc: true
+urlcolor: blue
+---
+``` {r echo = FALSE, message = FALSE}
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+```
+
+<center>
+<!-- ::: {.content-visible when-format="pdf"} -->
+<!-- \begin{center} -->
+<!-- ::: -->
+
+# PSYC 971<br> Data Processing and Visualization in R
+
+MWF 3:30-4:30pm
+
+Burnett 80
+
+Jeff Stevens (he/him)
+
+Version `r Sys.Date()`
+
+</center>
+<!-- ::: {.content-visible when-format="pdf"} -->
+<!-- \end{center} -->
+<!-- ::: -->
+
+<!-- ::: {.content-visible when-format="html"} -->
+<!-- <p align="center"><a href="syllabus.pdf" class="btn btn-primary">PDF Version</a></p> -->
+<!-- ::: -->
+
+## Course description
+This course will introduce students to the fundamental concepts and methods used in the R statistical software package (focusing on the [tidyverse](https://www.tidyverse.org/) perspective) to process, visualize, and disseminate data.
+
+## Prerequisites
+PSYC 350 or equivalent course in introductory research design and analysis. No previous coding experience is required.
+
+## Course objectives
+* Learn how to import, process, and plot data in R using tidyverse functions
+* Gain a basic understanding of general programming principles applied to data preparation, analysis, and visualization
+* Apply principles of good data visualization to plot data in an informative way
+* Produce reproducible manuscripts and presentations with R code embedded
+
+## Course expectations
+The primary aim of this course is to teach you how to use R. Therefore, reading the assigned texts in advance, attending class, and participating in discussions and exercises is integral to this course and expected. Learning R follows the 'use it or lose it' mantra. Plan on working on it a little bit almost every day. Please don't get behind, as we move quickly through the course, and much of what we learn is cumulative.
+
+## Student hours
+Jeff has time to meet with students Tuesday mornings from 10-11am and Wednesday afternoons from 1-2pm in his office at B83 East Stadium (CB3).
+
+<!-- In addition to Jeff's student hours, Quantitative Assistant Katie McNealy is available to help with R-related issues.  Katie took the course previously and is proficient in R. Note that she is available for general consultation on topics covered in the course not for specific questions about course requirements or assignments. So you can go to her with general R understanding/debugging issues. She has drop-in hours 1-3pm on Wednesdays and has reservable consultation 10-minute and 30-minute slots available on Wednesday and Thursday afternoons. See the course [Canvas resources page](https://canvas.unl.edu/courses/149637/pages/course-resources) for links to her calendar to schedule a time to meet. -->
+
+## Computing requirements
+You will need to bring a _fully charged_ laptop to each class meeting to run in-class coding. While we will not be using very large data sets or running massive computations, having a faster computer will allow you to quickly proceed through the coding. On this laptop, you will need to install [R](https://r-project.org), [RStudio](https://posit.co/products/open-source/rstudio/), and a number of R packages.
+
+## Readings
+This course will draw from a number of resources, primarily:
+
+* Hadley Wickham & Garrett Grolemund’s [*R for Data Science*](https://r4ds.had.co.nz/) 1st edition.
+* Hadley Wickham, Garrett Grolemund, and Mine Çetinkaya-Rundel’s [*R for Data Science*](https://r4ds.hadley.nz/) 2nd edition.
+* Clause Wilke's [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/).
+
+Other readings are available in the [course schedule][Course schedule].
+
+## Assignments
+### Learning journal
+As you learn R, you will pick up all kinds of little gems to help you use it. For example, to add the pipe syntax `|>` (something you’ll be doing a lot in the tidyverse), you can simply type `Ctrl/Cmd-Shift-M`. Keep a journal of these little tricks/hints that you are most excited about to submit at the end of the course. I highly recommend posting them on social media throughout the semester.
+
+### Exercises
+Most class meetings will be followed with sets of exercises to help you practice implementing the concepts discussed. These will be assessed as complete or incomplete. <!--Please complete and submit the exercises for each chapter. While it is most beneficial to complete these prior to the course meeting discussing the chapters, you can submit them afterwards if needed. Please submit your exercises as R scripts (files ending in .R) or as PDFs rendered through R Markdown.-->
+
+### Check-ins
+At the end of each module, there will be a summative assignment checking that you understand that module's material. 
+
+### Projects
+The aim of this course is for you to be able to use R to process, visualize, and disseminate _your_ data. Therefore, there will be two projects where you apply what you learn in class to your own data. The first project will involve wrangling your data into tidy format and editing values. The second project will involve plotting and presenting your data.
+
+<!-- ### CReativity -->
+<!-- Personally, I find coding in R to be a lot of fun. One way that people have fun in R is to express their creativity. Choose at least one of the following ways to express your creativity in/about R (you'll receive extra credit if you submit more than one type): -->
+
+<!-- * Course hex sticker---create your own [hex sticker](https://github.com/rstudio/hex-stickers) for the course -->
+<!-- * Meme---create a meme about the course (using e.g., [Make a Meme](https://makeameme.org/) or [MemeGenerator](https://imgflip.com/memegenerator)) -->
+<!-- * Generative aRt---create your own [generative art](https://en.wikipedia.org/wiki/Generative_art) using R ([getting started blog](https://medium.com/@vitgabrhel/getting-started-with-generative-art-in-r-3bc50067d34b))  -->
+<!-- * I'm open to other ways of expressing your cReativity (R cookies? tidyverse in verse? ode to RStudio?) -->
+
+### Wrapped
+Combine everything that we've learned to create your own Spotify Wrapped or other summary. If you have a Spotify account and have used it in the last year, download your data. Otherwise, use an existing data set. Then process that data to find the most listened to artists and songs and plot your results.
+
+
+## Grades
+
+### Grade scale
+
+|  |  |  |  |  |  |  |  |  |  |
+|:-|:------|:-|:-----|:-|:------|:-|:------|:-|:--|
+| A+ | 96.5-100 | B+ | 86.5-89.4 | C+ | 76.5-79.4 | D | 59.5-69.4 | F | 0-59.4 |
+| A | 96.5-100 | B | 86.5-89.4 | C | 69.5-76.4 |  |  |  |  |
+| A- | 89.5-92.4 | B- | 79.5-82.4 |  |  |  |  |  |  |
+
+
+
+Grades of B- or higher (>= 79.5) count as passing for Pass/No Pass grading.
+
+### Assessment
+| Grade component | Grade percentage |
+|:--------------- |:----------------:|
+| Exercises       | 20               |
+| Check-ins       | 35               |
+| Learning journal| 5                |
+| Projects        | 35               |
+| Creativity      | 5                |
+
+## Course resources and policies
+
+Students are responsible for knowing the [university policies and resources](https://go.unl.edu/coursepolicies).
+
+### Instructional continuity plan
+If in-person classes are canceled, you will be notified of the instructional continuity plan for this class by email.
+
+### Diversity, inclusion, and wellness
+We must treat every individual with respect. We are diverse in many ways, and this diversity is fundamental to building and maintaining an equitable and inclusive campus community. Diversity can refer to multiple ways that we identify ourselves, including but not limited to race, color, national origin, language, sex, disability, age, sexual orientation, gender identity, religion, creed, ancestry, belief, veteran status, or genetic information. Each of these diverse identities, along with many others not mentioned here, shape the perspectives that students and faculty bring to our campus. I would like to create a learning environment in this course that supports a diversity of thoughts, perspectives and experiences, and honors participant identities. To help accomplish this:
+
+* If you have a name and/or set of pronouns that differ from those that appear in your official records, please let me know in the [course introduction form](https://canvas.unl.edu/courses/192678/pages/course-resources).
+* I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by me or anyone else) that was uninformed or insensitive or made you feel uncomfortable, please feel free to raise the issue in class, contact me to schedule an opportunity to discuss the issue in person, or submit anonymous feedback via the [course feedback form](https://canvas.unl.edu/courses/192678/pages/course-resources). I recognize the power differential between student and professor, but I promise you, neither your grade nor my opinion of you will be impacted by your willingness to bring issues to me.
+* If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to talk with me. Your wellness is important to me, and I do not want this course to adversely affect your mental health. I am invested in your understanding of the course material and am happy to make accommodations to achieve the longer-term goal of you learning to use R. Beyond requesting specific accommodations, if you notice something about the class structure or assignments that could be made to improve universal accessibility, please let me know. Sometimes you might be able to work around a barrier, and not go to the trouble of going through the SSD to request a formal accommodation – but over time, working around barriers takes a toll. If I am made aware of those issues, we are better able to remove them so you can focus fully on your work.
+* Unfortunately, incidents of bias or discrimination do occur, whether intentional or unintentional. They contribute to creating an unwelcoming environment for individuals and groups at the university. Therefore, the university encourages anyone who experiences or observes unfair or hostile treatment on the basis of identity to speak out for justice and support, within the moment of the incident or after the incident has passed. As noted above, if this happens in the context of this class, I encourage you to come talk to me so we can figure out together how to address the issue and find you the support you need. At a broader institutional level, resources are available at [Title IX Resources and Support](https://www.unl.edu/equity/getting-help) and  incidents can be reported through the [TIPS system](https://www.unl.edu/tips-incident-reporting-system/).
+
+### Mental health and well-being resources
+UNL offers a variety of options to students to aid them in dealing with stress and adversity. [Counseling and Psychological & Services (CAPS)](https://caps.unl.edu/) is a multidisciplinary team of psychologists and counselors that works collaboratively with Nebraska students to help them explore their feelings and thoughts and learn helpful ways to improve their mental, psychological and emotional well-being when issues arise. CAPS can be reached by calling 402-472-7450. [Well-Being Collective](https://wellbeing.unl.edu/) provides one-on-one well-being coaching to any student who wants to enhance their well-being. Trained well-being coaches help students create and be grateful for positive experiences, practice resilience and self-compassion, and find support as they need it. BRRWB can be reached by calling 402-472-8770.
+
+### Accommodations for students with disabilities
+The University strives to make all learning experiences as accessible as possible. If you anticipate or experience barriers based on your disability (including mental health, chronic or temporary medical conditions), please let me know immediately so that we can discuss options privately. To establish reasonable accommodations, I may request that you register with [Services for Students with Disabilities (SSD)](https://www.unl.edu/ssd/). If you are eligible for services and register with their office, make arrangements with me as soon as possible to discuss your accommodations so they can be implemented in a timely manner. SSD contact information: 117 Louise Pound Hall; 402-472-3787.
+
+### Class materials use and distribution
+Most class materials (anything on this website) are publicly available for anyone to use, assuming they follow the [Creative Commons Attribution 4.0 International Public License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) as described in the [main page of the website](index.qmd#license). Some assignments are not publicly available.
+
+### Academic dishonesty policy
+You are responsible for knowing and adhering to the [UNL Student Code of Conduct](https://studentconduct.unl.edu/student-code-conduct). Any student found guilty of academic dishonesty, including (but not limited to) cheating, falsification, and plagiarism, will fail the course and may be subject to disciplinary sanctions. 
+
+* _Cheating_: Copying or attempting to copy from an academic test or examination of another student; using or attempting to use unauthorized materials, information, notes, study aids or other devices for an academic test, examination or exercise; engaging or attempting to engage the assistance of another individual in misrepresenting the academic performance of a student; or communication information in an unauthorized manner to another person for an academic test, examination or exercise.
+* _Fabrication or Falsification_: Falsifying or fabricating any information or citation in any academic exercise, work, speech, research, test or examination. Falsification is the alteration of information, while fabrication is the invention or counterfeiting of information.
+* _Plagiarism_: Presenting the work of another as one’s own (i.e., without proper acknowledgement of the source) and submitting examination, theses, reports, speeches, drawings, laboratory notes or other academic work in whole or in part as one’s own when such work has been prepared by another person or copied from another person. Materials covered by this prohibition include, but are not limited to, text, video, audio, images, photographs, websites, electronic and online materials, and other intellectual property. **Copying material from other sources with minor modifications is considered plagiarism. **
+* _Complicity in Academic Dishonesty_: Helping or attempting to help another student to commit an act of academic dishonesty.
+* _Impermissible Collaboration_: Collaborating on any academic exercise, work, speech, test or examination unless expressly authorized by the faculty member. It is the obligation of the student to know whether collaboration is permitted.
+* _AI/LMMs_: With the proliferation of artificial intelligence (AI) and large language models (LLMs) like ChatGPT and GitHub CoPilot, it is tempting to use these when you code. Though these tools can be useful once you know how to code, [they can be impediments when you are learning to code](https://datavizf24.classes.andrewheiss.com/resource/ai-bs.html#what-about-code). In particular **do not just copy/paste code from an LLM**.  Asking an LLM to generate code is problematic because they don't know anything about the code itself---they just output code that they've seen in their training data. And they can't run the code to know if it even works. If you have some code that you don't understand, LLMs can be useful to explain existing code (check out [AI TutoR](https://psyteachr.github.io/AITutoR/) for how to use AI to support your learning). But please **don't use LLMs to generate code** for this course.  And do not use LLMs to write any text for your assignments.
+
+
+{{< include schedule.qmd >}}

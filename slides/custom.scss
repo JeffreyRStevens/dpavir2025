@@ -1,0 +1,40 @@
+/*-- scss:defaults --*/
+
+$body-bg: #132E53 !default;
+$body-color: #cdcdcd !default;
+$link-color: #7ac4ff !default;
+
+
+/*-- scss:rules --*/
+.my-div {
+   position: absolute;
+   bottom: 15px;
+   text-align: center;
+   width: 100%;
+}
+.drake-upper {
+  position: absolute;
+  left: 580px;
+  top: 200px;
+}
+.drake-lower {
+  position: absolute;
+  left: 580px;
+  top: 500px;
+}
+
+kbd {
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px #999;
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: 0.25em;
+  min-width: 1.5em;
+  text-align: center;
+  margin-right: .15em;
+}
+kbd:hover {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}

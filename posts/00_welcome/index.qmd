@@ -1,0 +1,63 @@
+---
+title: 'Getting started with R'
+author:
+  - Jeff Stevens
+date: '2025-01-20'
+categories: 
+  - "module 1"
+  - "week 1"
+  - R
+  - RStudio
+description: "Welcome to Data Processing and Visualization in R"
+execute:
+  freeze: true
+draft: true
+---
+
+## Welcome!
+
+The primary aim of this course is to teach you how to use R. By the end of the course, you should be comfortable working with and visualizing your data such that you can quickly learn how to analyze it.
+
+Learning how to program involves time, effort, and repetition. Everyone (including me) struggles with learning how to program, and we will all be learning together. Some of the material takes a few times to understand. You will make mistakes. A **lot** of mistakes. Maybe even the same mistake over and over. I will be doing live coding, and I will make mistakes (probably a lot of mistakes; maybe even the same mistake over and over). As we make mistakes, we learn about how R works and how we interface with R. We will learn from these mistakes, and they will make us better coders.
+
+The ‘use it or lose it’ mantra definitely applies to learning R. Plan on working on it a little bit almost every day. Much of what we learn is cumulative, so keep practicing what you're learning and please keep up with the lessons. Don't give up! I would rather you talk to me about struggles you're facing, so we can find a solution than have you bail out of learning R. We can do this together!
+
+Also, you're not alone. I want this course to help build an R community on campus. So ask me questions. Ask your classmates questions. Work in groups. Post questions and answers in the discussion. The global R community is a vibrant, welcoming, inclusive group of people who are interested in helping others learn R. I want to build a similar welcoming community in this course.
+
+
+## Course objectives
+
+* Learn how to import, process, and plot data in R using tidyverse functions
+* Gain a basic understanding of general programming principles applied to data preparation, analysis, and visualization
+* Apply principles of good data visualization to plot data in an informative way
+* Produce reproducible manuscripts and presentations with R code embedded
+
+## Course modules
+
+1. R basics
+1. Working with data
+1. Cleaning and wrangling data
+1. Tidy data
+1. Data types
+1. Grammar of graphics
+1. Plotting data
+1. Customizing plots
+1. Tables, documents, and presentations
+
+
+## Things to do before the course begins
+
+As soon as possible, please do the following:
+
+* View presentation on [Getting Started with R](https://canvas.unl.edu/courses/149637/files/folder/presentations?preview=14236447){target='_blank'} ([slides](../../slides/00_getting_started.qmd){target='_blank'})
+* Install R from [https://r-project.org](https://cloud.r-project.org/){target='_blank'}
+* Install RStudio from [Posit](https://posit.co/downloads/){target='_blank'}
+* Install `{tidyverse}` package
+* If you have any trouble installing these, contact me.
+* Read the [syllabus](../../syllabus.html)
+* Complete [course introduction form](https://canvas.unl.edu/courses/192678/pages/course-resources){target='_blank'}
+* Read [SIDS 1](https://moderndive.netlify.app/1-getting-started.html){target='_blank'}, [Wickham 2020](https://tidyverse.tidyverse.org/articles/manifesto.html){target='_blank'}, [R4DS2 1](https://r4ds.hadley.nz/intro.html){target='_blank'}
+
+If you have any questions about the course or R in general, do not hesitate to email me in Canvas.
+
+I'm looking forward to seeing you all in class!

@@ -1,0 +1,45 @@
+---
+title: 'Design and themes'
+author:
+  - Jeff Stevens
+date: '2023-04-05'
+categories: 
+  - "module 7"
+  - "week 11"
+  - design
+  - fonts
+  - "grid lines"
+  - legends
+  - themes
+description: "Adjust overall plot design with themes"
+execute:
+  freeze: auto
+draft: true
+---
+
+Data visualization design principles provide guidances for how to make informative plots. We can implement these design principles with ggplot2 themes.
+
+## Learning objectives
+
+* Learn design principles of graphical excellence and graphical integrity
+* Maximize data-ink ratio and minimize chartjunk
+* Use themes to customize plot area, grid lines, legends, and fonts
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [FDV 17](https://clauswilke.com/dataviz/proportional-ink.html){target='_blank'}, [25](https://clauswilke.com/dataviz/avoid-line-drawings.html){target='_blank'}, [26](https://clauswilke.com/dataviz/no-3d.html){target='_blank'}, [29](https://clauswilke.com/dataviz/telling-a-story.html){target='_blank'}
+
+## Class meeting
+
+* [Slides](../../slides/28_themes.qmd){target="_blank"}, [Script](../../slides/28_themes.R){target="_blank"}, and [Code](../../code/28_themes.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_28_themes/){target='_blank'}
+
+### For next class meeting
+
+* Read [FDV 4](https://clauswilke.com/dataviz/color-basics.html){target='_blank'}, [19](https://clauswilke.com/dataviz/color-pitfalls.html){target='_blank'}, [Cookbook for R](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){target='_blank'}

@@ -1,0 +1,379 @@
+---
+title: "Separating and uniting data"
+author: "Jeff Stevens"
+date: "2023-02-27"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+# Introduction
+
+
+
+## The problem
+
+```{r echo = FALSE}
+library(tidyverse)
+nrows <- 12
+data1 <- tibble(id = rep(1:4, each = 3), cond1 = rep(1:3, times = 4), cond2 = rep(c("A", "B", "A", "B"), each = 3), date = sample(seq(as.Date('2022-01-01'), as.Date('2022-02-28'), by="day"), nrows)
+) |> 
+  filter(id != 2 | cond1 != 2)
+data2 <- data1 |> 
+  complete(id, cond1) |> 
+  fill(cond2) |> 
+  unite("condition", cond1, cond2, sep = "") |> 
+  separate(col = date, into = c("year", "month", "day"))
+```
+
+What's different between these data sets? 
+
+What needs to happen to create `data2` from `data1`?
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+data1
+```
+:::
+:::{.column width="50%}
+```{r}
+data2
+```
+:::
+::::
+
+
+## Mental model of tidy data
+
+![](../images/tidy_data2.png){fig-align=center width=80%}
+
+1. Each variable has its own column
+1. Each observation has its own row
+1. Each value has its own cell
+
+
+# Separating data
+
+
+## Separating data
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+table3
+```
+:::
+
+::: {.column width="50%"}
+
+#### Why is `table3` not tidy?
+:::
+
+::::
+
+::: {.fragment}
+![](../images/tidyr_separate.png){.absolute width="60%" top="30%" left="55%"}
+:::
+
+
+---
+
+## Separating data
+
+```{r}
+separate(table3, rate, into = c("cases", "population"))
+```
+
+::: {.fragment}
+```{r}
+separate(table3, rate, into = c("cases", "population"), convert = TRUE)
+```
+:::
+
+
+## Separating data
+
+```{r}
+separate(table3, year, into = c("century", "year2"), sep = 2)
+```
+
+::: {.fragment}
+```{r}
+separate(table3, year, into = c("century", "year2"), sep = 2, remove = FALSE)
+```
+:::
+
+
+## Separating data
+
+::: {.callout-warning}
+The `separate()` function is being _superseded_ by `separate_wider_delim()` and `separate_wider_position()` for the two use cases described before. But these are both listed as _experimental_, so we're sticking with `separate()`.
+:::
+
+::: {.fragment}
+`separate(table3, rate, into = c("cases", "population"), sep = "/")` 
+
+<center>
+== 
+</center>
+
+`separate_wider_delim(table3, rate, names = c("cases", "population"), delim = "/")`
+:::
+
+
+## Separating data
+
+::: {.callout-warning}
+The `separate()` function is being _superseded_ by `separate_wider_delim()` and `separate_wider_position()` for the two use cases described before. But these are both listed as _experimental_, so we're sticking with `separate()`.
+:::
+
+`separate(table3, year, into = c("century", "year2"), sep = 2)` 
+
+<center>
+== 
+</center>
+
+`separate_wider_position(table3, year, widths = c(century = 2, year2 = 2))`
+
+
+# Uniting data
+
+
+## Uniting data
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+::: {style="font-size:85%"}
+```{r}
+table5
+```
+:::
+
+:::
+
+::: {.column width="45%"}
+
+#### Why is `table5` not tidy?
+:::
+
+::::
+
+::: {.fragment}
+![](../images/tidyr_unite.png){.absolute width="60%" top="30%" left="55%"}
+:::
+
+
+## Uniting data
+
+```{r}
+unite(table5, new, century:year)
+```
+
+::: {.fragment}
+```{r}
+unite(table5, new, century:year, sep = "")
+```
+:::
+
+
+## Uniting data
+
+```{r}
+unite(table5, new, century:year, sep = "", remove = FALSE)
+```
+
+
+## Coalescing data
+
+```{r echo = FALSE}
+coal_data <- tibble(a_1 = c(1, NA, NA, NA), a_2 = c(NA, 4, NA, NA), a_3 = c(NA, NA, 7, NA))
+```
+```{r}
+coal_data
+```
+
+::: {.fragment}
+```{r}
+coal_data %>% # note the use of magrittr pipe!
+  mutate(a_all = coalesce(!!! select(., contains("a_"))))
+```
+:::
+
+
+# Incomplete data sets
+
+## Missing data
+
+```{r echo = FALSE}
+stocks <- tibble(
+  year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016),
+  qtr    = c(   1,    2,    3,    4,    2,    3,    4),
+  return = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)
+)
+```
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r}
+stocks
+```
+
+* Explicitly missing (Q4 2015 is `NA`)
+* Implicitly missing (Q1 2016 absent)
+:::
+
+::: {.column width="40%"}
+
+::: {.fragment}
+```{r}
+stocks |> 
+  complete(year, qtr)
+```
+:::
+:::
+
+::::
+
+::: {.fragment}
+::: {.callout-note}
+#### Important for factorial designs and for data validation
+:::
+:::
+
+## Combinations of factors
+
+```{r echo = FALSE}
+fruits <- tibble(
+  type   = c("apple", "orange", "apple", "orange", "orange", "orange"),
+  year   = c(2010, 2010, 2012, 2010, 2010, 2012),
+  size  =  factor(
+    c("XS", "S",  "M", "S", "S", "M"),
+    levels = c("XS", "S", "M", "L")
+  ),
+  weights = rnorm(6, as.numeric(size) + 2)
+)
+```
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{r}
+fruits
+```
+
+:::
+
+::: {.column width="60%"}
+
+::: {.fragment}
+```{r}
+fruits |> expand(type, size)
+```
+return all **possible** combinations
+:::
+:::
+
+::::
+
+
+## Combinations of factors
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{r}
+fruits
+```
+
+:::
+
+::: {.column width="60%"}
+
+::: {.fragment}
+```{r}
+fruits |> expand(nesting(type, size))
+```
+return all **existing** combinations
+:::
+:::
+
+::::
+
+
+## Filling data
+
+```{r echo = FALSE}
+treatment <- tribble(
+  ~ person,           ~ treatment, ~response,
+  "Derrick Whitmore", 1,           7,
+  NA,                 2,           10,
+  NA,                 3,           9,
+  "Katherine Burke",  1,           4
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style="font-size:90%"}
+```{r}
+treatment
+```
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r}
+treatment |> 
+  fill(person)
+```
+:::
+:::
+
+::::
+
+
+
+## Solving the problem
+
+What code turns `data1` into `data2`?
+
+::::{.columns}
+:::{.column width="50%}
+```{r}
+data1
+```
+:::
+:::{.column width="50%}
+```{r}
+data2
+```
+:::
+::::
+
+## Let's code!
+
+[Separating data](../code/16_separating.html){target="_blank"} [[Rmd](../code/16_separating.Rmd){target="_blank"}]

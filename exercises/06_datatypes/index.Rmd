@@ -1,0 +1,169 @@
+---
+title: "Data types"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Data types
+
+Data types refer to the types of information that can be stored as individual elements of objects. The primary data types for our purposes are numerics (double and integer), characters, and logicals. There are also two augmentations of these types: factors and dates.
+
+### Checking data type
+
+The `typeof()` function can tell you the data type for a value or object.
+
+```{r echo = TRUE}
+typeof("hello")
+a <- 7
+typeof(a)
+```
+
+**Run the following code then modify it to return the data type as logical.**
+
+```{r exercise1, exercise = TRUE}
+typeof("TRUE")
+```
+ 
+```{r exercise1-solution}
+typeof(TRUE)
+```
+
+```{r exercise1-code-check}
+grade_code()
+```
+
+## Numerics
+
+There are two forms of numerical data in R: doubles and integers. Doubles refer to floating point numbers with decimals. Integers are positive and negative whole numbers (without decimals). Doubles can have a decimal of 0, which would make them equivalent to an integer. But R treats them as different data types even though they look the same.
+
+```{r echo = TRUE}
+# a is a double
+a <- 7
+a
+typeof(a)
+# b is an integer
+b <- 7L
+b
+typeof(b)
+```
+
+```{r integer}
+question("Test each of these with `typeof()`. Which are integers?",
+         answer("`42L`", correct = TRUE),
+         answer("`42.0L`", correct = TRUE),
+         answer("`integer(42)`", correct = TRUE),
+         answer('`42.0`'),
+         answer("`42 / 1L`"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
+## Characters
+
+Character types are strings of ... characters. You can put anything in a character string---including spaces and special characters---as long as they are in quotes (e.g., `myname <- "Jeff Stévens!!"`). 
+
+Either single or double quotes can be used. In general, it is preferred to use double quotes. However, if you have a double quote inside your string, then use single quotes: `mystring <- 'They said, "No way!"'`. Alternatively, you can *escape* the internal double quotes with a `\` to treat it as the actual character: `mystring2 <- "We said, \"Way!\""`.
+
+**Write that code that would assign the character string *What do you mean by "fine"?* to the object `question` without escaping the double quote.**
+
+```{r exercise2, exercise = TRUE}
+
+```
+ 
+```{r exercise2-solution}
+question <- 'What do you mean by "fine"?'
+```
+
+```{r exercise2-code-check}
+grade_code()
+```
+
+## Coercion
+
+Sometimes we want to convert or 'coerce' an object from one data type to another. Often this occurs when numbers are stored as characters or factors and we want to do math on them (e.g., calculate a mean) or when dates or logical are stored as characters.
+
+The base R functions for conversion are the `as.*()` family of functions: `as.character()`, `as.numeric()`, `as.double()`, `as.integer()`, `as.logical()`, `as.factor()`, `as.Date()`.
+
+For the most part, these are straightforward. But converting from a factor to a numeric is a little trickier. Because factors are augmented integers, they are stored as the level number rather than the level name. So first you need to coerce the level number to a character then coerce the character to a number.
+
+```{r echo = TRUE}
+myfactor <- factor("1", levels = c("0", "1"))
+myfactor
+as.numeric(myfactor)
+as.character(myfactor)
+as.numeric(as.character(myfactor))
+```
+
+```{r coerce}
+question("Test each of these coercions. Which result in an output of `0`?",
+         answer("`as.numeric(0)`", correct = TRUE),
+         answer("`as.double(0)`", correct = TRUE),
+         answer("`as.integer(0)`", correct = TRUE),
+         answer('`as.factor(0)`', correct = TRUE),
+         answer("`as.logical(0)`"),
+         answer("`as.character(0)`"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
+**On line 2, write the code that would convert the following factor to a numeric (leave line 1 intact).**
+```{r exercise3, exercise = TRUE}
+myfac <- factor(2, levels = c("1", "2", "3"))
+```
+ 
+```{r exercise3-solution}
+myfac <- factor(2, levels = c("1", "2", "3"))
+as.numeric(as.character(myfac))
+```
+
+```{r exercise3-code-check}
+grade_code()
+```
+
+### 
+
+
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 13
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

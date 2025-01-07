@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Resources – Data Processing and Visualization in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./logo/dpavir_icon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c2a60c4a293eac933473e522cdd76e04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="styles.css">
+</head>
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Data Processing and Visualization in R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-course-information" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Course information</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-course-information">
+<li>
+    <a class="dropdown-item" href="./syllabus.html">
+ <span class="dropdown-text">Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./schedule.html">
+ <span class="dropdown-text">Schedule</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-course-materials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Course materials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-course-materials">
+<li>
+    <a class="dropdown-item" href="./meetings.html">
+ <span class="dropdown-text">Class meetings</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./materials.html">
+ <span class="dropdown-text">Readings, slides, code, exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./resources.html">
+ <span class="dropdown-text">Resources</span></a>
+  </li>  
+    </ul>
+</li>
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li>
+<a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a>
+  <ul class="collapse">
+<li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#literate-programming" id="toc-literate-programming" class="nav-link" data-scroll-target="#literate-programming">Literate programming</a></li>
+  <li><a href="#data-importvalidation" id="toc-data-importvalidation" class="nav-link" data-scroll-target="#data-importvalidation">Data import/validation</a></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data processing</a></li>
+  <li><a href="#plotting-and-tables" id="toc-plotting-and-tables" class="nav-link" data-scroll-target="#plotting-and-tables">Plotting and tables</a></li>
+  </ul>
+</li>
+  <li><a href="#glossary" id="toc-glossary" class="nav-link" data-scroll-target="#glossary">Glossary</a></li>
+  <li>
+<a href="#function-list" id="toc-function-list" class="nav-link" data-scroll-target="#function-list">Function list</a>
+  <ul class="collapse">
+<li><a href="#packages-1" id="toc-packages-1" class="nav-link" data-scroll-target="#packages-1">Packages</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data types</a></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data structures</a></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
+  <li><a href="#validating-data" id="toc-validating-data" class="nav-link" data-scroll-target="#validating-data">Validating data</a></li>
+  <li><a href="#cleaning-columns" id="toc-cleaning-columns" class="nav-link" data-scroll-target="#cleaning-columns">Cleaning columns</a></li>
+  <li><a href="#wrangling-rows" id="toc-wrangling-rows" class="nav-link" data-scroll-target="#wrangling-rows">Wrangling rows</a></li>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy data</a></li>
+  <li><a href="#merging-data" id="toc-merging-data" class="nav-link" data-scroll-target="#merging-data">Merging data</a></li>
+  <li><a href="#numbers" id="toc-numbers" class="nav-link" data-scroll-target="#numbers">Numbers</a></li>
+  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a></li>
+  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors">Factors</a></li>
+  <li><a href="#dates-and-times" id="toc-dates-and-times" class="nav-link" data-scroll-target="#dates-and-times">Dates and times</a></li>
+  <li><a href="#iteration" id="toc-iteration" class="nav-link" data-scroll-target="#iteration">Iteration</a></li>
+  <li><a href="#grammar-of-graphics" id="toc-grammar-of-graphics" class="nav-link" data-scroll-target="#grammar-of-graphics">Grammar of graphics</a></li>
+  <li><a href="#color" id="toc-color" class="nav-link" data-scroll-target="#color">Color</a></li>
+  <li><a href="#visualizing-distributions" id="toc-visualizing-distributions" class="nav-link" data-scroll-target="#visualizing-distributions">Visualizing distributions</a></li>
+  <li><a href="#visualizing-amounts-and-proportions" id="toc-visualizing-amounts-and-proportions" class="nav-link" data-scroll-target="#visualizing-amounts-and-proportions">Visualizing amounts and proportions</a></li>
+  <li><a href="#visualizing-x-y-data" id="toc-visualizing-x-y-data" class="nav-link" data-scroll-target="#visualizing-x-y-data">Visualizing x-y data</a></li>
+  <li><a href="#finessing-plots" id="toc-finessing-plots" class="nav-link" data-scroll-target="#finessing-plots">Finessing plots</a></li>
+  <li><a href="#adorning-plots" id="toc-adorning-plots" class="nav-link" data-scroll-target="#adorning-plots">Adorning plots</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
+  </ul>
+</li>
+  <li><a href="#flashcards" id="toc-flashcards" class="nav-link" data-scroll-target="#flashcards">Flashcards</a></li>
+  <li><a href="#miscellaneous" id="toc-miscellaneous" class="nav-link" data-scroll-target="#miscellaneous">Miscellaneous</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Resources</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="packages" class="level2"><h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<p>To install all of the course packages:</p>
+<ul>
+<li><p>If you are using Windows, first install <a href="https://cloud.r-project.org/bin/windows/Rtools/rtools44/rtools.html" target="_blank">RTools</a>.</p></li>
+<li><p>Then copy and paste the following line to install most of the packages needed for the course (click the little clipboard in top right corner to copy everything).</p></li>
+<li><p><strong>Warning: it may take a while for these to install, so don’t start this if you need access to your R session (or open another R session to do this).</strong></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"here"</span>, <span class="st">"palmerpenguins"</span>, <span class="st">"remotes"</span>, <span class="st">"tidyverse"</span>, <span class="st">"knitr"</span>, <span class="st">"rmarkdown"</span>, <span class="st">"papaja"</span>, <span class="st">"tinytex"</span>, <span class="st">"dataReporter"</span>, <span class="st">"qualtRics"</span>, <span class="st">"readxl"</span>, <span class="st">"nycflights13"</span>, <span class="st">"ggthemes"</span>, <span class="st">"patchwork"</span>, <span class="st">"gt"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Click <em>Full package list</em> below to see all packages with links to their websites.</p>
+<details><summary>
+Full package list
+</summary><section id="getting-started" class="level3"><h3 class="anchored" data-anchor-id="getting-started">Getting started</h3>
+<ul>
+<li><a href="https://here.r-lib.org/" target="_blank"><code>{here}</code></a></li>
+<li><a href="https://allisonhorst.github.io/palmerpenguins/" target="_blank"><code>{palmerpenguins}</code></a></li>
+<li><a href="https://remotes.r-lib.org/" target="_blank"><code>{remotes}</code></a></li>
+<li><a href="https://www.tidyverse.org/" target="_blank"><code>{tidyverse}</code></a></li>
+</ul></section><section id="literate-programming" class="level3"><h3 class="anchored" data-anchor-id="literate-programming">Literate programming</h3>
+<ul>
+<li><a href="https://yihui.org/knitr/" target="_blank"><code>{knitr}</code></a></li>
+<li><a href="https://rmarkdown.rstudio.com/docs/" target="_blank"><code>{rmarkdown}</code></a></li>
+<li><a href="https://github.com/crsh/papaja" target="_blank"><code>{papaja}</code></a></li>
+<li><a href="https://yihui.org/tinytex/" target="_blank"><code>{tinytex}</code></a></li>
+</ul></section><section id="data-importvalidation" class="level3"><h3 class="anchored" data-anchor-id="data-importvalidation">Data import/validation</h3>
+<ul>
+<li><a href="https://github.com/ekstroem/dataReporter" target="_blank"><code>{dataReporter}</code></a></li>
+<li><a href="https://docs.ropensci.org/qualtRics/" target="_blank"><code>{qualtRics}</code></a></li>
+<li><a href="https://readxl.tidyverse.org/" target="_blank"><code>{readxl}</code></a></li>
+</ul></section><section id="data-processing" class="level3"><h3 class="anchored" data-anchor-id="data-processing">Data processing</h3>
+<ul>
+<li><a href="https://github.com/tidyverse/nycflights13" target="_blank"><code>{nycflights13}</code></a></li>
+</ul></section><section id="plotting-and-tables" class="level3"><h3 class="anchored" data-anchor-id="plotting-and-tables">Plotting and tables</h3>
+<ul>
+<li><a href="https://github.com/jrnold/ggthemes" target="_blank"><code>{ggthemes}</code></a></li>
+<li><a href="https://patchwork.data-imaginist.com/" target="_blank"><code>{patchwork}</code></a></li>
+<li><a href="https://gt.rstudio.com/" target="_blank"><code>{gt}</code></a></li>
+</ul></section></details></section><section id="glossary" class="level2"><h2 class="anchored" data-anchor-id="glossary">Glossary</h2>
+<p>If you want to find definitions of the terms that we use in the course, check out the <a href="https://psyteachr.github.io/glossary/index.html" target="_blank">PsyTeachR Glossary</a></p>
+</section><section id="function-list" class="level2"><h2 class="anchored" data-anchor-id="function-list">Function list</h2>
+<p>This is a list of all of the functions that we will be learning throughout the course. Note these may change as we progress through the course. Click <em>Full function list</em> below to see all functions with links to their websites.</p>
+<details><summary>
+Full function list
+</summary><section id="packages-1" class="level3"><h3 class="anchored" data-anchor-id="packages-1">Packages</h3>
+<ul>
+<li>
+<a href="https://rdrr.io/r/utils/install.packages.html" target="_blank"><code>install.packages()</code></a>: install R packages</li>
+<li>
+<a href="https://rdrr.io/r/base/library.html" target="_blank"><code>library()</code></a>: load R packages</li>
+<li>
+<a href="https://rdrr.io/r/base/ns-dblcolon.html" target="_blank"><code>::</code></a> export variable from package for use</li>
+</ul></section><section id="data-types" class="level3"><h3 class="anchored" data-anchor-id="data-types">Data types</h3>
+<ul>
+<li>
+<code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>%in%</code>: logical operators that output <code>TRUE</code> or <code>FALSE</code>
+</li>
+<li>
+<a href="https://rdrr.io/r/base/typeof.html" target="_blank"><code>typeof()</code></a>, <a href="https://rdrr.io/r/base/class.html" target="_blank"><code>class()</code></a>, <a href="https://rdrr.io/r/utils/str.html" target="_blank"><code>str()</code></a>: outputs object type, class, and structure</li>
+<li>
+<a href="https://rdrr.io/r/base/numeric.html" target="_blank"><code>is.numeric()</code></a>, <a href="https://rdrr.io/r/base/character.html" target="_blank"><code>is.character()</code></a>, <a href="https://rdrr.io/r/base/factor.html" target="_blank"><code>is.factor()</code></a>: checks whether object is numeric, character, factor</li>
+<li>
+<a href="https://rdrr.io/r/base/numeric.html" target="_blank"><code>as.numeric()</code></a>, <a href="https://rdrr.io/r/base/character.html" target="_blank"><code>as.character()</code></a>, <a href="https://rdrr.io/r/base/factor.html" target="_blank"><code>as.factor()</code></a>: coerces (converts) object to numeric, character, factor</li>
+<li>
+<a href="https://rdrr.io/r/base/NA.html" target="_blank"><code>is.na()</code></a>: checks whether object is <code>NA</code> and outputs logical</li>
+</ul></section><section id="data-structures" class="level3"><h3 class="anchored" data-anchor-id="data-structures">Data structures</h3>
+<ul>
+<li>
+<a href="https://rdrr.io/r/base/Extract.html" target="_blank"><code>[]</code></a>: index elements in vector, matrix, data frame, tibble</li>
+<li>
+<a href="https://rdrr.io/r/base/Extract.html" target="_blank"><code>$</code></a>: index column by name in data frame, tibble, list</li>
+<li>
+<a href="https://rdrr.io/r/base/Colon.html" target="_blank"><code>:</code></a>, <a href="https://rdrr.io/r/base/seq.html" target="_blank"><code>seq()</code></a>, <a href="https://rdrr.io/r/base/rep.html" target="_blank"><code>rep()</code></a>: creates sequences and repetitions of numbers</li>
+<li>
+<a href="https://rdrr.io/r/base/length.html" target="_blank"><code>length()</code></a>: outputs length of vector</li>
+<li>
+<a href="https://rdrr.io/r/base/dim.html" target="_blank"><code>dim()</code></a>, <a href="https://rdrr.io/r/base/nrow.html" target="_blank"><code>nrow()</code></a>, <a href="https://rdrr.io/r/base/nrow.html" target="_blank"><code>ncol()</code></a>: outputs dimensions, number of rows, number of columns of matrices, data frames, tibbles</li>
+<li>
+<a href="https://rdrr.io/r/base/colnames.html" target="_blank"><code>colnames()</code></a>: outputs (and can assign) column names</li>
+<li>
+<a href="https://rdrr.io/r/utils/head.html" target="_blank"><code>head()</code></a>, <a href="https://rdrr.io/r/utils/head.html" target="_blank"><code>tail()</code></a>, <a href="https://pillar.r-lib.org/reference/glimpse.html" target="_blank"><code>dplyr::glimpse()</code></a>: outputs compressed views of data frames, tibbles</li>
+<li>
+<a href="https://rdrr.io/r/base/c.html" target="_blank"><code>c()</code></a>, <a href="https://rdrr.io/r/base/list.html" target="_blank"><code>list()</code></a>, <a href="https://rdrr.io/r/base/data.frame.html" target="_blank"><code>data.frame()</code></a>, <a href="https://tibble.tidyverse.org/reference/tibble.html" target="_blank"><code>tibble::tibble()</code></a>: creates vectors, matrices, data frames, tibbles</li>
+</ul></section><section id="importing-data" class="level3"><h3 class="anchored" data-anchor-id="importing-data">Importing data</h3>
+<ul>
+<li>
+<a href="https://here.r-lib.org//reference/here.html" target="_blank"><code>here::here()</code></a>: starts path at project directory</li>
+<li>
+<a href="https://rdrr.io/r/utils/read.table.html" target="_blank"><code>read.csv()</code></a>, <a href="https://rdrr.io/r/utils/write.table.html" target="_blank"><code>write.csv()</code></a>, <a href="https://readr.tidyverse.org/reference/read_delim.html" target="_blank"><code>readr::read_csv()</code></a>, <a href="https://readr.tidyverse.org/reference/write_delim.html" target="_blank"><code>readr::write_csv()</code></a>: imports and writes CSV files</li>
+<li>
+<a href="https://readxl.tidyverse.org/reference/read_excel.html" target="_blank"><code>readxl::read_excel()</code></a>: imports Excel files</li>
+</ul></section><section id="validating-data" class="level3"><h3 class="anchored" data-anchor-id="validating-data">Validating data</h3>
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/base/range.html">range()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>: finds range, minimum, and maximum of vector</li>
+<li>
+<code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code>: returns vector of unique (not duplicated) elements</li>
+<li>
+<code><a href="https://rdrr.io/r/base/duplicated.html">duplicated()</a></code>: returns logical vector of duplicated elements</li>
+<li>
+<code><a href="https://rdrr.io/r/base/which.html">which()</a></code>: returns indices of which elements of a logical vector are <code>TRUE</code>
+</li>
+<li>
+<code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>: when applied to day, gives summary statistics</li>
+<li>
+<a href="https://docs.ropensci.org/skimr/reference/skim.html" target="_blank"><code>skimr::skim()</code></a>: outputs overview of data</li>
+<li>
+<a href="https://rdrr.io/pkg/dataReporter/man/makeCodebook.html" target="_blank"><code>dataReporter::makeCodebook()</code></a>: creates codebook of data</li>
+</ul></section><section id="cleaning-columns" class="level3"><h3 class="anchored" data-anchor-id="cleaning-columns">Cleaning columns</h3>
+<ul>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/select.html" target="_blank"><code>dplyr::select()</code></a>: selects subset of columns from data frame, tibble</li>
+<li>
+<a href="https://tidyselect.r-lib.org/reference/everything.html" target="_blank"><code>dplyr::everything()</code></a>, <a href="https://tidyselect.r-lib.org/reference/starts_with.html" target="_blank"><code>dplyr::contains()</code></a>, <a href="https://tidyselect.r-lib.org/reference/starts_with.html" target="_blank"><code>dplyr::starts_with()</code></a>, <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">dplyr::ends_with()</a></code>: helper functions for <code>select()</code>
+</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/relocate.html" target="_blank"><code>dplyr::relocate()</code></a>, <a href="https://dplyr.tidyverse.org/reference/rename.html" target="_blank"><code>dplyr::rename()</code></a>: moves and renames columns in data frame, tibble</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/mutate.html" target="_blank"><code>dplyr::mutate()</code></a>, <a href="https://dplyr.tidyverse.org/reference/mutate.html" target="_blank"><code>dplyr::transmute()</code></a>: applies function to change existing column or create new column</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/across.html" target="_blank"><code>dplyr::across()</code></a>: applies function across multiple columns inside <code>mutate()</code>
+</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/rowwise.html" target="_blank"><code>dplyr::rowwise()</code></a>: applies function to each row</li>
+<li>
+<a href="https://magrittr.tidyverse.org/reference/pipe.html" target="_blank"><code>%&gt;%</code></a>: pipe operator that transfers output to the next command</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/pull.html" target="_blank"><code>dplyr::pull()</code></a>: creates a vector from a data frame/tibble column</li>
+</ul></section><section id="wrangling-rows" class="level3"><h3 class="anchored" data-anchor-id="wrangling-rows">Wrangling rows</h3>
+<ul>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/filter.html" target="_blank"><code>dplyr::filter()</code></a>: filters subset of rows from data frame, tibble</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/across.html">dplyr::if_any()</a></code>: apply function to columns and return TRUE if any values are TRUE</li>
+<li>
+<code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">tidyr::drop_na()</a></code>: drop rows containing missing values</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/arrange.html" target="_blank"><code>dplyr::arrange()</code></a>, <a href="https://dplyr.tidyverse.org/reference/desc.html" target="_blank"><code>dplyr::desc()</code></a>: sorts rows by column variable, in descending order</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/group_by.html" target="_blank"><code>dplyr::group_by()</code></a>: groups data by column levels</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/summarise.html" target="_blank"><code>dplyr::summarise()</code></a>: applies function over whole column or group</li>
+</ul></section><section id="tidy-data" class="level3"><h3 class="anchored" data-anchor-id="tidy-data">Tidy data</h3>
+<ul>
+<li>
+<a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" target="_blank"><code>tidyr::pivot_longer()</code></a>, <a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" target="_blank"><code>tidyr::pivot_wider()</code></a>: reshapes data to be longer or wider</li>
+<li>
+<a href="https://tidyr.tidyverse.org/reference/separate.html" target="_blank"><code>tidyr::separate()</code></a>, <a href="https://tidyr.tidyverse.org/reference/unite.html" target="_blank"><code>tidyr::unite()</code></a>: separates or combines column data with separator</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/coalesce.html" target="_blank"><code>dplyr::coalesce()</code></a>: find the first non-missing element</li>
+<li>
+<a href="https://tidyr.tidyverse.org/reference/complete.html" target="_blank"><code>tidyr::complete()</code></a>, <a href="https://tidyr.tidyverse.org/reference/expand.html" target="_blank"><code>tidyr::expand()</code></a>, <a href="https://tidyr.tidyverse.org/reference/expand.html" target="_blank"><code>tidyr::nesting()</code></a>: finds all unique combinations of levels</li>
+</ul></section><section id="merging-data" class="level3"><h3 class="anchored" data-anchor-id="merging-data">Merging data</h3>
+<ul>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" target="_blank"><code>dplyr::inner_join()</code></a>, <a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" target="_blank"><code>dplyr::left_join()</code></a>, <a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" target="_blank"><code>dplyr::right_join()</code></a>{target=“_blank”}, <a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" target="_blank"><code>dplyr::full_join()</code></a>: mutating joins that merge data frames</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/filter-joins.html" target="_blank"><code>dplyr::semi_join()</code></a>, <a href="https://dplyr.tidyverse.org/reference/filter-joins.html" target="_blank"><code>dplyr::anti_join()</code></a>: filtering joins that filter data frame based on another data frame</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/join_by.html" target="_blank"><code>dplyr::join_by()</code></a>: join data frames with different names for key columns (<strong>requires <code>{dplyer}</code> v. 1.1.0 or higher</strong>)</li>
+<li>
+<a href="https://tibble.tidyverse.org/reference/add_row.html" target="_blank"><code>tibble::add_row()</code></a>: manually add rows of data</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/bind.html" target="_blank"><code>dplyr::bind_rows()</code></a>, <a href="https://dplyr.tidyverse.org/reference/bind.html" target="_blank"><code>dplyr::bind_cols()</code></a>: binds rows or columns to data frame</li>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/setops.html" target="_blank"><code>dplyr::intersect()</code></a>, <a href="https://dplyr.tidyverse.org/reference/setops.html" target="_blank"><code>dplyr::setdiff()</code></a>, <a href="https://dplyr.tidyverse.org/reference/setops.html" target="_blank"><code>dplyr::union()</code></a>, <a href="https://dplyr.tidyverse.org/reference/setops.html" target="_blank"><code>dplyr::union_all()</code></a>: set operations to find overlap, differences, and combinations of data sets</li>
+</ul></section><section id="numbers" class="level3"><h3 class="anchored" data-anchor-id="numbers">Numbers</h3>
+<ul>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/count.html" target="_blank"><code>dplyr::count()</code></a>, <a href="https://dplyr.tidyverse.org/reference/context.html" target="_blank"><code>dplyr::n()</code></a>, <a href="https://dplyr.tidyverse.org/reference/n_distinct.html" target="_blank"><code>dplyr::n_distinct()</code></a>: count instances of group levels</li>
+<li>
+<a href="https://rdrr.io/r/base/Round.html" target="_blank"><code>round()</code></a>: round digits</li>
+<li>
+<a href="https://rdrr.io/r/base/format.html" target="_blank"><code>format()</code></a>: format numbers</li>
+<li>
+<a href="https://rdrr.io/r/base/cut.html" target="_blank"><code>cut()</code></a>: bin numbers into ranges</li>
+</ul></section><section id="strings" class="level3"><h3 class="anchored" data-anchor-id="strings">Strings</h3>
+<ul>
+<li>
+<a href="https://stringr.tidyverse.org/reference/str_length.html" target="_blank"><code>stringr::str_length()</code></a>: finds the number of characters in a string</li>
+<li>
+<a href="https://stringr.tidyverse.org/reference/str_sub.html" target="_blank"><code>stringr::str_sub()</code></a>: extracts parts of strings based on character position</li>
+<li>
+<a href="https://stringr.tidyverse.org/reference/case.html" target="_blank"><code>stringr::str_to_lower()</code></a>, <a href="https://stringr.tidyverse.org/reference/case.html" target="_blank"><code>stringr::str_to_upper()</code></a>: converts all letters to lowercase or uppercase</li>
+<li>
+<a href="https://stringr.tidyverse.org/reference/case.html" target="_blank"><code>stringr::str_to_title()</code></a>, <a href="https://stringr.tidyverse.org/reference/case.html" target="_blank"><code>stringr::str_to_sentence()</code></a>: converts strings to title or sentence case</li>
+<li>
+<a href="https://stringr.tidyverse.org/reference/str_c.html" target="_blank"><code>stringr::str_c()</code></a>: combine character vectors into single string</li>
+<li>
+<a href="https://stringr.tidyverse.org/reference/str_glue.html" target="_blank"><code>stringr::str_glue()</code></a>: combines strings with R output</li>
+<li>
+<a href="https://rdrr.io/r/base/paste.html" target="_blank"><code>paste()</code></a>, <a href="https://rdrr.io/r/base/paste.html" target="_blank"><code>paste0()</code></a>: combines strings with R output</li>
+<li>
+<a href="https://stringr.tidyverse.org/reference/str_detect.html" target="_blank"><code>stringr::str_detect()</code></a>, <a href="https://stringr.tidyverse.org/reference/str_subset.html" target="_blank"><code>stringr::str_subset()</code></a>, <a href="https://stringr.tidyverse.org/reference/str_extract.html" target="_blank"><code>stringr::str_extract()</code></a>: detects, subsets, and extracts strings</li>
+<li>
+<a href="https://stringr.tidyverse.org/reference/str_replace.html" target="_blank"><code>stringr::str_replace()</code></a>, <a href="https://stringr.tidyverse.org/reference/str_replace.html" target="_blank"><code>stringr::str_replace_all()</code></a>: replaces patterns with strings</li>
+<li>
+<a href="https://stringr.tidyverse.org/reference/str_split.html" target="_blank"><code>stringr::str_split()</code></a>: splits strings based on separators</li>
+</ul></section><section id="factors" class="level3"><h3 class="anchored" data-anchor-id="factors">Factors</h3>
+<ul>
+<li>
+<a href="https://rdrr.io/r/base/levels.html" target="_blank"><code>levels()</code></a>: prints factor levels</li>
+<li>
+<a href="https://forcats.tidyverse.org/reference/fct_inorder.html" target="_blank"><code>forcats::fct_inorder()</code></a>, <a href="https://forcats.tidyverse.org/reference/fct_rev.html" target="_blank"><code>forcats::fct_rev()</code></a>: orders levels by order in data or in reverse of current order</li>
+<li>
+<a href="https://forcats.tidyverse.org/reference/fct_relevel.html" target="_blank"><code>forcats::fct_relevel()</code></a>: manually reorders levels</li>
+<li>
+<a href="https://forcats.tidyverse.org/reference/fct_reorder.html" target="_blank"><code>forcats::fct_reorder()</code></a>: orders levels based on another variable</li>
+<li>
+<a href="https://forcats.tidyverse.org/reference/fct_recode.html" target="_blank"><code>forcats::fct_recode()</code></a>: recodes level with new value</li>
+<li>
+<a href="https://forcats.tidyverse.org/reference/fct_collapse.html" target="_blank"><code>forcats::fct_collapse()</code></a>: recodes multiple levels into single new value</li>
+<li>
+<a href="https://forcats.tidyverse.org/reference/fct_lump.html" target="_blank"><code>forcats::fct_lump_n()</code></a>, <a href="https://forcats.tidyverse.org/reference/fct_lump.html" target="_blank"><code>forcats::fct_lump_prop()</code></a>,<a href="https://forcats.tidyverse.org/reference/fct_lump.html" target="_blank"><code>forcats::fct_lump_min()</code></a>: lumps infrequent levels into level “Other”</li>
+</ul></section><section id="dates-and-times" class="level3"><h3 class="anchored" data-anchor-id="dates-and-times">Dates and times</h3>
+<ul>
+<li>
+<a href="https://lubridate.tidyverse.org/reference/now.html" target="_blank"><code>lubridate::today()</code></a>, <a href="https://lubridate.tidyverse.org/reference/now.html" target="_blank"><code>lubridate::now()</code></a>: print today’s date or time</li>
+<li>
+<a href="https://lubridate.tidyverse.org/reference/as_date.html" target="_blank"><code>lubridate::as_date()</code></a>, <a href="https://lubridate.tidyverse.org/reference/as_date.html" target="_blank"><code>lubridate::as_datetime()</code></a>: create date or date-time object</li>
+<li>
+<a href="https://lubridate.tidyverse.org/reference/ymd.html" target="_blank"><code>lubridate::mdy()</code></a>, <a href="https://lubridate.tidyverse.org/reference/ymd.html" target="_blank"><code>lubridate::dmy()</code></a>, <a href="https://lubridate.tidyverse.org/reference/ymd.html" target="_blank"><code>lubridate::ymd()</code></a>: convert various date formats to YYYY-MM-DD</li>
+<li>
+<a href="https://lubridate.tidyverse.org/reference/hms.html" target="_blank"><code>lubridate::hms()</code></a>, <a href="https://lubridate.tidyverse.org/reference/hms.html" target="_blank"><code>lubridate::hm()</code></a>: convert times to HH:MM:SS</li>
+<li>
+<a href="https://lubridate.tidyverse.org/reference/ymd_hms.html" target="_blank"><code>lubridate::mdy_hm()</code></a>, <a href="https://lubridate.tidyverse.org/reference/ymd_hms.html" target="_blank"><code>lubridate::mdy_hms()</code></a>: converts various date-time formats to YYYY-MM-DD HH:MM:SS</li>
+<li>
+<a href="https://lubridate.tidyverse.org/reference/year.html" target="_blank"><code>lubridate::year()</code></a>, <a href="https://lubridate.tidyverse.org/reference/month.html" target="_blank"><code>lubridate::month()</code></a>, <a href="https://lubridate.tidyverse.org/reference/day.html" target="_blank"><code>lubridate::day()</code></a>, <a href="https://lubridate.tidyverse.org/reference/day.html" target="_blank"><code>lubridate::wday()</code></a>: extracts year, month, day, or weekday from date</li>
+<li>
+<a href="https://lubridate.tidyverse.org/reference/hour.html" target="_blank"><code>lubridate::hour()</code></a>, <a href="https://lubridate.tidyverse.org/reference/minute.html" target="_blank"><code>lubridate::minute()</code></a>, <a href="https://lubridate.tidyverse.org/reference/second.html" target="_blank"><code>lubridate::second()</code></a>: extracts hour, minute, second from date</li>
+</ul></section><section id="iteration" class="level3"><h3 class="anchored" data-anchor-id="iteration">Iteration</h3>
+<ul>
+<li>
+<a href="https://rdrr.io/r/base/Control.html" target="_blank"><code>for()</code></a>: create for loops</li>
+<li>
+<a href="https://purrr.tidyverse.org/reference/map.html" target="_blank"><code>purrr::map()</code></a>, <a href="https://purrr.tidyverse.org/reference/map.html" target="_blank"><code>purrr::map_dbl()</code></a>, <a href="https://purrr.tidyverse.org/reference/map.html" target="_blank"><code>purrr::map_chr()</code></a>, <a href="https://purrr.tidyverse.org/reference/map_dfr.html" target="_blank"><code>purrr::map_df()</code></a>: map functions to vector, data frame, or list and return list, numeric vector, character vector, or data frame</li>
+<li>
+<a href="https://rdrr.io/r/base/split.html" target="_blank"><code>split()</code></a>: divide data frame into groups in a list</li>
+<li>
+<a href="https://rdrr.io/r/base/list.files.html" target="_blank"><code>dir()</code></a>: return files in a directory</li>
+</ul></section><section id="grammar-of-graphics" class="level3"><h3 class="anchored" data-anchor-id="grammar-of-graphics">Grammar of graphics</h3>
+<ul>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/ggplot.html" target="_blank"><code>ggplot2::ggplot()</code></a>: creates a ggplot</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/gg-add.html" target="_blank"><code>+</code></a>: pipe operator for ggplots</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/aes.html" target="_blank"><code>ggplot2::aes()</code></a>: defines aesthetic properties of plot</li>
+<li>
+<code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linesize</code>, <code>linetype</code>, <code>shape</code>, <code>size</code> arguments: properties for geometric objects</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/theme.html" target="_blank"><code>ggplot2::theme()</code></a>: Modify components of a theme</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/ggsave.html" target="_blank"><code>ggplot2::ggsave()</code></a>: saves ggplot to file</li>
+</ul></section><section id="color" class="level3"><h3 class="anchored" data-anchor-id="color">Color</h3>
+<ul>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" target="_blank"><code>ggplot2::scale_color_brewer()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" target="_blank"><code>ggplot2::scale_fill_brewer()</code></a>: uses existing qualitative colors scales for color and fill</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" target="_blank"><code>ggplot2::scale_color_manual()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" target="_blank"><code>ggplot2::scale_fill_manual()</code></a>: sets manual colors for color and fill</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" target="_blank"><code>ggplot2::scale_color_gradient()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" target="_blank"><code>ggplot2::scale_fill_gradient()</code></a>: sets sequential color gradient for color and fill</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" target="_blank"><code>ggplot2::scale_color_distiller()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" target="_blank"><code>ggplot2::scale_fill_distiller()</code></a>: sets diverging color scale for color and fill</li>
+</ul></section><section id="visualizing-distributions" class="level3"><h3 class="anchored" data-anchor-id="visualizing-distributions">Visualizing distributions</h3>
+<ul>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" target="_blank"><code>ggplot2::geom_histogram()</code></a>: plots histograms</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" target="_blank"><code>ggplot2::geom_freqpoly()</code></a>: plots frequency polygons</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_density.html" target="_blank"><code>ggplot2::geom_density()</code></a>: plots density plot</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" target="_blank"><code>ggplot2::geom_boxplot()</code></a>: plots boxplot</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_violin.html" target="_blank"><code>ggplot2::geom_violin()</code></a>: plots violin plot</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/stat_summary.html" target="_blank"><code>ggplot2::stat_summary()</code></a>: plots summaries of data (e.g., means <span class="math inline">\(\pm\)</span> standard error)</li>
+</ul></section><section id="visualizing-amounts-and-proportions" class="level3"><h3 class="anchored" data-anchor-id="visualizing-amounts-and-proportions">Visualizing amounts and proportions</h3>
+<ul>
+<li>
+<a href="https://dplyr.tidyverse.org/reference/count.html" target="_blank"><code>dplyr::count()</code></a>: calculates counts of data by variables</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" target="_blank"><code>ggplot2::geom_bar()</code></a>: plots bar plot with raw data</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" target="_blank"><code>ggplot2::geom_col()</code></a>: plots bar plot with counts</li>
+<li>
+<code>position</code> argument: controls whether data are stacked, dodged, jittered, nudged</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_point.html" target="_blank"><code>ggplot2::geom_point()</code></a>: plots scatterplots</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" target="_blank"><code>ggplot2::coord_flip()</code></a>: flips x and y coordinates</li>
+</ul></section><section id="visualizing-x-y-data" class="level3"><h3 class="anchored" data-anchor-id="visualizing-x-y-data">Visualizing x-y data</h3>
+<ul>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" target="_blank"><code>ggplot2::geom_abline()</code></a>: plots line with slope and intercept</li>
+<li>
+<a href="https://rdrr.io/r/graphics/pairs.html" target="_blank"><code>pairs()</code></a>: plots correlation plots</li>
+<li>
+<a href="https://ggobi.github.io/ggally/reference/ggpairs.html" target="_blank"><code>GGally::ggpairs()</code></a>: plots correlation plots</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_tile.html" target="_blank"><code>ggplot2::geom_tile()</code></a>: plots tile plot</li>
+<li>
+<a href="https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html" target="_blank"><code>ggcorrplot::ggcorrplot()</code></a>: plots correlation heatmaps</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_path.html" target="_blank"><code>ggplot2::geom_line()</code></a>: plots line plot</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html" target="_blank"><code>ggplot2::geom_area()</code></a>: plots area under curve or line plot</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_count.html" target="_blank"><code>ggplot2::geom_count()</code></a>: plots overlapping points as size</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" target="_blank"><code>ggplot2::geom_smooth()</code></a>: plots fitted lines and curves</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_rug.html" target="_blank"><code>ggplot2::geom_rug()</code></a>: plots rug plot</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html" target="_blank"><code>ggplot2::geom_pointrange()</code></a>: plots point and error bar</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" target="_blank"><code>ggplot2::geom_jitter()</code></a>: plots jittered points</li>
+<li>
+<code><a href="https://rdrr.io/pkg/ggbeeswarm/man/geom_beeswarm.html">ggbeeswarm::geom_beeswarm()</a></code>: plots beeswarm plots</li>
+<li>
+<code><a href="https://rdrr.io/pkg/gghalves/man/geom_half_violin.html">gghalves::geom_half_violin()</a></code>, <code><a href="https://rdrr.io/pkg/gghalves/man/geom_half_dotplot.html">gghalves::geom_half_dotplot()</a></code>: plots raincloud plots</li>
+</ul></section><section id="finessing-plots" class="level3"><h3 class="anchored" data-anchor-id="finessing-plots">Finessing plots</h3>
+<ul>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" target="_blank"><code>ggplot2::geom_jitter()</code></a>: plots jittered scatterplot</li>
+<li>
+<a href="https://rdrr.io/pkg/ggbeeswarm/man/geom_beeswarm.html" target="_blank"><code>ggbeeswarm::geom_beeswarm()</code></a>: plots beeswarm plot</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" target="_blank"><code>ggplot2::scale_x_discrete()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" target="_blank"><code>ggplot2::scale_y_discrete()</code></a>: adjusts discrete scale properties (e.g., limits, ticks)</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" target="_blank"><code>ggplot2::scale_x_continuous()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" target="_blank"><code>ggplot2::scale_y_continuous()</code></a>: adjusts continuous scale properties (e.g., limits, ticks)</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/lims.html" target="_blank"><code>ggplot2::lims()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/lims.html" target="_blank"><code>ggplot2::xlim()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/lims.html" target="_blank"><code>ggplot2::ylim()</code></a>: adjusts axis limits</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" target="_blank"><code>ggplot2::facet_wrap()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" target="_blank"><code>ggplot2::facet_grid()</code></a>: creates facets based on discrete variables</li>
+</ul></section><section id="adorning-plots" class="level3"><h3 class="anchored" data-anchor-id="adorning-plots">Adorning plots</h3>
+<ul>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/labs.html" target="_blank"><code>ggplot2::labs()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/labs.html" target="_blank"><code>ggplot2::xlab()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/labs.html" target="_blank"><code>ggplot2::ylab()</code></a>: replaces axis labels</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/annotate.html" target="_blank"><code>ggplot2::annotate()</code></a>: annotates plot with text, segments, rectangles, etc.</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_text.html" target="_blank"><code>ggplot2::geom_text()</code></a>: plots text as aesthetic property</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" target="_blank"><code>ggplot2::geom_hline()</code></a>, <a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" target="_blank"><code>ggplot2::geom_vline()</code></a>: plots horizontal and vertical reference lines</li>
+<li>
+<a href="https://ggplot2.tidyverse.org/reference/stat_ellipse.html" target="_blank"><code>ggplot2::stat_ellipse()</code></a>: plots ellipse around data</li>
+</ul></section><section id="tables" class="level3"><h3 class="anchored" data-anchor-id="tables">Tables</h3>
+<ul>
+<li>
+<a href="https://rdrr.io/pkg/knitr/man/kable.html" target="_blank"><code>knitr::kable()</code></a>: creates table from data frame</li>
+<li>
+<a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" target="_blank"><code>kableExtra::kable_styling()</code></a>: styles table</li>
+<li>
+<a href="https://rdrr.io/pkg/kableExtra/man/group_rows.html" target="_blank"><code>kableExtra::pack_rows()</code></a>, <a href="https://rdrr.io/pkg/kableExtra/man/add_header_above.html" target="_blank"><code>kableExtra::add_header_above()</code></a>: adds grouping variables to rows or columns</li>
+<li>
+<a href="https://rdrr.io/pkg/kableExtra/man/footnote.html" target="_blank"><code>kableExtra::footnote()</code></a>: adds table note</li>
+<li>
+<a href="https://rdrr.io/pkg/kableExtra/man/landscape.html" target="_blank"><code>kableExtra::landscape()</code></a>: rotates table to landscape orientation</li>
+<li>
+<a href="https://rdrr.io/pkg/papaja/man/apa_table.html" target="_blank"><code>papaja::apa_table()</code></a>: formats data frame to APA style table</li>
+<li>
+<a href="https://rdrr.io/pkg/papaja/man/apa_print.html" target="_blank"><code>papaja::apa_print()</code></a>: formats statistics to APA style</li>
+</ul></section></details></section><section id="flashcards" class="level2"><h2 class="anchored" data-anchor-id="flashcards">Flashcards</h2>
+<p>Flashcards can be a useful way to help learning functions and their descriptions. I created a package called <a href="https://jeffreyrstevens.github.io/flashr/" target="_blank"><code>{flashr}</code></a> that builds decks of HTML flashcards. You’re welcome to build your own decks of flashcards by installing the package and following the instructions for building decks. Or, you can use existing decks built for the course or for each of the chapters of <a href="https://r4ds.hadley.nz/" target="_blank"><em>R for Data Science</em></a> (1st edition).</p>
+<details><summary>
+DPaViR flashcards
+</summary><ul>
+<li>Introduction (<a href="decks/01_introduction.html" target="_blank">terms first</a>) (<a href="decks/01_introductionb.html" target="_blank">definitions first</a>)</li>
+<li>Coding and workflows (<a href="decks/03_coding.html" target="_blank">terms first</a>) (<a href="decks/03_codingb.html" target="_blank">definitions first</a>)</li>
+<li>Data types (<a href="decks/06_datatypes.html" target="_blank">terms first</a>) (<a href="decks/06_datatypesb.html" target="_blank">definitions first</a>)</li>
+<li>Data structures (<a href="decks/07_datastructures.html" target="_blank">terms first</a>) (<a href="decks/07_datastructuresb.html" target="_blank">definitions first</a>)</li>
+<li>Importing data (<a href="decks/08_importing.html" target="_blank">terms first</a>) (<a href="decks/08_importingb.html" target="_blank">definitions first</a>)</li>
+<li>Validating data (<a href="decks/09_validating.html" target="_blank">terms first</a>) (<a href="decks/09_validatingb.html" target="_blank">definitions first</a>)</li>
+<li>Cleaning columns (<a href="decks/10_cleaning_columns.html" target="_blank">terms first</a>) (<a href="decks/10_cleaning_columnsb.html" target="_blank">definitions first</a>)</li>
+<li>Wrangling rows (<a href="decks/13_wrangling_rows.html" target="_blank">terms first</a>) (<a href="decks/13_wrangling_rowsb.html" target="_blank">definitions first</a>)</li>
+<li>Tidy data (<a href="decks/15_tidy_data.html" target="_blank">terms first</a>) (<a href="decks/15_tidy_datab.html" target="_blank">definitions first</a>)</li>
+<li>Merging data (<a href="decks/17_merging_data.html" target="_blank">terms first</a>) (<a href="decks/17_merging_datab.html" target="_blank">definitions first</a>)</li>
+<li>Numbers (<a href="decks/19_numbers.html" target="_blank">terms first</a>) (<a href="decks/19_numbersb.html" target="_blank">definitions first</a>)</li>
+<li>Strings (<a href="decks/20_strings.html" target="_blank">terms first</a>) (<a href="decks/20_stringsb.html" target="_blank">definitions first</a>)</li>
+<li>Factors (<a href="decks/22_factors.html" target="_blank">terms first</a>) (<a href="decks/22_factorsb.html" target="_blank">definitions first</a>)</li>
+<li>Dates and times (<a href="decks/23_dates.html" target="_blank">terms first</a>) (<a href="decks/23_datesb.html" target="_blank">definitions first</a>)</li>
+<li>Iteration (<a href="decks/25_iteration.html" target="_blank">terms first</a>) (<a href="decks/25_iterationb.html" target="_blank">definitions first</a>) <!-- - ([terms first](decks/.html){target="_blank"}) ([definitions first](decks/b.html){target="_blank"})--> <!-- - ([terms first](decks/.html){target="_blank"}) ([definitions first](decks/b.html){target="_blank"})-->
+</li>
+</ul></details><details><summary>
+R4DS flashcards
+</summary><ul>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds1.html" target="_blank">Ch. 1 Introduction</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds3.html" target="_blank">Ch. 3 Data visualization</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds5.html" target="_blank">Ch. 5 Data transformation</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds7.html" target="_blank">Ch. 7 Exploratory data analysis</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds8.html" target="_blank">Ch. 8 Workflow: projects</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds10.html" target="_blank">Ch. 10 Tibbles</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds11.html" target="_blank">Ch. 11 Data import</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds12.html" target="_blank">Ch. 12 Tidy data</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds13.html" target="_blank">Ch. 13 Relational data</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds14.html" target="_blank">Ch. 14 Strings</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds15.html" target="_blank">Ch. 15 Factors</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds16.html" target="_blank">Ch. 16 Dates and times</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds18.html" target="_blank">Ch. 18 Pipes</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds20.html" target="_blank">Ch. 20 Vectors</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds21.html" target="_blank">Ch. 21 Iteration</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds23.html" target="_blank">Ch. 23 Model basics</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds25.html" target="_blank">Ch. 25 Many models</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds27.html" target="_blank">Ch. 27 R Markdown</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds28.html" target="_blank">Ch. 28 Graphics for communication</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds29.html" target="_blank">Ch. 29 R Markdown formats</a></li>
+<li><a href="https://jeffreyrstevens.github.io/flashr_decks/decks/r4ds30.html" target="_blank">Ch. 30 R Markdown workflow</a></li>
+</ul></details></section><section id="miscellaneous" class="level2"><h2 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h2>
+<ul>
+<li><a href="https://posit.co/resources/cheatsheets/" target="_blank">Cheatsheets</a></li>
+<li><a href="https://style.tidyverse.org/" target="_blank">Tidyverse style</a></li>
+<li><a href="https://psyteachr.github.io/" target="_blank">PsyTeachR books</a></li>
+</ul>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2024-2025 Jeffrey R. Stevens. Powered by <a href="https://www.quarto.org">Quarto</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+</body></html>

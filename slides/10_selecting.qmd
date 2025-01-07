@@ -1,0 +1,221 @@
+---
+title: "Selecting columns"
+author: "Jeff Stevens"
+date: "2023-02-13"
+date-format: iso
+execute:
+  echo: true
+  freeze: true
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2023](https://jeffreyrstevens.quarto.pub/dpavir)"
+    code-link: true
+---
+
+# Review
+
+## Mental model of data analysis
+
+![](../images/data_analysis_workflow.png){fig-align="center"}
+
+
+## Data wrangling
+
+[{dplyr}](https://dplyr.tidyverse.org)
+
+![](../images/dplyr_wrangling_allisonhorst.png){fig-align="center" width="55%"}
+
+![](../images/dplyr_hex.png){.absolute width="15%" top="-5%" left="85%"}
+
+:::{.aside}
+Source: <a href = "https://github.com/allisonhorst/stats-illustrations">Allison Horst</a>
+:::
+
+
+---
+
+## Data wrangling
+
+```{r, message = FALSE}
+library(dplyr)
+```
+
+![](../images/dplyr_summary.png){fig-align=center width=80%}
+
+![](../images/dplyr_hex.png){.absolute width="15%" top="-5%" left="85%"}
+
+
+# Selecting columns
+
+## Mental model of selecting columns
+
+![](../images/mentalmodel_select.png){fig-align="center"}
+
+
+---
+
+## Data set
+
+```{r}
+library(nycflights13)
+glimpse(flights)
+```
+
+
+
+---
+
+## Selecting columns
+
+### `select()`
+
+![](../images/dplyr_select.png){fig-align="center" width="40%"}
+
+
+---
+
+## Selecting columns
+
+### `select()` by inclusion
+
+```{r}
+select(flights, year, month, day, sched_dep_time, sched_arr_time)
+```
+
+
+---
+
+## Selecting columns
+
+### `select()` by exclusion
+
+```{r}
+select(flights, -dep_time, -dep_delay, -arr_time, -arr_delay, -carrier, -flight, -tailnum,
+       -origin, -dest, -air_time, -distance, -hour, -minute, -time_hour)
+```
+
+
+---
+
+## Helper functions
+
+### Collections of functions to facilitate selecting columns
+
+:::{.callout-warning}
+These helper functions only apply inside [{dplyr}](https://dplyr.tidyverse.org) or other tidyverse functions that use `select()`.
+:::
+
+
+## Helper functions
+
+### Select consecutive columns with `:` 
+
+```{r}
+select(flights, year:day, hour, time_hour)
+```
+
+
+---
+
+## Helper functions
+
+### Select everything else with `everything()`
+
+```{r}
+select(flights, time_hour, air_time, everything())
+```
+
+
+---
+
+## Helper functions
+
+### Select columns containing specific text with `contains()`
+
+```{r}
+select(flights, contains("_time"))
+```
+
+
+---
+
+## Helper functions
+
+### Select columns starting or ending with text with `starts_with()` or `ends_with()`
+
+```{r}
+select(flights, starts_with("dep_"))
+```
+
+
+
+# Moving columns
+
+## Move with `select()`
+
+![](../images/dplyr_select_move.png){fig-align="center" height="55%"}
+
+
+---
+
+## Move with `select()`
+
+```{r}
+select(flights, carrier, flight, year:day)
+```
+
+
+---
+
+## Move with `relocate()`
+
+![](../images/dplyr_relocate.png){fig-align="center" height="55%"}
+
+
+---
+
+## Move with `relocate()`
+
+```{r}
+relocate(flights, carrier, flight, .before = year)
+```
+
+
+# Renaming columns
+
+## Rename with `select()`
+
+```{r}
+select(flights, airline = carrier, flight_num = flight, everything())
+```
+
+
+---
+
+## Rename with `rename()`
+
+![](../images/dplyr_rename.png){fig-align="center" height="55%"}
+
+
+---
+
+## Rename with `rename()`
+
+```{r}
+rename(flights, departure = dep_time, arrival = arr_time)
+```
+
+
+## Mental model of selecting columns
+
+![](../images/mentalmodel_select.png){fig-align="center"}
+
+
+## Let's code!
+
+[Selecting data](../code/10_selecting.html){target="_blank"} [[Rmd](../code/10_selecting.Rmd){target="_blank"}]

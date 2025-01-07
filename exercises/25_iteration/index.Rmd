@@ -1,0 +1,154 @@
+---
+title: "Iteration"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+## For loops
+
+### 
+
+Because R is a vectorized programming language, most of the time, we can apply functions to vectors to solve our coding problems. But sometimes, you need to repeat commands a certain number of times. This is where `for` statements come in. They are especially useful for repeatedly sampling.
+
+**Use a for loop to generate 20 random samples of 10 numbers from the sequence 1-100 and print them to the console. Use the `sample()` function to draw the samples, and feel free to look up how to use `sample()`.**
+
+```{r exercise5, exercise = TRUE}
+set.seed(1)
+for (...) {
+  print(sample(...))
+}
+```
+
+```{r exercise5-solution}
+set.seed(1)
+for (i in 1:20) {
+  print(sample(1:100, 10))
+}
+```
+
+```{r exercise5-check}
+set.seed(1)
+grade_result(
+  pass_if(~identical(.result, for (i in 1:20) {
+  print(sample(1:100, 10))
+}
+  ))
+)
+```
+
+## Mapping functions
+
+###
+
+Because R is vectorized, we can apply functions across vectors without having to use `for` loops. While base R uses `apply()` functions, tidyverse uses `map()` functions from the `{purrr}` library.
+
+Different map functions output different data types.
+
+```{r function-output}
+quiz(
+  question(
+    'What kind of data type does `map()` return?',
+    answer('List', correct = TRUE),
+    answer('Data frame'),
+    answer('Numeric vector'),
+    answer('Character vector'),
+    answer('Logical vector'),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question(
+    'Which map function returns a data frame?',
+    answer('`map_df()`', correct = TRUE),
+    answer('`map()`'),
+    answer('`map_dbl()`'),
+    answer('`map_d()`'),
+    answer('`map_data()`'),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question(
+    'Check out the `purrr::list_cbind()` function documentation. What does this function do?',
+    answer('`Combines list elements into a data frame`', correct = TRUE),
+    answer('`Combines list elements into a vector`'),
+    answer('`Flattens lists by removing one level of list hierarchy`'),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question(
+    'Check out the `purrr::list_c()` function documentation. What does this function do?',
+    answer('`Combines list elements into a vector`', correct = TRUE),
+    answer('`Combines list elements into a data frame`'),
+    answer('`Flattens lists by removing one level of list hierarchy`'),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+
+**Use one of the `map()` functions to find the maximum value for each of the numeric columns in `penguins` (ignoring `NA`s) and return a numeric vector. You'll need to use `is.numeric` inside the `where()` function to select the numeric columns. See the `where()` documentation for more information.**
+
+```{r exercise6, exercise = TRUE}
+...
+```
+
+```{r exercise6-solution}
+map_dbl(select(penguins, where(is.numeric)), ~ max(.x, na.rm = TRUE))
+```
+
+```{r exercise6-check}
+set.seed(20210614)
+grade_result(
+  pass_if(~identical(.result, map_dbl(select(penguins, where(is.numeric)), ~ max(.x, na.rm = TRUE))
+  ))
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 28
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

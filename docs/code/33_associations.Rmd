@@ -1,0 +1,60 @@
+---
+title: "Plotting x-y data: associations"
+author: "Jeffrey R. Stevens"
+date: "2023-04-17"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, create a scatterplot of the highway fuel efficiency and city fuel efficiency.
+
+```{r}
+# >
+```
+
+2. Now add a dashed reference line showing equivalent values for the two axes and set the aspect ratio to 1.
+
+```{r}
+# >
+```
+
+3. Looks like there is a possibility of overplotting. Turn this into a bubble chart with dot size scaling to the number of data points for each dot and make the dot colors _steelblue_.
+
+```{r}
+# >
+```
+
+4. Add rugs to scatterplot #1 and change to minimal theme.
+
+```{r}
+# >
+```
+
+
+5. From scatterplot #1, color the dots by class, move the legend to the top left corner of the plot, and add marginal density plots.
+
+```{r}
+# >
+```
+
+6. Create a data frame called `mpg_num` that only includes variables with numeric values using the `where()` function. Then remove the _year_ column.
+
+```{r}
+# >
+```
+
+
+7. Create correlation plots of the numeric variables in `mpg_num` in both base R and using {GGally}'s `ggpairs()` function.
+```{r}
+# >
+```
+
+
+8. Create a correlation matrix of `mpg_num` with the `cor()` function. Then use `ggcorrplot()` from the {ggcorrplot} package to make a heatmap correlation plot with just the upper triangle of the matrix and using circles to represent correlation coefficient magnitude.
+
+```{r}
+# >
+```
+

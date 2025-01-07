@@ -1,0 +1,49 @@
+---
+title: 'Plotting x-y data: time series'
+author:
+  - Jeff Stevens
+date: '2023-04-19'
+categories: 
+  - "module 8"
+  - "week 13"
+  - "beeswarm"
+  - jitter
+  - "model fitting"
+  - "time series"
+description: "Plot continuous variables over sequential variables"
+execute:
+  freeze: auto
+draft: true
+---
+
+Illustrate time series and trends and fit models to data.
+
+
+## Learning objectives
+
+* Plot time series
+* Fit models to data
+* Learn to jitter and make beeswarm plots
+
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read Read [FDV 13](https://clauswilke.com/dataviz/time-series.html){target='_blank'}, [14](https://clauswilke.com/dataviz/visualizing-trends.html){target='_blank'}
+
+
+## Class meeting
+
+* [Script](../../slides/34_timeseries.R){target="_blank"} and [Code](../../code/34_timeseries.html){target="_blank"}
+
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_34_timeseries/){target='_blank'}
+
+
+### For next class meeting
+
+* Read [Raincloud Plots](https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/)

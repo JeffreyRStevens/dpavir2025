@@ -1,0 +1,50 @@
+---
+title: 'Filtering rows'
+author:
+  - Jeff Stevens
+date: '2023-02-20'
+categories: 
+  - "module 3"
+  - "week 5"
+  - arrange
+  - "conditional statements"
+  - filter
+  - "missing data"
+  - rows
+description: "Remove rows based on data values"
+draft: true
+---
+
+We'll move from cleaning columns to working with rows. We'll use the [{dplyr}](https://dplyr.tidyverse.org) `filter()` functions to only keep rows that we want to keep.
+
+## Learning objectives
+
+* Filter rows based on data values
+* Refine understanding of conditional statements
+* Remove missing data
+* Arrange rows based on data values
+
+## Pre-meeting
+
+To prepare for this class meeting, please do the following:
+
+* Read [R4DS2 4.2](https://r4ds.hadley.nz/data-transform.html#filter){target='_blank'}
+
+## Class meeting
+
+* Filtering basics
+* Filtering with OR
+* Multiple filters
+* Negating conditional statements
+* Filtering NA
+* Arranging in ascending and descending order
+* [Slides](../../slides/13_filtering.qmd){target="_blank"} and [Code](../../code/13_filtering.html){target="_blank"}
+
+## Homework after the class meeting
+### Wrap up this lesson
+
+* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2023_13_filtering/){target='_blank'}
+
+### For next class meeting
+
+* Read [R4DS2 4.4](https://r4ds.hadley.nz/data-transform.html#groups){target='_blank'}

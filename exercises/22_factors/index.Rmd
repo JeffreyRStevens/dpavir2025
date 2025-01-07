@@ -1,0 +1,188 @@
+---
+title: "Factors"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Factors
+
+###
+
+As a reminder, the four core data types are character, double, integer, and logical. Factors _augmented integers_.
+
+
+### Set-up
+To work with factors, we'll use the `{forcats}` package, which is automatically loaded when you load the core tidyverse packages. We'll go ahead and load `{tidyverse}` since we'll need other tidyverse packages. We'll also load the `{palmerpenguins}` package to work with those data.
+
+```{r echo = TRUE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Ordering factor levels
+
+###
+
+The factor levels for a variable may not be in the order that you want, for example to plot categorical variables. Therefore, we sometimes need to relevel a factor.
+
+###
+
+The `penguins` data frame has three variables that are factors: species, island, and sex.
+
+```{r}
+penguins
+```
+
+###
+
+First, let's check the levels for the `species` variable.
+
+```{r echo = TRUE}
+levels(penguins$species)
+```
+
+They seem to be in alphabetical order. Let's say that we want the levels to be in the opposite order: Gentoo, Chinstrap, Adelie.
+
+**Reverse the order of the levels by replacing the `...` with the proper `{forcats}` function. Note that since we are just working with the vector `penguins$species`, we don't need to mutate anything---we can just use one of the `{forcats}` functions to change the levels.**
+```{r exercise1, exercise = TRUE}
+penguins$species %>% 
+  ... %>% 
+  levels()
+```
+ 
+```{r exercise1-solution}
+penguins$species %>% 
+  fct_rev() %>% 
+  levels()
+```
+
+```{r exercise1-check}
+grade_result(
+  pass_if(~identical(.result, penguins$species %>% 
+  fct_rev() %>% 
+  levels()))
+)
+```
+
+###
+
+**Now put the levels in the order Chinstrap, Gentoo, Adelie.**
+```{r exercise1b, exercise = TRUE}
+penguins$species %>% 
+  ... %>% 
+  levels()
+```
+ 
+```{r exercise1b-solution}
+penguins$species %>% 
+  fct_relevel("Chinstrap", "Gentoo", "Adelie") %>% 
+  levels()
+```
+
+```{r exercise1b-check}
+grade_result(
+  pass_if(~identical(.result, penguins$species %>% 
+  fct_relevel("Chinstrap", "Gentoo", "Adelie") %>% 
+  levels()
+  ))
+)
+```
+
+## Recoding factors
+
+###
+
+We often need to change the factor level labels for a variable. This is termed _recoding_. We can also collapse or lump multiple levels into fewer levels.
+
+###
+
+Now we want the word "Island" to be added to each of the island names in the data frame. So we need to recode the existing factor levels.
+
+**Recode the island variable to add "Island" to each factor level (e.g., "Biscoe Island", "Dream Island", and "Torgersen Island") using a `{forcats}` function (not a `{stringr}` function).**
+```{r exercise2, exercise = TRUE}
+penguins$island %>% 
+  ... %>% 
+  levels()
+```
+ 
+```{r exercise2-solution}
+penguins$island %>% 
+  fct_recode("Biscoe Island" = "Biscoe", "Dream Island" = "Dream", "Torgersen Island" = "Torgersen") %>% 
+  levels()
+```
+
+```{r exercise2-check}
+grade_result(
+  pass_if(~identical(.result, penguins$island %>% 
+  fct_recode("Biscoe Island" = "Biscoe", "Dream Island" = "Dream", "Torgersen Island" = "Torgersen") %>% 
+  levels()))
+)
+```
+
+###
+
+Now we want to create a new column that provides each species' diet. Gentoo penguins are generalists (meaning they feed on a number of different food items) and Adelie and chinstrap penguins are specialists that feed primarily on krill. To do this, we will mutate the `species` variable into a new `diet` variable that recodes Gentoo to "generalist" and Adelie and Chinstrap to "specialist".
+
+**Create a new column that recodes the species to their diets using the `fct_collapse()` function.**
+```{r exercise3, exercise = TRUE}
+penguins %>% 
+  mutate(diet = fct_collapse(...))
+```
+ 
+```{r exercise3-solution}
+penguins %>% 
+  mutate(diet = fct_collapse(species, generalist = "Gentoo", specialist = c("Adelie", "Chinstrap")))
+```
+
+```{r exercise3-check}
+grade_result(
+  pass_if(~identical(.result, penguins %>% 
+  mutate(diet = fct_collapse(species, generalist = "Gentoo", specialist = c("Adelie", "Chinstrap")))))
+)
+```
+
+### 
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 4
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.

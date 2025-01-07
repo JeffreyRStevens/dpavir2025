@@ -1,0 +1,55 @@
+---
+title: "Factors"
+author: "Jeffrey R. Stevens"
+date: "2023-03-20"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the dog breed traits data set. 
+
+1. Load tidyverse, import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`.
+
+```{r}
+# >
+```
+
+
+2. Convert both _coat_type_ and _coat_length_ into factors using `across()` and save as `traits2`.
+
+```{r}
+# >
+```
+
+
+3. Check the levels for both columns, one using a pipe and one without using a pipe.
+
+```{r}
+# >
+```
+
+4. Reorder the levels for _coat_length_ to be Short, Medium, Long (reassigned to `traits2`) and then check the levels.
+
+```{r}
+# >
+```
+
+5. Reorder the levels for _coat_type_ to be in the order of the most to least frequent coat type and then check the levels.
+
+```{r}
+# >
+```
+
+6. Relabel _coat_length_ to be Stubby, Mid, and Lush rather than Short, Medium, and Long.
+
+```{r}
+# >
+```
+
+7. The new AKC standard subsumes Rough coats with Wiry coats and Silky with Wavy. Please update the _coat_type_ variable accordingly.
+
+```{r}
+# >
+```
+

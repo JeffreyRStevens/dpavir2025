@@ -1,0 +1,386 @@
+---
+title: "Data types"
+author: "Jeff Stevens"
+date: "2023-02-03"
+date-format: iso
+execute:
+  echo: true
+  freeze: false
+format:
+  revealjs: 
+    theme: custom.scss
+    slide-number: true
+    code-link: true
+    code-line-numbers: false
+    highlight-style: github
+    code-overflow: wrap
+    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir2025)"
+    logo: "../logo/dpavir_hex.png"
+---
+
+# Review
+
+## Mental model of literate programming
+
+![](../images/mentalmodel_rmarkdown.png){fig-align="center"}
+
+
+# Data types
+
+## Data types
+
+### Formats of individual elements
+
+* Double
+
+* Integer
+
+* Character
+
+* Logical
+
+#### Check data types with `typeof()`
+
+
+## Mental model of data types
+
+![](../images/mentalmodel_datatypes.png){fig-align="center"}
+
+
+---
+
+## Numeric data
+
+### Doubles
+
+#### Floating-point numbers with decimals
+
+```{r}
+# assign value 7.2 to object a
+(a <- 7.2) # remember, wrapping in parentheses prints to console
+```
+
+:::{.fragment}
+```{r}
+typeof(a)
+```
+:::
+
+
+---
+
+## Numeric data
+
+### Integers
+
+#### Numbers without decimals
+
+```{r}
+(b <- 7)
+```
+
+:::{.fragment}
+```{r}
+typeof(b)
+```
+
+:::{.callout-note}
+#### Doubles can have 0 as decimal
+:::
+:::
+
+---
+
+## Numeric data
+
+### Integers
+
+#### Numbers without decimals (specified with `L`)
+
+```{r}
+(c <- 7L)
+```
+
+:::{.fragment}
+```{r}
+typeof(c)
+```
+:::
+
+
+---
+
+## Character data
+
+#### Must be surrounded by `""`
+
+:::{.fragment}
+```{r}
+(d <- "Hello, world")
+(e <- "7")
+```
+:::
+
+:::{.fragment}
+```{r}
+typeof(e)
+```
+:::
+
+## Let's explore!
+
+:::{.incremental}
+* Type `b`, `c`, and `e` into the console separately. What do you see?
+* Add `b + c`.
+* Add `b + e`.
+:::
+
+---
+
+## Logical
+
+#### Tests whether conditional statement is `TRUE` or `FALSE` (notice always all upper case)
+#### Logical operators: `>`, `>=`, `<`, `<=`, `==`, `!=`, `%in%`
+
+:::{.fragment}
+```{r}
+a
+a > 5
+```
+:::
+
+:::{.fragment}
+```{r}
+d
+(mytest <- d == "Good-bye, world")
+```
+:::
+
+:::{.fragment}
+```{r}
+typeof(mytest)
+```
+:::
+
+---
+
+## Logical
+
+#### The logical operator for equals is `==`
+
+:::{.callout-note}
+We use
+
+* `==` for logical equals
+* `<-` for assigning objects
+* `=` for assigning function argument values to argument names
+:::
+
+
+---
+
+## Logical
+
+#### `%in%` operator: "is contained in"
+
+:::{.fragment}
+```{r}
+(subjects <- c("01", "02", "03", "04", "05"))
+```
+:::
+
+:::{.fragment}
+```{r}
+"03" %in% subjects
+```
+:::
+
+:::{.fragment}
+```{r}
+"06" %in% subjects
+```
+:::
+
+:::{.fragment}
+#### Test "is NOT contained in" with `!` before test string
+```{r}
+!"06" %in% subjects
+```
+:::
+
+---
+
+## Augmented data types
+
+#### Core data types with special attributes
+
+* Factors
+
+* Dates
+
+---
+
+## Factors
+
+#### Augmented integers with 'levels'
+
+:::{.fragment}
+```{r}
+(i <- factor("married", levels = c("single", "married", "widowed")))
+```
+:::
+
+:::{.fragment}
+```{r}
+typeof(i)
+```
+:::
+
+:::{.fragment}
+:::{.callout-note}
+Use `class()` to view augmented data type
+```{r}
+class(i)
+```
+:::
+:::
+
+---
+
+## Dates 
+#### Augmented numerics based on number of days since 1970-01-01
+
+:::{.fragment}
+```{r}
+(j <- as.Date("1970-01-01"))
+typeof(j)
+class(j)
+```
+
+:::{.callout-note}
+Make sure to wrap dates in `""`
+:::
+:::
+
+
+---
+
+## Dates 
+
+#### You can do math on dates
+
+:::{.fragment}
+```{r}
+(k <- as.Date("2023-02-03"))
+k-j
+```
+:::
+
+
+---
+
+## Check data types
+
+* Check with `typeof()`/`class()`
+
+:::{.fragment}
+* Check in RStudio
+:::
+
+:::{.fragment}
+* Use `is.<type>()` functions: <br>
+`is.logical()`, `is.numeric()`, `is.character()`
+
+```{r}
+is.character(7)
+is.character("7")
+```
+
+:::
+
+
+---
+
+## Converting between data types (coercion)
+
+:::{.fragment}
+#### Use `as.<type>()` functions: 
+`as.logical()`, `as.numeric()`, `as.character()`
+:::
+
+:::{.fragment}
+```{r}
+e
+typeof(e)
+(l <- as.numeric(e))
+typeof(l)
+```
+:::
+
+---
+
+## Converting between data types (coercion)
+
+```{r}
+(m <- "TRUE")
+typeof(m)
+(n <- as.logical(m))
+typeof(n)
+```
+
+
+---
+
+## Converting between data types (coercion)
+
+#### Factors to numerics is tricky
+
+```{r}
+(o <- factor(0, levels = c("1", "0")))
+as.numeric(o)
+```
+
+:::{.fragment}
+#### First coerce to character
+
+```{r}
+as.character(o)
+as.numeric(as.character(o))
+```
+:::
+
+
+---
+
+## Special values
+
+#### `NA` represents missing values
+
+* Each data type has its own type of `NA`
+
+* Check with `is.na()`
+
+
+:::{.fragment}
+#### `NaN` means "not a number" (undefined)
+
+* `0 / 0 = NaN`
+:::
+
+
+:::{.fragment}
+#### `Inf` and `-Inf` represent infinity and negative infinity
+
+* `1 / 0 = Inf`
+
+* `-1 / 0 = -Inf`
+:::
+
+## Mental model of data types
+
+![](../images/mentalmodel_datatypes.png){fig-align="center"}
+
+
+## Let's code!
+
+[Data types coding](../code/06_datatypes.html){target="_blank"} [[Rmd](../code/06_datatypes.Rmd){target="_blank"}]
