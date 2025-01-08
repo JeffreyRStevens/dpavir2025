@@ -26,6 +26,8 @@ format:
 
 ### Course structure and materials
 
+![](../logo/dpavir_hex.png){.absolute width="20%" top="30%" left="70%"}
+
 ::: {.incremental}
 * Before class: Readings
 
@@ -34,10 +36,9 @@ format:
 * After class: Exercises
 
 * Course website: [dpavir.org](http://dpavir.org)
-  - Resources
+
 :::
 
-![](../logo/dpavir_hex.png){.absolute width="20%" top="60%" left="60%"}
 
 ## Course information
 
@@ -76,6 +77,25 @@ format:
 
 ![Source: <a href = "https://allisonhorst.com">Allison Horst</a>](../images/r_inclusion.png){width="60%"}
 
+## Course information
+
+### Course culture
+
+![](../images/coding_error.webp){.absolute width="40%" top="10%" left="70%"}
+
+
+::: {.incremental}
+* Futz around and find out
+
+* Mistakes are OK (they'll happen a lot)
+
+* Learn from your mistakes (bug journal?)
+
+* Ask for help
+
+* Share successes and failures with others
+:::
+
 
 ## Questions
 
@@ -100,11 +120,7 @@ format:
 * Links are in [light blue text]()
 
 
-## Mental model of R
-
-:::{.fragment}
-![](../images/mentalmodel_r.png){fig-align="center" width="120%"}
-:::
+## Mental model of R {background-image="../images/mentalmodel_r.png" background-size="90%"}
 
 
 ## Base R vs. tidyverse

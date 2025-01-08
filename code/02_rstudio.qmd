@@ -1,11 +1,13 @@
 ---
 title: "Working in RStudio"
 author: "Jeffrey R. Stevens"
-date: "2023-01-25"
+date: "2025-01-24"
 output: html_document
 execute:
   freeze: auto
 ---
+
+**Work in groups of 2-3**
 
 * Install the [`{papaja}`](https://frederikaust.com/papaja_man/) package.
 
@@ -16,3 +18,5 @@ execute:
 * What does the keyboard shortcut `Ctrl/Cmd`+`Enter/Return` do?
 
 * Type `cor()` in the console, and place your cursor in the word `cor`. Now press `F1`. What happened? Place your cursor back on `cor` and press `F2`. What happened?
+
+* Change your theme for RStudio. If you're feeling adventurous, check out the custom themes at <https://github.com/mkearney/rstudiothemes> and install one of them.

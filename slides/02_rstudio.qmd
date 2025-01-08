@@ -1,7 +1,7 @@
 ---
 title: "Working in RStudio"
 author: "Jeff Stevens"
-date: "2023-01-25"
+date: "2025-01-24"
 date-format: iso
 format:
   revealjs: 
@@ -17,7 +17,7 @@ format:
 
 ## Review: Mental model of R
 
-![](../images/mentalmodel_r.png)
+![](../images/mentalmodel_r.png){fig-align="center" width="150%"}
 
 
 ## Tour of RStudio
@@ -51,6 +51,7 @@ _Tools > Keyboard Shortcuts Help_ or <kbd>Alt/Opt</kbd>+<kbd>Shift</kbd>+<kbd>K<
 * Turn off save history
 * Turn on soft wrap
 * Turn on rainbow parentheses
+* Use native pipe operator
 * Change your theme
 
 
@@ -63,15 +64,14 @@ _Tools > Keyboard Shortcuts Help_ or <kbd>Alt/Opt</kbd>+<kbd>Shift</kbd>+<kbd>K<
 
 ### Online forums
 
-* [RStudio Community](https://community.rstudio.com){target="_blank"}--RStudio-specific forum (e.g., tidyverse)
+* [Posit Community](https://forum.posit.co/){target="_blank"}--Posit-specific forum (e.g., tidyverse, RStudio, Quarto)
 * [Stack Overflow](https://stackoverflow.com){target="_blank"}--Coding-related questions 
 * [Cross Validated](https://stats.stackexchange.com/){target="_blank"}--Statistics questions (not R-specific)
 
-### Online portals/books
+### Online portals
 
-* [Cheatsheets](https://rstudio.com/resources/cheatsheets/){target="_blank"}
+* [Cheatsheets](https://posit.co/resources/cheatsheets/){target="_blank"}
 * [Tidyverse](https://www.tidyverse.org/){target="_blank"}
-* [RStudio books](https://rstudio.com/resources/books/){target="_blank"}
 
 
 ## Tips
@@ -79,6 +79,8 @@ _Tools > Keyboard Shortcuts Help_ or <kbd>Alt/Opt</kbd>+<kbd>Shift</kbd>+<kbd>K<
 * Learn to use keyboard shortcuts
 
 * You can remap keyboard shortcuts (I've remapped *Insert assignment operator* to <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>,</kbd>)
+
+* Your cursor can be anywhere in your code to use<kbd>Ctrl/Cmd</kbd>++<kbd>Enter</kbd> to run it
 
 * Restart R often
 

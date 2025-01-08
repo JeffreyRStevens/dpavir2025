@@ -162,6 +162,8 @@ x  # print contents of object x to console
 2. Ourselves
 
 3. Others
+
+![](../images/coding_audience.png){fig-align="right"}
 :::
 
 ## How to write good code
@@ -323,6 +325,9 @@ Sources: [Naming things: Jenny Bryan](https://speakerdeck.com/jennybc/how-to-nam
 :::{.incremental}
 * use ISO 8601 standard for date `YYYY-MM-DD`
 * no, really---always use ISO 8601 standard for date!!
+
+![](../images/dates_meme.jpeg){fig-align="right"}
+
 * use ISO 8601 dates before or after **slugs**
   - `2021-04-06_prelim_analysis_expt1.Rmd`
   - `prelim_analysis_expt1_2021-04-06.Rmd`
@@ -330,7 +335,6 @@ Sources: [Naming things: Jenny Bryan](https://speakerdeck.com/jennybc/how-to-nam
   - `01_preface.Rmd`
   - `02_introduction.Rmd`
 :::
-
 
 ## Mental model of coding
 

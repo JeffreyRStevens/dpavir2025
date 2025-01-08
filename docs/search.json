@@ -2678,7 +2678,7 @@
     "href": "slides/05_rmarkdown.html#r-code-chunks",
     "title": "Literate programming",
     "section": "R code chunks",
-    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1] -1.0519464 -0.1462585  2.0048056 -0.4753426 -1.6315566 -1.0889866\n [7] -0.7022400 -0.5723646  1.2776302 -0.0219430"
+    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1] -0.5354032  0.2667452  0.1873016 -0.8060160  0.5843254  1.8091650\n [7]  0.5917299 -0.4528466 -0.9255605  0.7997001"
   },
   {
     "objectID": "slides/05_rmarkdown.html#embed-figures",
@@ -2846,7 +2846,7 @@
     "href": "slides/03_coding.html#make-sorting-and-searching-easy",
     "title": "Coding basics",
     "section": "Make sorting and searching easy",
-    "text": "Make sorting and searching easy\n\n\nuse ISO 8601 standard for date YYYY-MM-DD\n\nno, really—always use ISO 8601 standard for date!!\nuse ISO 8601 dates before or after slugs\n\n2021-04-06_prelim_analysis_expt1.Rmd\nprelim_analysis_expt1_2021-04-06.Rmd\n\n\nuse padded numbers as prefixes\n\n01_preface.Rmd\n02_introduction.Rmd"
+    "text": "Make sorting and searching easy\n\n\nuse ISO 8601 standard for date YYYY-MM-DD\n\nno, really—always use ISO 8601 standard for date!!\n\n\n\n\n\n\nuse ISO 8601 dates before or after slugs\n\n2021-04-06_prelim_analysis_expt1.Rmd\nprelim_analysis_expt1_2021-04-06.Rmd\n\n\nuse padded numbers as prefixes\n\n01_preface.Rmd\n02_introduction.Rmd"
   },
   {
     "objectID": "slides/03_coding.html#mental-model-of-coding-1",
@@ -2874,7 +2874,7 @@
     "href": "slides/01_introduction.html#course-information",
     "title": "Data Processing and Visualization in R",
     "section": "Course information",
-    "text": "Course information\nCourse structure and materials\n\n\nBefore class: Readings\nDuring class: Coding\nAfter class: Exercises\nCourse website: dpavir.org\n\nResources"
+    "text": "Course information\nCourse structure and materials\n\n\n\nBefore class: Readings\nDuring class: Coding\nAfter class: Exercises\nCourse website: dpavir.org"
   },
   {
     "objectID": "slides/01_introduction.html#course-information-1",
@@ -2889,6 +2889,13 @@
     "title": "Data Processing and Visualization in R",
     "section": "Course information",
     "text": "Course information\nDiversity, inclusion, wellness\n\nSource: Allison Horst"
+  },
+  {
+    "objectID": "slides/01_introduction.html#course-information-3",
+    "href": "slides/01_introduction.html#course-information-3",
+    "title": "Data Processing and Visualization in R",
+    "section": "Course information",
+    "text": "Course information\nCourse culture\n\n\n\nFutz around and find out\nMistakes are OK (they’ll happen a lot)\nLearn from your mistakes (bug journal?)\nAsk for help\nShare successes and failures with others"
   },
   {
     "objectID": "slides/01_introduction.html#questions",
@@ -2993,7 +3000,7 @@
     "href": "code/02_rstudio.html",
     "title": "Working in RStudio",
     "section": "",
-    "text": "Install the {papaja} package.\nFind the help page for the apa_num() function from {papaja}. What does it do?\nWhat is the keyboard shortcut for restarting R?\nWhat does the keyboard shortcut Ctrl/Cmd+Enter/Return do?\nType cor() in the console, and place your cursor in the word cor. Now press F1. What happened? Place your cursor back on cor and press F2. What happened?"
+    "text": "Work in groups of 2-3\n\nInstall the {papaja} package.\nFind the help page for the apa_num() function from {papaja}. What does it do?\nWhat is the keyboard shortcut for restarting R?\nWhat does the keyboard shortcut Ctrl/Cmd+Enter/Return do?\nType cor() in the console, and place your cursor in the word cor. Now press F1. What happened? Place your cursor back on cor and press F2. What happened?\nChange your theme for RStudio. If you’re feeling adventurous, check out the custom themes at https://github.com/mkearney/rstudiothemes and install one of them."
   },
   {
     "objectID": "materials.html",
@@ -3217,7 +3224,7 @@
     "href": "slides/02_rstudio.html#options",
     "title": "Working in RStudio",
     "section": "Options",
-    "text": "Options\n\nTurn off restore workspace\nTurn off save history\nTurn on soft wrap\nTurn on rainbow parentheses\nChange your theme"
+    "text": "Options\n\nTurn off restore workspace\nTurn off save history\nTurn on soft wrap\nTurn on rainbow parentheses\nUse native pipe operator\nChange your theme"
   },
   {
     "objectID": "slides/02_rstudio.html#installing-packages",
@@ -3231,14 +3238,14 @@
     "href": "slides/02_rstudio.html#getting-help",
     "title": "Working in RStudio",
     "section": "Getting help",
-    "text": "Getting help\nOnline forums\n\nRStudio Community–RStudio-specific forum (e.g., tidyverse)\nStack Overflow–Coding-related questions\nCross Validated–Statistics questions (not R-specific)\n\nOnline portals/books\n\nCheatsheets\nTidyverse\nRStudio books"
+    "text": "Getting help\nOnline forums\n\nPosit Community–Posit-specific forum (e.g., tidyverse, RStudio, Quarto)\nStack Overflow–Coding-related questions\nCross Validated–Statistics questions (not R-specific)\n\nOnline portals\n\nCheatsheets\nTidyverse"
   },
   {
     "objectID": "slides/02_rstudio.html#tips",
     "href": "slides/02_rstudio.html#tips",
     "title": "Working in RStudio",
     "section": "Tips",
-    "text": "Tips\n\nLearn to use keyboard shortcuts\nYou can remap keyboard shortcuts (I’ve remapped Insert assignment operator to Ctrl/Cmd+Shift+,)\nRestart R often"
+    "text": "Tips\n\nLearn to use keyboard shortcuts\nYou can remap keyboard shortcuts (I’ve remapped Insert assignment operator to Ctrl/Cmd+Shift+,)\nYour cursor can be anywhere in your code to useCtrl/Cmd++Enter to run it\nRestart R often"
   },
   {
     "objectID": "slides/02_rstudio.html#lets-explore",
