@@ -24,5 +24,5 @@ code_answers <- paste0("code/", list.files(here("code/"), pattern = ".Rmd"))
 code_answers <- code_answers[-which(code_answers == "code/23_dates_answers.Rmd")]
 
 # Apply erase_answers() to all answer files
-purrr::map(code_answers, erase_answers)
+purrr::walk(code_answers, erase_answers)
 

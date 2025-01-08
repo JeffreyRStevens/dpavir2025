@@ -27,7 +27,7 @@ format:
 ### Course structure and materials
 
 ::: {.incremental}
-* Before class: Readings and presentations
+* Before class: Readings
 
 * During class: Coding
 
@@ -37,6 +37,7 @@ format:
   - Resources
 :::
 
+![](../logo/dpavir_hex.png){.absolute width="20%" top="60%" left="60%"}
 
 ## Course information
 
@@ -47,25 +48,26 @@ format:
 * Exercises
 * Check-ins
 * Projects
+* Wrapped
 :::
 
 
-## Course information
+<!-- ## Course information -->
 
-### Assignments
+<!-- ### Assignments -->
 
-* CReativity
+<!-- * CReativity -->
 
-![](../images/r-packages.png){.absolute width="35%" top="12%" left="28%"}
+<!-- ![](../images/r-packages.png){.absolute width="35%" top="12%" left="28%"} -->
 
-![](../images/rstats_meme2.jpg){.absolute width="35%" top="10%" left="65%"}
+<!-- ![](../images/rstats_meme2.jpg){.absolute width="35%" top="10%" left="65%"} -->
 <!-- ![](../images/rstats_meme3.jpg){.absolute width="35%" top="32%" left="65%"} -->
 
-![](../images/generativeart1.png){.absolute width="20%" top="45%" left="0%"}
-![](../images/generativeart2.png){.absolute width="20%" top="72%" left="0%"}
-![](../images/generativeart4.jpg){.absolute width="18%" top="48%" left="21%"}
+<!-- ![](../images/generativeart1.png){.absolute width="20%" top="45%" left="0%"} -->
+<!-- ![](../images/generativeart2.png){.absolute width="20%" top="72%" left="0%"} -->
+<!-- ![](../images/generativeart4.jpg){.absolute width="18%" top="48%" left="21%"} -->
 
-![](../images/r_pancakes.jpg){.absolute width="40%" top="55%" left="60%"}
+<!-- ![](../images/r_pancakes.jpg){.absolute width="40%" top="55%" left="60%"} -->
 
 
 ## Course information
@@ -83,13 +85,13 @@ format:
 
 ## Conventions
 
-* All `code` is in monospace font text
+* All `code` is in monospace font purple text
 
 * R functions end with parentheses: `function()`
 
 * Directory names end with slash: `home/`
 
-* Package names are surrounded by curly braces: `{tidyverse}`
+* Package names are surrounded by curly braces: [`{tidyverse}`](https://tidyverse.org)
 
 * Keyboard buttons separate keys with a plus: <kbd>Ctrl</kbd>+<kbd>S</kbd>
 
@@ -101,7 +103,7 @@ format:
 ## Mental model of R
 
 :::{.fragment}
-![](../images/mentalmodel_r.png){fig-align="center"}
+![](../images/mentalmodel_r.png){fig-align="center" width="120%"}
 :::
 
 

@@ -58,11 +58,11 @@ R is a statistical programming language.
 
 It allows you to  flexibly
 
-* wrangle
+* wrangle data
 
-* analyze
+* visualize data
 
-* visualize your data
+* analyze data
 
 * create reproducible documents
 
@@ -71,13 +71,13 @@ It allows you to  flexibly
 
 ## Conventions
 
-* All `code` is in monospace font peach text
+* All `code` is in monospace font purple text
 
 * R functions end with parentheses: `function()`
 
 * Directory names end with slash: `home/`
 
-* Package names are surrounded by curly braces: `{tidyverse}`
+* Package names are surrounded by curly braces: [`{tidyverse}`](https://tidyverse.org)
 
 * Keyboard buttons separate keys with a plus: <kbd>Ctrl</kbd>+<kbd>S</kbd>
 
@@ -146,7 +146,7 @@ But other people can contribute packages, or collections of data and functions.
 
 The official repository for R packages is the Comprehensive R Archive Network or [CRAN](https://cloud.r-project.org/web/packages/index.html). There are more than 19,000 packages on CRAN!
 
-Packages can also be stored at other locations such as [GitHub](https://github.com), especially during development.
+Packages can also be stored at other locations such as [GitHub](https://github.com) especially during development.
 
 
 :::
@@ -219,7 +219,7 @@ Now, all of the functions in the here package are available for us to use.
 
 ### Using
 
-Let's view the `penguins` data set from the `{palmerpenguins}` package.
+Let's view the `penguins` data set from the [`{palmerpenguins}`](https://allisonhorst.github.io/palmerpenguins/) package.
 
 Try this:
 ``` {r eval = FALSE, echo = TRUE}
@@ -239,8 +239,8 @@ Once you load a package, you have access to all of its functions for that R sess
 
 ## Packages
 
-But you can either load the `{palmerpenguins}` package, or use this trick to call a specific function from a specific package.
-``` {r eval = FALSE, echo = TRUE}
+But you can either load the [`{palmerpenguins}`](https://allisonhorst.github.io/palmerpenguins/) package, or use this trick to call a specific function from a specific package.
+``` {r echo = TRUE}
 palmerpenguins::penguins
 ```
 
@@ -256,23 +256,23 @@ palmerpenguins::penguins
 
 ## Core tidyverse packages
 
-*  `{ggplot2}`, for data visualisation
+*  [`{ggplot2}`](https://ggplot2.tidyverse.org/) for data visualisation
 
-*  `{dplyr}`, for data manipulation
+*  [`{dplyr}`](https://dplyr.tidyverse.org/) for data manipulation
 
-*  `{tidyr}`, for data tidying
+*  [`{tidyr}`](https://tidyr.tidyverse.org/) for data tidying
 
-*  `{readr}`, for data import
+*  [`{readr}`](https://readr.tidyverse.org/) for data import
 
-*  `{purrr}`, for functional programming
+*  [`{tibble}`](https://tibble.tidyverse.org/) for tibbles, a version of data frames
 
-*  `{tibble}`, for tibbles, a version of data frames
+*  [`{stringr}`](https://stringr.tidyverse.org/) for strings
 
-*  `{stringr}`, for strings
+*  [`{forcats}`](https://forcats.tidyverse.org/) for factors
 
-*  `{forcats}`, for factors
+*  [`{lubridate}`](https://lubridatetidyverse.org/) for dates
 
-*  `{lubridate}`, for dates
+*  [`{purrr}`](https://purrr.tidyverse.org/) for functional programming
 
 
 
@@ -287,9 +287,9 @@ palmerpenguins::penguins
 
 * Install R from <https://r-project.org>
 
-* Install RStudio from <https://rstudio.com>
+* Install RStudio from <https://posit.co>
 
-* Install `{tidyverse}` package
+* Install [`{tidyverse}`](https://tidyverse.org) package
 
 * Complete course introduction form
 

@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let’s go to R’s console, which is the direct connection to the R engine. In the console, you give R a command, and it returns the output.</p>
 <section id="numerical-operations" class="level2">
 <h2 class="anchored" data-anchor-id="numerical-operations">Numerical operations</h2>
-<p>R can be a very fancy calculator. It uses standard mathematical operators for things like addition (<code>+</code>), subtraction (<code>-</code>), multiplication (<code>*</code>), and division (<code>/</code>). Let’s do some calculations by entering numerical operations into the console. How many seconds are there in a year?</p>
+<p>R can be a very fancy calculator. Let’s do some calculations by entering numerical operations into the console. How many seconds are there in a year?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s look at the <code>penguins</code> data set. What do we need to do first?</p>
+<p>Now that we have installed the <code>{palmerpenguins}</code> package, we want to look at the <code>penguins</code> data set from that package. What do we need to do first to get access to things in the package?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -258,36 +258,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<!-- ## Importing data -->
-<!-- Let's import, process, and plot some data! For this, we're going to need several of the `{tidyverse}` packages, so let's just load them all by loading `{tidyverse}`. -->
-<!-- ```{r}
-# >
-``` -->
-<!-- Now I stumbled across some extra penguin data that was missing from the original data set. I have it saved as a CSV or comma-separated value file at `https://jeffreyrstevens.quarto.pub/dpavir/code/penguins_extra.csv`. To import it into our R session, we need to use the `read_csv()` function. How might you do that? -->
-<!-- ```{r}
-# >
-``` -->
-<!-- Hmm, did that do what we wanted? What do we need to do next to be able to work with the data? -->
-<!-- ```{r}
-# >
-``` -->
-<!-- ## Wrangle data -->
-<!-- OK, now we have two data sets and we need to combine them into a single data set. We can use the `bind_rows()` function to do this and assign it to an object called `penguins_all`. How might you do that? -->
-<!-- ```{r}
-# >
-``` -->
-<!-- We want to explore these data a bit, but we're only interested in the 2009 observations. So we need to `filter()` the data to only give us data in which the values in the _year_ column are 2009.  -->
-<!-- ```{r}
-# >
-``` -->
 </section>
 <section id="plot-data" class="level2">
 <h2 class="anchored" data-anchor-id="plot-data">Plot data</h2>
-<p>Excellent! We now have wrangled the data to where we want it. Let’s say we want to make a scatterplot of the bill length vs.&nbsp;the bill depth for all birds. We need to use the <code>plot()</code> function for this.</p>
+<p>Excellent! Let’s say we want to make a scatterplot of the bill length vs.&nbsp;the bill depth for all birds. We can use the <code>plot()</code> function for this by passing the y-variable name, a tilde <code>~</code>, the x-variable name, and then the name of the dataset. Something like <code>plot(y ~ x, data = dataset)</code>. Replace these variables with the ones for bill length and depth in the <code>penguins</code> dataset.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Hey, hey! We have a plot! 📊 Sweet! We’ve input data, wrangled it, and plotted it. Well done! 🎉 💪</p>
+<p>Hey, hey! We have a plot! 📊 Sweet! We’ve viewed and plotted data. Well done! 🎉 💪</p>
 
 
 </section>
