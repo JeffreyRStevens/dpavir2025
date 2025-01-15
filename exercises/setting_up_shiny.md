@@ -10,9 +10,9 @@ Setting up a Shiny account
 
 
 
+Log into GlobalProtect VPN
 
 ssh jstevens5@its-ianr-shiny.unl.edu
-
 
 scp -r ~/projects/dpavir_2025/exercises/ jstevens5@its-ianr-shiny.unl.edu:ShinyApps/dpavir2025/
 

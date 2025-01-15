@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Sometimes, you know the function that you need, and you (think you) are using the function correctly, but the code generates an error or doesn't work as expected. Of course, the first thing to do is google the error message or a general description of the problem. I find that >98% of the time, that generates a solution to the problem (though it might take multiple rounds of search terms or crawling down rabbit holes of recursive help pages before landing on the solution).
 
-But for that <2% of the time, the information is just not available. Now you may need to post a question on a forum (e.g., [RStudio Community](https://community.rstudio.com) or [Stack Overflow](https://stackoverflow.com/)) or even submit a bug report to a package's GitHub repository. Keep in mind, these options should be last resorts after you've scoured the internet (and asked me!). Code developers are busy people, and personally I want them developing amazing new tools rather than answering questions that have already been answered in documentation or help forums.
+But for that <2% of the time, the information is just not available. Now you may need to post a question on a forum (e.g., [Posit Community](https://forum.posit.co/) or [Stack Overflow](https://stackoverflow.com/)) or even submit a bug report to a package's GitHub repository. Keep in mind, these options should be last resorts after you've scoured the internet (and asked me!). Code developers are busy people, and personally I want them developing amazing new tools rather than answering questions that have already been answered in documentation or help forums.
 
 ### Posting to forums
 
@@ -51,7 +51,7 @@ Once you have your code ready, copy it to the clipboard, and run `reprex()` from
 
 ### Testing a reprex
 
-OK, let's try it! Let's assume that for our reprex, we just want to show the first three rows of the `penguins` data set using the `head()` function. After you've installed and loaded `{reprex}`, copy the following code and then type `reprex()` in the RStudio R console. 
+OK, let's try it! Let's assume that for our reprex, we just want to show the first three rows of the `penguins` data set using the `head()` function. After you've installed and loaded `{reprex}`, copy the following code to your clipboard and then type `reprex()` in the RStudio R console. 
 
 ```
 head(penguins, 3)
