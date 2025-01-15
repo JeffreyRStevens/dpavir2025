@@ -11,7 +11,7 @@ categories:
 description: "Welcome to Data Processing and Visualization in R"
 execute:
   freeze: true
-draft: true
+draft: false
 ---
 
 ## Welcome!
@@ -49,7 +49,7 @@ Also, you're not alone. I want this course to help build an R community on campu
 
 As soon as possible, please do the following:
 
-* View presentation on [Getting Started with R](https://canvas.unl.edu/courses/149637/files/folder/presentations?preview=14236447){target='_blank'} ([slides](../../slides/00_getting_started.qmd){target='_blank'})
+* View presentation on [Getting Started with R](https://unl.yuja.com/V/Video?v=12093557&node=52473713&a=201921442){target='_blank'} ([slides](../../slides/00_getting_started.qmd){target='_blank'})
 * Install R from [https://r-project.org](https://cloud.r-project.org/){target='_blank'}
 * Install RStudio from [Posit](https://posit.co/downloads/){target='_blank'}
 * Install `{tidyverse}` package

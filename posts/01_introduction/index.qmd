@@ -12,7 +12,7 @@ categories:
 description: "Introduction to Data Processing and Visualization in R"
 execute:
   freeze: true
-draft: true
+draft: false
 ---
 
 Our first lesson will introduce the course to you and get you started using R. If you've used R before, some of this may be review. But I bet everyone learns something new!
@@ -29,14 +29,14 @@ Our first lesson will introduce the course to you and get you started using R. I
 
 To prepare for the course, please do the following:
 
-* View presentation on [Getting Started with R](https://canvas.unl.edu/courses/149637/files/folder/presentations?preview=14236447){target='_blank'} (17 min; [slides](../../slides/00_getting_started.qmd){target='_blank'})
+* View presentation on [Getting Started with R](https://unl.yuja.com/V/Video?v=12093557&node=52473713&a=201921442){target='_blank'} ([slides](../../slides/00_getting_started.qmd){target='_blank'})
 * Install R from [https://r-project.org](https://cloud.r-project.org/){target='_blank'}
 * Install RStudio from [Posit](https://posit.co/downloads/){target='_blank'}
 * Install `{tidyverse}` package
 * If you have any trouble installing these, contact me.
 * Read the [syllabus](../../syllabus.html)
-* Complete [course introduction form](https://canvas.unl.edu/courses/149637/pages/course-resources){target='_blank'}
-* Read [SIDS 1](https://moderndive.netlify.app/1-getting-started.html){target='_blank'}, [Wickham 2020](https://tidyverse.tidyverse.org/articles/manifesto.html){target='_blank'}
+* Complete [course introduction form](https://canvas.unl.edu/courses/192678/pages/course-resources){target='_blank'}
+* Read [SIDS 1](https://moderndive.netlify.app/1-getting-started.html){target='_blank'}, [Wickham 2020](https://tidyverse.tidyverse.org/articles/manifesto.html){target='_blank'}, [R4DS2 1](https://r4ds.hadley.nz/intro.html){target='_blank'}
 
 ## Class meeting
 
@@ -50,7 +50,7 @@ To prepare for the course, please do the following:
 ## Homework after the class meeting
 ### Wrap up this lesson
 
-* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2025_01_introduction/){target='_blank'}
+* Complete the [exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/01_introduction/){target='_blank'}
 
 ### For next class meeting
 
