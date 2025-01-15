@@ -15,9 +15,7 @@ format:
     logo: "../logo/dpavir_hex.png"
 ---
 
-## Review: Mental model of R
-
-![](../images/mentalmodel_r.png){fig-align="center" width="150%"}
+## Review Mental model of R {background-image="../images/mentalmodel_r.png" background-size="95%"}
 
 
 ## Tour of RStudio

@@ -35,6 +35,8 @@ format:
 
 * After class: Exercises
 
+* Student and coding hours
+
 * Course website: [dpavir.org](http://dpavir.org)
 
 :::
@@ -120,7 +122,7 @@ format:
 * Links are in [light blue text]()
 
 
-## Mental model of R {background-image="../images/mentalmodel_r.png" background-size="90%"}
+## Mental model of R {background-image="../images/mentalmodel_r.png" background-size="95%"}
 
 
 ## Base R vs. tidyverse
