@@ -79,9 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -200,7 +200,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UlN0dWRpbw==">RStudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y291cnNlLWFkbWlu">course-admin <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bW9kdWxlJTIwMQ==">module 1 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="d2VlayUyMDE=">week 1 <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -229,7 +229,93 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-
+<div class="quarto-post image-right" data-index="0" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAxJTJDY291cnNlLWFkbWluJTJDUiUyQ1JTdHVkaW8=" data-listing-date-sort="1737525600000" data-listing-file-modified-sort="1736969632266" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="165">
+<div class="thumbnail">
+<p><a href="./posts/01_introduction/index.html" class="no-external"></a></p><a href="./posts/01_introduction/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/01_introduction/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/01_introduction/index.html" class="no-external">Course introduction</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/01_introduction/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwMQ=='); return false;">
+module 1
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDE='); return false;">
+week 1
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y291cnNlLWFkbWlu'); return false;">
+course-admin
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UlN0dWRpbw=='); return false;">
+RStudio
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/01_introduction/index.html" class="no-external">Introduction to Data Processing and Visualization in R</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/01_introduction/index.html" class="no-external">
+<div class="listing-date">
+Jan 22, 2025
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAxJTJDUiUyQ1JTdHVkaW8=" data-listing-date-sort="1737352800000" data-listing-file-modified-sort="1736969632266" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443">
+<div class="thumbnail">
+<p><a href="./posts/00_welcome/index.html" class="no-external"></a></p><a href="./posts/00_welcome/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/00_welcome/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/00_welcome/index.html" class="no-external">Getting started with R</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/00_welcome/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwMQ=='); return false;">
+module 1
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDE='); return false;">
+week 1
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UlN0dWRpbw=='); return false;">
+RStudio
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/00_welcome/index.html" class="no-external">Welcome to Data Processing and Visualization in R</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/00_welcome/index.html" class="no-external">
+<div class="listing-date">
+Jan 20, 2025
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
