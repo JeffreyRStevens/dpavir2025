@@ -37,12 +37,12 @@ Press the up arrow ⬆️ to place previous commands in the console. Navigate to
 
 ## Packages
 
-If you haven't already, install the `{palmerpenguins}` and `{tidyverse}` packages. Remember how to do that?
+Install the `{nycflights13}` package. Remember how to do that?
 ```{r}
 # >
 ```
 
-Now that we have installed the `{palmerpenguins}` package, we want to look at the `penguins` data set from that package. What do we need to do first to get access to things in the package?
+You should have already installed the `{palmerpenguins}` package. We want to look at the `penguins` data set from that package. What do we need to do first to get access to things in the package?
 ```{r}
 # >
 ```
