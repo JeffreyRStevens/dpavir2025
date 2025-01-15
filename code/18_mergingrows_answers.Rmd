@@ -1,0 +1,89 @@
+---
+title: "Merging rows"
+author: "Jeffrey R. Stevens"
+date: "2023-03-03"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the dog breed traits and dog breed popularity rankings data sets. 
+
+1. Load tidyverse, import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`, import [`dog_breed_ranks.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_ranks.csv) to `ranks`, and import [`dog_breed_ranks.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_popularity.csv) to `popularity`.
+
+```{r}
+library(tidyverse)
+traits <- read_csv(here::here("data/dog_breed_traits_clean.csv"), show_col_types = FALSE)
+ranks <- read_csv(here::here("data/dog_breed_ranks.csv"), show_col_types = FALSE)
+popularity <- read_csv(here::here("data/dog_breed_popularity.csv"), show_col_types = FALSE)
+```
+
+
+2. First, set a random seed by using `set.seed(2)`. Then create a subset of `ranks` that is a random selection of 10% of the rows, sort by breed name, and assign to `ranks2`.
+
+```{r}
+set.seed(2)
+ranks2 <- slice_sample(ranks, prop = 0.1) |> 
+  arrange(breed)
+```
+
+
+3. Use a filtering join to return the subset of `traits` that _matches_ the breeds in `ranks2` and assign this to `traits2`.
+
+```{r}
+traits2 <- traits |> 
+  semi_join(ranks2, by = "breed")
+```
+
+
+4. Use a filtering join to return the subset of `traits` that _excludes_ the breeds in `ranks2`.
+
+```{r}
+traits |> 
+  anti_join(ranks2, by = "breed")
+```
+
+
+5. Now we want to filter `traits` based on breeds in `popularity`. Notice that the breeds column in `popularity` is called _Breed_. This is problematic because the breed column in `traits` is called _breed_ and names are case-sensitive. Use `join_by()` to filter `traits` by breeds in `popularity`. How many rows are there?
+
+```{r}
+traits |> 
+  semi_join(popularity, by = join_by(breed == Breed))
+```
+
+
+6. Use `filter()` (not joins) to return the subset of `traits` that _excludes_ the breeds in `ranks2`.
+
+```{r}
+traits |> 
+  filter(!breed %in% ranks2$breed)
+```
+
+
+7. Append `traits2` to the bottom of itself.
+
+```{r}
+bind_rows(traits2, traits2)
+```
+
+
+8. Append `traits2` to the right of itself.
+
+```{r}
+bind_cols(traits2, traits2)
+```
+
+
+9. Append `traits2` to the right of `ranks2`. 
+
+```{r}
+bind_cols(ranks2, traits2)
+```
+
+
+10. Why is this not a good idea? What would be a better way to achieve this?
+
+```{r}
+left_join(ranks2, traits2)
+```
+

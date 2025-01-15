@@ -1,0 +1,75 @@
+---
+title: "Strings"
+author: "Jeffrey R. Stevens"
+date: "2023-03-08"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the dog breed traits data set. 
+
+1. Load tidyverse and import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`.
+
+```{r}
+library(tidyverse)
+traits <- read_csv(here::here("data/dog_breed_traits_clean.csv"), show_col_types = FALSE)
+```
+
+
+2. Return the first ten letters of the alphabet in upper case.
+
+```{r}
+LETTERS[1:10]
+```
+
+
+3. Create this character string and assign it to `mystring`: The elephant said "Hello" then 'Bye!'  Then view how it would be printed.
+
+```{r}
+(mystring <- "The elephant said \"Hello\" then 'Bye'!")
+writeLines(mystring)
+```
+
+
+4. Find how many characters are in `mystring`.
+
+```{r}
+str_length(mystring)
+```
+
+
+5. Create a vector of the first four characters of the _coat_length_ column from `traits`.
+
+```{r}
+str_sub(traits$coat_length, 1, 4)
+```
+
+
+6. Convert the _breed_ column of `traits` to sentence case.
+
+```{r}
+str_to_sentence(traits$breed)
+```
+
+
+7. Create series of sentences using _breed_ and _coat_length_ that states "[insert breed name] have a [insert coat length] coat" that uses the proper cases.
+
+```{r}
+str_glue("{traits$breed} have a {str_to_lower(traits$coat_length)} coat")
+```
+
+
+8. In the `mtcars` data set, extract the first two digits of the _mpg_ variable and the last three digits of the car names and combine them into a single string.
+```{r}
+str_glue("{str_sub(mtcars$mpg, 1, 2)}{str_sub(row.names(mtcars), -3, -1)}")
+
+```
+
+
+9. Print the `fruit` data set, then capitalize all first word letters in the data set, then capitalize all words in the data set.
+```{r}
+fruit
+str_to_sentence(fruit)
+str_to_title(fruit)
+```

@@ -1,0 +1,65 @@
+---
+title: "Plotting x-y data: time series"
+author: "Jeffrey R. Stevens"
+date: "2023-04-19"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, calculate the mean highway fuel efficiency for each number of cylinders and plot a line graph of fuel efficiency by cylinder number.
+
+```{r}
+library(tidyverse)
+mpg |> 
+  group_by(cyl) |> 
+  summarise(mean_hwy = mean(hwy)) |> 
+  ggplot(aes(x = cyl, y = mean_hwy)) +
+  geom_line()
+```
+
+
+2. Repeat the previous plot but also group by class and plot separately colored lines for different classes.
+
+```{r}
+mpg |> 
+  group_by(cyl, class) |> 
+  summarise(mean_hwy = mean(hwy)) |> 
+  ggplot(aes(x = cyl, y = mean_hwy, color = class)) +
+  geom_line()
+```
+
+
+3. Create a new column called `low_high` that codes high fuel efficiency greater than or equal to 25 as 1 and less than 25 as 0. Plot `low_high` as a function of displacement with a bubble chart (no legend) and include a logistic regression curve and band.
+
+```{r}
+mpg |> 
+  mutate(low_high = ifelse(hwy > 25, 1, 0)) |> 
+  ggplot(aes(x = displ, y = low_high)) +
+  geom_count(show.legend = FALSE) +
+  geom_smooth(method = "glm", formula = y ~ x, method.args = list(family = "binomial"))
+```
+
+
+4. Plot highway fuel efficiency for each class as points first, then add jitter, finding an appropriate amount of jitter to add.
+
+```{r}
+mpg |> 
+  ggplot(aes(x = class, y = hwy)) +
+  geom_point()
+mpg |> 
+  ggplot(aes(x = class, y = hwy)) +
+  geom_jitter(width = 0.1, height = 2)
+```
+
+
+5. Repeat plot #4 with a beeswarm plot.
+
+```{r}
+library(ggbeeswarm)
+mpg |> 
+  ggplot(aes(x = class, y = hwy)) +
+  geom_beeswarm()
+```
+

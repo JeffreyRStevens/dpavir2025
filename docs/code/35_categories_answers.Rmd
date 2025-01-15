@@ -1,0 +1,89 @@
+---
+title: "Plotting x-y data: categories"
+author: "Jeffrey R. Stevens"
+date: "2023-04-21"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, create a data object called `class_cyl` that subsets only the compact and midsize class cars with 4 or 6 cylinders and makes cylinder number a factor. You should end up with 84 observations.
+
+```{r}
+library(tidyverse)
+class_cyl <- mpg |> 
+  filter(class %in% c("compact", "midsize") &
+           cyl %in% c(4, 6)) |> 
+  mutate(cyl = as.factor(cyl))
+```
+
+
+2. Create an interaction plot from `class_cyl` with cylinder number on the x-axis, highway fuel efficiency on the y-axis, and separately colored lines for class. Spatially separate overlapping error bars.
+
+```{r}
+library(tidyverse)
+class_cyl |> 
+  ggplot(aes(x = cyl, y = hwy, color = class, group = class)) +
+  stat_summary(position = position_dodge(width = 0.1)) +
+  stat_summary(fun = mean, geom = "line", position = position_dodge(width = 0.1))
+```
+
+
+3. Repeat interaction plot #2, reversing the roles of class and cylinder number by making class the x-axis and cylinder number the lines. Do the two plots communicate information differently? Which do you prefer?
+
+```{r}
+mpg |> 
+  filter(class %in% c("compact", "midsize") &
+           cyl %in% c(4, 6)) |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = class, y = hwy, color = cyl, group = cyl)) +
+  stat_summary() +
+  stat_summary(fun = mean, geom = "line")
+```
+
+
+4. Take the `class_cyl` data and calculate the mean and standard error for each combination of class and cylinder number levels. Note that you can calculate standard error by dividing the standard deviation by the square root of the sample size. Next, create a column that subtracts SE from mean for the lower bound and add SE to mean for the upper bound. Assign these means, standard errors, and lower and upper bounds to `mean_mpg` (you should have 4 observations and 6 variables).
+
+```{r}
+mean_mpg <- class_cyl |> 
+  group_by(cyl, class) |> 
+  summarise(mean_hwy = mean(hwy), se_hwy = sd(hwy) / sqrt(n())) |> 
+  mutate(lower = mean_hwy - se_hwy, upper = mean_hwy + se_hwy)
+```
+
+
+5. Replicate plot #3 using the `mean_mpg` data set by plotting the means and bounds as error bars and include a line connecting across class. Is it identical to plot #3?
+
+```{r}
+mean_mpg |> 
+  ggplot(aes(x = class, y = mean_hwy, color = cyl)) +
+  geom_pointrange(aes(ymin = lower, ymax = upper)) +
+  geom_line(aes(group = cyl))
+```
+
+
+6. Using `class_cyl`, calculate the mean highway fuel efficiency for each manufacturer and cylinder size. Plot a slopegraph of dashed lines for each manufacturer connecting the mean fuel efficiency for 4 and 6 cylinders. Overlay the mean and standard deviation across manufacturers for both levels of cylinder number.
+
+```{r}
+class_cyl |> 
+  group_by(manufacturer, cyl) |> 
+  summarise(mean_hwy = mean(hwy)) |> 
+  ggplot(aes(x = cyl, y = mean_hwy)) +
+  geom_line(linetype = "dashed", aes(group = manufacturer)) +
+  stat_summary()
+
+```
+
+
+7. Using `mpg`, create a raincloud plot that includes a half density plot and half dot plot of highway fuel efficiency for each class. Adjust the bin width and dot size to produce a reasonable distribution of dots. Color the lines and shaded areas differently for each class, but remove the legend. Reduce the opacity of the shaded areas.
+
+```{r}
+library(gghalves)
+mpg |> 
+  ggplot(aes(x = class, y = hwy, fill = class, color = class)) +
+  geom_half_violin(alpha = 0.5) +
+  geom_half_dotplot(binwidth = 0.5, dotsize = 0.5) +
+  theme(legend.position = "none")
+```
+

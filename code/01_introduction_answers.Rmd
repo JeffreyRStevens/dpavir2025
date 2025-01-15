@@ -1,0 +1,66 @@
+---
+title: "Introduction"
+author: "Jeffrey R. Stevens"
+date: "2025-01-22"
+output: html_document
+execute:
+  freeze: auto
+---
+
+Let's go to R's console, which is the direct connection to the R engine. In the console, you give R a command, and it returns the output.
+
+## Numerical operations
+
+R can be a very fancy calculator. Let's do some calculations by entering numerical operations into the console. How many seconds are there in a year?
+```{r}
+60 * 60 * 24 * 365
+```
+
+On average, how many days are in each month of a leap year?
+```{r}
+ 366 / 12
+```
+
+## Text
+
+R also can store, manipulate, and return text. But working with text requires wrapping the characters in quotation marks (either \" or \'). Type this out and replace `<name>` with your name: `"My name is <name>!"`.
+```{r}
+"My name is Jeff!"
+```
+
+You can also apply functions to text. If we want to yell our names, let's convert the string of characters to upper case with the `toupper()` function. Put the previous text inside the parentheses of `toupper()`.
+```{r}
+toupper("My name is Jeff!")
+```
+
+Press the up arrow ⬆️ to place previous commands in the console. Navigate to the previous command and change the text a bit.
+
+## Packages
+
+Install the `{nycflights13}` package. Remember how to do that?
+```{r eval = FALSE}
+install.packages("nycflights13")
+```
+
+You should have already installed the `{palmerpenguins}` package. We want to look at the `penguins` data set from that package. What do we need to do first to get access to things in the package?
+```{r}
+library(palmerpenguins)
+```
+
+
+View the data set by typing `penguins` into the console.
+```{r}
+penguins
+```
+
+## Plot data 
+
+Excellent! Let's say we want to make a scatterplot of the bill length vs. the bill depth for all birds. We can use the `plot()` function for this by passing the y-variable name, a tilde `~`, the x-variable name, and then the name of the dataset. Something like `plot(y ~ x, data = dataset)`. Replace these variables with the ones for bill length and depth in the `penguins` dataset.
+
+```{r}
+plot(bill_length_mm ~ bill_depth_mm, data = penguins)
+```
+
+Hey, hey! We have a plot! 📊 Sweet! We've viewed and plotted data. Well done! 🎉 💪
+
+

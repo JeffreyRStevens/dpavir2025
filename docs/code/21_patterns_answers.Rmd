@@ -1,0 +1,72 @@
+---
+title: "Matching patterns"
+author: "Jeffrey R. Stevens"
+date: "2023-03-10"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the dog breed traits data set. 
+
+1. Load tidyverse, import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`, and extract the _breed_ column into an object called `breeds` that randomly shuffles the breeds using 12 as a seed for randomization.
+
+```{r}
+library(tidyverse)
+traits <- read_csv(here::here("data/dog_breed_traits_clean.csv"), show_col_types = FALSE)
+set.seed(12)
+breeds <- sample(traits$breed)
+```
+
+
+2. View the breeds ending with the letter "s".
+
+```{r}
+str_view_all(breeds, "s$")
+```
+
+
+3. Create a logical vector showing whether breeds have at least two words in their names.
+
+```{r}
+str_detect(breeds, " ")
+```
+
+
+4. Extract the hounds (but don't release them). That is, return a vector of all breeds that include the string "hound" or "Hound".
+
+```{r}
+str_subset(breeds, "hound|Hound")
+```
+
+
+5. Extract the breeds that include the following pattern "\<wildcard\>ep".
+
+```{r}
+str_subset(breeds, ".ep")
+```
+
+
+6. OK, maybe English Buttdragger isn't the proper AKC name for this breed. Replace English Buttdragger with English Chaser.
+
+```{r}
+str_replace(breeds, "English Buttdragger", "English Chaser")
+```
+
+
+7. Replace all instances of "English" with "British" and then return the breeds that include "English" or "British" in them (to check our work).
+
+```{r}
+str_replace(breeds, "English", "British") |> 
+  str_subset("English|British")
+```
+
+
+8. Extract the Spaniels and then separate the breed names into different strings for each word and create a matrix out of it.
+
+```{r}
+breeds |> 
+  str_subset("spaniel|Spaniel") |> 
+  str_split("\\s", simplify = TRUE)
+```
+

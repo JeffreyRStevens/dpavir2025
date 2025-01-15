@@ -1,0 +1,81 @@
+---
+title: "Data types"
+author: "Jeffrey R. Stevens"
+date: "2023-02-03"
+output: html_document
+execute:
+  freeze: auto
+---
+
+## Creating objects
+
+### First, let's create some objects: 
+`aa <- 3; bb <- 3L; cc <- "3"; dd <- "TRUE"; ee <- TRUE; ff <- "NA"; gg <- NA`
+```{r}
+aa <- 3
+bb <- 3L
+cc <- "3"
+dd <- "TRUE"
+ee <- TRUE
+ff <- "NA"
+gg <- NA
+```
+
+## Checking data types
+
+### Guess what data type each object is then check it.
+```{r}
+typeof(aa)
+typeof(bb)
+typeof(cc)
+typeof(dd)
+typeof(ee)
+typeof(ff)
+typeof(gg)
+```
+
+### How do we test if `aa` is an integer?
+```{r}
+is.integer(aa)
+```
+
+### What will `is.logical(dd)` return?
+```{r}
+is.logical(dd)
+```
+
+
+### How do we test if `ff` and `gg` are `NA`?
+```{r}
+is.na(ff)
+is.na(gg)
+```
+
+## Checking if objects are the same
+
+### Are `aa` and `bb` the same? How do we test this?
+```{r}
+aa
+bb
+aa == bb
+```
+
+### What about `aa` and `cc`?
+```{r}
+aa
+cc
+aa == cc
+```
+
+### A safer comparison tool is `identical()`. Test if `aa` and `bb` are identical. Then try `aa` and `cc`.
+```{r}
+identical(aa, bb)
+identical(aa, cc)
+```
+
+### Now see if `aa` is identical to `3` and if `bb` is identical to `3L`.
+```{r}
+identical(aa, 3)
+identical(bb, 3L)
+```
+

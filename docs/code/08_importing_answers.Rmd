@@ -1,0 +1,33 @@
+---
+title: "Importing data"
+author: "Jeffrey R. Stevens"
+date: "2023-02-08"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Download <https://jeffreyrstevens.quarto.pub/dpavir/data/newdata.csv> and save it in your `data/` directory.
+
+1. Import `newdata.csv` and name it `newdata` using `read.csv()`.
+```{r}
+newdata <- read.csv(here::here("data/newdata.csv"))
+```
+
+3. Import <https://jeffreyrstevens.quarto.pub/dpavir/data/newdata2.csv> directly from the URL using `readr::read_csv()`.
+```{r}
+library(readr)
+newdata2 <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/newdata2.csv")
+```
+
+4. Repeat the previous import of `newdata2.csv`, but add the arguments `col_select = c("Breed", "links")` and `show_col_types = FALSE` and name it `newdata3`.
+```{r}
+newdata3 <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/newdata2.csv", col_select = c("Breed", "links"), show_col_types = FALSE)
+```
+
+5. Export the `newdata3` data as a CSV file to your `data/` directory.
+```{r}
+write_csv(newdata3, here::here("data/newdata3.csv"))
+```
+

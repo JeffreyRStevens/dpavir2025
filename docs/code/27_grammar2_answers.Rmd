@@ -1,0 +1,69 @@
+---
+title: "Grammar of graphics II"
+author: "Jeffrey R. Stevens"
+date: "2023-04-03"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight.
+
+```{r}
+library(tidyverse)
+mtcars |> 
+  ggplot(aes(x = wt, y = mpg)) +
+  geom_point()
+```
+
+2. Repeat the scatterplot, but make the points _violet_ open squares of size 5.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = wt, y = mpg)) +
+  geom_point(color = "violet", shape = 0, size = 5)
+```
+
+3. Repeat the scatterplot but with separate colors for cylinder levels.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point()
+```
+
+4. Why does the legend look like that? Fix it so there are separate colors for cylinder levels.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = wt, y = mpg, color = as.factor(cyl))) +
+  geom_point()
+```
+
+5. Overlay separate regression lines for each cylinder level.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = wt, y = mpg, color = as.factor(cyl))) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+6. Overlay a single _firebrick_ regression line over the points with a _firebrick1_-colored confidence band.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = wt, y = mpg)) +
+  geom_point(aes(color = as.factor(cyl))) +
+  geom_smooth(method = "lm", color = "firebrick", fill = "firebrick1")
+```
+
+7. Plot the mean and standard error of the mean of fuel efficiency for each level of cylinder and color them _sienna_.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = as.factor(cyl), y = mpg)) +
+  stat_summary(color = "sienna")
+```
+

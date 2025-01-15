@@ -1,0 +1,87 @@
+---
+title: "Design and themes"
+author: "Jeffrey R. Stevens"
+date: "2023-04-05"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight with color based on the number of cylinders.
+
+```{r}
+library(tidyverse)
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point()
+```
+
+2. Repeat the scatterplot but with classic, bw, and dark themes.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  theme_classic()
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  theme_bw()
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  theme_dark()
+```
+
+3. Repeat the scatterplot from #1 but with no minor grid lines and no legend.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  theme(panel.grid.minor = element_blank(),
+        legend.position = "none")
+```
+
+4. Repeat the scatterplot from #1 but no minor grid lines for the x-axis (keep them for the y-axis) and move the legend inside the plot area and remove the legend title.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  theme(panel.grid.minor.x = element_blank(),
+        legend.position = c(0.8, 0.8),
+        legend.title = element_blank())
+```
+
+5. Repeat the scatterplot from #1 but make the major y-axis grid lines black dashed lines and change the text font to 12 point Times font.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  theme(panel.grid.major.y = element_line(color = "black", linetype = 2),
+        text = element_text(family = "Times", size = 12))
+```
+
+6. Create a version of scatterplot #1 that minimizes the data-ink ratio by reducing non-data-ink.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  theme_minimal() +
+  theme(panel.grid = element_blank(),
+        legend.title = element_blank(),
+        legend.position = c(0.8, 0.8))
+```
+

@@ -1,0 +1,73 @@
+---
+title: "Color"
+author: "Jeffrey R. Stevens"
+date: "2023-04-07"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight with color based on the number of cylinders.
+
+```{r}
+library(tidyverse)
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point()
+```
+
+2. Repeat the scatterplot but use `scale_color_brewer()` to set the palette to _Set1_.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  scale_color_brewer(palette = "Set1")
+```
+
+3. Why did you use `scale_color_brewer()` not `scale_fill_brewer()` or `scale_color_distiller()`?
+
+
+4. Repeat scatterplot #1 but use `scale_color_manual()` to set the three colors to _red_, _green_, and _blue_.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  scale_color_manual(values = c("red", "green", "blue"))
+```
+
+5. Find three colors (either names or hex codes), and repeat scatterplot #4 with your own colors.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point() +
+  scale_color_manual(values = c("coral2", "palegreen4", "slateblue4"))
+```
+
+
+6. Using the `mtcars` data, create a scatterplot of the fuel efficiency as a function of weight with color based on horsepower using the _BuPu_ palette and reverse the direction of the gradient.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = wt, y = mpg, color = hp)) +
+  geom_point() +
+  scale_color_distiller(palette = "BuPu", direction = 2)
+```
+
+7. Create a new column in `mtcars` that centers and scales displacement with the `scale()` function. Create a scatterplot of fuel efficiency as a function of weight with color based on the rescaled displacement, using a diverging scale of your choice.
+
+```{r}
+mtcars |> 
+  mutate(disp2 = scale(disp)) |> 
+  ggplot(aes(x = wt, y = mpg, color = disp2)) +
+  geom_point() +
+  scale_color_distiller(palette = "RdBu")
+```
+

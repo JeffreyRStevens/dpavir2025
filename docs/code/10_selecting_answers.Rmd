@@ -1,0 +1,57 @@
+---
+title: "Selecting columns"
+author: "Jeffrey R. Stevens"
+date: "2023-02-13"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the `iris` data set build into base R.
+
+1. View `iris` to see what it looks like.
+```{r}
+head(iris)
+```
+
+2. Return a data frame with only the sepal data using _inclusion_.
+```{r}
+library(dplyr)
+select(iris, Sepal.Length, Sepal.Width)
+```
+
+3. Return a data frame with only the sepal data using a _helper function_.
+```{r}
+select(iris, contains("Sepal"))
+```
+
+4. Return a data frame with the sepal and petal data using a _helper function_.
+```{r}
+select(iris, Sepal.Length:Petal.Width)
+```
+
+5. Return a data frame with the sepal and petal data using _exclusion_.
+```{r}
+select(iris, -Species)
+```
+
+6. Move `Species` to be the first column using `select()` and a helper function.
+```{r}
+select(iris, Species, everything())
+```
+
+7. Move `Species` to be the first column using `relocate()`.
+```{r}
+relocate(iris, Species, .before = 1)
+```
+
+8. Rename `Species` to `species` using `select()`.
+```{r}
+select(iris, everything(), species = Species)
+```
+
+9. Rename `Species` to `species` using `rename()`.
+```{r}
+rename(iris, species = Species)
+```
+

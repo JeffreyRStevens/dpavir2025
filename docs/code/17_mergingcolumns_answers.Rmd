@@ -1,0 +1,63 @@
+---
+title: "Merging columns"
+author: "Jeffrey R. Stevens"
+date: "2023-03-01"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the dog breed traits data set along with the data on breed popularity rankings. 
+
+1. Load tidyverse, download and import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`, and import [`dog_breed_ranks.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_ranks.csv) to `ranks`. **Make sure to download both files from the website, as they have changed or are new.**
+
+```{r}
+library(tidyverse)
+traits <- read_csv(here::here("data/dog_breed_traits_clean.csv"), show_col_types = FALSE)
+ranks <- read_csv(here::here("data/dog_breed_ranks.csv"), show_col_types = FALSE)
+```
+
+2. Which breeds differ between `traits` and `ranks`?
+
+```{r}
+traits$breed[!traits$breed %in% ranks$breed]
+ranks$breed[!ranks$breed %in% traits$breed]
+```
+
+3. Merge `traits` and `ranks` (in that order) to produce a data frame that includes breeds shared by both data sets. How many rows are there?
+
+```{r}
+traits |> 
+  inner_join(ranks, by = "breed")
+```
+
+
+4. Merge `traits` and `ranks` (in that order) to produce a data frame that includes all breeds included in either data set. How many rows are there?
+
+```{r}
+traits |> 
+  full_join(ranks, by = "breed")
+```
+
+5. Merge `traits` and `ranks` (in that order) to produce a data frame that includes only breeds included in `traits`. How many rows are there?
+
+```{r}
+traits |> 
+  left_join(ranks, by = "breed")
+```
+
+5. Merge `traits` and `ranks` (in that order) to produce a data frame that includes only breeds included in `ranks`. How many rows are there?
+
+```{r}
+traits |> 
+  right_join(ranks, by = "breed")
+```
+
+6. Make `table4a` and `table4b` tidy then join them to replicate `table1`.
+
+```{r}
+table4a_tidy <- pivot_longer(table4a, -country, names_to = "year", values_to = "cases")
+table4b_tidy <- pivot_longer(table4b, -country, names_to = "year", values_to = "population")
+left_join(table4a_tidy, table4b_tidy)
+```
+

@@ -1,0 +1,53 @@
+---
+title: "Pivoting data"
+author: "Jeffrey R. Stevens"
+date: "2023-02-24"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use a new clean version of the dog breed traits data set. 
+
+1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.
+
+```{r}
+library(tidyverse)
+traits <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv")
+```
+
+2. Create `traits2` where we delete the coat columns, so we only have breed and ratings data.
+
+```{r}
+traits2 <- traits |> 
+  select(-contains("coat"))
+```
+
+3. Is `traits2` tidy?
+
+4. Is `traits2` in wide or long format?
+
+5. Reshape `traits2` so that all of the ratings scores are in a single column called _rating_ with a column labeling what kind of rating it is called _scale_. Assign this to `traits3`.
+
+```{r}
+traits3 <- traits2 |> 
+  pivot_longer(affectionate:grooming, names_to = "scale", values_to = "rating")
+```
+
+6. How would we check if `traits3` has the expected number of rows?
+
+7. Create `traits4` by removing the rows with affectionate, children, and other_dogs as values of _scale_.
+
+```{r}
+traits4 <- traits3 |> 
+  filter(!scale %in% c("affectionate", "children", "other_dogs"))
+```
+
+8. Spread out the data into wide format with separate columns for the shedding and grooming data, then create a new column _diff_ that subtracts grooming from shedding ratings.
+
+```{r}
+traits4 |>
+  pivot_wider(id_cols = breed, names_from = scale, values_from = rating) |> 
+  mutate(diff = shedding - grooming)
+```
+

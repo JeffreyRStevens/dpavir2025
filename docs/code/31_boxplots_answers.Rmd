@@ -1,0 +1,72 @@
+---
+title: "Plotting distributions: boxplots"
+author: "Francine Goh"
+date: "2023-04-12"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `penguins` data, create a boxplot that shows penguin flipper length by island without outliers.
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+penguins %>%
+  ggplot(aes(x = island, y = flipper_length_mm)) +
+  geom_boxplot(outlier.shape = NA)
+```
+
+2. Add the means and standard error for each boxplot.
+
+```{r}
+penguins %>%
+  ggplot(aes(x = island, y = flipper_length_mm)) +
+  geom_boxplot(outlier.shape = NA) +
+  stat_summary()
+```
+
+3. Switch from standard errors to confidence intervals, increase the size of the point, and color the box shading _chocolate_.
+
+```{r}
+penguins %>%
+  ggplot(aes(x = island, y = flipper_length_mm)) +
+  geom_boxplot(outlier.shape = NA, fill = "chocolate") +
+  stat_summary(fun.data = mean_cl_normal, size = 0.75)
+```
+
+4. Fill the boxplots with color separately for each island and remove the legend.
+
+```{r}
+penguins %>%
+  ggplot(aes(x = island, y = flipper_length_mm, fill = island)) +
+  geom_boxplot(outlier.shape = NA) +
+  stat_summary(fun.data = mean_cl_normal, size = 0.75) +
+  theme(legend.position = "none")
+```
+
+
+5. Create a boxplot to show how flipper length differs for each species by island.
+
+```{r}
+penguins %>%
+  ggplot(aes(x = island, y = flipper_length_mm, fill = island)) +
+  geom_boxplot(outlier.shape = NA) +
+  stat_summary(fun.data = mean_cl_normal, size = 0.75) +
+  facet_wrap(vars(species)) +
+  theme(legend.position = "none")
+```
+
+
+6. Recreate the boxplot #5 as a violin plot with a white background.
+
+```{r}
+penguins %>%
+  ggplot(aes(x = island, y = flipper_length_mm, fill = island)) +
+  geom_violin(outlier.shape = NA) +
+  stat_summary(fun.data = mean_cl_normal, size = 0.75) +
+  facet_wrap(vars(species)) +
+  theme(legend.position = "none",
+        panel.background = element_rect(fill = "white"))
+```

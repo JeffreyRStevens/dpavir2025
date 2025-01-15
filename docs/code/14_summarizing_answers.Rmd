@@ -1,0 +1,74 @@
+---
+title: "Summarizing rows"
+author: "Jeffrey R. Stevens"
+date: "2023-02-22"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use a new clean version of the dog breed traits data set. 
+
+1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.
+
+```{r}
+library(tidyverse)
+traits <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv")
+```
+
+2. What is the overall mean rating for _affectionate_?
+
+```{r}
+summarise(traits, mean(affectionate))
+```
+
+3. What is the overall mean rating for all rating columns ignoring `NA`s? 
+
+```{r}
+summarise(traits, across(affectionate:grooming, ~ mean(.x, na.rm = TRUE)))
+```
+
+4. How many breeds are there in each coat type?
+
+```{r}
+count(traits, coat_type)
+```
+
+5. What is the median grooming rating for each coat type?
+
+```{r}
+traits |> 
+  group_by(coat_type) |> 
+  summarise(median(grooming, na.rm = TRUE))
+```
+
+6. What is the lowest rating per coat length for each of the rating columns, ignoring `NA`s?
+
+```{r}
+traits |> 
+  group_by(coat_length) |> 
+  summarise(across(affectionate:grooming, ~ min(.x, na.rm = TRUE)))
+```
+
+7. What are the sample size, mean, and standard deviation of shedding ratings for medium coat length dogs per coat type sorted from largest to smallest sample size and only including coat types with 5 or more samples?
+
+```{r}
+traits |> 
+  filter(coat_length == "Medium") |> 
+  group_by(coat_type) |> 
+  summarise(n = n(), shedding_mean = mean(shedding), shedding_sd = sd(shedding)) |> 
+  arrange(desc(n)) |> 
+  filter(n > 4)
+```
+
+8. Calculate each breed's mean rating across all ratings columns and return a data frame with the highest rating for each coat type. Don't forget to undo `rowwise()` with `ungroup()` before further calculations.
+
+```{r}
+traits |>
+  rowwise() |> 
+  mutate(mean_rating = mean(c(affectionate, children, other_dogs, shedding, grooming), na.rm = TRUE)) |> 
+  ungroup() |> 
+  group_by(coat_type) |> 
+  slice_max(mean_rating)
+```
+

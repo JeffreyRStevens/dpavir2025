@@ -1,0 +1,76 @@
+---
+title: "Tables"
+author: "Jeffrey R. Stevens"
+date: "2023-05-03"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, create a data frame called `my_mpg` that capitalizes the manufacturer.
+
+```{r}
+library(tidyverse)
+my_mpg <- mpg |> 
+  mutate(manufacturer = str_to_sentence(manufacturer))
+```
+
+
+2. Calculate mean highway and city fuel efficiency for each manufacturer and return a table with the caption "Highway and city fuel efficiency" and column names "Manufacturer", "Highway", and "City".
+
+```{r}
+library(knitr)
+my_mpg |> 
+  summarise(mean_hwy = mean(hwy), mean_cty = mean(cty), .by = c(manufacturer)) |> 
+  kable(digits = 1, 
+        col.names = c("Manufacturer", "Highway", "City"),
+        caption = "Highway and city fuel efficiency")
+```
+
+
+3. Repeat the table from #2 but add a header that spans Highway and City that says "Fuel efficiency". Reminder, you'll need to load `{kableExtra}` to do this.
+
+```{r message = FALSE}
+library(kableExtra)
+my_mpg |> 
+  summarise(mean_hwy = mean(hwy), mean_cty = mean(cty), .by = c(manufacturer)) |> 
+  kable(digits = 1, 
+        col.names = c("Manufacturer", "Highway", "City"),
+        caption = "Highway and city fuel efficiency") |> 
+  add_header_above(c(" " = 1, "Fuel efficiency" = 2))
+```
+
+
+4. Calculate mean highway and city fuel efficiency for each manufacturer and year. Order the data frame by year, then remove the year column and add labels for each year that spans the rows for each year. Also, add a footnote that says "Source: mpg data set.".
+
+```{r}
+my_mpg |> 
+  summarise(mean_hwy = mean(hwy), mean_cty = mean(cty), .by = c(year, manufacturer)) |> 
+  arrange(year) |> 
+  select(-year) |> 
+  kable(digits = 1, 
+        col.names = c("Manufacturer", "Highway", "City"),
+        caption = "Highway and city fuel efficiency") |> 
+  pack_rows("1999", 1, 15) |> 
+  pack_rows("2008", 16, 30) |> 
+  footnote(general = "Source: mpg data set.")
+```
+
+
+5. Conduct a linear regression called `my_model` of the effects of displacement, cylinder, and year on highway fuel efficiency: `lm(hwy ~ displ + cyl + year, my_mpg)`. Apply the `summary()` function to the model object, then return the `coefficients` table from the summary.
+
+```{r}
+my_model <- lm(hwy ~ displ + cyl + year, my_mpg)
+my_model_summary <- summary(my_model)$coefficients
+kable(my_model_summary)
+```
+
+
+6. Extract the `table` after applying `{papaja}`'s `apa_print()` to `my_model`, then pass this to `apa_table()`.
+
+```{r message = FALSE}
+library(papaja)
+apa_table(apa_print(my_model)$table)
+```
+

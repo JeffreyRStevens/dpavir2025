@@ -1,0 +1,68 @@
+---
+title: "Plotting distributions: histograms"
+author: "Jeffrey R. Stevens"
+date: "2023-04-10"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mtcars` data, create a histogram of the fuel efficiency values.
+
+```{r}
+library(tidyverse)
+mtcars |> 
+  ggplot(aes(x = mpg)) +
+  geom_histogram()
+```
+
+2. Not a great histogram. Mess with the number of bins until you get a nice histogram.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = mpg)) +
+  geom_histogram(bins = 8)
+```
+
+3. Now change the bin width to generate the same plot as #2.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = mpg)) +
+  geom_histogram(binwidth = 3.35)
+```
+
+4. Using the same binwidth from #3, plot a histogram with _lightseagreen_ lines and _aquamarine3_ shaded areas. Then overlay a density plot with a _aquamarine4_ line with width 2.
+
+```{r}
+mtcars |> 
+  ggplot(aes(x = mpg)) +
+  geom_histogram(aes(y = after_stat(density)), binwidth = 3.35, fill = "aquamarine3", color = "lightseagreen") +
+  geom_density(bw = 3.35, color = "aquamarine4", linewidth = 2)
+```
+
+5. What is the difference between a frequency polygon and a density plot?
+
+
+6. Make a density plot with bandwidth of 3 and separate line colors for different cylinder levels.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = mpg, color = cyl)) +
+  geom_density(bw = 3)
+```
+
+
+7. Repeat #6 but also include separate colors for the shaded areas with a transparency of 0.5. Use viridis colors for both lines and shaded areas, and reverse the direction of the colors where 4 is yellow, 6 is greenish, and 8 is purplish.
+
+```{r}
+mtcars |> 
+  mutate(cyl = as.factor(cyl)) |> 
+  ggplot(aes(x = mpg, color = cyl, fill = cyl)) +
+  geom_density(bw = 3, alpha = 0.5) +
+  scale_color_viridis_d(direction = -1) +
+  scale_fill_viridis_d(direction = -1)
+```
+

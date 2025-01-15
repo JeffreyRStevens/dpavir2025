@@ -1,6 +1,9 @@
 [
   {
     "listing": "/meetings.html",
-    "items": []
+    "items": [
+      "/posts/01_introduction/index.html",
+      "/posts/00_welcome/index.html"
+    ]
   }
 ]

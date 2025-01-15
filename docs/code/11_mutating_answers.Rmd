@@ -1,0 +1,75 @@
+---
+title: "Mutating columns"
+author: "Jeffrey R. Stevens"
+date: "2023-02-15"
+output: html_document
+execute:
+  freeze: auto
+---
+
+For these exercises, we'll use the dog breed traits data set, so import that from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv> (if you don't already have it) and assign it to `traits`.
+```{r}
+library(tidyverse)
+traits <- read_csv(here::here("data/dog_breed_traits.csv"))
+```
+
+
+1. View `traits` to see what it looks like.
+```{r}
+head(traits)
+```
+
+2. Reassign `traits` with only the columns _Breed_ through _Coat Length_.
+```{r}
+traits <- select(traits, Breed:`Coat Length`)
+```
+
+3. Reassign `traits` removing the _Drooling Level_ column. That's gross.
+```{r}
+traits <- select(traits, -`Drooling Level`)
+```
+
+4. What terrible column names! Reassign `traits` and change the column names to `"breed", "affectionate", "children", "other_dogs", "shedding", "grooming", "coat_type", "coat_length"`. Note, use the `colnames()` function rather than `select()` or `rename()` since you already have the full vector of names.
+```{r}
+colnames(traits) <- c("breed", "affectionate", "children", "other_dogs", "shedding", "grooming", "coat_type", "coat_length")
+```
+
+5. The ratings are supposed to run from 0 to 4 rather than 1 to 5. Change the _affectionate_ column by subtracting 1 from the original numbers to rescale the values. Don't reassign `traits`.
+```{r}
+mutate(traits, affectionate = affectionate - 1)
+```
+
+6. Actually, all of the ratings need to be rescaled. Subtract 1 from all of the ratings columns by using `across()`.
+```{r}
+mutate(traits, across(affectionate:grooming, ~ .x - 1))
+```
+
+7. Create a new column called _coat_ that combines the _coat_type_ and _coat_length_ columns by pasting the values of those two columns separated by `-`.
+```{r}
+mutate(traits, coat = paste(coat_type, coat_length, sep = "-"))
+```
+
+8. Create a new column called _shed_ that dichotomizes shedding such that values of 3 and above are "A lot" and values below 3 are "Not much". Do you need to account for missing data?
+```{r}
+mutate(traits, shed = ifelse(shedding > 2, "A lot", "Not much"))
+```
+
+9. Use `rowwise()` to calculate the mean rating for the _children_ and _other_dogs_ columns in a column called `mean_rating`.
+```{r}
+rowwise(traits) %>%
+  mutate(mean_rating = mean(children, other_dogs))
+```
+
+10. Create a column called _coat_type2_ that categorizes the _coat_type_ values in the following way and puts it after _coat_type_:
+* "very petable" = "Smooth", "Silky", "Wavy"
+* "petable" = "Double", "Curly"
+* "not petable" = "Wiry", "Hairless", "Rough", "Corded"
+```{r}
+mutate(traits, coat_type2 = case_when(
+  coat_type %in% c("Smooth", "Silky", "Wavy") ~ "very petable",
+  coat_type %in% c("Wiry", "Hairless", "Rough", "Corded") ~ "not petable",
+  coat_type %in% c("Double", "Curly") ~ "petable"),
+  .after = coat_type
+)
+```
+

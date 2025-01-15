@@ -1,0 +1,70 @@
+---
+title: "Annotating plots"
+author: "Jeffrey R. Stevens"
+date: "2023-04-26"
+output: html_document
+execute:
+  freeze: auto
+---
+
+
+1. Using the `mpg` data, create a scatterplot of highway and city fuel efficiencies. Create a title, subtitle, caption, and axes labels.
+
+```{r}
+library(tidyverse)
+mpg |> 
+  ggplot(aes(x = cty, y = hwy)) +
+  geom_point() +
+  labs(title = "Fuel efficiency", subtitle = "Highway vs. city miles per gallon", caption = "Source: mpg data", x = "City miles per gallon", y = "Highway miles per gallon")
+```
+
+
+2. Repeat #1 adding a linear regression line. Use `cor()` to calculate the correlation coefficient for the correlation. Add it to the plot somewhere labeled and rounded to two decimals.
+
+```{r}
+mpg_corr <- cor(mpg$hwy, mpg$cty)
+mpg |> 
+  ggplot(aes(x = cty, y = hwy)) +
+  geom_smooth(method = "lm") +
+  geom_point() +
+  labs(title = "Fuel efficiency", subtitle = "Highway vs. city miles per gallon", caption = "Source: mpg data", x = "City miles per gallon", y = "Highway miles per gallon") +
+  annotate(geom = "text", label = paste0("r = ", round(mpg_corr, 2)), x = 15, y = 40)
+```
+
+
+3. Repeat #1. Find the manufacturer and model of the data point with the highest city fuel efficiency. Label this point by drawing a line from the point to the text label and include the manufacturer and model (broken across two lines).
+
+```{r}
+mpg |> 
+  ggplot(aes(x = cty, y = hwy)) +
+  geom_point() +
+  labs(title = "Fuel efficiency", subtitle = "Highway vs. city miles per gallon", caption = "Source: mpg data", x = "City miles per gallon", y = "Highway miles per gallon") +
+  annotate(geom = "text", label = "Volkswagon\nBeetle", x = 33, y = 40) +
+  annotate(geom = "segment", x = 33, xend = 34.8, y = 41, yend = 43.5)
+```
+
+
+4. Repeat #1 drawing _grey_ horizontal and vertical lines at 20 mpg for both axes underneath the data points. Add a _lightpink_ rectangle under the points filling the upper right quandrant (>20 for both axes).
+
+```{r}
+mpg |> 
+  ggplot(aes(x = cty, y = hwy)) +
+  geom_hline(yintercept = 20, color = "grey60") +
+  geom_vline(xintercept = 20, color = "grey60") +
+  annotate(geom = "rect", xmin = 20, xmax = 50, ymin = 20, ymax = 50, fill = "lightpink", alpha = 0.25) +
+  geom_point() +
+  labs(title = "Fuel efficiency", subtitle = "Highway vs. city miles per gallon", caption = "Source: mpg data", x = "City miles per gallon", y = "Highway miles per gallon") +
+  coord_cartesian(xlim = c(9, 35), ylim = c(10, 45))
+```
+
+
+5. Create boxplots of fuel efficiency by class but order the class levels by mean highway fuel efficiency. At y = 10, add the sample size for each box (e.g., N=5, N=47, etc.).
+
+```{r}
+mpg |> 
+  ggplot(aes(x = fct_reorder(class, hwy), y = hwy)) +
+  geom_boxplot() +
+  geom_text(stat = "count", aes(label = paste0("N=", after_stat(count))), y = 10) +
+  ylim(10, 44)
+```
+

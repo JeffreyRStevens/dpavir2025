@@ -68,8 +68,8 @@ rsconnect/
 *.aux
 *.log
 
-*_answers.Rmd
-*_answers.pdf
+# *_answers.Rmd
+# *_answers.pdf
 
 notes_for_next_year.md
 R/utils.R
