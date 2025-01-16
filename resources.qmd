@@ -307,7 +307,7 @@ Flashcards can be a useful way to help learning functions and their descriptions
 
 <details>
 
-<summary>R4DS flashcards</summary>
+<summary>R4DS2 flashcards</summary>
 
 -   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e00.html" target="_blank">Ch. 0 Introduction</a>
 -   <a href = "https://jeffreyrstevens.github.io/flashr_decks/html/r4ds-2e01.html" target="_blank">Ch. 1 Data visualization</a>

@@ -36,11 +36,11 @@ To prepare for the course, please do the following:
 * If you have any trouble installing these, contact me.
 * Read the [syllabus](../../syllabus.html)
 * Complete [course introduction form](https://canvas.unl.edu/courses/192678/pages/course-resources){target='_blank'}
-* Read [SIDS 1](https://moderndive.netlify.app/1-getting-started.html){target='_blank'}, [Wickham 2020](https://tidyverse.tidyverse.org/articles/manifesto.html){target='_blank'}, [R4DS2 1](https://r4ds.hadley.nz/intro.html){target='_blank'}
+* Read [SIDS 1](https://moderndive.netlify.app/1-getting-started.html){target='_blank'}, [Wickham 2020](https://tidyverse.tidyverse.org/articles/manifesto.html){target='_blank'}, [R4DS2 Intro](https://r4ds.hadley.nz/intro.html){target='_blank'}
 
 ## Class meeting
 
-[[Slides](../../slides/01_introduction.qmd){target="_blank"}] [[Code](../../code/01_introduction.html)]
+[[Slides](../../slides/01_introduction.qmd){target="_blank"}] [[Code](../../code/01_introduction.html){target="_blank"}]
 
 * Review syllabus
 * Mental model of R
