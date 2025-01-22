@@ -82,11 +82,16 @@ _Tools > Keyboard Shortcuts Help_ or <kbd>Alt/Opt</kbd>+<kbd>Shift</kbd>+<kbd>K<
 
 * Restart R often
 
+## What about Positron?
+
+![](../images/positron-logo.png){.absolute width="10%" top="-5%" left="60%"}
+
+![](../images/positron_ide.png){width="100%"}
+
+
 
 ## Let's explore!
 
 [Working in RStudio](../code/02_rstudio.html)
 
-## Mental model of RStudio
 
-![](../images/mentalmodel_rstudio.png){fig-align="center"}

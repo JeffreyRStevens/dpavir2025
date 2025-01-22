@@ -14,6 +14,6 @@ Log into GlobalProtect VPN
 
 ssh jstevens5@its-ianr-shiny.unl.edu
 
-scp -r ~/projects/dpavir_2025/exercises/ jstevens5@its-ianr-shiny.unl.edu:ShinyApps/dpavir2025/
+scp -r ~/github/dpavir2025/exercises/ jstevens5@its-ianr-shiny.unl.edu:ShinyApps/dpavir2025/
 
 https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/
