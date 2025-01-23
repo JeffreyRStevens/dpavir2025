@@ -2758,6 +2758,41 @@
     "text": "Miscellaneous\n\nCheatsheets\nTidyverse style\nPsyTeachR books"
   },
   {
+    "objectID": "posts/02_rstudio/index.html",
+    "href": "posts/02_rstudio/index.html",
+    "title": "Working in RStudio",
+    "section": "",
+    "text": "Let’s figure out how to work in RStudio."
+  },
+  {
+    "objectID": "posts/02_rstudio/index.html#learning-objectives",
+    "href": "posts/02_rstudio/index.html#learning-objectives",
+    "title": "Working in RStudio",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\nLearn what the RStudio panels are used for, how to customize RStudio, and where to find keyboard shortcuts\nBuild a mental model of RStudio\nLearn how to get help from R, RStudio, and online forums when you need help\nLearn now to create a reproducible example"
+  },
+  {
+    "objectID": "posts/02_rstudio/index.html#pre-meeting",
+    "href": "posts/02_rstudio/index.html#pre-meeting",
+    "title": "Working in RStudio",
+    "section": "Pre-meeting",
+    "text": "Pre-meeting\nTo prepare for this class meeting, please do the following:\n\nTroubleshoot any installation issues (contact me)\nInstall R packages needed for the course\nRead RYWM 1"
+  },
+  {
+    "objectID": "posts/02_rstudio/index.html#class-meeting",
+    "href": "posts/02_rstudio/index.html#class-meeting",
+    "title": "Working in RStudio",
+    "section": "Class meeting",
+    "text": "Class meeting\n[Slides]\n\nTour of RStudio\nMental model of RStudio\nOptions\nInstalling packages\nGetting help\nSlides and Code"
+  },
+  {
+    "objectID": "posts/02_rstudio/index.html#homework-after-the-class-meeting",
+    "href": "posts/02_rstudio/index.html#homework-after-the-class-meeting",
+    "title": "Working in RStudio",
+    "section": "Homework after the class meeting",
+    "text": "Homework after the class meeting\n\nWrap up this lesson\n\nComplete the exercises\n\n\n\nFor next class meeting\n\nRead R4DS2 3 and R4DS2 4.1 - 4.2"
+  },
+  {
     "objectID": "posts/00_welcome/index.html",
     "href": "posts/00_welcome/index.html",
     "title": "Getting started with R",
@@ -2853,7 +2888,7 @@
     "href": "meetings.html",
     "title": "Class meetings",
     "section": "",
-    "text": "Course introduction\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\ncourse-admin\n\n\nR\n\n\nRStudio\n\n\n\nIntroduction to Data Processing and Visualization in R\n\n\n\n\n\nJan 22, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nGetting started with R\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nR\n\n\nRStudio\n\n\n\nWelcome to Data Processing and Visualization in R\n\n\n\n\n\nJan 20, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\nNo matching items"
+    "text": "Working in RStudio\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nhelp\n\n\nreprex\n\n\nRStudio\n\n\n\nIntroduction to RStudio Integrated Development Environment\n\n\n\n\n\nJan 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCourse introduction\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\ncourse-admin\n\n\nR\n\n\nRStudio\n\n\n\nIntroduction to Data Processing and Visualization in R\n\n\n\n\n\nJan 22, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nGetting started with R\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nR\n\n\nRStudio\n\n\n\nWelcome to Data Processing and Visualization in R\n\n\n\n\n\nJan 20, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/01_introduction/index.html",
@@ -3000,7 +3035,7 @@
     "href": "slides/03_coding.html#functions",
     "title": "Coding basics",
     "section": "Functions",
-    "text": "Functions\nPerform computations and return output\n\nSys.Date()\n\n[1] \"2025-01-22\"\n\n\n\n\ngetwd()\n\n[1] \"/home/jstevens/github/dpavir2025/slides\""
+    "text": "Functions\nPerform computations and return output\n\nSys.Date()\n\n[1] \"2025-01-23\"\n\n\n\n\ngetwd()\n\n[1] \"/home/jstevens/github/dpavir2025/slides\""
   },
   {
     "objectID": "slides/03_coding.html#arguments",
@@ -3280,7 +3315,7 @@
     "href": "slides/05_rmarkdown.html#r-code-chunks",
     "title": "Literate programming",
     "section": "R code chunks",
-    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1]  0.28338054 -0.92650066 -0.54385390 -0.85022706 -0.79129037 -1.26066651\n [7] -0.85586482  2.02587825  0.84887759 -0.02371892"
+    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1] -0.5183956 -1.7402828 -0.9116251 -1.8278636  0.1293248 -1.3141086\n [7] -0.5061126 -1.2119715  0.2354754  0.5025664"
   },
   {
     "objectID": "slides/05_rmarkdown.html#embed-figures",
@@ -5345,7 +5380,7 @@
     "href": "syllabus.html",
     "title": "PSYC 971 Data Processing and Visualization in R",
     "section": "",
-    "text": "MWF 3:30-4:30pm\nBurnett 80\nJeff Stevens (he/him)\nVersion 2025-01-22"
+    "text": "MWF 3:30-4:30pm\nBurnett 80\nJeff Stevens (he/him)\nVersion 2025-01-23"
   },
   {
     "objectID": "syllabus.html#course-description",

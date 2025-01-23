@@ -2,6 +2,7 @@
   {
     "listing": "/meetings.html",
     "items": [
+      "/posts/02_rstudio/index.html",
       "/posts/01_introduction/index.html",
       "/posts/00_welcome/index.html"
     ]
