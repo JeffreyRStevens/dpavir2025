@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 date-format: iso
 execute:
   echo: true
-  freeze: false
+  freeze: true
 format:
   revealjs: 
     theme: custom.scss
