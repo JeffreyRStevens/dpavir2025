@@ -136,4 +136,4 @@ format:
 
 ## Let's code!
 
-[Introduction coding](../code/01_introduction.html){target="_blank"} [[Rmd file](../code/01_introduction.Rmd){target="_blank"}]
+[Introduction coding](../code/01_introduction.html){target="_blank"}
