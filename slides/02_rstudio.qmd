@@ -74,11 +74,15 @@ _Tools > Keyboard Shortcuts Help_ or <kbd>Alt/Opt</kbd>+<kbd>Shift</kbd>+<kbd>K<
 
 ## Tips
 
-* Learn to use keyboard shortcuts
+* Learn to use keyboard shortcuts (not just RStudio shortcuts, but general ones)
 
-* You can remap keyboard shortcuts (I've remapped *Insert assignment operator* to <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>,</kbd>)
+* You can remap RStudio keyboard shortcuts (I've remapped *Insert assignment operator* to <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>,</kbd>)
 
-* Your cursor can be anywhere in your code to use<kbd>Ctrl/Cmd</kbd>++<kbd>Enter</kbd> to run it
+* Your cursor can be **anywhere** in your code to use<kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd> to run it
+
+* Use autocomplete
+
+* Copy/paste to avoid misspelling
 
 * Restart R often
 
@@ -92,6 +96,6 @@ _Tools > Keyboard Shortcuts Help_ or <kbd>Alt/Opt</kbd>+<kbd>Shift</kbd>+<kbd>K<
 
 ## Let's explore!
 
-[Working in RStudio](../code/02_rstudio.html)
+[Working in RStudio](../code/02_rstudio.html){target='_blank'}
 
 
