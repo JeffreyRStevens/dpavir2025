@@ -147,6 +147,45 @@ x  # print contents of object x to console
 ```
 :::
 
+## When things go wrong
+
+
+### Errors
+
+When a function hits a problem that stops it from completing
+```{r eval=FALSE}
+mean()
+```
+```
+Error in mean.default() : argument "x" is missing, with no default
+```
+
+
+## When things go wrong
+
+
+### Warnings
+
+When a function completes but something strang happens, so it alerts you
+
+```{r warning=TRUE}
+mean(sqrt(-1))
+```
+
+
+## When things go wrong
+
+
+### Messages
+
+When a function just wants to let you know something
+
+```{r message=TRUE}
+library(tidyverse)
+```
+
+
+
 ## Mental model of coding
 
 ![](../images/mentalmodel_coding.png){fig-align="center"}
@@ -156,15 +195,18 @@ x  # print contents of object x to console
 
 ## Who are we coding for?
 
+:::{.fragment}
+![](../images/coding_audience.png){.absolute width="50%" top="10%" left="50%"}
+:::
+
 :::{.incremental}
 1. Computer
 
 2. Ourselves
 
 3. Others
-
-![](../images/coding_audience.png){fig-align="right"}
 :::
+
 
 ## How to write good code
 
@@ -325,9 +367,6 @@ Sources: [Naming things: Jenny Bryan](https://speakerdeck.com/jennybc/how-to-nam
 :::{.incremental}
 * use ISO 8601 standard for date `YYYY-MM-DD`
 * no, really---always use ISO 8601 standard for date!!
-
-![](../images/dates_meme.jpeg){fig-align="right"}
-
 * use ISO 8601 dates before or after **slugs**
   - `2021-04-06_prelim_analysis_expt1.Rmd`
   - `prelim_analysis_expt1_2021-04-06.Rmd`
@@ -335,6 +374,9 @@ Sources: [Naming things: Jenny Bryan](https://speakerdeck.com/jennybc/how-to-nam
   - `01_preface.Rmd`
   - `02_introduction.Rmd`
 :::
+![](../images/perfect_date.jpeg){.absolute width="30%" left="90%" top="0%"}
+![](../images/dates_meme.jpeg){.absolute width="30%" left="90%" top="50%"}
+
 
 ## Mental model of coding
 
@@ -343,4 +385,4 @@ Sources: [Naming things: Jenny Bryan](https://speakerdeck.com/jennybc/how-to-nam
 
 ## Let's code!
 
-[Coding basics](../code/03_coding.html){target="_blank"} [[Rmd file](../code/03_coding.Rmd){target="_blank"}]
+[Coding basics](../code/03_coding.html){target="_blank"}
