@@ -3371,7 +3371,7 @@
     "href": "slides/05_rmarkdown.html#r-code-chunks",
     "title": "Literate programming",
     "section": "R code chunks",
-    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1] -1.4485890  0.3119055  1.7635915 -0.8839577  0.2829761 -0.4765803\n [7]  0.4412214 -1.1533102  0.4310315  0.5234426"
+    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1] -0.5222588 -0.4588238 -0.3917434 -1.1085011 -0.2547521 -1.2085146\n [7]  0.7391929 -0.8573136 -0.1766144  0.8467570"
   },
   {
     "objectID": "slides/05_rmarkdown.html#embed-figures",
