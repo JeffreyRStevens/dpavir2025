@@ -45,10 +45,13 @@ website:
 
 format:
   html:
-    theme: darkly
-    light: flatly
+ #   theme: darkly
+ #   light: flatly
     css: styles.css
     toc: true
+theme:
+  dark: darkly
+  light: flatly
 
 
 
