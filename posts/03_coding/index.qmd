@@ -2,7 +2,7 @@
 title: 'Coding basics'
 author:
   - Jeff Stevens
-date: '2023-01-27'
+date: '2025-01-27'
 categories: 
   - "module 1"
   - "week 1"
@@ -11,8 +11,8 @@ categories:
   - style
 description: "Basic concepts in coding, style, and naming"
 execute:
-  freeze: true
-draft: true
+  freeze: auto
+draft: false
 ---
 
 Before we get too far into learning R, it makes sense to start by getting up to speed on some coding basics.
@@ -28,11 +28,11 @@ Before we get too far into learning R, it makes sense to start by getting up to 
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 3](https://r4ds.hadley.nz/workflow-basics.html){target='_blank'} and  [R4DS2 7.1 - 7.2](https://r4ds.hadley.nz/workflow-style.html){target='_blank'}
+* Read [R4DS2 3](https://r4ds.hadley.nz/workflow-basics.html){target='_blank'} and  [R4DS2 4.1 - 4](https://r4ds.hadley.nz/workflow-style.html){target='_blank'}
 
 ## Class meeting
 
-[[Slides](../../slides/03_coding.qmd){target="_blank"}] [[Code](../../code/03_coding.html)]
+[[Slides](../../slides/03_coding.qmd){target="_blank"}] [[Code](../../code/03_coding.html){target="_blank"}]
 
 * Coding terms
 * Assignment
@@ -40,14 +40,13 @@ To prepare for this class meeting, please do the following:
 * Coding style 
 * Naming things
 * Let's code!
-* [Slides](../../slides/03_coding.qmd){target="_blank"} and [Code](../../code/03_coding.html){target="_blank"}
 
 
 ## Homework after the class meeting
 ### Wrap up this lesson
 
-* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2025_03_coding/){target='_blank'}
+* Complete the [exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/03_coding/){target='_blank'}
 
 ### For next class meeting
 
-* Read [R4DS2 9](https://r4ds.hadley.nz/workflow-scripts.html){target='_blank'}
+* Read [R4DS2 6](https://r4ds.hadley.nz/workflow-scripts.html){target='_blank'}
