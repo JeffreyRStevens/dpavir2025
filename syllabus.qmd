@@ -3,6 +3,8 @@ format:
   html:
     toc: true
 urlcolor: blue
+execute:
+  freeze: auto
 ---
 ``` {r echo = FALSE, message = FALSE}
 library(knitr)

@@ -5,7 +5,7 @@ date: "2025-01-29"
 date-format: iso
 execute:
   echo: true
-  freeze: false
+  freeze: auto
 format:
   revealjs: 
     theme: custom.scss
