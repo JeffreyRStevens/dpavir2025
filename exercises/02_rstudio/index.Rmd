@@ -29,10 +29,9 @@ Before you post something on a forum, you should learn [how to ask a good questi
 
 Step one of creating a reproducible example is to create the code that you want to post that demonstrates the problem with the least amount of code that you can make public. This means that you cannot post your data or the entire workflow getting to this part of your data analysis. Probably the best option here is to use an example data set loaded to base R (e.g., `mtcars`) or a data set included in a commonly used package (e.g., [`{palmerpenguins}`](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)). To see the data sets included in base R, type `data()`. Alternatively, you can type a small data frame into your example.
 
-Go ahead and install and load the `{palmerpenguins}` package on your computer in RStudio, as we'll use it here and in future sessions.
+Go ahead and load the `{palmerpenguins}` package on your computer in RStudio, as we'll use it here and in future sessions.
 
 ```
-install.packages("palmerpenguins")
 library("palmerpenguins")
 ```
 
@@ -123,7 +122,7 @@ Spend some time exploring the RStudio menus and panels. While you can customize 
 
 Here is a list the tabs that you'll be using most often. Make sure you are familiar with them.
  
-* Editor
+* Source/Editor
 * Console
 * Environment
 * History
@@ -136,14 +135,14 @@ quiz(
   question("Where do you type up your code in scripts to save it in a file?",
            answer("Console"),
            answer("Help"),
-           answer("Editor/Source", correct = TRUE),
+           answer("Source/Editor", correct = TRUE),
            answer("Microsoft Word", message = "Ugh! [shutter]"),
          allow_retry = TRUE,
          random_answer_order = TRUE
   ),
   question("Where is R code executed?",
            answer("Console", correct = TRUE),
-           answer("Editor"),
+           answer("Source/Editor"),
            answer("History"),
            answer("Terminal"),
          allow_retry = TRUE,
@@ -168,22 +167,22 @@ Using keyboard shortcuts will greatly simplify your RStudio workflow and allow y
 ```{r keyboard_shortcuts}
 quiz(
   question("What is the keyboard shortcut for finding the keyboard shortcuts?",
-           answer("Control+Shift+K"),
-           answer("Control+Alt+K"),
-           answer("Alt+Shift+K", correct = TRUE),
+           answer("Control/Cmd+Shift+K"),
+           answer("Control/Cmd+Alt/Opt+K"),
+           answer("Alt/Opt+Shift+K", correct = TRUE),
            answer("kk"),
          allow_retry = TRUE,
          random_answer_order = TRUE
   ),
-  question("What is the keyboard shortcut for restarting R?",
-           answer("Control+Shift+F10", correct = TRUE),
-           answer("Control+Shift+R"),
-           answer("Control+Shift+S"),
-           answer("Control+Shift+F11"),
+  question("What is the keyboard shortcut for reindenting lines?",
+           answer("Control/Cmd+Shift+C", correct = TRUE),
+           answer("Control/Cmd+C"),
+           answer("Control/Cmd+Alt/Opt+C"),
+           answer("Alt/Opt+Shift+C"),
          allow_retry = TRUE,
          random_answer_order = TRUE
   ),
-  question("What does Alt+- do?",
+  question("What does Alt/Opt+- do?",
            answer("Inserts assignment operator", correct = TRUE),
            answer("Focuses console input"),
            answer("Moves lines down"),
@@ -191,7 +190,7 @@ quiz(
          allow_retry = TRUE,
          random_answer_order = TRUE
   ),
-  question("What does Control+Shift+M do?",
+  question("What does Control/Cmd+Shift+M do?",
            answer("Moves focus to terminal"),
            answer("Inserts pipe operator", correct = TRUE),
            answer("Commits changes"),

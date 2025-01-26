@@ -67,6 +67,14 @@ quiz(
            answer("`mydata`", message = "This is the object that the data are assigned to."),
            allow_retry = TRUE,
            random_answer_order = TRUE
+  ),
+  question("Which of the following results in the function stopping and not returning output?",
+           answer("Errors", correct = TRUE),
+           answer("Warnings", message = "Warnings do not stop a function."),
+           answer("Messages", message = "Warnings do not stop a function."),
+           answer("Notifications", message = "Notifications are not an official type of return information."),
+           allow_retry = TRUE,
+           random_answer_order = TRUE
   )
 )
 ```
