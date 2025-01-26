@@ -1,7 +1,7 @@
 ---
 title: "Workflows"
 author: "Jeff Stevens"
-date: "2023-01-30"
+date: "2025-01-29"
 date-format: iso
 execute:
   echo: true
@@ -60,7 +60,7 @@ fs::dir_tree(path = here::here("slides"))
 
 * RStudio
 
-![](../images/rstudio_file_manager.png){.absolute width="70%" top="25%" left="30%"}
+![](../images/rstudio_file_manager.png){.absolute width="70%" top="20%" left="30%"}
 
 
 ---
@@ -70,7 +70,7 @@ fs::dir_tree(path = here::here("slides"))
 * Interact with file system through prompt/command line
 * If not familiar with terminal, read primer for [Windows](https://www.computerhope.com/issues/chusedos.htm) or [MacOS](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html)
 
-![](../images/terminal.png){.absolute width="80%" top="50%" left="10%"}
+![](../images/terminal.png){.absolute width="80%" top="45%" left="10%"}
 
 
 ---
@@ -101,9 +101,9 @@ fs::dir_tree(path = here::here("slides"))
 
 * Starts with drive letter or `/`
 
-  * Windows: `C:\users\jeff\Documents\projects\dpavir_2023\R\`
+  * Windows: <br> `C:\users\jeff\Documents\projects\dpavir_2025\R\`
   
-  * Linux and MacOS: `/home/jeff/projects/dpavir_2023/R/`
+  * Linux and MacOS: <br> `/home/jeff/projects/dpavir_2025/R/`
 
 
 ---
@@ -114,7 +114,7 @@ fs::dir_tree(path = here::here("slides"))
 
 * Starts with first subdirectory name
 
-  * If in `projects/`, relative path to `R/` is `dpavir_2023/R`
+  * If in `projects/`, relative path to `R/` is `dpavir_2025/R`
   
 :::{.fragment}
 * **Use relative paths!**
@@ -129,10 +129,10 @@ fs::dir_tree(path = here::here("slides"))
 
 ### Change directories with `cd`
 
-* `/home/jeff/projects/dpavir_2023/`
+* `/home/jeff/projects/dpavir_2025/`
 
 :::{.incremental}
-* To move from `dpavir_2023/` to `rsconnect/`, type <br> `cd exercises/01_introduction/rsconnect/`
+* To move from `dpavir_2025/` to `rsconnect/`, type <br> `cd exercises/01_introduction/rsconnect/`
 :::
 
 ![](../images/directory_dpavir.png){.absolute width="30%" top="-8%" left="92%"}
@@ -214,7 +214,7 @@ fs::dir_tree(path = here::here("slides"))
   * Console: `getwd()`
   * RStudio: top of Console
   
-  ![](../images/working_directory.png){.absolute width="70%" top="25%" left="55%"}
+  ![](../images/working_directory.png){.absolute width="70%" top="25%" left="50%"}
 :::
 
 :::{.fragment}
@@ -272,7 +272,7 @@ What is your working directory?
 
 * `read_csv(here("data/a.csv"))`
 
-![](../images/here_allisonhorst.png){.absolute width="53%" top="25%" left="70%"}
+![](../images/here_allisonhorst.png){.absolute width="53%" top="25%" left="65%"}
 
 :::{.aside}
 Source: <a href = "https://github.com/allisonhorst/stats-illustrations">Allison Horst</a></figcaption>

@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-01-30">
+<meta name="dcterms.date" content="2025-01-29">
 <title>Data Processing and Visualization in R – Workflows</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -138,7 +138,7 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-01-30</p>
+  <p class="date">2025-01-29</p>
 </section><section id="review-mental-model-of-coding" class="slide level2"><h2>Review: Mental model of coding</h2>
 
 <img data-src="../images/mentalmodel_coding.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="mental-model-of-file-directories" class="slide level2"><h2>Mental model of file directories</h2>
@@ -159,8 +159,100 @@ Jeff Stevens
 ├── 02_rstudio.qmd
 ├── 03_coding.html
 ├── 03_coding.qmd
+├── 04_workflows.html
 ├── 04_workflows.qmd
 ├── 04_workflows.rmarkdown
+├── 04_workflows_files
+│   └── libs
+│       ├── clipboard
+│       │   └── clipboard.min.js
+│       ├── quarto-html
+│       │   ├── light-border.css
+│       │   ├── popper.min.js
+│       │   ├── quarto-syntax-highlighting-dark-f8dc6eab18fde03278982b0b35885446.css
+│       │   ├── tabby.min.js
+│       │   ├── tippy.css
+│       │   └── tippy.umd.min.js
+│       └── revealjs
+│           ├── dist
+│           │   ├── reset.css
+│           │   ├── reveal.css
+│           │   ├── reveal.esm.js
+│           │   ├── reveal.esm.js.map
+│           │   ├── reveal.js
+│           │   ├── reveal.js.map
+│           │   └── theme
+│           │       ├── fonts
+│           │       │   ├── league-gothic
+│           │       │   │   ├── LICENSE
+│           │       │   │   ├── league-gothic.css
+│           │       │   │   ├── league-gothic.eot
+│           │       │   │   ├── league-gothic.ttf
+│           │       │   │   └── league-gothic.woff
+│           │       │   └── source-sans-pro
+│           │       │       ├── LICENSE
+│           │       │       ├── source-sans-pro-italic.eot
+│           │       │       ├── source-sans-pro-italic.ttf
+│           │       │       ├── source-sans-pro-italic.woff
+│           │       │       ├── source-sans-pro-regular.eot
+│           │       │       ├── source-sans-pro-regular.ttf
+│           │       │       ├── source-sans-pro-regular.woff
+│           │       │       ├── source-sans-pro-semibold.eot
+│           │       │       ├── source-sans-pro-semibold.ttf
+│           │       │       ├── source-sans-pro-semibold.woff
+│           │       │       ├── source-sans-pro-semibolditalic.eot
+│           │       │       ├── source-sans-pro-semibolditalic.ttf
+│           │       │       ├── source-sans-pro-semibolditalic.woff
+│           │       │       └── source-sans-pro.css
+│           │       └── quarto-a72b68f23337d6c747b4277c226ad139.css
+│           └── plugin
+│               ├── highlight
+│               │   ├── highlight.esm.js
+│               │   ├── highlight.js
+│               │   ├── monokai.css
+│               │   ├── plugin.js
+│               │   └── zenburn.css
+│               ├── markdown
+│               │   ├── markdown.esm.js
+│               │   ├── markdown.js
+│               │   └── plugin.js
+│               ├── math
+│               │   ├── katex.js
+│               │   ├── math.esm.js
+│               │   ├── math.js
+│               │   ├── mathjax2.js
+│               │   ├── mathjax3.js
+│               │   └── plugin.js
+│               ├── notes
+│               │   ├── notes.esm.js
+│               │   ├── notes.js
+│               │   ├── plugin.js
+│               │   └── speaker-view.html
+│               ├── pdf-export
+│               │   ├── pdfexport.js
+│               │   └── plugin.yml
+│               ├── quarto-line-highlight
+│               │   ├── line-highlight.css
+│               │   ├── line-highlight.js
+│               │   └── plugin.yml
+│               ├── quarto-support
+│               │   ├── footer.css
+│               │   ├── plugin.yml
+│               │   └── support.js
+│               ├── reveal-menu
+│               │   ├── menu.css
+│               │   ├── menu.js
+│               │   ├── plugin.yml
+│               │   ├── quarto-menu.css
+│               │   └── quarto-menu.js
+│               ├── search
+│               │   ├── plugin.js
+│               │   ├── search.esm.js
+│               │   └── search.js
+│               └── zoom
+│                   ├── plugin.js
+│                   ├── zoom.esm.js
+│                   └── zoom.js
 ├── 05_rmarkdown.qmd
 ├── 06_datatypes.qmd
 ├── 07_datastructures.qmd
@@ -228,14 +320,14 @@ Jeff Stevens
 <ul>
 <li>RStudio</li>
 </ul>
-<p><img data-src="../images/rstudio_file_manager.png" class="absolute" style="top: 25%; left: 30%; width: 70%; "></p>
+<p><img data-src="../images/rstudio_file_manager.png" class="absolute" style="top: 20%; left: 30%; width: 70%; "></p>
 </section><section id="terminals" class="slide level2"><h2>Terminals</h2>
 <ul>
 <li>Interact with file system through prompt/command line</li>
 <li>If not familiar with terminal, read primer for <a href="https://www.computerhope.com/issues/chusedos.htm">Windows</a> or <a href="https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html">MacOS</a>
 </li>
 </ul>
-<p><img data-src="../images/terminal.png" class="absolute" style="top: 50%; left: 10%; width: 80%; "></p>
+<p><img data-src="../images/terminal.png" class="absolute" style="top: 45%; left: 10%; width: 80%; "></p>
 </section><section id="mental-model-of-file-directories-1" class="slide level2"><h2>Mental model of file directories</h2>
 
 <img data-src="../images/mentalmodel_workflow.png" class="quarto-figure quarto-figure-center r-stretch"></section></section><section><section id="paths" class="title-slide slide level1 center"><h1>Paths</h1>
@@ -256,8 +348,8 @@ Jeff Stevens
 <li>
 <p>Starts with drive letter or <code>/</code></p>
 <ul>
-<li><p>Windows: <code>C:\users\jeff\Documents\projects\dpavir_2023\R\</code></p></li>
-<li><p>Linux and MacOS: <code>/home/jeff/projects/dpavir_2023/R/</code></p></li>
+<li><p>Windows: <br><code>C:\users\jeff\Documents\projects\dpavir_2025\R\</code></p></li>
+<li><p>Linux and MacOS: <br><code>/home/jeff/projects/dpavir_2025/R/</code></p></li>
 </ul>
 </li>
 </ul></section><section id="relative-paths" class="slide level2"><h2>Relative paths</h2>
@@ -266,7 +358,7 @@ Jeff Stevens
 <li>
 <p>Starts with first subdirectory name</p>
 <ul>
-<li>If in <code>projects/</code>, relative path to <code>R/</code> is <code>dpavir_2023/R</code>
+<li>If in <code>projects/</code>, relative path to <code>R/</code> is <code>dpavir_2025/R</code>
 </li>
 </ul>
 </li>
@@ -281,11 +373,11 @@ Jeff Stevens
 <h3 id="change-directories-with-cd">Change directories with <code>cd</code>
 </h3>
 <ul>
-<li><code>/home/jeff/projects/dpavir_2023/</code></li>
+<li><code>/home/jeff/projects/dpavir_2025/</code></li>
 </ul>
 <div>
 <ul>
-<li class="fragment">To move from <code>dpavir_2023/</code> to <code>rsconnect/</code>, type <br><code>cd exercises/01_introduction/rsconnect/</code>
+<li class="fragment">To move from <code>dpavir_2025/</code> to <code>rsconnect/</code>, type <br><code>cd exercises/01_introduction/rsconnect/</code>
 </li>
 </ul>
 </div>
@@ -348,7 +440,7 @@ Jeff Stevens
 </li>
 <li>RStudio: top of Console</li>
 </ul>
-<p><img data-src="../images/working_directory.png" class="absolute" style="top: 25%; left: 55%; width: 70%; "></p>
+<p><img data-src="../images/working_directory.png" class="absolute" style="top: 25%; left: 50%; width: 70%; "></p>
 </li>
 </ul>
 </div>
@@ -387,7 +479,7 @@ Jeff Stevens
 <ul>
 <li><code>read_csv(here("data/a.csv"))</code></li>
 </ul>
-<p><img data-src="../images/here_allisonhorst.png" class="absolute" style="top: 25%; left: 70%; width: 53%; "></p>
+<p><img data-src="../images/here_allisonhorst.png" class="absolute" style="top: 25%; left: 65%; width: 53%; "></p>
 
 <aside><div>
 Source: <a href="https://github.com/allisonhorst/stats-illustrations">Allison Horst</a>
