@@ -64,6 +64,7 @@ rsconnect/
 /_site/
 /ignore/
 /admin/
+old/
 
 *.aux
 *.log
