@@ -38,7 +38,7 @@ To prepare for this class meeting, please do the following:
 ## Homework after the class meeting
 ### Wrap up this lesson
 
-* Complete the [exercises](https://jeffreyrstevens.shinyapps.io/dpavir2025_15_pivoting/){target='_blank'}
+* Complete the [exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/15_pivoting/){target='_blank'}
 
 ### For next class meeting
 
