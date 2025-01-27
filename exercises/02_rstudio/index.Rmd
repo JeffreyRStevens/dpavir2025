@@ -174,7 +174,7 @@ quiz(
          allow_retry = TRUE,
          random_answer_order = TRUE
   ),
-  question("What is the keyboard shortcut for reindenting lines?",
+  question("What is the keyboard shortcut for inserting comments?",
            answer("Control/Cmd+Shift+C", correct = TRUE),
            answer("Control/Cmd+C"),
            answer("Control/Cmd+Alt/Opt+C"),
