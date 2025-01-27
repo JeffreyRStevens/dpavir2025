@@ -1,7 +1,7 @@
 ---
 title: "Coding basics"
 author: "Jeffrey R. Stevens"
-date: "2023-01-27"
+date: "2025-01-27"
 output: html_document
 execute:
   freeze: auto
@@ -48,7 +48,7 @@ What all is wrong with the file name `Qualtrics experiment 3 ~ 01/05/22 [final_F
 
 What would be a better name for this file?
 
-Why is this date problematic? 01/05/22
+Why is this date problematic? 01/05/25
 
 What would be an ISO 8601 format for this date?
 
