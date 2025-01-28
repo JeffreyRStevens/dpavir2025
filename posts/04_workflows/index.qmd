@@ -2,7 +2,7 @@
 title: 'Workflows'
 author:
   - Jeff Stevens
-date: '2023-01-30'
+date: '2027-01-29'
 categories: 
   - "module 1"
   - "week 2"
@@ -12,8 +12,8 @@ categories:
   - "working directories"
 description: "Access file systems with paths and set working directories with RStudio Projects"
 execute:
-  freeze: true
-draft: true
+  freeze: auto
+draft: false
 ---
 
 Using R involves working with multiple files in your project folders. To read in data and save figures, you need to be able to navigate the directory structure of your file system. 
@@ -29,7 +29,7 @@ Using R involves working with multiple files in your project folders. To read in
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 9](https://r4ds.hadley.nz/workflow-scripts.html){target='_blank'}
+* Read [R4DS2 6](https://r4ds.hadley.nz/workflow-scripts.html){target='_blank'}
 
 ## Class meeting
 

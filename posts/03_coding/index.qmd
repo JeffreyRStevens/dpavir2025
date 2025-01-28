@@ -5,7 +5,7 @@ author:
 date: '2025-01-27'
 categories: 
   - "module 1"
-  - "week 1"
+  - "week 2"
   - coding
   - names
   - style
