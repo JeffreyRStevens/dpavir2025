@@ -2,6 +2,7 @@
   {
     "listing": "/meetings.html",
     "items": [
+      "/posts/04_workflows/index.html",
       "/posts/03_coding/index.html",
       "/posts/02_rstudio/index.html",
       "/posts/01_introduction/index.html",
