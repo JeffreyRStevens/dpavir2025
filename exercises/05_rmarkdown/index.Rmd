@@ -82,9 +82,9 @@ R Markdown is a special form of Markdown that allows the embedding of R code int
 
 Inline code means that the R code is embedded in the middle of a sentence. This allows you to effectively write formulas that will automatically insert sample sizes, measures of central tendency and uncertainty, and statistics directly in to your sentences.
 
-To add inline code, you simply use the <code>&#96;r code&#96;</code> syntax, where you insert a single R command for the word `code`. For example, <code>&#96;r mean(myvector)&#96;</code> will insert the mean of the elements of `myvector`. But keep in mind that the default output includes a good number of digits, so you may need to round your output: e.g., <code>&#96;r round(mean(myvector), digits = 2)&#96;</code>.
+To add inline code, you simply use the <code>&#96;r \<code\>&#96;</code> syntax, where you insert a single R command for `<code>`. For example, <code>&#96;r mean(myvector)&#96;</code> will insert the mean of the elements of `myvector`. But keep in mind that the default output includes a good number of digits, so you may need to round your output: e.g., <code>&#96;r round(mean(myvector), digits = 2)&#96;</code>.
 
-R Markdown documents will fail to compile if the inline R code is incorrect, but the error messages are not always helpful in finding out what code is incorrect. So add inline code incrementally and compile frequently to check as you go. You can also test each individual inline code piece by highlighting the R syntax (without the <code>&#96;r &#96;</code> part) and pressing `Ctrl-Enter` to run the code in the console.
+R Markdown documents will fail to compile if the inline R code is incorrect, but the error messages are not always helpful in finding out what code is incorrect. So **add inline code incrementally and compile/knit frequently** to check as you go. You can also test each individual inline code piece by highlighting the R syntax (without the <code>&#96;r &#96;</code> part) and pressing `Ctrl-Enter` to run the code in the console.
 
 ### Practice
 
@@ -103,7 +103,7 @@ question("How would you write inline code to insert the object `my_bf` into a se
 
 ### Syntax review
 
-Sometimes you need to run larger sections of code than a single R command. This is called a _code chunk_. Some R Markdown documents include all of the R code embedded in them, so there are a lot of code chunks. Other documents just source R scripts and use primarily inline code. 
+Sometimes you need to run larger sections of code than a single R command. This is called a _code chunk_ or a _code block_. Some R Markdown documents include all of the R code embedded in them, so there are a lot of code chunks. Other documents just source R scripts and use primarily inline code. 
 
 Code chunks start with <code>&#96;&#96;&#96;{r}</code> followed by the code on a new line and end with <code>&#96;&#96;&#96;</code> on a new line:
 
@@ -154,7 +154,7 @@ question(
   random_answer_order = TRUE
 ),
 question(
-  'In terms of _output_, what is the difference between these two sets of options: `eval = TRUE, echo = TRUE, message = FALSE` and `eval = FALSE, echo = TRUE, message = FALSE`?',
+  'In terms of _output_, what is the difference between these two sets of options: `eval = TRUE, results = TRUE, message = FALSE` and `eval = FALSE, results = TRUE, message = FALSE`?',
   answer('Nothing', correct = TRUE),
   answer('Only the first would output anything'),
   answer('Only the second would output anything'),
@@ -162,7 +162,7 @@ question(
   random_answer_order = TRUE
 ),
 question(
-  'In terms of _computations_, what is the difference between these two sets of options: `eval = TRUE, echo = TRUE, message = FALSE` and `eval = FALSE, echo = TRUE, message = FALSE`?',
+  'In terms of _computations_, what is the difference between these two sets of options: `eval = TRUE, results = TRUE, message = FALSE` and `eval = FALSE, results = TRUE, message = FALSE`?',
   answer('Only the first would compute anything', correct = TRUE),
   answer('Nothing'),
   answer('Only the second would compute anything'),

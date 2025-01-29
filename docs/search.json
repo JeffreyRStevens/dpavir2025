@@ -3119,7 +3119,7 @@
     "href": "slides/03_coding.html#functions",
     "title": "Coding basics",
     "section": "Functions",
-    "text": "Functions\nPerform computations and return output\n\nSys.Date()\n\n[1] \"2025-01-26\"\n\n\n\n\ngetwd()\n\n[1] \"/home/jstevens/github/dpavir2025/slides\""
+    "text": "Functions\nPerform computations and return output\n\nSys.Date()\n\n[1] \"2025-01-29\"\n\n\n\n\ngetwd()\n\n[1] \"/home/jstevens/github/dpavir2025/slides\""
   },
   {
     "objectID": "slides/03_coding.html#arguments",
@@ -3231,7 +3231,7 @@
     "href": "slides/03_coding.html#coding-style",
     "title": "Coding basics",
     "section": "Coding style",
-    "text": "Coding style\nThe tidyverse style guide\n\nUse &lt;- as assignment operator\nUse space between operators (*, =, ==) and after commas\nDo not use space between function and parentheses \nUse indents to separate nested components (Ctrl+I)\nWrite out argument names\nWrite out TRUE and FALSE\nUse \", not ', for quoting text unless it already contains double quotes"
+    "text": "Coding style\nThe tidyverse style guide\n\nUse &lt;- as assignment operator\nUse space between operators (*, =, ==) and after commas\nDo not use space between function and parentheses \nUse indents to separate nested components (Ctrl/Cmd+I)\nWrite out argument names\nWrite out TRUE and FALSE\nUse \", not ', for quoting text unless it already contains double quotes"
   },
   {
     "objectID": "slides/03_coding.html#naming-things-1",
@@ -3416,11 +3416,11 @@
     "text": "Inline R code\nEmbed R code directly within your text with `r `\n\n\nCode:\nThe answer to 2 + 2 is `r 2 + 2`\n\n\nOutput:\nThe answer to 2 + 2 is 4."
   },
   {
-    "objectID": "slides/05_rmarkdown.html#r-code-chunks",
-    "href": "slides/05_rmarkdown.html#r-code-chunks",
+    "objectID": "slides/05_rmarkdown.html#r-code-chunksblocks",
+    "href": "slides/05_rmarkdown.html#r-code-chunksblocks",
     "title": "Literate programming",
-    "section": "R code chunks",
-    "text": "R code chunks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1] -0.21194871 -0.07214132 -0.02065912  0.85898455 -0.27415701 -0.49985299\n [7] -0.88534397  0.15384954  2.70028130  0.85076985"
+    "section": "R code chunks/blocks",
+    "text": "R code chunks/blocks\nWrite large chunks of R code outside of text\n\nCode:\n```{r}rnorm(10, mean = 0, sd = 1)```\n\n\nOutput:\n\n\n [1]  1.1585692  0.5635308  1.8235859  1.7593549  0.3872903  0.5758169\n [7] -1.4435960  1.6215114  0.5127548  2.6295120"
   },
   {
     "objectID": "slides/05_rmarkdown.html#embed-figures",

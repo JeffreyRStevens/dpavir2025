@@ -1,11 +1,11 @@
 ---
 title: "Literate programming"
 author: "Jeff Stevens"
-date: "2023-02-01"
+date: "2027-01-31"
 date-format: iso
 execute:
   echo: true
-  freeze: false
+  freeze: auto
 format:
   revealjs: 
     theme: custom.scss
@@ -34,7 +34,7 @@ format:
 
 #### All files are collections of 1s and 0s
 
-![](../images/binary1s0s.jpg){.absolute width="80%" top="30%" left="10%"}
+![](../images/binary1s0s.jpg){.absolute width="80%" top="25%" left="10%"}
 
 ---
 
@@ -170,7 +170,7 @@ the complete set of instructions which generated the figures
 Buckheit, J., & Donoho, D. L. (1995). WaveLab and reproducible research. In A. Antoniadis & G. Oppenheim (Eds.), *Wavelets and Statistics* (pp. 55–81). Springer-Verlag.
 :::
 
-![](../images/literate_programming.jpg){.absolute width="25%" top="7%" left="95%"}
+![](../images/literate_programming.jpg){.absolute width="23%" top="7%" left="95%"}
 
 ## Why use literate programming?
 
@@ -257,7 +257,7 @@ The answer to 2 + 2 is `r 2 + 2`.
 
 ---
 
-## R code chunks
+## R code chunks/blocks
 
 #### Write large chunks of R code outside of text
 
