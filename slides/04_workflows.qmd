@@ -90,7 +90,7 @@ fs::dir_tree(path = here::here("slides"))
 * `exercises/01_introduction/rsconnect/documents/01_introduction.Rmd`<BR>`/shinapps.io/jeffreyrstevens/01_introduction.dcf`
 :::
 
-![](../images/directory_dpavir.png){.absolute width="30%" top="30%" left="87%"}
+![](../images/directory_dpavir.png){.absolute width="30%" top="50%" left="80%"}
 
 
 ---
@@ -99,12 +99,13 @@ fs::dir_tree(path = here::here("slides"))
 
 ### From root directory
 
-* Starts with drive letter or `/`
+Starts with drive letter or `/`
 
+::: {style="font-size: 95%;"}
   * Windows: <br> `C:\users\jeff\Documents\projects\dpavir_2025\R\`
   
   * Linux and MacOS: <br> `/home/jeff/projects/dpavir_2025/R/`
-
+:::
 
 ---
 
@@ -135,7 +136,7 @@ fs::dir_tree(path = here::here("slides"))
 * To move from `dpavir_2025/` to `rsconnect/`, type <br> `cd exercises/01_introduction/rsconnect/`
 :::
 
-![](../images/directory_dpavir.png){.absolute width="30%" top="-8%" left="92%"}
+![](../images/directory_dpavir.png){.absolute width="30%" top="0%" left="85%"}
 
 
 ---
@@ -151,7 +152,7 @@ fs::dir_tree(path = here::here("slides"))
 
 * To move from `01_introduction/` to `code/`, <br> type `cd ../../code/`
 :::
-![](../images/directory_dpavir.png){.absolute width="30%" top="-8%" left="92%"}
+![](../images/directory_dpavir.png){.absolute width="30%" top="0%" left="85%"}
 
 
 ---
@@ -214,7 +215,7 @@ fs::dir_tree(path = here::here("slides"))
   * Console: `getwd()`
   * RStudio: top of Console
   
-  ![](../images/working_directory.png){.absolute width="70%" top="25%" left="50%"}
+  ![](../images/working_directory.png){.absolute width="60%" top="25%" left="53%"}
 :::
 
 :::{.fragment}
@@ -246,7 +247,7 @@ What is your working directory?
 
 ## RStudio Projects
 
-* Let's create an RStudio Project for this course
+* Let's create an RStudio Project
 
 ![](../images/rprojects_new.png){fig-align="center"}
 
@@ -283,4 +284,7 @@ Source: <a href = "https://github.com/allisonhorst/stats-illustrations">Allison 
 
 ![](../images/mentalmodel_workflow.png){fig-align="center"}
 
+## Let's code!
+
+[Workflows](../code/04_workflows.html){target="_blank"}
 

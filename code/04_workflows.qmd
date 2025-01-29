@@ -1,0 +1,26 @@
+---
+title: "Workflows"
+author: "Jeffrey R. Stevens"
+date: "2025-01-29"
+output: html_document
+execute:
+  freeze: auto
+---
+
+* Think about where would make the most sense to have a project directory for this course. Do you want it in your OneDrive directory? Do you want it in a specific directory?
+
+* Create the class directory using good naming conventions.
+
+* Create subdirectories that you might need for the class (e.g., assignments, code, data, notes, etc.).
+
+* Create an R Project inside that directory.
+
+* Open the R Project in RStudio. What is the working directory?
+
+* In the terminal, view all of the subdirectories in your project directory.
+
+* Change to `data/` directory. Now change back to the project's home directory. Can you go up to the parent directory?
+
+* Create a directory and R Project for a project that you are working on that will require using R. Build the subdirectories that you'll need, including `data/`, `docs/`, and `R/`.
+
+
