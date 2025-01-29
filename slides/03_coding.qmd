@@ -305,7 +305,7 @@ if (x > 5) {
 
 * Do not use space between function and parentheses <!--(except for `if ()`)-->
 
-* Use indents to separate nested components (<kbd>Ctrl</kbd>+<kbd>I</kbd>)
+* Use indents to separate nested components (<kbd>Ctrl/Cmd</kbd>+<kbd>I</kbd>)
 
 * Write out argument names
 
@@ -351,7 +351,7 @@ Sources: [Naming things: Jenny Bryan](https://speakerdeck.com/jennybc/how-to-nam
 :::
 :::{.fragment}
 * separate words (preferably using snake_case)
-![](../images/coding_cases_allisonhorst.png){.absolute width="48%" left="78%" top="0%"}
+![](../images/coding_cases_allisonhorst.png){.absolute width="40%" left="78%" top="0%"}
 :::
 :::{.fragment}
 * avoid capital letters (case matters: `a ≠ A`)
