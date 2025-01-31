@@ -131,27 +131,37 @@ format:
 
 ---
 
+## Sections
+
+You can organize your R scripts with sections
+
+<kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> inserts a section.
+
+But all you need is 
+
+`# <section label> ----` (add `#`s for subsections)
+
+![](../images/rstudio_sections.png)
+
+
+
+---
+
 ## Let's code!
 
 :::{.incremental}
+::: {style="font-size: 90%;"}
 * Open course RStudio project.
-
 * Create new R script and save as `test.R`.
-
-* Type `library(palmerpenguins)`.
-
+* Type `library(palmerpenguins)` into script.
 * Is `palmerpenguins` loaded? How can you check?
-
 * Run the line to load `palmerpenguins`.
-
-* Type `print(penguins)`.
-
+* Type `print(penguins)` into script.
 * Source the whole script.
-
 * Comment out the `print(penguins)` line.
-
 * Source the script.
-
+* Insert a section.
+:::
 :::
 
 # Literate programming
@@ -199,7 +209,7 @@ Buckheit, J., & Donoho, D. L. (1995). WaveLab and reproducible research. In A. A
 
 #### Human-readable markup that can be converted to formatted file types
 
-![](../images/markdown.png)
+![](../images/markdown.png){width="120%"}
 
 ---
 

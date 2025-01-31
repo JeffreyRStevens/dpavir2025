@@ -256,19 +256,28 @@ Jeff Stevens
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">2</span><span class="op">+</span><span class="fl">2</span> <span class="co"># this is a comment--I can say stuff that isn't run. use me often!</span></span>
 <span><span class="co"># this is also a comment--I can be on my own line!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
+</section><section id="sections" class="slide level2"><h2>Sections</h2>
+<p>You can organize your R scripts with sections</p>
+<p><kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> inserts a section.</p>
+<p>But all you need is</p>
+<p><code># &lt;section label&gt; ----</code> (add <code>#</code>s for subsections)</p>
+
+<img data-src="../images/rstudio_sections.png" class="r-stretch"></section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
 <div>
+<div style="font-size: 90%;">
 <ul>
-<li class="fragment"><p>Open course RStudio project.</p></li>
-<li class="fragment"><p>Create new R script and save as <code>test.R</code>.</p></li>
-<li class="fragment"><p>Type <code><a href="https://allisonhorst.github.io/palmerpenguins/">library(palmerpenguins)</a></code>.</p></li>
-<li class="fragment"><p>Is <code>palmerpenguins</code> loaded? How can you check?</p></li>
-<li class="fragment"><p>Run the line to load <code>palmerpenguins</code>.</p></li>
-<li class="fragment"><p>Type <code>print(penguins)</code>.</p></li>
-<li class="fragment"><p>Source the whole script.</p></li>
-<li class="fragment"><p>Comment out the <code>print(penguins)</code> line.</p></li>
-<li class="fragment"><p>Source the script.</p></li>
+<li class="fragment">Open course RStudio project.</li>
+<li class="fragment">Create new R script and save as <code>test.R</code>.</li>
+<li class="fragment">Type <code><a href="https://allisonhorst.github.io/palmerpenguins/">library(palmerpenguins)</a></code> into script.</li>
+<li class="fragment">Is <code>palmerpenguins</code> loaded? How can you check?</li>
+<li class="fragment">Run the line to load <code>palmerpenguins</code>.</li>
+<li class="fragment">Type <code>print(penguins)</code> into script.</li>
+<li class="fragment">Source the whole script.</li>
+<li class="fragment">Comment out the <code>print(penguins)</code> line.</li>
+<li class="fragment">Source the script.</li>
+<li class="fragment">Insert a section.</li>
 </ul>
+</div>
 </div>
 </section></section><section><section id="literate-programming" class="title-slide slide level1 center"><h1>Literate programming</h1>
 
@@ -293,7 +302,7 @@ Jeff Stevens
 <img data-src="../images/mentalmodel_rmarkdown.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="markdown" class="slide level2"><h2>Markdown</h2>
 <h4 id="human-readable-markup-that-can-be-converted-to-formatted-file-types">Human-readable markup that can be converted to formatted file types</h4>
 
-<img data-src="../images/markdown.png" class="r-stretch"></section><section id="markdown-1" class="slide level2"><h2>Markdown</h2>
+<img data-src="../images/markdown.png" style="width:120.0%" class="r-stretch"></section><section id="markdown-1" class="slide level2"><h2>Markdown</h2>
 <h4 id="see-markdown-tutorial-for-markdown-syntax">See <a href="https://commonmark.org/help/tutorial/">Markdown tutorial</a> for Markdown syntax</h4>
 <h3 id="comments-1">Comments</h3>
 <p>Markdown uses HTML syntax for comments</p>
@@ -333,8 +342,8 @@ Source: <a href="https://github.com/allisonhorst/stats-illustrations">Allison Ho
 <h4 id="output-1">Output:</h4>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  1.1585692  0.5635308  1.8235859  1.7593549  0.3872903  0.5758169
- [7] -1.4435960  1.6215114  0.5127548  2.6295120</code></pre>
+<pre><code> [1] -0.40625720 -1.43892026 -0.11330713  0.59534446 -1.33792105 -0.30825479
+ [7] -0.06868553  0.86183369 -1.23315845 -1.83368347</code></pre>
 </div>
 </div>
 </div>
