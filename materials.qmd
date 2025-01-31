@@ -19,7 +19,7 @@ execute:
 
 </details>
 
-<details>
+<details open>
 
 <summary> Module 2: Working with data </summary>
 
