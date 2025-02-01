@@ -312,14 +312,14 @@
     "href": "code/06_datatypes_answers.html",
     "title": "Data types",
     "section": "",
-    "text": "aa &lt;- 3; bb &lt;- 3L; cc &lt;- \"3\"; dd &lt;- \"TRUE\"; ee &lt;- TRUE; ff &lt;- \"NA\"; gg &lt;- NA\n\naa &lt;- 3\nbb &lt;- 3L\ncc &lt;- \"3\"\ndd &lt;- \"TRUE\"\nee &lt;- TRUE\nff &lt;- \"NA\"\ngg &lt;- NA"
+    "text": "aa &lt;- 3\nbb &lt;- 3L\ncc &lt;- \"3\"\ndd &lt;- \"TRUE\"\nee &lt;- TRUE\nff &lt;- \"NA\"\ngg &lt;- NA\n\naa &lt;- 3\nbb &lt;- 3L\ncc &lt;- \"3\"\ndd &lt;- \"TRUE\"\nee &lt;- TRUE\nff &lt;- \"NA\"\ngg &lt;- NA"
   },
   {
     "objectID": "code/06_datatypes_answers.html#creating-objects",
     "href": "code/06_datatypes_answers.html#creating-objects",
     "title": "Data types",
     "section": "",
-    "text": "aa &lt;- 3; bb &lt;- 3L; cc &lt;- \"3\"; dd &lt;- \"TRUE\"; ee &lt;- TRUE; ff &lt;- \"NA\"; gg &lt;- NA\n\naa &lt;- 3\nbb &lt;- 3L\ncc &lt;- \"3\"\ndd &lt;- \"TRUE\"\nee &lt;- TRUE\nff &lt;- \"NA\"\ngg &lt;- NA"
+    "text": "aa &lt;- 3\nbb &lt;- 3L\ncc &lt;- \"3\"\ndd &lt;- \"TRUE\"\nee &lt;- TRUE\nff &lt;- \"NA\"\ngg &lt;- NA\n\naa &lt;- 3\nbb &lt;- 3L\ncc &lt;- \"3\"\ndd &lt;- \"TRUE\"\nee &lt;- TRUE\nff &lt;- \"NA\"\ngg &lt;- NA"
   },
   {
     "objectID": "code/06_datatypes_answers.html#checking-data-types",
@@ -2279,7 +2279,7 @@
     "href": "slides/06_datatypes.html#logical-2",
     "title": "Data types",
     "section": "Logical",
-    "text": "Logical\n\n%in% operator: “is contained in”\n\n\n(subjects &lt;- c(\"01\", \"02\", \"03\", \"04\", \"05\"))\n\n[1] \"01\" \"02\" \"03\" \"04\" \"05\"\n\n\n\n\n\n\"03\" %in% subjects\n\n[1] TRUE\n\n\n\n\n\n\"06\" %in% subjects\n\n[1] FALSE\n\n\n\n\nTest “is NOT contained in” with ! before test string\n\n!\"06\" %in% subjects\n\n[1] TRUE"
+    "text": "Logical\n\n%in% matching operator: “is contained in”\n\n\n(subjects &lt;- c(\"01\", \"02\", \"03\", \"04\", \"05\"))\n\n[1] \"01\" \"02\" \"03\" \"04\" \"05\"\n\n\n\n\n\n\"03\" %in% subjects\n\n[1] TRUE\n\n\n\n\n\n\"06\" %in% subjects\n\n[1] FALSE\n\n\n\n\nTest “is NOT contained in” with ! before test string\n\n!\"06\" %in% subjects\n\n[1] TRUE"
   },
   {
     "objectID": "slides/06_datatypes.html#augmented-data-types",
@@ -2310,11 +2310,11 @@
     "text": "Dates\nYou can do math on dates\n\n\n(k &lt;- as.Date(\"2023-02-03\"))\n\n[1] \"2023-02-03\"\n\nk-j\n\nTime difference of 19391 days"
   },
   {
-    "objectID": "slides/06_datatypes.html#check-data-types",
-    "href": "slides/06_datatypes.html#check-data-types",
+    "objectID": "slides/06_datatypes.html#checking-data-types",
+    "href": "slides/06_datatypes.html#checking-data-types",
     "title": "Data types",
-    "section": "Check data types",
-    "text": "Check data types\n\nCheck with typeof()/class()\n\n\n\n\nCheck in RStudio\n\n\n\n\nUse is.&lt;type&gt;() functions: is.logical(), is.numeric(), is.character()\n\n\n\nis.character(7)\n\n[1] FALSE\n\nis.character(\"7\")\n\n[1] TRUE"
+    "section": "Checking data types",
+    "text": "Checking data types\n\nCheck with typeof()/class()\n\n\n\n\nCheck in RStudio\n\n\n\n\nUse is.&lt;type&gt;() functions: is.logical(), is.numeric(), is.character()\n\n\n\nis.character(7)\n\n[1] FALSE\n\nis.character(\"7\")\n\n[1] TRUE"
   },
   {
     "objectID": "slides/06_datatypes.html#converting-between-data-types-coercion",
@@ -2356,7 +2356,7 @@
     "href": "slides/06_datatypes.html#lets-code",
     "title": "Data types",
     "section": "Let’s code!",
-    "text": "Let’s code!\nData types coding [Rmd]"
+    "text": "Let’s code!\nData types coding"
   },
   {
     "objectID": "slides/04_workflows.html#review-mental-model-of-coding",
@@ -5702,14 +5702,14 @@
     "href": "code/06_datatypes.html",
     "title": "Data types",
     "section": "",
-    "text": "aa &lt;- 3; bb &lt;- 3L; cc &lt;- \"3\"; dd &lt;- \"TRUE\"; ee &lt;- TRUE; ff &lt;- \"NA\"; gg &lt;- NA\n\n# &gt;"
+    "text": "aa &lt;- 3\nbb &lt;- 3L\ncc &lt;- \"3\"\ndd &lt;- \"TRUE\"\nee &lt;- TRUE\nff &lt;- \"NA\"\ngg &lt;- NA\n\n# &gt;"
   },
   {
     "objectID": "code/06_datatypes.html#creating-objects",
     "href": "code/06_datatypes.html#creating-objects",
     "title": "Data types",
     "section": "",
-    "text": "aa &lt;- 3; bb &lt;- 3L; cc &lt;- \"3\"; dd &lt;- \"TRUE\"; ee &lt;- TRUE; ff &lt;- \"NA\"; gg &lt;- NA\n\n# &gt;"
+    "text": "aa &lt;- 3\nbb &lt;- 3L\ncc &lt;- \"3\"\ndd &lt;- \"TRUE\"\nee &lt;- TRUE\nff &lt;- \"NA\"\ngg &lt;- NA\n\n# &gt;"
   },
   {
     "objectID": "code/06_datatypes.html#checking-data-types",

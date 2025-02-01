@@ -10,7 +10,15 @@ execute:
 ## Creating objects
 
 ### First, let's create some objects: 
-`aa <- 3; bb <- 3L; cc <- "3"; dd <- "TRUE"; ee <- TRUE; ff <- "NA"; gg <- NA`
+```
+aa <- 3
+bb <- 3L
+cc <- "3"
+dd <- "TRUE"
+ee <- TRUE
+ff <- "NA"
+gg <- NA
+```
 ```{r}
 # >
 ```

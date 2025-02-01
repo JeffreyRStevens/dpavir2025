@@ -1,7 +1,7 @@
 ---
 title: "Data types"
 author: "Jeffrey R. Stevens"
-date: "2023-02-03"
+date: "2025-02-03"
 output: html_document
 execute:
   freeze: auto
@@ -10,7 +10,15 @@ execute:
 ## Creating objects
 
 ### First, let's create some objects: 
-`aa <- 3; bb <- 3L; cc <- "3"; dd <- "TRUE"; ee <- TRUE; ff <- "NA"; gg <- NA`
+```
+aa <- 3
+bb <- 3L
+cc <- "3"
+dd <- "TRUE"
+ee <- TRUE
+ff <- "NA"
+gg <- NA
+```
 ```{r}
 aa <- 3
 bb <- 3L
