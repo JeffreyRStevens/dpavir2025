@@ -88,7 +88,7 @@ question <- 'What do you mean by "fine"?'
 grade_code()
 ```
 
-```{r integer}
+```{r assignment}
 question("Did you notice that nothing is printed when you click Run Code? Why is this the case?",
          answer("Assignments aren't printed by default", correct = TRUE),
          answer("Assignments aren't evaluated by default"),
