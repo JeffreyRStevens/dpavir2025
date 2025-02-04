@@ -26,7 +26,7 @@ All data in R are vectors, but there are some special forms of vectors such as l
 
 To prepare for this class meeting, please do the following:
 
-* Read [PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/){target='_blank'}
+* Read [PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures.html){target='_blank'}
 
 ## Class meeting
 

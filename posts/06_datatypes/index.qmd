@@ -52,4 +52,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/){target='_blank'}
+* Read [PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures.html){target='_blank'}
