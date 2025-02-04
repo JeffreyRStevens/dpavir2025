@@ -10,20 +10,21 @@ execute:
 <!-- ## In-class coding -->
 
 <!-- Make a sequence from 0 to 100 in steps of 10. -->
-<!-- ```{r}
-# >
-``` -->
+<!-- ```{r} -->
+<!-- seq(0, 100, 10) -->
+<!-- ``` -->
 
 <!-- Create a repetition of “yes” and “no” with 10 instance of each, alternating between the two. Then make one with 10 "yes" and then 10 "no". -->
-<!-- ```{r}
-# >
-``` -->
+<!-- ```{r} -->
+<!-- rep(c("yes", "no"), times = 10) -->
+<!-- rep(c("yes", "no"), each = 10) -->
+<!-- ``` -->
 
 
 <!-- Add the argument `n = 10` to `head(mtcars)`. What does this do? -->
-<!-- ```{r}
-# >
-``` -->
+<!-- ```{r} -->
+<!-- head(mtcars, n =  10) -->
+<!-- ``` -->
 
 
 <!-- ## Extra coding practice -->
@@ -32,27 +33,28 @@ execute:
 
 Create a vector called  `dog_names` with the values _Bella_, _Daisy_, and _Max_.
 ```{r}
-# >
+dog_names <- c("Bella", "Daisy", "Max")
 ```
 
 Create a vector called `sex` with the values _Female_, _Male_, and _Male_.
 ```{r}
-# >
+sex <- c("Female", "Female", "Male")
 ```
 
 Use the index operator to print to console only _Daisy_ and _Max_ from `dog_names`.
 ```{r}
-# >
+dog_names[2:3]
 ```
 
 Replace the _Daisy_ entry with _Luna_ and print `dog_names` to console.
 ```{r}
-# >
+dog_names[2] <- "Luna"
+dog_names
 ```
 
 Test whether the name _Sophie_ is contained in the vector `dog_names`.
 ```{r}
-# >
+"Sophie" %in% dog_names
 ```
 
 
@@ -61,43 +63,46 @@ Test whether the name _Sophie_ is contained in the vector `dog_names`.
 Copy/paste and run this code: `(mylist <- list(a = 1:4, b = c(4, 3, 8, 5), c = LETTERS[10:15], d = c("yes", "yes")))`
 
 ```{r}
-# >
+(mylist <- list(a = 1:4, b = c(4, 3, 8, 5), c = LETTERS[10:15], d = c("yes", "yes")))
 ```
 
 Check the data types for each list element individually.
 ```{r}
-# >
+typeof(mylist$a)
+typeof(mylist$b)
+typeof(mylist$c)
+typeof(mylist$d)
 ```
 
 Check the data types for each list element with one command.
 ```{r}
-# >
+str(mylist)
 ```
 
 Combine list elements `a` and `b` into a single vector.
 ```{r}
-# >
+c(mylist$a, mylist$b)
 ```
 
 ### Data frames
 
 Create a data frame called `mydf` with three columns: `x`, `y`, and `z` and five rows. For `x` assign any five numbers, for `y` assign any five character strings, and for `z` assign any five logical values.
 ```{r}
-# >
+(mydf <- data.frame(x = sample(1:10, 5, replace = TRUE), y = sample(letters, 5), z = sample(c(TRUE, FALSE), 5, replace = TRUE)))
 ```
 
 Create a data frame called `dogs` that combines the `dog_names` and `sex` vectors and print to console.
 ```{r}
-# >
+(dogs <- data.frame(dog_names, sex))
 ```
 
 Print to console just Luna's row.
 ```{r}
-# >
+dogs[2, ]
 ```
 
 Print to console the number of rows in `dogs`.
 ```{r}
-# >
+nrow(dogs)
 ```
 

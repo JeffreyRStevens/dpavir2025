@@ -1,11 +1,11 @@
 ---
 title: "Data structures"
 author: "Jeff Stevens"
-date: "2023-02-06"
+date: "2025-02-05"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: auto
 format:
   revealjs: 
     theme: custom.scss
@@ -136,6 +136,14 @@ seq(from = 0, to = 20, by = 5)
 seq(from = 20, to = 0, by = -5)
 seq(0, 1, 0.2)
 ```
+:::{.fragment}
+:::{.callout-tip}
+## Try it!
+
+Make a sequence from 0 to 100 in steps of 10.
+:::
+:::
+
 
 ---
 
@@ -147,14 +155,6 @@ seq(0, 1, 0.2)
 4:9
 9:4
 ```
-
-:::{.fragment}
-:::{.callout-tip}
-## Try it!
-
-Make a sequence from 0 to 100 in steps of 10.
-:::
-:::
 
 ---
 
@@ -483,4 +483,4 @@ mydf2
 
 ## Let's code!
 
-[Data structures coding](../code/07_datastructures.html){target="_blank"} [[Rmd](../code/07_datastructures.Rmd){target="_blank"}]
+[Data structures coding](../code/07_datastructures.html){target="_blank"}

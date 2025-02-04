@@ -1,32 +1,32 @@
 ---
 title: "Data structures"
 author: "Jeffrey R. Stevens"
-date: "2023-02-06"
+date: "2025-02-05"
 output: html_document
 execute:
   freeze: auto
 ---
 
-## In-class coding
+<!-- ## In-class coding -->
 
-Make a sequence from 0 to 100 in steps of 10.
-```{r}
+<!-- Make a sequence from 0 to 100 in steps of 10. -->
+<!-- ```{r}
 # >
-```
+``` -->
 
-Create a repetition of “yes” and “no” with 10 instance of each, alternating between the two. Then make one with 10 "yes" and then 10 "no".
-```{r}
+<!-- Create a repetition of “yes” and “no” with 10 instance of each, alternating between the two. Then make one with 10 "yes" and then 10 "no". -->
+<!-- ```{r}
 # >
-```
+``` -->
 
 
-Add the argument `n = 10` to `head(mtcars)`. What does this do?
-```{r}
+<!-- Add the argument `n = 10` to `head(mtcars)`. What does this do? -->
+<!-- ```{r}
 # >
-```
+``` -->
 
 
-## Extra coding practice
+<!-- ## Extra coding practice -->
 
 ### Vectors
 
@@ -46,6 +46,11 @@ Use the index operator to print to console only _Daisy_ and _Max_ from `dog_name
 ```
 
 Replace the _Daisy_ entry with _Luna_ and print `dog_names` to console.
+```{r}
+# >
+```
+
+Test whether the name _Sophie_ is contained in the vector `dog_names`.
 ```{r}
 # >
 ```
