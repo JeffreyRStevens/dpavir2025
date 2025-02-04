@@ -2,10 +2,10 @@
 title: 'Data types'
 author:
   - Jeff Stevens
-date: '2023-02-03'
+date: '2025-02-03'
 categories: 
   - "module 2"
-  - "week 2"
+  - "week 3"
   - characters
   - coercion
   - dates
@@ -14,7 +14,9 @@ categories:
   - "missing data"
   - numerics
 description: "Create and convert numerics, character strings, logicals, factors, and dates."
-draft: true
+execute:
+  freeze: auto
+draft: false
 ---
 
 There are four core types of data in R: doubles, integers, character strings, and logicals. Those can be augmented to form other data types such as factors and dates. We'll explore how to create, check, and convert these data types.

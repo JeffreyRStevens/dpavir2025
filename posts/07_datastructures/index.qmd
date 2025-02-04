@@ -2,7 +2,7 @@
 title: 'Data structures'
 author:
   - Jeff Stevens
-date: '2023-02-06'
+date: '2025-02-05'
 categories: 
   - "module 2"
   - "week 3"
@@ -11,7 +11,7 @@ categories:
   - tibbles
   - vectors
 description: "Create, modify, and subset vectors, lists, and data frames"
-draft: true
+draft: false
 ---
 
 All data in R are vectors, but there are some special forms of vectors such as lists and data frames. We'll explore how to create, modify, and subset vectors, lists, and data frames.
@@ -46,4 +46,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 22](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}
+* Read [R4DS2 20](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}

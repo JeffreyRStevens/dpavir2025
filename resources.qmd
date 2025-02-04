@@ -24,6 +24,8 @@ To install all of the course packages:
 install.packages(c("here", "palmerpenguins", "remotes", "tidyverse", "knitr", "rmarkdown", "papaja", "tinytex", "dataReporter", "qualtRics", "readxl", "nycflights13", "ggthemes", "patchwork", "gt"))
 ```
 
+After installing `{tinytex}`, run `tinytex::install_tinytex()`.
+
 Click _Full package list_ below to see all packages with links to their websites.
 
 <details>

@@ -4,7 +4,7 @@ execute:
   freeze: auto
 ---
 
-<details open>
+<details>
 
 <summary> Module 1: R basics </summary>
 
@@ -19,7 +19,7 @@ execute:
 
 </details>
 
-<details>
+<details open>
 
 <summary> Module 2: Working with data </summary>
 

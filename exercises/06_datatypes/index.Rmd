@@ -27,7 +27,7 @@ a <- 7
 typeof(a)
 ```
 
-**Run the following code then modify it to return the data type as logical.**
+**Run the following code then modify it to return the data type as logical. Then click Submit Answer to make sure it is correct.**
 
 ```{r exercise1, exercise = TRUE}
 typeof("TRUE")
@@ -70,9 +70,9 @@ question("Test each of these with `typeof()`. Which are integers?",
 
 ## Characters
 
-Character types are strings of ... characters. You can put anything in a character string---including spaces and special characters---as long as they are in quotes (e.g., `myname <- "Jeff Stévens!!"`). 
+Character types are strings of ... characters. You can put anything in a character string---including numbers, spaces, and special characters---as long as they are in quotes (e.g., `myname <- "Jeff Stévens!!"`). 
 
-Either single or double quotes can be used. In general, it is preferred to use double quotes. However, if you have a double quote inside your string, then use single quotes: `mystring <- 'They said, "No way!"'`. Alternatively, you can *escape* the internal double quotes with a `\` to treat it as the actual character: `mystring2 <- "We said, \"Way!\""`.
+Either single or double quotes can be used. In general, it is preferred to use double quotes because single quotes are more often used in strings (e.g., as apostrophes). However, if you have a double quote inside your string, then use single quotes: `mystring <- 'They said, "No way!"'`. Alternatively, you can *escape* the internal double quotes with a `\` to treat it as the actual character: `mystring2 <- "We said, \"Way!\""`.
 
 **Write that code that would assign the character string *What do you mean by "fine"?* to the object `question` without escaping the double quote.**
 
@@ -87,6 +87,19 @@ question <- 'What do you mean by "fine"?'
 ```{r exercise2-code-check}
 grade_code()
 ```
+
+```{r assignment}
+question("Did you notice that nothing is printed when you click Run Code? Why is this the case?",
+         answer("Assignments aren't printed by default", correct = TRUE),
+         answer("Assignments aren't evaluated by default"),
+         answer("Assignments aren't returned by default"),
+         answer("Assignments aren't assigned by default"),
+         answer("Assignments aren't displayed in the exercises by default"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
 
 ## Coercion
 
