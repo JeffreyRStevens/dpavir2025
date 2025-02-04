@@ -103,10 +103,6 @@ library(lubridate)
 
 ![](../images/lubridate_hex.png){.absolute width="15%" top="0%" left="90%"}
 
-::: {.aside}
-Congratulations to [{lubridate}](https://lubridate.tidyverse.org) for joining {tidyverse} last week in version 2.0.0!
-:::
-
 
 ## Current date/time
 
