@@ -2,7 +2,7 @@
 title: 'Importing data'
 author:
   - Jeff Stevens
-date: '2023-02-08'
+date: '2025-02-07'
 categories: 
   - "module 2"
   - "week 3"
@@ -12,7 +12,9 @@ categories:
   - import
   - Qualtrics
 description: "Import and export data from different sources"
-draft: true
+execute:
+  freeze: auto
+draft: false
 ---
 
 Importing data is often the first step in data processing. These data may be saved as CSV, Excel, SPSS, or Qualtrics formats, just to name a few. R allows you to import data from a wide variety of sources. You can also easily save those files locally.
@@ -27,7 +29,7 @@ Importing data is often the first step in data processing. These data may be sav
 
 To prepare for this class meeting, please do the following:
 
-* [R4DS2 22](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}
+* [R4DS2 20](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}
 
 ## Class meeting
 
