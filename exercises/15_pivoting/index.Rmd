@@ -10,6 +10,7 @@ runtime: shiny_prerendered
 library(learnr)
 library(tidyverse)
 library(palmerpenguins)
+options(tutorial.max.forked.procs = 10)
 gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
 penguins3 <- penguins |> 

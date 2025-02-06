@@ -13,6 +13,7 @@ library(palmerpenguins)
 library(Hmisc)
 library(ggbeeswarm)
 library(gghalves)
+options(tutorial.max.forked.procs = 10)
 gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
 within_penguins <- penguins |> 

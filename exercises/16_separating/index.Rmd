@@ -9,6 +9,7 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(tidyverse)
+options(tutorial.max.forked.procs = 10)
 gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
 my_dates <- tibble::tibble(date = c("2023-01-01", "2023-02-01", "2023-03-01", "2023-04-01", "2023-05-01"))
