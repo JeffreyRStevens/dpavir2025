@@ -29,7 +29,7 @@ Importing data is often the first step in data processing. These data may be sav
 
 To prepare for this class meeting, please do the following:
 
-* [R4DS2 20](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}
+* [R4DS2 7](https://r4ds.hadley.nz/data-import.html){target='_blank'} and [R4DS2 20](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'}
 
 ## Class meeting
 

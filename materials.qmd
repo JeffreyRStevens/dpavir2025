@@ -27,7 +27,7 @@ execute:
 |---------------|--------|--------|---------|------|-----------|
 | Data types | 2025-02-03 | [R4DS1 20](https://r4ds.had.co.nz/vectors.html){target='_blank'} | [Slides](slides/06_datatypes.qmd){target="_blank"} | [Code](code/06_datatypes.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/06_datatypes){target="_blank"} |
 | Data structures | 2025-02-05 | [PWR 13](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures.html){target='_blank'} | [Slides](slides/07_datastructures.qmd){target="_blank"} | [Code](code/07_datastructures.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/07_datastructures){target="_blank"} |
-| Importing data | 2025-02-07 | [R4DS2 20](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'} | [Slides](slides/08_importing.qmd){target="_blank"} | [Code](code/08_importing.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/08_importing){target="_blank"} |
+| Importing data | 2025-02-07 | [R4DS2 7](https://r4ds.hadley.nz/data-import.html){target='_blank'} <br> [R4DS2 20](https://r4ds.hadley.nz/spreadsheets.html){target='_blank'} | [Slides](slides/08_importing.qmd){target="_blank"} | [Code](code/08_importing.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/08_importing){target="_blank"} |
 | Validating data | 2025-02-10 | [Wikipedia](https://en.wikipedia.org/wiki/Data_validation){target='_blank'} | [Slides](slides/09_validating.qmd){target="_blank"} | [Code](code/09_validating.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/09_validating){target="_blank"} |
 
 </details>

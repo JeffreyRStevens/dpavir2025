@@ -1,9 +1,11 @@
 {
-  "hash": "d81504610f94cc042a919b04a303de95",
+  "hash": "19f703ca6d043024fb4401f8341d5fb7",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Importing data\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2023-02-08\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Download <https://jeffreyrstevens.quarto.pub/dpavir/data/newdata.csv> and save it in your `data/` directory.\n\n1. Import `newdata.csv` and name it `newdata` using `read.csv()`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Import <https://jeffreyrstevens.quarto.pub/dpavir/data/newdata2.csv> directly from the URL using `readr::read_csv()`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Repeat the previous import of `newdata2.csv`, but add the arguments `col_select = c(\"Breed\", \"links\")` and `show_col_types = FALSE` and name it `newdata3`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Export the `newdata3` data as a CSV file to your `data/` directory.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Importing data\"\nauthor: \"Jeffrey R. Stevens\"\ndate: \"2025-02-07\"\noutput: html_document\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n1. Download <https://jeffreyrstevens.github.io/dpavir2025/data/newdata.csv> and save it in your `data/` directory.\n\n1. Import `newdata.csv` into an object called `newdata` using `read.csv()`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n3. Import <https://jeffreyrstevens.github.io/dpavir2025/data/newdata2.csv> directly from the URL using `readr::read_csv()`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n4. Repeat the previous import of `newdata2.csv`, but add the arguments `col_select = c(\"Breed\", \"links\")` and `show_col_types = FALSE` and name the object `newdata3`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n\n\n\n\n5. Export the `newdata3` data as a CSV file to your `data/` directory.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# >\n```\n:::\n",
+    "supporting": [
+      "08_importing_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
