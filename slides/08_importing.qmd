@@ -1,11 +1,11 @@
 ---
 title: "Importing data"
 author: "Jeff Stevens"
-date: "2023-02-08"
+date: "2025-02-07"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: auto
 format:
   revealjs: 
     theme: custom.scss
@@ -59,7 +59,7 @@ format:
 
 * Create `data/` directory in your `dpavir2025` course directory.
 
-* Save `dog_breed_popularity.csv` into the `data/` directory.
+* Move/copy `dog_breed_popularity.csv` into the `data/` directory.
 
 * View file in RStudio file manager
 :::
@@ -71,13 +71,13 @@ format:
 
 `read.csv()`
 
-* Wrapper around `read.table()`
+* Wrapper around `read.table()` to import rectangular data
 
 :::{.fragment}
 #### Defaults
 * Header row (turn off with `header = FALSE`)
 
-* Comma separated (change with `sep=";"` or use `read.csv2()`)
+* Comma separated (change with `sep = ";"` or use `read.csv2()`)
 
 * Outputs data frame
 :::
@@ -138,15 +138,32 @@ mydf2 <- read_csv(here("data/dog_breed_popularity.csv"))
 
 ---
 
+## Comparing functions
+
+Explore both `mydf` and `mydf2` using `str()`. How are they different?
+
+::: {.fragment}
+`readr::read_csv()`
+
+* Faster
+* Outputs tibbles
+* Defaults to numerics instead of integers
+* Keeps column names starting with numbers
+:::
+
+
+
+---
+
 ## Importing from URLs
 
 Both `read.csv()` and `read_csv()` import CSV files available online by using the URL as the path.
 
-<https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv>
+<https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv>
 
 ```{r eval = FALSE}
-mydf3 <- read.csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv")
-mydf4 <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv")
+mydf3 <- read.csv("https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv")
+mydf4 <- read_csv("https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv")
 ```
 
 
@@ -216,7 +233,7 @@ library(readxl)
 mydf5 <- read_excel(here("data/dog_breed_data.xlsx"), sheet = "Sheet2")
 ```
 :::{.aside}
-*Currently, `read_excel()` cannot download from URLs. So first download <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_data.xlsx> and save it in the `data/` directory.
+*Currently, `read_excel()` cannot download from URLs. So first download <https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_data.xlsx> and save it in the `data/` directory.
 :::
 :::
 
@@ -260,17 +277,17 @@ mydf5 <- read_excel(here("data/dog_breed_data.xlsx"), sheet = "Sheet2")
 :::
 :::
 
----
+<!-- --- -->
 
-## Qualtrics data
+<!-- ## Qualtrics data -->
 
-### Import Qualtrics data directly with [{qualtRics}](https://docs.ropensci.org/qualtRics/)
+<!-- ### Import Qualtrics data directly with [{qualtRics}](https://docs.ropensci.org/qualtRics/) -->
 
-* Download choice text by default or numeric values with `label = FALSE`
+<!-- * Download choice text by default or numeric values with `label = FALSE` -->
 
-* Set time zone with `time_zone = "America/Chicago"`
+<!-- * Set time zone with `time_zone = "America/Chicago"` -->
 
-* Turn off sublabels with `add_var_labels = FALSE`
+<!-- * Turn off sublabels with `add_var_labels = FALSE` -->
 
 
 ---
@@ -284,6 +301,17 @@ mydf6 <- qualtRics::fetch_survey("SV_xxxxxxxxxxxxx", save_dir = "data", label = 
              force_request = TRUE, time_zone = "America/Chicago")
 ```
 
+---
+
+## REDCap data
+
+### Import REDCap data directly with [{REDCapR}](https://ouhscbbmc.github.io/REDCapR/)<sup>*</sup>
+
+![](../images/redcap_logo.png){.absolute width="35%" top="22%" left="80%"}
+
+:::{.aside}
+*Be cautious with using API credentials! I'm not responsible for the security of packages that I describe.
+:::
 
 ---
 
@@ -310,4 +338,4 @@ mydf6 <- qualtRics::fetch_survey("SV_xxxxxxxxxxxxx", save_dir = "data", label = 
 
 ## Let's code!
 
-[Importing data](../code/08_importing.html){target="_blank"} [[Rmd](../code/08_importing.Rmd){target="_blank"}]
+[Importing data](../code/08_importing.html){target="_blank"}

@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-02-08">
+<meta name="dcterms.date" content="2025-02-07">
 <title>Data Processing and Visualization in R – Importing data</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,7 +203,7 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-02-08</p>
+  <p class="date">2025-02-07</p>
 </section><section><section id="review" class="title-slide slide level1 center"><h1>Review</h1>
 
 </section><section id="mental-model-of-data-in-r" class="slide level2"><h2>Mental model of data in R</h2>
@@ -228,8 +228,8 @@ Jeff Stevens
 <div>
 <ul>
 <li class="fragment"><p>Download data for <a href="../data/dog_breed_popularity.csv">dog breed popularity</a>.</p></li>
-<li class="fragment"><p>Create <code>data/</code> directory in your <code>dpavir2023</code> course directory.</p></li>
-<li class="fragment"><p>Save <code>dog_breed_popularity.csv</code> into the <code>data/</code> directory.</p></li>
+<li class="fragment"><p>Create <code>data/</code> directory in your <code>dpavir2025</code> course directory.</p></li>
+<li class="fragment"><p>Move/copy <code>dog_breed_popularity.csv</code> into the <code>data/</code> directory.</p></li>
 <li class="fragment"><p>View file in RStudio file manager</p></li>
 </ul>
 </div>
@@ -238,14 +238,13 @@ Jeff Stevens
 </section><section id="base-r-data-import" class="slide level2"><h2>Base R data import</h2>
 <p><code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code></p>
 <ul>
-<li>Wrapper around <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>
-</li>
+<li>Wrapper around <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> to import rectangular data</li>
 </ul>
 <div class="fragment">
 <h4 id="defaults">Defaults</h4>
 <ul>
 <li><p>Header row (turn off with <code>header = FALSE</code>)</p></li>
-<li><p>Comma separated (change with <code>sep=";"</code> or use <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv2()</a></code>)</p></li>
+<li><p>Comma separated (change with <code>sep = ";"</code> or use <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv2()</a></code>)</p></li>
 <li><p>Outputs data frame</p></li>
 </ul>
 </div>
@@ -278,12 +277,23 @@ Jeff Stevens
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span><span class="va">mydf2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/dog_breed_popularity.csv"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section><section id="comparing-functions" class="slide level2"><h2>Comparing functions</h2>
+<p>Explore both <code>mydf</code> and <code>mydf2</code> using <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>. How are they different?</p>
+<div class="fragment">
+<p><code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code></p>
+<ul>
+<li>Faster</li>
+<li>Outputs tibbles</li>
+<li>Defaults to numerics instead of integers</li>
+<li>Keeps column names starting with numbers</li>
+</ul>
+</div>
 </section><section id="importing-from-urls" class="slide level2"><h2>Importing from URLs</h2>
 <p>Both <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> and <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> import CSV files available online by using the URL as the path.</p>
-<p><a href="https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv" class="uri">https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv</a></p>
+<p><a href="https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv" class="uri">https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv</a></p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mydf3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv"</span><span class="op">)</span></span>
-<span><span class="va">mydf4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mydf3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv"</span><span class="op">)</span></span>
+<span><span class="va">mydf4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="exporting-csvs" class="slide level2"><h2>Exporting CSVs</h2>
 <p><code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code></p>
@@ -332,7 +342,7 @@ Jeff Stevens
 
 </div>
 <aside><div>
-<p>*Currently, <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> cannot download from URLs. So first download <a href="https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_data.xlsx" class="uri">https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_data.xlsx</a> and save it in the <code>data/</code> directory.</p>
+<p>*Currently, <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> cannot download from URLs. So first download <a href="https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_data.xlsx" class="uri">https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_data.xlsx</a> and save it in the <code>data/</code> directory.</p>
 </div></aside></section><section id="other-stats-packages" class="slide level2"><h2>Other stats packages</h2>
 <h3 id="import-spss-sas-stata-data-with-haven">Import SPSS, SAS, &amp; Stata data with <a href="https://haven.tidyverse.org/">{haven}</a>
 </h3>
@@ -350,29 +360,35 @@ Jeff Stevens
 </h3>
 <div class="fragment">
 <ol type="1">
-<li><p>Register your Qualtrics credentials with <code>qualtRics::qualtrics_api_credentials()</code><sup>*</sup></p></li>
-<li><p>Get survey ID by viewing <code>qualtRics::all_surveys()</code></p></li>
-<li><p>Import data with <code>qualtRics::fetch_survey()</code></p></li>
+<li><p>Register your Qualtrics credentials with <code><a href="https://docs.ropensci.org/qualtRics/reference/qualtrics_api_credentials.html">qualtRics::qualtrics_api_credentials()</a></code><sup>*</sup></p></li>
+<li><p>Get survey ID by viewing <code><a href="https://docs.ropensci.org/qualtRics/reference/all_surveys.html">qualtRics::all_surveys()</a></code></p></li>
+<li><p>Import data with <code><a href="https://docs.ropensci.org/qualtRics/reference/fetch_survey.html">qualtRics::fetch_survey()</a></code></p></li>
 <li><p>Never have to download Qualtrics data again!</p></li>
 </ol>
 
 </div>
+<!-- --- -->
+<!-- ## Qualtrics data -->
+<!-- ### Import Qualtrics data directly with [{qualtRics}](https://docs.ropensci.org/qualtRics/) -->
+<!-- * Download choice text by default or numeric values with `label = FALSE` -->
+<!-- * Set time zone with `time_zone = "America/Chicago"` -->
+<!-- * Turn off sublabels with `add_var_labels = FALSE` -->
 <aside><div>
 <p>*Be cautious with using API credentials! I’m not responsible for the security of packages that I describe.</p>
 </div></aside></section><section id="qualtrics-data-1" class="slide level2"><h2>Qualtrics data</h2>
-<h3 id="import-qualtrics-data-directly-with-qualtrics-1">Import Qualtrics data directly with <a href="https://docs.ropensci.org/qualtRics/">{qualtRics}</a>
-</h3>
-<ul>
-<li><p>Download choice text by default or numeric values with <code>label = FALSE</code></p></li>
-<li><p>Set time zone with <code>time_zone = "America/Chicago"</code></p></li>
-<li><p>Turn off sublabels with <code>add_var_labels = FALSE</code></p></li>
-</ul></section><section id="qualtrics-data-2" class="slide level2"><h2>Qualtrics data</h2>
 <h3 id="usage-4">Usage</h3>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mydf6</span> <span class="op">&lt;-</span> <span class="fu">qualtRics</span><span class="fu">::</span><span class="fu">fetch_survey</span><span class="op">(</span><span class="st">"SV_xxxxxxxxxxxxx"</span>, save_dir <span class="op">=</span> <span class="st">"data"</span>, label <span class="op">=</span> <span class="cn">FALSE</span>, convert <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mydf6</span> <span class="op">&lt;-</span> <span class="fu">qualtRics</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/qualtRics/reference/fetch_survey.html">fetch_survey</a></span><span class="op">(</span><span class="st">"SV_xxxxxxxxxxxxx"</span>, save_dir <span class="op">=</span> <span class="st">"data"</span>, label <span class="op">=</span> <span class="cn">FALSE</span>, convert <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>             force_request <span class="op">=</span> <span class="cn">TRUE</span>, time_zone <span class="op">=</span> <span class="st">"America/Chicago"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="cloud-storage" class="slide level2"><h2>Cloud storage</h2>
+</section><section id="redcap-data" class="slide level2"><h2>REDCap data</h2>
+<h3 id="import-redcap-data-directly-with-redcapr">Import REDCap data directly with <a href="https://ouhscbbmc.github.io/REDCapR/">{REDCapR}</a><sup>*</sup>
+</h3>
+<p><img data-src="../images/redcap_logo.png" class="absolute" style="top: 22%; left: 80%; width: 35%; "></p>
+
+<aside><div>
+<p>*Be cautious with using API credentials! I’m not responsible for the security of packages that I describe.</p>
+</div></aside></section><section id="cloud-storage" class="slide level2"><h2>Cloud storage</h2>
 <h3 id="import-data-directly-from-cloud-storage">Import data directly from cloud storage</h3>
 <ul>
 <li><p>OneDrive <a href="https://github.com/Azure/Microsoft365R">{Microsoft365R}</a><sup>*</sup></p></li>
@@ -386,7 +402,7 @@ Jeff Stevens
 </div></aside></section><section id="mental-model-of-importing-data-1" class="slide level2"><h2>Mental model of importing data</h2>
 
 <img data-src="../images/mentalmodel_import.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/08_importing.html" target="_blank">Importing data</a> [<a href="../code/08_importing.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/08_importing.html" target="_blank">Importing data</a></p>
 
 
 </section></section>
