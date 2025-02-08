@@ -2,6 +2,7 @@
   {
     "listing": "/meetings.html",
     "items": [
+      "/posts/09_validating/index.html",
       "/posts/08_importing/index.html",
       "/posts/07_datastructures/index.html",
       "/posts/06_datatypes/index.html",
