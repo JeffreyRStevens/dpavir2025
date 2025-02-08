@@ -2,17 +2,19 @@
 title: 'Validating data'
 author:
   - Jeff Stevens
-date: '2023-02-10'
+date: '2025-02-10'
 categories: 
   - "module 2"
-  - "week 3"
+  - "week 4"
   - "codebooks"
   - "data types"
   - duplicates
   - "missing data"
   - "validate"
 description: "Tools for ensuring your data are valid"
-draft: true
+execute:
+  freeze: auto
+draft: false
 ---
 
 Typically, the first step of data cleaning after importing data is to check that they data are valid. 
@@ -45,4 +47,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 4.3.2 - 4.3.4](https://r4ds.hadley.nz/data-transform.html#sec-select){target='_blank'}
+* Read [R4DS2 3.3.2 - 3.3.4](https://r4ds.hadley.nz/data-transform.html#sec-select){target='_blank'}
