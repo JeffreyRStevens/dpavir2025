@@ -1,11 +1,11 @@
 ---
 title: "Validating data"
 author: "Jeff Stevens"
-date: "2023-02-10"
+date: "2025-02-10"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: auto
 format:
   revealjs: 
     theme: custom.scss
@@ -28,6 +28,7 @@ format:
 
 ### Import dog breed traits data
 ```{r}
+#| attr-output: "style='font-size: 45%'"
 (mydf <- readr::read_csv(here::here("data/dog_breed_traits.csv")))
 ```
 
@@ -80,7 +81,7 @@ dim(mydf)
 
 ### Do the data columns have the correct data types?
 
-#### How do we check data types of a data frame?
+#### How do we check all data types of a data frame?
 
 :::{.fragment}
 ```{r}
@@ -94,7 +95,7 @@ str(mydf)
 
 #### Test specific data type for individual columns
 ```{r}
-is.numeric(mydf$`2013 Rank`)
+is.numeric(mydf$`Drooling Level`)
 ```
 
 
@@ -160,7 +161,15 @@ observed_subjects %in% expected_subjects
 
 ### Are there duplicate observations?
 
-```{r}
+```{css, echo=FALSE}
+.scroll-250 {
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: inherit;
+}
+```
+
+```{r, class.output="scroll-250"}
 duplicated(mydf$Breed)
 ```
 
@@ -173,9 +182,9 @@ mydf[duplicated(mydf$Breed), ]
 
 ## Missing values
 
-### Are there values with missing data?
+### Are there individual vectors with missing data?
 
-```{r eval = FALSE}
+```{r, class.output="scroll-250"}
 is.na(penguins$bill_length_mm)
 ```
 
@@ -188,9 +197,10 @@ penguins[is.na(penguins$bill_length_mm), ]
 
 ## Missing values
 
-### Are there values with missing data?
+### Do any columns have missing data?
 
 ```{r}
+#| attr-output: "style='font-size: 45%'"
 penguins[!complete.cases(penguins), ]
 ```
 
@@ -202,6 +212,7 @@ penguins[!complete.cases(penguins), ]
 ### `head()`
 
 ```{r}
+#| attr-output: "style='font-size: 45%'"
 head(mydf)
 ```
 
@@ -211,6 +222,7 @@ head(mydf)
 ### `glimpse()`
 
 ```{r}
+#| attr-output: "style='font-size: 45%'"
 tibble::glimpse(mydf)
 ```
 
@@ -224,43 +236,43 @@ summary(penguins)
 ```
 
 
-## [{skimr}](https://docs.ropensci.org/skimr/)
+<!-- ## [{skimr}](https://docs.ropensci.org/skimr/) -->
 
-#### View info about your data
+<!-- #### View info about your data -->
 
-```{r}
-library(skimr)
-skim(penguins)
-```
-
-
-# Testing data
-
-## [{validate}](https://github.com/data-cleaning/validate)
-
-* Create **rules** about dimensions, data types, ranges, code lists, etc.
-
-* Confront your data with the rules
-
-* Summarize/visualize validation
-
-![](../images/validate.png){.absolute width="40%" top="25%" left="65%"}
+<!-- ```{r} -->
+<!-- library(skimr) -->
+<!-- skim(penguins) -->
+<!-- ``` -->
 
 
----
+<!-- # Testing data -->
 
-## [{assertr}](https://docs.ropensci.org/assertr/)
+<!-- ## [{validate}](https://github.com/data-cleaning/validate) -->
 
-* Assertions: tests of data embedded in functions
+<!-- * Create **rules** about dimensions, data types, ranges, code lists, etc. -->
 
-```{r eval = FALSE}
-library(assertr)
-verify(penguins, has_all_names("species", "island", "sex"))
-verify(penguins, nrow(penguins) > 100)
-verify(penguins, bill_length_mm > 0)
-insist(penguins, within_n_sds(4), bill_length_mm)
-assert(penguins, in_set(2007, 2008, 2009), year)
-```
+<!-- * Confront your data with the rules -->
+
+<!-- * Summarize/visualize validation -->
+
+<!-- ![](../images/validate.png){.absolute width="40%" top="25%" left="65%"} -->
+
+
+<!-- --- -->
+
+<!-- ## [{assertr}](https://docs.ropensci.org/assertr/) -->
+
+<!-- * Assertions: tests of data embedded in functions -->
+
+<!-- ```{r eval = FALSE} -->
+<!-- library(assertr) -->
+<!-- verify(penguins, has_all_names("species", "island", "sex")) -->
+<!-- verify(penguins, nrow(penguins) > 100) -->
+<!-- verify(penguins, bill_length_mm > 0) -->
+<!-- insist(penguins, within_n_sds(4), bill_length_mm) -->
+<!-- assert(penguins, in_set(2007, 2008, 2009), year) -->
+<!-- ``` -->
 
 
 # Excluding data
@@ -305,4 +317,4 @@ dataReporter::makeCodebook(mydf3, file = here("06_codebook.Rmd"))
 
 ## Let's code!
 
-[Validating data](../code/09_validating.html){target="_blank"} [[Rmd](../code/09_validating.Rmd){target="_blank"}]
+[Validating data](../code/09_validating.html){target="_blank"}
