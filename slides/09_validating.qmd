@@ -69,11 +69,28 @@ library(palmerpenguins)
 
 ### Does the data frame have the correct dimensions?
 
-#### How do we check dimensions of a data frame?
+#### How do we view dimensions of a data frame?
 
 :::{.fragment}
 ```{r}
 dim(mydf)
+```
+:::
+
+:::{.fragment}
+#### How do we check if dimensions match a specific set of values?
+:::
+
+:::{.fragment}
+```{r}
+dim(mydf) == c(195, 17)
+```
+:::
+
+:::{.fragment}
+#### And we can stop a script from processing with `stopifnot()`
+```{r, error=TRUE}
+stopifnot(dim(mydf) == c(19, 17))
 ```
 :::
 
@@ -144,6 +161,19 @@ E.g., if "other" is selected in `choice` column, does `other` column have an ent
 df$choice == "other" & !is.na(df$other)
 ```
 
+:::{.fragment}
+:::{.callout-note}
+# Multiple conditional statements
+
+`&` is the conditional AND where both individual conditional statements must be true for the overall return value to be `TRUE`
+
+```{r}
+a <- 7
+a > 5 & a < 10
+```
+:::
+:::
+
 
 ## Completeness
 
@@ -199,10 +229,23 @@ penguins[is.na(penguins$bill_length_mm), ]
 
 ### Do any columns have missing data?
 
+`complete.cases()` returns logical vector of which cases have no missing values
+
 ```{r}
 #| attr-output: "style='font-size: 45%'"
 penguins[!complete.cases(penguins), ]
 ```
+
+## Missing values
+
+### What are the index values of the observations with missing data?
+
+`which()` returns which indices are `TRUE`
+
+```{r}
+which(!complete.cases(penguins))
+```
+
 
 
 # Summarizing data
@@ -311,7 +354,7 @@ summary(penguins)
 ## [{dataReporter}](https://github.com/ekstroem/dataReporter)
 
 ```{r eval = FALSE}
-dataReporter::makeCodebook(mydf3, file = here("06_codebook.Rmd"))
+dataReporter::makeCodebook(mydf3, file = here::here("06_codebook.Rmd"))
 ```
 
 

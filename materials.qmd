@@ -32,7 +32,7 @@ execute:
 
 </details>
 
-<details>
+<details open>
 
 <summary> Module 3: Cleaning and wrangling data </summary>
 

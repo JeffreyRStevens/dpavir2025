@@ -2,7 +2,7 @@
 title: 'Mutating columns'
 author:
   - Jeff Stevens
-date: '2023-02-15'
+date: '2025-02-14'
 categories: 
   - "module 3"
   - "week 4"
@@ -30,7 +30,7 @@ We'll continue our data wrangling by cleaning up the columns of our data. We'll 
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 4.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'}
+* Read [R4DS2 3.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'}
 
 ## Class meeting
 

@@ -2,7 +2,7 @@
 title: 'Selecting columns'
 author:
   - Jeff Stevens
-date: '2025-02-11'
+date: '2025-02-12'
 categories: 
   - "module 3"
   - "week 4"
@@ -11,7 +11,9 @@ categories:
   - rename
   - select
 description: "Select, move, and rename columns"
-draft: true
+execute:
+  freeze: auto
+draft: false
 ---
 
 We'll start our data wrangling by cleaning up the columns of our data. We'll use [{dplyr}](https://dplyr.tidyverse.org) functions to select, move, and rename columns.
@@ -42,4 +44,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 4.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'}
+* Read [R4DS2 3.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'}
