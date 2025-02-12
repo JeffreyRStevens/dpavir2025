@@ -1,11 +1,11 @@
 ---
 title: "Selecting columns"
 author: "Jeff Stevens"
-date: "2023-02-13"
+date: "2025-02-12"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: auto
 format:
   revealjs: 
     theme: custom.scss
@@ -62,6 +62,7 @@ library(dplyr)
 ## Data set
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 library(nycflights13)
 glimpse(flights)
 ```
@@ -75,6 +76,13 @@ glimpse(flights)
 ### `select()`
 
 ![](../images/dplyr_select.png){fig-align="center" width="40%"}
+
+:::{.fragment}
+:::{.callout-warning}
+# Note
+Notice that column names are not in quotes in the tidyverse
+:::
+:::
 
 
 ---
@@ -95,8 +103,8 @@ select(flights, year, month, day, sched_dep_time, sched_arr_time)
 ### `select()` by exclusion
 
 ```{r}
-select(flights, -dep_time, -dep_delay, -arr_time, -arr_delay, -carrier, -flight, -tailnum,
-       -origin, -dest, -air_time, -distance, -hour, -minute, -time_hour)
+select(flights, !c(dep_time, dep_delay, arr_time, arr_delay, carrier, flight, tailnum,
+       origin, dest, air_time, distance, hour, minute, time_hour))
 ```
 
 
@@ -182,6 +190,7 @@ select(flights, carrier, flight, year:day)
 ## Move with `relocate()`
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 relocate(flights, carrier, flight, .before = year)
 ```
 
@@ -207,6 +216,7 @@ select(flights, airline = carrier, flight_num = flight, everything())
 ## Rename with `rename()`
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 rename(flights, departure = dep_time, arrival = arr_time)
 ```
 
@@ -218,4 +228,4 @@ rename(flights, departure = dep_time, arrival = arr_time)
 
 ## Let's code!
 
-[Selecting data](../code/10_selecting.html){target="_blank"} [[Rmd](../code/10_selecting.Rmd){target="_blank"}]
+[Selecting data](../code/10_selecting.html){target="_blank"}

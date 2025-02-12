@@ -1,7 +1,7 @@
 ---
 title: "Selecting columns"
 author: "Jeffrey R. Stevens"
-date: "2023-02-13"
+date: "2025-02-12"
 output: html_document
 execute:
   freeze: auto
@@ -14,22 +14,22 @@ For these exercises, we'll use the `iris` data set build into base R.
 # >
 ```
 
-2. Return a data frame with only the sepal data using _inclusion_.
+2. Return a data frame with only the sepal columns using _inclusion_.
 ```{r}
 # >
 ```
 
-3. Return a data frame with only the sepal data using a _helper function_.
+3. Return a data frame with only the sepal columns using a _helper function_.
 ```{r}
 # >
 ```
 
-4. Return a data frame with the sepal and petal data using a _helper function_.
+4. Return a data frame with the sepal and petal columns using a _helper function_.
 ```{r}
 # >
 ```
 
-5. Return a data frame with the sepal and petal data using _exclusion_.
+5. Return a data frame with the sepal and petal columns using _exclusion_.
 ```{r}
 # >
 ```
@@ -44,7 +44,7 @@ For these exercises, we'll use the `iris` data set build into base R.
 # >
 ```
 
-8. Rename `Species` to `species` using `select()`.
+8. Rename `Species` to `species` using `select()` and a helper function.
 ```{r}
 # >
 ```

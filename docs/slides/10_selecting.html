@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-02-13">
+<meta name="dcterms.date" content="2025-02-12">
 <title>Data Processing and Visualization in R – Selecting columns</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,7 +203,7 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-02-13</p>
+  <p class="date">2025-02-12</p>
 </section><section><section id="review" class="title-slide slide level1 center"><h1>Review</h1>
 
 </section><section id="mental-model-of-data-analysis" class="slide level2"><h2>Mental model of data analysis</h2>
@@ -236,7 +236,7 @@ Jeff Stevens
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 336,776
+<pre style="font-size: 52%"><code>Rows: 336,776
 Columns: 19
 $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…
 $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
@@ -262,7 +262,22 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section><section id="selecting-columns-1" class="slide level2"><h2>Selecting columns</h2>
 <h3 id="select"><code>select()</code></h3>
 
-<img data-src="../images/dplyr_select.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section><section id="selecting-columns-2" class="slide level2"><h2>Selecting columns</h2>
+<img data-src="../images/dplyr_select.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"><div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Notice that column names are not in quotes in the tidyverse</p>
+</div>
+</div>
+</div>
+</div>
+</section><section id="selecting-columns-2" class="slide level2"><h2>Selecting columns</h2>
 <h3 id="select-by-inclusion">
 <code>select()</code> by inclusion</h3>
 <div class="cell">
@@ -288,8 +303,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <h3 id="select-by-exclusion">
 <code>select()</code> by exclusion</h3>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flights</span>, <span class="op">-</span><span class="va">dep_time</span>, <span class="op">-</span><span class="va">dep_delay</span>, <span class="op">-</span><span class="va">arr_time</span>, <span class="op">-</span><span class="va">arr_delay</span>, <span class="op">-</span><span class="va">carrier</span>, <span class="op">-</span><span class="va">flight</span>, <span class="op">-</span><span class="va">tailnum</span>,</span>
-<span>       <span class="op">-</span><span class="va">origin</span>, <span class="op">-</span><span class="va">dest</span>, <span class="op">-</span><span class="va">air_time</span>, <span class="op">-</span><span class="va">distance</span>, <span class="op">-</span><span class="va">hour</span>, <span class="op">-</span><span class="va">minute</span>, <span class="op">-</span><span class="va">time_hour</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flights</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">dep_time</span>, <span class="va">dep_delay</span>, <span class="va">arr_time</span>, <span class="va">arr_delay</span>, <span class="va">carrier</span>, <span class="va">flight</span>, <span class="va">tailnum</span>,</span>
+<span>       <span class="va">origin</span>, <span class="va">dest</span>, <span class="va">air_time</span>, <span class="va">distance</span>, <span class="va">hour</span>, <span class="va">minute</span>, <span class="va">time_hour</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 5
     year month   day sched_dep_time sched_arr_time
@@ -453,7 +468,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">flights</span>, <span class="va">carrier</span>, <span class="va">flight</span>, .before <span class="op">=</span> <span class="va">year</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
+<pre style="font-size: 52%"><code># A tibble: 336,776 × 19
    carrier flight  year month   day dep_time sched_dep_time dep_delay arr_time
    &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
  1 UA        1545  2013     1     1      517            515         2      830
@@ -509,7 +524,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <div class="cell">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="va">flights</span>, departure <span class="op">=</span> <span class="va">dep_time</span>, arrival <span class="op">=</span> <span class="va">arr_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
+<pre style="font-size: 52%"><code># A tibble: 336,776 × 19
     year month   day departure sched_dep_time dep_delay arrival sched_arr_time
    &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;   &lt;int&gt;          &lt;int&gt;
  1  2013     1     1       517            515         2     830            819
@@ -531,7 +546,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section><section id="mental-model-of-selecting-columns-1" class="slide level2"><h2>Mental model of selecting columns</h2>
 
 <img data-src="../images/mentalmodel_select.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/10_selecting.html" target="_blank">Selecting data</a> [<a href="../code/10_selecting.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/10_selecting.html" target="_blank">Selecting data</a></p>
 
 
 </section></section>
