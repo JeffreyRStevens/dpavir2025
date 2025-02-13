@@ -7,27 +7,6 @@ execute:
   freeze: auto
 ---
 
-<!-- ## In-class coding -->
-
-<!-- Make a sequence from 0 to 100 in steps of 10. -->
-<!-- ```{r} -->
-<!-- seq(0, 100, 10) -->
-<!-- ``` -->
-
-<!-- Create a repetition of “yes” and “no” with 10 instance of each, alternating between the two. Then make one with 10 "yes" and then 10 "no". -->
-<!-- ```{r} -->
-<!-- rep(c("yes", "no"), times = 10) -->
-<!-- rep(c("yes", "no"), each = 10) -->
-<!-- ``` -->
-
-
-<!-- Add the argument `n = 10` to `head(mtcars)`. What does this do? -->
-<!-- ```{r} -->
-<!-- head(mtcars, n =  10) -->
-<!-- ``` -->
-
-
-<!-- ## Extra coding practice -->
 
 ### Vectors
 

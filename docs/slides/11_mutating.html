@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-02-15">
+<meta name="dcterms.date" content="2025-02-14">
 <title>Data Processing and Visualization in R – Mutating columns</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,7 +203,7 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-02-15</p>
+  <p class="date">2025-02-14</p>
 </section><section><section id="review" class="title-slide slide level1 center"><h1>Review</h1>
 
 </section><section id="data-wrangling" class="slide level2"><h2>Data wrangling</h2>
@@ -218,7 +218,7 @@ Jeff Stevens
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 336,776
+<pre style="font-size: 52%"><code>Rows: 336,776
 Columns: 19
 $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…
 $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
@@ -249,6 +249,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section><section id="changing-existing-columns" class="slide level2"><h2>Changing existing columns</h2>
 
 <img data-src="../images/dplyr_mutate_change.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section id="changing-existing-columns-1" class="slide level2"><h2>Changing existing columns</h2>
+<h3 id="changing-all-values">Changing all values</h3>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">flights</span>, month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -442,7 +443,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <span>         date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span>, </span>
 <span>         .after <span class="op">=</span> <span class="va">day</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 21
+<pre style="font-size: 52%"><code># A tibble: 336,776 × 21
     year month day   date       dep_time speed sched_dep_time dep_delay arr_time
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;int&gt; &lt;dbl&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
  1  2013 01    01    2013-01-01      517  370.            515         2      830
@@ -468,7 +469,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <span>       .before <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>       .keep <span class="op">=</span> <span class="st">"unused"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 17
+<pre style="font-size: 52%"><code># A tibble: 336,776 × 17
    date     dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay
    &lt;chr&gt;       &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;
  1 2013-1-1      517            515         2      830            819        11
@@ -7689,8 +7690,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section><section id="apply-functions-to-multiple-columns-1" class="slide level2"><h2>Apply functions to multiple columns</h2>
 <h4 id="dplyrrowwise"><code>dplyr::rowwise()</code></h4>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>min_dep_time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">dep_time</span>, <span class="va">sched_dep_time</span><span class="op">)</span>, .after <span class="op">=</span> <span class="va">arr_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span>, min_dep_time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">dep_time</span>, <span class="va">sched_dep_time</span><span class="op">)</span>, .after <span class="op">=</span> <span class="va">arr_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 20
 # Rowwise: 
@@ -7789,7 +7789,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section><section id="mental-model-of-mutating-columns-1" class="slide level2"><h2>Mental model of mutating columns</h2>
 
 <img data-src="../images/mentalmodel_mutate.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/11_mutating.html" target="_blank">Mutating data</a> [<a href="../code/11_mutating.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/11_mutating.html" target="_blank">Mutating data</a></p>
 
 
 </section></section>

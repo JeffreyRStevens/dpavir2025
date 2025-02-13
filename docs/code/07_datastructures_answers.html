@@ -76,8 +76,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8995429851219f6a61f71b574a294938.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-773f7335855c67f21ffe18a1e68b5318.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-3fd127613c2a3f46256d9c2ddde17676.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-90acf552d9ec4ad86055cc6396889968.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -222,21 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<!-- ## In-class coding -->
-<!-- Make a sequence from 0 to 100 in steps of 10. -->
-<!-- ```{r} -->
-<!-- seq(0, 100, 10) -->
-<!-- ``` -->
-<!-- Create a repetition of “yes” and “no” with 10 instance of each, alternating between the two. Then make one with 10 "yes" and then 10 "no". -->
-<!-- ```{r} -->
-<!-- rep(c("yes", "no"), times = 10) -->
-<!-- rep(c("yes", "no"), each = 10) -->
-<!-- ``` -->
-<!-- Add the argument `n = 10` to `head(mtcars)`. What does this do? -->
-<!-- ```{r} -->
-<!-- head(mtcars, n =  10) -->
-<!-- ``` -->
-<!-- ## Extra coding practice -->
 <section id="vectors" class="level3">
 <h3 class="anchored" data-anchor-id="vectors">Vectors</h3>
 <p>Create a vector called <code>dog_names</code> with the values <em>Bella</em>, <em>Daisy</em>, and <em>Max</em>.</p>
@@ -333,12 +318,12 @@ $d
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">y =</span> <span class="fu">sample</span>(letters, <span class="dv">5</span>), <span class="at">z =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   x y     z
-1 10 j FALSE
-2  2 x  TRUE
-3  8 r FALSE
-4 10 q  TRUE
-5  4 b FALSE</code></pre>
+<pre><code>  x y     z
+1 4 g FALSE
+2 5 v  TRUE
+3 3 m FALSE
+4 8 q  TRUE
+5 4 j  TRUE</code></pre>
 </div>
 </div>
 <p>Create a data frame called <code>dogs</code> that combines the <code>dog_names</code> and <code>sex</code> vectors and print to console.</p>

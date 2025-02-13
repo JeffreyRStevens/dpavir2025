@@ -1,13 +1,13 @@
 ---
 title: "Mutating columns"
 author: "Jeffrey R. Stevens"
-date: "2023-02-15"
+date: "2025-02-14"
 output: html_document
 execute:
   freeze: auto
 ---
 
-For these exercises, we'll use the dog breed traits data set, so import that from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv> (if you don't already have it) and assign it to `traits`.
+For these exercises, we'll use the dog breed traits data set, so import that from <https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv> (if you don't already have it) and assign it to `traits`.
 ```{r}
 # >
 ```

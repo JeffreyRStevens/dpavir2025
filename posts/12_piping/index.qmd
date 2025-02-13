@@ -25,7 +25,7 @@ Often we have many steps of data processing to wrangle it appropriately. Rather 
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 5](https://r4ds.hadley.nz/workflow-pipes.html){target='_blank'}
+* Read [R4DS2 3.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'}
 
 ## Class meeting
 

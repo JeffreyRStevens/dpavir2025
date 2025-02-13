@@ -11,6 +11,8 @@ library(learnr)
 options(tutorial.max.forked.procs = 10)
 gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(palmerpenguins)
 ```
 
 
@@ -68,7 +70,7 @@ mutate(penguins, across(...))
  
 ```{r exercise11-check}
 grade_result(
-  pass_if(~identical(.result, mutate(penguins, across(contains("_mm"), ~.x / 10))))
+  pass_if(~identical(.result, mutate(penguins, across(contains("_mm"), ~ .x / 10))))
 )
 ```
 

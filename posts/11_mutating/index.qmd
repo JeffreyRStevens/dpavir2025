@@ -14,7 +14,7 @@ categories:
   - mutate
   - rowwise
 description: "Change and create data in columns"
-draft: true
+draft: false
 ---
 
 We'll continue our data wrangling by cleaning up the columns of our data. We'll use the [{dplyr}](https://dplyr.tidyverse.org) `mutate()` functions to change and create column data.
@@ -52,4 +52,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 5](https://r4ds.hadley.nz/workflow-pipes.html){target='_blank'}
+* Read [R4DS2 3.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate){target='_blank'}

@@ -1,11 +1,11 @@
 ---
 title: "Mutating columns"
 author: "Jeff Stevens"
-date: "2023-02-15"
+date: "2025-02-14"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: false
 format:
   revealjs: 
     theme: custom.scss
@@ -36,6 +36,7 @@ format:
 ## Set-up
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 library(dplyr)
 library(nycflights13)
 glimpse(flights)
@@ -57,6 +58,8 @@ glimpse(flights)
 
 
 ## Changing existing columns
+
+### Changing all values
 
 ```{r}
 mutate(flights, month = as.character(month))
@@ -152,6 +155,7 @@ mutate(flights, season = case_when(month %in% c(3:5) ~ "spring",
 ### Multiple columns
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 mutate(flights, speed = distance / air_time * 60, .after = dep_time) %>%
   mutate(month = if_else(month < 10, paste0("0", month), as.character(month), NA),
          day = if_else(day < 10, paste0("0", day), as.character(day), NA),
@@ -167,6 +171,7 @@ mutate(flights, speed = distance / air_time * 60, .after = dep_time) %>%
 ### Remove old columns
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 mutate(flights, date = paste(year, month, day, sep = "-"), 
        .before = 1, 
        .keep = "unused")
@@ -212,8 +217,7 @@ mutate(flights, min_dep_time = min(dep_time, sched_dep_time, na.rm = TRUE),
 #### `dplyr::rowwise()`
 
 ```{r}
-rowwise(flights) %>% 
-  mutate(min_dep_time = min(dep_time, sched_dep_time), .after = arr_time)
+  mutate(rowwise(flights), min_dep_time = min(dep_time, sched_dep_time), .after = arr_time)
 ```
 
 
@@ -265,4 +269,4 @@ print(mutate(flights, across(contains("_time"), ~ .x / 60)), n = 5)
 
 ## Let's code!
 
-[Mutating data](../code/11_mutating.html){target="_blank"} [[Rmd](../code/11_mutating.Rmd){target="_blank"}]
+[Mutating data](../code/11_mutating.html){target="_blank"}
