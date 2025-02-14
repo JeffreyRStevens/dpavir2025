@@ -3,6 +3,9 @@ title: "Working in RStudio"
 author: "Jeff Stevens"
 date: "2025-01-24"
 date-format: iso
+execute:
+  echo: true
+  freeze: true
 format:
   revealjs: 
     theme: custom.scss

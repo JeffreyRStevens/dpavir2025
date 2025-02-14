@@ -5,7 +5,7 @@ date: "2025-02-14"
 date-format: iso
 execute:
   echo: true
-  freeze: false
+  freeze: true
 format:
   revealjs: 
     theme: custom.scss
@@ -150,6 +150,8 @@ mutate(flights, season = case_when(month %in% c(3:5) ~ "spring",
 
 ---
 
+## Creating new columns
+
 ### Conditionals with multiple outcomes
 
 Set `.default` for leftovers
@@ -164,7 +166,7 @@ mutate(flights, season = case_when(month %in% c(3:5) ~ "spring",
 ```
 
 
----
+<!-- --- -->
 
 <!-- ## Creating new columns -->
 
