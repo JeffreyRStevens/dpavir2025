@@ -2,7 +2,7 @@
 title: 'Summarizing rows'
 author:
   - Jeff Stevens
-date: '2023-02-22'
+date: '2025-02-21'
 categories: 
   - "module 3"
   - "week 5"
@@ -29,7 +29,7 @@ We'll use the [{dplyr}](https://dplyr.tidyverse.org) `summarise()` functions to 
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 4.4](https://r4ds.hadley.nz/data-transform.html#groups){target='_blank'}
+* Read [R4DS2 3.5](https://r4ds.hadley.nz/data-transform.html#groups){target='_blank'}
 
 ## Class meeting
 
@@ -50,4 +50,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 6](https://r4ds.hadley.nz/data-tidy.html){target='_blank'}
+* Read [R4DS2 5](https://r4ds.hadley.nz/data-tidy.html){target='_blank'}

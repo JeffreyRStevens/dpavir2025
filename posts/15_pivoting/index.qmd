@@ -26,7 +26,7 @@ Tidy data is a specific form of data that let's you apply formulas to your data 
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 6](https://r4ds.hadley.nz/data-tidy.html){target='_blank'}
+* Read [R4DS2 5](https://r4ds.hadley.nz/data-tidy.html){target='_blank'}
 
 ## Class meeting
 
