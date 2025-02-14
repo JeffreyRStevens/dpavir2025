@@ -118,7 +118,7 @@ mutate(flights,
 ## Creating new columns
 
 ```{r}
-mutate(flights, speed = distance / air_time * 60)
+mutate(flights, avg_speed = distance / air_time * 60)
 ```
 
 ---
@@ -128,7 +128,7 @@ mutate(flights, speed = distance / air_time * 60)
 ### Move column when creating
 
 ```{r}
-mutate(flights, speed = distance / air_time * 60, .after = day)
+mutate(flights, avg_speed = distance / air_time * 60, .after = day)
 ```
 
 
@@ -150,18 +150,34 @@ mutate(flights, season = case_when(month %in% c(3:5) ~ "spring",
 
 ---
 
-## Creating new columns
+### Conditionals with multiple outcomes
 
-### Multiple columns
+Set `.default` for leftovers
 
-```{r}
-#| attr-output: "style='font-size: 52%'"
-mutate(flights, speed = distance / air_time * 60, .after = dep_time) %>%
-  mutate(month = if_else(month < 10, paste0("0", month), as.character(month), NA),
-         day = if_else(day < 10, paste0("0", day), as.character(day), NA),
-         date = paste(year, month, day, sep = "-"), 
-         .after = day)
+```{r warning = FALSE}
+mutate(flights, season = case_when(month %in% c(3:5) ~ "spring",
+                                   month %in% c(6:8) ~ "summer",
+                                   month %in% c(9:11) ~ "fall",
+                                   .default = "winter"),
+       .after = day)
+
 ```
+
+
+---
+
+<!-- ## Creating new columns -->
+
+<!-- ### Multiple columns -->
+
+<!-- ```{r} -->
+<!-- #| attr-output: "style='font-size: 52%'" -->
+<!-- mutate(flights, speed = distance / air_time * 60, .after = dep_time) %>% -->
+<!--   mutate(month = if_else(month < 10, paste0("0", month), as.character(month), NA), -->
+<!--          day = if_else(day < 10, paste0("0", day), as.character(day), NA), -->
+<!--          date = paste(year, month, day, sep = "-"),  -->
+<!--          .after = day) -->
+<!-- ``` -->
 
 
 ---
