@@ -2,15 +2,15 @@
 title: 'Piping'
 author:
   - Jeff Stevens
-date: '2023-02-17'
+date: '2025-02-17'
 categories: 
   - "module 3"
-  - "week 4"
+  - "week 5"
   - mutate
   - pipes
   - select
 description: "Pipes let us combine chains of functions"
-draft: true
+draft: false
 ---
 
 Often we have many steps of data processing to wrangle it appropriately. Rather than having to save every intermediate step, we can use pipes to create chains of steps.
@@ -41,4 +41,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 4.2](https://r4ds.hadley.nz/data-transform.html#filter){target='_blank'}
+* Read [R4DS2 3.2.1](https://r4ds.hadley.nz/data-transform.html#filter){target='_blank'}
