@@ -221,6 +221,34 @@ rename(flights, departure = dep_time, arrival = arr_time)
 ```
 
 
+## Rename with a vector
+
+### Base R
+
+```{r}
+new_names <- letters[1:ncol(flights)]
+flights2 <- flights
+colnames(flights2) <- new_names
+head(flights2)
+```
+
+
+## Rename with a vector
+
+### Tidyverse
+
+```{r}
+rename_with(flights2, ~ new_names)
+```
+
+
+## Rename with a function
+
+```{r}
+rename_with(flights2, toupper)
+```
+
+
 ## Mental model of selecting columns
 
 ![](../images/mentalmodel_select.png){fig-align="center"}

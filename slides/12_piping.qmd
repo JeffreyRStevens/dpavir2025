@@ -1,11 +1,11 @@
 ---
 title: "Piping"
 author: "Jeff Stevens"
-date: "2023-02-17"
+date: "2025-02-17"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: false
 format:
   revealjs: 
     theme: custom.scss
@@ -30,13 +30,14 @@ format:
 ## Set-up
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 library(dplyr)
 library(nycflights13)
 glimpse(flights)
 ```
 
 
-## Base R pipelines
+## Without pipes
 
 ```{r}
 myflights <- flights[c("year", "month", "day", "air_time", "distance", 
@@ -54,11 +55,11 @@ myflights <- myflights[c("year", "month", "day", "date", "air_time",
 ```
 
 :::{.fragment}
-What do you like and dislike about this pipeline?
+What do you like and dislike about this?
 :::
 
 
-## tidyverse pipelines
+## Pipelines
 
 ```{r}
 myflights2 <- flights |> 
@@ -72,11 +73,11 @@ myflights2 <- flights |>
 ```
 
 :::{.fragment}
-What do you like and dislike about this pipeline?
+What do you like and dislike about this?
 :::
 
 
-## tidyverse pipelines
+## Pipelines
 
 ```{r}
 myflights3 <- flights |> 
@@ -90,9 +91,7 @@ myflights3 <- flights |>
          .after = distance)
 ```
 
-:::{.fragment}
-What do you like and dislike about this pipeline?
-:::
+What do you like and dislike about this?
 
 
 ## Pipeline comparison
@@ -114,16 +113,22 @@ knitr::kable(char_counts)
 
 
 ## Pipes 
+### Base R pipe
 
-* Base R pipe `|>` 
-    - added in R 4.1.0 but key functionality started in 4.2.0
-    - works following most base R and tidyverse functions
+`|>` 
 
-:::{.fragment}
-* tidyverse pipe `%>%` 
-    - from [{magrittr}](https://magrittr.tidyverse.org/) package
-    - works following tidyverse verbs
-:::
+* added in R 4.1.0 but key functionality started in 4.2.0
+* loaded in any R session
+* works following most base R and tidyverse functions
+
+## Pipes 
+### Base R pipe
+Tidyverse pipe `%>%` 
+
+* from [{magrittr}](https://magrittr.tidyverse.org/) package
+* loaded with any tidyverse package
+* works following tidyverse verbs
+
 
 :::{.fragment}
 * Hadley Wickham recommends using the base R pipe `|>`, so we'll use that here.
@@ -136,7 +141,7 @@ knitr::kable(char_counts)
 ```{r eval = FALSE}
 flights |> 
   select(year:dep_delay, origin) |> # include these columns
-  select(-sched_dep_time) # exclude this column
+  select(!sched_dep_time) # exclude this column
 ```
 
 :::{.fragment}
@@ -144,20 +149,15 @@ flights |>
 
 ```{r, eval = FALSE}
 select(flights, year:dep_delay, origin) |> # include these columns
-  select(-sched_dep_time) # exclude this column
+  select(!sched_dep_time) # exclude this column
 ```
 :::
 
 :::{.fragment}
 #### But don't use data object after first pipe
-```{r, eval = FALSE}
+```{r, error = TRUE}
 select(flights, year:dep_delay, origin) |> # include these columns
-  select(flights, -sched_dep_time) # exclude this column
-```
-```
-Error in `select()`:
-! Can't subset columns with `flights`.
-✖ `flights` must be numeric or character, not a <tbl_df/tbl/data.frame> object.
+  select(flights, !sched_dep_time) # exclude this column
 ```
 :::
 
@@ -170,7 +170,7 @@ Error in `select()`:
 ```{r}
 myflights <- flights |> 
   select(year:dep_delay, origin) |>
-  select(-sched_dep_time)
+  select(!sched_dep_time)
 ```
 
 :::{.fragment}
@@ -179,20 +179,41 @@ myflights <- flights |>
 ```{r}
 flights |> 
   select(year:dep_delay, origin) |>
-  select(-sched_dep_time)
+  select(!sched_dep_time)
 ```
 :::
 
 
 ## Piping basics
 
-#### As does wrapping assignment in parentheses
+#### As does wrapping whole pipeline in parentheses
 
 ```{r}
 (myflights <- flights |> 
   select(year:dep_delay, origin) |>
-  select(-sched_dep_time))
+  select(!sched_dep_time))
 ```
+
+
+## Piping function order
+
+```{r}
+flights |> 
+  select(month:day, contains("_time")) |> 
+  mutate(across(contains("_time"), as.character)) |> 
+  head(n = 2)
+```
+
+:::{.fragment}
+OR
+
+```{r}
+flights |> 
+  mutate(across(contains("_time"), as.character)) |> 
+  select(month:day, contains("_time")) |> 
+  head(n = 2)
+```
+:::
 
 
 ## Advanced piping
@@ -212,18 +233,12 @@ flights |>
 
 ### Base R pipe
 
-```{r eval = FALSE}
+```{r error = TRUE}
 mtcars |> 
   select(mpg, cyl) |> 
   lm(mpg ~ cyl)
 ```
-:::{.fragment}
-```
-Error in as.data.frame.default(data) : 
-  cannot coerce class ‘"formula"’ to a data.frame
-```
-:::
-  
+
 :::{.fragment}
 ```{r}
 mtcars |> 
@@ -245,6 +260,36 @@ mtcars %>%
   lm(mpg ~ cyl, data = .)
 ```
 
+
+## Rename with a vector
+
+### Base R
+
+```{r}
+new_names <- letters[1:ncol(flights)]
+flights2 <- flights
+colnames(flights2) <- new_names
+head(flights2)
+```
+
+
+## Rename with a vector
+
+### Tidyverse
+
+```{r}
+rename_with(flights2, ~ new_names)
+```
+
+
+## Rename with a function
+
+```{r}
+rename_with(flights2, toupper)
+```
+
+
+
 ## Let's code!
 
-[Piping](../code/12_piping.html){target="_blank"} [[Rmd](../code/12_piping.Rmd){target="_blank"}]
+[Piping](../code/12_piping.html){target="_blank"}

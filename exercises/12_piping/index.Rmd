@@ -11,6 +11,8 @@ library(learnr)
 options(tutorial.max.forked.procs = 10)
 gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(palmerpenguins)
 ```
 
 
@@ -29,13 +31,13 @@ head(penguins)
 
 ## `|>` vs. `%>%`
 
-We will focus on using the base R pipe `|>`. But you should recognize the tidyverse pipe `%>%` if you see it in the wild (or in some of your old code). For most purposes, there are not major differences between the pipes. The key advantages of `|>` are that (1) it is in base R, so no additional packages are need and (2) it applies to base R functions as well as tidyverse function. `%>%` primarily works with tidyverse functions.
+We will focus on using the base R pipe `|>`. But you should recognize the tidyverse pipe `%>%` if you see it in the wild (or in some of your old code). For most purposes, there are not major differences between the pipes. The key advantages of `|>` are that (1) it is in base R, so no additional packages are need and (2) it applies to base R functions as well as tidyverse function.
 
 If you want to use the tidyverse pipe, you need to have the `{magrittr}` package loaded. If you load `{tidyverse}` or any tidyverse packages (e.g., `{dplyr}`, `{readr}`), the tidyverse pipe is automatically loaded.
 
 A key difference between `|>` and `%>%` is the placeholder used when the data object is not the first argument for a function.
 
-```{r summary-quiz}
+```{r summary-quiz, warning=FALSE}
 quiz(
   question(
     "What does the base R `|>` pipe use as a placeholder?",
@@ -64,7 +66,7 @@ Pipes can be used to create whole chains of functions to wrangle data. In many c
 
 ### 
 
-Please complete these commands in the order specified.
+Please complete these commands using the `penguins` dataset in the order specified.
 
 **Produce a data frame that (1) includes the species, sex, island, and body mass, (2) converts the species to a character, and (3) creates a new column called _body_mass_kg_ that converts body mass from grams to kilograms and replaces the _body_mass_g_ column using the `.keep` argument. Don't save the output to an object---just return the output to the console.**
 ```{r exercise1, exercise = TRUE}

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jeffrey R. Stevens">
-<meta name="dcterms.date" content="2023-02-17">
+<meta name="dcterms.date" content="2025-02-17">
 
 <title>Piping – Data Processing and Visualization in R</title>
 <style>
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 17, 2023</p>
+      <p class="date">February 17, 2025</p>
     </div>
   </div>
   
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <ul>
 <li>assign pipeline to <code>traits</code></li>
-<li>import data from <a href="https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv" class="uri">https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv</a></li>
+<li>import data from <a href="https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv" class="uri">https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv</a></li>
 <li>subset only the columns <em>Breed</em> through <em>Coat Length</em></li>
 <li>remove the <em>Drooling Level</em> column</li>
 </ul>
@@ -228,13 +228,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>Rename the column names to <code>"breed", "affectionate", "children", "other_dogs", "shedding", "grooming", "coat_type", "coat_length"</code>.</li>
+<li>Rename the column names to <code>"breed", "affectionate", "children", "other_dogs", "shedding", "grooming", "coat_type", "coat_length"</code> using this vector (either at the end of the last pipeline or in a separate line).</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
-<li>Do the following using <code>traits</code>.</li>
+<li>In a new pipe, use <code>traits</code> to do the following.</li>
 </ol>
 <ul>
 <li>assign to <code>traits2</code></li>
@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="4" type="1">
-<li>Do the following using <code>traits2</code>.</li>
+<li>In a new pipe, use <code>traits2</code> to do the following.</li>
 </ol>
 <ul>
 <li>assign to <code>coat_grooming</code></li>

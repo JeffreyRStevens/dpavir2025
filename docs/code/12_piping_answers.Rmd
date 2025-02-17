@@ -1,7 +1,7 @@
 ---
 title: "Piping"
 author: "Jeffrey R. Stevens"
-date: "2023-02-17"
+date: "2025-02-17"
 output: html_document
 execute:
   freeze: auto
@@ -12,7 +12,7 @@ For these exercises, we'll use the dog breed traits data set.
 1. Create a pipeline to do all of the following:
 
 * assign pipeline to `traits`
-* import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv>
+* import data from <https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv>
 * subset only the columns _Breed_ through _Coat Length_
 * remove the _Drooling Level_ column
 
@@ -21,15 +21,15 @@ For these exercises, we'll use the dog breed traits data set.
 library(tidyverse)
 traits <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv") |> 
   select(Breed:`Coat Length`) |> 
-  select(-`Drooling Level`)
+  select(!`Drooling Level`)
 ```
 
-2. Rename the column names to `"breed", "affectionate", "children", "other_dogs", "shedding", "grooming", "coat_type", "coat_length"`.
+2. Rename the column names to `"breed", "affectionate", "children", "other_dogs", "shedding", "grooming", "coat_type", "coat_length"` using this vector (either at the end of the last pipeline or in a separate line).
 ```{r}
 colnames(traits) <- c("breed", "affectionate", "children", "other_dogs", "shedding", "grooming", "coat_type", "coat_length")
 ```
 
-3. Do the following using `traits`. 
+3. In a new pipe, use `traits` to do the following. 
 
 * assign to `traits2`
 * rescale all of the ratings columns by subtracting 1 from all of the values
@@ -45,7 +45,7 @@ traits2 <- traits |>
   mutate(mean_rating = mean(c(children, other_dogs)), .after = "other_dogs")
 ```
 
-4. Do the following using `traits2`. 
+4. In a new pipe, use `traits2` to do the following. 
 
 * assign to `coat_grooming`
 * subset only the _grooming_ and _coat_type_ columns
