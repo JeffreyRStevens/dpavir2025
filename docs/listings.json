@@ -2,6 +2,7 @@
   {
     "listing": "/meetings.html",
     "items": [
+      "/posts/13_filtering/index.html",
       "/posts/12_piping/index.html",
       "/posts/11_mutating/index.html",
       "/posts/10_selecting/index.html",

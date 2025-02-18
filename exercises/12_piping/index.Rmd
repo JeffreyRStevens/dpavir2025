@@ -130,8 +130,6 @@ penguins |>
 grade_code()
 ```
 
-### 
-
 ### Wrap-up
 
 Congratulations, you finished the tutorial!

@@ -12,7 +12,7 @@ categories:
   - "missing data"
   - rows
 description: "Remove rows based on data values"
-draft: true
+draft: false
 ---
 
 We'll move from cleaning columns to working with rows. We'll use the [{dplyr}](https://dplyr.tidyverse.org) `filter()` functions to only keep rows that we want to keep.
