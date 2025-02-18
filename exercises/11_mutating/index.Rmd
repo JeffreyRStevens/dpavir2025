@@ -104,7 +104,7 @@ mutate(penguins, ...)
  
 ```{r exercise13-check}
 grade_result(
-  pass_if(~identical(.result, mutate(penguins, study = 1)))
+  pass_if(~identical(.result, mutate(penguins, study = 1, .before = 1)))
 )
 ```
 
