@@ -12,7 +12,7 @@ categories:
   - slice
   - summarise
 description: "Aggregate row values"
-draft: true
+draft: false
 ---
 
 We'll use the [{dplyr}](https://dplyr.tidyverse.org) `summarise()` functions to apply summary functions to data rows (e.g., `mean()`, `min()`). This is most useful when paired with `group_by()` to calculate summary values for each level in a group.
