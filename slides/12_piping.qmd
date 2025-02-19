@@ -215,6 +215,23 @@ flights |>
 ```
 :::
 
+## What is a pipe doing?
+
+```{r}
+flights |> 
+  select(month:day, contains("_time")) |> 
+  mutate(across(contains("_time"), as.character)) |> 
+  head(n = 2)
+```
+
+:::{.fragment}
+is equivalent to
+```{r}
+```{r}
+  head(mutate(select(flights, month:day, contains("_time")), across(contains("_time"), as.character)), n = 2)
+```
+
+
 
 ## Advanced piping
 

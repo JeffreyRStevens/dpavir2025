@@ -456,7 +456,33 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </div>
 </div>
 </div>
-</section><section id="advanced-piping" class="slide level2"><h2>Advanced piping</h2>
+</section><section id="what-is-a-pipe-doing" class="slide level2"><h2>What is a pipe doing?</h2>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">month</span><span class="op">:</span><span class="va">day</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_time"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_time"</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  month   day dep_time sched_dep_time arr_time sched_arr_time air_time
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;   
+1     1     1 517      515            830      819            227     
+2     1     1 533      529            850      830            227     </code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>is equivalent to</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flights</span>, <span class="va">month</span><span class="op">:</span><span class="va">day</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_time"</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_time"</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  month   day dep_time sched_dep_time arr_time sched_arr_time air_time
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;   
+1     1     1 517      515            830      819            227     
+2     1     1 533      529            850      830            227     </code></pre>
+</div>
+</div>
+<section id="advanced-piping" class="slide level2"><h2>Advanced piping</h2>
 <ul>
 <li><p>Sometimes, non-tidyverse functions don’t take the data object as the first argument</p></li>
 <li><p>This requires a “placeholder” signaling where the data object goes</p></li>
@@ -470,7 +496,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section><section id="advanced-piping-1" class="slide level2"><h2>Advanced piping</h2>
 <h3 id="base-r-pipe-2">Base R pipe</h3>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">cyl</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">cyl</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
@@ -479,7 +505,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">cyl</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">_</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -499,7 +525,7 @@ Coefficients:
 </section><section id="advanced-piping-2" class="slide level2"><h2>Advanced piping</h2>
 <h3 id="tidyverse-pipe">tidyverse pipe</h3>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -515,7 +541,7 @@ Coefficients:
 </section><section id="rename-with-a-vector" class="slide level2"><h2>Rename with a vector</h2>
 <h3 id="base-r">Base R</h3>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">new_names</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span><span class="op">]</span></span>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">new_names</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">flights2</span> <span class="op">&lt;-</span> <span class="va">flights</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">flights2</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">new_names</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">flights2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -535,7 +561,7 @@ Coefficients:
 </section><section id="rename-with-a-vector-1" class="slide level2"><h2>Rename with a vector</h2>
 <h3 id="tidyverse">Tidyverse</h3>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="op">~</span> <span class="va">new_names</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="op">~</span> <span class="va">new_names</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
        a     b     c     d     e     f     g     h     i j         k l     m    
@@ -556,7 +582,7 @@ Coefficients:
 </div>
 </section><section id="rename-with-a-function" class="slide level2"><h2>Rename with a function</h2>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">toupper</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">toupper</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
        A     B     C     D     E     F     G     H     I J         K L     M    
@@ -579,6 +605,8 @@ Coefficients:
 <p><a href="../code/12_piping.html" target="_blank">Piping</a></p>
 
 
+</section>
+</div>
 </section></section>
 </div>
   <div class="quarto-auto-generated-content" style="display: none;">

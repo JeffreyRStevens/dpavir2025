@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-02-20">
+<meta name="dcterms.date" content="2025-02-19">
 <title>Data Processing and Visualization in R – Filtering rows</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,8 +203,8 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-02-20</p>
-</section><section><section id="review" class="title-slide slide level1 center"><h1>Review</h1>
+  <p class="date">2025-02-19</p>
+</section><section><section id="data-forensics" class="title-slide slide level1 center"><h1>Data Forensics</h1>
 
 </section><section id="the-problem" class="slide level2"><h2>The problem</h2>
 <p>What’s different between these data sets? What can we use to create <code>data2</code> from <code>data1</code>?</p>
@@ -214,14 +214,14 @@ Jeff Stevens
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  cond id       date
-1    1  1 2022-02-19
-2    3  2 2022-02-02
-3    1  3 2022-01-27
-4    1  4 2022-01-30
-5    3  5 2022-02-09
-6    1  6 2022-01-18
-7    2  7 2022-02-24
-8    3  8 2022-02-05</code></pre>
+1    1  1 2025-01-18
+2    3  2 2025-02-20
+3    1  3 2025-02-02
+4    2  4 2025-01-21
+5    1  5 2025-02-25
+6    3  6 2025-02-11
+7    3  7 2025-02-15
+8    2  8 2025-01-10</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:&quot;40%;">
@@ -229,14 +229,14 @@ Jeff Stevens
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         cond id    month       date
-1 Condition 1  1 February 2022-02-19
-2 Condition 3  2 February 2022-02-02
-3 Condition 1  3  January 2022-01-27
-4 Condition 1  4  January 2022-01-30
-5 Condition 3  5 February 2022-02-09
-6 Condition 1  6  January 2022-01-18
-7 Condition 2  7 February 2022-02-24
-8 Condition 3  8 February 2022-02-05</code></pre>
+1 Condition 1  1  January 2025-01-18
+2 Condition 3  2 February 2025-02-20
+3 Condition 1  3 February 2025-02-02
+4 Condition 2  4  January 2025-01-21
+5 Condition 1  5 February 2025-02-25
+6 Condition 3  6 February 2025-02-11
+7 Condition 3  7 February 2025-02-15
+8 Condition 2  8  January 2025-01-10</code></pre>
 </div>
 </div>
 </div></div>
@@ -248,14 +248,14 @@ Jeff Stevens
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  cond id       date
-1    1  1 2022-02-19
-2    3  2 2022-02-02
-3    1  3 2022-01-27
-4    1  4 2022-01-30
-5    3  5 2022-02-09
-6    1  6 2022-01-18
-7    2  7 2022-02-24
-8    3  8 2022-02-05</code></pre>
+1    1  1 2025-01-18
+2    3  2 2025-02-20
+3    1  3 2025-02-02
+4    2  4 2025-01-21
+5    1  5 2025-02-25
+6    3  6 2025-02-11
+7    3  7 2025-02-15
+8    2  8 2025-01-10</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:&quot;40%;">
@@ -266,11 +266,11 @@ Jeff Stevens
 1  1    1
 2  2    3
 3  3    1
-4  4    1
-5  5    3
-6  6    1
-7  7    2
-8  8    3</code></pre>
+4  4    2
+5  5    1
+6  6    3
+7  7    3
+8  8    2</code></pre>
 </div>
 </div>
 </div></div>
@@ -282,14 +282,14 @@ Jeff Stevens
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  cond id       date
-1    1  1 2022-02-19
-2    3  2 2022-02-02
-3    1  3 2022-01-27
-4    1  4 2022-01-30
-5    3  5 2022-02-09
-6    1  6 2022-01-18
-7    2  7 2022-02-24
-8    3  8 2022-02-05</code></pre>
+1    1  1 2025-01-18
+2    3  2 2025-02-20
+3    1  3 2025-02-02
+4    2  4 2025-01-21
+5    1  5 2025-02-25
+6    3  6 2025-02-11
+7    3  7 2025-02-15
+8    2  8 2025-01-10</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:&quot;40%;">
@@ -297,19 +297,21 @@ Jeff Stevens
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  cond id       date
-1    1  6 2022-01-18
-2    1  3 2022-01-27
-3    1  4 2022-01-30
-4    1  1 2022-02-19
-5    2  7 2022-02-24</code></pre>
+1    2  8 2025-01-10
+2    1  1 2025-01-18
+3    2  4 2025-01-21
+4    1  3 2025-02-02
+5    1  5 2025-02-25</code></pre>
 </div>
 </div>
 </div></div>
+</section></section><section><section id="review" class="title-slide slide level1 center"><h1>Review</h1>
+
 </section><section id="data-wrangling" class="slide level2"><h2>Data wrangling</h2>
 
 <img data-src="../images/dplyr_summary.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section id="set-up" class="slide level2"><h2>Set-up</h2>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">flights2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flights</span>, <span class="va">year</span><span class="op">:</span><span class="va">dep_delay</span>, <span class="va">air_time</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -329,6 +331,34 @@ Jeff Stevens
 # ℹ 336,766 more rows</code></pre>
 </div>
 </div>
+</section><section id="what-is-a-pipe-doing" class="slide level2"><h2>What is a pipe doing?</h2>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">month</span><span class="op">:</span><span class="va">day</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_time"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_time"</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  month   day dep_time sched_dep_time arr_time sched_arr_time air_time
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;   
+1     1     1 517      515            830      819            227     
+2     1     1 533      529            850      830            227     </code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>is equivalent to</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flights</span>, <span class="va">month</span><span class="op">:</span><span class="va">day</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_time"</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>              <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_time"</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  month   day dep_time sched_dep_time arr_time sched_arr_time air_time
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;   
+1     1     1 517      515            830      819            227     
+2     1     1 533      529            850      830            227     </code></pre>
+</div>
+</div>
+</div>
 </section></section><section><section id="filtering-rows" class="title-slide slide level1 center"><h1>Filtering rows</h1>
 
 </section><section id="filter" class="slide level2"><h2><code>filter()</code></h2>
@@ -336,9 +366,20 @@ Jeff Stevens
 <figure><p><img data-src="../images/dplyr_filter.png" class="quarto-figure quarto-figure-center" style="height:45.0%"></p>
 </figure>
 </div>
+<div class="fragment">
+<p>Filtering <strong>keeps</strong> rows/observations/cases that fulfill the conditional statement</p>
+</div>
 </section><section id="filter-1" class="slide level2"><h2><code>filter()</code></h2>
+<p>What does this return?</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">dep_time</span> <span class="op">==</span> <span class="va">sched_dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op">==</span> <span class="va">sched_dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="filter-2" class="slide level2"><h2><code>filter()</code></h2>
+<p>What does this return?</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op">==</span> <span class="va">sched_dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16,514 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -356,10 +397,11 @@ Jeff Stevens
 # ℹ 16,504 more rows</code></pre>
 </div>
 </div>
-</section><section id="filter-2" class="slide level2"><h2><code>filter()</code></h2>
-<h3 id="multiple-conditions">Multiple conditions</h3>
+</section><section id="filter-3" class="slide level2"><h2><code>filter()</code></h2>
+<h3 id="multiple-conditions-logical-and">Multiple conditions: Logical AND</h3>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">dep_delay</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 13,397 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -377,31 +419,11 @@ Jeff Stevens
 # ℹ 13,387 more rows</code></pre>
 </div>
 </div>
-</section><section id="filter-3" class="slide level2"><h2><code>filter()</code></h2>
-<h3 id="logical-or">Logical OR</h3>
-<div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 55,403 × 7
-    year month   day dep_time sched_dep_time dep_delay air_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
- 1  2013    11     1        5           2359         6      205
- 2  2013    11     1       35           2250       105       36
- 3  2013    11     1      455            500        -5       88
- 4  2013    11     1      539            545        -6      229
- 5  2013    11     1      542            545        -3      147
- 6  2013    11     1      549            600       -11      359
- 7  2013    11     1      550            600       -10       57
- 8  2013    11     1      554            600        -6       40
- 9  2013    11     1      554            600        -6      126
-10  2013    11     1      554            600        -6       93
-# ℹ 55,393 more rows</code></pre>
-</div>
-</div>
 </section><section id="filter-4" class="slide level2"><h2><code>filter()</code></h2>
-<h3 id="logical-in">Logical %in%</h3>
+<h3 id="multiple-conditions-logical-or">Multiple conditions: Logical OR</h3>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 55,403 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -420,9 +442,32 @@ Jeff Stevens
 </div>
 </div>
 </section><section id="filter-5" class="slide level2"><h2><code>filter()</code></h2>
+<h3 id="logical-in">Logical %in%</h3>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 55,403 × 7
+    year month   day dep_time sched_dep_time dep_delay air_time
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1  2013    11     1        5           2359         6      205
+ 2  2013    11     1       35           2250       105       36
+ 3  2013    11     1      455            500        -5       88
+ 4  2013    11     1      539            545        -6      229
+ 5  2013    11     1      542            545        -3      147
+ 6  2013    11     1      549            600       -11      359
+ 7  2013    11     1      550            600       -10       57
+ 8  2013    11     1      554            600        -6       40
+ 9  2013    11     1      554            600        -6      126
+10  2013    11     1      554            600        -6       93
+# ℹ 55,393 more rows</code></pre>
+</div>
+</div>
+</section><section id="filter-6" class="slide level2"><h2><code>filter()</code></h2>
 <h3 id="negating-conditional">Negating conditional</h3>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">month</span> <span class="op">!=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">!=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 309,772 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -440,10 +485,11 @@ Jeff Stevens
 # ℹ 309,762 more rows</code></pre>
 </div>
 </div>
-</section><section id="filter-6" class="slide level2"><h2><code>filter()</code></h2>
+</section><section id="filter-7" class="slide level2"><h2><code>filter()</code></h2>
 <h3 id="negating-multiple-conditionals">Negating multiple conditionals</h3>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">month</span> <span class="op">!=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">day</span> <span class="op">!=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">!=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">day</span> <span class="op">!=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 299,578 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -461,11 +507,12 @@ Jeff Stevens
 # ℹ 299,568 more rows</code></pre>
 </div>
 </div>
-</section><section id="filter-7" class="slide level2"><h2><code>filter()</code></h2>
+</section><section id="filter-8" class="slide level2"><h2><code>filter()</code></h2>
 <h3 id="check-if-na-with-is.na">Check if <code>NA</code> with <code>is.na()</code>
 </h3>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8,255 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -483,11 +530,12 @@ Jeff Stevens
 # ℹ 8,245 more rows</code></pre>
 </div>
 </div>
-</section><section id="filter-8" class="slide level2"><h2><code>filter()</code></h2>
+</section><section id="filter-9" class="slide level2"><h2><code>filter()</code></h2>
 <h3 id="check-if-na-across-multiple-columns-with-is.na-and-if_any">Check if <code>NA</code> across multiple columns with <code>is.na()</code> and <code>if_any()</code>
 </h3>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">if_any</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">is.na</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">if_any</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">is.na</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,430 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -509,18 +557,35 @@ Jeff Stevens
 <h3 id="filter-column-with-any-nas-with-drop_na">Filter column with <strong>any</strong> <code>NA</code>s with <code>drop_na()</code>
 </h3>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">flights2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">flights2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 336776</code></pre>
-</div>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu">drop_na</span><span class="op">(</span><span class="va">flights2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 327346</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu">drop_na</span><span class="op">(</span><span class="va">flights</span>, <span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 327346</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 328521</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Equivalent to</p>
+<div class="cell">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 328521</code></pre>
 </div>
@@ -535,7 +600,8 @@ Jeff Stevens
 </div>
 </section><section id="arrange-1" class="slide level2"><h2><code>arrange()</code></h2>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">sched_dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sched_dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -556,7 +622,8 @@ Jeff Stevens
 </section><section id="arrange-2" class="slide level2"><h2><code>arrange()</code></h2>
 <h3 id="sort-multiple-rows">Sort multiple rows</h3>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">sched_dep_time</span>, <span class="va">dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sched_dep_time</span>, <span class="va">dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -577,7 +644,8 @@ Jeff Stevens
 </section><section id="arrange-3" class="slide level2"><h2><code>arrange()</code></h2>
 <h3 id="sort-in-descending-order">Sort in descending order</h3>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 7
     year month   day dep_time sched_dep_time dep_delay air_time
@@ -600,34 +668,34 @@ Jeff Stevens
 <div class="columns">
 <div class="column" style="width:&quot;40%;">
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  cond id       date
-1    1  1 2022-02-19
-2    3  2 2022-02-02
-3    1  3 2022-01-27
-4    1  4 2022-01-30
-5    3  5 2022-02-09
-6    1  6 2022-01-18
-7    2  7 2022-02-24
-8    3  8 2022-02-05</code></pre>
+1    1  1 2025-01-18
+2    3  2 2025-02-20
+3    1  3 2025-02-02
+4    2  4 2025-01-21
+5    1  5 2025-02-25
+6    3  6 2025-02-11
+7    3  7 2025-02-15
+8    2  8 2025-01-10</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:&quot;40%;">
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  cond id       date
-1    1  6 2022-01-18
-2    1  3 2022-01-27
-3    1  4 2022-01-30
-4    1  1 2022-02-19
-5    2  7 2022-02-24</code></pre>
+1    2  8 2025-01-10
+2    1  1 2025-01-18
+3    2  4 2025-01-21
+4    1  3 2025-02-02
+5    1  5 2025-02-25</code></pre>
 </div>
 </div>
 </div></div>
 </section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/13_filtering.html" target="_blank">Filtering rows</a> [<a href="../code/13_filtering.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/13_filtering.html" target="_blank">Filtering rows</a></p>
 
 
 </section></section>

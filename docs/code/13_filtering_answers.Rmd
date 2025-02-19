@@ -1,7 +1,7 @@
 ---
 title: "Filtering rows"
 author: "Jeffrey R. Stevens"
-date: "2023-02-20"
+date: "2025-02-19"
 output: html_document
 execute:
   freeze: auto
@@ -9,62 +9,62 @@ execute:
 
 For these exercises, we'll use a new clean version of the dog breed traits data set. 
 
-1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.
+1. Import data from <https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv> and assign to `traits`.
 
 ```{r}
 library(tidyverse)
-traits <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv")
+traits <- read_csv("https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv")
 ```
 
-2. View dogs only with short coats.
+2. Return dogs only with short coats.
 
 ```{r}
 filter(traits, coat_length == "Short")
 ```
 
-3. View a data frame excluding dogs with short coats.
+3. Return a data frame excluding dogs with short coats.
 
 ```{r}
 filter(traits, coat_length != "Short")
 ```
 
-4. View dogs with double or silky coats.
+4. Return dogs with double or silky coats.
 
 ```{r}
 filter(traits, coat_type %in% c("Double", "Silky"))
 ```
 
-5. View dogs with double or silky coats and shedding ratings 3 or below.
+5. Return dogs with double or silky coats and shedding ratings 3 or below.
 
 ```{r}
 filter(traits, coat_type %in% c("Double", "Silky") & shedding <= 3)
 ```
 
-6. View dogs with `NA` for _coat_type_.
+6. Return dogs with `NA` for _coat_type_.
 
 ```{r}
 filter(traits, is.na(coat_type))
 ```
 
-7. View dogs with `NA` for any column.
+7. Return dogs with `NA` for any column.
 
 ```{r}
 filter(traits, if_any(everything(), is.na))
 ```
 
-8. View dogs not missing any data.
+8. Return dogs not missing any data.
 
 ```{r}
 drop_na(traits)
 ```
 
-9. View dogs sorted by breed name.
+9. Return dogs sorted by breed name.
 
 ```{r}
 arrange(traits, breed)
 ```
 
-10. View dogs sorted by coat type then coat length then affectionate rating.
+10. Return dogs sorted by coat type then coat length then affectionate rating.
 
 ```{r}
 arrange(traits, coat_type, coat_length, affectionate)

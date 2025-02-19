@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jeffrey R. Stevens">
-<meta name="dcterms.date" content="2023-02-20">
+<meta name="dcterms.date" content="2025-02-19">
 
 <title>Filtering rows – Data Processing and Visualization in R</title>
 <style>
@@ -76,8 +76,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d7810e32d96731633de0585961051087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-27fbd0fff0f231195570079a9f444b68.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-3fd127613c2a3f46256d9c2ddde17676.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-90acf552d9ec4ad86055cc6396889968.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 20, 2023</p>
+      <p class="date">February 19, 2025</p>
     </div>
   </div>
   
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>For these exercises, we’ll use a new clean version of the dog breed traits data set.</p>
 <ol type="1">
-<li>Import data from <a href="https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv" class="uri">https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv</a> and assign to <code>traits</code>.</li>
+<li>Import data from <a href="https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv" class="uri">https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv</a> and assign to <code>traits</code>.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -226,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ purrr     1.0.4     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>traits <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>traits <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 197 Columns: 8
 ── Column specification ────────────────────────────────────────────────────────
@@ -245,7 +245,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="2" type="1">
-<li>View dogs only with short coats.</li>
+<li>Return dogs only with short coats.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(traits, coat_length <span class="sc">==</span> <span class="st">"Short"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -268,7 +268,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="3" type="1">
-<li>View a data frame excluding dogs with short coats.</li>
+<li>Return a data frame excluding dogs with short coats.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(traits, coat_length <span class="sc">!=</span> <span class="st">"Short"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -291,7 +291,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="4" type="1">
-<li>View dogs with double or silky coats.</li>
+<li>Return dogs with double or silky coats.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(traits, coat_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Double"</span>, <span class="st">"Silky"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -314,7 +314,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="5" type="1">
-<li>View dogs with double or silky coats and shedding ratings 3 or below.</li>
+<li>Return dogs with double or silky coats and shedding ratings 3 or below.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(traits, coat_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Double"</span>, <span class="st">"Silky"</span>) <span class="sc">&amp;</span> shedding <span class="sc">&lt;=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -337,7 +337,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="6" type="1">
-<li>View dogs with <code>NA</code> for <em>coat_type</em>.</li>
+<li>Return dogs with <code>NA</code> for <em>coat_type</em>.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(traits, <span class="fu">is.na</span>(coat_type))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -349,7 +349,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="7" type="1">
-<li>View dogs with <code>NA</code> for any column.</li>
+<li>Return dogs with <code>NA</code> for any column.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(traits, <span class="fu">if_any</span>(<span class="fu">everything</span>(), is.na))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -362,7 +362,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="8" type="1">
-<li>View dogs not missing any data.</li>
+<li>Return dogs not missing any data.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">drop_na</span>(traits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -385,7 +385,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="9" type="1">
-<li>View dogs sorted by breed name.</li>
+<li>Return dogs sorted by breed name.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(traits, breed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -408,7 +408,7 @@ dbl (5): affectionate, children, other_dogs, shedding, grooming
 </div>
 </div>
 <ol start="10" type="1">
-<li>View dogs sorted by coat type then coat length then affectionate rating.</li>
+<li>Return dogs sorted by coat type then coat length then affectionate rating.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(traits, coat_type, coat_length, affectionate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

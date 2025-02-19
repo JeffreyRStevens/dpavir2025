@@ -33,14 +33,16 @@ Now we'll start working with rows for this lesson.
 
 While base R uses the `subset()` function, tidyverse uses `filter()` to pull out rows based on data values. For instance, to filter the gentoo species of penguins:
 ```{r echo = TRUE}
-filter(penguins, species == "Gentoo")
+penguins |>
+  filter(species == "Gentoo")
 ```
 
 You can use multiple criteria within a column or combining multiple columns using logical operators `>`, `>=`, `<`, `<=`, `!=`, `==`, `%in%`.
 
 **Produce a data frame of penguins with body masses between and including 4500-5000 g. **
 ```{r exercise1, exercise = TRUE}
-filter(penguins, ...)
+penguins |> 
+  filter(...)
 ```
  
 ```{r exercise1-check}
@@ -52,7 +54,8 @@ grade_result(
 
 **Produce a data frame of penguins measured in 2008 or 2009. **
 ```{r exercise2, exercise = TRUE}
-filter(penguins, ...)
+penguins |> 
+  filter(...)
 ```
  
 ```{r exercise2-check}
@@ -63,7 +66,8 @@ grade_result(
 
 **Produce a data frame of penguins measured on Biscoe or Dream using the `%in%` operator. **
 ```{r exercise3, exercise = TRUE}
-filter(...)
+penguins |> 
+  filter(...)
 ```
  
 ```{r exercise3-check}
@@ -74,7 +78,8 @@ grade_result(
 
 **Produce a data frame of penguins of unknown sex by including only NAs. **
 ```{r exercise4, exercise = TRUE}
-filter(...)
+penguins |> 
+  filter(...)
 ```
  
 ```{r exercise4-check}
@@ -86,9 +91,15 @@ grade_result(
 
 **Produce a data frame of penguins of unknown sex by excluding those found in the vector `c("male", "female")`. Hint: This one is tricky, but remember, `!` means NOT. Feel free to check the solution if you get stuck.**
 ```{r exercise5, exercise = TRUE}
-
+penguins |> 
+  filter(...)
 ```
  
+```{r exercise5-solution}
+penguins |>  
+  filter(!sex %in% c("male", "female"))
+```
+
 ```{r exercise5-check}
 grade_result(
   pass_if(~identical(.result, filter(penguins, !sex %in% c("male", "female"))))
@@ -102,7 +113,8 @@ While most computations don't depend on the order of rows, some do (e.g., ranks)
 
 **Sort the rows by sex then body mass.**
 ```{r exercise6, exercise = TRUE}
-arrange(penguins, ...)
+penguins |> 
+  arrange(...)
 ```
  
 ```{r exercise6-check}
@@ -113,7 +125,8 @@ grade_result(
 
 **Now do the same, but sort body mass from highest to lowest.**
 ```{r exercise7, exercise = TRUE}
-arrange(penguins, ...)
+penguins |> 
+  arrange(...)
 ```
  
 ```{r exercise7-check}
