@@ -270,7 +270,7 @@
     "href": "code/13_filtering.html",
     "title": "Filtering rows",
     "section": "",
-    "text": "For these exercises, we’ll use a new clean version of the dog breed traits data set.\n\nImport data from https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv and assign to traits.\n\n\n# &gt;\n\n\nView dogs only with short coats.\n\n\n# &gt;\n\n\nView a data frame excluding dogs with short coats.\n\n\n# &gt;\n\n\nView dogs with double or silky coats.\n\n\n# &gt;\n\n\nView dogs with double or silky coats and shedding ratings 3 or below.\n\n\n# &gt;\n\n\nView dogs with NA for coat_type.\n\n\n# &gt;\n\n\nView dogs with NA for any column.\n\n\n# &gt;\n\n\nView dogs not missing any data.\n\n\n# &gt;\n\n\nView dogs sorted by breed name.\n\n\n# &gt;\n\n\nView dogs sorted by coat type then coat length then affectionate rating.\n\n\n# &gt;"
+    "text": "For these exercises, we’ll use a new clean version of the dog breed traits data set.\n\nImport data from https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv and assign to traits.\n\n\n# &gt;\n\n\nReturn dogs only with short coats.\n\n\n# &gt;\n\n\nReturn a data frame excluding dogs with short coats.\n\n\n# &gt;\n\n\nReturn dogs with double or silky coats.\n\n\n# &gt;\n\n\nReturn dogs with double or silky coats and shedding ratings 3 or below.\n\n\n# &gt;\n\n\nReturn dogs with NA for coat_type.\n\n\n# &gt;\n\n\nReturn dogs with NA for any column.\n\n\n# &gt;\n\n\nReturn dogs not missing any data.\n\n\n# &gt;\n\n\nReturn dogs sorted by breed name.\n\n\n# &gt;\n\n\nReturn dogs sorted by coat type then coat length then affectionate rating.\n\n\n# &gt;"
   },
   {
     "objectID": "code/12_piping.html",
