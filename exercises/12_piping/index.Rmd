@@ -68,10 +68,18 @@ Pipes can be used to create whole chains of functions to wrangle data. In many c
 
 Please complete these commands using the `penguins` dataset in the order specified.
 
-**Produce a data frame that (1) includes the species, sex, island, and body mass, (2) converts the species to a character, and (3) creates a new column called _body_mass_kg_ that converts body mass from grams to kilograms and replaces the _body_mass_g_ column using the `.keep` argument. Don't save the output to an object---just return the output to the console.**
+**1. Produce a data frame that (1) includes the species, sex, island, and body mass, (2) converts the species to a character, and (3) creates a new column called _body_mass_kg_ that converts body mass from grams to kilograms and replaces the _body_mass_g_ column using the `.keep` argument. Don't save the output to an object---just return the output to the console.**
 ```{r exercise1, exercise = TRUE}
 penguins |> ...
 ```
+
+```{r exercise1-solution}
+penguins |>  
+  select(species, sex, island, body_mass_g) |> 
+  mutate(species = as.character(species),
+         body_mass_kg = body_mass_g / 1000, .keep = "unused")
+```
+
 
 ```{r exercise1-check}
 grade_this({
@@ -90,7 +98,7 @@ grade_this({
 
 ### 
 
-**Recreate the following data frame with as little code as possible.**
+**2. Recreate the following data frame with as little code as possible.**
 ```{r echo = FALSE}
 penguins |> 
   select(species, year, island, sex) |> 
@@ -99,6 +107,12 @@ penguins |>
 ```
 ```{r exercise2, exercise = TRUE}
 penguins |> ...
+```
+```{r exercise2-solution}
+penguins |> 
+  select(species, year, island, sex) |> 
+  mutate(species_year = paste(species, year, sep = "_"), .after = year) |> 
+  mutate(sex_num = if_else(sex == "female", 1, 0, NA))
 ```
 ```{r exercise2-check}
 grade_this({
@@ -114,7 +128,7 @@ grade_this({
 
 ### 
 
-**Produce a data frame that (1) includes only the columns starting with "bill_", (2) converts all measurements from mm to cm (in one line; don't worry about changing the column names), and (3) creates a _bill_area_ column by multiplying the bill length and depth. **
+**3. Produce a data frame that (1) includes only the columns starting with "bill_", (2) converts all measurements from mm to cm (in one line; don't worry about changing the column names), and (3) creates a _bill_area_ column by multiplying the bill length and depth. **
 ```{r exercise3, exercise = TRUE}
 penguins |> ...
 ```
@@ -122,12 +136,20 @@ penguins |> ...
 ```{r exercise3-solution}
 penguins |>  
   select(starts_with("bill_")) |> 
-  mutate(across(contains("_mm"), ~ . / 10),
+  mutate(across(contains("_mm"), ~ .x / 10),
          bill_area = bill_length_mm * bill_depth_mm)
 ```
 
-```{r exercise3-code-check}
-grade_code()
+```{r exercise3-check}
+grade_this({
+  if (identical(.result, penguins |>  
+  select(starts_with("bill_")) |> 
+  mutate(across(contains("_mm"), ~ .x / 10),
+         bill_area = bill_length_mm * bill_depth_mm))) {
+  pass()
+  }
+  fail("Not quite there. Try again!")
+})
 ```
 
 ### Wrap-up

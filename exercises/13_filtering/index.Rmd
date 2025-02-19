@@ -39,12 +39,17 @@ penguins |>
 
 You can use multiple criteria within a column or combining multiple columns using logical operators `>`, `>=`, `<`, `<=`, `!=`, `==`, `%in%`.
 
-**Produce a data frame of penguins with body masses between and including 4500-5000 g. **
+**1. Produce a data frame of penguins with body masses between and including 4500-5000 g. **
 ```{r exercise1, exercise = TRUE}
 penguins |> 
   filter(...)
 ```
- 
+
+```{r exercise1-solution}
+penguins |> 
+  filter(body_mass_g >= 4500 & body_mass_g <=5000)
+```
+
 ```{r exercise1-check}
 grade_result(
   pass_if(~identical(.result, filter(penguins, body_mass_g >= 4500 & body_mass_g <=5000)))
@@ -52,36 +57,51 @@ grade_result(
 ```
 
 
-**Produce a data frame of penguins measured in 2008 or 2009. **
+**2. Produce a data frame of penguins measured in 2008 or 2009. **
 ```{r exercise2, exercise = TRUE}
 penguins |> 
   filter(...)
 ```
  
+```{r exercise2-solution}
+penguins |> 
+  filter(year == 2008 | year == 2009)
+```
+
 ```{r exercise2-check}
 grade_result(
   pass_if(~identical(.result, filter(penguins, year == 2008 | year == 2009)))
 )
 ```
 
-**Produce a data frame of penguins measured on Biscoe or Dream using the `%in%` operator. **
+**3. Produce a data frame of penguins measured on Biscoe or Dream using the `%in%` operator. **
 ```{r exercise3, exercise = TRUE}
 penguins |> 
   filter(...)
 ```
  
+```{r exercise3-solution}
+penguins |> 
+  filter(island %in% c("Biscoe", "Dream"))
+```
+
 ```{r exercise3-check}
 grade_result(
   pass_if(~identical(.result, filter(penguins, island %in% c("Biscoe", "Dream"))))
 )
 ```
 
-**Produce a data frame of penguins of unknown sex by including only NAs. **
+**4. Produce a data frame of penguins of unknown sex by including only NAs. **
 ```{r exercise4, exercise = TRUE}
 penguins |> 
   filter(...)
 ```
  
+```{r exercise4-solution}
+penguins |> 
+  filter(is.na(sex))
+```
+
 ```{r exercise4-check}
 grade_result(
   pass_if(~identical(.result, filter(penguins, is.na(sex))))
@@ -89,7 +109,7 @@ grade_result(
 ```
 
 
-**Produce a data frame of penguins of unknown sex by excluding those found in the vector `c("male", "female")`. Hint: This one is tricky, but remember, `!` means NOT. Feel free to check the solution if you get stuck.**
+**5. Produce a data frame of penguins of unknown sex by excluding those found in the vector `c("male", "female")`. Hint: This one is tricky, but remember, `!` means NOT. Feel free to check the solution if you get stuck.**
 ```{r exercise5, exercise = TRUE}
 penguins |> 
   filter(...)
@@ -111,24 +131,34 @@ grade_result(
 
 While most computations don't depend on the order of rows, some do (e.g., ranks) and sometimes it's just nice to visualize a data frame sorted by some of the column values. The `arrange()` function does this and hierarchically sorts based on the order of column names passed as arguments.
 
-**Sort the rows by sex then body mass.**
+**6. Sort the rows by sex then body mass.**
 ```{r exercise6, exercise = TRUE}
 penguins |> 
   arrange(...)
 ```
  
+```{r exercise6-solution}
+penguins |> 
+  arrange(sex, body_mass_g)
+```
+
 ```{r exercise6-check}
 grade_result(
   pass_if(~identical(.result, arrange(penguins, sex, body_mass_g)))
 )
 ```
 
-**Now do the same, but sort body mass from highest to lowest.**
+**7. Now do the same, but sort body mass from highest to lowest.**
 ```{r exercise7, exercise = TRUE}
 penguins |> 
   arrange(...)
 ```
  
+```{r exercise7-solution}
+penguins |> 
+  arrange(sex, desc(body_mass_g))
+```
+
 ```{r exercise7-check}
 grade_result(
   pass_if(~identical(.result, arrange(penguins, sex, desc(body_mass_g))))

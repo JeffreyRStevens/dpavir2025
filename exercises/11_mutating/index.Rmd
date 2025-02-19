@@ -35,9 +35,13 @@ head(penguins)
 
 We've covered converting data types for vectors, but often we need to convert data frame columns, too, especially if they were imported incorrectly. For example, we may have a column of condition numbers that are imported as numerics, but we may want them to be factors.
 
-**Change the year column from an integer to a character while keeping the rest of the data frame the same.**
+**1. Change the year column from an integer to a character while keeping the rest of the data frame the same.**
 ```{r exercise9, exercise = TRUE}
 mutate(penguins, ...)
+```
+ 
+```{r exercise9-solution}
+mutate(penguins, year = as.character(year))
 ```
  
 ```{r exercise9-check}
@@ -48,9 +52,13 @@ grade_result(
 
 We can also perform computations on the data values.
 
-**Convert the body mass of the penguins to kg by dividing by 1000 (don't change the column name for now).**
+**2. Convert the body mass of the penguins to kg by dividing by 1000 (don't change the column name for now).**
 ```{r exercise10, exercise = TRUE}
 mutate(penguins, ...)
+```
+ 
+```{r exercise10-solution}
+mutate(penguins, body_mass_g = body_mass_g / 1000)
 ```
  
 ```{r exercise10-check}
@@ -63,9 +71,13 @@ grade_result(
 
 If we want to change multiple columns at the same time, we can use the `across()` function. 
 
-**Convert all columns with `_mm` in the column names to cm by dividing by 10 (don't change column names). This is pretty advanced, so I'll give the hint that you need to use this as the function that `across()` uses: `~ .x / 10`.**
+**3. Convert all columns with `_mm` in the column names to cm by dividing by 10 (don't change column names). This is pretty advanced, so I'll give the hint that you need to use this as the function that `across()` uses: `~ .x / 10`.**
 ```{r exercise11, exercise = TRUE}
 mutate(penguins, across(...))
+```
+ 
+```{r exercise11-solution}
+mutate(penguins, across(contains("_mm"), ~ .x / 10))
 ```
  
 ```{r exercise11-check}
@@ -78,9 +90,13 @@ grade_result(
 
 In addition to changing existing columns, often we need to create new columns, sometimes based on other columns.
 
-**Create a new column called `bill_area` that calculates the area of the bill by multiplying the bill length by the depth.**
+**4. Create a new column called `bill_area` that calculates the area of the bill by multiplying the bill length by the depth.**
 ```{r exercise12, exercise = TRUE}
 mutate(penguins, ...)
+```
+ 
+```{r exercise12-solution}
+mutate(penguins, bill_area = bill_length_mm * bill_depth_mm)
 ```
  
 ```{r exercise12-check}
@@ -97,9 +113,13 @@ mutate(penguins, odd_even = rep(c("odd", "even"), times = nrow(penguins) / 2))
 
 I often use `mutate()` to create a column for `study` with a study number when my study data sets are separate data frames that I want to later combine into a single data frame.
 
-**Create a `study` column that just has the number 1 for all rows. In the `mutate()` function, make the new `study` column the first column of the data frame (focus on column number not name). Hint: You don't even need to use the `rep()` function for this because of how vectors are recycled.**
+**5. Create a `study` column that just has the number 1 for all rows. In the `mutate()` function, make the new `study` column the first column of the data frame (focus on column number not name). Hint: You don't even need to use the `rep()` function for this because of how vectors are recycled.**
 ```{r exercise13, exercise = TRUE}
 mutate(penguins, ...)
+```
+ 
+```{r exercise13-solution}
+mutate(penguins, study = 1, .before = 1)
 ```
  
 ```{r exercise13-check}
@@ -113,9 +133,14 @@ grade_result(
 
 Sometimes you need to create a new column based on values from another column, e.g., if you want to convert a numeric vector to a categorical one. We can use the `ifelse()` or `if_else()` functions to do this. First, include the conditional statement that you want to test, then include the output if the statement is true, then the output if the statement is false (and then the output if missing when using `if_else()`).
 
-**Create a `tall_short` column that labels all penguins with flipper lengths 195 mm or longer as `tall`, those less than 195 mm as `short`, and those missing data as `unknown`.**
+**6. Create a `tall_short` column that labels all penguins with flipper lengths 195 mm or longer as `tall`, those less than 195 mm as `short`, and those missing data as `unknown`.**
 ```{r exercise14, exercise = TRUE}
 mutate(penguins, ...)
+```
+ 
+```{r exercise14-solution}
+mutate(penguins, tall_short = if_else(flipper_length_mm >= 195, 
+                                      "tall", "short", "unknown"))
 ```
  
 ```{r exercise14-check}
