@@ -8,6 +8,8 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 library(learnr)
+library(dplyr)
+library(palmerpenguins)
 options(tutorial.max.forked.procs = 10)
 library(tidyr)
 gradethis::gradethis_setup()

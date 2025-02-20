@@ -9,6 +9,7 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(tidyverse)
+library(palmerpenguins)
 options(tutorial.max.forked.procs = 10)
 gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
