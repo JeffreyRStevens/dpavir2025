@@ -438,4 +438,4 @@ data3
 
 ## Let's code!
 
-[Summarizing rows](../code/14_summarizing.html){target="_blank"} [[Rmd](../code/14_summarizing.Rmd){target="_blank"}]
+[Summarizing rows](../code/14_summarizing.html){target="_blank"}
