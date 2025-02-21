@@ -46,7 +46,7 @@ execute:
 
  </details>
 
-<details>
+<details open>
 
 <summary> Module 4: Tidy data </summary>
 

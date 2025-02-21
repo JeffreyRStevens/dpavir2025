@@ -2,16 +2,16 @@
 title: 'Pivoting data'
 author:
   - Jeff Stevens
-date: '2023-02-24'
+date: '2025-02-24'
 categories: 
   - "module 4"
-  - "week 5"
+  - "week 6"
   - "long data"
   - pivoting
   - "tidy data"
   - "wide data"
 description: "Tidy up your data into long or wide format"
-draft: true
+draft: false
 ---
 
 Tidy data is a specific form of data that let's you apply formulas to your data for modeling or plotting. To make your data tidy, you may need to pivot it to a longer or wider format.
