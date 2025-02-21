@@ -1,11 +1,11 @@
 ---
 title: "Summarizing rows"
 author: "Jeff Stevens"
-date: "2023-02-22"
+date: "2025-02-21"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: false
 format:
   revealjs: 
     theme: custom.scss
@@ -109,14 +109,14 @@ flights2 |>
 
 ## `summarise()`
 
+Why does this return `NA`?
+
 ```{r}
 flights2 |> 
   summarise(mean_dep_delay = mean(dep_delay), 
             sd_dep_delay = sd(dep_delay),
             n_dep_delay = n())
 ```
-
-Why does this return `NA`?
 
 :::{.fragment}
 ```{r}
@@ -180,18 +180,6 @@ flights2 |>
 
 ---
 
-## `group_by()`
-
-Remove groups with `ungroup()`
-
-```{r}
-flights2 |> 
-  group_by(month) |> 
-  ungroup()
-```
-
----
-
 ## Summarizing groups of data
 
 `group_by()` `+` `summarise()`
@@ -235,6 +223,67 @@ flights2 |>
 ```
 
 
+## Summarizing multiple groups
+
+`summarise()` with `.by` argument
+
+```{r}
+flights2 |> 
+  summarise(.by = c(carrier, month),
+            carrier_n = n(),
+            mean_carrier_delay = mean(dep_delay, na.rm = TRUE), 
+            sd_carrier_delay = sd(dep_delay, na.rm = TRUE))
+```
+
+
+---
+
+## Ungrouping
+
+Using `group_by()` adds a group attribute to the tibble
+
+```{r}
+flights2 |> 
+  group_by(month)
+```
+
+---
+
+## Ungrouping
+
+Remove groups with `ungroup()`
+
+```{r}
+flights2 |> 
+  group_by(month) |> 
+  ungroup()
+```
+
+---
+
+## Ungrouping
+
+`rowwise()` creates groups that can cause problems
+
+```{r}
+flights2 |> 
+  rowwise() |> 
+  mutate(min_dep_time = min(dep_time, sched_dep_time)) |> 
+  summarise(mean_min_dep_time = mean(min_dep_time, na.rm = TRUE))
+```
+
+## Ungrouping
+
+Ungrouping also works for `rowwise()`
+
+```{r}
+flights2 |> 
+  rowwise() |> 
+  mutate(min_dep_time = min(dep_time, sched_dep_time)) |> 
+  ungroup() |> 
+  summarise(mean_min_dep_time = mean(min_dep_time, na.rm = TRUE))
+```
+
 ---
 
 ## Solving the problem
@@ -273,7 +322,7 @@ data2
 
 ## Slicing rows
 
-Let's say we want the first flight for each carrier on 2022-02-22.
+Let's say we want the first flight for each carrier on 2013-02-22.
 
 ```{r}
 flights2 |> 
@@ -283,7 +332,7 @@ flights2 |>
 
 ## Slicing rows
 
-Let's say we want the first flight for each carrier on 2022-02-22.
+Let's say we want the first flight for each carrier on 2013-02-22.
 
 ```{r}
 flights2 |> 
@@ -295,13 +344,26 @@ flights2 |>
 
 ## Slicing rows
 
-What if we want the three most delayed flight for each carrier on 2022-02-22.
+What if we want the three most delayed flight for each carrier on 2013-02-22.
 
 ```{r}
 flights2 |> 
   filter(month == 2 & day == 22 & dep_time > 10) |> 
   group_by(carrier) |> 
   slice_max(dep_delay, n = 3) |> 
+  arrange(carrier, dep_delay)
+```
+
+
+## Slicing rows
+
+We can replace `group_by()` with `by` argument (not `.by`)
+
+```{r}
+flights2 |> 
+  filter(month == 2 & day == 22 & dep_time > 10) |> 
+  slice_max(by = carrier,
+            dep_delay, n = 3) |> 
   arrange(carrier, dep_delay)
 ```
 

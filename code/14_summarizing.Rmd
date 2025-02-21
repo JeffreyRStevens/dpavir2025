@@ -1,7 +1,7 @@
 ---
 title: "Summarizing rows"
 author: "Jeffrey R. Stevens"
-date: "2023-02-22"
+date: "2025-02-21"
 output: html_document
 execute:
   freeze: auto
@@ -9,7 +9,7 @@ execute:
 
 For these exercises, we'll use a new clean version of the dog breed traits data set. 
 
-1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.
+1. Import data from <https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv> and assign to `traits`.
 
 ```{r}
 # >
@@ -21,7 +21,7 @@ For these exercises, we'll use a new clean version of the dog breed traits data 
 # >
 ```
 
-3. What is the overall mean rating for all rating columns ignoring `NA`s? 
+3. What is the overall mean rating for each of the rating columns ignoring `NA`s? 
 
 ```{r}
 # >
@@ -45,13 +45,13 @@ For these exercises, we'll use a new clean version of the dog breed traits data 
 # >
 ```
 
-7. What are the sample size, mean, and standard deviation of shedding ratings for medium coat length dogs per coat type sorted from largest to smallest sample size and only including coat types with 5 or more samples?
+7. What are the sample size, mean, and standard deviation of shedding ratings for medium coat length dogs per coat type sorted from largest to smallest sample size and only including coat types with 5 or more samples? Note: the order mentioned here is not necessarily the correct order for your pipeline.
 
 ```{r}
 # >
 ```
 
-8. Calculate each breed's mean rating across all ratings columns and return a data frame with the highest rating for each coat type. Don't forget to undo `rowwise()` with `ungroup()` before further calculations.
+8. Calculate each breed's mean rating across each ratings column and return a data frame with the highest rating for each coat type. Don't forget to undo `rowwise()` with `ungroup()` before further calculations.
 
 ```{r}
 # >
