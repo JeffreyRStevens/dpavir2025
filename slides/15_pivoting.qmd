@@ -1,11 +1,11 @@
 ---
 title: "Pivoting data"
 author: "Jeff Stevens"
-date: "2023-02-24"
+date: "2025-02-24"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: false
 format:
   revealjs: 
     theme: custom.scss
@@ -13,14 +13,14 @@ format:
     code-line-numbers: false
     highlight-style: github
     code-overflow: wrap
-    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir)"
+    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir2025)"
     code-link: true
 ---
 
 # Review
 
 
-## How do I wrangle that?
+## Name that function
 
 ::: {.incremental}
 * return subset of rows based on position in data frame
@@ -43,8 +43,8 @@ format:
 
 ```{r echo = FALSE}
 library(tidyverse)
-nrows <- 12
-data2 <- data.frame(id = rep(1:4, each = 3), condition = paste0("cond", rep(1:3, times = 4)), response = runif(nrows)
+set.seed(20250224)
+data2 <- data.frame(id = rep(1:4, each = 3), condition = paste0("cond", rep(1:3, times = 4)), response = runif(12)
 )
 data1 <- data2 |> 
   pivot_wider(id_cols = id, names_from = condition, values_from = response)
@@ -368,4 +368,4 @@ data2
 
 ## Let's code!
 
-[Pivoting data](../code/15_pivoting.html){target="_blank"} [[Rmd](../code/15_pivoting.Rmd){target="_blank"}]
+[Pivoting data](../code/15_pivoting.html){target="_blank"}

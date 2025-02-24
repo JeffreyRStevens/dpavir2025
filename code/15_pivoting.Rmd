@@ -1,7 +1,7 @@
 ---
 title: "Pivoting data"
 author: "Jeffrey R. Stevens"
-date: "2023-02-24"
+date: "2025-02-24"
 output: html_document
 execute:
   freeze: auto
@@ -9,7 +9,7 @@ execute:
 
 For these exercises, we'll use a new clean version of the dog breed traits data set. 
 
-1. Import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv> and assign to `traits`.
+1. Import data from <https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv> and assign to `traits`.
 
 ```{r}
 # >

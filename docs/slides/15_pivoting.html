@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-02-24">
+<meta name="dcterms.date" content="2025-02-24">
 <title>Data Processing and Visualization in R – Pivoting data</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,10 +203,10 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-02-24</p>
+  <p class="date">2025-02-24</p>
 </section><section><section id="review" class="title-slide slide level1 center"><h1>Review</h1>
 
-</section><section id="how-do-i-wrangle-that" class="slide level2"><h2>How do I wrangle that?</h2>
+</section><section id="name-that-function" class="slide level2"><h2>Name that function</h2>
 <div>
 <ul>
 <li class="fragment">return subset of rows based on position in data frame</li>
@@ -230,31 +230,31 @@ Jeff Stevens
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
-     id  cond1   cond2  cond3
-  &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-1     1 0.0976 0.178   0.172 
-2     2 0.325  0.383   0.795 
-3     3 0.177  0.303   0.0630
-4     4 0.501  0.00540 0.672 </code></pre>
+     id cond1  cond2  cond3
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     1 0.208 0.981  0.0819
+2     2 0.964 0.0770 0.679 
+3     3 0.225 0.438  0.623 
+4     4 0.185 0.0758 0.942 </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:&quot;50%;">
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id condition    response
-1   1     cond1 0.097612559
-2   1     cond2 0.177694227
-3   1     cond3 0.172398800
-4   2     cond1 0.325050521
-5   2     cond2 0.382918134
-6   2     cond3 0.795392274
-7   3     cond1 0.176692137
-8   3     cond2 0.303105787
-9   3     cond3 0.063025983
-10  4     cond1 0.501413349
-11  4     cond2 0.005403941
-12  4     cond3 0.671985483</code></pre>
+<pre><code>   id condition   response
+1   1     cond1 0.20826607
+2   1     cond2 0.98142701
+3   1     cond3 0.08186109
+4   2     cond1 0.96427203
+5   2     cond2 0.07697982
+6   2     cond3 0.67866334
+7   3     cond1 0.22544114
+8   3     cond2 0.43792412
+9   3     cond3 0.62341431
+10  4     cond1 0.18529764
+11  4     cond2 0.07576630
+12  4     cond3 0.94208550</code></pre>
 </div>
 </div>
 </div></div>
@@ -483,43 +483,43 @@ Jeff Stevens
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
-     id  cond1   cond2  cond3
-  &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-1     1 0.0976 0.178   0.172 
-2     2 0.325  0.383   0.795 
-3     3 0.177  0.303   0.0630
-4     4 0.501  0.00540 0.672 </code></pre>
+     id cond1  cond2  cond3
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     1 0.208 0.981  0.0819
+2     2 0.964 0.0770 0.679 
+3     3 0.225 0.438  0.623 
+4     4 0.185 0.0758 0.942 </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:&quot;50%;">
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id condition    response
-1   1     cond1 0.097612559
-2   1     cond2 0.177694227
-3   1     cond3 0.172398800
-4   2     cond1 0.325050521
-5   2     cond2 0.382918134
-6   2     cond3 0.795392274
-7   3     cond1 0.176692137
-8   3     cond2 0.303105787
-9   3     cond3 0.063025983
-10  4     cond1 0.501413349
-11  4     cond2 0.005403941
-12  4     cond3 0.671985483</code></pre>
+<pre><code>   id condition   response
+1   1     cond1 0.20826607
+2   1     cond2 0.98142701
+3   1     cond3 0.08186109
+4   2     cond1 0.96427203
+5   2     cond2 0.07697982
+6   2     cond3 0.67866334
+7   3     cond1 0.22544114
+8   3     cond2 0.43792412
+9   3     cond3 0.62341431
+10  4     cond1 0.18529764
+11  4     cond2 0.07576630
+12  4     cond3 0.94208550</code></pre>
 </div>
 </div>
 </div></div>
 </section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/15_pivoting.html" target="_blank">Pivoting data</a> [<a href="../code/15_pivoting.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/15_pivoting.html" target="_blank">Pivoting data</a></p>
 
 
 </section></section>
 </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="https://jeffreyrstevens.quarto.pub/dpavir">DPaViR 2025</a></p>
+<p><a href="https://jeffreyrstevens.quarto.pub/dpavir2025">DPaViR 2025</a></p>
 </div>
 </div></div>
 
