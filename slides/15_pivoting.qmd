@@ -68,6 +68,11 @@ data2
 ::::
 
 
+## Today we ...
+
+![](../images/pivot.jpg)
+
+
 # Tidy data
 
 

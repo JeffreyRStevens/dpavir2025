@@ -1743,6 +1743,13 @@
     "text": "The problem\nWhat’s different between these data sets?\nWhat needs to happen to create data2 from data1?\n\n\n\ndata1\n\n   id condition   response\n1   1     cond1 0.20826607\n2   1     cond2 0.98142701\n3   1     cond3 0.08186109\n4   2     cond1 0.96427203\n5   2     cond2 0.07697982\n6   2     cond3 0.67866334\n7   3     cond1 0.22544114\n8   3     cond2 0.43792412\n9   3     cond3 0.62341431\n10  4     cond1 0.18529764\n11  4     cond2 0.07576630\n12  4     cond3 0.94208550\n\n\n\n\ndata2\n\n# A tibble: 4 × 4\n     id cond1  cond2  cond3\n  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1     1 0.208 0.981  0.0819\n2     2 0.964 0.0770 0.679 \n3     3 0.225 0.438  0.623 \n4     4 0.185 0.0758 0.942"
   },
   {
+    "objectID": "slides/15_pivoting.html#today-we",
+    "href": "slides/15_pivoting.html#today-we",
+    "title": "Pivoting data",
+    "section": "Today we …",
+    "text": "Today we …"
+  },
+  {
     "objectID": "slides/15_pivoting.html#mental-model-of-tidy-data",
     "href": "slides/15_pivoting.html#mental-model-of-tidy-data",
     "title": "Pivoting data",
@@ -4603,7 +4610,7 @@
     "href": "slides/14_summarizing.html#the-problem",
     "title": "Summarizing rows",
     "section": "The problem",
-    "text": "The problem\nWhat’s different between these data sets? What needs to happen to create data2 from data1?\n\n\n\ndata1\n\n   cond id       date   response\n1     1  1 2022-01-19 0.55067722\n2     1  2 2022-02-20 0.73744743\n3     3  3 2022-02-14 0.05875933\n4     3  4 2022-02-13 0.57135400\n5     2  5 2022-02-04 0.85995642\n6     1  6 2022-01-05 0.27622878\n7     1  7 2022-02-12 0.97695166\n8     3  8 2022-02-09 0.49951758\n9     2  9 2022-01-04 0.09528701\n10    3 10 2022-01-10 0.97973635\n11    3 11 2022-01-11 0.56104139\n12    1 12 2022-02-22 0.80051401\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.668   0.267\n2     2      2     0.478   0.541\n3     3      5     0.534   0.327"
+    "text": "The problem\nWhat’s different between these data sets? What needs to happen to create data2 from data1?\n\n\n\ndata1\n\n   cond id       date  response\n1     1  1 2022-02-11 0.3691926\n2     3  2 2022-01-21 0.9699207\n3     1  3 2022-02-19 0.3050477\n4     2  4 2022-02-15 0.6837026\n5     1  5 2022-01-31 0.4032913\n6     3  6 2022-02-28 0.2285910\n7     1  7 2022-01-06 0.6714747\n8     3  8 2022-01-29 0.9371559\n9     3  9 2022-02-25 0.1951760\n10    3 10 2022-02-23 0.3796685\n11    1 11 2022-01-14 0.5863633\n12    2 12 2022-02-20 0.9736408\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.467   0.155\n2     2      2     0.829   0.205\n3     3      5     0.542   0.382"
   },
   {
     "objectID": "slides/14_summarizing.html#data-wrangling",
@@ -4743,7 +4750,7 @@
     "href": "slides/14_summarizing.html#solving-the-problem",
     "title": "Summarizing rows",
     "section": "Solving the problem",
-    "text": "Solving the problem\nWhat code turns data1 into data2?\n\n\n\ndata1\n\n   cond id       date   response\n1     1  1 2022-01-19 0.55067722\n2     1  2 2022-02-20 0.73744743\n3     3  3 2022-02-14 0.05875933\n4     3  4 2022-02-13 0.57135400\n5     2  5 2022-02-04 0.85995642\n6     1  6 2022-01-05 0.27622878\n7     1  7 2022-02-12 0.97695166\n8     3  8 2022-02-09 0.49951758\n9     2  9 2022-01-04 0.09528701\n10    3 10 2022-01-10 0.97973635\n11    3 11 2022-01-11 0.56104139\n12    1 12 2022-02-22 0.80051401\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.668   0.267\n2     2      2     0.478   0.541\n3     3      5     0.534   0.327"
+    "text": "Solving the problem\nWhat code turns data1 into data2?\n\n\n\ndata1\n\n   cond id       date  response\n1     1  1 2022-02-11 0.3691926\n2     3  2 2022-01-21 0.9699207\n3     1  3 2022-02-19 0.3050477\n4     2  4 2022-02-15 0.6837026\n5     1  5 2022-01-31 0.4032913\n6     3  6 2022-02-28 0.2285910\n7     1  7 2022-01-06 0.6714747\n8     3  8 2022-01-29 0.9371559\n9     3  9 2022-02-25 0.1951760\n10    3 10 2022-02-23 0.3796685\n11    1 11 2022-01-14 0.5863633\n12    2 12 2022-02-20 0.9736408\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.467   0.155\n2     2      2     0.829   0.205\n3     3      5     0.542   0.382"
   },
   {
     "objectID": "slides/14_summarizing.html#slicing-rows",
@@ -4792,7 +4799,7 @@
     "href": "slides/14_summarizing.html#solving-the-problem-1",
     "title": "Summarizing rows",
     "section": "Solving the problem",
-    "text": "Solving the problem\nWhat code turns data1 into data3?\n\n\n\ndata1\n\n   cond id       date   response\n1     1  1 2022-01-19 0.55067722\n2     1  2 2022-02-20 0.73744743\n3     3  3 2022-02-14 0.05875933\n4     3  4 2022-02-13 0.57135400\n5     2  5 2022-02-04 0.85995642\n6     1  6 2022-01-05 0.27622878\n7     1  7 2022-02-12 0.97695166\n8     3  8 2022-02-09 0.49951758\n9     2  9 2022-01-04 0.09528701\n10    3 10 2022-01-10 0.97973635\n11    3 11 2022-01-11 0.56104139\n12    1 12 2022-02-22 0.80051401\n\n\n\n\ndata3\n\n# A tibble: 2 × 2\n  condition   earliest_date\n  &lt;chr&gt;       &lt;date&gt;       \n1 Condition 2 2022-01-04   \n2 Condition 3 2022-01-10"
+    "text": "Solving the problem\nWhat code turns data1 into data3?\n\n\n\ndata1\n\n   cond id       date  response\n1     1  1 2022-02-11 0.3691926\n2     3  2 2022-01-21 0.9699207\n3     1  3 2022-02-19 0.3050477\n4     2  4 2022-02-15 0.6837026\n5     1  5 2022-01-31 0.4032913\n6     3  6 2022-02-28 0.2285910\n7     1  7 2022-01-06 0.6714747\n8     3  8 2022-01-29 0.9371559\n9     3  9 2022-02-25 0.1951760\n10    3 10 2022-02-23 0.3796685\n11    1 11 2022-01-14 0.5863633\n12    2 12 2022-02-20 0.9736408\n\n\n\n\ndata3\n\n# A tibble: 2 × 2\n  condition   earliest_date\n  &lt;chr&gt;       &lt;date&gt;       \n1 Condition 2 2022-02-15   \n2 Condition 3 2022-01-21"
   },
   {
     "objectID": "slides/14_summarizing.html#lets-code",
