@@ -139,7 +139,7 @@ long
 
 ### Pivot penguin data longer
 
-Load the `{palmerpenguin}` package and view the `penguins` data set. Let's recreate the `penguins3` data frame that we saw before. To do this, you need to (1) remove the `flipper_length_mm`, `body_mass_g`, and `year` columns, (2) create a new `id` column that is just a vector of row numbers (from 1 to the number of rows) in the data frame and put it before the `species` column, and (3) assign this to `penguins3`. Then make that `id` column the first column of the data frame. **Note that you cannot remove and rearrange columns in the same select statement, so you'll need two separate statements.**
+**1. Load the `{palmerpenguin}` package and view the `penguins` data set. Let's recreate the `penguins3` data frame that we saw before. To do this, you need to (1) remove the `flipper_length_mm`, `body_mass_g`, and `year` columns, (2) create a new `id` column that is just a vector of row numbers (from 1 to the number of rows) in the data frame and put it before the `species` column, and (3) assign this to `penguins3`. Then make that `id` column the first column of the data frame.** <!--**Note that you cannot remove and rearrange columns in the same select statement, so you'll need two separate statements.**-->
 
 ```{r exercise1, exercise = TRUE}
 penguins3 <- penguins |> 
@@ -148,17 +148,24 @@ penguins3 <- penguins |>
 penguins3
 ```
  
+```{r exercise1-solution}
+penguins3 <- penguins |> 
+  select(!c(flipper_length_mm, body_mass_g, year)) |> 
+  mutate(id = 1:nrow(penguins), .before = 1)
+penguins3
+```
+
 ```{r exercise1-check}
 grade_result(
-  pass_if(~identical(.result, penguins3 <- penguins %>% 
-  dplyr::select(-flipper_length_mm, -body_mass_g, -year) %>% 
-  dplyr::mutate(id = 1:nrow(penguins), .before = species)))
+  pass_if(~identical(.result, penguins3 <- penguins |> 
+  dplyr::select(!c(flipper_length_mm, body_mass_g, year)) |> 
+  dplyr::mutate(id = 1:nrow(penguins), .before = 1)))
 )
 ```
 
 ###
 
-Now that we have `penguins3`, we want to use `pivot_longer()` to produce `penguins2`. That is, we want to turn the `bill` columns vertically so that we have a column called `measurement` that takes the values `bill_length_mm` or `bill_depth_mm` and a column called `size` that includes the values. Use `pivot_longer()` to generate `penguins2`.
+**2. Now that we have `penguins3`, we want to use `pivot_longer()` to produce `penguins2`. That is, we want to turn the `bill` columns vertically so that we have a column called `measurement` that takes the values `bill_length_mm` or `bill_depth_mm` and a column called `size` that includes the values. Use `pivot_longer()` to generate `penguins2`.**
 
 ```{r exercise2, exercise = TRUE}
 penguins2 <- penguins3 |> 
@@ -166,9 +173,15 @@ penguins2 <- penguins3 |>
 penguins2
 ```
  
+```{r exercise2-solution}
+penguins2 <- penguins3 |> 
+  pivot_longer(contains("bill_"), names_to = "measurement", values_to = "size")
+penguins2
+```
+
 ```{r exercise2-check}
 grade_result(
-  pass_if(~identical(.result, penguins2 <- penguins3 %>% 
+  pass_if(~identical(.result, penguins2 <- penguins3 |> 
   tidyr::pivot_longer(contains("bill_"), names_to = "measurement", values_to = "size")))
 )
 ```
@@ -200,13 +213,13 @@ wide
 
 ### Pivot penguin data wider
 
-Let's turn the `penguins2` data set back to `penguins3` but rename it `penguins3a`. Here's the `penguins2` data set.
+As a reminder, here's the `penguins2` data set.
 
 ```{r}
 penguins2
 ```
 
-We want to use the `measurement`  column for new column names and `size` for values.
+**3. Let's turn the `penguins2` data set back to `penguins3` but rename it `penguins3a`. We want to use the `measurement` column for new column names and `size` for values.**
 
 ```{r exercise3, exercise = TRUE}
 penguins3a <- penguins2 |> 
@@ -214,10 +227,16 @@ penguins3a <- penguins2 |>
 penguins3a
 ```
  
+```{r exercise3-solution}
+penguins3a <- penguins2 |> 
+  pivot_wider(names_from = measurement, values_from = size)
+penguins3a
+```
+
 ```{r exercise3-check}
 grade_result(
-  pass_if(~identical(.result, penguins3a <- penguins2 %>% 
-  tidyr::pivot_wider(names_from = "measurement", values_from = "size")))
+  pass_if(~identical(.result, penguins3a <- penguins2 |> 
+  tidyr::pivot_wider(names_from = measurement, values_from = size)))
 )
 ```
 

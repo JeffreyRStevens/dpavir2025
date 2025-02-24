@@ -229,19 +229,6 @@ Jeff Stevens
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
-     id cond1  cond2  cond3
-  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-1     1 0.208 0.981  0.0819
-2     2 0.964 0.0770 0.679 
-3     3 0.225 0.438  0.623 
-4     4 0.185 0.0758 0.942 </code></pre>
-</div>
-</div>
-</div><div class="column" style="width:&quot;50%;">
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
 <pre><code>   id condition   response
 1   1     cond1 0.20826607
 2   1     cond2 0.98142701
@@ -257,6 +244,19 @@ Jeff Stevens
 12  4     cond3 0.94208550</code></pre>
 </div>
 </div>
+</div><div class="column" style="width:&quot;50%;">
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+     id cond1  cond2  cond3
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     1 0.208 0.981  0.0819
+2     2 0.964 0.0770 0.679 
+3     3 0.225 0.438  0.623 
+4     4 0.185 0.0758 0.942 </code></pre>
+</div>
+</div>
 </div></div>
 </section></section><section><section id="tidy-data" class="title-slide slide level1 center"><h1>Tidy data</h1>
 
@@ -267,9 +267,9 @@ Jeff Stevens
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img data-src="../images/tidyr_hex.png" class="absolute" style="top: 0%; left: 105%; width: 15%; "></p>
+<p><img data-src="../images/tidyr_hex.png" class="absolute" style="top: 0%; left: 100%; width: 15%; "></p>
 <p><img data-src="../images/tidy_data.png" class="absolute" style="top: 30%; left: -5%; width: 45%; "></p>
-<p><img data-src="../images/tidyr_spread_gather_allisonhorst.png" class="absolute" style="top: 10%; left: 50%; width: 55%; "></p>
+<p><img data-src="../images/tidyr_spread_gather_allisonhorst.png" class="absolute" style="top: 10%; left: 50%; width: 50%; "></p>
 
 <aside><div>
 <p>Source: <a href="https://github.com/allisonhorst/stats-illustrations">Allison Horst</a></p>
@@ -285,6 +285,7 @@ Jeff Stevens
 <div class="columns">
 <div class="column" style="width:45%;">
 <div style="font-size:90%">
+<p>Is <code>table1</code> tidy? Why/why not?</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -303,6 +304,7 @@ Jeff Stevens
 </div><div class="column" style="width:55%;">
 <div class="fragment">
 <div style="font-size:90%">
+<p>Is <code>table2</code> tidy? Why/why not?</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -328,6 +330,7 @@ Jeff Stevens
 </div></div>
 </section><section id="tidy-data-2" class="slide level2"><h2>Tidy data</h2>
 <h4 id="every-variable-is-a-column-every-observation-is-a-row-and-every-value-is-a-cell-1">Every variable is a column, every observation is a row, and every value is a cell</h4>
+<p>Is <code>table3</code> tidy? Why/why not?</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -346,6 +349,7 @@ Jeff Stevens
 <h4 id="every-variable-is-a-column-every-observation-is-a-row-and-every-value-is-a-cell-2">Every variable is a column, every observation is a row, and every value is a cell</h4>
 <div class="columns">
 <div class="column" style="width:&quot;50%;">
+<p>Is <code>table4a</code> tidy? Why/why not?</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table4a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -358,6 +362,7 @@ Jeff Stevens
 </div>
 </div>
 </div><div class="column" style="width:&quot;50%;">
+<p>Is <code>table4b</code> tidy? Why/why not?</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table4b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -477,23 +482,15 @@ Jeff Stevens
 <p><img data-src="../images/tidyr_pivot_wider.png" class="absolute" style="top: 35%; left: 55%; width: 60%; "></p>
 </section><section id="solving-the-problem" class="slide level2"><h2>Solving the problem</h2>
 <p>What code turns <code>data1</code> into <code>data2</code>? And vice versa?</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">20250224</span><span class="op">)</span></span>
+<span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"cond"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, times <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span>, response <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="columns">
 <div class="column" style="width:&quot;50%;">
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
-     id cond1  cond2  cond3
-  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-1     1 0.208 0.981  0.0819
-2     2 0.964 0.0770 0.679 
-3     3 0.225 0.438  0.623 
-4     4 0.185 0.0758 0.942 </code></pre>
-</div>
-</div>
-</div><div class="column" style="width:&quot;50%;">
-<div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id condition   response
 1   1     cond1 0.20826607
@@ -508,6 +505,19 @@ Jeff Stevens
 10  4     cond1 0.18529764
 11  4     cond2 0.07576630
 12  4     cond3 0.94208550</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:&quot;50%;">
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+     id cond1  cond2  cond3
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     1 0.208 0.981  0.0819
+2     2 0.964 0.0770 0.679 
+3     3 0.225 0.438  0.623 
+4     4 0.185 0.0758 0.942 </code></pre>
 </div>
 </div>
 </div></div>
