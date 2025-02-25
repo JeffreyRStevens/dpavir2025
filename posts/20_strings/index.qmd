@@ -27,7 +27,7 @@ We'll use the {stringr} package to extract and combine character strings.
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 15](https://r4ds.hadley.nz/strings.html){target='_blank'}
+* Read [R4DS2 14](https://r4ds.hadley.nz/strings.html){target='_blank'}
 
 ## Class meeting
 
@@ -47,4 +47,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 16](https://r4ds.hadley.nz/regexps.html){target='_blank'}
+* Read [R4DS2 15](https://r4ds.hadley.nz/regexps.html){target='_blank'}

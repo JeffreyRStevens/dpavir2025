@@ -26,7 +26,7 @@ Often, we have data spread across multiple data sets that need to be merged into
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 21.1 - 21.3.2](https://r4ds.hadley.nz/joins.html){target='_blank'}
+* Read [R4DS2 19.1 - 19.3.2](https://r4ds.hadley.nz/joins.html){target='_blank'}
 
 ## Class meeting
 
@@ -45,4 +45,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 21.3.3 - 21.5](https://r4ds.hadley.nz/joins.html#filtering-joins){target='_blank'}
+* Read [R4DS2 19.3.3 - 19.5](https://r4ds.hadley.nz/joins.html#filtering-joins){target='_blank'}

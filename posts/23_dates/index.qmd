@@ -27,7 +27,7 @@ Because dates and times can come in different formats, it can be tricky working 
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 18](https://r4ds.hadley.nz/datetimes.html){target='_blank'}
+* Read [R4DS2 17](https://r4ds.hadley.nz/datetimes.html){target='_blank'}
 
 ## Class meeting
 

@@ -2,7 +2,7 @@
 title: 'Separating data'
 author:
   - Jeff Stevens
-date: '2023-02-27'
+date: '2025-02-26'
 categories: 
   - "module 4"
   - "week 6"
@@ -15,7 +15,7 @@ categories:
   - separate
   - unite
 description: "Separate or unite values in columns"
-draft: true
+draft: false
 ---
 
 One of the key principles of tidy data is that _each value has its own cell_. To achieve that, you may need to split values in column into multiple columns or combine values across columns.
@@ -50,4 +50,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 21.1 - 21.3.2](https://r4ds.hadley.nz/joins.html){target='_blank'}
+* Read [R4DS2 19.1 - 19.3.2](https://r4ds.hadley.nz/joins.html){target='_blank'}

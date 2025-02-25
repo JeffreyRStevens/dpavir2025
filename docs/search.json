@@ -3252,7 +3252,7 @@
     "href": "meetings.html",
     "title": "Class meetings",
     "section": "",
-    "text": "Pivoting data\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\nlong data\n\n\npivoting\n\n\ntidy data\n\n\nwide data\n\n\n\nTidy up your data into long or wide format\n\n\n\n\n\nFeb 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSummarizing rows\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\nacross\n\n\ncount\n\n\ngroup_by\n\n\nslice\n\n\nsummarise\n\n\n\nAggregate row values\n\n\n\n\n\nFeb 21, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nFiltering rows\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\narrange\n\n\nconditional statements\n\n\nfilter\n\n\nmissing data\n\n\nrows\n\n\n\nRemove rows based on data values\n\n\n\n\n\nFeb 19, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nPiping\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\nmutate\n\n\npipes\n\n\nselect\n\n\n\nPipes let us combine chains of functions\n\n\n\n\n\nFeb 17, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMutating columns\n\n\n\n\n\n\nmodule 3\n\n\nweek 4\n\n\nacross\n\n\ncase_when\n\n\ncolumns\n\n\nconditional statements\n\n\nifelse\n\n\nmutate\n\n\nrowwise\n\n\n\nChange and create data in columns\n\n\n\n\n\nFeb 14, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSelecting columns\n\n\n\n\n\n\nmodule 3\n\n\nweek 4\n\n\ncolumns\n\n\nrelocate\n\n\nrename\n\n\nselect\n\n\n\nSelect, move, and rename columns\n\n\n\n\n\nFeb 12, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nValidating data\n\n\n\n\n\n\nmodule 2\n\n\nweek 4\n\n\ncodebooks\n\n\ndata types\n\n\nduplicates\n\n\nmissing data\n\n\nvalidate\n\n\n\nTools for ensuring your data are valid\n\n\n\n\n\nFeb 10, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nImporting data\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\nCSV\n\n\nExcel\n\n\nexport\n\n\nimport\n\n\nQualtrics\n\n\n\nImport and export data from different sources\n\n\n\n\n\nFeb 7, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nData structures\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\ndata frames\n\n\nlists\n\n\ntibbles\n\n\nvectors\n\n\n\nCreate, modify, and subset vectors, lists, and data frames\n\n\n\n\n\nFeb 5, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nData types\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\ncharacters\n\n\ncoercion\n\n\ndates\n\n\nfactors\n\n\nlogicals\n\n\nmissing data\n\n\nnumerics\n\n\n\nCreate and convert numerics, character strings, logicals, factors, and dates.\n\n\n\n\n\nFeb 3, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nLiterate programming\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\nknitr\n\n\nR Markdown\n\n\nscripts\n\n\n\nCombining text, data, and code in R Markdown\n\n\n\n\n\nJan 31, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nWorkflows\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\nfile systems\n\n\npaths\n\n\nRStudio Projects\n\n\nworking directories\n\n\n\nAccess file systems with paths and set working directories with RStudio Projects\n\n\n\n\n\nJan 29, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCoding basics\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\ncoding\n\n\nnames\n\n\nstyle\n\n\n\nBasic concepts in coding, style, and naming\n\n\n\n\n\nJan 27, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nWorking in RStudio\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nhelp\n\n\nreprex\n\n\nRStudio\n\n\n\nIntroduction to RStudio Integrated Development Environment\n\n\n\n\n\nJan 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCourse introduction\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\ncourse-admin\n\n\nR\n\n\nRStudio\n\n\n\nIntroduction to Data Processing and Visualization in R\n\n\n\n\n\nJan 22, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nGetting started with R\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nR\n\n\nRStudio\n\n\n\nWelcome to Data Processing and Visualization in R\n\n\n\n\n\nJan 20, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\nNo matching items"
+    "text": "Separating data\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\ncoalesce\n\n\ncomplete\n\n\nexpand\n\n\nfill\n\n\nmissing data\n\n\nnesting\n\n\nseparate\n\n\nunite\n\n\n\nSeparate or unite values in columns\n\n\n\n\n\nFeb 26, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nPivoting data\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\nlong data\n\n\npivoting\n\n\ntidy data\n\n\nwide data\n\n\n\nTidy up your data into long or wide format\n\n\n\n\n\nFeb 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSummarizing rows\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\nacross\n\n\ncount\n\n\ngroup_by\n\n\nslice\n\n\nsummarise\n\n\n\nAggregate row values\n\n\n\n\n\nFeb 21, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nFiltering rows\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\narrange\n\n\nconditional statements\n\n\nfilter\n\n\nmissing data\n\n\nrows\n\n\n\nRemove rows based on data values\n\n\n\n\n\nFeb 19, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nPiping\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\nmutate\n\n\npipes\n\n\nselect\n\n\n\nPipes let us combine chains of functions\n\n\n\n\n\nFeb 17, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMutating columns\n\n\n\n\n\n\nmodule 3\n\n\nweek 4\n\n\nacross\n\n\ncase_when\n\n\ncolumns\n\n\nconditional statements\n\n\nifelse\n\n\nmutate\n\n\nrowwise\n\n\n\nChange and create data in columns\n\n\n\n\n\nFeb 14, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSelecting columns\n\n\n\n\n\n\nmodule 3\n\n\nweek 4\n\n\ncolumns\n\n\nrelocate\n\n\nrename\n\n\nselect\n\n\n\nSelect, move, and rename columns\n\n\n\n\n\nFeb 12, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nValidating data\n\n\n\n\n\n\nmodule 2\n\n\nweek 4\n\n\ncodebooks\n\n\ndata types\n\n\nduplicates\n\n\nmissing data\n\n\nvalidate\n\n\n\nTools for ensuring your data are valid\n\n\n\n\n\nFeb 10, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nImporting data\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\nCSV\n\n\nExcel\n\n\nexport\n\n\nimport\n\n\nQualtrics\n\n\n\nImport and export data from different sources\n\n\n\n\n\nFeb 7, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nData structures\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\ndata frames\n\n\nlists\n\n\ntibbles\n\n\nvectors\n\n\n\nCreate, modify, and subset vectors, lists, and data frames\n\n\n\n\n\nFeb 5, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nData types\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\ncharacters\n\n\ncoercion\n\n\ndates\n\n\nfactors\n\n\nlogicals\n\n\nmissing data\n\n\nnumerics\n\n\n\nCreate and convert numerics, character strings, logicals, factors, and dates.\n\n\n\n\n\nFeb 3, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nLiterate programming\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\nknitr\n\n\nR Markdown\n\n\nscripts\n\n\n\nCombining text, data, and code in R Markdown\n\n\n\n\n\nJan 31, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nWorkflows\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\nfile systems\n\n\npaths\n\n\nRStudio Projects\n\n\nworking directories\n\n\n\nAccess file systems with paths and set working directories with RStudio Projects\n\n\n\n\n\nJan 29, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCoding basics\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\ncoding\n\n\nnames\n\n\nstyle\n\n\n\nBasic concepts in coding, style, and naming\n\n\n\n\n\nJan 27, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nWorking in RStudio\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nhelp\n\n\nreprex\n\n\nRStudio\n\n\n\nIntroduction to RStudio Integrated Development Environment\n\n\n\n\n\nJan 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCourse introduction\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\ncourse-admin\n\n\nR\n\n\nRStudio\n\n\n\nIntroduction to Data Processing and Visualization in R\n\n\n\n\n\nJan 22, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nGetting started with R\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nR\n\n\nRStudio\n\n\n\nWelcome to Data Processing and Visualization in R\n\n\n\n\n\nJan 20, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -3596,6 +3596,41 @@
     "title": "Summarizing rows",
     "section": "Homework after the class meeting",
     "text": "Homework after the class meeting\n\nWrap up this lesson\n\nComplete the exercises\n\n\n\nFor next class meeting\n\nRead R4DS2 5"
+  },
+  {
+    "objectID": "posts/16_separating/index.html",
+    "href": "posts/16_separating/index.html",
+    "title": "Separating data",
+    "section": "",
+    "text": "One of the key principles of tidy data is that each value has its own cell. To achieve that, you may need to split values in column into multiple columns or combine values across columns."
+  },
+  {
+    "objectID": "posts/16_separating/index.html#learning-objectives",
+    "href": "posts/16_separating/index.html#learning-objectives",
+    "title": "Separating data",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\nSeparate values from single column into multiple columns\nUnite multiple columns into single column\nCoalesce multiple columns with missing data into single column\nFind all possible combinations of factors and all existing combinations\nFill in missing data"
+  },
+  {
+    "objectID": "posts/16_separating/index.html#pre-meeting",
+    "href": "posts/16_separating/index.html#pre-meeting",
+    "title": "Separating data",
+    "section": "Pre-meeting",
+    "text": "Pre-meeting\nTo prepare for this class meeting, please do the following:\n\nRead R4DS1 12.4 - 12.5"
+  },
+  {
+    "objectID": "posts/16_separating/index.html#class-meeting",
+    "href": "posts/16_separating/index.html#class-meeting",
+    "title": "Separating data",
+    "section": "Class meeting",
+    "text": "Class meeting\n\nSeparating data\nUniting data\nCoalescing data\nCombinations of factors\nFilling missing data\nSlides and Code"
+  },
+  {
+    "objectID": "posts/16_separating/index.html#homework-after-the-class-meeting",
+    "href": "posts/16_separating/index.html#homework-after-the-class-meeting",
+    "title": "Separating data",
+    "section": "Homework after the class meeting",
+    "text": "Homework after the class meeting\n\nWrap up this lesson\n\nComplete the exercises\n\n\n\nFor next class meeting\n\nRead R4DS2 19.1 - 19.3.2"
   },
   {
     "objectID": "resources.html",
@@ -4610,7 +4645,7 @@
     "href": "slides/14_summarizing.html#the-problem",
     "title": "Summarizing rows",
     "section": "The problem",
-    "text": "The problem\nWhat’s different between these data sets? What needs to happen to create data2 from data1?\n\n\n\ndata1\n\n   cond id       date  response\n1     1  1 2022-02-11 0.3691926\n2     3  2 2022-01-21 0.9699207\n3     1  3 2022-02-19 0.3050477\n4     2  4 2022-02-15 0.6837026\n5     1  5 2022-01-31 0.4032913\n6     3  6 2022-02-28 0.2285910\n7     1  7 2022-01-06 0.6714747\n8     3  8 2022-01-29 0.9371559\n9     3  9 2022-02-25 0.1951760\n10    3 10 2022-02-23 0.3796685\n11    1 11 2022-01-14 0.5863633\n12    2 12 2022-02-20 0.9736408\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.467   0.155\n2     2      2     0.829   0.205\n3     3      5     0.542   0.382"
+    "text": "The problem\nWhat’s different between these data sets? What needs to happen to create data2 from data1?\n\n\n\ndata1\n\n   cond id       date    response\n1     1  1 2022-01-13 0.003960073\n2     2  2 2022-01-26 0.614380933\n3     3  3 2022-01-24 0.861776526\n4     1  4 2022-02-05 0.832994988\n5     3  5 2022-01-10 0.891945429\n6     1  6 2022-02-10 0.369639689\n7     2  7 2022-01-17 0.962075836\n8     1  8 2022-02-13 0.416663859\n9     2  9 2022-02-20 0.311495353\n10    2 10 2022-02-23 0.065416599\n11    1 11 2022-01-23 0.592385632\n12    3 12 2022-01-06 0.032238276\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.443   0.305\n2     2      4     0.488   0.387\n3     3      3     0.595   0.488"
   },
   {
     "objectID": "slides/14_summarizing.html#data-wrangling",
@@ -4750,7 +4785,7 @@
     "href": "slides/14_summarizing.html#solving-the-problem",
     "title": "Summarizing rows",
     "section": "Solving the problem",
-    "text": "Solving the problem\nWhat code turns data1 into data2?\n\n\n\ndata1\n\n   cond id       date  response\n1     1  1 2022-02-11 0.3691926\n2     3  2 2022-01-21 0.9699207\n3     1  3 2022-02-19 0.3050477\n4     2  4 2022-02-15 0.6837026\n5     1  5 2022-01-31 0.4032913\n6     3  6 2022-02-28 0.2285910\n7     1  7 2022-01-06 0.6714747\n8     3  8 2022-01-29 0.9371559\n9     3  9 2022-02-25 0.1951760\n10    3 10 2022-02-23 0.3796685\n11    1 11 2022-01-14 0.5863633\n12    2 12 2022-02-20 0.9736408\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.467   0.155\n2     2      2     0.829   0.205\n3     3      5     0.542   0.382"
+    "text": "Solving the problem\nWhat code turns data1 into data2?\n\n\n\ndata1\n\n   cond id       date    response\n1     1  1 2022-01-13 0.003960073\n2     2  2 2022-01-26 0.614380933\n3     3  3 2022-01-24 0.861776526\n4     1  4 2022-02-05 0.832994988\n5     3  5 2022-01-10 0.891945429\n6     1  6 2022-02-10 0.369639689\n7     2  7 2022-01-17 0.962075836\n8     1  8 2022-02-13 0.416663859\n9     2  9 2022-02-20 0.311495353\n10    2 10 2022-02-23 0.065416599\n11    1 11 2022-01-23 0.592385632\n12    3 12 2022-01-06 0.032238276\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.443   0.305\n2     2      4     0.488   0.387\n3     3      3     0.595   0.488"
   },
   {
     "objectID": "slides/14_summarizing.html#slicing-rows",
@@ -4799,7 +4834,7 @@
     "href": "slides/14_summarizing.html#solving-the-problem-1",
     "title": "Summarizing rows",
     "section": "Solving the problem",
-    "text": "Solving the problem\nWhat code turns data1 into data3?\n\n\n\ndata1\n\n   cond id       date  response\n1     1  1 2022-02-11 0.3691926\n2     3  2 2022-01-21 0.9699207\n3     1  3 2022-02-19 0.3050477\n4     2  4 2022-02-15 0.6837026\n5     1  5 2022-01-31 0.4032913\n6     3  6 2022-02-28 0.2285910\n7     1  7 2022-01-06 0.6714747\n8     3  8 2022-01-29 0.9371559\n9     3  9 2022-02-25 0.1951760\n10    3 10 2022-02-23 0.3796685\n11    1 11 2022-01-14 0.5863633\n12    2 12 2022-02-20 0.9736408\n\n\n\n\ndata3\n\n# A tibble: 2 × 2\n  condition   earliest_date\n  &lt;chr&gt;       &lt;date&gt;       \n1 Condition 2 2022-02-15   \n2 Condition 3 2022-01-21"
+    "text": "Solving the problem\nWhat code turns data1 into data3?\n\n\n\ndata1\n\n   cond id       date    response\n1     1  1 2022-01-13 0.003960073\n2     2  2 2022-01-26 0.614380933\n3     3  3 2022-01-24 0.861776526\n4     1  4 2022-02-05 0.832994988\n5     3  5 2022-01-10 0.891945429\n6     1  6 2022-02-10 0.369639689\n7     2  7 2022-01-17 0.962075836\n8     1  8 2022-02-13 0.416663859\n9     2  9 2022-02-20 0.311495353\n10    2 10 2022-02-23 0.065416599\n11    1 11 2022-01-23 0.592385632\n12    3 12 2022-01-06 0.032238276\n\n\n\n\ndata3\n\n# A tibble: 2 × 2\n  condition   earliest_date\n  &lt;chr&gt;       &lt;date&gt;       \n1 Condition 2 2022-01-17   \n2 Condition 3 2022-01-06"
   },
   {
     "objectID": "slides/14_summarizing.html#lets-code",

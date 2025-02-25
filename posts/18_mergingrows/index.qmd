@@ -28,7 +28,7 @@ While mutating joins actually merge the two data sets, filtering joins use infor
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 21.3.3 - 21.5](https://r4ds.hadley.nz/joins.html#filtering-joins){target='_blank'}
+* Read [R4DS2 19.3.3 - 19.5](https://r4ds.hadley.nz/joins.html#filtering-joins){target='_blank'}
 
 ## Class meeting
 
@@ -48,4 +48,4 @@ To prepare for this class meeting, please do the following:
 ### For next class meeting
 
 * Update {dplyr} to version 1.1.0
-* Read [R4DS2 14](https://r4ds.hadley.nz/numbers.html){target='_blank'}
+* Read [R4DS2 13](https://r4ds.hadley.nz/numbers.html){target='_blank'}

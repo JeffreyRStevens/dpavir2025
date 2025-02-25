@@ -29,7 +29,7 @@ We often work with categorical variables, and R coerces them into a special data
 
 To prepare for this class meeting, please do the following:
 
-* Read [R4DS2 17](https://r4ds.hadley.nz/factors.html){target='_blank'}
+* Read [R4DS2 16](https://r4ds.hadley.nz/factors.html){target='_blank'}
 
 ## Class meeting
 
@@ -46,4 +46,4 @@ To prepare for this class meeting, please do the following:
 
 ### For next class meeting
 
-* Read [R4DS2 18](https://r4ds.hadley.nz/datetimes.html){target='_blank'}
+* Read [R4DS2 17](https://r4ds.hadley.nz/datetimes.html){target='_blank'}
