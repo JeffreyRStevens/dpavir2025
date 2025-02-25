@@ -9,7 +9,7 @@ execute:
 
 For these exercises, we'll use the dog breed traits data set along with the data on breed popularity rankings. 
 
-1. Load tidyverse, download and import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv) to `traits`, and import [`dog_breed_ranks.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_ranks.csv) to `ranks`. **Make sure to download both files from the website, as they have changed or are new.**
+1. Load tidyverse, download and import [`dog_breed_traits_clean.csv`](https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv) to `traits`, and import [`dog_breed_ranks.csv`](https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_ranks.csv) to `ranks`. **Make sure to download both files from the website, as they have changed or are new.**
 
 ```{r}
 # >

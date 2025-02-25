@@ -9,11 +9,11 @@ execute:
 
 For these exercises, we'll use a new clean version of the dog breed traits data set. 
 
-1. Load tidyverse, import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv>, and assign it to `traits`.
+1. Load tidyverse, import data from <https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv>, and assign it to `traits`.
 
 ```{r}
 library(tidyverse)
-traits <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv", show_col_types = FALSE)
+traits <- read_csv("https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv", show_col_types = FALSE)
 ```
 
 2. Create `traits2` which adds a _coat_ column that combines _coat_type_ and _coat_length_ into single column delimited by "-".
