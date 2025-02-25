@@ -13,7 +13,7 @@ format:
     code-line-numbers: false
     highlight-style: github
     code-overflow: wrap
-    footer: "[DPaViR 2025](https://jeffreyrstevens.quarto.pub/dpavir2025)"
+    footer: "[DPaViR 2025](https://jeffreyrstevens.github.io/dpavir2025)"
     code-link: true
 ---
 
