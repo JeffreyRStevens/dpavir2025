@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>For these exercises, we’ll use the dog breed traits and dog breed popularity rankings data sets.</p>
 <ol type="1">
-<li>Load tidyverse, import <a href="https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv"><code>dog_breed_traits_clean.csv</code></a> to <code>traits</code>, import <a href="https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_ranks.csv"><code>dog_breed_ranks.csv</code></a> to <code>ranks</code>, and import <a href="https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_popularity.csv"><code>dog_breed_ranks.csv</code></a> to <code>popularity</code>.</li>
+<li>Load tidyverse, import <a href="https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv"><code>dog_breed_traits_clean.csv</code></a> to <code>traits</code>, import <a href="https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_ranks.csv"><code>dog_breed_ranks.csv</code></a> to <code>ranks</code>, and import <a href="https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_popularity.csv"><code>dog_breed_ranks.csv</code></a> to <code>popularity</code>.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ purrr     1.0.4     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -235,28 +235,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>traits <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/dog_breed_traits_clean.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ranks <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/dog_breed_ranks.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>popularity <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/dog_breed_popularity.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...2`</code></pre>
+</div>
 </div>
 <ol start="2" type="1">
 <li>First, set a random seed by using <code>set.seed(2)</code>. Then create a subset of <code>ranks</code> that is a random selection of 10% of the rows, sort by breed name, and assign to <code>ranks2</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ranks2 <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(ranks, <span class="at">prop =</span> <span class="fl">0.1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(breed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ranks2 <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(ranks, <span class="at">prop =</span> <span class="fl">0.1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(breed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>Use a filtering join to return the subset of <code>traits</code> that <em>matches</em> the breeds in <code>ranks2</code> and assign this to <code>traits2</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>traits2 <span class="ot">&lt;-</span> traits <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(ranks2, <span class="at">by =</span> <span class="st">"breed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>traits2 <span class="ot">&lt;-</span> traits <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(ranks2, <span class="at">by =</span> <span class="st">"breed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="4" type="1">
 <li>Use a filtering join to return the subset of <code>traits</code> that <em>excludes</em> the breeds in <code>ranks2</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>traits <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(ranks2, <span class="at">by =</span> <span class="st">"breed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>traits <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(ranks2, <span class="at">by =</span> <span class="st">"breed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 178 × 8
    breed            affectionate children other_dogs shedding grooming coat_type
@@ -279,8 +283,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Now we want to filter <code>traits</code> based on breeds in <code>popularity</code>. Notice that the breeds column in <code>popularity</code> is called <em>Breed</em>. This is problematic because the breed column in <code>traits</code> is called <em>breed</em> and names are case-sensitive. Use <code>join_by()</code> to filter <code>traits</code> by breeds in <code>popularity</code>. How many rows are there?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>traits <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(popularity, <span class="at">by =</span> <span class="fu">join_by</span>(breed <span class="sc">==</span> Breed))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>traits <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(popularity, <span class="at">by =</span> <span class="fu">join_by</span>(breed <span class="sc">==</span> Breed))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 195 × 8
    breed            affectionate children other_dogs shedding grooming coat_type
@@ -303,8 +307,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use <code>filter()</code> (not joins) to return the subset of <code>traits</code> that <em>excludes</em> the breeds in <code>ranks2</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>traits <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>breed <span class="sc">%in%</span> ranks2<span class="sc">$</span>breed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>traits <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>breed <span class="sc">%in%</span> ranks2<span class="sc">$</span>breed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 178 × 8
    breed            affectionate children other_dogs shedding grooming coat_type
@@ -327,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Append <code>traits2</code> to the bottom of itself.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(traits2, traits2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(traits2, traits2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 38 × 8
    breed            affectionate children other_dogs shedding grooming coat_type
@@ -350,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Append <code>traits2</code> to the right of itself.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(traits2, traits2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(traits2, traits2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `breed` -&gt; `breed...1`
@@ -403,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Append <code>traits2</code> to the right of <code>ranks2</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(ranks2, traits2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(ranks2, traits2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `breed` -&gt; `breed...1`
@@ -441,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Why is this not a good idea? What would be a better way to achieve this?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(ranks2, traits2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(ranks2, traits2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(breed)`</code></pre>
 </div>

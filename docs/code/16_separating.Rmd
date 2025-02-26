@@ -9,7 +9,7 @@ execute:
 
 For these exercises, we'll use a new clean version of the dog breed traits data set. 
 
-1. Load tidyverse, import data from <https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits_clean.csv>, and assign it to `traits`.
+1. Load tidyverse, import data from <https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits_clean.csv>, and assign it to `traits`.
 
 ```{r}
 # >

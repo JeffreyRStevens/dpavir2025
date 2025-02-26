@@ -10,7 +10,7 @@ execute:
 For these exercises, we'll use the dates data set. 
 
 
-1. Load tidyverse, import [`dates.csv`](https://jeffreyrstevens.quarto.pub/dpavir/data/dates.csv) to `dates`, and view the data set.
+1. Load tidyverse, import [`dates.csv`](https://jeffreyrstevens.github.io/dpavir2025/data/dates.csv) to `dates`, and view the data set.
 
 ```{r}
 # >

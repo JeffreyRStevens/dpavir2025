@@ -19,7 +19,7 @@ For these exercises, we'll use the dog breed traits data set.
 
 ```{r}
 library(tidyverse)
-traits <- read_csv("https://jeffreyrstevens.quarto.pub/dpavir/data/dog_breed_traits.csv") |> 
+traits <- read_csv("https://jeffreyrstevens.github.io/dpavir2025/data/dog_breed_traits.csv") |> 
   select(Breed:`Coat Length`) |> 
   select(!`Drooling Level`)
 ```
