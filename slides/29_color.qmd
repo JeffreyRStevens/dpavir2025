@@ -15,6 +15,7 @@ format:
     code-overflow: wrap
     footer: "[DPaViR 2025](http://dpavir.org)"
     code-link: true
+    logo: "../logo/dpavir_hex.png"
 ---
 
 
