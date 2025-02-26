@@ -15,11 +15,10 @@ format:
     code-overflow: wrap
     footer: "[DPaViR 2025](https://jeffreyrstevens.github.io/dpavir2025)"
     code-link: true
+    logo: "../logo/dpavir_hex.png"
 ---
 
 # Introduction
-
-
 
 ## The problem
 
@@ -43,11 +42,13 @@ What needs to happen to create `data2` from `data1`?
 ::::{.columns}
 :::{.column width="50%}
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data1
 ```
 :::
 :::{.column width="50%}
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data2
 ```
 :::
@@ -119,7 +120,7 @@ separate(table3, year, into = c("century", "year2"), sep = 2, remove = FALSE)
 
 ## Separating data
 
-::: {.callout-warning}
+::: {.callout-warning appearance="simple"}
 The `separate()` function is being _superseded_ by `separate_wider_delim()` and `separate_wider_position()` for the two use cases described before. But these are both listed as _experimental_, so we're sticking with `separate()`.
 :::
 
@@ -136,7 +137,7 @@ The `separate()` function is being _superseded_ by `separate_wider_delim()` and 
 
 ## Separating data
 
-::: {.callout-warning}
+::: {.callout-warning appearance="simple"}
 The `separate()` function is being _superseded_ by `separate_wider_delim()` and `separate_wider_position()` for the two use cases described before. But these are both listed as _experimental_, so we're sticking with `separate()`.
 :::
 
@@ -223,6 +224,25 @@ coal_data |>
 :::
 
 
+## Coalescing data
+
+Combining data across columns with `NA`s using [select helpers](https://github.com/tidyverse/funs/issues/54#issuecomment-2684357499)
+
+```{r echo = FALSE}
+coal_data <- tibble(a_1 = c(1, NA, NA, NA), a_2 = c(NA, 4, NA, NA), a_3 = c(NA, NA, 7, NA))
+```
+```{r}
+coal_data
+```
+
+::: {.fragment}
+```{r}
+coal_data |> 
+  mutate(a_all = coalesce(!!quote(!!!across(contains("a_")))))
+```
+:::
+
+
 # Incomplete data sets
 
 ## Missing data
@@ -263,11 +283,42 @@ stocks |>
 
 ::::
 
-::: {.fragment}
+## Missing data
+
+```{r echo = FALSE}
+stocks <- tibble(
+  year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016),
+  qtr    = c(   1,    2,    3,    4,    2,    3,    4),
+  return = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)
+)
+```
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r}
+stocks
+```
+
+What is missing?
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+stocks |> 
+  complete(year, qtr)
+```
+:::
+
+::::
+
 ::: {.callout-warning}
 #### Important for factorial designs and for data validation
 :::
-:::
+
 
 ## Combinations of factors
 
@@ -376,8 +427,11 @@ What code turns `data1` into `data2`?
 ```{r eval=FALSE}
 library(tidyverse)
 nrows <- 12
-data1 <- tibble(id = rep(1:4, each = 3), cond1 = rep(1:3, times = 4), cond2 = rep(c("A", "B", "A", "B"), each = 3), date = sample(seq(as.Date('2022-01-01'), as.Date('2022-02-28'), by="day"), nrows)
-) |> 
+data1 <- tibble(id = rep(1:4, each = 3), 
+                cond1 = rep(1:3, times = 4), 
+                cond2 = rep(c("A", "B", "A", "B"), each = 3), 
+                date = sample(seq(as.Date('2022-01-01'), 
+                                  as.Date('2022-02-28'), by="day"), nrows)) |> 
   filter(id != 2 | cond1 != 2)
 ```
 
@@ -389,11 +443,13 @@ What code turns `data1` into `data2`?
 ::::{.columns}
 :::{.column width="50%}
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data1
 ```
 :::
 :::{.column width="50%}
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data2
 ```
 :::

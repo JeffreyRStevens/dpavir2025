@@ -44,16 +44,22 @@ To create tidy data, you may need to separate values from a single column into m
 
 If there are multiple values inside a single cell, you may want to `separate()` them. An important concept for this is the notion of a _delimiter_, which is the character(s) used to separate independent elements. For instance, if you wanted to separate an ISO 8601 date into the year, month, and day, the delimiter would be a dash `-`. But in this date style 05/17/2021, the delimiter is a slash `/`. Other times, there may not be a specific character that separates the elements, but position in a string may determine the elements. 
 
-The `separate()` function looks for standard delimiters as delimiters and if there is only one type will separate based on that. Separate the `date` column into three new columns called `year`, `month`, and `day`.
+**1. The `separate()` function looks for standard delimiters as delimiters and if there is only one type will separate based on that. Separate the `date` column into three new columns called `year`, `month`, and `day`.**
 
 ```{r mydates}
 my_dates
 ```
 
 ```{r exercise4, exercise = TRUE}
-separate(my_dates, ...)
+my_dates |> 
+  separate(...)
 ```
  
+```{r exercise4-solution}
+my_dates |> 
+  separate(col = date, into = c("year", "month", "day"))
+```
+
 ```{r exercise4-check}
 grade_result(
   pass_if(~identical(.result, tidyr::separate(my_dates, col = date, into = c("year", "month", "day"))))
@@ -65,12 +71,18 @@ grade_result(
 
 Let's work on a more complicated task. Some characters/symbols have special meanings when we are searching for patterns in strings. We'll see more about this later, but trust me for now. One of those characters is the period or dot. If we want to use `.` as a delimiter, we have to 'escape' the special meaning that it has by placing two `\` in front of it (`\\.`). Let's say we want to carve up a number in its whole number and decimal parts. We want to use the decimal as the delimiter.
 
-Split the _bill_length_mm_ column into _mm_ and _decimal_ columns using `\\.` as the delimiter.
+**2. Split the _bill_length_mm_ column into _mm_ and _decimal_ columns using `\\.` as the delimiter.**
 
 ```{r exercise5, exercise = TRUE}
-separate(penguins, ...)
+penguins |> 
+  separate(...)
 ```
  
+```{r exercise5-solution}
+penguins |> 
+  separate(col = bill_length_mm, into = c("mm", "decimal"), sep = "\\.")
+```
+
 ```{r exercise5-check}
 grade_result(
   pass_if(~identical(.result, tidyr::separate(penguins, col = bill_length_mm, into = c("mm", "decimal"), sep = "\\.")))
@@ -83,7 +95,7 @@ We can also separate by position instead of a delimiter. Let's say we want to ab
 
 When separating by position, we give the number of characters we want in the first column to the `sep` argument.
 
-For the `penguins` data, split _species_ into _species_ and _trash_ after the third character, then remove the _trash_ column.
+**3. For the `penguins` data, split _species_ into _species_ and _trash_ after the third character, then remove the _trash_ column.**
 
 ```{r exercise6, exercise = TRUE}
 penguins |> 
@@ -94,7 +106,7 @@ penguins |>
 ```{r exercise6-solution}
 penguins |> 
   separate(species, into = c("species", "trash"), sep = 3) |> 
-  select(-trash)
+  select(!trash)
 ```
 
 ```{r exercise6-check}
@@ -121,14 +133,20 @@ penguins |>
 
 If you need to combine multiple columns into a single one, use `unite()`. The default delimiter is an underscore `_`, so if you want something different, you need to specify it with the `sep` argument.
 
-Let's take our data frame with the date separated out and combine it to reproduce `my_dates` by combining _year_, _month_, and _day_ into a column called _date_. Make sure you run your code to check it before submitting.
+**4. Let's take our data frame with the date separated out and combine it to reproduce `my_dates` by combining _year_, _month_, and _day_ into a column called _date_. Make sure you run your code to check it before submitting.**
 
 ```{r mydates2}
 my_dates2
 ```
 
 ```{r exercise7, exercise = TRUE}
-unite(my_dates2, ...)
+my_dates2 |> 
+  unite(...)
+```
+ 
+```{r exercise7-solution}
+my_dates2 |> 
+  unite(col = "date", year:day, sep = "-")
 ```
  
 ```{r exercise7-check}
@@ -139,13 +157,19 @@ grade_result(
 
 ###
 
-Now combine the two bill measures separated by an `x` to show the length by the width in a column called `bill_area` but keep the original columns. Also, make sure `NA`s don't show up in the column (check `unite()` documentation). It should look like this:
+**5. Now combine the two bill measures separated by an `x` to show the length by the width in a column called `bill_area` but keep the original columns. Also, make sure `NA`s don't show up in the column (check `unite()` documentation). It should look like this:**
 ```{r}
 unite(penguins, "bill_area", contains("bill_"), sep = "x", remove = FALSE, na.rm = TRUE)
 ```
 
 ```{r exercise8, exercise = TRUE}
-unite(penguins, ...)
+penguins |> 
+  unite(...)
+```
+ 
+```{r exercise8-solution}
+penguins |> 
+  unite("bill_area", contains("bill_"), sep = "x", remove = FALSE, na.rm = TRUE)
 ```
  
 ```{r exercise8-check}
@@ -161,11 +185,18 @@ grade_result(
 
 <!-- When data are _implicitly_ missing from our data set, they simply don't exist in the data. This contrasts with _explicitly_ missing data which are present in the data and signaled by `NA`s.  -->
 
-We can find all possible combinations of factors in the data by using the `expand()` function. What are all possible combinations of the penguin species and island?
+We can find all possible combinations of factors in the data by using the `expand()` function. 
+
+**6. What are all possible combinations of the penguin species and island?**
 
 ```{r exercise9, exercise = TRUE}
 penguins |> 
   expand(...)
+```
+ 
+```{r exercise9-solution}
+penguins |> 
+  expand(species, island)
 ```
  
 ```{r exercise9-check}
@@ -176,11 +207,18 @@ grade_result(
 
 ###
 
-We can find all combinations of factors *existing* in the data by adding the `nesting()` function inside the `expand()` function. What are all existing combinations of the penguin species and island?
+We can find all combinations of factors *existing* in the data by adding the `nesting()` function inside the `expand()` function. 
+
+**7. What are all existing combinations of the penguin species and island?**
 
 ```{r exercise10, exercise = TRUE}
 penguins |> 
   expand(...)
+```
+ 
+```{r exercise10-solution}
+penguins |> 
+  expand(nesting(species, island))
 ```
  
 ```{r exercise10-check}
@@ -188,8 +226,6 @@ grade_result(
   pass_if(~identical(.result, expand(penguins, nesting(species, island))))
 )
 ```
-
-### 
 
 ### Wrap-up
 
