@@ -4645,7 +4645,7 @@
     "href": "slides/14_summarizing.html#the-problem",
     "title": "Summarizing rows",
     "section": "The problem",
-    "text": "The problem\nWhat’s different between these data sets? What needs to happen to create data2 from data1?\n\n\n\ndata1\n\n   cond id       date   response\n1     1  1 2022-02-05 0.35808416\n2     2  2 2022-02-24 0.36795558\n3     3  3 2022-02-17 0.77716933\n4     2  4 2022-01-23 0.25199089\n5     2  5 2022-02-04 0.12865288\n6     2  6 2022-01-13 0.06544162\n7     3  7 2022-02-27 0.97264771\n8     3  8 2022-02-13 0.13391132\n9     2  9 2022-01-05 0.76286808\n10    2 10 2022-02-12 0.87054307\n11    1 11 2022-01-07 0.49023219\n12    1 12 2022-02-26 0.97057090\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      3     0.606   0.322\n2     2      6     0.408   0.335\n3     3      3     0.628   0.439"
+    "text": "The problem\nWhat’s different between these data sets? What needs to happen to create data2 from data1?\n\n\n\ndata1\n\n   cond id       date    response\n1     1  1 2022-01-06 0.186435928\n2     2  2 2022-02-27 0.570824456\n3     3  3 2022-02-21 0.185012303\n4     1  4 2022-02-07 0.314863177\n5     2  5 2022-01-12 0.001347631\n6     1  6 2022-02-03 0.450795800\n7     1  7 2022-01-07 0.146024002\n8     1  8 2022-02-08 0.987602587\n9     2  9 2022-01-04 0.944210393\n10    3 10 2022-02-05 0.416260159\n11    2 11 2022-02-01 0.064055518\n12    2 12 2022-01-20 0.355653727\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.417   0.340\n2     2      5     0.387   0.387\n3     3      2     0.301   0.164"
   },
   {
     "objectID": "slides/14_summarizing.html#data-wrangling",
@@ -4785,7 +4785,7 @@
     "href": "slides/14_summarizing.html#solving-the-problem",
     "title": "Summarizing rows",
     "section": "Solving the problem",
-    "text": "Solving the problem\nWhat code turns data1 into data2?\n\n\n\ndata1\n\n   cond id       date   response\n1     1  1 2022-02-05 0.35808416\n2     2  2 2022-02-24 0.36795558\n3     3  3 2022-02-17 0.77716933\n4     2  4 2022-01-23 0.25199089\n5     2  5 2022-02-04 0.12865288\n6     2  6 2022-01-13 0.06544162\n7     3  7 2022-02-27 0.97264771\n8     3  8 2022-02-13 0.13391132\n9     2  9 2022-01-05 0.76286808\n10    2 10 2022-02-12 0.87054307\n11    1 11 2022-01-07 0.49023219\n12    1 12 2022-02-26 0.97057090\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      3     0.606   0.322\n2     2      6     0.408   0.335\n3     3      3     0.628   0.439"
+    "text": "Solving the problem\nWhat code turns data1 into data2?\n\n\n\ndata1\n\n   cond id       date    response\n1     1  1 2022-01-06 0.186435928\n2     2  2 2022-02-27 0.570824456\n3     3  3 2022-02-21 0.185012303\n4     1  4 2022-02-07 0.314863177\n5     2  5 2022-01-12 0.001347631\n6     1  6 2022-02-03 0.450795800\n7     1  7 2022-01-07 0.146024002\n8     1  8 2022-02-08 0.987602587\n9     2  9 2022-01-04 0.944210393\n10    3 10 2022-02-05 0.416260159\n11    2 11 2022-02-01 0.064055518\n12    2 12 2022-01-20 0.355653727\n\n\n\n\ndata2\n\n# A tibble: 3 × 4\n   cond cond_n cond_mean cond_sd\n  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1     1      5     0.417   0.340\n2     2      5     0.387   0.387\n3     3      2     0.301   0.164"
   },
   {
     "objectID": "slides/14_summarizing.html#slicing-rows",
@@ -4834,7 +4834,7 @@
     "href": "slides/14_summarizing.html#solving-the-problem-1",
     "title": "Summarizing rows",
     "section": "Solving the problem",
-    "text": "Solving the problem\nWhat code turns data1 into data3?\n\n\n\ndata1\n\n   cond id       date   response\n1     1  1 2022-02-05 0.35808416\n2     2  2 2022-02-24 0.36795558\n3     3  3 2022-02-17 0.77716933\n4     2  4 2022-01-23 0.25199089\n5     2  5 2022-02-04 0.12865288\n6     2  6 2022-01-13 0.06544162\n7     3  7 2022-02-27 0.97264771\n8     3  8 2022-02-13 0.13391132\n9     2  9 2022-01-05 0.76286808\n10    2 10 2022-02-12 0.87054307\n11    1 11 2022-01-07 0.49023219\n12    1 12 2022-02-26 0.97057090\n\n\n\n\ndata3\n\n# A tibble: 2 × 2\n  condition   earliest_date\n  &lt;chr&gt;       &lt;date&gt;       \n1 Condition 2 2022-01-05   \n2 Condition 3 2022-02-13"
+    "text": "Solving the problem\nWhat code turns data1 into data3?\n\n\n\ndata1\n\n   cond id       date    response\n1     1  1 2022-01-06 0.186435928\n2     2  2 2022-02-27 0.570824456\n3     3  3 2022-02-21 0.185012303\n4     1  4 2022-02-07 0.314863177\n5     2  5 2022-01-12 0.001347631\n6     1  6 2022-02-03 0.450795800\n7     1  7 2022-01-07 0.146024002\n8     1  8 2022-02-08 0.987602587\n9     2  9 2022-01-04 0.944210393\n10    3 10 2022-02-05 0.416260159\n11    2 11 2022-02-01 0.064055518\n12    2 12 2022-01-20 0.355653727\n\n\n\n\ndata3\n\n# A tibble: 2 × 2\n  condition   earliest_date\n  &lt;chr&gt;       &lt;date&gt;       \n1 Condition 2 2022-01-04   \n2 Condition 3 2022-02-05"
   },
   {
     "objectID": "slides/14_summarizing.html#lets-code",
@@ -4848,7 +4848,7 @@
     "href": "slides/16_separating.html#the-problem",
     "title": "Separating and uniting data",
     "section": "The problem",
-    "text": "The problem\nWhat’s different between these data sets?\nWhat needs to happen to create data2 from data1?\n\n\n\ndata1\n\n# A tibble: 11 × 4\n      id cond1 cond2 date      \n   &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;date&gt;    \n 1     1     1 A     2022-02-25\n 2     1     2 A     2022-01-21\n 3     1     3 A     2022-02-03\n 4     2     1 B     2022-02-23\n 5     2     3 B     2022-02-11\n 6     3     1 A     2022-01-12\n 7     3     2 A     2022-01-20\n 8     3     3 A     2022-01-10\n 9     4     1 B     2022-01-22\n10     4     2 B     2022-02-14\n11     4     3 B     2022-01-18\n\n\n\n\ndata2\n\n# A tibble: 12 × 5\n      id condition year  month day  \n   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1 1A        2022  02    25   \n 2     1 2A        2022  01    21   \n 3     1 3A        2022  02    03   \n 4     2 1B        2022  02    23   \n 5     2 2B        &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; \n 6     2 3B        2022  02    11   \n 7     3 1A        2022  01    12   \n 8     3 2A        2022  01    20   \n 9     3 3A        2022  01    10   \n10     4 1B        2022  01    22   \n11     4 2B        2022  02    14   \n12     4 3B        2022  01    18"
+    "text": "The problem\nWhat’s different between these data sets?\nWhat needs to happen to create data2 from data1?\n\n\n\ndata1\n\n# A tibble: 11 × 4\n      id cond1 cond2 date      \n   &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;date&gt;    \n 1     1     1 A     2022-02-24\n 2     1     2 A     2022-01-21\n 3     1     3 A     2022-01-23\n 4     2     1 B     2022-01-27\n 5     2     3 B     2022-01-02\n 6     3     1 A     2022-02-03\n 7     3     2 A     2022-02-10\n 8     3     3 A     2022-02-21\n 9     4     1 B     2022-01-31\n10     4     2 B     2022-01-30\n11     4     3 B     2022-02-13\n\n\n\n\ndata2\n\n# A tibble: 12 × 5\n      id condition year  month day  \n   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1 1A        2022  02    24   \n 2     1 2A        2022  01    21   \n 3     1 3A        2022  01    23   \n 4     2 1B        2022  01    27   \n 5     2 2B        &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; \n 6     2 3B        2022  01    02   \n 7     3 1A        2022  02    03   \n 8     3 2A        2022  02    10   \n 9     3 3A        2022  02    21   \n10     4 1B        2022  01    31   \n11     4 2B        2022  01    30   \n12     4 3B        2022  02    13"
   },
   {
     "objectID": "slides/16_separating.html#mental-model-of-tidy-data",
@@ -4877,6 +4877,20 @@
     "title": "Separating and uniting data",
     "section": "Separating data",
     "text": "Separating data\n\nseparate(table3, year, into = c(\"century\", \"year2\"), sep = 2)\n\n# A tibble: 6 × 4\n  country     century year2 rate             \n  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            \n1 Afghanistan 19      99    745/19987071     \n2 Afghanistan 20      00    2666/20595360    \n3 Brazil      19      99    37737/172006362  \n4 Brazil      20      00    80488/174504898  \n5 China       19      99    212258/1272915272\n6 China       20      00    213766/1280428583\n\n\n\n\nseparate(table3, year, into = c(\"century\", \"year2\"), sep = 2, remove = FALSE)\n\n# A tibble: 6 × 5\n  country      year century year2 rate             \n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            \n1 Afghanistan  1999 19      99    745/19987071     \n2 Afghanistan  2000 20      00    2666/20595360    \n3 Brazil       1999 19      99    37737/172006362  \n4 Brazil       2000 20      00    80488/174504898  \n5 China        1999 19      99    212258/1272915272\n6 China        2000 20      00    213766/1280428583"
+  },
+  {
+    "objectID": "slides/16_separating.html#code-lifecycle",
+    "href": "slides/16_separating.html#code-lifecycle",
+    "title": "Separating and uniting data",
+    "section": "Code lifecycle",
+    "text": "Code lifecycle\nCode is constantly being updated—added and removed\nPosit’s {lifecycle} package tracks code stages"
+  },
+  {
+    "objectID": "slides/16_separating.html#code-versioning",
+    "href": "slides/16_separating.html#code-versioning",
+    "title": "Separating and uniting data",
+    "section": "Code versioning",
+    "text": "Code versioning\ntidyverse 2.0.0\nhere 1.0.1\npapaja 0.1.3\n[major].[minor].[patch]\n\nIn the tidyverse…\n\n[Y]ou can assume any package with version number less than 1.0.0 is at least somewhat experimental… The most experimental packages only exist on GitHub."
   },
   {
     "objectID": "slides/16_separating.html#separating-data-4",
@@ -4946,14 +4960,14 @@
     "href": "slides/16_separating.html#combinations-of-factors",
     "title": "Separating and uniting data",
     "section": "Combinations of factors",
-    "text": "Combinations of factors\n\n\n\nfruits\n\n# A tibble: 6 × 4\n  type    year size  weights\n  &lt;chr&gt;  &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;\n1 apple   2010 XS       2.49\n2 orange  2010 S        3.21\n3 apple   2012 M        4.79\n4 orange  2010 S        4.25\n5 orange  2010 S        2.95\n6 orange  2012 M        5.63\n\n\n\n\n\nfruits |&gt; expand(type, size)\n\n# A tibble: 8 × 2\n  type   size \n  &lt;chr&gt;  &lt;fct&gt;\n1 apple  XS   \n2 apple  S    \n3 apple  M    \n4 apple  L    \n5 orange XS   \n6 orange S    \n7 orange M    \n8 orange L    \n\n\nreturn all possible combinations"
+    "text": "Combinations of factors\n\n\n\nfruits\n\n# A tibble: 6 × 4\n  type    year size  weights\n  &lt;chr&gt;  &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;\n1 apple   2010 XS       2.94\n2 orange  2010 S        2.91\n3 apple   2012 M        5.74\n4 orange  2010 S        5.12\n5 orange  2010 S        4.17\n6 orange  2012 M        2.99\n\n\n\n\n\nfruits |&gt; expand(type, size)\n\n# A tibble: 8 × 2\n  type   size \n  &lt;chr&gt;  &lt;fct&gt;\n1 apple  XS   \n2 apple  S    \n3 apple  M    \n4 apple  L    \n5 orange XS   \n6 orange S    \n7 orange M    \n8 orange L    \n\n\nreturn all possible combinations"
   },
   {
     "objectID": "slides/16_separating.html#combinations-of-factors-1",
     "href": "slides/16_separating.html#combinations-of-factors-1",
     "title": "Separating and uniting data",
     "section": "Combinations of factors",
-    "text": "Combinations of factors\n\n\n\nfruits\n\n# A tibble: 6 × 4\n  type    year size  weights\n  &lt;chr&gt;  &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;\n1 apple   2010 XS       2.49\n2 orange  2010 S        3.21\n3 apple   2012 M        4.79\n4 orange  2010 S        4.25\n5 orange  2010 S        2.95\n6 orange  2012 M        5.63\n\n\n\n\n\nfruits |&gt; expand(nesting(type, size))\n\n# A tibble: 4 × 2\n  type   size \n  &lt;chr&gt;  &lt;fct&gt;\n1 apple  XS   \n2 apple  M    \n3 orange S    \n4 orange M    \n\n\nreturn all existing combinations"
+    "text": "Combinations of factors\n\n\n\nfruits\n\n# A tibble: 6 × 4\n  type    year size  weights\n  &lt;chr&gt;  &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;\n1 apple   2010 XS       2.94\n2 orange  2010 S        2.91\n3 apple   2012 M        5.74\n4 orange  2010 S        5.12\n5 orange  2010 S        4.17\n6 orange  2012 M        2.99\n\n\n\n\n\nfruits |&gt; expand(nesting(type, size))\n\n# A tibble: 4 × 2\n  type   size \n  &lt;chr&gt;  &lt;fct&gt;\n1 apple  XS   \n2 apple  M    \n3 orange S    \n4 orange M    \n\n\nreturn all existing combinations"
   },
   {
     "objectID": "slides/16_separating.html#filling-data",
@@ -4974,7 +4988,7 @@
     "href": "slides/16_separating.html#solving-the-problem-1",
     "title": "Separating and uniting data",
     "section": "Solving the problem",
-    "text": "Solving the problem\nWhat code turns data1 into data2?\n\n\n\ndata1\n\n# A tibble: 11 × 4\n      id cond1 cond2 date      \n   &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;date&gt;    \n 1     1     1 A     2022-02-25\n 2     1     2 A     2022-01-21\n 3     1     3 A     2022-02-03\n 4     2     1 B     2022-02-23\n 5     2     3 B     2022-02-11\n 6     3     1 A     2022-01-12\n 7     3     2 A     2022-01-20\n 8     3     3 A     2022-01-10\n 9     4     1 B     2022-01-22\n10     4     2 B     2022-02-14\n11     4     3 B     2022-01-18\n\n\n\n\ndata2\n\n# A tibble: 12 × 5\n      id condition year  month day  \n   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1 1A        2022  02    25   \n 2     1 2A        2022  01    21   \n 3     1 3A        2022  02    03   \n 4     2 1B        2022  02    23   \n 5     2 2B        &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; \n 6     2 3B        2022  02    11   \n 7     3 1A        2022  01    12   \n 8     3 2A        2022  01    20   \n 9     3 3A        2022  01    10   \n10     4 1B        2022  01    22   \n11     4 2B        2022  02    14   \n12     4 3B        2022  01    18"
+    "text": "Solving the problem\nWhat code turns data1 into data2?\n\n\n\ndata1\n\n# A tibble: 11 × 4\n      id cond1 cond2 date      \n   &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;date&gt;    \n 1     1     1 A     2022-02-24\n 2     1     2 A     2022-01-21\n 3     1     3 A     2022-01-23\n 4     2     1 B     2022-01-27\n 5     2     3 B     2022-01-02\n 6     3     1 A     2022-02-03\n 7     3     2 A     2022-02-10\n 8     3     3 A     2022-02-21\n 9     4     1 B     2022-01-31\n10     4     2 B     2022-01-30\n11     4     3 B     2022-02-13\n\n\n\n\ndata2\n\n# A tibble: 12 × 5\n      id condition year  month day  \n   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1 1A        2022  02    24   \n 2     1 2A        2022  01    21   \n 3     1 3A        2022  01    23   \n 4     2 1B        2022  01    27   \n 5     2 2B        &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; \n 6     2 3B        2022  01    02   \n 7     3 1A        2022  02    03   \n 8     3 2A        2022  02    10   \n 9     3 3A        2022  02    21   \n10     4 1B        2022  01    31   \n11     4 2B        2022  01    30   \n12     4 3B        2022  02    13"
   },
   {
     "objectID": "slides/16_separating.html#lets-code",

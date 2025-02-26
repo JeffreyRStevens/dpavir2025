@@ -118,6 +118,40 @@ separate(table3, year, into = c("century", "year2"), sep = 2, remove = FALSE)
 :::
 
 
+## Code lifecycle
+
+Code is constantly being updated---added and removed
+
+Posit's [`{lifecycle}`](https://lifecycle.r-lib.org/) package tracks code stages
+
+![](../images/lifecycle.svg){fig-align=center}
+
+:::{.fragment}
+![](../images/lifecycle-experimental.svg){.absolute top="80%" left="0%"}
+
+![](../images/lifecycle-deprecated.svg){.absolute top="80%" left="45%"}
+
+![](../images/lifecycle-superseded.svg){.absolute top="80%" left="90%"}
+:::
+
+
+## Code versioning
+
+`{tidyverse}` 2.0.0
+
+`{here}` 1.0.1
+
+`{papaja}` 0.1.3
+
+[major].[minor].[patch]
+
+:::{.fragment}
+In the tidyverse...
+
+> [Y]ou can assume any package with version number less than 1.0.0 is at least somewhat experimental... The most experimental packages only exist on GitHub.
+:::
+
+
 ## Separating data
 
 ::: {.callout-warning appearance="simple"}
