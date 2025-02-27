@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-03-01">
+<meta name="dcterms.date" content="2025-02-28">
 <title>Data Processing and Visualization in R – Merging columns</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,7 +203,7 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-03-01</p>
+  <p class="date">2025-02-28</p>
 </section><section><section id="introduction" class="title-slide slide level1 center"><h1>Introduction</h1>
 
 </section><section id="the-problem" class="slide level2"><h2>The problem</h2>
@@ -214,57 +214,57 @@ Jeff Stevens
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
+<pre style="font-size: 52%"><code># A tibble: 12 × 3
       id  cond  resp
    &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
- 1     1     1 0.123
- 2     1     2 0.249
- 3     1     3 0.708
- 4     2     1 0.473
- 5     2     2 0.08 
- 6     2     3 0.5  
- 7     3     1 0.199
- 8     3     2 0.423
- 9     3     3 0.799
-10     4     1 0.043
-11     4     2 0.11 
-12     4     3 0.959</code></pre>
+ 1     1     1 0.092
+ 2     1     2 0.878
+ 3     1     3 0.449
+ 4     2     1 0.911
+ 5     2     2 0.33 
+ 6     2     3 0.549
+ 7     3     1 0.797
+ 8     3     2 0.482
+ 9     3     3 0.893
+10     4     1 0.638
+11     4     2 0.316
+12     4     3 0.614</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:28%;">
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
+<pre style="font-size: 52%"><code># A tibble: 6 × 2
      id   age
   &lt;int&gt; &lt;int&gt;
-1     1    37
-2     2    30
-3     3    19
-4     4    33
-5     5    40
-6     6    66</code></pre>
+1     1    41
+2     2    26
+3     3    29
+4     4    46
+5     5    42
+6     6    41</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
+<pre style="font-size: 52%"><code># A tibble: 12 × 4
       id   age  cond  resp
    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
- 1     1    37     1 0.123
- 2     1    37     2 0.249
- 3     1    37     3 0.708
- 4     2    30     1 0.473
- 5     2    30     2 0.08 
- 6     2    30     3 0.5  
- 7     3    19     1 0.199
- 8     3    19     2 0.423
- 9     3    19     3 0.799
-10     4    33     1 0.043
-11     4    33     2 0.11 
-12     4    33     3 0.959</code></pre>
+ 1     1    41     1 0.092
+ 2     1    41     2 0.878
+ 3     1    41     3 0.449
+ 4     2    26     1 0.911
+ 5     2    26     2 0.33 
+ 6     2    26     3 0.549
+ 7     3    29     1 0.797
+ 8     3    29     2 0.482
+ 9     3    29     3 0.893
+10     4    46     1 0.638
+11     4    46     2 0.316
+12     4    46     3 0.614</code></pre>
 </div>
 </div>
 </div></div>
@@ -274,21 +274,21 @@ Jeff Stevens
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
-<span><span class="op">(</span><span class="va">flights2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flights</span>, <span class="va">year</span><span class="op">:</span><span class="va">dep_time</span>, <span class="va">carrier</span>, <span class="va">tailnum</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">(</span><span class="va">flights2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flights</span>, <span class="va">year</span><span class="op">:</span><span class="va">day</span>, <span class="va">origin</span>, <span class="va">carrier</span>, <span class="va">tailnum</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 6
-    year month   day dep_time carrier tailnum
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  
- 1  2013     1     1      517 UA      N14228 
- 2  2013     1     1      533 UA      N24211 
- 3  2013     1     1      542 AA      N619AA 
- 4  2013     1     1      544 B6      N804JB 
- 5  2013     1     1      554 DL      N668DN 
- 6  2013     1     1      554 UA      N39463 
- 7  2013     1     1      555 B6      N516JB 
- 8  2013     1     1      557 EV      N829AS 
- 9  2013     1     1      557 B6      N593JB 
-10  2013     1     1      558 AA      N3ALAA 
+    year month   day origin carrier tailnum
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  
+ 1  2013     1     1 EWR    UA      N14228 
+ 2  2013     1     1 LGA    UA      N24211 
+ 3  2013     1     1 JFK    AA      N619AA 
+ 4  2013     1     1 JFK    B6      N804JB 
+ 5  2013     1     1 LGA    DL      N668DN 
+ 6  2013     1     1 EWR    UA      N39463 
+ 7  2013     1     1 EWR    B6      N516JB 
+ 8  2013     1     1 LGA    EV      N829AS 
+ 9  2013     1     1 JFK    B6      N593JB 
+10  2013     1     1 LGA    AA      N3ALAA 
 # ℹ 336,766 more rows</code></pre>
 </div>
 </div>
@@ -356,12 +356,26 @@ Jeff Stevens
 </div>
 
 <img data-src="../images/relational-nycflights.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="keys" class="slide level2"><h2>Keys</h2>
+<div>
 <ul>
-<li><p>Unique identifiers of observations</p></li>
-<li><p>Keys may take some work to clean first</p></li>
-<li><p>Double check keys for uniqueness/duplicates</p></li>
-<li><p>Create <strong>surrogate key</strong> if no primary key exists</p></li>
-</ul></section><section id="joins" class="slide level2"><h2>Joins</h2>
+<li class="fragment"><p>Unique identifiers of observations</p></li>
+<li class="fragment"><p>Keys may take some work to produce</p></li>
+<li class="fragment">
+<p>Double check keys for uniqueness/duplicates</p>
+<ul>
+<li class="fragment">How do we do this?</li>
+</ul>
+</li>
+<li class="fragment">
+<p>Create <strong>surrogate key</strong> if no primary key exists</p>
+<ul>
+<li class="fragment">Combine columns to make unique key (which function?)</li>
+<li class="fragment">Create column of row numbers with <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number()</a></code> (which function?)</li>
+</ul>
+</li>
+</ul>
+</div>
+</section><section id="joins" class="slide level2"><h2>Joins</h2>
 <p><img data-src="../images/join-setup.png" class="absolute" style="top: 30%; left: 10%; width: 30%; "></p>
 <p><img data-src="../images/join-setup2.png" class="absolute" style="top: 20%; left: 50%; width: 40%; "></p>
 </section><section id="mutating-joins" class="slide level2"><h2>Mutating joins</h2>
@@ -403,7 +417,7 @@ Jeff Stevens
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, by <span class="op">=</span> <span class="st">"key"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
     key val_x val_y
@@ -432,12 +446,12 @@ Jeff Stevens
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 336,776
 Columns: 6
-$ year     &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…
-$ month    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ day      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ dep_time &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, 558, 5…
-$ carrier  &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "AA", "…
-$ tailnum  &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N39463", "…</code></pre>
+$ year    &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 20…
+$ month   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ day     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ origin  &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA", "JFK",…
+$ carrier &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "AA", "B…
+$ tailnum &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N39463", "N…</code></pre>
 </div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">planes2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -456,18 +470,18 @@ $ seats   &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 55
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">planes2</span>, by <span class="op">=</span> <span class="st">"tailnum"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 284,170 × 9
-   year.x month   day dep_time carrier tailnum year.y model       seats
-    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;       &lt;int&gt;
- 1   2013     1     1      517 UA      N14228    1999 737-824       149
- 2   2013     1     1      533 UA      N24211    1998 737-824       149
- 3   2013     1     1      542 AA      N619AA    1990 757-223       178
- 4   2013     1     1      544 B6      N804JB    2012 A320-232      200
- 5   2013     1     1      554 DL      N668DN    1991 757-232       178
- 6   2013     1     1      554 UA      N39463    2012 737-924ER     191
- 7   2013     1     1      555 B6      N516JB    2000 A320-232      200
- 8   2013     1     1      557 EV      N829AS    1998 CL-600-2B19    55
- 9   2013     1     1      557 B6      N593JB    2004 A320-232      200
-10   2013     1     1      558 B6      N793JB    2011 A320-232      200
+   year.x month   day origin carrier tailnum year.y model       seats
+    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;       &lt;int&gt;
+ 1   2013     1     1 EWR    UA      N14228    1999 737-824       149
+ 2   2013     1     1 LGA    UA      N24211    1998 737-824       149
+ 3   2013     1     1 JFK    AA      N619AA    1990 757-223       178
+ 4   2013     1     1 JFK    B6      N804JB    2012 A320-232      200
+ 5   2013     1     1 LGA    DL      N668DN    1991 757-232       178
+ 6   2013     1     1 EWR    UA      N39463    2012 737-924ER     191
+ 7   2013     1     1 EWR    B6      N516JB    2000 A320-232      200
+ 8   2013     1     1 LGA    EV      N829AS    1998 CL-600-2B19    55
+ 9   2013     1     1 JFK    B6      N593JB    2004 A320-232      200
+10   2013     1     1 JFK    B6      N793JB    2011 A320-232      200
 # ℹ 284,160 more rows</code></pre>
 </div>
 </div>
@@ -475,13 +489,10 @@ $ seats   &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 55
 <p>What do you notice about the result?</p>
 </div>
 </section><section id="inner-joins-4" class="slide level2"><h2>Inner joins</h2>
-<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout callout-warning callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
 <p>Only use inner joins when you want the <strong>intersection</strong> of the two data sets!</p>
@@ -548,14 +559,14 @@ $ seats   &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 55
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">flights2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
-   year month   day dep_time carrier tailnum
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  
-1  2013     1     1      517 UA      N14228 
-2  2013     1     1      533 UA      N24211 
-3  2013     1     1      542 AA      N619AA 
-4  2013     1     1      544 B6      N804JB 
-5  2013     1     1      554 DL      N668DN 
-6  2013     1     1      554 UA      N39463 </code></pre>
+   year month   day origin carrier tailnum
+  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  
+1  2013     1     1 EWR    UA      N14228 
+2  2013     1     1 LGA    UA      N24211 
+3  2013     1     1 JFK    AA      N619AA 
+4  2013     1     1 JFK    B6      N804JB 
+5  2013     1     1 LGA    DL      N668DN 
+6  2013     1     1 EWR    UA      N39463 </code></pre>
 </div>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">planes2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -576,55 +587,50 @@ $ seats   &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 55
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">planes2</span>, by <span class="op">=</span> <span class="st">"tailnum"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 9
-   year.x month   day dep_time carrier tailnum year.y model       seats
-    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;       &lt;int&gt;
- 1   2013     1     1      517 UA      N14228    1999 737-824       149
- 2   2013     1     1      533 UA      N24211    1998 737-824       149
- 3   2013     1     1      542 AA      N619AA    1990 757-223       178
- 4   2013     1     1      544 B6      N804JB    2012 A320-232      200
- 5   2013     1     1      554 DL      N668DN    1991 757-232       178
- 6   2013     1     1      554 UA      N39463    2012 737-924ER     191
- 7   2013     1     1      555 B6      N516JB    2000 A320-232      200
- 8   2013     1     1      557 EV      N829AS    1998 CL-600-2B19    55
- 9   2013     1     1      557 B6      N593JB    2004 A320-232      200
-10   2013     1     1      558 AA      N3ALAA      NA &lt;NA&gt;           NA
+   year.x month   day origin carrier tailnum year.y model       seats
+    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;       &lt;int&gt;
+ 1   2013     1     1 EWR    UA      N14228    1999 737-824       149
+ 2   2013     1     1 LGA    UA      N24211    1998 737-824       149
+ 3   2013     1     1 JFK    AA      N619AA    1990 757-223       178
+ 4   2013     1     1 JFK    B6      N804JB    2012 A320-232      200
+ 5   2013     1     1 LGA    DL      N668DN    1991 757-232       178
+ 6   2013     1     1 EWR    UA      N39463    2012 737-924ER     191
+ 7   2013     1     1 EWR    B6      N516JB    2000 A320-232      200
+ 8   2013     1     1 LGA    EV      N829AS    1998 CL-600-2B19    55
+ 9   2013     1     1 JFK    B6      N593JB    2004 A320-232      200
+10   2013     1     1 LGA    AA      N3ALAA      NA &lt;NA&gt;           NA
 # ℹ 336,766 more rows</code></pre>
 </div>
 </div>
-<div class="fragment">
-<div class="callout callout-warning callout-titled callout-style-default">
+</section><section id="left-joins-4" class="slide level2"><h2>Left joins</h2>
+<div class="callout callout-warning callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
-</div>
 <div class="callout-content">
-<p>Select columns used to join with argument <code>by</code></p>
+<p>Select columns used to join with argument <code>by</code>.</p>
+<p>Otherwise, it uses all shared columns, which may be wrong.</p>
 </div>
 </div>
 </div>
-</div>
-</section><section id="inner-joins-5" class="slide level2"><h2>Inner joins</h2>
-<p>Otherwise, it uses all shared columns, which may be wrong</p>
 <div class="cell">
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">planes2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 8
-    year month   day dep_time carrier tailnum model seats
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;int&gt;
- 1  2013     1     1      517 UA      N14228  &lt;NA&gt;     NA
- 2  2013     1     1      533 UA      N24211  &lt;NA&gt;     NA
- 3  2013     1     1      542 AA      N619AA  &lt;NA&gt;     NA
- 4  2013     1     1      544 B6      N804JB  &lt;NA&gt;     NA
- 5  2013     1     1      554 DL      N668DN  &lt;NA&gt;     NA
- 6  2013     1     1      554 UA      N39463  &lt;NA&gt;     NA
- 7  2013     1     1      555 B6      N516JB  &lt;NA&gt;     NA
- 8  2013     1     1      557 EV      N829AS  &lt;NA&gt;     NA
- 9  2013     1     1      557 B6      N593JB  &lt;NA&gt;     NA
-10  2013     1     1      558 AA      N3ALAA  &lt;NA&gt;     NA
+    year month   day origin carrier tailnum model seats
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;int&gt;
+ 1  2013     1     1 EWR    UA      N14228  &lt;NA&gt;     NA
+ 2  2013     1     1 LGA    UA      N24211  &lt;NA&gt;     NA
+ 3  2013     1     1 JFK    AA      N619AA  &lt;NA&gt;     NA
+ 4  2013     1     1 JFK    B6      N804JB  &lt;NA&gt;     NA
+ 5  2013     1     1 LGA    DL      N668DN  &lt;NA&gt;     NA
+ 6  2013     1     1 EWR    UA      N39463  &lt;NA&gt;     NA
+ 7  2013     1     1 EWR    B6      N516JB  &lt;NA&gt;     NA
+ 8  2013     1     1 LGA    EV      N829AS  &lt;NA&gt;     NA
+ 9  2013     1     1 JFK    B6      N593JB  &lt;NA&gt;     NA
+10  2013     1     1 LGA    AA      N3ALAA  &lt;NA&gt;     NA
 # ℹ 336,766 more rows</code></pre>
 </div>
 </div>
@@ -715,69 +721,126 @@ $ seats   &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 55
 </div>
 </div>
 </div></div>
+</section><section id="different-column-names" class="slide level2"><h2>Different column names</h2>
+<p>What if datasets have different column names for the same key?</p>
+<div style="font-size:90%">
+<div class="cell">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">flights2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 336,776
+Columns: 6
+$ year    &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 20…
+$ month   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ day     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ origin  &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA", "JFK",…
+$ carrier &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "AA", "B…
+$ tailnum &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N39463", "N…</code></pre>
+</div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">airports2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">airports</span>, <span class="va">faa</span>, <span class="va">name</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">airports2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,458
+Columns: 2
+$ faa  &lt;chr&gt; "04G", "06A", "06C", "06N", "09J", "0A9", "0G6", "0G7", "0P2", "0…
+$ name &lt;chr&gt; "Lansdowne Airport", "Moton Field Municipal Airport", "Schaumburg…</code></pre>
+</div>
+</div>
+</div>
+</section><section id="different-column-names-1" class="slide level2"><h2>Different column names</h2>
+<p><code><a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by()</a></code></p>
+<div class="cell">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">airports2</span>, by <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a></span><span class="op">(</span><span class="va">origin</span> <span class="op">==</span> <span class="va">faa</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 336,776 × 7
+    year month   day origin carrier tailnum name               
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;              
+ 1  2013     1     1 EWR    UA      N14228  Newark Liberty Intl
+ 2  2013     1     1 LGA    UA      N24211  La Guardia         
+ 3  2013     1     1 JFK    AA      N619AA  John F Kennedy Intl
+ 4  2013     1     1 JFK    B6      N804JB  John F Kennedy Intl
+ 5  2013     1     1 LGA    DL      N668DN  La Guardia         
+ 6  2013     1     1 EWR    UA      N39463  Newark Liberty Intl
+ 7  2013     1     1 EWR    B6      N516JB  Newark Liberty Intl
+ 8  2013     1     1 LGA    EV      N829AS  La Guardia         
+ 9  2013     1     1 JFK    B6      N593JB  John F Kennedy Intl
+10  2013     1     1 LGA    AA      N3ALAA  La Guardia         
+# ℹ 336,766 more rows</code></pre>
+</div>
+</div>
 </section><section id="solving-the-problem" class="slide level2"><h2>Solving the problem</h2>
+<div class="cell">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="va">nrows</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">20250228</span><span class="op">)</span></span>
+<span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, </span>
+<span>                cond <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, times <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, </span>
+<span>                resp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">nrows</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, </span>
+<span>                age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">19</span><span class="op">:</span><span class="fl">75</span>, <span class="fl">6</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="solving-the-problem-1" class="slide level2"><h2>Solving the problem</h2>
 <p>What code combines <code>data1</code> and <code>data2</code> into <code>data3</code>?</p>
 <div class="columns">
 <div class="column" style="width:31%;">
 <div class="cell">
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
+<pre style="font-size: 52%"><code># A tibble: 12 × 3
       id  cond  resp
    &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
- 1     1     1 0.123
- 2     1     2 0.249
- 3     1     3 0.708
- 4     2     1 0.473
- 5     2     2 0.08 
- 6     2     3 0.5  
- 7     3     1 0.199
- 8     3     2 0.423
- 9     3     3 0.799
-10     4     1 0.043
-11     4     2 0.11 
-12     4     3 0.959</code></pre>
+ 1     1     1 0.092
+ 2     1     2 0.878
+ 3     1     3 0.449
+ 4     2     1 0.911
+ 5     2     2 0.33 
+ 6     2     3 0.549
+ 7     3     1 0.797
+ 8     3     2 0.482
+ 9     3     3 0.893
+10     4     1 0.638
+11     4     2 0.316
+12     4     3 0.614</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:28%;">
 <div class="cell">
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
+<pre style="font-size: 52%"><code># A tibble: 6 × 2
      id   age
   &lt;int&gt; &lt;int&gt;
-1     1    37
-2     2    30
-3     3    19
-4     4    33
-5     5    40
-6     6    66</code></pre>
+1     1    41
+2     2    26
+3     3    29
+4     4    46
+5     5    42
+6     6    41</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
+<pre style="font-size: 52%"><code># A tibble: 12 × 4
       id   age  cond  resp
    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
- 1     1    37     1 0.123
- 2     1    37     2 0.249
- 3     1    37     3 0.708
- 4     2    30     1 0.473
- 5     2    30     2 0.08 
- 6     2    30     3 0.5  
- 7     3    19     1 0.199
- 8     3    19     2 0.423
- 9     3    19     3 0.799
-10     4    33     1 0.043
-11     4    33     2 0.11 
-12     4    33     3 0.959</code></pre>
+ 1     1    41     1 0.092
+ 2     1    41     2 0.878
+ 3     1    41     3 0.449
+ 4     2    26     1 0.911
+ 5     2    26     2 0.33 
+ 6     2    26     3 0.549
+ 7     3    29     1 0.797
+ 8     3    29     2 0.482
+ 9     3    29     3 0.893
+10     4    46     1 0.638
+11     4    46     2 0.316
+12     4    46     3 0.614</code></pre>
 </div>
 </div>
 </div></div>
 </section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/17_mergingcolumns.html" target="_blank">Merging columns</a> [<a href="../code/17_mergingcolumns.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/17_mergingcolumns.html" target="_blank">Merging columns</a></p>
 
 
 </section></section>

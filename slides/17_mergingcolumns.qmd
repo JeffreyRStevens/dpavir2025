@@ -1,11 +1,11 @@
 ---
 title: "Merging columns"
 author: "Jeff Stevens"
-date: "2023-03-01"
+date: "2025-02-28"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: false
 format:
   revealjs: 
     theme: custom.scss
@@ -26,6 +26,7 @@ format:
 ```{r echo = FALSE}
 library(tidyverse)
 nrows <- 12
+set.seed(20250228)
 data1 <- tibble(id = rep(1:4, each = 3), cond = rep(1:3, times = 4), resp = round(runif(nrows), 3)
 )
 data2 <- tibble(id = 1:6, age = sample(19:75, 6, replace = TRUE))
@@ -42,6 +43,7 @@ What is needed to create `data3` from `data1` and `data2`?
 ::: {.column width="31%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data1
 ```
 :::
@@ -49,6 +51,7 @@ data1
 ::: {.column width="28%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data2
 ```
 :::
@@ -56,6 +59,7 @@ data2
 ::: {.column width="40%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data3
 ```
 :::
@@ -73,7 +77,7 @@ data3
 ```{r}
 library(dplyr)
 library(nycflights13)
-(flights2 <- select(flights, year:dep_time, carrier, tailnum))
+(flights2 <- select(flights, year:day, origin, carrier, tailnum))
 ```
 
 
@@ -151,13 +155,18 @@ library(nycflights13)
 
 ## Keys
 
+:::{.incremental}
 * Unique identifiers of observations
 
-* Keys may take some work to clean first
+* Keys may take some work to produce
 
 * Double check keys for uniqueness/duplicates
+    - How do we do this?
 
 * Create **surrogate key** if no primary key exists
+    - Combine columns to make unique key (which function?)
+    - Create column of row numbers with `row_number()` (which function?)
+:::
 
 
 ## Joins
@@ -228,8 +237,7 @@ y
 ::: {.fragment}
 
 ```{r}
-inner_join(x, y, by = "key")
-
+inner_join(x, y)
 ```
 
 ```{r}
@@ -266,7 +274,7 @@ What do you notice about the result?
 
 ## Inner joins
 
-::: {.callout-warning}
+::: {.callout-warning appearance="simple"}
 Only use inner joins when you want the **intersection** of the two data sets!
 :::
 
@@ -360,16 +368,16 @@ flights2 |>
   left_join(planes2, by = "tailnum")
 ```
 
-::: {.fragment}
-::: {.callout-warning}
-Select columns used to join with argument `by`
+
+
+## Left joins
+
+::: {.callout-warning appearance="simple"}
+Select columns used to join with argument `by`.
+
+Otherwise, it uses all shared columns, which may be wrong.
 :::
-:::
 
-
-## Inner joins
-
-Otherwise, it uses all shared columns, which may be wrong
 
 ```{r}
 flights2 |>
@@ -482,6 +490,42 @@ full_join(x, y, by = "key")
 ::::
 
 
+## Different column names
+
+What if datasets have different column names for the same key?
+
+::: {style="font-size:90%"}
+```{r}
+glimpse(flights2)
+airports2 <- select(airports, faa, name)
+glimpse(airports2)
+```
+:::
+
+
+## Different column names
+
+`join_by()`
+
+```{r}
+left_join(flights2, airports2, by = join_by(origin == faa))
+```
+
+
+## Solving the problem
+
+```{r eval=FALSE}
+library(tidyverse)
+nrows <- 12
+set.seed(20250228)
+data1 <- tibble(id = rep(1:4, each = 3), 
+                cond = rep(1:3, times = 4), 
+                resp = round(runif(nrows), 3))
+data2 <- tibble(id = 1:6, 
+                age = sample(19:75, 6, replace = TRUE))
+```
+
+
 ## Solving the problem
 
 What code combines `data1` and `data2` into `data3`?
@@ -491,6 +535,7 @@ What code combines `data1` and `data2` into `data3`?
 ::: {.column width="31%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data1
 ```
 :::
@@ -498,6 +543,7 @@ data1
 ::: {.column width="28%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data2
 ```
 :::
@@ -505,6 +551,7 @@ data2
 ::: {.column width="40%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data3
 ```
 :::
@@ -514,4 +561,4 @@ data3
 
 ## Let's code!
 
-[Merging columns](../code/17_mergingcolumns.html){target="_blank"} [[Rmd](../code/17_mergingcolumns.Rmd){target="_blank"}]
+[Merging columns](../code/17_mergingcolumns.html){target="_blank"}
