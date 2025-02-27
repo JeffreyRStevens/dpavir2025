@@ -2,7 +2,7 @@
 title: 'Merging columns'
 author:
   - Jeff Stevens
-date: '2023-03-01'
+date: '2025-02-28'
 categories: 
   - "module 4"
   - "week 6"
@@ -11,7 +11,7 @@ categories:
   - merge
   - "mutating joins"
 description: "Merge columns with mutating joins"
-draft: true
+draft: false
 ---
 
 Often, we have data spread across multiple data sets that need to be merged into a single data set. We'll do this in a way that merges columns using mutating join functions from `{dplyr}`.
