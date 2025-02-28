@@ -10,6 +10,7 @@ runtime: shiny_prerendered
 library(learnr)
 library(tidyverse)
 library(nycflights13)
+library(palmerpenguins)
 options(tutorial.max.forked.procs = 10)
 gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
@@ -17,6 +18,13 @@ set.seed(1)
 flights2 <- select(flights, carrier, flight, origin, dest) |> 
     slice_sample(n = 30)
 airlines2 <- rename(airlines, airline = carrier)
+penguins2 <- penguins |> 
+  select(species, island, sex, year) |> 
+  slice_sample(n = 3, by = species)
+penguin_names <- data.frame(common_name = c("Adelie", "Chinstrap", "Gentoo"),
+                            scientific_name = c("Pygoscelis adeliae", 
+                                                "Pygoscelis antarcticus", 
+                                                "Pygoscelis papua"))
 ```
 
 
@@ -139,10 +147,15 @@ set.seed(1)
 
 ###  {data-allow-skip=TRUE}
 
-Check whether all of the carriers in `airlines` are included in `flights2`.
+**1. Check whether all of the carriers in `airlines` are included in `flights2`.**
 
-```{r exercise0, exercise = TRUE}
+```{r exercise1, exercise = TRUE}
 
+```
+
+```{r exercise0-solution}
+airlines$carrier %in% flights2$carrier
+flights2$carrier %in% airlines$carrier
 ```
 
 **Do `airlines` and `flights2` have the same or different carriers?**
@@ -161,14 +174,19 @@ question(
 
 ###
 
-Now, what if we want to merge the airline names into our `flights2` data set? Which join would we use for this? Join the `airlines` data into the `flights2` data.
+**2. Now, what if we want to merge the airline names into our `flights2` data set? Which join would we use for this? Join the `airlines` data into the `flights2` data?**
 
-```{r exercise1, exercise = TRUE}
+```{r exercise2, exercise = TRUE}
 flights2 |> 
   ???_join(...)
 ```
+
+```{r exercise2-solution}
+flights2 |> 
+  left_join(airlines, by = "carrier")
+```
  
-```{r exercise1-check}
+```{r exercise2-check}
 grade_result(
   pass_if(~identical(.result, flights2 |> left_join(airlines, by = "carrier")))
 )
@@ -176,11 +194,82 @@ grade_result(
 
 ###
 
-What happens if you try a `right_join()`? How many rows are there, and where did the extra rows come from?
+**3. What happens if you try a `right_join()`? How many rows are there, and where did the extra rows come from?**
 
-```{r exercise00, exercise = TRUE}
+```{r exercise3, exercise = TRUE}
 
 ```
+
+```{r exercise3-solution}
+flights2 |> 
+  right_join(airlines, by = "carrier")
+```
+ 
+
+## Joining columns with different names
+
+###
+
+Sometimes, primary keys that link different datasets have different names. That's easy to fix with the `join_by()` function. All we have to do is pass the left key name and right key name separated by `==`. For example `join_by(left_key == right_key)`.
+
+Let's create a new dataset called `penguin_names` that includes scientific and common names for the species in the `penguins` dataset.
+
+```{r echo = TRUE}
+(penguin_names <- data.frame(common_name = c("Adelie", "Chinstrap", "Gentoo"),
+                            scientific_name = c("Pygoscelis adeliae", 
+                                                "Pygoscelis antarcticus", 
+                                                "Pygoscelis papua")))
+```
+
+###
+
+Let's also create a simpler penguins dataset.
+
+```{r echo = TRUE}
+(penguins2 <- penguins |> 
+  select(species, island, sex, year) |> 
+  slice_sample(n = 3, by = species))
+```
+
+###
+
+**4. Now merge the `penguins2` dataset with the `penguin_names` data, using `species` and `common_name` as keys.**
+
+```{r exercise4, exercise = TRUE}
+penguins2 |> 
+  ???_join(...)
+```
+
+```{r exercise4-solution}
+penguins2 |> 
+  left_join(penguin_names, by = join_by(species == common_name))
+```
+ 
+```{r exercise4-check}
+grade_result(
+  pass_if(~identical(.result, penguins2 |> left_join(penguin_names, by = join_by(species == common_name))))
+)
+```
+
+
+**5. Shoot--the scientific name is added as the last column. How do we get it next to the species column? Copy the code from the previous exercise and add a new line to move the `scientific_name` column.**
+
+```{r exercise5, exercise = TRUE}
+
+```
+
+```{r exercise5-solution}
+penguins2 |> 
+  left_join(penguin_names, by = join_by(species == common_name)) |> 
+  relocate(scientific_name, .after = species)
+```
+ 
+```{r exercise5-check}
+grade_result(
+  pass_if(~identical(.result, penguins2 |> left_join(penguin_names, by = join_by(species == common_name)) |> relocate(scientific_name, .after = species)))
+)
+```
+
 
 
 ### Wrap-up

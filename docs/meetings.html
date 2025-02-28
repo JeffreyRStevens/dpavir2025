@@ -82,7 +82,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
@@ -203,7 +204,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(18)</span></div><div class="category" data-category="Q1NW">CSV <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RXhjZWw=">Excel <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UXVhbHRyaWNz">Qualtrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UiUyME1hcmtkb3du">R Markdown <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UlN0dWRpbw==">RStudio <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UlN0dWRpbyUyMFByb2plY3Rz">RStudio Projects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWNyb3Nz">across <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YXJyYW5nZQ==">arrange <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2FzZV93aGVu">case_when <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2hhcmFjdGVycw==">characters <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29hbGVzY2U=">coalesce <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZWJvb2tz">codebooks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kaW5n">coding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29lcmNpb24=">coercion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sdW1ucw==">columns <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tcGxldGU=">complete <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29uZGl0aW9uYWwlMjBzdGF0ZW1lbnRz">conditional statements <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y291bnQ=">count <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y291cnNlLWFkbWlu">course-admin <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGZyYW1lcw==">data frames <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHR5cGVz">data types <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0ZXM=">dates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZHVwbGljYXRlcw==">duplicates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwYW5k">expand <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwb3J0">export <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmFjdG9ycw==">factors <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmlsZSUyMHN5c3RlbXM=">file systems <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmlsbA==">fill <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmlsdGVy">filter <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JvdXBfYnk=">group_by <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGVscA==">help <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aWZlbHNl">ifelse <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW1wb3J0">import <span class="quarto-category-count">(1)</span></div><div class="category" data-category="am9pbg==">join <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a25pdHI=">knitr <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGlzdHM=">lists <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bG9naWNhbHM=">logicals <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bG9uZyUyMGRhdGE=">long data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWVyZ2U=">merge <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlzc2luZyUyMGRhdGE=">missing data <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bW9kdWxlJTIwMQ==">module 1 <span class="quarto-category-count">(6)</span></div><div class="category" data-category="bW9kdWxlJTIwMg==">module 2 <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bW9kdWxlJTIwMw==">module 3 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="bW9kdWxlJTIwNA==">module 4 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="bXV0YXRl">mutate <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bXV0YXRpbmclMjBqb2lucw==">mutating joins <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmFtZXM=">names <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmVzdGluZw==">nesting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bnVtZXJpY3M=">numerics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGF0aHM=">paths <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGlwZXM=">pipes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGl2b3Rpbmc=">pivoting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVsb2NhdGU=">relocate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVuYW1l">rename <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVwcmV4">reprex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm93cw==">rows <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm93d2lzZQ==">rowwise <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2NyaXB0cw==">scripts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2VsZWN0">select <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c2VwYXJhdGU=">separate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2xpY2U=">slice <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3R5bGU=">style <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3VtbWFyaXNl">summarise <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGliYmxlcw==">tibbles <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeSUyMGRhdGE=">tidy data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dW5pdGU=">unite <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmFsaWRhdGU=">validate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmVjdG9ycw==">vectors <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2VlayUyMDE=">week 1 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDI=">week 2 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDM=">week 3 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDQ=">week 4 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDU=">week 5 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDY=">week 6 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2lkZSUyMGRhdGE=">wide data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d29ya2luZyUyMGRpcmVjdG9yaWVz">working directories <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(44)</span></div><div class="category" data-category="Q1NW">CSV <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RXhjZWw=">Excel <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UXVhbHRyaWNz">Qualtrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UXVhcnRv">Quarto <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UiUyME1hcmtkb3du">R Markdown <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UlN0dWRpbw==">RStudio <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UlN0dWRpbyUyMFByb2plY3Rz">RStudio Projects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWNyb3Nz">across <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YWVzdGhldGljcw==">aesthetics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YXBh">apa <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YXJyYW5nZQ==">arrange <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YXhlcw==">axes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFyY2hhcnRz">barcharts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmVlc3dhcm0=">beeswarm <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlibGlvZ3JhcGh5">bibliography <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmluZA==">bind <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ym94cGxvdA==">boxplot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YnViYmxlJTIwY2hhcnRz">bubble charts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2FzZV93aGVu">case_when <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2hhcmFjdGVycw==">characters <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y2l0YXRpb25z">citations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29hbGVzY2U=">coalesce <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZSUyMGNodW5rcw==">code chunks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZWJvb2tz">codebooks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kaW5n">coding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29lcmNpb24=">coercion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sbGFwc2U=">collapse <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3I=">color <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sdW1ucw==">columns <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tcGxldGU=">complete <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29tcG91bmQlMjBwbG90cw==">compound plots <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29uZGl0aW9uYWwlMjBzdGF0ZW1lbnRz">conditional statements <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29ycmVsYXRpb24lMjBwbG90cw==">correlation plots <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y291bnQ=">count <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y291cnNlLWFkbWlu">course-admin <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y3Jvc3MtcmVmZXJlbmNlcw==">cross-references <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGZyYW1lcw==">data frames <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHR5cGVz">data types <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0ZXM=">dates <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGVuc2l0eSUyMHBsb3Q=">density plot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWdu">design <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGlzc2VydGF0aW9ucw==">dissertations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZG90cGxvdHM=">dotplots <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZHVwbGljYXRlcw==">duplicates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXJyb3IlMjBiYXJz">error bars <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwYW5k">expand <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwb3J0">export <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmFjZXRpbmc=">faceting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmFjZXRz">facets <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmFjdG9ycw==">factors <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZmlndXJlcw==">figures <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmlsZSUyMHN5c3RlbXM=">file systems <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmlsbA==">fill <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmlsdGVy">filter <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmlsdGVyaW5nJTIwam9pbnM=">filtering joins <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zm9udHM=">fonts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zm9yJTIwbG9vcHM=">for loops <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZnJlcXVlbmN5JTIwcG9seWdvbg==">frequency polygon <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZnVuY3Rpb25z">functions <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VvbXM=">geoms <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90">ggplot <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Z3JhZGllbnRz">gradients <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JhbW1hciUyMG9mJTIwZ3JhcGhpY3M=">grammar of graphics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z3JpZCUyMGxpbmVz">grid lines <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JvdXBfYnk=">group_by <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGVhdG1hcHM=">heatmaps <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGVscA==">help <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGlzdG9ncmFt">histogram <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aWZlbHNl">ifelse <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW1wb3J0">import <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3Rpb24lMjBwbG90cw==">interaction plots <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aXRlcmF0aW9u">iteration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aml0dGVy">jitter <span class="quarto-category-count">(1)</span></div><div class="category" data-category="am9pbg==">join <span class="quarto-category-count">(2)</span></div><div class="category" data-category="am91cm5hbCUyMGFydGljbGVz">journal articles <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a2FibGU=">kable <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a25pdHI=">knitr <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bGFiZWxz">labels <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bGVnZW5kcw==">legends <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGV2ZWxz">levels <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGltaXRz">limits <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGluZXM=">lines <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGlzdHM=">lists <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bG9naWNhbHM=">logicals <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bG9uZyUyMGRhdGE=">long data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFw">map <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWVyZ2U=">merge <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWVzc2FnZXM=">messages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlzc2luZyUyMGRhdGE=">missing data <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bW9kZWwlMjBmaXR0aW5n">model fitting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bW9kdWxlJTIwMQ==">module 1 <span class="quarto-category-count">(6)</span></div><div class="category" data-category="bW9kdWxlJTIwMTA=">module 10 <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bW9kdWxlJTIwMg==">module 2 <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bW9kdWxlJTIwMw==">module 3 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="bW9kdWxlJTIwNA==">module 4 <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bW9kdWxlJTIwNQ==">module 5 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="bW9kdWxlJTIwNg==">module 6 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bW9kdWxlJTIwNw==">module 7 <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bW9kdWxlJTIwOA==">module 8 <span class="quarto-category-count">(6)</span></div><div class="category" data-category="bW9kdWxlJTIwOQ==">module 9 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bW9kdWxlJTIwJTNG">module ? <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bXV0YXRl">mutate <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bXV0YXRpbmclMjBqb2lucw==">mutating joins <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmFtZXM=">names <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmVzdGluZw==">nesting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bnVtZXJpYw==">numeric <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bnVtZXJpY3M=">numerics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3RoZXI=">other <span class="quarto-category-count">(2)</span></div><div class="category" data-category="b3V0bGllcnM=">outliers <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFsZXR0ZXM=">palettes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFwYWph">papaja <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGFzdGU=">paste <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGF0aHM=">paths <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGF0dGVybnM=">patterns <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGlwZXM=">pipes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGl2b3Rpbmc=">pivoting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJlc2VudGF0aW9ucw==">presentations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmFpbmNsb3VkJTIwcGxvdHM=">raincloud plots <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVjb2Rl">recode <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVndWxhciUyMGV4cHJlc3Npb25z">regular expressions <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVsb2NhdGU=">relocate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVuYW1l">rename <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVwcmV4">reprex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm91bmRpbmc=">rounding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm93cw==">rows <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cm93d2lzZQ==">rowwise <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2NhbGVz">scales <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2NhdHRlcnBsb3Rz">scatterplots <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2NyaXB0cw==">scripts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2VnbWVudHM=">segments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2VsZWN0">select <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c2VwYXJhdGU=">separate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2V0JTIwb3BlcmF0aW9ucw==">set operations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2hhcGVz">shapes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2xpY2U=">slice <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2xvcGVncmFwaHM=">slopegraphs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdGlzdGljYWwlMjB0cmFuc2Zvcm1hdGlvbnM=">statistical transformations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RyaW5ncw==">strings <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3R5bGU=">style <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3ViZmlndXJlcw==">subfigures <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3VtbWFyaXNl">summarise <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGFibGU=">table <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVtcGxhdGVz">templates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGV4dA==">text <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGhlbWVz">themes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGliYmxlcw==">tibbles <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeSUyMGRhdGE=">tidy data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGltZQ==">time <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGltZSUyMHNlcmllcw==">time series <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGl0bGVz">titles <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dW5pdGU=">unite <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmFsaWRhdGU=">validate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmVjdG9ycw==">vectors <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmlvbGluJTIwcGxvdA==">violin plot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2Vic2l0ZXM=">websites <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2VlayUyMDE=">week 1 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDEw">week 10 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDEx">week 11 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDEy">week 12 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDEz">week 13 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDE0">week 14 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="d2VlayUyMDE1">week 15 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="d2VlayUyMDE2">week 16 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="d2VlayUyMDI=">week 2 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDM=">week 3 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDQ=">week 4 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDU=">week 5 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDY=">week 6 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2VlayUyMDc=">week 7 <span class="quarto-category-count">(4)</span></div><div class="category" data-category="d2VlayUyMDk=">week 9 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="d2VlayUyMCUzRg==">week ? <span class="quarto-category-count">(2)</span></div><div class="category" data-category="d2lkZSUyMGRhdGE=">wide data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d29ya2luZyUyMGRpcmVjdG9yaWVz">working directories <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -232,7 +233,61 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bW9kdWxlJTIwNCUyQ3dlZWslMjA2JTJDY29sdW1ucyUyQ2pvaW4lMkNtZXJnZSUyQ211dGF0aW5nJTIwam9pbnM=" data-listing-date-sort="1740722400000" data-listing-file-modified-sort="1740669615450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="97">
+<div class="quarto-post image-right" data-index="0" data-categories="bW9kdWxlJTIwNCUyQ3dlZWslMjA3JTJDYmluZCUyQ2ZpbHRlcmluZyUyMGpvaW5zJTJDam9pbiUyQ21lcmdlJTJDcm93cyUyQ3NldCUyMG9wZXJhdGlvbnM=" data-listing-date-sort="1740981600000" data-listing-file-modified-sort="1740777348759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
+<div class="thumbnail">
+<p><a href="./posts/18_mergingrows/index.html" class="no-external"></a></p><a href="./posts/18_mergingrows/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/18_mergingrows/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/18_mergingrows/index.html" class="no-external">Merging rows</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/18_mergingrows/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNA=='); return false;">
+module 4
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDc='); return false;">
+week 7
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YmluZA=='); return false;">
+bind
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZmlsdGVyaW5nJTIwam9pbnM='); return false;">
+filtering joins
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('am9pbg=='); return false;">
+join
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bWVyZ2U='); return false;">
+merge
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cm93cw=='); return false;">
+rows
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c2V0JTIwb3BlcmF0aW9ucw=='); return false;">
+set operations
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/18_mergingrows/index.html" class="no-external">Merge rows with filtering joins</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/18_mergingrows/index.html" class="no-external">
+<div class="listing-date">
+Mar 3, 2025
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="bW9kdWxlJTIwNCUyQ3dlZWslMjA2JTJDY29sdW1ucyUyQ2pvaW4lMkNtZXJnZSUyQ211dGF0aW5nJTIwam9pbnM=" data-listing-date-sort="1740722400000" data-listing-file-modified-sort="1740669615450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="97">
 <div class="thumbnail">
 <p><a href="./posts/17_mergingcolumns/index.html" class="no-external"></a></p><a href="./posts/17_mergingcolumns/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -280,7 +335,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="bW9kdWxlJTIwNCUyQ3dlZWslMjA2JTJDY29hbGVzY2UlMkNjb21wbGV0ZSUyQ2V4cGFuZCUyQ2ZpbGwlMkNtaXNzaW5nJTIwZGF0YSUyQ25lc3RpbmclMkNzZXBhcmF0ZSUyQ3VuaXRl" data-listing-date-sort="1740549600000" data-listing-file-modified-sort="1740497261567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="125">
+<div class="quarto-post image-right" data-index="2" data-categories="bW9kdWxlJTIwNCUyQ3dlZWslMjA2JTJDY29hbGVzY2UlMkNjb21wbGV0ZSUyQ2V4cGFuZCUyQ2ZpbGwlMkNtaXNzaW5nJTIwZGF0YSUyQ25lc3RpbmclMkNzZXBhcmF0ZSUyQ3VuaXRl" data-listing-date-sort="1740549600000" data-listing-file-modified-sort="1740497261567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="125">
 <div class="thumbnail">
 <p><a href="./posts/16_separating/index.html" class="no-external"></a></p><a href="./posts/16_separating/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -340,7 +395,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="bW9kdWxlJTIwNCUyQ3dlZWslMjA2JTJDbG9uZyUyMGRhdGElMkNwaXZvdGluZyUyQ3RpZHklMjBkYXRhJTJDd2lkZSUyMGRhdGE=" data-listing-date-sort="1740376800000" data-listing-file-modified-sort="1740408275546" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
+<div class="quarto-post image-right" data-index="3" data-categories="bW9kdWxlJTIwNCUyQ3dlZWslMjA2JTJDbG9uZyUyMGRhdGElMkNwaXZvdGluZyUyQ3RpZHklMjBkYXRhJTJDd2lkZSUyMGRhdGE=" data-listing-date-sort="1740376800000" data-listing-file-modified-sort="1740408275546" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
 <div class="thumbnail">
 <p><a href="./posts/15_pivoting/index.html" class="no-external"></a></p><a href="./posts/15_pivoting/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -388,7 +443,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA1JTJDYWNyb3NzJTJDY291bnQlMkNncm91cF9ieSUyQ3NsaWNlJTJDc3VtbWFyaXNl" data-listing-date-sort="1740117600000" data-listing-file-modified-sort="1740067869192" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="123">
+<div class="quarto-post image-right" data-index="4" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA1JTJDYWNyb3NzJTJDY291bnQlMkNncm91cF9ieSUyQ3NsaWNlJTJDc3VtbWFyaXNl" data-listing-date-sort="1740117600000" data-listing-file-modified-sort="1740067869192" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="123">
 <div class="thumbnail">
 <p><a href="./posts/14_summarizing/index.html" class="no-external"></a></p><a href="./posts/14_summarizing/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -439,7 +494,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA1JTJDYXJyYW5nZSUyQ2NvbmRpdGlvbmFsJTIwc3RhdGVtZW50cyUyQ2ZpbHRlciUyQ21pc3NpbmclMjBkYXRhJTJDcm93cw==" data-listing-date-sort="1739944800000" data-listing-file-modified-sort="1739902104613" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="99">
+<div class="quarto-post image-right" data-index="5" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA1JTJDYXJyYW5nZSUyQ2NvbmRpdGlvbmFsJTIwc3RhdGVtZW50cyUyQ2ZpbHRlciUyQ21pc3NpbmclMjBkYXRhJTJDcm93cw==" data-listing-date-sort="1739944800000" data-listing-file-modified-sort="1739902104613" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="99">
 <div class="thumbnail">
 <p><a href="./posts/13_filtering/index.html" class="no-external"></a></p><a href="./posts/13_filtering/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -490,7 +545,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA1JTJDbXV0YXRlJTJDcGlwZXMlMkNzZWxlY3Q=" data-listing-date-sort="1739772000000" data-listing-file-modified-sort="1739573308935" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="91">
+<div class="quarto-post image-right" data-index="6" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA1JTJDbXV0YXRlJTJDcGlwZXMlMkNzZWxlY3Q=" data-listing-date-sort="1739772000000" data-listing-file-modified-sort="1739573308935" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="91">
 <div class="thumbnail">
 <p><a href="./posts/12_piping/index.html" class="no-external"></a></p><a href="./posts/12_piping/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -535,7 +590,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA0JTJDYWNyb3NzJTJDY2FzZV93aGVuJTJDY29sdW1ucyUyQ2NvbmRpdGlvbmFsJTIwc3RhdGVtZW50cyUyQ2lmZWxzZSUyQ211dGF0ZSUyQ3Jvd3dpc2U=" data-listing-date-sort="1739512800000" data-listing-file-modified-sort="1739566033362" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="102">
+<div class="quarto-post image-right" data-index="7" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA0JTJDYWNyb3NzJTJDY2FzZV93aGVuJTJDY29sdW1ucyUyQ2NvbmRpdGlvbmFsJTIwc3RhdGVtZW50cyUyQ2lmZWxzZSUyQ211dGF0ZSUyQ3Jvd3dpc2U=" data-listing-date-sort="1739512800000" data-listing-file-modified-sort="1739566033362" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="102">
 <div class="thumbnail">
 <p><a href="./posts/11_mutating/index.html" class="no-external"></a></p><a href="./posts/11_mutating/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -592,7 +647,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA0JTJDY29sdW1ucyUyQ3JlbG9jYXRlJTJDcmVuYW1lJTJDc2VsZWN0" data-listing-date-sort="1739340000000" data-listing-file-modified-sort="1739314015968" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
+<div class="quarto-post image-right" data-index="8" data-categories="bW9kdWxlJTIwMyUyQ3dlZWslMjA0JTJDY29sdW1ucyUyQ3JlbG9jYXRlJTJDcmVuYW1lJTJDc2VsZWN0" data-listing-date-sort="1739340000000" data-listing-file-modified-sort="1739314015968" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
 <div class="thumbnail">
 <p><a href="./posts/10_selecting/index.html" class="no-external"></a></p><a href="./posts/10_selecting/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -640,7 +695,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="bW9kdWxlJTIwMiUyQ3dlZWslMjA0JTJDY29kZWJvb2tzJTJDZGF0YSUyMHR5cGVzJTJDZHVwbGljYXRlcyUyQ21pc3NpbmclMjBkYXRhJTJDdmFsaWRhdGU=" data-listing-date-sort="1739167200000" data-listing-file-modified-sort="1739212053050" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
+<div class="quarto-post image-right" data-index="9" data-categories="bW9kdWxlJTIwMiUyQ3dlZWslMjA0JTJDY29kZWJvb2tzJTJDZGF0YSUyMHR5cGVzJTJDZHVwbGljYXRlcyUyQ21pc3NpbmclMjBkYXRhJTJDdmFsaWRhdGU=" data-listing-date-sort="1739167200000" data-listing-file-modified-sort="1739212053050" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
 <div class="thumbnail">
 <p><a href="./posts/09_validating/index.html" class="no-external"></a></p><a href="./posts/09_validating/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -691,7 +746,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="bW9kdWxlJTIwMiUyQ3dlZWslMjAzJTJDQ1NWJTJDRXhjZWwlMkNleHBvcnQlMkNpbXBvcnQlMkNRdWFsdHJpY3M=" data-listing-date-sort="1738908000000" data-listing-file-modified-sort="1738939103837" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="135">
+<div class="quarto-post image-right" data-index="10" data-categories="bW9kdWxlJTIwMiUyQ3dlZWslMjAzJTJDQ1NWJTJDRXhjZWwlMkNleHBvcnQlMkNpbXBvcnQlMkNRdWFsdHJpY3M=" data-listing-date-sort="1738908000000" data-listing-file-modified-sort="1738939103837" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="135">
 <div class="thumbnail">
 <p><a href="./posts/08_importing/index.html" class="no-external"></a></p><a href="./posts/08_importing/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -742,7 +797,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="bW9kdWxlJTIwMiUyQ3dlZWslMjAzJTJDZGF0YSUyMGZyYW1lcyUyQ2xpc3RzJTJDdGliYmxlcyUyQ3ZlY3RvcnM=" data-listing-date-sort="1738735200000" data-listing-file-modified-sort="1738939085823" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="105">
+<div class="quarto-post image-right" data-index="11" data-categories="bW9kdWxlJTIwMiUyQ3dlZWslMjAzJTJDZGF0YSUyMGZyYW1lcyUyQ2xpc3RzJTJDdGliYmxlcyUyQ3ZlY3RvcnM=" data-listing-date-sort="1738735200000" data-listing-file-modified-sort="1738939085823" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="105">
 <div class="thumbnail">
 <p><a href="./posts/07_datastructures/index.html" class="no-external"></a></p><a href="./posts/07_datastructures/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -790,7 +845,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="bW9kdWxlJTIwMiUyQ3dlZWslMjAzJTJDY2hhcmFjdGVycyUyQ2NvZXJjaW9uJTJDZGF0ZXMlMkNmYWN0b3JzJTJDbG9naWNhbHMlMkNtaXNzaW5nJTIwZGF0YSUyQ251bWVyaWNz" data-listing-date-sort="1738562400000" data-listing-file-modified-sort="1738764786152" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="104">
+<div class="quarto-post image-right" data-index="12" data-categories="bW9kdWxlJTIwMiUyQ3dlZWslMjAzJTJDY2hhcmFjdGVycyUyQ2NvZXJjaW9uJTJDZGF0ZXMlMkNmYWN0b3JzJTJDbG9naWNhbHMlMkNtaXNzaW5nJTIwZGF0YSUyQ251bWVyaWNz" data-listing-date-sort="1738562400000" data-listing-file-modified-sort="1738764786152" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="104">
 <div class="thumbnail">
 <p><a href="./posts/06_datatypes/index.html" class="no-external"></a></p><a href="./posts/06_datatypes/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -847,7 +902,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAyJTJDa25pdHIlMkNSJTIwTWFya2Rvd24lMkNzY3JpcHRz" data-listing-date-sort="1738303200000" data-listing-file-modified-sort="1738344870124" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="124">
+<div class="quarto-post image-right" data-index="13" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAyJTJDa25pdHIlMkNSJTIwTWFya2Rvd24lMkNzY3JpcHRz" data-listing-date-sort="1738303200000" data-listing-file-modified-sort="1738344870124" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="124">
 <div class="thumbnail">
 <p><a href="./posts/05_rmarkdown/index.html" class="no-external"></a></p><a href="./posts/05_rmarkdown/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -892,7 +947,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAyJTJDZmlsZSUyMHN5c3RlbXMlMkNwYXRocyUyQ1JTdHVkaW8lMjBQcm9qZWN0cyUyQ3dvcmtpbmclMjBkaXJlY3Rvcmllcw==" data-listing-date-sort="1738130400000" data-listing-file-modified-sort="1738344870123" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="108">
+<div class="quarto-post image-right" data-index="14" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAyJTJDZmlsZSUyMHN5c3RlbXMlMkNwYXRocyUyQ1JTdHVkaW8lMjBQcm9qZWN0cyUyQ3dvcmtpbmclMjBkaXJlY3Rvcmllcw==" data-listing-date-sort="1738130400000" data-listing-file-modified-sort="1738344870123" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="108">
 <div class="thumbnail">
 <p><a href="./posts/04_workflows/index.html" class="no-external"></a></p><a href="./posts/04_workflows/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -940,7 +995,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAyJTJDY29kaW5nJTJDbmFtZXMlMkNzdHlsZQ==" data-listing-date-sort="1737957600000" data-listing-file-modified-sort="1738036674606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="106">
+<div class="quarto-post image-right" data-index="15" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAyJTJDY29kaW5nJTJDbmFtZXMlMkNzdHlsZQ==" data-listing-date-sort="1737957600000" data-listing-file-modified-sort="1738036674606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="106">
 <div class="thumbnail">
 <p><a href="./posts/03_coding/index.html" class="no-external"></a></p><a href="./posts/03_coding/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -985,7 +1040,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAxJTJDaGVscCUyQ3JlcHJleCUyQ1JTdHVkaW8=" data-listing-date-sort="1737698400000" data-listing-file-modified-sort="1737925852394" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="122">
+<div class="quarto-post image-right" data-index="16" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAxJTJDaGVscCUyQ3JlcHJleCUyQ1JTdHVkaW8=" data-listing-date-sort="1737698400000" data-listing-file-modified-sort="1737925852394" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="122">
 <div class="thumbnail">
 <p><a href="./posts/02_rstudio/index.html" class="no-external"></a></p><a href="./posts/02_rstudio/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -1030,7 +1085,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAxJTJDY291cnNlLWFkbWluJTJDUiUyQ1JTdHVkaW8=" data-listing-date-sort="1737525600000" data-listing-file-modified-sort="1737674526960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="165">
+<div class="quarto-post image-right" data-index="17" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAxJTJDY291cnNlLWFkbWluJTJDUiUyQ1JTdHVkaW8=" data-listing-date-sort="1737525600000" data-listing-file-modified-sort="1737674526960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="165">
 <div class="thumbnail">
 <p><a href="./posts/01_introduction/index.html" class="no-external"></a></p><a href="./posts/01_introduction/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -1075,7 +1130,7 @@ Jeff Stevens
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAxJTJDUiUyQ1JTdHVkaW8=" data-listing-date-sort="1737352800000" data-listing-file-modified-sort="1737674526960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443">
+<div class="quarto-post image-right" data-index="18" data-categories="bW9kdWxlJTIwMSUyQ3dlZWslMjAxJTJDUiUyQ1JTdHVkaW8=" data-listing-date-sort="1737352800000" data-listing-file-modified-sort="1737674526960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443">
 <div class="thumbnail">
 <p><a href="./posts/00_welcome/index.html" class="no-external"></a></p><a href="./posts/00_welcome/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -1117,10 +1172,1201 @@ Jeff Stevens
 </a>
 </div>
 </div>
+<div class="quarto-post image-right" data-index="19" data-categories="bW9kdWxlJTIwMTAlMkN3ZWVrJTIwMTYlMkNwcmVzZW50YXRpb25zJTJDUXVhcnRvJTJDd2Vic2l0ZXM=" data-listing-date-sort="1683694800000" data-listing-file-modified-sort="1736969632267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="73">
+<div class="thumbnail">
+<p><a href="./posts/42_quarto/index.html" class="no-external"></a></p><a href="./posts/42_quarto/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/42_quarto/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/42_quarto/index.html" class="no-external">Quarto</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/42_quarto/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwMTA='); return false;">
+module 10
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDE2'); return false;">
+week 16
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cHJlc2VudGF0aW9ucw=='); return false;">
+presentations
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UXVhcnRv'); return false;">
+Quarto
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2Vic2l0ZXM='); return false;">
+websites
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/42_quarto/index.html" class="no-external">Advance to the next level with Quarto</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/42_quarto/index.html" class="no-external">
+<div class="listing-date">
+May 10, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="20" data-categories="bW9kdWxlJTIwMTAlMkN3ZWVrJTIwMTYlMkNiaWJsaW9ncmFwaHklMkNjaXRhdGlvbnMlMkNjb2RlJTIwY2h1bmtzJTJDY3Jvc3MtcmVmZXJlbmNlcyUyQ2ZpZ3VyZXM=" data-listing-date-sort="1683522000000" data-listing-file-modified-sort="1736969632267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="77">
+<div class="thumbnail">
+<p><a href="./posts/41_advrmarkdown/index.html" class="no-external"></a></p><a href="./posts/41_advrmarkdown/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/41_advrmarkdown/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/41_advrmarkdown/index.html" class="no-external">Advanced R Markdown</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/41_advrmarkdown/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwMTA='); return false;">
+module 10
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDE2'); return false;">
+week 16
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YmlibGlvZ3JhcGh5'); return false;">
+bibliography
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y2l0YXRpb25z'); return false;">
+citations
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZSUyMGNodW5rcw=='); return false;">
+code chunks
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y3Jvc3MtcmVmZXJlbmNlcw=='); return false;">
+cross-references
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZmlndXJlcw=='); return false;">
+figures
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/41_advrmarkdown/index.html" class="no-external">Master advanced uses of R Markdown</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/41_advrmarkdown/index.html" class="no-external">
+<div class="listing-date">
+May 8, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="21" data-categories="bW9kdWxlJTIwMTAlMkN3ZWVrJTIwMTUlMkNhcGElMkNkaXNzZXJ0YXRpb25zJTJDam91cm5hbCUyMGFydGljbGVzJTJDcGFwYWphJTJDUiUyME1hcmtkb3duJTJDdGVtcGxhdGVz" data-listing-date-sort="1683262800000" data-listing-file-modified-sort="1736969632267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="80">
+<div class="thumbnail">
+<p><a href="./posts/40_publications/index.html" class="no-external"></a></p><a href="./posts/40_publications/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/40_publications/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/40_publications/index.html" class="no-external">Publications</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/40_publications/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwMTA='); return false;">
+module 10
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDE1'); return false;">
+week 15
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YXBh'); return false;">
+apa
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZGlzc2VydGF0aW9ucw=='); return false;">
+dissertations
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('am91cm5hbCUyMGFydGljbGVz'); return false;">
+journal articles
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cGFwYWph'); return false;">
+papaja
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UiUyME1hcmtkb3du'); return false;">
+R Markdown
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dGVtcGxhdGVz'); return false;">
+templates
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/40_publications/index.html" class="no-external">Prepare journal articles in R Markdown</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/40_publications/index.html" class="no-external">
+<div class="listing-date">
+May 5, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="22" data-categories="bW9kdWxlJTIwMTAlMkN3ZWVrJTIwMTUlMkNhcGElMkNrYWJsZSUyQ2tuaXRyJTJDcGFwYWphJTJDUiUyME1hcmtkb3duJTJDdGFibGU=" data-listing-date-sort="1683090000000" data-listing-file-modified-sort="1736969632267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="64">
+<div class="thumbnail">
+<p><a href="./posts/39_tables/index.html" class="no-external"></a></p><a href="./posts/39_tables/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/39_tables/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/39_tables/index.html" class="no-external">Tables</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/39_tables/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwMTA='); return false;">
+module 10
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDE1'); return false;">
+week 15
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YXBh'); return false;">
+apa
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('a2FibGU='); return false;">
+kable
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('a25pdHI='); return false;">
+knitr
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cGFwYWph'); return false;">
+papaja
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UiUyME1hcmtkb3du'); return false;">
+R Markdown
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dGFibGU='); return false;">
+table
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/39_tables/index.html" class="no-external">Create tables in R Markdown</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/39_tables/index.html" class="no-external">
+<div class="listing-date">
+May 3, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="23" data-categories="bW9kdWxlJTIwOSUyQ3dlZWslMjAxNCUyQ2xhYmVscyUyQ2xpbmVzJTJDc2VnbWVudHMlMkNzaGFwZXMlMkN0ZXh0JTJDdGl0bGVz" data-listing-date-sort="1682485200000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
+<div class="thumbnail">
+<p><a href="./posts/37_annotating/index.html" class="no-external"></a></p><a href="./posts/37_annotating/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/37_annotating/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/37_annotating/index.html" class="no-external">Annotating plots</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/37_annotating/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwOQ=='); return false;">
+module 9
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDE0'); return false;">
+week 14
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGFiZWxz'); return false;">
+labels
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGluZXM='); return false;">
+lines
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c2VnbWVudHM='); return false;">
+segments
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c2hhcGVz'); return false;">
+shapes
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dGV4dA=='); return false;">
+text
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dGl0bGVz'); return false;">
+titles
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/37_annotating/index.html" class="no-external">Edit labels and titles and add text, lines, and shapes</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/37_annotating/index.html" class="no-external">
+<div class="listing-date">
+Apr 26, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="24" data-categories="bW9kdWxlJTIwOSUyQ3dlZWslMjAxNCUyQ2F4ZXMlMkNjb21wb3VuZCUyMHBsb3RzJTJDZmFjZXRpbmclMkNsaW1pdHMlMkNzY2FsZXMlMkNzdWJmaWd1cmVz" data-listing-date-sort="1682312400000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
+<div class="thumbnail">
+<p><a href="./posts/36_axes/index.html" class="no-external"></a></p><a href="./posts/36_axes/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/36_axes/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/36_axes/index.html" class="no-external">Adjusting axes</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/36_axes/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwOQ=='); return false;">
+module 9
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDE0'); return false;">
+week 14
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YXhlcw=='); return false;">
+axes
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y29tcG91bmQlMjBwbG90cw=='); return false;">
+compound plots
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZmFjZXRpbmc='); return false;">
+faceting
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGltaXRz'); return false;">
+limits
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c2NhbGVz'); return false;">
+scales
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c3ViZmlndXJlcw=='); return false;">
+subfigures
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/36_axes/index.html" class="no-external">Limit, label, and scale axes</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/36_axes/index.html" class="no-external">
+<div class="listing-date">
+Apr 24, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="25" data-categories="bW9kdWxlJTIwOCUyQ3dlZWslMjAxMyUyQ2Vycm9yJTIwYmFycyUyQ2ludGVyYWN0aW9uJTIwcGxvdHMlMkNyYWluY2xvdWQlMjBwbG90cyUyQ3Nsb3BlZ3JhcGhz" data-listing-date-sort="1682053200000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="72">
+<div class="thumbnail">
+<p><a href="./posts/35_categories/index.html" class="no-external"></a></p><a href="./posts/35_categories/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/35_categories/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/35_categories/index.html" class="no-external">Plotting x-y data: categories</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/35_categories/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwOA=='); return false;">
+module 8
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEz'); return false;">
+week 13
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZXJyb3IlMjBiYXJz'); return false;">
+error bars
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJhY3Rpb24lMjBwbG90cw=='); return false;">
+interaction plots
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cmFpbmNsb3VkJTIwcGxvdHM='); return false;">
+raincloud plots
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c2xvcGVncmFwaHM='); return false;">
+slopegraphs
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/35_categories/index.html" class="no-external">Plot continuous variables for categorical variables</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/35_categories/index.html" class="no-external">
+<div class="listing-date">
+Apr 21, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="26" data-categories="bW9kdWxlJTIwOCUyQ3dlZWslMjAxMyUyQ2JlZXN3YXJtJTJDaml0dGVyJTJDbW9kZWwlMjBmaXR0aW5nJTJDdGltZSUyMHNlcmllcw==" data-listing-date-sort="1681880400000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="63">
+<div class="thumbnail">
+<p><a href="./posts/34_timeseries/index.html" class="no-external"></a></p><a href="./posts/34_timeseries/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/34_timeseries/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/34_timeseries/index.html" class="no-external">Plotting x-y data: time series</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/34_timeseries/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwOA=='); return false;">
+module 8
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEz'); return false;">
+week 13
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YmVlc3dhcm0='); return false;">
+beeswarm
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aml0dGVy'); return false;">
+jitter
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kZWwlMjBmaXR0aW5n'); return false;">
+model fitting
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dGltZSUyMHNlcmllcw=='); return false;">
+time series
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/34_timeseries/index.html" class="no-external">Plot continuous variables over sequential variables</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/34_timeseries/index.html" class="no-external">
+<div class="listing-date">
+Apr 19, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="27" data-categories="bW9kdWxlJTIwOCUyQ3dlZWslMjAxMyUyQ2J1YmJsZSUyMGNoYXJ0cyUyQ2NvcnJlbGF0aW9uJTIwcGxvdHMlMkNoZWF0bWFwcyUyQ3NjYXR0ZXJwbG90cw==" data-listing-date-sort="1681707600000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="72">
+<div class="thumbnail">
+<p><a href="./posts/33_associations/index.html" class="no-external"></a></p><a href="./posts/33_associations/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/33_associations/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/33_associations/index.html" class="no-external">Plotting x-y data: associations</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/33_associations/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwOA=='); return false;">
+module 8
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEz'); return false;">
+week 13
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YnViYmxlJTIwY2hhcnRz'); return false;">
+bubble charts
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y29ycmVsYXRpb24lMjBwbG90cw=='); return false;">
+correlation plots
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aGVhdG1hcHM='); return false;">
+heatmaps
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c2NhdHRlcnBsb3Rz'); return false;">
+scatterplots
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/33_associations/index.html" class="no-external">Plot paired x-y data to illustrate associations</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/33_associations/index.html" class="no-external">
+<div class="listing-date">
+Apr 17, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="28" data-categories="bW9kdWxlJTIwOCUyQ3dlZWslMjAxMiUyQ2JhcmNoYXJ0cyUyQ2RvdHBsb3RzJTJDZ2dwbG90" data-listing-date-sort="1681448400000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="58">
+<div class="thumbnail">
+<p><a href="./posts/32_barcharts/index.html" class="no-external"></a></p><a href="./posts/32_barcharts/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/32_barcharts/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/32_barcharts/index.html" class="no-external">Plotting amounts: barcharts and dot plots</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/32_barcharts/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwOA=='); return false;">
+module 8
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEy'); return false;">
+week 12
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YmFyY2hhcnRz'); return false;">
+barcharts
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZG90cGxvdHM='); return false;">
+dotplots
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90'); return false;">
+ggplot
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/32_barcharts/index.html" class="no-external">Plot barcharts and dotplots</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/32_barcharts/index.html" class="no-external">
+<div class="listing-date">
+Apr 14, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="29" data-categories="bW9kdWxlJTIwOCUyQ3dlZWslMjAxMiUyQ2JveHBsb3QlMkNnZ3Bsb3QlMkNvdXRsaWVycyUyQ3Zpb2xpbiUyMHBsb3Q=" data-listing-date-sort="1681275600000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="56">
+<div class="thumbnail">
+<p><a href="./posts/31_boxplots/index.html" class="no-external"></a></p><a href="./posts/31_boxplots/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/31_boxplots/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/31_boxplots/index.html" class="no-external">Plotting distributions: boxplots</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/31_boxplots/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwOA=='); return false;">
+module 8
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEy'); return false;">
+week 12
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Ym94cGxvdA=='); return false;">
+boxplot
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90'); return false;">
+ggplot
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3V0bGllcnM='); return false;">
+outliers
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dmlvbGluJTIwcGxvdA=='); return false;">
+violin plot
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/31_boxplots/index.html" class="no-external">Plot boxplots and violin plots</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/31_boxplots/index.html" class="no-external">
+<div class="listing-date">
+Apr 12, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="30" data-categories="bW9kdWxlJTIwOCUyQ3dlZWslMjAxMiUyQ2RlbnNpdHklMjBwbG90JTJDZnJlcXVlbmN5JTIwcG9seWdvbiUyQ2dncGxvdCUyQ2hpc3RvZ3JhbQ==" data-listing-date-sort="1681102800000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="60">
+<div class="thumbnail">
+<p><a href="./posts/30_histograms/index.html" class="no-external"></a></p><a href="./posts/30_histograms/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/30_histograms/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/30_histograms/index.html" class="no-external">Plotting distributions: histograms</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/30_histograms/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwOA=='); return false;">
+module 8
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEy'); return false;">
+week 12
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVuc2l0eSUyMHBsb3Q='); return false;">
+density plot
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZnJlcXVlbmN5JTIwcG9seWdvbg=='); return false;">
+frequency polygon
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90'); return false;">
+ggplot
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aGlzdG9ncmFt'); return false;">
+histogram
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/30_histograms/index.html" class="no-external">Plot histograms and density plots</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/30_histograms/index.html" class="no-external">
+<div class="listing-date">
+Apr 10, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="31" data-categories="bW9kdWxlJTIwNyUyQ3dlZWslMjAxMSUyQ2NvbG9yJTJDZ3JhZGllbnRzJTJDcGFsZXR0ZXM=" data-listing-date-sort="1680843600000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="94">
+<div class="thumbnail">
+<p><a href="./posts/29_color/index.html" class="no-external"></a></p><a href="./posts/29_color/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/29_color/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/29_color/index.html" class="no-external">Color</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/29_color/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNw=='); return false;">
+module 7
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEx'); return false;">
+week 11
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3I='); return false;">
+color
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z3JhZGllbnRz'); return false;">
+gradients
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cGFsZXR0ZXM='); return false;">
+palettes
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/29_color/index.html" class="no-external">Learn about color spaces and controlling color in plots</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/29_color/index.html" class="no-external">
+<div class="listing-date">
+Apr 7, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="32" data-categories="bW9kdWxlJTIwNyUyQ3dlZWslMjAxMSUyQ2Rlc2lnbiUyQ2ZvbnRzJTJDZ3JpZCUyMGxpbmVzJTJDbGVnZW5kcyUyQ3RoZW1lcw==" data-listing-date-sort="1680670800000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
+<div class="thumbnail">
+<p><a href="./posts/28_themes/index.html" class="no-external"></a></p><a href="./posts/28_themes/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/28_themes/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/28_themes/index.html" class="no-external">Design and themes</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/28_themes/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNw=='); return false;">
+module 7
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEx'); return false;">
+week 11
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVzaWdu'); return false;">
+design
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Zm9udHM='); return false;">
+fonts
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z3JpZCUyMGxpbmVz'); return false;">
+grid lines
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGVnZW5kcw=='); return false;">
+legends
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dGhlbWVz'); return false;">
+themes
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/28_themes/index.html" class="no-external">Adjust overall plot design with themes</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/28_themes/index.html" class="no-external">
+<div class="listing-date">
+Apr 5, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="33" data-categories="bW9kdWxlJTIwNyUyQ3dlZWslMjAxMSUyQ2Flc3RoZXRpY3MlMkNmYWNldHMlMkNnZ3Bsb3QlMkNncmFtbWFyJTIwb2YlMjBncmFwaGljcyUyQ3N0YXRpc3RpY2FsJTIwdHJhbnNmb3JtYXRpb25z" data-listing-date-sort="1680498000000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
+<div class="thumbnail">
+<p><a href="./posts/27_grammar2/index.html" class="no-external"></a></p><a href="./posts/27_grammar2/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/27_grammar2/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/27_grammar2/index.html" class="no-external">Grammar of graphics II</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/27_grammar2/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNw=='); return false;">
+module 7
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEx'); return false;">
+week 11
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YWVzdGhldGljcw=='); return false;">
+aesthetics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZmFjZXRz'); return false;">
+facets
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90'); return false;">
+ggplot
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z3JhbW1hciUyMG9mJTIwZ3JhcGhpY3M='); return false;">
+grammar of graphics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljYWwlMjB0cmFuc2Zvcm1hdGlvbnM='); return false;">
+statistical transformations
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/27_grammar2/index.html" class="no-external">Use the grammar of graphics to organize plot creation</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/27_grammar2/index.html" class="no-external">
+<div class="listing-date">
+Apr 3, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="34" data-categories="bW9kdWxlJTIwNyUyQ3dlZWslMjAxMCUyQ2dlb21zJTJDZ2dwbG90JTJDZ3JhbW1hciUyMG9mJTIwZ3JhcGhpY3M=" data-listing-date-sort="1680238800000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="78">
+<div class="thumbnail">
+<p><a href="./posts/26_grammar1/index.html" class="no-external"></a></p><a href="./posts/26_grammar1/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/26_grammar1/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/26_grammar1/index.html" class="no-external">Grammar of graphics I</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/26_grammar1/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNw=='); return false;">
+module 7
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEw'); return false;">
+week 10
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VvbXM='); return false;">
+geoms
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90'); return false;">
+ggplot
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z3JhbW1hciUyMG9mJTIwZ3JhcGhpY3M='); return false;">
+grammar of graphics
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/26_grammar1/index.html" class="no-external">Use the grammar of graphics to organize plot creation</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/26_grammar1/index.html" class="no-external">
+<div class="listing-date">
+Mar 31, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="35" data-categories="bW9kdWxlJTIwNiUyQ3dlZWslMjAxMCUyQ2ZvciUyMGxvb3BzJTJDaXRlcmF0aW9uJTJDbWFw" data-listing-date-sort="1680066000000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="87">
+<div class="thumbnail">
+<p><a href="./posts/25_iteration/index.html" class="no-external"></a></p><a href="./posts/25_iteration/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/25_iteration/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/25_iteration/index.html" class="no-external">Iteration</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/25_iteration/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNg=='); return false;">
+module 6
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEw'); return false;">
+week 10
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Zm9yJTIwbG9vcHM='); return false;">
+for loops
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aXRlcmF0aW9u'); return false;">
+iteration
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bWFw'); return false;">
+map
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/25_iteration/index.html" class="no-external">Use iteration for applying functions across data</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/25_iteration/index.html" class="no-external">
+<div class="listing-date">
+Mar 29, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="36" data-categories="bW9kdWxlJTIwNiUyQ3dlZWslMjAxMCUyQ2NvbmRpdGlvbmFsJTIwc3RhdGVtZW50cyUyQ2Z1bmN0aW9ucyUyQ21lc3NhZ2Vz" data-listing-date-sort="1679893200000" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
+<div class="thumbnail">
+<p><a href="./posts/24_functions/index.html" class="no-external"></a></p><a href="./posts/24_functions/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/24_functions/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/24_functions/index.html" class="no-external">Functions</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/24_functions/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNg=='); return false;">
+module 6
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDEw'); return false;">
+week 10
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y29uZGl0aW9uYWwlMjBzdGF0ZW1lbnRz'); return false;">
+conditional statements
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZnVuY3Rpb25z'); return false;">
+functions
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bWVzc2FnZXM='); return false;">
+messages
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/24_functions/index.html" class="no-external">Create your own functions to work with data</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/24_functions/index.html" class="no-external">
+<div class="listing-date">
+Mar 27, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="37" data-categories="bW9kdWxlJTIwNSUyQ3dlZWslMjA5JTJDZGF0ZXMlMkN0aW1l" data-listing-date-sort="1679461200000" data-listing-file-modified-sort="1740497421579" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
+<div class="thumbnail">
+<p><a href="./posts/23_dates/index.html" class="no-external"></a></p><a href="./posts/23_dates/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/23_dates/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/23_dates/index.html" class="no-external">Dates and times</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/23_dates/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNQ=='); return false;">
+module 5
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDk='); return false;">
+week 9
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0ZXM='); return false;">
+dates
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dGltZQ=='); return false;">
+time
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/23_dates/index.html" class="no-external">Working with dates and times</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/23_dates/index.html" class="no-external">
+<div class="listing-date">
+Mar 22, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="38" data-categories="bW9kdWxlJTIwNSUyQ3dlZWslMjA5JTJDY29sbGFwc2UlMkNmYWN0b3JzJTJDbGFiZWxzJTJDbGV2ZWxzJTJDcmVjb2Rl" data-listing-date-sort="1679288400000" data-listing-file-modified-sort="1740497396732" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="99">
+<div class="thumbnail">
+<p><a href="./posts/22_factors/index.html" class="no-external"></a></p><a href="./posts/22_factors/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/22_factors/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/22_factors/index.html" class="no-external">Factors</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/22_factors/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNQ=='); return false;">
+module 5
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDk='); return false;">
+week 9
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y29sbGFwc2U='); return false;">
+collapse
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZmFjdG9ycw=='); return false;">
+factors
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGFiZWxz'); return false;">
+labels
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGV2ZWxz'); return false;">
+levels
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cmVjb2Rl'); return false;">
+recode
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/22_factors/index.html" class="no-external">Work with categorical variables (factors)</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/22_factors/index.html" class="no-external">
+<div class="listing-date">
+Mar 20, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="39" data-categories="bW9kdWxlJTIwNSUyQ3dlZWslMjA3JTJDY2hhcmFjdGVycyUyQ3BhdHRlcm5zJTJDcmVndWxhciUyMGV4cHJlc3Npb25zJTJDc3RyaW5ncw==" data-listing-date-sort="1678428000000" data-listing-file-modified-sort="1740497379795" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="78">
+<div class="thumbnail">
+<p><a href="./posts/21_patterns/index.html" class="no-external"></a></p><a href="./posts/21_patterns/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/21_patterns/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/21_patterns/index.html" class="no-external">Matching patterns</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/21_patterns/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNQ=='); return false;">
+module 5
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDc='); return false;">
+week 7
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y2hhcmFjdGVycw=='); return false;">
+characters
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cGF0dGVybnM='); return false;">
+patterns
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cmVndWxhciUyMGV4cHJlc3Npb25z'); return false;">
+regular expressions
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c3RyaW5ncw=='); return false;">
+strings
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/21_patterns/index.html" class="no-external">Match patterns in character strings</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/21_patterns/index.html" class="no-external">
+<div class="listing-date">
+Mar 10, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="40" data-categories="bW9kdWxlJTIwNSUyQ3dlZWslMjA3JTJDY2hhcmFjdGVycyUyQ3Bhc3RlJTJDc3RyaW5ncw==" data-listing-date-sort="1678255200000" data-listing-file-modified-sort="1740497363239" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="80">
+<div class="thumbnail">
+<p><a href="./posts/20_strings/index.html" class="no-external"></a></p><a href="./posts/20_strings/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/20_strings/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20_strings/index.html" class="no-external">Strings</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/20_strings/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNQ=='); return false;">
+module 5
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDc='); return false;">
+week 7
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y2hhcmFjdGVycw=='); return false;">
+characters
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cGFzdGU='); return false;">
+paste
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c3RyaW5ncw=='); return false;">
+strings
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/20_strings/index.html" class="no-external">Work with character strings</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/20_strings/index.html" class="no-external">
+<div class="listing-date">
+Mar 8, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="41" data-categories="bW9kdWxlJTIwNSUyQ3dlZWslMjA3JTJDY291bnQlMkNudW1lcmljJTJDcm91bmRpbmc=" data-listing-date-sort="1678082400000" data-listing-file-modified-sort="1740497344594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="91">
+<div class="thumbnail">
+<p><a href="./posts/19_numbers/index.html" class="no-external"></a></p><a href="./posts/19_numbers/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/19_numbers/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/19_numbers/index.html" class="no-external">Numbers</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/19_numbers/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwNQ=='); return false;">
+module 5
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMDc='); return false;">
+week 7
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y291bnQ='); return false;">
+count
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bnVtZXJpYw=='); return false;">
+numeric
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cm91bmRpbmc='); return false;">
+rounding
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/19_numbers/index.html" class="no-external">Parse and transform numbers</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/19_numbers/index.html" class="no-external">
+<div class="listing-date">
+Mar 6, 2023
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="42" data-categories="bW9kdWxlJTIwJTNGJTJDd2VlayUyMCUzRiUyQ290aGVy" data-listing-date-sort="NaN" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="38">
+<div class="thumbnail">
+<p><a href="./posts/43_statistics/index.html" class="no-external"></a></p><a href="./posts/43_statistics/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/43_statistics/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/43_statistics/index.html" class="no-external">title</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/43_statistics/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwJTNG'); return false;">
+module ?
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMCUzRg=='); return false;">
+week ?
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3RoZXI='); return false;">
+other
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/43_statistics/index.html" class="no-external">description</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/43_statistics/index.html" class="no-external">
+<div class="listing-date">
+Invalid Date
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="43" data-categories="bW9kdWxlJTIwJTNGJTJDd2VlayUyMCUzRiUyQ290aGVy" data-listing-date-sort="NaN" data-listing-file-modified-sort="1737925852395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="38">
+<div class="thumbnail">
+<p><a href="./posts/index.html" class="no-external"></a></p><a href="./posts/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/index.html" class="no-external">title</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kdWxlJTIwJTNG'); return false;">
+module ?
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2VlayUyMCUzRg=='); return false;">
+week ?
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3RoZXI='); return false;">
+other
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/index.html" class="no-external">description</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/index.html" class="no-external">
+<div class="listing-date">
+Invalid Date
+</div>
+<div class="listing-author">
+Jeff Stevens
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

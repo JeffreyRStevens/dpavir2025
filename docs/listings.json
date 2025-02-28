@@ -2,6 +2,7 @@
   {
     "listing": "/meetings.html",
     "items": [
+      "/posts/18_mergingrows/index.html",
       "/posts/17_mergingcolumns/index.html",
       "/posts/16_separating/index.html",
       "/posts/15_pivoting/index.html",
@@ -19,7 +20,32 @@
       "/posts/03_coding/index.html",
       "/posts/02_rstudio/index.html",
       "/posts/01_introduction/index.html",
-      "/posts/00_welcome/index.html"
+      "/posts/00_welcome/index.html",
+      "/posts/42_quarto/index.html",
+      "/posts/41_advrmarkdown/index.html",
+      "/posts/40_publications/index.html",
+      "/posts/39_tables/index.html",
+      "/posts/37_annotating/index.html",
+      "/posts/36_axes/index.html",
+      "/posts/35_categories/index.html",
+      "/posts/34_timeseries/index.html",
+      "/posts/33_associations/index.html",
+      "/posts/32_barcharts/index.html",
+      "/posts/31_boxplots/index.html",
+      "/posts/30_histograms/index.html",
+      "/posts/29_color/index.html",
+      "/posts/28_themes/index.html",
+      "/posts/27_grammar2/index.html",
+      "/posts/26_grammar1/index.html",
+      "/posts/25_iteration/index.html",
+      "/posts/24_functions/index.html",
+      "/posts/23_dates/index.html",
+      "/posts/22_factors/index.html",
+      "/posts/21_patterns/index.html",
+      "/posts/20_strings/index.html",
+      "/posts/19_numbers/index.html",
+      "/posts/43_statistics/index.html",
+      "/posts/index.html"
     ]
   }
 ]

@@ -2,10 +2,10 @@
 title: 'Merging rows'
 author:
   - Jeff Stevens
-date: '2023-03-03'
+date: '2025-03-03'
 categories: 
   - "module 4"
-  - "week 6"
+  - "week 7"
   - bind
   - "filtering joins"
   - join
@@ -13,7 +13,7 @@ categories:
   - rows
   - "set operations"
 description: "Merge rows with filtering joins"
-draft: true
+draft: false
 ---
 
 While mutating joins actually merge the two data sets, filtering joins use information in one data set to filter observations in another data set.
