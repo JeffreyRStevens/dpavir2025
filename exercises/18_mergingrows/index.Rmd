@@ -122,12 +122,16 @@ airlines
 
 ###
 
-How can we filter the `airlines` data set to only show the carriers included in `flights2`?
+**1. How can we filter the `airlines` data set to only show the carriers included in `flights2`?**
 
 ```{r exercise1, exercise = TRUE}
 ???_join(...)
 ```
  
+```{r exercise1-solution}
+semi_join(airlines, flights2, by = "carrier")
+```
+
 ```{r exercise1-check}
 grade_result(
   pass_if(~identical(.result, semi_join(airlines, flights2, by = "carrier")))
@@ -136,12 +140,16 @@ grade_result(
 
 ###
 
-How can we filter the `airlines` data set to _exclude_ the carriers included in `flights2`?
+**2. How can we filter the `airlines` data set to _exclude_ the carriers included in `flights2`?**
 
 ```{r exercise2, exercise = TRUE}
 ???_join(...)
 ```
  
+```{r exercise2-solution}
+anti_join(airlines, flights2, by = "carrier")
+```
+
 ```{r exercise2-check}
 grade_result(
   pass_if(~identical(.result, anti_join(airlines, flights2, by = "carrier")))
@@ -156,12 +164,16 @@ Now let's imagine that an `airlines2` data set used _airline_ instead of _carrie
 airlines2
 ```
 
-How do we filter the `airlines2` data set to _exclude_ the carriers included in `flights2`?
+**3. How do we filter the `airlines2` data set to _exclude_ the carriers included in `flights2`?**
 
 ```{r exercise3, exercise = TRUE}
 anti_join(airlines2, flights2, ...)
 ```
  
+```{r exercise3-solution}
+anti_join(airlines2, flights2, by = join_by(airline == carrier))
+```
+
 ```{r exercise3-check}
 grade_result(
   pass_if(~identical(.result, anti_join(airlines2, flights2, by = join_by(airline == carrier))))
@@ -173,18 +185,22 @@ grade_result(
 
 ###
 
-Let's say we have some data from 2014 that we want to add to the bottom of `flights2`. How would we do that? Here's the new data:
+Let's say we have some data from 2014 that we want to add to the bottom of `flights2`. How would we do that? Here's the new data (`flights14`):
 
 ```{r}
 flights14
 ```
 
-Would we use `bind_rows()` or `bind_cols()` to add `flights14` to the bottom of `flights2`? Type the code that would combine `flights2` and `flights14` to create an object called `flights1314`.
+**4. Would we use `bind_rows()` or `bind_cols()` to add `flights14` to the bottom of `flights2`? Type the code that would combine `flights2` and `flights14` to create an object called `flights1314`.**
 
 ```{r exercise4, exercise = TRUE}
 (flights1314 <- bind_???(...))
 ```
  
+```{r exercise4-solution}
+flights1314 <- bind_rows(flights2, flights14)
+```
+
 ```{r exercise4-check}
 grade_result(
   pass_if(~identical(.result, flights1314 <- bind_rows(flights2, flights14)))
@@ -193,20 +209,23 @@ grade_result(
 
 ###
 
-Now create a vector called `id` that is a sequence from 1 to the number of rows in `flights1314` and bind it as the first column of `flights1314` (ensuring the new column is named `id`).
+**5. Now create a vector called `id` that is a sequence from 1 to the number of rows in `flights1314` and bind it as the first column of `flights1314` (ensuring the new column is named `id`).**
 
 ```{r exercise5, exercise = TRUE}
 id <- ...
 bind_???(...)
 ```
  
+```{r exercise5-solution}
+id <- 1:nrow(flights1314)
+bind_cols(id = id, flights1314)
+```
+
 ```{r exercise5-check}
 grade_result(
   pass_if(~identical(.result, bind_cols(id = id, flights1314)))
 )
 ```
-
-### 
 
 ### Wrap-up
 

@@ -178,7 +178,7 @@ library(nycflights13)
 
 ## Mutating joins
 
-#### Affects columns
+#### Joins columns
 
 ![](../images/joins_left.gif){fig-align=center width=50%}
 

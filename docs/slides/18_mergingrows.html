@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-03-03">
+<meta name="dcterms.date" content="2025-03-03">
 <title>Data Processing and Visualization in R – Merging rows</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,7 +203,7 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-03-03</p>
+  <p class="date">2025-03-03</p>
 </section><section><section id="introduction" class="title-slide slide level1 center"><h1>Introduction</h1>
 
 </section><section id="the-problem" class="slide level2"><h2>The problem</h2>
@@ -215,20 +215,20 @@ Jeff Stevens
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
-      id    resp
-   &lt;int&gt;   &lt;dbl&gt;
- 1     1 0.489  
- 2     2 0.00965
- 3     3 0.214  
- 4     4 0.148  
- 5     5 0.535  
- 6     6 0.528  
- 7     7 0.952  
- 8     8 0.0381 
- 9     9 0.561  
-10    10 0.462  
-11    11 0.253  
-12    12 0.268  </code></pre>
+      id   resp
+   &lt;int&gt;  &lt;dbl&gt;
+ 1     1 0.130 
+ 2     2 0.992 
+ 3     3 0.947 
+ 4     4 0.0274
+ 5     5 0.705 
+ 6     6 0.0499
+ 7     7 0.874 
+ 8     8 0.742 
+ 9     9 0.240 
+10    10 0.330 
+11    11 0.379 
+12    12 0.174 </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:28%;">
@@ -257,12 +257,12 @@ Jeff Stevens
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
-     id  resp
-  &lt;int&gt; &lt;dbl&gt;
-1     1 0.489
-2     4 0.148
-3     7 0.952
-4    10 0.462</code></pre>
+     id   resp
+  &lt;int&gt;  &lt;dbl&gt;
+1     1 0.130 
+2     4 0.0274
+3     7 0.874 
+4    10 0.330 </code></pre>
 </div>
 </div>
 </div></div>
@@ -290,34 +290,34 @@ Jeff Stevens
 </div>
 </section><section id="set-up-1" class="slide level2"><h2>Set-up</h2>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">20250303</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">airlines2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">airlines</span>, prop <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 2
-  carrier name                  
-  &lt;chr&gt;   &lt;chr&gt;                 
-1 HA      Hawaiian Airlines Inc.
-2 B6      JetBlue Airways       
-3 F9      Frontier Airlines Inc.
-4 9E      Endeavor Air Inc.     
-5 AA      American Airlines Inc.
-6 VX      Virgin America        
-7 UA      United Air Lines Inc. 
-8 AS      Alaska Airlines Inc.  </code></pre>
+  carrier name                       
+  &lt;chr&gt;   &lt;chr&gt;                      
+1 HA      Hawaiian Airlines Inc.     
+2 MQ      Envoy Air                  
+3 9E      Endeavor Air Inc.          
+4 AA      American Airlines Inc.     
+5 FL      AirTran Airways Corporation
+6 B6      JetBlue Airways            
+7 EV      ExpressJet Airlines Inc.   
+8 UA      United Air Lines Inc.      </code></pre>
 </div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">airlines3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="va">airlines2</span>, airline <span class="op">=</span> <span class="va">carrier</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 2
-  airline name                  
-  &lt;chr&gt;   &lt;chr&gt;                 
-1 HA      Hawaiian Airlines Inc.
-2 B6      JetBlue Airways       
-3 F9      Frontier Airlines Inc.
-4 9E      Endeavor Air Inc.     
-5 AA      American Airlines Inc.
-6 VX      Virgin America        
-7 UA      United Air Lines Inc. 
-8 AS      Alaska Airlines Inc.  </code></pre>
+  airline name                       
+  &lt;chr&gt;   &lt;chr&gt;                      
+1 HA      Hawaiian Airlines Inc.     
+2 MQ      Envoy Air                  
+3 9E      Endeavor Air Inc.          
+4 AA      American Airlines Inc.     
+5 FL      AirTran Airways Corporation
+6 B6      JetBlue Airways            
+7 EV      ExpressJet Airlines Inc.   
+8 UA      United Air Lines Inc.      </code></pre>
 </div>
 </div>
 </section><section id="joining-with-dplyr" class="slide level2"><h2>Joining with {dplyr}</h2>
@@ -337,7 +337,7 @@ Jeff Stevens
 </div></aside></section></section><section><section id="filtering-joins" class="title-slide slide level1 center"><h1>Filtering joins</h1>
 
 </section><section id="filtering-joins-1" class="slide level2"><h2>Filtering joins</h2>
-<h4 id="affect-rows">Affect rows</h4>
+<h4 id="filters-rows">Filters rows</h4>
 
 <img data-src="../images/joins_semi.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="semi-joins" class="slide level2"><h2>Semi joins</h2>
 <h4 id="keep-only-matching-observations">Keep only matching observations</h4>
@@ -387,16 +387,16 @@ Jeff Stevens
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">airlines2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 2
-  carrier name                  
-  &lt;chr&gt;   &lt;chr&gt;                 
-1 HA      Hawaiian Airlines Inc.
-2 B6      JetBlue Airways       
-3 F9      Frontier Airlines Inc.
-4 9E      Endeavor Air Inc.     
-5 AA      American Airlines Inc.
-6 VX      Virgin America        
-7 UA      United Air Lines Inc. 
-8 AS      Alaska Airlines Inc.  </code></pre>
+  carrier name                       
+  &lt;chr&gt;   &lt;chr&gt;                      
+1 HA      Hawaiian Airlines Inc.     
+2 MQ      Envoy Air                  
+3 9E      Endeavor Air Inc.          
+4 AA      American Airlines Inc.     
+5 FL      AirTran Airways Corporation
+6 B6      JetBlue Airways            
+7 EV      ExpressJet Airlines Inc.   
+8 UA      United Air Lines Inc.      </code></pre>
 </div>
 </div>
 </section><section id="semi-joins-3" class="slide level2"><h2>Semi joins</h2>
@@ -404,7 +404,7 @@ Jeff Stevens
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">airlines2</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 171,392 × 6
+<pre><code># A tibble: 248,661 × 6
     year month   day dep_time carrier tailnum
    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  
  1  2013     1     1      517 UA      N14228 
@@ -413,11 +413,35 @@ Jeff Stevens
  4  2013     1     1      544 B6      N804JB 
  5  2013     1     1      554 UA      N39463 
  6  2013     1     1      555 B6      N516JB 
- 7  2013     1     1      557 B6      N593JB 
- 8  2013     1     1      558 AA      N3ALAA 
- 9  2013     1     1      558 B6      N793JB 
-10  2013     1     1      558 B6      N657JB 
-# ℹ 171,382 more rows</code></pre>
+ 7  2013     1     1      557 EV      N829AS 
+ 8  2013     1     1      557 B6      N593JB 
+ 9  2013     1     1      558 AA      N3ALAA 
+10  2013     1     1      558 B6      N793JB 
+# ℹ 248,651 more rows</code></pre>
+</div>
+</div>
+</section><section id="semi-joins-4" class="slide level2"><h2>Semi joins</h2>
+<p>How could we do this with <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>?</p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">carrier</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">airlines2</span><span class="op">$</span><span class="va">carrier</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 248,661 × 6
+    year month   day dep_time carrier tailnum
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  
+ 1  2013     1     1      517 UA      N14228 
+ 2  2013     1     1      533 UA      N24211 
+ 3  2013     1     1      542 AA      N619AA 
+ 4  2013     1     1      544 B6      N804JB 
+ 5  2013     1     1      554 UA      N39463 
+ 6  2013     1     1      555 B6      N516JB 
+ 7  2013     1     1      557 EV      N829AS 
+ 8  2013     1     1      557 B6      N593JB 
+ 9  2013     1     1      558 AA      N3ALAA 
+10  2013     1     1      558 B6      N793JB 
+# ℹ 248,651 more rows</code></pre>
+</div>
 </div>
 </div>
 </section><section id="anti-joins" class="slide level2"><h2>Anti joins</h2>
@@ -432,7 +456,7 @@ Jeff Stevens
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
     key val_x
@@ -441,7 +465,7 @@ Jeff Stevens
 2     2 x2   
 3     3 x3   </code></pre>
 </div>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
     key val_y
@@ -453,7 +477,7 @@ Jeff Stevens
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, by <span class="op">=</span> <span class="st">"key"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, by <span class="op">=</span> <span class="st">"key"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
     key val_x
@@ -464,88 +488,47 @@ Jeff Stevens
 </div></div>
 </section><section id="anti-joins-2" class="slide level2"><h2>Anti joins</h2>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">airlines2</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 165,384 × 6
+<pre><code># A tibble: 88,115 × 6
     year month   day dep_time carrier tailnum
    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  
  1  2013     1     1      554 DL      N668DN 
- 2  2013     1     1      557 EV      N829AS 
- 3  2013     1     1      600 MQ      N542MQ 
- 4  2013     1     1      602 DL      N971DL 
- 5  2013     1     1      602 MQ      N730MQ 
- 6  2013     1     1      606 DL      N3739P 
- 7  2013     1     1      608 MQ      N9EAMQ 
- 8  2013     1     1      615 DL      N326NB 
- 9  2013     1     1      622 US      N807AW 
-10  2013     1     1      624 EV      N11107 
-# ℹ 165,374 more rows</code></pre>
+ 2  2013     1     1      602 DL      N971DL 
+ 3  2013     1     1      606 DL      N3739P 
+ 4  2013     1     1      615 DL      N326NB 
+ 5  2013     1     1      622 US      N807AW 
+ 6  2013     1     1      627 US      N535UW 
+ 7  2013     1     1      629 WN      N273WN 
+ 8  2013     1     1      629 US      N426US 
+ 9  2013     1     1      643 US      N178US 
+10  2013     1     1      653 DL      N327NW 
+# ℹ 88,105 more rows</code></pre>
 </div>
 </div>
-</section><section id="joining-with-different-key-names" class="slide level2"><h2>Joining with different key names</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div style="font-size:90%">
+</section><section id="anti-joins-3" class="slide level2"><h2>Anti joins</h2>
+<p>How could we do this with <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>?</p>
+<div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">carrier</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">airlines2</span><span class="op">$</span><span class="va">carrier</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 6
-    year month   day dep_time carrier tailnum
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  
- 1  2013     1     1      517 UA      N14228 
- 2  2013     1     1      533 UA      N24211 
- 3  2013     1     1      542 AA      N619AA 
- 4  2013     1     1      544 B6      N804JB 
- 5  2013     1     1      554 DL      N668DN 
- 6  2013     1     1      554 UA      N39463 
- 7  2013     1     1      555 B6      N516JB 
- 8  2013     1     1      557 EV      N829AS 
- 9  2013     1     1      557 B6      N593JB 
-10  2013     1     1      558 AA      N3ALAA 
-# ℹ 336,766 more rows</code></pre>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:40%;">
-<div style="font-size:90%">
-<div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">airlines3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 2
-  airline name                  
-  &lt;chr&gt;   &lt;chr&gt;                 
-1 HA      Hawaiian Airlines Inc.
-2 B6      JetBlue Airways       
-3 F9      Frontier Airlines Inc.
-4 9E      Endeavor Air Inc.     
-5 AA      American Airlines Inc.
-6 VX      Virgin America        
-7 UA      United Air Lines Inc. 
-8 AS      Alaska Airlines Inc.  </code></pre>
-</div>
-</div>
-</div>
-</div></div>
-</section><section id="joining-with-different-key-names-1" class="slide level2"><h2>Joining with different key names</h2>
-<div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">airlines3</span>, by <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a></span><span class="op">(</span><span class="va">carrier</span> <span class="op">==</span> <span class="va">airline</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 165,384 × 6
+<pre><code># A tibble: 88,115 × 6
     year month   day dep_time carrier tailnum
    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  
  1  2013     1     1      554 DL      N668DN 
- 2  2013     1     1      557 EV      N829AS 
- 3  2013     1     1      600 MQ      N542MQ 
- 4  2013     1     1      602 DL      N971DL 
- 5  2013     1     1      602 MQ      N730MQ 
- 6  2013     1     1      606 DL      N3739P 
- 7  2013     1     1      608 MQ      N9EAMQ 
- 8  2013     1     1      615 DL      N326NB 
- 9  2013     1     1      622 US      N807AW 
-10  2013     1     1      624 EV      N11107 
-# ℹ 165,374 more rows</code></pre>
+ 2  2013     1     1      602 DL      N971DL 
+ 3  2013     1     1      606 DL      N3739P 
+ 4  2013     1     1      615 DL      N326NB 
+ 5  2013     1     1      622 US      N807AW 
+ 6  2013     1     1      627 US      N535UW 
+ 7  2013     1     1      629 WN      N273WN 
+ 8  2013     1     1      629 US      N426US 
+ 9  2013     1     1      643 US      N178US 
+10  2013     1     1      653 DL      N327NW 
+# ℹ 88,105 more rows</code></pre>
+</div>
 </div>
 </div>
 </section></section><section><section id="binding-rows-and-columns" class="title-slide slide level1 center"><h1>Binding rows and columns</h1>
@@ -555,7 +538,7 @@ Jeff Stevens
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, y <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, y <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
       x     y
@@ -566,7 +549,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
       x     y
@@ -580,7 +563,7 @@ Jeff Stevens
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fl">0</span>, </span>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fl">0</span>, </span>
 <span>               .before <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
@@ -593,7 +576,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
       x     y
@@ -612,7 +595,7 @@ Jeff Stevens
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, y <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, y <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
       x     y
@@ -623,7 +606,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">add_column</span><span class="op">(</span>z <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu">add_column</span><span class="op">(</span>z <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       x     y     z
@@ -636,8 +619,8 @@ Jeff Stevens
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">add_column</span><span class="op">(</span>w <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, </span>
-<span>               .before <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu">add_column</span><span class="op">(</span>w <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, </span>
+<span>                  .before <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       w     x     y
@@ -648,7 +631,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">add_column</span><span class="op">(</span>z <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu">add_column</span><span class="op">(</span>z <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
       x     y     z alpha
@@ -665,7 +648,7 @@ Jeff Stevens
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
       x     y
@@ -675,7 +658,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
       x     y
@@ -690,18 +673,18 @@ Jeff Stevens
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">6</span><span class="op">:</span><span class="fl">7</span>, y <span class="op">=</span> <span class="fl">7</span><span class="op">:</span><span class="fl">6</span>, </span>
-<span>              z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fl">7</span><span class="op">:</span><span class="fl">6</span>, x <span class="op">=</span> <span class="fl">6</span><span class="op">:</span><span class="fl">7</span>, </span>
+<span>               z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
-      x     y z    
+      y     x z    
   &lt;int&gt; &lt;int&gt; &lt;chr&gt;
-1     6     7 A    
-2     7     6 B    </code></pre>
+1     7     6 A    
+2     6     7 B    </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
       x     y z    
@@ -720,8 +703,8 @@ Jeff Stevens
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> , <span class="st">"C"</span><span class="op">)</span>, </span>
-<span>              zz <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Z"</span>, <span class="st">"Y"</span>, <span class="st">"X"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> , <span class="st">"C"</span><span class="op">)</span>, </span>
+<span>               zz <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Z"</span>, <span class="st">"Y"</span>, <span class="st">"X"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   z     zz   
@@ -732,7 +715,7 @@ Jeff Stevens
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">df4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
       x     y z     zz   
@@ -744,7 +727,7 @@ Jeff Stevens
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">df</span>, new_col <span class="op">=</span> <span class="va">df4</span><span class="op">$</span><span class="va">z</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">df</span>, new_col <span class="op">=</span> <span class="va">df4</span><span class="op">$</span><span class="va">z</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       x     y new_col
@@ -761,7 +744,7 @@ Jeff Stevens
 </section></section><section><section id="set-operations" class="title-slide slide level1 center"><h1>Set operations</h1>
 
 </section><section id="set-operations-1" class="slide level2"><h2>Set operations</h2>
-<h4 id="for-finding-overlap-differences-and-combinations-of-datasets">For finding overlap, differences, and combinations of datasets</h4>
+<h4 id="for-finding-overlap-differences-and-combinations-in-values-of-datasets-apply-to-vectors-and-data-frames">For finding overlap, differences, and combinations in <em>values</em> of datasets (apply to vectors and data frames)</h4>
 
 <img data-src="../images/setop_df.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section><section id="intersect" class="slide level2"><h2>Intersect</h2>
 <p>Common rows in both <code>x</code> and <code>y</code>, keeping just unique rows</p>
@@ -775,41 +758,49 @@ Jeff Stevens
 <p>All unique rows from <code>x</code> and <code>y</code></p>
 <p><img data-src="../images/setop_df.png" class="absolute" style="top: 28%; left: 5%; width: 40%; "></p>
 <p><img data-src="../images/setop_union.gif" class="absolute" style="top: 28%; left: 50%; width: 40%; "></p>
-</section><section id="union-all" class="slide level2"><h2>Union all</h2>
-<p>All rows from <code>x</code> and <code>y</code>, keeping duplicates</p>
-<p><img data-src="../images/setop_df.png" class="absolute" style="top: 28%; left: 5%; width: 40%; "></p>
-<p><img data-src="../images/setop_union-all.gif" class="absolute" style="top: 28%; left: 50%; width: 40%; "></p>
+<!-- ## Union all -->
+<!-- All rows from `x` and `y`, keeping duplicates (equivalent to `bind_rows()` for data frames) -->
+<!-- ![](../images/setop_df.png){.absolute width="40%" top="28%" left="5%"} -->
+<!-- ![](../images/setop_union-all.gif){.absolute width="40%" top="28%" left="50%"} -->
 </section><section id="sql" class="slide level2"><h2>SQL</h2>
 <p>Congratulations—you just learned SQL databases!</p>
 <p><img data-src="../images/sql_joins.png" class="absolute" style="top: 22%; left: 0%; height: 70%; "></p>
 <p><img data-src="../images/sql_setop.png" class="absolute" style="top: 22%; left: 50%; height: 70%; "></p>
 </section><section id="solving-the-problem" class="slide level2"><h2>Solving the problem</h2>
+<div class="cell">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="va">nrows</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">20250303</span><span class="op">)</span></span>
+<span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">nrows</span>, resp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">nrows</span><span class="op">)</span>, <span class="va">nrows</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">nrows</span>, cond <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, times <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="solving-the-problem-1" class="slide level2"><h2>Solving the problem</h2>
 <p>What code combines <code>data1</code> and <code>data2</code> into <code>data3</code>?</p>
 <div class="columns">
 <div class="column" style="width:31%;">
 <div class="cell">
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
-      id    resp
-   &lt;int&gt;   &lt;dbl&gt;
- 1     1 0.489  
- 2     2 0.00965
- 3     3 0.214  
- 4     4 0.148  
- 5     5 0.535  
- 6     6 0.528  
- 7     7 0.952  
- 8     8 0.0381 
- 9     9 0.561  
-10    10 0.462  
-11    11 0.253  
-12    12 0.268  </code></pre>
+      id   resp
+   &lt;int&gt;  &lt;dbl&gt;
+ 1     1 0.130 
+ 2     2 0.992 
+ 3     3 0.947 
+ 4     4 0.0274
+ 5     5 0.705 
+ 6     6 0.0499
+ 7     7 0.874 
+ 8     8 0.742 
+ 9     9 0.240 
+10    10 0.330 
+11    11 0.379 
+12    12 0.174 </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:28%;">
 <div class="cell">
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
       id  cond
@@ -830,20 +821,20 @@ Jeff Stevens
 </div>
 </div><div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
-     id  resp
-  &lt;int&gt; &lt;dbl&gt;
-1     1 0.489
-2     4 0.148
-3     7 0.952
-4    10 0.462</code></pre>
+     id   resp
+  &lt;int&gt;  &lt;dbl&gt;
+1     1 0.130 
+2     4 0.0274
+3     7 0.874 
+4    10 0.330 </code></pre>
 </div>
 </div>
 </div></div>
 </section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/18_mergingrows.html" target="_blank">Merging rows</a> [<a href="../code/18_mergingrows.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/18_mergingrows.html" target="_blank">Merging rows</a></p>
 
 
 </section></section>
