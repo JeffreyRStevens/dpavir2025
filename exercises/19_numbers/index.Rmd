@@ -1,0 +1,302 @@
+---
+title: "Numbers"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(palmerpenguins)
+library(nycflights13)
+options(tutorial.max.forked.procs = 10)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(echo = TRUE)
+set.seed(3)
+flights2 <- select(flights, carrier, flight, origin, dest) |> 
+    slice_sample(n = 5)
+flights14 <- flights |> 
+  slice_sample(n = 5) |>   # grab 5 random rows
+  select(carrier, flight, origin, dest) |>   # select the columns that we want
+  mutate(year = 2014)  # change the year to 2014
+airlines2 <- rename(airlines, airline = carrier)
+flights1314 <- bind_rows(flights2, flights14)
+id <- 1:nrow(flights1314)
+```
+
+
+## Floating points
+
+###
+
+Floating point numbers do not have a fixed number of digits after the decimal point. Because computer memory is limited, you cannot store numbers with infinite precision, so floating points are stored imprecisely. This results in weird situations where seemingly equivalent numbers are not equal to each other.
+
+```{r}
+(1 / 49) * 49 == 1
+```
+
+But this is because of the fixed number of digits after the decimal
+
+```{r}
+(1 / 50) * 50 == 1
+```
+
+
+### Comparing numbers
+
+We can use several different functions and operators to compare numbers. The logical operator `==` requires pretty precise equivalence to return `TRUE`.
+
+```{r}
+1 == 1.000000000000001
+1 == 1.0000000000000001
+```
+
+###
+
+This illustrates the notion of _tolerance_ or what level of precision is tolerated in numerical comparisons.
+
+We can also use the `all.equal()` base R function to compare numbers. If two numbers are the same it returns `TRUE`. If they are different, it returns the difference.
+
+```{r}
+all.equal(1, 1.0001)
+```
+
+With `all.equal()`, we can set the tolerance. For example, here we consider numbers the same if they are within 1/100 of each other.
+
+```{r}
+all.equal(1, 1.0001, tolerance = 0.01)
+all.equal(1, 1.1, tolerance = 0.01)
+```
+
+###
+
+There is also a `{dplyr}` function `near()` that compares vectors of floating point numbers with a built in tolerance.
+
+```{r}
+sqrt(2) ^ 2 == 2
+near(sqrt(2) ^ 2, 2)
+(vec1 <- c(sqrt(2) ^ 2, (3 ^ (1 / 3)) ^ 3))
+(vec2 <- c(2, 3))
+vec1 == vec2
+near(vec1, vec2)
+```
+
+
+### Questions
+
+**Which expression would return `TRUE`?**
+```{r, message = FALSE}
+x <- 1.01
+y <- 1.011
+```
+
+```{r compare-number, echo=FALSE}
+question(
+  "",
+  answer('`all.equal(x, y, tolerance = 0.001)`', correct = TRUE),
+  answer('`x == y`'),
+  answer('`dplyr::near(x, y)`'),
+  answer('`all.equal(x, y)`'),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+
+## Counting
+
+###
+
+As a reminder, we can use `count()` to count all of the rows for unique category levels. If you want to sum up the values in a column per group rather than just count the number of groups, add the `wt` argument with the column to be summed.
+
+
+###
+
+**1. Use `count()` to find the number of each species of penguins from the `penguins` dataset?**
+
+```{r exercise1, exercise = TRUE}
+penguins |> 
+  count(...)
+```
+ 
+```{r exercise1-solution}
+penguins |> 
+  count(species)
+```
+
+```{r exercise1-check}
+grade_result(
+  pass_if(~identical(.result, penguins |> count(species)))
+)
+```
+
+###
+
+**2. What is the total mass of each species per island?**
+
+```{r exercise2, exercise = TRUE}
+penguins |> 
+  count(...)
+```
+ 
+```{r exercise2-solution}
+penguins |> 
+  count(species, island, wt = body_mass_g)
+```
+
+```{r exercise2-check}
+grade_result(
+  pass_if(~identical(.result, penguins |> count(species, island, wt = body_mass_g)))
+)
+```
+
+###
+
+If we're trying to count inside a `summarise()`, we use the `n()` function---if, for example, you want to summarize means but also find the sample size. 
+
+We can take this a step further to count the number of unique/distinct combinations in a group with `n_distinct()`. This is equivalent to `nrow(unique(...))`.
+
+**3. Find the mean body mass and sample size per species.**
+
+```{r exercise3, exercise = TRUE}
+penguins |> 
+  summarise(...)
+```
+ 
+```{r exercise3-solution}
+penguins |> 
+  summarise(.by = species,
+            mean_mass = mean(body_mass_g, na.rm = TRUE),
+            n())
+```
+
+```{r exercise3-check}
+grade_result(
+  pass_if(~identical(.result, penguins |> summarise(.by = species, mean_mass = mean(body_mass_g, na.rm = TRUE), n())))
+)
+```
+
+**4. Find the number of species per island and label it `num_species`.**
+
+```{r exercise4, exercise = TRUE}
+penguins |> 
+  summarise(...)
+```
+ 
+```{r exercise4-solution}
+penguins |> 
+  summarise(.by = island,
+            num_species = n_distinct(species))
+```
+
+```{r exercise4-check}
+grade_result(
+  pass_if(~identical(.result, penguins |> summarise(.by = island, num_species = n_distinct(species))))
+)
+```
+
+###
+
+`NA`s can be counted by summing over the logical vector output by `is.na()`. Summing any logical vector will count up the number of `TRUE` elements. Relatedly, using `mean()` on a logical vector returns the proportion of `TRUE` elements.
+
+**5. Find the number of individuals with no sex entered for each species and label it `missing_sex`.**
+
+```{r exercise5, exercise = TRUE}
+penguins |> 
+  summarise(...)
+```
+ 
+```{r exercise5-solution}
+penguins |> 
+  summarise(.by = species,
+            missing_sex = sum(is.na(sex)))
+```
+
+```{r exercise5-check}
+grade_result(
+  pass_if(~identical(.result, penguins |> summarise(.by = species, missing_sex = sum(is.na(sex)))
+))
+)
+```
+
+
+## Transforming numbers
+
+###
+
+Let's say we have some data from 2014 that we want to add to the bottom of `flights2`. How would we do that? Here's the new data (`flights14`):
+
+```{r}
+flights14
+```
+
+**4. Would we use `bind_rows()` or `bind_cols()` to add `flights14` to the bottom of `flights2`? Type the code that would combine `flights2` and `flights14` to create an object called `flights1314`.**
+
+```{r exercise4a, exercise = TRUE}
+(flights1314 <- bind_???(...))
+```
+ 
+```{r exercise4a-solution}
+flights1314 <- bind_rows(flights2, flights14)
+```
+
+```{r exercise4a-check}
+grade_result(
+  pass_if(~identical(.result, flights1314 <- bind_rows(flights2, flights14)))
+)
+```
+
+###
+
+**5. Now create a vector called `id` that is a sequence from 1 to the number of rows in `flights1314` and bind it as the first column of `flights1314` (ensuring the new column is named `id`).**
+
+```{r exercise5a, exercise = TRUE}
+id <- ...
+bind_???(...)
+```
+ 
+```{r exercise5a-solution}
+id <- 1:nrow(flights1314)
+bind_cols(id = id, flights1314)
+```
+
+```{r exercise5a-check}
+grade_result(
+  pass_if(~identical(.result, bind_cols(id = id, flights1314)))
+)
+```
+
+### Wrap-up
+
+Congratulations, you finished the tutorial!
+
+To get credit for this assignment, replace my name with the first name that you submitted in the course introduction form in the code below and click *Run Code* to generate the text for you to submit to Canvas. 
+
+```{r exit_function}
+letter_nums <- letters[1:26]
+generate_text <- function(x) {
+  x <- tolower(x)
+  offset <- 20
+  if (!is.character(x)) stop("Oops! Did you surround your name with quotation marks?")
+  if (x == "jeff") stop("Oops! You left my name in. Please type your name.")
+  x <- stringr::str_sub(x, 1, 4)
+  expanded <- stringr::str_split_fixed(x, "", 4)
+  name_nums <- match(expanded, letter_nums)
+  name_nums <- name_nums[!is.na(name_nums)]
+  new_nums <- as.character(name_nums + offset)
+  new_text <- paste("Now copy this string of numbers and submit them to Canvas:", stringr::str_c(new_nums, collapse = ""))
+  return(new_text)
+}
+```
+
+```{r exit_code, exercise = TRUE, exercise.setup = "exit_function"}
+# replace my name below with your first name (surrounded by quotes)
+first_name <- "Jeff"
+generate_text(first_name)
+```
+
+### Assignment complete!
+
+Great! Copy that code into Canvas, and you're all set for this tutorial.
