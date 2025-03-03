@@ -2,17 +2,17 @@
 title: 'Numbers'
 author:
   - Jeff Stevens
-date: '2023-03-06'
+date: '2025-03-05'
 categories: 
   - "module 5"
-  - "week 7"
+  - "week 8"
   - count
   - numeric
   - rounding
 description: "Parse and transform numbers"
 execute:
   freeze: true
-draft: true
+draft: false
 ---
 
 Much of our data involve numerical information, but they may not come in exactly how we need them. Here, we'll learn how to process and transform numeric data types.
@@ -42,7 +42,7 @@ To prepare for this class meeting, please do the following:
 ## Homework after the class meeting
 ### Wrap up this lesson
 
-* **There is no exercise for this lesson**
+* Complete the [exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/19_numbers){target='_blank'}
 
 ### For next class meeting
 
