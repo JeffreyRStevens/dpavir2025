@@ -59,13 +59,13 @@ execute:
 
 </details>
 
-<details>
+<details open>
 
 <summary> Module 5: Transforming data values </summary>
 
 | Topic | Date | Readings | Slides | Code | Exercises |
 |---------------|--------|--------|---------|------|-----------|
-| Numbers | 2025-03-05 | [R4DS2 13](https://r4ds.hadley.nz/numbers.html){target='_blank'} | [Slides](slides/19_numbers.qmd){target="_blank"} | [Code](code/19_numbers.Rmd){target="_blank"} | None |
+| Numbers | 2025-03-05 | [R4DS2 13](https://r4ds.hadley.nz/numbers.html){target='_blank'} | [Slides](slides/19_numbers.qmd){target="_blank"} | [Code](code/19_numbers.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/19_numbers){target='_blank'} |
 | Strings | 2025-03-07 | [R4DS2 14](https://r4ds.hadley.nz/strings.html){target='_blank'} | [Slides](slides/20_strings.qmd){target="_blank"} | [Code](code/20_strings.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/20_strings){target="_blank"} |
 | Matching patterns | 2025-03-10 | [R4DS2 15](https://r4ds.hadley.nz/regexps.html){target='_blank'} | [Slides](slides/21_patterns.qmd){target="_blank"} | [Code](code/21_patterns.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/21_patterns){target="_blank"} |
 | Factors | 2025-03-12 | [R4DS2 16](https://r4ds.hadley.nz/factors.html){target='_blank'} | [Slides](slides/22_factors.qmd){target="_blank"} | [Code](code/22_factors.Rmd){target="_blank"} | [Exercises](https://its-ianr-shiny.unl.edu/users/jstevens5/dpavir2025/22_factors){target="_blank"} |
