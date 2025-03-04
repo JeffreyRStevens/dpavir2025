@@ -428,7 +428,7 @@ But why is this dangerous? What is a better solution?
 
 ## Intersect
 
-Common rows in both `x` and `y`, keeping just unique rows
+Common rows in both `x` and `y`, keeping just overlapping rows
 
 ![](../images/setop_df.png){.absolute width="40%" top="28%" left="5%"}
 

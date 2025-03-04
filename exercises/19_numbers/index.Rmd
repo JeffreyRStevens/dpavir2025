@@ -224,47 +224,61 @@ grade_result(
 
 ## Transforming numbers
 
-###
+### Rounding
 
-Let's say we have some data from 2014 that we want to add to the bottom of `flights2`. How would we do that? Here's the new data (`flights14`):
+When we calculate means, standard deviations, confidence intervals, etc., we often get values with many digits after the decimal. Usually, we only want one or two digits. To get this, we use `round()` and give the number digits after the decimal.
 
 ```{r}
-flights14
+round(1111.11111)
+round(1111.11111, digits = 2)
+round(1111.11111, digits = -2)
 ```
 
-**4. Would we use `bind_rows()` or `bind_cols()` to add `flights14` to the bottom of `flights2`? Type the code that would combine `flights2` and `flights14` to create an object called `flights1314`.**
+### Formatting
 
-```{r exercise4a, exercise = TRUE}
-(flights1314 <- bind_???(...))
+To control the formatting of numbers, we can use `format()`. This allows us to use scientific notation:
+
+```{r}
+format(0.0020, scientific = TRUE)
+```
+
+Or append extra zeros at the end:
+
+```{r}
+format(0.0020, nsmall = 4)
+```
+
+Note that the output of format is a character string. So it is no longer a numeric, and you can't do math on the output of `format()`.
+
+
+**6. Set the argument `big.mark = ","` in the following format statement. What does that do?**
+
+```{r exercise6, exercise = TRUE}
+format(1000)
 ```
  
-```{r exercise4a-solution}
-flights1314 <- bind_rows(flights2, flights14)
+```{r exercise6-solution}
+format(1000, big.mark = ",")
 ```
 
-```{r exercise4a-check}
-grade_result(
-  pass_if(~identical(.result, flights1314 <- bind_rows(flights2, flights14)))
-)
-```
 
-###
+### Cutting numbers
 
-**5. Now create a vector called `id` that is a sequence from 1 to the number of rows in `flights1314` and bind it as the first column of `flights1314` (ensuring the new column is named `id`).**
+To divide numbers into bins, use `cut()`. This creates a factor with levels for each of the bins. You can set the bins with the `breaks` argument by passing a vector with the minimum value, intermediate break points, and maximum value.
 
-```{r exercise5a, exercise = TRUE}
-id <- ...
-bind_???(...)
+**7. Use cut to bin the `penguins` body mass data into the following bins: 0-3500, 3501-4800, and 4801-6300.**
+
+```{r exercise7, exercise = TRUE}
+cut(...)
 ```
  
-```{r exercise5a-solution}
-id <- 1:nrow(flights1314)
-bind_cols(id = id, flights1314)
+```{r exercise7-solution}
+cut(penguins$body_mass_g, breaks = c(0, 3500, 4800, 6300))
 ```
 
-```{r exercise5a-check}
+```{r exercise7-check}
 grade_result(
-  pass_if(~identical(.result, bind_cols(id = id, flights1314)))
+  pass_if(~identical(.result, cut(penguins$body_mass_g, breaks = c(0, 3500, 4800, 6300))))
 )
 ```
 
