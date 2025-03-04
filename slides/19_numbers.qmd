@@ -1,11 +1,11 @@
 ---
 title: "Numbers"
 author: "Jeff Stevens"
-date: "2023-03-06"
+date: "2025-03-05"
 date-format: iso
 execute:
   echo: true
-  freeze: true
+  freeze: false
 format:
   revealjs: 
     theme: custom.scss
@@ -19,22 +19,38 @@ format:
 ---
 
 
-# Introduction
+# Review
 
+## Group data wrangling challenge
+
+Using the `penguins` data set from the {palmerpenguins} package, recreate this data frame.
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+```{r echo = FALSE}
+penguins |> 
+  filter(species != "Gentoo") |> 
+  summarise(.by = c(species, island, sex),
+            mean_body_mass = mean(body_mass_g, na.rm = TRUE)) |> 
+  drop_na(sex) |> 
+  pivot_wider(id_cols = c(species, island), names_from = sex, values_from = mean_body_mass)
+```
+
+
+# Introduction
 
 ## The problem
 
 ```{r echo = FALSE}
 library(tidyverse)
 nrows <- 12
-set.seed(311)
-data1 <- tibble(val1 = runif(nrows), val2 = runif(nrows), val3 = runif(nrows, 0.001, 0.01))#, val4 = paste0("$", format(runif(nrows, 10, 100), digits = 4)))
+set.seed(20250305)
+data1 <- tibble(val1 = runif(nrows), val2 = runif(nrows), val3 = runif(nrows, 0.001, 0.01))
 data2 <- data1 |> 
-  # mutate(min = sec / 60) |> 
   mutate(percent_val1 = round(val1 * 100, 2), .keep = "unused", .before = 1) |> 
   mutate(log_val2 = log(val2), .keep = "unused", .after = percent_val1) |> 
-  mutate(val3 = format(val3, scientific = TRUE, digits = 2)) #|> 
-  # mutate(val4 = parse_number(val4))
+  mutate(val3 = format(val3, scientific = TRUE, digits = 2))
 ```
 
 What's different between these data sets? 
@@ -46,6 +62,7 @@ What is needed to create `data2` from `data1`?
 ::: {.column width="45%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data1
 ```
 :::
@@ -53,6 +70,7 @@ data1
 ::: {.column width="55%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data2
 ```
 :::
@@ -68,25 +86,24 @@ library(nycflights13)
 ```
 
 
-## Types of numbers
+<!-- ## Types of numbers -->
 
-Doubles are floating point numbers
+<!-- Doubles are floating point numbers -->
 
-::: {.callout-note}
-**Floating point number:** a number without a fixed number of digits after the decimal point
-:::
+<!-- ::: {.callout-note} -->
+<!-- **Floating point number:** a number without a fixed number of digits after the decimal point -->
+<!-- ::: -->
 
-Floating point numbers ≈ scientific notation
+<!-- Floating point numbers ≈ scientific notation -->
 
 
-## Types of numbers
+<!-- ## Types of numbers -->
 
-Computer memory is limited, so you cannot store numbers with infinite precision and floating points are stored imprecisely
+<!-- Computer memory is limited, so you cannot store numbers with infinite precision and floating points are stored imprecisely -->
 
-```{r}
-sqrt(2) ^ 2 == 2
-1 / 49 * 49 == 1
-```
+<!-- ```{r} -->
+<!-- sqrt(2) ^ 2 == 2 -->
+<!-- ``` -->
 
 
 # Comparing and counting
@@ -204,7 +221,8 @@ flights |>
 ```{r}
 flights |> 
   group_by(dest) |> 
-  summarise(carriers = n_distinct(carrier))
+  summarise(carriers = 
+              n_distinct(carrier))
 ```
 :::
 :::
@@ -235,23 +253,23 @@ nrow(filter(flights, month == 1))
 
 # Transforming numbers
 
-## Operations
+<!-- ## Operations -->
 
-Mathematical operators are recycled across all elements in a vector
+<!-- Mathematical operators are recycled across all elements in a vector -->
 
-```{r}
-0:10 * 5
-```
+<!-- ```{r} -->
+<!-- 0:10 * 5 -->
+<!-- ``` -->
 
-::: {.fragment}
-You can operate with vectors > 1, but the larger vector must be a multiple of the smaller vector
-```{r warning = TRUE}
-0:10 * c(5, 6)
-```
-```{r}
-0:11 * c(5, 6)
-```
-:::
+<!-- ::: {.fragment} -->
+<!-- You can operate with vectors > 1, but the larger vector must be a multiple of the smaller vector -->
+<!-- ```{r warning = TRUE} -->
+<!-- 0:10 * c(5, 6) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- 0:11 * c(5, 6) -->
+<!-- ``` -->
+<!-- ::: -->
 
 
 ## Mathematical transformations
@@ -405,11 +423,24 @@ cut(x, breaks = c(0, 33, 66, 100), labels = c("Low", "Medium", "High"))
 
 ## Solving the problem
 
+```{r}
+library(tidyverse)
+nrows <- 12
+set.seed(20250305)
+data1 <- tibble(val1 = runif(nrows), 
+                val2 = runif(nrows), 
+                val3 = runif(nrows, 0.001, 0.01))
+```
+
+
+## Solving the problem
+
 :::: {.columns}
 
 ::: {.column width="45%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data1
 ```
 :::
@@ -417,6 +448,7 @@ data1
 ::: {.column width="55%"}
 
 ```{r}
+#| attr-output: "style='font-size: 52%'"
 data2
 ```
 :::
@@ -426,4 +458,4 @@ data2
 
 ## Let's code!
 
-[Numbers](../code/19_numbers.html){target="_blank"} [[Rmd](../code/19_numbers.Rmd){target="_blank"}]
+[Numbers](../code/19_numbers.html){target="_blank"}
