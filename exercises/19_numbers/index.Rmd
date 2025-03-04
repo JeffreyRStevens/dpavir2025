@@ -14,16 +14,6 @@ library(nycflights13)
 options(tutorial.max.forked.procs = 10)
 gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = TRUE)
-set.seed(3)
-flights2 <- select(flights, carrier, flight, origin, dest) |> 
-    slice_sample(n = 5)
-flights14 <- flights |> 
-  slice_sample(n = 5) |>   # grab 5 random rows
-  select(carrier, flight, origin, dest) |>   # select the columns that we want
-  mutate(year = 2014)  # change the year to 2014
-airlines2 <- rename(airlines, airline = carrier)
-flights1314 <- bind_rows(flights2, flights14)
-id <- 1:nrow(flights1314)
 ```
 
 
@@ -37,7 +27,7 @@ Floating point numbers do not have a fixed number of digits after the decimal po
 (1 / 49) * 49 == 1
 ```
 
-But this is because of the fixed number of digits after the decimal
+But this is because of the number of digits after the decimal.
 
 ```{r}
 (1 / 50) * 50 == 1
@@ -112,8 +102,6 @@ question(
 As a reminder, we can use `count()` to count all of the rows for unique category levels. If you want to sum up the values in a column per group rather than just count the number of groups, add the `wt` argument with the column to be summed.
 
 
-###
-
 **1. Use `count()` to find the number of each species of penguins from the `penguins` dataset?**
 
 ```{r exercise1, exercise = TRUE}
@@ -134,7 +122,7 @@ grade_result(
 
 ###
 
-**2. What is the total mass of each species per island?**
+**2. What is the total mass of each species _per island_?**
 
 ```{r exercise2, exercise = TRUE}
 penguins |> 
@@ -248,7 +236,7 @@ Or append extra zeros at the end:
 format(0.0020, nsmall = 4)
 ```
 
-Note that the output of format is a character string. So it is no longer a numeric, and you can't do math on the output of `format()`.
+Note that the output of format is a _character string_. So it is no longer a numeric, and you can't do math on the output of `format()`.
 
 
 **6. Set the argument `big.mark = ","` in the following format statement. What does that do?**
@@ -264,9 +252,16 @@ format(1000, big.mark = ",")
 
 ### Cutting numbers
 
-To divide numbers into bins, use `cut()`. This creates a factor with levels for each of the bins. You can set the bins with the `breaks` argument by passing a vector with the minimum value, intermediate break points, and maximum value.
+To divide numbers into bins, use `cut()`. This creates a _factor_ with levels for each of the bins. You can set the bins with the `breaks` argument by passing a vector with the minimum value, intermediate break points, and maximum value.
 
-**7. Use cut to bin the `penguins` body mass data into the following bins: 0-3500, 3501-4800, and 4801-6300.**
+**7. Use `cut()` to bin the `penguins` body mass data into the following bins: 0-3500, 3501-4800, and 4801-6300. The first 20 elements should look like this:**
+
+```{r echo=FALSE}
+cut(penguins$body_mass_g, breaks = c(0, 3500, 4800, 6300)) |> 
+  head(20)
+```
+
+
 
 ```{r exercise7, exercise = TRUE}
 cut(...)
@@ -281,6 +276,28 @@ grade_result(
   pass_if(~identical(.result, cut(penguins$body_mass_g, breaks = c(0, 3500, 4800, 6300))))
 )
 ```
+
+###
+
+**8. Now add labels for Low, Medium, and High for the three levels using the `labels` argument.**
+
+```{r exercise8, exercise = TRUE}
+cut(...)
+```
+ 
+```{r exercise8-solution}
+cut(penguins$body_mass_g, breaks = c(0, 3500, 4800, 6300),
+    labels = c("Low", "Medium", "High"))
+```
+
+```{r exercise8-check}
+grade_result(
+  pass_if(~identical(.result, cut(penguins$body_mass_g, breaks = c(0, 3500, 4800, 6300),
+    labels = c("Low", "Medium", "High"))))
+)
+```
+
+
 
 ### Wrap-up
 
