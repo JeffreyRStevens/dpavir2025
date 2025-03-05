@@ -1,7 +1,7 @@
 ---
 title: "Numbers"
 author: "Jeffrey R. Stevens"
-date: "2023-03-06"
+date: "2025-03-05"
 output: html_document
 execute:
   freeze: auto
@@ -22,7 +22,7 @@ For these exercises, we'll use the dog breed traits and dog breed popularity ran
 # >
 ```
 
-3. Convert _mean_ratings_ to a proportion in a column called _pmean_ratings_ and add to `traits2`.
+3. Convert _mean_ratings_ to a proportion in a column called _pmean_ratings_ and append to `traits2`.
 
 ```{r}
 # >

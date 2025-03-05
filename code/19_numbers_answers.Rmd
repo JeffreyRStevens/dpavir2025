@@ -1,7 +1,7 @@
 ---
 title: "Numbers"
 author: "Jeffrey R. Stevens"
-date: "2023-03-06"
+date: "2025-03-05"
 output: html_document
 execute:
   freeze: auto
@@ -25,7 +25,7 @@ traits2 <- traits |>
   mutate(mean_ratings = mean(c(affectionate, children, other_dogs, shedding, grooming, na.rm = TRUE)))
 ```
 
-3. Convert _mean_ratings_ to a proportion in a column called _pmean_ratings_ and add to `traits2`.
+3. Convert _mean_ratings_ to a proportion in a column called _pmean_ratings_ and append to `traits2`.
 
 ```{r}
 traits2 <- traits2 |> 
