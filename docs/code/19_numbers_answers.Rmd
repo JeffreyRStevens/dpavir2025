@@ -22,7 +22,7 @@ traits <- read_csv(here::here("data/dog_breed_traits_clean.csv"), show_col_types
 ```{r}
 traits2 <- traits |> 
   rowwise() |> 
-  mutate(mean_ratings = mean(c(affectionate, children, other_dogs, shedding, grooming, na.rm = TRUE)))
+  mutate(mean_ratings = mean(c(affectionate, children, other_dogs, shedding, grooming), na.rm = TRUE))
 ```
 
 3. Convert _mean_ratings_ to a proportion in a column called _pmean_ratings_ and append to `traits2`.

@@ -368,7 +368,7 @@ cut(x, breaks = c(0, 33, 66, 100))
 ```
 ::: {.fragment}
 ```{r}
-cut(x, breaks = c(0, 33, 66, 100), labels = c("Low", "Medium", "High"))
+cut(x, breaks = 3, labels = c("Low", "Medium", "High"))
 ```
 :::
 
