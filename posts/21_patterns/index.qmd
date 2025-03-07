@@ -2,10 +2,10 @@
 title: 'Matching patterns'
 author:
   - Jeff Stevens
-date: '2023-03-10'
+date: '2025-03-10'
 categories: 
   - "module 5"
-  - "week 7"
+  - "week 8"
   - characters
   - patterns
   - regular expressions
@@ -13,7 +13,7 @@ categories:
 description: "Match patterns in character strings"
 execute:
   freeze: true
-draft: true
+draft: false
 ---
 
 We'll use the {stringr} package to match patterns with regular expressions.
