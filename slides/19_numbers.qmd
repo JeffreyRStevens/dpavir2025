@@ -5,7 +5,7 @@ date: "2025-03-05"
 date-format: iso
 execute:
   echo: true
-  freeze: false
+  freeze: true
 format:
   revealjs: 
     theme: custom.scss
@@ -39,6 +39,12 @@ penguins |>
 
 
 # Introduction
+
+## Mental model of data analysis
+
+![](../images/data_analysis_workflow.png){fig-align="center"}
+
+
 
 ## The problem
 

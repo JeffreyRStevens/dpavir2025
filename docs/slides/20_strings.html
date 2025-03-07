@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-03-08">
+<meta name="dcterms.date" content="2025-03-07">
 <title>Data Processing and Visualization in R – Strings</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,53 +203,55 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-03-08</p>
+  <p class="date">2025-03-07</p>
 </section><section><section id="introduction" class="title-slide slide level1 center"><h1>Introduction</h1>
 
-</section><section id="the-problem" class="slide level2"><h2>The problem</h2>
+</section><section id="mental-model-of-data-analysis" class="slide level2"><h2>Mental model of data analysis</h2>
+
+<img data-src="../images/data_analysis_workflow.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="the-problem" class="slide level2"><h2>The problem</h2>
 <p>What’s different between these data sets?</p>
 <p>What is needed to create <code>data2</code> from <code>data1</code>?</p>
 <div class="columns">
-<div class="column" style="width:28%;">
+<div class="column" style="width:35%;">
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
+<pre style="font-size: 50%"><code># A tibble: 12 × 3
       id cond  resp 
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
  1     1 cond1 yes  
  2     2 cond2 no   
- 3     3 cond1 yes  
- 4     4 cond2 yes  
- 5     5 cond1 no   
- 6     6 cond2 yes  
- 7     7 cond1 yes  
+ 3     3 cond1 no   
+ 4     4 cond2 no   
+ 5     5 cond1 yes  
+ 6     6 cond2 no   
+ 7     7 cond1 no   
  8     8 cond2 no   
- 9     9 cond1 no   
+ 9     9 cond1 yes  
 10    10 cond2 no   
 11    11 cond1 yes  
-12    12 cond2 yes  </code></pre>
+12    12 cond2 no   </code></pre>
 </div>
 </div>
-</div><div class="column" style="width:72%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
+<pre style="font-size: 50%"><code># A tibble: 12 × 4
       id cond  resp  output                           
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;glue&gt;                           
  1     1 1     Yes   1 had condition 1 and said "Yes" 
  2     2 2     No    2 had condition 2 and said "No"  
- 3     3 1     Yes   3 had condition 1 and said "Yes" 
- 4     4 2     Yes   4 had condition 2 and said "Yes" 
- 5     5 1     No    5 had condition 1 and said "No"  
- 6     6 2     Yes   6 had condition 2 and said "Yes" 
- 7     7 1     Yes   7 had condition 1 and said "Yes" 
+ 3     3 1     No    3 had condition 1 and said "No"  
+ 4     4 2     No    4 had condition 2 and said "No"  
+ 5     5 1     Yes   5 had condition 1 and said "Yes" 
+ 6     6 2     No    6 had condition 2 and said "No"  
+ 7     7 1     No    7 had condition 1 and said "No"  
  8     8 2     No    8 had condition 2 and said "No"  
- 9     9 1     No    9 had condition 1 and said "No"  
+ 9     9 1     Yes   9 had condition 1 and said "Yes" 
 10    10 2     No    10 had condition 2 and said "No" 
 11    11 1     Yes   11 had condition 1 and said "Yes"
-12    12 2     Yes   12 had condition 2 and said "Yes"</code></pre>
+12    12 2     No    12 had condition 2 and said "No" </code></pre>
 </div>
 </div>
 </div></div>
@@ -307,13 +309,13 @@ Jeff Stevens
 </section><section id="quotes-1" class="slide level2"><h2>Quotes</h2>
 <p>Including quotes in strings</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">string3</span> <span class="op">&lt;-</span> <span class="st">'If I want to include a "double quote" inside a string, I use single quotes'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">string3</span> <span class="op">&lt;-</span> <span class="st">'To include a "double quote" inside a string, I use single quotes'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "If I want to include a \"double quote\" inside a string, I use single quotes"</code></pre>
+<pre><code>[1] "To include a \"double quote\" inside a string, I use single quotes"</code></pre>
 </div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html">writeLines</a></span><span class="op">(</span><span class="va">string3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>If I want to include a "double quote" inside a string, I use single quotes</code></pre>
+<pre><code>To include a "double quote" inside a string, I use single quotes</code></pre>
 </div>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">string4</span> <span class="op">&lt;-</span> <span class="st">"And 'vice versa'"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -374,10 +376,14 @@ Jeff Stevens
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1 18 NA</code></pre>
 </div>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># This differs from length...</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">r4ds_string</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>How does this differ from <code><a href="https://rdrr.io/r/base/length.html">length()</a></code>?</p>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">r4ds_string</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
+</div>
 </div>
 </div>
 <!-- ## Truncating strings -->
@@ -405,25 +411,24 @@ Jeff Stevens
 </section><section id="extracting-strings-1" class="slide level2"><h2>Extracting strings</h2>
 <p>Useful when you don’t have delimiters. But use delimiters!</p>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">8</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">species</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>         island <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">island</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>,</span>
 <span>         year <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">year</span>, <span class="op">-</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 3
-   species island year 
-   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;
- 1 A       Tor    07   
- 2 A       Tor    07   
- 3 A       Tor    07   
- 4 A       Tor    07   
- 5 A       Tor    07   
- 6 A       Tor    07   
- 7 A       Tor    07   
- 8 A       Tor    07   
- 9 A       Tor    07   
-10 A       Tor    07   
-# ℹ 334 more rows</code></pre>
+<pre><code># A tibble: 8 × 3
+  species island year 
+  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;
+1 C       Dre    09   
+2 G       Bis    07   
+3 A       Tor    09   
+4 C       Dre    07   
+5 G       Bis    09   
+6 G       Bis    08   
+7 C       Dre    08   
+8 A       Dre    08   </code></pre>
 </div>
 </div>
 </section><section id="extracting-strings-2" class="slide level2"><h2>Extracting strings</h2>
@@ -477,22 +482,16 @@ Jeff Stevens
 <pre><code>[1] "Hello, world"</code></pre>
 </div>
 </div>
+<!-- ## Changing case -->
+<!-- Useful for column names -->
+<!-- ```{r} -->
+<!-- names(iris) -->
+<!-- str_to_lower(names(iris)) -->
+<!-- ``` -->
 </section><section id="changing-case-2" class="slide level2"><h2>Changing case</h2>
-<p>Useful for column names</p>
+<p>Useful to change case of column entries</p>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
-</div>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "sepal.length" "sepal.width"  "petal.length" "petal.width"  "species"     </code></pre>
-</div>
-</div>
-</section><section id="changing-case-3" class="slide level2"><h2>Changing case</h2>
-<p>Or to change case of column entries</p>
-<div class="cell">
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex_upper <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_sentence</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 2
@@ -517,15 +516,15 @@ Jeff Stevens
 </section><section id="combining-strings-1" class="slide level2"><h2>Combining strings</h2>
 <p>Combine <strong>multiple strings</strong> into a single string with <code><a href="https://stringr.tidyverse.org/reference/str_c.html">stringr::str_c()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x" "y" "z"</code></pre>
 </div>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "xyz"</code></pre>
 </div>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>, sep <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>, sep <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x, y, z"</code></pre>
 </div>
@@ -533,7 +532,7 @@ Jeff Stevens
 </section><section id="collapsing-strings" class="slide level2"><h2>Collapsing strings</h2>
 <p>Collapse a <strong>vector</strong> of strings into a single string with <code>collapse</code> argument</p>
 <div class="cell">
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x, y, z"</code></pre>
 </div>
@@ -541,7 +540,7 @@ Jeff Stevens
 <div class="fragment">
 <p>How is this different from using <code>sep</code> argument?</p>
 <div class="cell">
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>, sep <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>, sep <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x, y, z"</code></pre>
 </div>
@@ -550,16 +549,16 @@ Jeff Stevens
 </section><section id="collapsing-strings-1" class="slide level2"><h2>Collapsing strings</h2>
 <p>When would this be useful?</p>
 <div class="cell">
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">month.name</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">month.name</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "January, February, March, April, May, June, July, August, September, October, November, December"</code></pre>
 </div>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Adelie    Gentoo    Chinstrap
 Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">species</span><span class="op">)</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">species</span><span class="op">)</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Adelie, Chinstrap, Gentoo"</code></pre>
 </div>
@@ -567,21 +566,21 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section><section id="combining-strings-with-output" class="slide level2"><h2>Combining strings with output</h2>
 <p>Pasting character vectors with base R <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code></p>
 <div class="cell">
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Fred"</span></span>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Fred"</span></span>
 <span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"My name is"</span>, <span class="va">name</span>, <span class="st">", and my age next year is"</span>, <span class="va">age</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "My name is Fred , and my age next year is 51 ."</code></pre>
 </div>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"My name is"</span>, <span class="va">name</span>, <span class="st">", and my age next year is"</span>, <span class="va">age</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"My name is"</span>, <span class="va">name</span>, <span class="st">", and my age next year is"</span>, <span class="va">age</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "My name isFred, and my age next year is51."</code></pre>
 </div>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"My name is "</span>, <span class="va">name</span>, <span class="st">", and my age next year is "</span>, <span class="va">age</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"My name is "</span>, <span class="va">name</span>, <span class="st">", and my age next year is "</span>, <span class="va">age</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "My name is Fred, and my age next year is 51."</code></pre>
 </div>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"My name is "</span>, <span class="va">name</span>, <span class="st">", and my age next year is "</span>, <span class="va">age</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"."</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"My name is "</span>, <span class="va">name</span>, <span class="st">", and my age next year is "</span>, <span class="va">age</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"."</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "My name is Fred, and my age next year is 51."</code></pre>
 </div>
@@ -589,11 +588,11 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section><section id="combining-strings-with-output-1" class="slide level2"><h2>Combining strings with output</h2>
 <p>Gluing character vectors with <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">stringr::str_glue()</a></code></p>
 <div class="cell">
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"My name is {name}, and my age next year is {age + 1}."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"My name is {name}, and my age next year is {age + 1}."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>My name is Fred, and my age next year is 51.</code></pre>
 </div>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"My name is {name}, and my age next year is {age + 1}."</span>, </span>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"My name is {name}, and my age next year is {age + 1}."</span>, </span>
 <span>         name <span class="op">=</span> <span class="st">"Jane"</span>, age <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>My name is Jane, and my age next year is 41.</code></pre>
@@ -602,7 +601,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section><section id="combining-strings-with-output-2" class="slide level2"><h2>Combining strings with output</h2>
 <p>Apply to each row of a data frame</p>
 <div class="cell">
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>full_island <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{island} Island"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">bill_length_mm</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">island</span>, <span class="va">full_island</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -632,54 +631,66 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <!-- What is the difference between these two examples? -->
 <!-- ::: -->
 </section><section id="cheatsheet" class="slide level2"><h2>Cheatsheet</h2>
-
-<img data-src="../images/stringr_cheatsheet.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="solving-the-problem" class="slide level2"><h2>Solving the problem</h2>
-<div class="columns">
-<div class="column" style="width:28%;">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><a href="https://rstudio.github.io/cheatsheets/html/strings.html"><img data-src="../images/stringr_cheatsheet.png" class="quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</section><section id="solving-the-problem" class="slide level2"><h2>Solving the problem</h2>
 <div class="cell">
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="va">nrows</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">20250307</span><span class="op">)</span></span>
+<span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">nrows</span>, </span>
+<span>                cond <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cond1"</span>, <span class="st">"cond2"</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>, </span>
+<span>                resp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"no"</span><span class="op">)</span>, <span class="va">nrows</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="solving-the-problem-1" class="slide level2"><h2>Solving the problem</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="cell">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
+<pre style="font-size: 50%"><code># A tibble: 12 × 3
       id cond  resp 
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
  1     1 cond1 yes  
  2     2 cond2 no   
- 3     3 cond1 yes  
- 4     4 cond2 yes  
- 5     5 cond1 no   
- 6     6 cond2 yes  
- 7     7 cond1 yes  
+ 3     3 cond1 no   
+ 4     4 cond2 no   
+ 5     5 cond1 yes  
+ 6     6 cond2 no   
+ 7     7 cond1 no   
  8     8 cond2 no   
- 9     9 cond1 no   
+ 9     9 cond1 yes  
 10    10 cond2 no   
 11    11 cond1 yes  
-12    12 cond2 yes  </code></pre>
+12    12 cond2 no   </code></pre>
 </div>
 </div>
-</div><div class="column" style="width:72%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
+<pre style="font-size: 50%"><code># A tibble: 12 × 4
       id cond  resp  output                           
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;glue&gt;                           
  1     1 1     Yes   1 had condition 1 and said "Yes" 
  2     2 2     No    2 had condition 2 and said "No"  
- 3     3 1     Yes   3 had condition 1 and said "Yes" 
- 4     4 2     Yes   4 had condition 2 and said "Yes" 
- 5     5 1     No    5 had condition 1 and said "No"  
- 6     6 2     Yes   6 had condition 2 and said "Yes" 
- 7     7 1     Yes   7 had condition 1 and said "Yes" 
+ 3     3 1     No    3 had condition 1 and said "No"  
+ 4     4 2     No    4 had condition 2 and said "No"  
+ 5     5 1     Yes   5 had condition 1 and said "Yes" 
+ 6     6 2     No    6 had condition 2 and said "No"  
+ 7     7 1     No    7 had condition 1 and said "No"  
  8     8 2     No    8 had condition 2 and said "No"  
- 9     9 1     No    9 had condition 1 and said "No"  
+ 9     9 1     Yes   9 had condition 1 and said "Yes" 
 10    10 2     No    10 had condition 2 and said "No" 
 11    11 1     Yes   11 had condition 1 and said "Yes"
-12    12 2     Yes   12 had condition 2 and said "Yes"</code></pre>
+12    12 2     No    12 had condition 2 and said "No" </code></pre>
 </div>
 </div>
 </div></div>
 </section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/20_strings.html" target="_blank">Strings</a> [<a href="../code/20_strings.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/20_strings.html" target="_blank">Strings</a></p>
 
 
 </section></section>

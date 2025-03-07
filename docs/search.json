@@ -74,7 +74,7 @@
     "href": "slides/39_tables.html#linear-regression",
     "title": "Tables",
     "section": "Linear regression",
-    "text": "Linear regression\n\nhai_lm &lt;- lm(panas_post ~ condition * gender, data = hai)\nsummary(hai_lm)\n\n\nCall:\nlm(formula = panas_post ~ condition * gender, data = hai)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1.80909 -0.58525  0.01475  0.48333  1.88333 \n\nCoefficients:\n                        Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)              2.68525    0.09578  28.035  &lt; 2e-16 ***\nconditionhai             0.52385    0.13287   3.943 0.000122 ***\ngenderMale               0.33142    0.20066   1.652 0.100662    \nconditionhai:genderMale -0.18218    0.30884  -0.590 0.556142    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.7481 on 153 degrees of freedom\nMultiple R-squared:  0.109, Adjusted R-squared:  0.09149 \nF-statistic: 6.236 on 3 and 153 DF,  p-value: 0.0005053\n\napa_print(hai_lm)\n\n$estimate\n$estimate$Intercept\n[1] \"$b = 2.69$, 95\\\\% CI $[2.50, 2.87]$\"\n\n$estimate$conditionhai\n[1] \"$b = 0.52$, 95\\\\% CI $[0.26, 0.79]$\"\n\n$estimate$genderMale\n[1] \"$b = 0.33$, 95\\\\% CI $[-0.07, 0.73]$\"\n\n$estimate$conditionhai_genderMale\n[1] \"$b = -0.18$, 95\\\\% CI $[-0.79, 0.43]$\"\n\n$estimate$modelfit\n$estimate$modelfit$r2\n[1] \"$R^2 = .11$\"\n\n$estimate$modelfit$r2_adj\n[1] \"$R^2_{adj} = .09$\"\n\n$estimate$modelfit$aic\n[1] \"$\\\\mathrm{AIC} = 360.36$\"\n\n$estimate$modelfit$bic\n[1] \"$\\\\mathrm{BIC} = 375.64$\"\n\n\n\n$statistic\n$statistic$Intercept\n[1] \"$t(153) = 28.03$, $p &lt; .001$\"\n\n$statistic$conditionhai\n[1] \"$t(153) = 3.94$, $p &lt; .001$\"\n\n$statistic$genderMale\n[1] \"$t(153) = 1.65$, $p = .101$\"\n\n$statistic$conditionhai_genderMale\n[1] \"$t(153) = -0.59$, $p = .556$\"\n\n$statistic$modelfit\n$statistic$modelfit$r2\n[1] \"$F(3, 153) = 6.24$, $p &lt; .001$\"\n\n\n\n$full_result\n$full_result$Intercept\n[1] \"$b = 2.69$, 95\\\\% CI $[2.50, 2.87]$, $t(153) = 28.03$, $p &lt; .001$\"\n\n$full_result$conditionhai\n[1] \"$b = 0.52$, 95\\\\% CI $[0.26, 0.79]$, $t(153) = 3.94$, $p &lt; .001$\"\n\n$full_result$genderMale\n[1] \"$b = 0.33$, 95\\\\% CI $[-0.07, 0.73]$, $t(153) = 1.65$, $p = .101$\"\n\n$full_result$conditionhai_genderMale\n[1] \"$b = -0.18$, 95\\\\% CI $[-0.79, 0.43]$, $t(153) = -0.59$, $p = .556$\"\n\n$full_result$modelfit\n$full_result$modelfit$r2\n[1] \"$R^2 = .11$, $F(3, 153) = 6.24$, $p &lt; .001$\"\n\n\n\n$table\nA data.frame with 6 labelled columns:\n\n                               term estimate      conf.int statistic  df\n1                         Intercept     2.69  [2.50, 2.87]     28.03 153\n2                      Conditionhai     0.52  [0.26, 0.79]      3.94 153\n3                        GenderMale     0.33 [-0.07, 0.73]      1.65 153\n4 Conditionhai $\\\\times$ GenderMale    -0.18 [-0.79, 0.43]     -0.59 153\n  p.value\n1  &lt; .001\n2  &lt; .001\n3    .101\n4    .556\n\nterm     : Predictor \nestimate : $b$ \nconf.int : 95\\\\% CI \nstatistic: $t$ \ndf       : $\\\\mathit{df}$ \np.value  : $p$ \nattr(,\"class\")\n[1] \"apa_results\" \"list\"       \n\n\n\napa_table(apa_print(hai_lm)$table,\n          caption = \"Linear regression results\",\n          placement = \"h\")\n\n\n(#tab:lm-table) Linear regression results\n\n\nPredictor\n\\(b\\)\n95% CI\n\\(t\\)\n\\(\\mathit{df}\\)\n\\(p\\)\n\n\n\n\nIntercept\n2.69\n[2.50, 2.87]\n28.03\n153\n&lt; .001\n\n\nConditionhai\n0.52\n[0.26, 0.79]\n3.94\n153\n&lt; .001\n\n\nGenderMale\n0.33\n[-0.07, 0.73]\n1.65\n153\n.101\n\n\nConditionhai \\(\\times\\) GenderMale\n-0.18\n[-0.79, 0.43]\n-0.59\n153\n.556\n\n\n\n\n\n\nLet’s clean up those predictor names.\n\nhai_lm_table &lt;- apa_print(hai_lm)$table\nhai_lm_table &lt;- hai_lm_table |&gt;\n  mutate(term = str_replace(term, \"Conditionhai\", \"Condition\"),\n         term = str_replace(term, \"GenderMale\", \"Gender\"))\napa_table(hai_lm_table,\n          caption = \"Linear regression results\",\n          placement = \"h\")\n\n\n(#tab:unnamed-chunk-23) Linear regression results\n\n\nterm\n\\(b\\)\n95% CI\n\\(t\\)\n\\(\\mathit{df}\\)\n\\(p\\)\n\n\n\n\nIntercept\n2.69\n[2.50, 2.87]\n28.03\n153\n&lt; .001\n\n\nCondition\n0.52\n[0.26, 0.79]\n3.94\n153\n&lt; .001\n\n\nGender\n0.33\n[-0.07, 0.73]\n1.65\n153\n.101\n\n\nCondition \\(\\times\\) Gender\n-0.18\n[-0.79, 0.43]\n-0.59\n153\n.556\n\n\n\n\n\nHow could we name the first column Predictor instead of term?"
+    "text": "Linear regression\n\nhai_lm &lt;- lm(panas_post ~ condition * gender, data = hai)\nsummary(hai_lm)\n\n\nCall:\nlm(formula = panas_post ~ condition * gender, data = hai)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1.80909 -0.58525  0.01475  0.48333  1.88333 \n\nCoefficients:\n                        Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)              2.68525    0.09578  28.035  &lt; 2e-16 ***\nconditionhai             0.52385    0.13287   3.943 0.000122 ***\ngenderMale               0.33142    0.20066   1.652 0.100662    \nconditionhai:genderMale -0.18218    0.30884  -0.590 0.556142    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.7481 on 153 degrees of freedom\nMultiple R-squared:  0.109, Adjusted R-squared:  0.09149 \nF-statistic: 6.236 on 3 and 153 DF,  p-value: 0.0005053\n\napa_print(hai_lm)\n\n$estimate\n$estimate$Intercept\n[1] \"$b = 2.69$, 95\\\\% CI $[2.50, 2.87]$\"\n\n$estimate$conditionhai\n[1] \"$b = 0.52$, 95\\\\% CI $[0.26, 0.79]$\"\n\n$estimate$genderMale\n[1] \"$b = 0.33$, 95\\\\% CI $[-0.07, 0.73]$\"\n\n$estimate$conditionhai_genderMale\n[1] \"$b = -0.18$, 95\\\\% CI $[-0.79, 0.43]$\"\n\n$estimate$modelfit\n$estimate$modelfit$r2\n[1] \"$R^2 = .11$, 90\\\\% CI $[0.03, 0.18]$\"\n\n$estimate$modelfit$r2_adj\n[1] \"$R^2_{adj} = .09$\"\n\n$estimate$modelfit$aic\n[1] \"$\\\\mathrm{AIC} = 360.36$\"\n\n$estimate$modelfit$bic\n[1] \"$\\\\mathrm{BIC} = 375.64$\"\n\n\n\n$statistic\n$statistic$Intercept\n[1] \"$t(153) = 28.03$, $p &lt; .001$\"\n\n$statistic$conditionhai\n[1] \"$t(153) = 3.94$, $p &lt; .001$\"\n\n$statistic$genderMale\n[1] \"$t(153) = 1.65$, $p = .101$\"\n\n$statistic$conditionhai_genderMale\n[1] \"$t(153) = -0.59$, $p = .556$\"\n\n$statistic$modelfit\n$statistic$modelfit$r2\n[1] \"$F(3, 153) = 6.24$, $p &lt; .001$\"\n\n\n\n$full_result\n$full_result$Intercept\n[1] \"$b = 2.69$, 95\\\\% CI $[2.50, 2.87]$, $t(153) = 28.03$, $p &lt; .001$\"\n\n$full_result$conditionhai\n[1] \"$b = 0.52$, 95\\\\% CI $[0.26, 0.79]$, $t(153) = 3.94$, $p &lt; .001$\"\n\n$full_result$genderMale\n[1] \"$b = 0.33$, 95\\\\% CI $[-0.07, 0.73]$, $t(153) = 1.65$, $p = .101$\"\n\n$full_result$conditionhai_genderMale\n[1] \"$b = -0.18$, 95\\\\% CI $[-0.79, 0.43]$, $t(153) = -0.59$, $p = .556$\"\n\n$full_result$modelfit\n$full_result$modelfit$r2\n[1] \"$R^2 = .11$, 90\\\\% CI $[0.03, 0.18]$, $F(3, 153) = 6.24$, $p &lt; .001$\"\n\n\n\n$table\nA data.frame with 6 labelled columns:\n\n                               term estimate      conf.int statistic  df\n1                         Intercept     2.69  [2.50, 2.87]     28.03 153\n2                      Conditionhai     0.52  [0.26, 0.79]      3.94 153\n3                        GenderMale     0.33 [-0.07, 0.73]      1.65 153\n4 Conditionhai $\\\\times$ GenderMale    -0.18 [-0.79, 0.43]     -0.59 153\n  p.value\n1  &lt; .001\n2  &lt; .001\n3    .101\n4    .556\n\nterm     : Predictor \nestimate : $b$ \nconf.int : 95\\\\% CI \nstatistic: $t$ \ndf       : $\\\\mathit{df}$ \np.value  : $p$ \nattr(,\"class\")\n[1] \"apa_results\" \"list\"       \n\n\n\napa_table(apa_print(hai_lm)$table,\n          caption = \"Linear regression results\",\n          placement = \"h\")\n\n\n(#tab:lm-table) Linear regression results\n\n\nPredictor\n\\(b\\)\n95% CI\n\\(t\\)\n\\(\\mathit{df}\\)\n\\(p\\)\n\n\n\n\nIntercept\n2.69\n[2.50, 2.87]\n28.03\n153\n&lt; .001\n\n\nConditionhai\n0.52\n[0.26, 0.79]\n3.94\n153\n&lt; .001\n\n\nGenderMale\n0.33\n[-0.07, 0.73]\n1.65\n153\n.101\n\n\nConditionhai \\(\\times\\) GenderMale\n-0.18\n[-0.79, 0.43]\n-0.59\n153\n.556\n\n\n\n\n\n\nLet’s clean up those predictor names.\n\nhai_lm_table &lt;- apa_print(hai_lm)$table\nhai_lm_table &lt;- hai_lm_table |&gt;\n  mutate(term = str_replace(term, \"Conditionhai\", \"Condition\"),\n         term = str_replace(term, \"GenderMale\", \"Gender\"))\napa_table(hai_lm_table,\n          caption = \"Linear regression results\",\n          placement = \"h\")\n\n\n(#tab:unnamed-chunk-23) Linear regression results\n\n\nterm\n\\(b\\)\n95% CI\n\\(t\\)\n\\(\\mathit{df}\\)\n\\(p\\)\n\n\n\n\nIntercept\n2.69\n[2.50, 2.87]\n28.03\n153\n&lt; .001\n\n\nCondition\n0.52\n[0.26, 0.79]\n3.94\n153\n&lt; .001\n\n\nGender\n0.33\n[-0.07, 0.73]\n1.65\n153\n.101\n\n\nCondition \\(\\times\\) Gender\n-0.18\n[-0.79, 0.43]\n-0.59\n153\n.556\n\n\n\n\n\nHow could we name the first column Predictor instead of term?"
   },
   {
     "objectID": "code/plot_challenge.html",
@@ -1419,6 +1419,13 @@
     "title": "Numbers",
     "section": "Group data wrangling challenge",
     "text": "Group data wrangling challenge\nUsing the penguins data set from the {palmerpenguins} package, recreate this data frame.\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\n\n\n# A tibble: 4 × 4\n  species   island     male female\n  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;\n1 Adelie    Torgersen 4035.  3396.\n2 Adelie    Biscoe    4050   3369.\n3 Adelie    Dream     4046.  3344.\n4 Chinstrap Dream     3939.  3527."
+  },
+  {
+    "objectID": "slides/19_numbers.html#mental-model-of-data-analysis",
+    "href": "slides/19_numbers.html#mental-model-of-data-analysis",
+    "title": "Numbers",
+    "section": "Mental model of data analysis",
+    "text": "Mental model of data analysis"
   },
   {
     "objectID": "slides/19_numbers.html#the-problem",
@@ -5334,11 +5341,18 @@
     "text": "Let’s code!\nMerging rows"
   },
   {
+    "objectID": "slides/20_strings.html#mental-model-of-data-analysis",
+    "href": "slides/20_strings.html#mental-model-of-data-analysis",
+    "title": "Strings",
+    "section": "Mental model of data analysis",
+    "text": "Mental model of data analysis"
+  },
+  {
     "objectID": "slides/20_strings.html#the-problem",
     "href": "slides/20_strings.html#the-problem",
     "title": "Strings",
     "section": "The problem",
-    "text": "The problem\nWhat’s different between these data sets?\nWhat is needed to create data2 from data1?\n\n\n\ndata1\n\n# A tibble: 12 × 3\n      id cond  resp \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1 cond1 yes  \n 2     2 cond2 no   \n 3     3 cond1 yes  \n 4     4 cond2 yes  \n 5     5 cond1 no   \n 6     6 cond2 yes  \n 7     7 cond1 yes  \n 8     8 cond2 no   \n 9     9 cond1 no   \n10    10 cond2 no   \n11    11 cond1 yes  \n12    12 cond2 yes  \n\n\n\n\ndata2\n\n# A tibble: 12 × 4\n      id cond  resp  output                           \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;glue&gt;                           \n 1     1 1     Yes   1 had condition 1 and said \"Yes\" \n 2     2 2     No    2 had condition 2 and said \"No\"  \n 3     3 1     Yes   3 had condition 1 and said \"Yes\" \n 4     4 2     Yes   4 had condition 2 and said \"Yes\" \n 5     5 1     No    5 had condition 1 and said \"No\"  \n 6     6 2     Yes   6 had condition 2 and said \"Yes\" \n 7     7 1     Yes   7 had condition 1 and said \"Yes\" \n 8     8 2     No    8 had condition 2 and said \"No\"  \n 9     9 1     No    9 had condition 1 and said \"No\"  \n10    10 2     No    10 had condition 2 and said \"No\" \n11    11 1     Yes   11 had condition 1 and said \"Yes\"\n12    12 2     Yes   12 had condition 2 and said \"Yes\""
+    "text": "The problem\nWhat’s different between these data sets?\nWhat is needed to create data2 from data1?\n\n\n\ndata1\n\n# A tibble: 12 × 3\n      id cond  resp \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1 cond1 yes  \n 2     2 cond2 no   \n 3     3 cond1 no   \n 4     4 cond2 no   \n 5     5 cond1 yes  \n 6     6 cond2 no   \n 7     7 cond1 no   \n 8     8 cond2 no   \n 9     9 cond1 yes  \n10    10 cond2 no   \n11    11 cond1 yes  \n12    12 cond2 no   \n\n\n\n\ndata2\n\n# A tibble: 12 × 4\n      id cond  resp  output                           \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;glue&gt;                           \n 1     1 1     Yes   1 had condition 1 and said \"Yes\" \n 2     2 2     No    2 had condition 2 and said \"No\"  \n 3     3 1     No    3 had condition 1 and said \"No\"  \n 4     4 2     No    4 had condition 2 and said \"No\"  \n 5     5 1     Yes   5 had condition 1 and said \"Yes\" \n 6     6 2     No    6 had condition 2 and said \"No\"  \n 7     7 1     No    7 had condition 1 and said \"No\"  \n 8     8 2     No    8 had condition 2 and said \"No\"  \n 9     9 1     Yes   9 had condition 1 and said \"Yes\" \n10    10 2     No    10 had condition 2 and said \"No\" \n11    11 1     Yes   11 had condition 1 and said \"Yes\"\n12    12 2     No    12 had condition 2 and said \"No\""
   },
   {
     "objectID": "slides/20_strings.html#set-up",
@@ -5373,7 +5387,7 @@
     "href": "slides/20_strings.html#quotes-1",
     "title": "Strings",
     "section": "Quotes",
-    "text": "Quotes\nIncluding quotes in strings\n\n(string3 &lt;- 'If I want to include a \"double quote\" inside a string, I use single quotes')\n\n[1] \"If I want to include a \\\"double quote\\\" inside a string, I use single quotes\"\n\nwriteLines(string3)\n\nIf I want to include a \"double quote\" inside a string, I use single quotes\n\n(string4 &lt;- \"And 'vice versa'\")\n\n[1] \"And 'vice versa'\"\n\nwriteLines(string4)\n\nAnd 'vice versa'"
+    "text": "Quotes\nIncluding quotes in strings\n\n(string3 &lt;- 'To include a \"double quote\" inside a string, I use single quotes')\n\n[1] \"To include a \\\"double quote\\\" inside a string, I use single quotes\"\n\nwriteLines(string3)\n\nTo include a \"double quote\" inside a string, I use single quotes\n\n(string4 &lt;- \"And 'vice versa'\")\n\n[1] \"And 'vice versa'\"\n\nwriteLines(string4)\n\nAnd 'vice versa'"
   },
   {
     "objectID": "slides/20_strings.html#escaping-quotes",
@@ -5401,7 +5415,7 @@
     "href": "slides/20_strings.html#string-length",
     "title": "Strings",
     "section": "String length",
-    "text": "String length\nReturn number of characters in a string with stringr::str_length()\n\n(r4ds_string &lt;- c(\"a\", \"R for data science\", NA))\n\n[1] \"a\"                  \"R for data science\" NA                  \n\nstr_length(r4ds_string)  # nchar() in base R\n\n[1]  1 18 NA\n\n# This differs from length...\nlength(r4ds_string)\n\n[1] 3"
+    "text": "String length\nReturn number of characters in a string with stringr::str_length()\n\n(r4ds_string &lt;- c(\"a\", \"R for data science\", NA))\n\n[1] \"a\"                  \"R for data science\" NA                  \n\nstr_length(r4ds_string)  # nchar() in base R\n\n[1]  1 18 NA\n\n\n\nHow does this differ from length()?\n\nlength(r4ds_string)\n\n[1] 3"
   },
   {
     "objectID": "slides/20_strings.html#extracting-strings",
@@ -5415,7 +5429,7 @@
     "href": "slides/20_strings.html#extracting-strings-1",
     "title": "Strings",
     "section": "Extracting strings",
-    "text": "Extracting strings\nUseful when you don’t have delimiters. But use delimiters!\n\npenguins |&gt;\n  mutate(species = str_sub(species, 1, 1),\n         island = str_sub(island, 1, 3),\n         year = str_sub(year, -2, -1), .keep = \"used\")\n\n# A tibble: 344 × 3\n   species island year \n   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;\n 1 A       Tor    07   \n 2 A       Tor    07   \n 3 A       Tor    07   \n 4 A       Tor    07   \n 5 A       Tor    07   \n 6 A       Tor    07   \n 7 A       Tor    07   \n 8 A       Tor    07   \n 9 A       Tor    07   \n10 A       Tor    07   \n# ℹ 334 more rows"
+    "text": "Extracting strings\nUseful when you don’t have delimiters. But use delimiters!\n\nset.seed(1)\npenguins |&gt;\n  slice_sample(n=8) |&gt; \n  mutate(species = str_sub(species, 1, 1),\n         island = str_sub(island, 1, 3),\n         year = str_sub(year, -2, -1), .keep = \"used\")\n\n# A tibble: 8 × 3\n  species island year \n  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;\n1 C       Dre    09   \n2 G       Bis    07   \n3 A       Tor    09   \n4 C       Dre    07   \n5 G       Bis    09   \n6 G       Bis    08   \n7 C       Dre    08   \n8 A       Dre    08"
   },
   {
     "objectID": "slides/20_strings.html#extracting-strings-2",
@@ -5443,14 +5457,7 @@
     "href": "slides/20_strings.html#changing-case-2",
     "title": "Strings",
     "section": "Changing case",
-    "text": "Changing case\nUseful for column names\n\nnames(iris)\n\n[1] \"Sepal.Length\" \"Sepal.Width\"  \"Petal.Length\" \"Petal.Width\"  \"Species\"     \n\nstr_to_lower(names(iris))\n\n[1] \"sepal.length\" \"sepal.width\"  \"petal.length\" \"petal.width\"  \"species\""
-  },
-  {
-    "objectID": "slides/20_strings.html#changing-case-3",
-    "href": "slides/20_strings.html#changing-case-3",
-    "title": "Strings",
-    "section": "Changing case",
-    "text": "Changing case\nOr to change case of column entries\n\npenguins |&gt;\n  mutate(sex_upper = str_to_sentence(sex), .keep = \"used\")\n\n# A tibble: 344 × 2\n   sex    sex_upper\n   &lt;fct&gt;  &lt;chr&gt;    \n 1 male   Male     \n 2 female Female   \n 3 female Female   \n 4 &lt;NA&gt;   &lt;NA&gt;     \n 5 female Female   \n 6 male   Male     \n 7 female Female   \n 8 male   Male     \n 9 &lt;NA&gt;   &lt;NA&gt;     \n10 &lt;NA&gt;   &lt;NA&gt;     \n# ℹ 334 more rows\n\n\nBut notice what happened to data type"
+    "text": "Changing case\nUseful to change case of column entries\n\npenguins |&gt;\n  mutate(sex_upper = str_to_sentence(sex), .keep = \"used\")\n\n# A tibble: 344 × 2\n   sex    sex_upper\n   &lt;fct&gt;  &lt;chr&gt;    \n 1 male   Male     \n 2 female Female   \n 3 female Female   \n 4 &lt;NA&gt;   &lt;NA&gt;     \n 5 female Female   \n 6 male   Male     \n 7 female Female   \n 8 male   Male     \n 9 &lt;NA&gt;   &lt;NA&gt;     \n10 &lt;NA&gt;   &lt;NA&gt;     \n# ℹ 334 more rows\n\n\nBut notice what happened to data type"
   },
   {
     "objectID": "slides/20_strings.html#combining-strings-1",
@@ -5506,14 +5513,21 @@
     "href": "slides/20_strings.html#solving-the-problem",
     "title": "Strings",
     "section": "Solving the problem",
-    "text": "Solving the problem\n\n\n\ndata1\n\n# A tibble: 12 × 3\n      id cond  resp \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1 cond1 yes  \n 2     2 cond2 no   \n 3     3 cond1 yes  \n 4     4 cond2 yes  \n 5     5 cond1 no   \n 6     6 cond2 yes  \n 7     7 cond1 yes  \n 8     8 cond2 no   \n 9     9 cond1 no   \n10    10 cond2 no   \n11    11 cond1 yes  \n12    12 cond2 yes  \n\n\n\n\ndata2\n\n# A tibble: 12 × 4\n      id cond  resp  output                           \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;glue&gt;                           \n 1     1 1     Yes   1 had condition 1 and said \"Yes\" \n 2     2 2     No    2 had condition 2 and said \"No\"  \n 3     3 1     Yes   3 had condition 1 and said \"Yes\" \n 4     4 2     Yes   4 had condition 2 and said \"Yes\" \n 5     5 1     No    5 had condition 1 and said \"No\"  \n 6     6 2     Yes   6 had condition 2 and said \"Yes\" \n 7     7 1     Yes   7 had condition 1 and said \"Yes\" \n 8     8 2     No    8 had condition 2 and said \"No\"  \n 9     9 1     No    9 had condition 1 and said \"No\"  \n10    10 2     No    10 had condition 2 and said \"No\" \n11    11 1     Yes   11 had condition 1 and said \"Yes\"\n12    12 2     Yes   12 had condition 2 and said \"Yes\""
+    "text": "Solving the problem\n\nlibrary(tidyverse)\nnrows &lt;- 12\nset.seed(20250307)\ndata1 &lt;- tibble(id = 1:nrows, \n                cond = rep(c(\"cond1\", \"cond2\"), times = 6), \n                resp = sample(c(\"yes\", \"no\"), nrows, replace = TRUE))"
+  },
+  {
+    "objectID": "slides/20_strings.html#solving-the-problem-1",
+    "href": "slides/20_strings.html#solving-the-problem-1",
+    "title": "Strings",
+    "section": "Solving the problem",
+    "text": "Solving the problem\n\n\n\ndata1\n\n# A tibble: 12 × 3\n      id cond  resp \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1 cond1 yes  \n 2     2 cond2 no   \n 3     3 cond1 no   \n 4     4 cond2 no   \n 5     5 cond1 yes  \n 6     6 cond2 no   \n 7     7 cond1 no   \n 8     8 cond2 no   \n 9     9 cond1 yes  \n10    10 cond2 no   \n11    11 cond1 yes  \n12    12 cond2 no   \n\n\n\n\ndata2\n\n# A tibble: 12 × 4\n      id cond  resp  output                           \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;glue&gt;                           \n 1     1 1     Yes   1 had condition 1 and said \"Yes\" \n 2     2 2     No    2 had condition 2 and said \"No\"  \n 3     3 1     No    3 had condition 1 and said \"No\"  \n 4     4 2     No    4 had condition 2 and said \"No\"  \n 5     5 1     Yes   5 had condition 1 and said \"Yes\" \n 6     6 2     No    6 had condition 2 and said \"No\"  \n 7     7 1     No    7 had condition 1 and said \"No\"  \n 8     8 2     No    8 had condition 2 and said \"No\"  \n 9     9 1     Yes   9 had condition 1 and said \"Yes\" \n10    10 2     No    10 had condition 2 and said \"No\" \n11    11 1     Yes   11 had condition 1 and said \"Yes\"\n12    12 2     No    12 had condition 2 and said \"No\""
   },
   {
     "objectID": "slides/20_strings.html#lets-code",
     "href": "slides/20_strings.html#lets-code",
     "title": "Strings",
     "section": "Let’s code!",
-    "text": "Let’s code!\nStrings [Rmd]"
+    "text": "Let’s code!\nStrings"
   },
   {
     "objectID": "slides/22_factors.html#the-problem",

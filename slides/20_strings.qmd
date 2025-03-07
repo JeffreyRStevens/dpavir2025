@@ -1,7 +1,7 @@
 ---
 title: "Strings"
 author: "Jeff Stevens"
-date: "2023-03-08"
+date: "2025-03-07"
 date-format: iso
 execute:
   echo: true
@@ -21,13 +21,19 @@ format:
 
 # Introduction
 
+## Mental model of data analysis
+
+![](../images/data_analysis_workflow.png){fig-align="center"}
+
+
+
 
 ## The problem
 
 ```{r echo = FALSE}
 library(tidyverse)
 nrows <- 12
-set.seed(311)
+set.seed(20250307)
 data1 <- tibble(id = 1:nrows, cond = rep(c("cond1", "cond2"), times = 6), resp = sample(c("yes", "no"), nrows, replace = TRUE))
 data2 <- data1 |> 
   mutate(cond = str_sub(cond, 5, 5), 
@@ -41,16 +47,18 @@ What is needed to create `data2` from `data1`?
 
 :::: {.columns}
 
-::: {.column width="28%"}
+::: {.column width="35%"}
 
 ```{r}
+#| attr-output: "style='font-size: 50%'"
 data1
 ```
 :::
 
-::: {.column width="72%"}
+::: {.column width="65%"}
 
 ```{r}
+#| attr-output: "style='font-size: 50%'"
 data2
 ```
 :::
@@ -100,7 +108,7 @@ writeLines(string2)
 Including quotes in strings
 
 ```{r}
-(string3 <- 'If I want to include a "double quote" inside a string, I use single quotes')
+(string3 <- 'To include a "double quote" inside a string, I use single quotes')
 writeLines(string3)
 (string4 <- "And 'vice versa'")
 writeLines(string4)
@@ -158,9 +166,14 @@ Return number of characters in a string with `stringr::str_length()`
 ```{r}
 (r4ds_string <- c("a", "R for data science", NA))
 str_length(r4ds_string)  # nchar() in base R
-# This differs from length...
+```
+
+:::{.fragment}
+How does this differ from `length()`?
+```{r}
 length(r4ds_string)
 ```
+:::
 
 
 <!-- ## Truncating strings -->
@@ -189,7 +202,9 @@ str_sub(x, -3, -1)
 
 Useful when you don't have delimiters. But use delimiters!
 ```{r}
+set.seed(1)
 penguins |>
+  slice_sample(n=8) |> 
   mutate(species = str_sub(species, 1, 1),
          island = str_sub(island, 1, 3),
          year = str_sub(year, -2, -1), .keep = "used")
@@ -229,18 +244,18 @@ str_to_sentence(y)
 ```
 
 
+<!-- ## Changing case -->
+
+<!-- Useful for column names -->
+<!-- ```{r} -->
+<!-- names(iris) -->
+<!-- str_to_lower(names(iris)) -->
+<!-- ``` -->
+
+
 ## Changing case
 
-Useful for column names
-```{r}
-names(iris)
-str_to_lower(names(iris))
-```
-
-
-## Changing case
-
-Or to change case of column entries
+Useful to change case of column entries
 ```{r}
 penguins |>
   mutate(sex_upper = str_to_sentence(sex), .keep = "used")
@@ -335,24 +350,37 @@ penguins |>
 ## Cheatsheet
 
 
-![](../images/stringr_cheatsheet.png){fig-align="center"}
+[![](../images/stringr_cheatsheet.png){fig-align="center"}](https://rstudio.github.io/cheatsheets/html/strings.html)
 
 
 
 ## Solving the problem
 
+```{r}
+library(tidyverse)
+nrows <- 12
+set.seed(20250307)
+data1 <- tibble(id = 1:nrows, 
+                cond = rep(c("cond1", "cond2"), times = 6), 
+                resp = sample(c("yes", "no"), nrows, replace = TRUE))
+```
+
+## Solving the problem
+
 :::: {.columns}
 
-::: {.column width="28%"}
+::: {.column width="35%"}
 
 ```{r}
+#| attr-output: "style='font-size: 50%'"
 data1
 ```
 :::
 
-::: {.column width="72%"}
+::: {.column width="65%"}
 
 ```{r}
+#| attr-output: "style='font-size: 50%'"
 data2
 ```
 :::
@@ -362,4 +390,4 @@ data2
 
 ## Let's code!
 
-[Strings](../code/20_strings.html){target="_blank"} [[Rmd](../code/20_strings.Rmd){target="_blank"}]
+[Strings](../code/20_strings.html){target="_blank"}

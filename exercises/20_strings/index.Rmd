@@ -30,10 +30,15 @@ Character strings are a basic data type in R. When reading in data, typically an
 
 As review, how do you coerce a vector of numeric data that you want to be characters? 
 
-**Convert the vector `x` below to be a character string.**
+**1. Convert the vector `x` below to be a character string.**
 ```{r exercise1, exercise = TRUE}
 x <- 1:10
 x <- ...
+```
+ 
+```{r exercise1-solution}
+x <- 1:10
+x <- as.character(1:10)
 ```
  
 ```{r exercise1-check}
@@ -48,7 +53,7 @@ We assign strings by wrapping them in quotes. But what happens if we want to inc
 
 ```{r string-quotes}
 question(
-  'Which options would generate this character string? \n
+  'Which option(s) would generate this character string? \n
   _The central message of Buddhism is not "every man for himself"_',
   answer('`\'The central message of Buddhism is not "every man for himself"\'`', correct = TRUE),
   answer('`\"The central message of Buddhism is not \\"every man for himself\\"\"`', correct = TRUE),
@@ -99,10 +104,15 @@ quiz(
 
 ###
 
-**Type the code that would extract the _first_ three characters from each element of the following vector:**
+**2. Type the code that would extract the _first_ three characters from each element of the following vector:**
 ```{r exercise2, exercise = TRUE}
 x <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
 ...
+```
+ 
+```{r exercise2-solution}
+x <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+str_sub(x, 1, 3)
 ```
  
 ```{r exercise2-check}
@@ -113,10 +123,15 @@ grade_result(
 
 ###
 
-**Type the code that would extract the _last_ three characters from each element of the following vector:**
+**3. Type the code that would extract the _last_ three characters from each element of the following vector:**
 ```{r exercise2b, exercise = TRUE}
 x <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
 ...
+```
+ 
+```{r exercise2b-solution}
+x <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+str_sub(x, -3, -1)
 ```
  
 ```{r exercise2b-check}
@@ -127,10 +142,15 @@ grade_result(
 
 ###
 
-**Type the code that converts the MLA formatted title _Beyond Good and Evil_ to APA formatted title _Beyond good and evil_.**
+**4. Type the code that converts the MLA formatted title _Beyond Good and Evil_ to APA formatted title _Beyond good and evil_.**
 ```{r exercise3, exercise = TRUE}
 x <- "Beyond Good and Evil"
 ...
+```
+ 
+```{r exercise3-solution}
+x <- "Beyond Good and Evil"
+str_to_sentence(x)
 ```
  
 ```{r exercise3-check}
@@ -145,10 +165,15 @@ grade_result(
 
 For the following exercises, use the appropriate function to create the sentence: `"Yes they do, Otto. They just don't understand it."`
 
-**Produce this sentence use the object `name` and the `paste()` function.**
+**5. Produce this sentence use the object `name` and the `paste()` function.**
 ```{r exercise4, exercise = TRUE}
 name <- "Otto"
 paste(...)
+```
+ 
+```{r exercise4-solution}
+name <- "Otto"
+paste("Yes they do, ", name, ". They just don't understand it.", sep = "")
 ```
  
 ```{r exercise4-check}
@@ -159,10 +184,15 @@ grade_result(
 
 ###
 
-**Now produce the sentence using the `paste0()` function.**
+**6. Now produce the sentence using the `paste0()` function.**
 ```{r exercise5, exercise = TRUE}
 name <- "Otto"
 paste0(...)
+```
+ 
+```{r exercise5-solution}
+name <- "Otto"
+paste0("Yes they do, ", name, ". They just don't understand it.")
 ```
  
 ```{r exercise5-check}
@@ -173,10 +203,15 @@ grade_result(
 
 ###
 
-**Now produce the sentence using the `str_glue()` function with `name` as an argument.**
+**7. Now produce the sentence using the `str_glue()` function with `name` as an argument.**
 ```{r exercise6, exercise = TRUE}
 name <- "Otto"
 str_glue(...)
+```
+ 
+```{r exercise6-solution}
+name <- "Otto"
+str_glue("Yes they do, {name}. They just don't understand it.", name = "Otto")
 ```
  
 ```{r exercise6-check}
@@ -184,8 +219,6 @@ grade_result(
   pass_if(~identical(.result, str_glue("Yes they do, {name}. They just don't understand it.", name = "Otto")))
 )
 ```
-
-### 
 
 ### Wrap-up
 
