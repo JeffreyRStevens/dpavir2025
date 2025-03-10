@@ -1292,63 +1292,63 @@
     "href": "slides/21_patterns.html#regular-expressions-1",
     "title": "Matching patterns",
     "section": "Regular expressions",
-    "text": "Regular expressions\nHere’s the regex I used to detect IP addresses: ^(?:(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])(\\.(?!$)|$)){4}$"
+    "text": "Regular expressions\nHere’s the regex I used to detect IP addresses in excluder:\n^(?:(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])(\\.(?!$)|$)){4}$"
   },
   {
     "objectID": "slides/21_patterns.html#matching-strings",
     "href": "slides/21_patterns.html#matching-strings",
     "title": "Matching patterns",
     "section": "Matching strings",
-    "text": "Matching strings\nView string patterns with stringr::str_view_all()\n\n(x &lt;- c(\"apple\", \"banana\", \"pear\", NA))\n\n[1] \"apple\"  \"banana\" \"pear\"   NA      \n\nstr_view_all(x, \"a\")\n\n[1] │ &lt;a&gt;pple\n[2] │ b&lt;a&gt;n&lt;a&gt;n&lt;a&gt;\n[3] │ pe&lt;a&gt;r\n[4] │ NA"
+    "text": "Matching strings\nView string patterns with stringr::str_view()\n\n(x &lt;- c(\"apple\", \"banana\", \"pear\", NA))\n\n[1] \"apple\"  \"banana\" \"pear\"   NA      \n\nstr_view(x, \"a\")\n\n[1] │ &lt;a&gt;pple\n[2] │ b&lt;a&gt;n&lt;a&gt;n&lt;a&gt;\n[3] │ pe&lt;a&gt;r"
   },
   {
     "objectID": "slides/21_patterns.html#regex-101",
     "href": "slides/21_patterns.html#regex-101",
     "title": "Matching patterns",
     "section": "Regex 101",
-    "text": "Regex 101\n. is wildcard\n\nstr_view_all(x, \".a.\")\n\n[1] │ apple\n[2] │ &lt;ban&gt;ana\n[3] │ p&lt;ear&gt;\n[4] │ NA"
+    "text": "Regex 101\n. is wildcard\n\nstr_view(x, \".a.\")\n\n[2] │ &lt;ban&gt;ana\n[3] │ p&lt;ear&gt;"
   },
   {
     "objectID": "slides/21_patterns.html#regex-101-1",
     "href": "slides/21_patterns.html#regex-101-1",
     "title": "Matching patterns",
     "section": "Regex 101",
-    "text": "Regex 101\n^ to match the start of the string (like starts_with())\n$ to match the end of the string (like ends_with())\n\nstr_view_all(x, \"^a\")\n\n[1] │ &lt;a&gt;pple\n[2] │ banana\n[3] │ pear\n[4] │ NA\n\nstr_view_all(x, \"a$\")\n\n[1] │ apple\n[2] │ banan&lt;a&gt;\n[3] │ pear\n[4] │ NA"
+    "text": "Regex 101\n^ to match the start of the string (like starts_with())\n$ to match the end of the string (like ends_with())\n\nstr_view(x, \"^a\")\n\n[1] │ &lt;a&gt;pple\n\nstr_view(x, \"a$\")\n\n[2] │ banan&lt;a&gt;"
   },
   {
     "objectID": "slides/21_patterns.html#regex-101-2",
     "href": "slides/21_patterns.html#regex-101-2",
     "title": "Matching patterns",
     "section": "Regex 101",
-    "text": "Regex 101\n| matches one pattern OR another (e.g., this|that)\n\nstr_view_all(x, \"ap|an|ar\")\n\n[1] │ &lt;ap&gt;ple\n[2] │ b&lt;an&gt;&lt;an&gt;a\n[3] │ pe&lt;ar&gt;\n[4] │ NA\n\n\n\nWrap character groups in ()\n\nstr_view_all(\"Are you here or are you there?\", \"(A|a)re\")  \n\n[1] │ &lt;Are&gt; you here or &lt;are&gt; you there?"
+    "text": "Regex 101\n| matches one pattern OR another (e.g., this|that)\n\nstr_view(x, \"ap|an|ar\")\n\n[1] │ &lt;ap&gt;ple\n[2] │ b&lt;an&gt;&lt;an&gt;a\n[3] │ pe&lt;ar&gt;\n\n\n\nWrap character groups in ()\n\nstr_view(\"Are you here or are you there?\", \"(A|a)re\")  \n\n[1] │ &lt;Are&gt; you here or &lt;are&gt; you there?"
   },
   {
     "objectID": "slides/21_patterns.html#regex-101-3",
     "href": "slides/21_patterns.html#regex-101-3",
     "title": "Matching patterns",
     "section": "Regex 101",
-    "text": "Regex 101\n\\d matches any digit\n\n# view digits\nstr_view_all(\"March 10, 2020\", \"\\\\d\")\n\n[1] │ March &lt;1&gt;&lt;0&gt;, &lt;2&gt;&lt;0&gt;&lt;2&gt;&lt;0&gt;"
+    "text": "Regex 101\n\\d matches any digit\n\n# view digits\nstr_view(\"March 10, 2025\", \"\\\\d\")\n\n[1] │ March &lt;1&gt;&lt;0&gt;, &lt;2&gt;&lt;0&gt;&lt;2&gt;&lt;5&gt;"
   },
   {
     "objectID": "slides/21_patterns.html#regex-101-4",
     "href": "slides/21_patterns.html#regex-101-4",
     "title": "Matching patterns",
     "section": "Regex 101",
-    "text": "Regex 101\n[abc] matches individual characters (a, b, or c)\n\n# view everything with ab or a&lt;space&gt;\nstr_view_all(c(\"abc\", \"a.c\", \"a*c\", \"a c\"), \"a[b ]\")\n\n[1] │ &lt;ab&gt;c\n[2] │ a.c\n[3] │ a*c\n[4] │ &lt;a &gt;c"
+    "text": "Regex 101\n[abc] matches individual characters (a, b, or c)\n\n# view everything with ab or a&lt;space&gt;\nstr_view(c(\"abc\", \"a.c\", \"a*c\", \"a c\"), \"a[b ]\")\n\n[1] │ &lt;ab&gt;c\n[4] │ &lt;a &gt;c"
   },
   {
     "objectID": "slides/21_patterns.html#regex-101-5",
     "href": "slides/21_patterns.html#regex-101-5",
     "title": "Matching patterns",
     "section": "Regex 101",
-    "text": "Regex 101\n[^abc] matches individual characters except a, b, or c\n\n# view everything except ab and a&lt;space&gt;\nstr_view_all(c(\"abc\", \"a.c\", \"a*c\", \"a c\"), \"a[^b ]\")\n\n[1] │ abc\n[2] │ &lt;a.&gt;c\n[3] │ &lt;a*&gt;c\n[4] │ a c\n\n# view everything except digits\nstr_view_all(\"March 10, 2020\", \"[^\\\\d]\")  \n\n[1] │ &lt;M&gt;&lt;a&gt;&lt;r&gt;&lt;c&gt;&lt;h&gt;&lt; &gt;10&lt;,&gt;&lt; &gt;2020"
+    "text": "Regex 101\n[^abc] matches individual characters except a, b, or c\n\n# view everything except ab and a&lt;space&gt;\nstr_view(c(\"abc\", \"a.c\", \"a*c\", \"a c\"), \"a[^b ]\")\n\n[2] │ &lt;a.&gt;c\n[3] │ &lt;a*&gt;c\n\n# view everything except digits\nstr_view(\"March 10, 2020\", \"[^\\\\d]\")  \n\n[1] │ &lt;M&gt;&lt;a&gt;&lt;r&gt;&lt;c&gt;&lt;h&gt;&lt; &gt;10&lt;,&gt;&lt; &gt;2020"
   },
   {
     "objectID": "slides/21_patterns.html#detecting-pattern-matches",
     "href": "slides/21_patterns.html#detecting-pattern-matches",
     "title": "Matching patterns",
     "section": "Detecting pattern matches",
-    "text": "Detecting pattern matches\nDetect matching elements with stringr::str_detect()\n\nx\n\n[1] \"apple\"  \"banana\" \"pear\"   NA      \n\nstr_detect(x, \"e\")  # results in logical vector\n\n[1]  TRUE FALSE  TRUE    NA\n\n\n\n\nsum(str_detect(x, \"e\"), na.rm = TRUE)  # sum matching elements\n\n[1] 2\n\nmean(str_detect(x, \"e\"), na.rm = TRUE)  # calculate proportion of matches\n\n[1] 0.6666667"
+    "text": "Detecting pattern matches\nDetect matching elements with stringr::str_detect()\nReturns logical vector of elements that match pattern\n\nx\n\n[1] \"apple\"  \"banana\" \"pear\"   NA      \n\nstr_detect(x, \"e\")  # grepl() in base R\n\n[1]  TRUE FALSE  TRUE    NA\n\n\n\n\nsum(str_detect(x, \"e\"), na.rm = TRUE)  # sum matching elements\n\n[1] 2\n\nmean(str_detect(x, \"e\"), na.rm = TRUE)  # calculate proportion of matches\n\n[1] 0.6666667"
   },
   {
     "objectID": "slides/21_patterns.html#extracting-pattern-matches",
@@ -1362,14 +1362,14 @@
     "href": "slides/21_patterns.html#extracting-pattern-matches-1",
     "title": "Matching patterns",
     "section": "Extracting pattern matches",
-    "text": "Extracting pattern matches\nExtract elements that match a pattern with stringr::str_subset()\n\nhead(words, n = 20)\n\n [1] \"a\"         \"able\"      \"about\"     \"absolute\"  \"accept\"    \"account\"  \n [7] \"achieve\"   \"across\"    \"act\"       \"active\"    \"actual\"    \"add\"      \n[13] \"address\"   \"admit\"     \"advertise\" \"affect\"    \"afford\"    \"after\"    \n[19] \"afternoon\" \"again\"    \n\n\n\n\nstr_subset(words, \"^rec\")  # select elements starting with \"rec\"\n\n[1] \"receive\"   \"recent\"    \"reckon\"    \"recognize\" \"recommend\" \"record\"   \n\nstr_subset(words, \"ing$\")  # select elements ending with \"ing\"\n\n[1] \"bring\"   \"during\"  \"evening\" \"king\"    \"meaning\" \"morning\" \"ring\"   \n[8] \"sing\"    \"thing\""
+    "text": "Extracting pattern matches\nExtract elements that match a pattern with stringr::str_subset()\nReturns elements that match pattern\n\nhead(words, n = 20)\n\n [1] \"a\"         \"able\"      \"about\"     \"absolute\"  \"accept\"    \"account\"  \n [7] \"achieve\"   \"across\"    \"act\"       \"active\"    \"actual\"    \"add\"      \n[13] \"address\"   \"admit\"     \"advertise\" \"affect\"    \"afford\"    \"after\"    \n[19] \"afternoon\" \"again\"    \n\n\n\n\nstr_subset(words, \"^rec\")  # select elements starting with \"rec\"\n\n[1] \"receive\"   \"recent\"    \"reckon\"    \"recognize\" \"recommend\" \"record\"   \n\nstr_subset(words, \"ing$\")  # select elements ending with \"ing\"\n\n[1] \"bring\"   \"during\"  \"evening\" \"king\"    \"meaning\" \"morning\" \"ring\"   \n[8] \"sing\"    \"thing\""
   },
   {
     "objectID": "slides/21_patterns.html#replacing-pattern-matches",
     "href": "slides/21_patterns.html#replacing-pattern-matches",
     "title": "Matching patterns",
     "section": "Replacing pattern matches",
-    "text": "Replacing pattern matches\nReplace matches with new strings with stringr::str_replace() and stringr::str_replace_all()\n\nstr_replace(x, \"[aeiou]\", \"-\")  # replace only first instance of match\n\n[1] \"-pple\"  \"b-nana\" \"p-ar\"   NA      \n\n\n\n\nstr_replace_all(x, \"[aeiou]\", \"-\")  # replace all matches\n\n[1] \"-ppl-\"  \"b-n-n-\" \"p--r\"   NA      \n\nstr_replace_all(x, \"[^aeiou]\", \"-\")  # replace all matches\n\n[1] \"a---e\"  \"-a-a-a\" \"-ea-\"   NA"
+    "text": "Replacing pattern matches\nReplace matches with new strings with stringr::str_replace() and stringr::str_replace_all()\n\nstr_replace(x, \"[aeiou]\", \"-\")  # replace only first instance of match\n\n[1] \"-pple\"  \"b-nana\" \"p-ar\"   NA      \n\n\n\n\nstr_replace_all(x, \"[aeiou]\", \"-\")  # replace all matches\n\n[1] \"-ppl-\"  \"b-n-n-\" \"p--r\"   NA      \n\nstr_replace_all(x, \"[^aeiou]\", \"-\")  # replace all matches\n\n[1] \"a---e\"  \"-a-a-a\" \"-ea-\"   NA      \n\n\n\n\nHow do we do this based on position instead of pattern?"
   },
   {
     "objectID": "slides/21_patterns.html#replacing-pattern-matches-1",
@@ -1383,7 +1383,7 @@
     "href": "slides/21_patterns.html#replacing-na",
     "title": "Matching patterns",
     "section": "Replacing NA\n",
-    "text": "Replacing NA\n\nReplace NA with another value with stringr::str_replace_na()\n\nx\n\n[1] \"apple\"  \"banana\" \"pear\"   NA      \n\nstr_replace_na(x)  # by default replaces NA with \"NA\"\n\n[1] \"apple\"  \"banana\" \"pear\"   \"NA\"    \n\nstr_replace_na(x, \"Missing\")  # but you can replace with other strings\n\n[1] \"apple\"   \"banana\"  \"pear\"    \"Missing\""
+    "text": "Replacing NA\n\nReplace NA with another value with dplyr::replace_na()\n\nx\n\n[1] \"apple\"  \"banana\" \"pear\"   NA      \n\nreplace_na(x, \"Missing\")\n\n[1] \"apple\"   \"banana\"  \"pear\"    \"Missing\""
   },
   {
     "objectID": "slides/21_patterns.html#splitting-strings-1",
@@ -1404,6 +1404,13 @@
     "href": "slides/21_patterns.html#solving-the-problem",
     "title": "Matching patterns",
     "section": "Solving the problem",
+    "text": "Solving the problem\n\nlibrary(tidyverse)\nnrows &lt;- 12\nset.seed(100)\ndata1 &lt;- tibble(time = rep(c(\"early-day\", \"mid-day\", \"late-day\", \"daytime\"), \n                           times = 3), \n                species = sample(c(\"dog\", \"dogfish\", \"bear dog\", \"cat\", \"catfish\"), \n                                 nrows, replace = TRUE), \n                resp = sample(c(\"yes\", \"no\", \"yes\", \"no\", NA), nrows, \n                              replace = TRUE))"
+  },
+  {
+    "objectID": "slides/21_patterns.html#solving-the-problem-1",
+    "href": "slides/21_patterns.html#solving-the-problem-1",
+    "title": "Matching patterns",
+    "section": "Solving the problem",
     "text": "Solving the problem\n\n\n\ndata1\n\n# A tibble: 12 × 3\n   time      species  resp \n   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;\n 1 early-day dogfish  yes  \n 2 mid-day   bear dog no   \n 3 late-day  dog      yes  \n 4 daytime   dogfish  no   \n 5 early-day cat      yes  \n 6 mid-day   cat      no   \n 7 late-day  dogfish  no   \n 8 daytime   bear dog no   \n 9 early-day dogfish  &lt;NA&gt; \n10 mid-day   catfish  yes  \n11 late-day  cat      yes  \n12 daytime   bear dog yes  \n\n\n\n\ndata2\n\n# A tibble: 8 × 3\n  time      species  resp   \n  &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;  \n1 early-Day dogfish  yes    \n2 mid-Day   bear dog no     \n3 late-Day  dog      yes    \n4 daytime   dogfish  no     \n5 late-Day  dogfish  no     \n6 daytime   bear dog no     \n7 early-Day dogfish  no data\n8 daytime   bear dog yes"
   },
   {
@@ -1411,7 +1418,7 @@
     "href": "slides/21_patterns.html#lets-code",
     "title": "Matching patterns",
     "section": "Let’s code!",
-    "text": "Let’s code!\nMatching patterns [Rmd]"
+    "text": "Let’s code!\nMatching patterns"
   },
   {
     "objectID": "slides/19_numbers.html#group-data-wrangling-challenge",

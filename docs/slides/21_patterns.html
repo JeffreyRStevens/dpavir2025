@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="author" content="Jeff Stevens">
-<meta name="dcterms.date" content="2023-03-10">
+<meta name="dcterms.date" content="2025-03-10">
 <title>Data Processing and Visualization in R – Matching patterns</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,7 +203,7 @@ Jeff Stevens
 </div>
 </div>
 
-  <p class="date">2023-03-10</p>
+  <p class="date">2025-03-10</p>
 </section><section><section id="introduction" class="title-slide slide level1 center"><h1>Introduction</h1>
 
 </section><section id="the-problem" class="slide level2"><h2>The problem</h2>
@@ -214,7 +214,7 @@ Jeff Stevens
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
+<pre style="font-size: 50%"><code># A tibble: 12 × 3
    time      species  resp 
    &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;
  1 early-day dogfish  yes  
@@ -235,7 +235,7 @@ Jeff Stevens
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 3
+<pre style="font-size: 50%"><code># A tibble: 8 × 3
   time      species  resp   
   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;  
 1 early-Day dogfish  yes    
@@ -275,69 +275,60 @@ Jeff Stevens
 <p>(regex for short)</p>
 
 <img data-src="../images/regex_meme2.jpeg" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section><section id="regular-expressions-1" class="slide level2"><h2>Regular expressions</h2>
-<p>Here’s the regex I used to detect IP addresses: <code>^(?:(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])(\.(?!$)|$)){4}$</code></p>
+<p>Here’s the regex I used to detect IP addresses in <a href="https://docs.ropensci.org/excluder/">excluder</a>:</p>
+<p><code>^(?:(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])(\.(?!$)|$)){4}$</code></p>
 <p><img data-src="../images/regex_meme.jpeg" class="absolute" style="top: 40%; left: 0%; height: 50%; "></p>
 <p><img data-src="../images/regex_meme.png" class="absolute" style="top: 40%; left: 55%; height: 50%; "></p>
 </section><section id="matching-strings" class="slide level2"><h2>Matching strings</h2>
-<p>View string patterns with <code><a href="https://stringr.tidyverse.org/reference/str_view.html">stringr::str_view_all()</a></code></p>
+<p>View string patterns with <code><a href="https://stringr.tidyverse.org/reference/str_view.html">stringr::str_view()</a></code></p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "apple"  "banana" "pear"   NA      </code></pre>
 </div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"a"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"a"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;a&gt;pple
 [2] │ b&lt;a&gt;n&lt;a&gt;n&lt;a&gt;
-[3] │ pe&lt;a&gt;r
-[4] │ NA</code></pre>
+[3] │ pe&lt;a&gt;r</code></pre>
 </div>
 </div>
 </section><section id="regex-101" class="slide level2"><h2>Regex 101</h2>
 <p><code>.</code> is wildcard</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">".a."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">".a."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] │ apple
-[2] │ &lt;ban&gt;ana
-[3] │ p&lt;ear&gt;
-[4] │ NA</code></pre>
+<pre><code>[2] │ &lt;ban&gt;ana
+[3] │ p&lt;ear&gt;</code></pre>
 </div>
 </div>
 </section><section id="regex-101-1" class="slide level2"><h2>Regex 101</h2>
 <p><code>^</code> to match the start of the string (like <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code>)</p>
 <p><code>$</code> to match the end of the string (like <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with()</a></code>)</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"^a"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"^a"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] │ &lt;a&gt;pple
-[2] │ banana
-[3] │ pear
-[4] │ NA</code></pre>
+<pre><code>[1] │ &lt;a&gt;pple</code></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"a$"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"a$"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] │ apple
-[2] │ banan&lt;a&gt;
-[3] │ pear
-[4] │ NA</code></pre>
+<pre><code>[2] │ banan&lt;a&gt;</code></pre>
 </div>
 </div>
 </section><section id="regex-101-2" class="slide level2"><h2>Regex 101</h2>
 <p><code>|</code> matches one pattern OR another (e.g., <code>this|that</code>)</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"ap|an|ar"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"ap|an|ar"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;ap&gt;ple
 [2] │ b&lt;an&gt;&lt;an&gt;a
-[3] │ pe&lt;ar&gt;
-[4] │ NA</code></pre>
+[3] │ pe&lt;ar&gt;</code></pre>
 </div>
 </div>
 <div class="fragment">
 <p>Wrap character groups in <code>()</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="st">"Are you here or are you there?"</span>, <span class="st">"(A|a)re"</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="st">"Are you here or are you there?"</span>, <span class="st">"(A|a)re"</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;Are&gt; you here or &lt;are&gt; you there?</code></pre>
 </div>
@@ -347,20 +338,18 @@ Jeff Stevens
 <p><code>\d</code> matches any digit</p>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># view digits</span></span>
-<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="st">"March 10, 2020"</span>, <span class="st">"\\d"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="st">"March 10, 2025"</span>, <span class="st">"\\d"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] │ March &lt;1&gt;&lt;0&gt;, &lt;2&gt;&lt;0&gt;&lt;2&gt;&lt;0&gt;</code></pre>
+<pre><code>[1] │ March &lt;1&gt;&lt;0&gt;, &lt;2&gt;&lt;0&gt;&lt;2&gt;&lt;5&gt;</code></pre>
 </div>
 </div>
 </section><section id="regex-101-4" class="slide level2"><h2>Regex 101</h2>
 <p><code>[abc]</code> matches individual characters (a, b, or c)</p>
 <div class="cell">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># view everything with ab or a&lt;space&gt;</span></span>
-<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"a.c"</span>, <span class="st">"a*c"</span>, <span class="st">"a c"</span><span class="op">)</span>, <span class="st">"a[b ]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"a.c"</span>, <span class="st">"a*c"</span>, <span class="st">"a c"</span><span class="op">)</span>, <span class="st">"a[b ]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;ab&gt;c
-[2] │ a.c
-[3] │ a*c
 [4] │ &lt;a &gt;c</code></pre>
 </div>
 </div>
@@ -368,15 +357,13 @@ Jeff Stevens
 <p><code>[^abc]</code> matches individual characters except a, b, or c</p>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># view everything except ab and a&lt;space&gt;</span></span>
-<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"a.c"</span>, <span class="st">"a*c"</span>, <span class="st">"a c"</span><span class="op">)</span>, <span class="st">"a[^b ]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"a.c"</span>, <span class="st">"a*c"</span>, <span class="st">"a c"</span><span class="op">)</span>, <span class="st">"a[^b ]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] │ abc
-[2] │ &lt;a.&gt;c
-[3] │ &lt;a*&gt;c
-[4] │ a c</code></pre>
+<pre><code>[2] │ &lt;a.&gt;c
+[3] │ &lt;a*&gt;c</code></pre>
 </div>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># view everything except digits</span></span>
-<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="st">"March 10, 2020"</span>, <span class="st">"[^\\d]"</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="st">"March 10, 2020"</span>, <span class="st">"[^\\d]"</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;M&gt;&lt;a&gt;&lt;r&gt;&lt;c&gt;&lt;h&gt;&lt; &gt;10&lt;,&gt;&lt; &gt;2020</code></pre>
 </div>
@@ -385,12 +372,13 @@ Jeff Stevens
 
 </section><section id="detecting-pattern-matches" class="slide level2"><h2>Detecting pattern matches</h2>
 <p>Detect matching elements with <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">stringr::str_detect()</a></code></p>
+<p>Returns logical vector of elements that match pattern</p>
 <div class="cell">
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "apple"  "banana" "pear"   NA      </code></pre>
 </div>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"e"</span><span class="op">)</span>  <span class="co"># results in logical vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"e"</span><span class="op">)</span>  <span class="co"># grepl() in base R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE  TRUE    NA</code></pre>
 </div>
@@ -432,6 +420,7 @@ Jeff Stevens
 </div>
 </section><section id="extracting-pattern-matches-1" class="slide level2"><h2>Extracting pattern matches</h2>
 <p>Extract <strong>elements</strong> that match a pattern with <code><a href="https://stringr.tidyverse.org/reference/str_subset.html">stringr::str_subset()</a></code></p>
+<p>Returns elements that match pattern</p>
 <div class="cell">
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">words</span>, n <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -499,6 +488,9 @@ Jeff Stevens
 </div>
 </div>
 </div>
+<div class="fragment">
+<p>How do we do this based on position instead of pattern?</p>
+</div>
 </section><section id="replacing-pattern-matches-1" class="slide level2"><h2>Replacing pattern matches</h2>
 <p>You <em>can</em> use this to recode character variables, but…</p>
 <div class="cell">
@@ -525,17 +517,13 @@ Jeff Stevens
 </div>
 </section><section id="replacing-na" class="slide level2"><h2>Replacing <code>NA</code>
 </h2>
-<p>Replace <code>NA</code> with another value with <code><a href="https://stringr.tidyverse.org/reference/str_replace_na.html">stringr::str_replace_na()</a></code></p>
+<p>Replace <code>NA</code> with another value with <code>dplyr::replace_na()</code></p>
 <div class="cell">
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "apple"  "banana" "pear"   NA      </code></pre>
 </div>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace_na.html">str_replace_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># by default replaces NA with "NA"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "apple"  "banana" "pear"   "NA"    </code></pre>
-</div>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace_na.html">str_replace_na</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"Missing"</span><span class="op">)</span>  <span class="co"># but you can replace with other strings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/replace_na.html">replace_na</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"Missing"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "apple"   "banana"  "pear"    "Missing"</code></pre>
 </div>
@@ -545,12 +533,12 @@ Jeff Stevens
 </section><section id="splitting-strings-1" class="slide level2"><h2>Splitting strings</h2>
 <p>Split a string up into pieces with str_split()</p>
 <div class="cell">
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sentences</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sentences</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "The birch canoe slid on the smooth planks." 
 [2] "Glue the sheet to the dark blue background."</code></pre>
 </div>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sentences</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sentences</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="st">" "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -569,7 +557,7 @@ Jeff Stevens
 </section><section id="splitting-strings-2" class="slide level2"><h2>Splitting strings</h2>
 <p>Convert to matrix with <code>simplify</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sentences</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sentences</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="st">" "</span>, simplify <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]   [,2]    [,3]    [,4]     [,5]  [,6]    [,7]     [,8]         
@@ -585,12 +573,24 @@ Jeff Stevens
 <!-- fields |> str_split(": ", n = 2, simplify = TRUE) -->
 <!-- ``` -->
 </section><section id="solving-the-problem" class="slide level2"><h2>Solving the problem</h2>
+<div class="cell">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="va">nrows</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"early-day"</span>, <span class="st">"mid-day"</span>, <span class="st">"late-day"</span>, <span class="st">"daytime"</span><span class="op">)</span>, </span>
+<span>                           times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, </span>
+<span>                species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dog"</span>, <span class="st">"dogfish"</span>, <span class="st">"bear dog"</span>, <span class="st">"cat"</span>, <span class="st">"catfish"</span><span class="op">)</span>, </span>
+<span>                                 <span class="va">nrows</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, </span>
+<span>                resp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>, <span class="cn">NA</span><span class="op">)</span>, <span class="va">nrows</span>, </span>
+<span>                              replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="solving-the-problem-1" class="slide level2"><h2>Solving the problem</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
+<pre style="font-size: 50%"><code># A tibble: 12 × 3
    time      species  resp 
    &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;
  1 early-day dogfish  yes  
@@ -609,9 +609,9 @@ Jeff Stevens
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 3
+<pre style="font-size: 50%"><code># A tibble: 8 × 3
   time      species  resp   
   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;  
 1 early-Day dogfish  yes    
@@ -626,7 +626,7 @@ Jeff Stevens
 </div>
 </div></div>
 </section><section id="lets-code" class="slide level2"><h2>Let’s code!</h2>
-<p><a href="../code/21_patterns.html" target="_blank">Matching patterns</a> [<a href="../code/21_patterns.html" target="_blank">Rmd</a>]</p>
+<p><a href="../code/21_patterns.html" target="_blank">Matching patterns</a></p>
 
 
 </section></section>

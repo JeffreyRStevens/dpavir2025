@@ -41,7 +41,7 @@ Here are a few metacharacters for regular expressions that help us generate patt
 
 ###
 
-To practice with regular expressions, we can use the `str_view_all()` function, which simply highlights patterns that match regular expressions passed to it. Let's work with the first 20 elements of the `fruit` data set, which we'll call `fruits`.
+To practice with regular expressions, we can use the `str_view()` function, which simply returns vector elements that include pattern matches and highlights patterns that match regular expressions passed to it. Let's work with the first 20 elements of the `fruit` data set, which we'll call `fruits`.
 
 ```{r}
 fruits <- fruit[1:20]
@@ -50,36 +50,48 @@ fruits <- fruit[1:20]
 Let's first view the letter "a" in `fruits`.
 
 ```{r echo = TRUE}
-str_view_all(fruits, "a")
+str_view(fruits, "a")
 ```
 
 Strings that match the patterns are surrounded by `<>` just to show us where the pattern is matched. Now let's view letter "a"s that have any other characters in front of them.
 
 ```{r echo = TRUE}
-str_view_all(fruits, ".a")
+str_view(fruits, ".a")
 ```
 
 Notice apple and apricot are no longer marked in the view. Why not?
 
 ###
 
-**Use `str_view_all()` to mark all _vowels_ in `fruits`.**
+**1. Use `str_view()` to mark all _vowels_ in `fruits`.**
 ```{r exercise1, exercise = TRUE}
-str_view_all(fruits, ...)
+str_view(fruits, ...)
+```
+ 
+```{r exercise1-solution}
+str_view(fruits, "[aeoiu]")
 ```
  
 ###
 
-**Use `str_view_all()` to mark all _consonants_ in `fruits`.**
+**2. Use `str_view()` to mark all _consonants_ in `fruits`.**
 ```{r exercise2, exercise = TRUE}
-str_view_all(fruits, ...)
+str_view(fruits, ...)
+```
+ 
+```{r exercise2-solution}
+str_view(fruits, "[^aeoiu]")
 ```
  
 ###
 
-**Use `str_view_all()` to mark all fruits that end with "nut".**
+**3. Use `str_view()` to mark all fruits that end with "nut".**
 ```{r exercise3, exercise = TRUE}
-str_view_all(fruits, ...)
+str_view(fruits, ...)
+```
+ 
+```{r exercise3-solution}
+str_view(fruits, "nut$")
 ```
  
 
@@ -89,9 +101,13 @@ str_view_all(fruits, ...)
 
 We can detect whether a pattern was present in each element of a vector with `str_detect()`. Note this returns a logical vector, so we only get a TRUE/FALSE indication, but we can do our usual tricks with logical vectors.
 
-**Use `str_detect()` to create a logical vector of fruits that include the pattern "berry".**
+**4. Use `str_detect()` to create a logical vector of fruits that include the pattern "berry".**
 ```{r exercise4, exercise = TRUE}
 str_detect(fruits, ...)
+```
+ 
+```{r exercise4-solution}
+str_detect(fruits, "berry")
 ```
  
 ```{r exercise4-check}
@@ -101,9 +117,13 @@ grade_result(
 ```
 
 
-**Use `str_detect()` to determine how many fruits include the pattern "berry".**
+**5. Use `str_detect()` to determine how many fruits include the pattern "berry".**
 ```{r exercise5, exercise = TRUE}
 ...
+```
+ 
+```{r exercise5-solution}
+sum(str_detect(fruits, "berry"))
 ```
  
 ```{r exercise5-check}
@@ -116,10 +136,15 @@ grade_result(
 
 We can also pair `str_detect()` with `filter()` to return observations that match patterns in columns.
 
-**Return the observations from the `starwars` data set for the names that include a "-".**
+**6. Return the observations from the `starwars` data set for the names that include a "-".**
 ```{r exercise6, exercise = TRUE}
 starwars |> 
   ...
+```
+ 
+```{r exercise6-solution}
+starwars |> 
+  filter(str_detect(name, "-"))
 ```
  
 ```{r exercise6-check}
@@ -130,11 +155,15 @@ grade_result(
 
 ###
 
-Often, instead of a logical vector detecting the presence of a pattern, we're interesting in extracting the elements of a vector that include a pattern. For this, we use `str_subset()`.
+Often, instead of a logical vector detecting the presence of a pattern, we're interested in extracting the elements of a vector that include a pattern. For this, we use `str_subset()`.
 
-**Return the berries from `fruits`.**
+**7. Return the berries from `fruits`.**
 ```{r exercise7, exercise = TRUE}
 str_subset(fruits, ...)
+```
+ 
+```{r exercise7-solution}
+str_subset(fruits, "berry")
 ```
  
 ```{r exercise7-check}
@@ -144,9 +173,13 @@ grade_result(
 ```
 
 
-**Return the `fruits` that have "black" or "blue" in them.**
+**8. Return the `fruits` that have "black" or "blue" in them.**
 ```{r exercise8, exercise = TRUE}
 ...
+```
+ 
+```{r exercise8-solution}
+str_subset(fruits, "blue|black")
 ```
  
 ```{r exercise8-check}
@@ -162,9 +195,13 @@ grade_result(
 
 In addition to detecting and extracting patterns, we may want to replace them (e.g., to correct spelling mistakes). The `str_replace()` function replaces a pattern **the first time it appears within an element**. It will replace across all elements but only once per element. The `str_replace_all()` function will replace all instances across the whole vector.
 
-**Make bell pepper and chili pepper one word (bellpepper and chilipepper) while leaving blood orange and canary melon as two words.**
+**9. Make bell pepper and chili pepper one word (bellpepper and chilipepper) while leaving blood orange and canary melon as two words.**
 ```{r exercise9, exercise = TRUE}
 str_replace(fruits, ...)
+```
+ 
+```{r exercise9-solution}
+str_replace(fruits, " pepper", "pepper")
 ```
  
 ```{r exercise9-check}
@@ -175,9 +212,13 @@ grade_result(
 
 ###
 
-**Replace just the first time "an" shows up in a string with "am".**
+**10. Replace just the first time "an" shows up in a string with "am".**
 ```{r exercise10, exercise = TRUE}
 ...(fruits, ...)
+```
+ 
+```{r exercise10-solution}
+str_replace(fruits, "an", "am")
 ```
  
 ```{r exercise10-check}
@@ -186,9 +227,13 @@ grade_result(
 )
 ```
 
-**Replace any instance of "an" with "am".**
+**11. Replace any instance of "an" with "am".**
 ```{r exercise11, exercise = TRUE}
 ...(fruits, ...)
+```
+ 
+```{r exercise11-solution}
+str_replace_all(fruits, "an", "am")
 ```
  
 ```{r exercise11-check}
@@ -196,8 +241,6 @@ grade_result(
   pass_if(~identical(.result, str_replace_all(fruits, "an", "am")))
 )
 ```
-
-### 
 
 ### Wrap-up
 

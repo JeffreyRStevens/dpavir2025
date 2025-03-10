@@ -146,7 +146,7 @@ If we're trying to count inside a `summarise()`, we use the `n()` function---if,
 
 We can take this a step further to count the number of unique/distinct combinations in a group with `n_distinct()`. This is equivalent to `nrow(unique(...))`.
 
-**3. Find the mean body mass and sample size per species.**
+**3. Find the mean body mass and sample size per species and assign it to column `mean_mass`.**
 
 ```{r exercise3, exercise = TRUE}
 penguins |> 

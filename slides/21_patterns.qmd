@@ -1,7 +1,7 @@
 ---
 title: "Matching patterns"
 author: "Jeff Stevens"
-date: "2023-03-10"
+date: "2025-03-10"
 date-format: iso
 execute:
   echo: true
@@ -44,6 +44,7 @@ What is needed to create `data2` from `data1`?
 ::: {.column width="50%"}
 
 ```{r}
+#| attr-output: "style='font-size: 50%'"
 data1
 ```
 :::
@@ -51,6 +52,7 @@ data1
 ::: {.column width="50%"}
 
 ```{r}
+#| attr-output: "style='font-size: 50%'"
 data2
 ```
 :::
@@ -101,7 +103,8 @@ Concise and powerful language for describing patterns within strings
 
 ## Regular expressions
 
-Here's the regex I used to detect IP addresses:
+Here's the regex I used to detect IP addresses in `{excluder}`:
+
 `^(?:(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])(\.(?!$)|$)){4}$`
 
 ![](../images/regex_meme.jpeg){.absolute height="50%" top="40%" left="0%"}
@@ -111,11 +114,11 @@ Here's the regex I used to detect IP addresses:
 
 ## Matching strings 
 
-View string patterns with `stringr::str_view_all()`
+View string patterns with `stringr::str_view()`
 
 ```{r}
 (x <- c("apple", "banana", "pear", NA))
-str_view_all(x, "a")
+str_view(x, "a")
 ```
 
 
@@ -124,7 +127,7 @@ str_view_all(x, "a")
 `.` is wildcard
 
 ```{r}
-str_view_all(x, ".a.")
+str_view(x, ".a.")
 ```
 
 
@@ -135,8 +138,8 @@ str_view_all(x, ".a.")
 `$` to match the end of the string (like `ends_with()`)
 
 ```{r}
-str_view_all(x, "^a")
-str_view_all(x, "a$")
+str_view(x, "^a")
+str_view(x, "a$")
 ```
 
 
@@ -145,13 +148,13 @@ str_view_all(x, "a$")
 `|` matches one pattern OR another (e.g., `this|that`)
 
 ```{r}
-str_view_all(x, "ap|an|ar")
+str_view(x, "ap|an|ar")
 ```
 
 ::: {.fragment}
 Wrap character groups in `()`
 ```{r}
-str_view_all("Are you here or are you there?", "(A|a)re")  
+str_view("Are you here or are you there?", "(A|a)re")  
 ```
 :::
 
@@ -161,7 +164,7 @@ str_view_all("Are you here or are you there?", "(A|a)re")
 
 ```{r}
 # view digits
-str_view_all("March 10, 2020", "\\d")
+str_view("March 10, 2025", "\\d")
 ```
 
 
@@ -170,7 +173,7 @@ str_view_all("March 10, 2020", "\\d")
 `[abc]` matches individual characters (a, b, or c)
 ```{r}
 # view everything with ab or a<space>
-str_view_all(c("abc", "a.c", "a*c", "a c"), "a[b ]")
+str_view(c("abc", "a.c", "a*c", "a c"), "a[b ]")
 ```
 
 
@@ -180,9 +183,9 @@ str_view_all(c("abc", "a.c", "a*c", "a c"), "a[b ]")
 
 ```{r}
 # view everything except ab and a<space>
-str_view_all(c("abc", "a.c", "a*c", "a c"), "a[^b ]")
+str_view(c("abc", "a.c", "a*c", "a c"), "a[^b ]")
 # view everything except digits
-str_view_all("March 10, 2020", "[^\\d]")  
+str_view("March 10, 2020", "[^\\d]")  
 ```
 
 
@@ -191,9 +194,12 @@ str_view_all("March 10, 2020", "[^\\d]")
 ## Detecting pattern matches 
 
 Detect matching elements with `stringr::str_detect()`
+
+Returns logical vector of elements that match pattern
+
 ```{r}
 x
-str_detect(x, "e")  # results in logical vector
+str_detect(x, "e")  # grepl() in base R
 ```
 
 ::: {.fragment}
@@ -217,6 +223,8 @@ penguins |>
 ## Extracting pattern matches
 
 Extract **elements** that match a pattern with `stringr::str_subset()`
+
+Returns elements that match pattern
 ```{r}
 head(words, n = 20)
 ```
@@ -279,6 +287,10 @@ str_replace_all(x, "[^aeiou]", "-")  # replace all matches
 ```
 :::
 
+::: {.fragment}
+How do we do this based on position instead of pattern?
+:::
+
 
 ## Replacing pattern matches
 
@@ -298,11 +310,10 @@ I use this **A LOT** to clean up text data
 
 ## Replacing `NA` 
 
-Replace `NA` with another value with `stringr::str_replace_na()`
+Replace `NA` with another value with `dplyr::replace_na()`
 ```{r}
 x
-str_replace_na(x)  # by default replaces NA with "NA"
-str_replace_na(x, "Missing")  # but you can replace with other strings
+replace_na(x, "Missing")
 ```
 
 
@@ -344,11 +355,26 @@ sentences[c(1:2, 5)] |>
 
 ## Solving the problem
 
+```{r}
+library(tidyverse)
+nrows <- 12
+set.seed(100)
+data1 <- tibble(time = rep(c("early-day", "mid-day", "late-day", "daytime"), 
+                           times = 3), 
+                species = sample(c("dog", "dogfish", "bear dog", "cat", "catfish"), 
+                                 nrows, replace = TRUE), 
+                resp = sample(c("yes", "no", "yes", "no", NA), nrows, 
+                              replace = TRUE))
+```
+
+## Solving the problem
+
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ```{r}
+#| attr-output: "style='font-size: 50%'"
 data1
 ```
 :::
@@ -356,6 +382,7 @@ data1
 ::: {.column width="50%"}
 
 ```{r}
+#| attr-output: "style='font-size: 50%'"
 data2
 ```
 :::
@@ -365,4 +392,4 @@ data2
 
 ## Let's code!
 
-[Matching patterns](../code/21_patterns.html){target="_blank"} [[Rmd](../code/21_patterns.Rmd){target="_blank"}]
+[Matching patterns](../code/21_patterns.html){target="_blank"}
