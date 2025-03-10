@@ -2,7 +2,7 @@
 title: 'Factors'
 author:
   - Jeff Stevens
-date: '2023-03-20'
+date: '2025-03-12'
 categories: 
   - "module 5"
   - "week 9"
@@ -14,7 +14,7 @@ categories:
 description: "Work with categorical variables (factors)"
 execute:
   freeze: auto
-draft: true
+draft: false
 ---
 
 We often work with categorical variables, and R coerces them into a special data type called a factor. Factors are augmented integers with levels and labels.
