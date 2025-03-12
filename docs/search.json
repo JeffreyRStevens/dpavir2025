@@ -1068,7 +1068,7 @@
     "href": "slides/23_dates.html#the-problem",
     "title": "Dates and times",
     "section": "The problem",
-    "text": "The problem\nWhat’s different between these data sets?\n\n\n\n\ndata1\n\n# A tibble: 12 × 2\n   test_date  birth_date \n   &lt;date&gt;     &lt;chr&gt;      \n 1 2023-01-02 1997-07-14 \n 2 2023-01-02 1998-01-28 \n 3 2023-01-05 1967-07-23 \n 4 2023-01-05 Jan 9, 1960\n 5 2023-01-08 1950-11-09 \n 6 2023-01-14 2001-08-24 \n 7 2023-01-16 1979-09-23 \n 8 2023-01-23 1970-03-22 \n 9 2023-01-26 1957-04-21 \n10 2023-01-27 1989-03-07 \n11 2023-01-27 1983-11-03 \n12 2023-01-28 1989-01-31 \n\n\n\n\n\n\ndata2\n\n# A tibble: 9 × 4\n  test_date  birth_date age_at_testing day_of_birth\n  &lt;date&gt;     &lt;date&gt;     &lt;drtn&gt;         &lt;ord&gt;       \n1 2023-01-05 1967-07-23 20255 days     Sunday      \n2 2023-01-05 1960-01-09 23007 days     Saturday    \n3 2023-01-08 1950-11-09 26358 days     Thursday    \n4 2023-01-16 1979-09-23 15821 days     Sunday      \n5 2023-01-23 1970-03-22 19300 days     Sunday      \n6 2023-01-26 1957-04-21 24021 days     Sunday      \n7 2023-01-27 1989-03-07 12379 days     Tuesday     \n8 2023-01-27 1983-11-03 14330 days     Thursday    \n9 2023-01-28 1989-01-31 12415 days     Tuesday"
+    "text": "The problem\nWhat’s different between these data sets?\n\n\n\n\ndata1\n\n# A tibble: 12 × 2\n   test_date  birth_date  \n   &lt;date&gt;     &lt;chr&gt;       \n 1 2023-01-02 Jul 14, 1997\n 2 2023-01-02 Jan 28, 1998\n 3 2023-01-05 Jul 23, 1967\n 4 2023-01-05 Aug 26, 1987\n 5 2023-01-08 Nov 09, 1950\n 6 2023-01-14 Aug 24, 2001\n 7 2023-01-16 Sep 23, 1979\n 8 2023-01-23 Mar 22, 1970\n 9 2023-01-26 Apr 21, 1957\n10 2023-01-27 Mar 07, 1989\n11 2023-01-27 Nov 03, 1983\n12 2023-01-28 Jan 31, 1989\n\n\n\n\n\n\ndata2\n\n# A tibble: 9 × 4\n  test_date  birth_date age_at_testing birth_month\n  &lt;date&gt;     &lt;date&gt;     &lt;drtn&gt;         &lt;ord&gt;      \n1 2023-01-05 1967-07-23 20255 days     July       \n2 2023-01-05 1987-08-26 12916 days     August     \n3 2023-01-08 1950-11-09 26358 days     November   \n4 2023-01-16 1979-09-23 15821 days     September  \n5 2023-01-23 1970-03-22 19300 days     March      \n6 2023-01-26 1957-04-21 24021 days     April      \n7 2023-01-27 1989-03-07 12379 days     March      \n8 2023-01-27 1983-11-03 14330 days     November   \n9 2023-01-28 1989-01-31 12415 days     January"
   },
   {
     "objectID": "slides/23_dates.html#set-up",
@@ -1082,7 +1082,7 @@
     "href": "slides/23_dates.html#reminder",
     "title": "Dates and times",
     "section": "Reminder",
-    "text": "Reminder\nDates and times are augmented doubles\n\n(x &lt;- as.Date(\"2023-03-22\"))\n\n[1] \"2023-03-22\"\n\nclass(x)\n\n[1] \"Date\"\n\ntypeof(x)\n\n[1] \"double\"\n\n\n\n\n\n\n\n\n\nNote\n\n\nStandard (ISO-8601) way to represent dates and times is\nYYYY-MM-DD HH:MM:SS, so 2023-03-22 10:30:00"
+    "text": "Reminder\nDates and times are augmented doubles\n\n(x &lt;- as.Date(\"2023-03-22\"))\n\n[1] \"2023-03-22\"\n\nclass(x)\n\n[1] \"Date\"\n\ntypeof(x)\n\n[1] \"double\"\n\n\n\n\n\n\n\n\n\nStandard (ISO-8601) way to represent dates and times is\nYYYY-MM-DD HH:MM:SS, so 2025-03-14 15:30:00"
   },
   {
     "objectID": "slides/23_dates.html#dates-and-times-with-lubridate",
@@ -1096,161 +1096,84 @@
     "href": "slides/23_dates.html#current-datetime",
     "title": "Dates and times",
     "section": "Current date/time",
-    "text": "Current date/time\n\nSys.Date()  # base R\n\n[1] \"2025-02-26\"\n\ntoday() # {lubridate}\n\n[1] \"2025-02-26\"\n\n\n\n\nSys.time()  # base R\n\n[1] \"2025-02-26 09:12:04 CST\"\n\nnow()  # {lubridate}\n\n[1] \"2025-02-26 09:12:04 CST\""
+    "text": "Current date/time\n\ntoday() \n\n[1] \"2025-03-12\"\n\nnow()  # {lubridate}\n\n[1] \"2025-03-12 13:47:59 CDT\"\n\n\n:::"
   },
   {
     "objectID": "slides/23_dates.html#creating-datestimes",
     "href": "slides/23_dates.html#creating-datestimes",
     "title": "Dates and times",
     "section": "Creating dates/times",
-    "text": "Creating dates/times\n\nas.Date(\"2023-03-22\")  # base R\n\n[1] \"2023-03-22\"\n\nas_date(\"2023-03-22\") # {lubridate}\n\n[1] \"2023-03-22\"\n\nymd(20230322) # {lubridate}\n\n[1] \"2023-03-22\""
+    "text": "Creating dates/times\n\nas_date(\"2025-03-14\") \n\n[1] \"2025-03-14\"\n\nymd(\"2025-03-14\")\n\n[1] \"2025-03-14\"\n\nymd(20250314)\n\n[1] \"2025-03-14\""
   },
   {
     "objectID": "slides/23_dates.html#convert-dates-to-iso-8601",
     "href": "slides/23_dates.html#convert-dates-to-iso-8601",
     "title": "Dates and times",
     "section": "Convert dates to ISO-8601",
-    "text": "Convert dates to ISO-8601\n\nymd(\"2017-01-31\")\n\n[1] \"2017-01-31\"\n\nmdy(\"January 31st, 2017\")\n\n[1] \"2017-01-31\"\n\nmdy(\"Jan 31 17\")\n\n[1] \"2017-01-31\"\n\ndmy(\"31-Jan-2017\")\n\n[1] \"2017-01-31\""
+    "text": "Convert dates to ISO-8601\n\nmdy(\"January 31st, 2017\")\n\n[1] \"2017-01-31\"\n\nmdy(\"Jan 31 17\")\n\n[1] \"2017-01-31\"\n\ndmy(\"31-Jan-2017\")\n\n[1] \"2017-01-31\""
   },
   {
     "objectID": "slides/23_dates.html#convert-dates-to-iso-8601-1",
     "href": "slides/23_dates.html#convert-dates-to-iso-8601-1",
     "title": "Dates and times",
     "section": "Convert dates to ISO-8601",
-    "text": "Convert dates to ISO-8601\n\n(r_class_schedule &lt;- tibble(meeting = 1:4, date = c(\"23 Jan 2023\", \"25 Jan 2023\", \"27 Jan 2023\", \"30 Jan 2023\"), topic = c(\"Course introduction\", \"Working in RStudio\", \"Coding basics\", \"Workflows\")))\n\n# A tibble: 4 × 3\n  meeting date        topic              \n    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;              \n1       1 23 Jan 2023 Course introduction\n2       2 25 Jan 2023 Working in RStudio \n3       3 27 Jan 2023 Coding basics      \n4       4 30 Jan 2023 Workflows          \n\n\n\nHow do we change the dates in a data frame?\n\n\n\n(r_class_schedule &lt;- r_class_schedule |&gt;\n   mutate(iso_date = dmy(date)))\n\n# A tibble: 4 × 4\n  meeting date        topic               iso_date  \n    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;               &lt;date&gt;    \n1       1 23 Jan 2023 Course introduction 2023-01-23\n2       2 25 Jan 2023 Working in RStudio  2023-01-25\n3       3 27 Jan 2023 Coding basics       2023-01-27\n4       4 30 Jan 2023 Workflows           2023-01-30"
-  },
-  {
-    "objectID": "slides/23_dates.html#convert-multiple-formats",
-    "href": "slides/23_dates.html#convert-multiple-formats",
-    "title": "Dates and times",
-    "section": "Convert multiple formats",
-    "text": "Convert multiple formats\nWhat if your date column has multiple formats?\n\n(bad_dates &lt;- c(\"Jan 1 2023\", \"2-Jan-2023\"))\n\n[1] \"Jan 1 2023\" \"2-Jan-2023\"\n\nas_date(bad_dates)\n\nWarning: All formats failed to parse. No formats found.\n\n\n[1] NA NA"
-  },
-  {
-    "objectID": "slides/23_dates.html#date-formatting",
-    "href": "slides/23_dates.html#date-formatting",
-    "title": "Dates and times",
-    "section": "Date formatting",
-    "text": "Date formatting\nCodes for different components/styles of date components\n\n\nCode\nComponent\n\n\n\n%y\nTwo digit year (23)\n\n\n%Y\nFour digit year (2023)\n\n\n%m\nMonth as number (01-12 or 1-12)\n\n\n%b\nAbbreviated month name (Mar)\n\n\n%B\nFull month name (March)\n\n\n%d\nDay of the month (01-31 or 1-31)"
-  },
-  {
-    "objectID": "slides/23_dates.html#date-formatting-1",
-    "href": "slides/23_dates.html#date-formatting-1",
-    "title": "Dates and times",
-    "section": "Date formatting",
-    "text": "Date formatting\nCombine codes to make dates\n2023-03-22 = \"%Y-%m-%d\"\n3/22/23 = \"%m/%d/%y\"\n23 Mar 2023 = \"%d %b %Y\"\nMarch 23, 2023 = \"%B %d, %Y\""
-  },
-  {
-    "objectID": "slides/23_dates.html#date-formatting-2",
-    "href": "slides/23_dates.html#date-formatting-2",
-    "title": "Dates and times",
-    "section": "Date formatting",
-    "text": "Date formatting\n\n(bad_dates &lt;- c(\"Jan 01 2023\", \"02-Jan-2023\"))\n\n[1] \"Jan 01 2023\" \"02-Jan-2023\"\n\nas_date(bad_dates, format = \"%b %d %Y\")\n\nWarning: 1 failed to parse.\n\n\n[1] \"2023-01-01\" NA          \n\n\n\n\nas_date(bad_dates, format = c(\"%b %d %Y\", \"%d-%b-%Y\"))\n\n[1] \"2023-01-01\" \"2023-01-02\""
-  },
-  {
-    "objectID": "slides/23_dates.html#convert-times-to-iso-8601",
-    "href": "slides/23_dates.html#convert-times-to-iso-8601",
-    "title": "Dates and times",
-    "section": "Convert times to ISO-8601",
-    "text": "Convert times to ISO-8601\n\nhms(\"20:11:59\")\n\n[1] \"20H 11M 59S\"\n\nhm(\"10:30\")\n\n[1] \"10H 30M 0S\""
-  },
-  {
-    "objectID": "slides/23_dates.html#convert-date-times-to-iso-8601",
-    "href": "slides/23_dates.html#convert-date-times-to-iso-8601",
-    "title": "Dates and times",
-    "section": "Convert date-times to ISO-8601",
-    "text": "Convert date-times to ISO-8601\n\nas_datetime(\"2023-03-10\")\n\n[1] \"2023-03-10 UTC\"\n\nymd_hms(\"2023-03-10 20:11:59\")\n\n[1] \"2023-03-10 20:11:59 UTC\"\n\nmdy_hm(\"03/22/2023 10:30\")\n\n[1] \"2023-03-22 10:30:00 UTC\""
-  },
-  {
-    "objectID": "slides/23_dates.html#change-time-zone",
-    "href": "slides/23_dates.html#change-time-zone",
-    "title": "Dates and times",
-    "section": "Change time zone",
-    "text": "Change time zone\ntz argument\n\nymd_hms(\"2023-03-10 20:11:59\", tz = \"America/Chicago\")\n\n[1] \"2023-03-10 20:11:59 CST\"\n\n\n\nFind system time zone\n\nSys.timezone()\n\n[1] \"America/Chicago\"\n\nmdy_hm(\"03/22/2023 10:30\", tz = Sys.timezone())  \n\n[1] \"2023-03-22 10:30:00 CDT\"\n\n\n\n\n\n\n\n\nWarning\n\n\nSetting tz = Sys.timezone() is dangerous and not reproducible if you are traveling or giving code to others in different time zones."
-  },
-  {
-    "objectID": "slides/23_dates.html#create-dates-from-components",
-    "href": "slides/23_dates.html#create-dates-from-components",
-    "title": "Dates and times",
-    "section": "Create dates from components",
-    "text": "Create dates from components\n\nflights |&gt;\n  select(year, month, day, hour, minute)\n\n# A tibble: 336,776 × 5\n    year month   day  hour minute\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1  2013     1     1     5     15\n 2  2013     1     1     5     29\n 3  2013     1     1     5     40\n 4  2013     1     1     5     45\n 5  2013     1     1     6      0\n 6  2013     1     1     5     58\n 7  2013     1     1     6      0\n 8  2013     1     1     6      0\n 9  2013     1     1     6      0\n10  2013     1     1     6      0\n# ℹ 336,766 more rows"
-  },
-  {
-    "objectID": "slides/23_dates.html#create-dates-from-components-1",
-    "href": "slides/23_dates.html#create-dates-from-components-1",
-    "title": "Dates and times",
-    "section": "Create dates from components",
-    "text": "Create dates from components\nmake_date(), make_datetime()\n\nflights |&gt;\n  select(year, month, day, hour, minute) |&gt;\n  mutate(date = make_date(year, month, day),\n         departure = make_datetime(year, month, day, hour, minute))\n\n# A tibble: 336,776 × 7\n    year month   day  hour minute date       departure          \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;dttm&gt;             \n 1  2013     1     1     5     15 2013-01-01 2013-01-01 05:15:00\n 2  2013     1     1     5     29 2013-01-01 2013-01-01 05:29:00\n 3  2013     1     1     5     40 2013-01-01 2013-01-01 05:40:00\n 4  2013     1     1     5     45 2013-01-01 2013-01-01 05:45:00\n 5  2013     1     1     6      0 2013-01-01 2013-01-01 06:00:00\n 6  2013     1     1     5     58 2013-01-01 2013-01-01 05:58:00\n 7  2013     1     1     6      0 2013-01-01 2013-01-01 06:00:00\n 8  2013     1     1     6      0 2013-01-01 2013-01-01 06:00:00\n 9  2013     1     1     6      0 2013-01-01 2013-01-01 06:00:00\n10  2013     1     1     6      0 2013-01-01 2013-01-01 06:00:00\n# ℹ 336,766 more rows"
+    "text": "Convert dates to ISO-8601\n\n(r_class_schedule &lt;- tibble(meeting = 1:4, \n                            date = c(\"22 Jan 2025\", \"24 Jan 2025\", \"27 Jan 2025\", \"29 Jan 2025\"), \n                            topic = c(\"Course introduction\", \"Working in RStudio\", \"Coding basics\", \"Workflows\")))\n\n# A tibble: 4 × 3\n  meeting date        topic              \n    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;              \n1       1 22 Jan 2025 Course introduction\n2       2 24 Jan 2025 Working in RStudio \n3       3 27 Jan 2025 Coding basics      \n4       4 29 Jan 2025 Workflows          \n\n\n\n\n(r_class_schedule &lt;- r_class_schedule |&gt;\n   mutate(iso_date = dmy(date)))\n\n# A tibble: 4 × 4\n  meeting date        topic               iso_date  \n    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;               &lt;date&gt;    \n1       1 22 Jan 2025 Course introduction 2025-01-22\n2       2 24 Jan 2025 Working in RStudio  2025-01-24\n3       3 27 Jan 2025 Coding basics       2025-01-27\n4       4 29 Jan 2025 Workflows           2025-01-29"
   },
   {
     "objectID": "slides/23_dates.html#extract-datetime-elements",
     "href": "slides/23_dates.html#extract-datetime-elements",
     "title": "Dates and times",
     "section": "Extract date/time elements",
-    "text": "Extract date/time elements\nFirst, let’s extract a random sample of departure times\n\n(datetime &lt;- flights |&gt;\n   drop_na(dep_time) |&gt; \n   slice_sample(n = 20) |&gt;\n   mutate(departure = make_datetime(year, month, day, hour, minute)) |&gt; \n   pull(departure))\n\n [1] \"2013-05-02 06:00:00 UTC\" \"2013-09-16 20:00:00 UTC\"\n [3] \"2013-09-18 20:05:00 UTC\" \"2013-01-30 22:49:00 UTC\"\n [5] \"2013-05-13 07:05:00 UTC\" \"2013-04-23 16:00:00 UTC\"\n [7] \"2013-06-04 20:40:00 UTC\" \"2013-08-12 13:30:00 UTC\"\n [9] \"2013-05-07 15:25:00 UTC\" \"2013-04-07 22:25:00 UTC\"\n[11] \"2013-05-21 07:00:00 UTC\" \"2013-04-22 20:00:00 UTC\"\n[13] \"2013-09-09 15:35:00 UTC\" \"2013-07-12 09:59:00 UTC\"\n[15] \"2013-08-06 19:39:00 UTC\" \"2013-12-01 10:56:00 UTC\"\n[17] \"2013-07-28 06:55:00 UTC\" \"2013-12-19 06:30:00 UTC\"\n[19] \"2013-06-05 16:29:00 UTC\" \"2013-09-18 17:25:00 UTC\""
+    "text": "Extract date/time elements\nFirst, let’s extract a random sample of departure times\n\nset.seed(20250314)\n(datetime &lt;- flights |&gt;\n   drop_na(dep_time) |&gt; \n   slice_sample(n = 20) |&gt;\n   mutate(departure = make_datetime(year, month, day, hour, minute)) |&gt; \n   pull(departure))\n\n [1] \"2013-10-03 07:20:00 UTC\" \"2013-09-01 14:05:00 UTC\"\n [3] \"2013-01-27 09:59:00 UTC\" \"2013-12-21 14:45:00 UTC\"\n [5] \"2013-02-20 09:11:00 UTC\" \"2013-01-09 16:43:00 UTC\"\n [7] \"2013-09-23 16:00:00 UTC\" \"2013-12-03 14:29:00 UTC\"\n [9] \"2013-04-16 07:05:00 UTC\" \"2013-04-30 07:30:00 UTC\"\n[11] \"2013-11-29 13:45:00 UTC\" \"2013-12-23 07:55:00 UTC\"\n[13] \"2013-09-21 06:30:00 UTC\" \"2013-03-19 17:55:00 UTC\"\n[15] \"2013-06-10 08:50:00 UTC\" \"2013-04-30 13:45:00 UTC\"\n[17] \"2013-04-20 16:52:00 UTC\" \"2013-04-18 06:05:00 UTC\"\n[19] \"2013-07-29 14:48:00 UTC\" \"2013-08-10 19:16:00 UTC\""
   },
   {
     "objectID": "slides/23_dates.html#extract-datetime-elements-1",
     "href": "slides/23_dates.html#extract-datetime-elements-1",
     "title": "Dates and times",
     "section": "Extract date/time elements",
-    "text": "Extract date/time elements\nNow let’s extract components\n\nyear(datetime)\n\n [1] 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013\n[16] 2013 2013 2013 2013 2013\n\nmonth(datetime)\n\n [1]  5  9  9  1  5  4  6  8  5  4  5  4  9  7  8 12  7 12  6  9\n\nmonth(datetime, label = TRUE)\n\n [1] May Sep Sep Jan May Apr Jun Aug May Apr May Apr Sep Jul Aug Dec Jul Dec Jun\n[20] Sep\n12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec"
+    "text": "Extract date/time elements\nNow let’s extract components\n\nyear(datetime)\n\n [1] 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 2013\n[16] 2013 2013 2013 2013 2013\n\n\n\n\nmonth(datetime)\n\n [1] 10  9  1 12  2  1  9 12  4  4 11 12  9  3  6  4  4  4  7  8\n\n\n\n\n\nmonth(datetime, label = TRUE)\n\n [1] Oct Sep Jan Dec Feb Jan Sep Dec Apr Apr Nov Dec Sep Mar Jun Apr Apr Apr Jul\n[20] Aug\n12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec\n\n\n\n\n\nmonth(datetime, label = TRUE, abbr = FALSE)\n\n [1] October   September January   December  February  January   September\n [8] December  April     April     November  December  September March    \n[15] June      April     April     April     July      August   \n12 Levels: January &lt; February &lt; March &lt; April &lt; May &lt; June &lt; ... &lt; December"
   },
   {
     "objectID": "slides/23_dates.html#extract-datetime-elements-2",
     "href": "slides/23_dates.html#extract-datetime-elements-2",
     "title": "Dates and times",
     "section": "Extract date/time elements",
-    "text": "Extract date/time elements\nNow let’s extract components\n\nmday(datetime)\n\n [1]  2 16 18 30 13 23  4 12  7  7 21 22  9 12  6  1 28 19  5 18\n\nyday(datetime)\n\n [1] 122 259 261  30 133 113 155 224 127  97 141 112 252 193 218 335 209 353 156\n[20] 261\n\nwday(datetime)\n\n [1] 5 2 4 4 2 3 3 2 3 1 3 2 2 6 3 1 1 5 4 4\n\nwday(datetime, label = TRUE, abbr = FALSE)\n\n [1] Thursday  Monday    Wednesday Wednesday Monday    Tuesday   Tuesday  \n [8] Monday    Tuesday   Sunday    Tuesday   Monday    Monday    Friday   \n[15] Tuesday   Sunday    Sunday    Thursday  Wednesday Wednesday\n7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday"
-  },
-  {
-    "objectID": "slides/23_dates.html#extract-datetime-elements-3",
-    "href": "slides/23_dates.html#extract-datetime-elements-3",
-    "title": "Dates and times",
-    "section": "Extract date/time elements",
-    "text": "Extract date/time elements\nNow let’s extract components\n\nhour(datetime)\n\n [1]  6 20 20 22  7 16 20 13 15 22  7 20 15  9 19 10  6  6 16 17\n\nminute(datetime)\n\n [1]  0  0  5 49  5  0 40 30 25 25  0  0 35 59 39 56 55 30 29 25\n\nsecond(datetime)\n\n [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
-  },
-  {
-    "objectID": "slides/23_dates.html#create-vectors-of-days-of-the-week",
-    "href": "slides/23_dates.html#create-vectors-of-days-of-the-week",
-    "title": "Dates and times",
-    "section": "Create vectors of days of the week",
-    "text": "Create vectors of days of the week\n\nwday(1:7, label = TRUE, abbr = FALSE)\n\n[1] Sunday    Monday    Tuesday   Wednesday Thursday  Friday    Saturday \n7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday\n\nas.character(wday(1:7, label = TRUE, abbr = FALSE))\n\n[1] \"Sunday\"    \"Monday\"    \"Tuesday\"   \"Wednesday\" \"Thursday\"  \"Friday\"   \n[7] \"Saturday\" \n\nstringr::str_c(as.character(wday(1:7, label = TRUE, abbr = FALSE)), collapse = \", \")\n\n[1] \"Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday\""
-  },
-  {
-    "objectID": "slides/23_dates.html#set-datetime-elements-with-components",
-    "href": "slides/23_dates.html#set-datetime-elements-with-components",
-    "title": "Dates and times",
-    "section": "Set date/time elements with components",
-    "text": "Set date/time elements with components\n\nhead(datetime)\n\n[1] \"2013-05-02 06:00:00 UTC\" \"2013-09-16 20:00:00 UTC\"\n[3] \"2013-09-18 20:05:00 UTC\" \"2013-01-30 22:49:00 UTC\"\n[5] \"2013-05-13 07:05:00 UTC\" \"2013-04-23 16:00:00 UTC\"\n\nyear(datetime) &lt;- 2020\nhead(datetime)\n\n[1] \"2020-05-02 06:00:00 UTC\" \"2020-09-16 20:00:00 UTC\"\n[3] \"2020-09-18 20:05:00 UTC\" \"2020-01-30 22:49:00 UTC\"\n[5] \"2020-05-13 07:05:00 UTC\" \"2020-04-23 16:00:00 UTC\""
+    "text": "Extract date/time elements\nNow let’s extract components\n\nmday(datetime)\n\n [1]  3  1 27 21 20  9 23  3 16 30 29 23 21 19 10 30 20 18 29 10\n\nhour(datetime)\n\n [1]  7 14  9 14  9 16 16 14  7  7 13  7  6 17  8 13 16  6 14 19\n\nminute(datetime)\n\n [1] 20  5 59 45 11 43  0 29  5 30 45 55 30 55 50 45 52  5 48 16\n\nsecond(datetime)\n\n [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
   },
   {
     "objectID": "slides/23_dates.html#time-spans-1",
     "href": "slides/23_dates.html#time-spans-1",
     "title": "Dates and times",
     "section": "Time spans",
-    "text": "Time spans\nFind or create durations\n\nr_class_schedule$iso_date[2] - r_class_schedule$iso_date[1]\n\nTime difference of 2 days\n\ntoday() - ymd(r_class_schedule$iso_date[1])\n\nTime difference of 765 days\n\nr_class_schedule$iso_date[1] - 7 * 9\n\n[1] \"2022-11-21\"\n\nr_class_schedule$iso_date[1] + 7 * 9\n\n[1] \"2023-03-27\""
+    "text": "Time spans\nFind or create durations\n\nr_class_schedule\n\n# A tibble: 4 × 4\n  meeting date        topic               iso_date  \n    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;               &lt;date&gt;    \n1       1 22 Jan 2025 Course introduction 2025-01-22\n2       2 24 Jan 2025 Working in RStudio  2025-01-24\n3       3 27 Jan 2025 Coding basics       2025-01-27\n4       4 29 Jan 2025 Workflows           2025-01-29\n\n\n\n\nr_class_schedule$iso_date[2] - r_class_schedule$iso_date[1]\n\nTime difference of 2 days\n\ntoday() - ymd(r_class_schedule$iso_date[1]) # days since class start\n\nTime difference of 49 days\n\nr_class_schedule$iso_date[1] - 7 * 9 # 9 weeks before class start\n\n[1] \"2024-11-20\"\n\nr_class_schedule$iso_date[1] + 7 * 9 # 9 weeks after class start\n\n[1] \"2025-03-26\""
   },
   {
     "objectID": "slides/23_dates.html#filter-dates",
     "href": "slides/23_dates.html#filter-dates",
     "title": "Dates and times",
     "section": "Filter dates",
-    "text": "Filter dates\n\n(oldsched &lt;- filter(r_class_schedule, iso_date &lt; \"2023-01-30\") |&gt;\n  mutate(week_later = iso_date + 7,\n         days_since = today() - iso_date))\n\n# A tibble: 3 × 6\n  meeting date        topic               iso_date   week_later days_since\n    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;               &lt;date&gt;     &lt;date&gt;     &lt;drtn&gt;    \n1       1 23 Jan 2023 Course introduction 2023-01-23 2023-01-30 765 days  \n2       2 25 Jan 2023 Working in RStudio  2023-01-25 2023-02-01 763 days  \n3       3 27 Jan 2023 Coding basics       2023-01-27 2023-02-03 761 days"
+    "text": "Filter dates\n\n(oldsched &lt;- filter(r_class_schedule, iso_date &lt; \"2025-01-26\") |&gt;\n  mutate(week_later = iso_date + 7,\n         days_since = today() - iso_date))\n\n# A tibble: 2 × 6\n  meeting date        topic               iso_date   week_later days_since\n    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;               &lt;date&gt;     &lt;date&gt;     &lt;drtn&gt;    \n1       1 22 Jan 2025 Course introduction 2025-01-22 2025-01-29 49 days   \n2       2 24 Jan 2025 Working in RStudio  2025-01-24 2025-01-31 47 days"
   },
   {
     "objectID": "slides/23_dates.html#solving-the-problem",
     "href": "slides/23_dates.html#solving-the-problem",
     "title": "Dates and times",
     "section": "Solving the problem",
-    "text": "Solving the problem\nWhat code generates data2 from data1?\n\n\n\n\ndata1\n\n# A tibble: 12 × 2\n   test_date  birth_date \n   &lt;date&gt;     &lt;chr&gt;      \n 1 2023-01-02 1997-07-14 \n 2 2023-01-02 1998-01-28 \n 3 2023-01-05 1967-07-23 \n 4 2023-01-05 Jan 9, 1960\n 5 2023-01-08 1950-11-09 \n 6 2023-01-14 2001-08-24 \n 7 2023-01-16 1979-09-23 \n 8 2023-01-23 1970-03-22 \n 9 2023-01-26 1957-04-21 \n10 2023-01-27 1989-03-07 \n11 2023-01-27 1983-11-03 \n12 2023-01-28 1989-01-31 \n\n\n\n\n\n\ndata2\n\n# A tibble: 9 × 4\n  test_date  birth_date age_at_testing day_of_birth\n  &lt;date&gt;     &lt;date&gt;     &lt;drtn&gt;         &lt;ord&gt;       \n1 2023-01-05 1967-07-23 20255 days     Sunday      \n2 2023-01-05 1960-01-09 23007 days     Saturday    \n3 2023-01-08 1950-11-09 26358 days     Thursday    \n4 2023-01-16 1979-09-23 15821 days     Sunday      \n5 2023-01-23 1970-03-22 19300 days     Sunday      \n6 2023-01-26 1957-04-21 24021 days     Sunday      \n7 2023-01-27 1989-03-07 12379 days     Tuesday     \n8 2023-01-27 1983-11-03 14330 days     Thursday    \n9 2023-01-28 1989-01-31 12415 days     Tuesday"
+    "text": "Solving the problem\n\nlibrary(tidyverse)\nnrows &lt;- 12\nset.seed(12)\ndata1 &lt;- tibble(test_date = \n                  as_date(sample(as_date(\"2023-01-01\"):as_date(\"2023-01-31\"), \n                                 nrows, replace = TRUE)),\n                birth_date = \n                  format(as_date(sample(as_date(\"1950-01-01\"):as_date(\"2005-01-31\"),\n                                        nrows, replace = TRUE)),\n                         format = c(\"%b %d, %Y\"))) |&gt; \n  arrange(test_date)"
+  },
+  {
+    "objectID": "slides/23_dates.html#solving-the-problem-1",
+    "href": "slides/23_dates.html#solving-the-problem-1",
+    "title": "Dates and times",
+    "section": "Solving the problem",
+    "text": "Solving the problem\nWhat code generates data2 from data1?\n\n\n\n\ndata1\n\n# A tibble: 12 × 2\n   test_date  birth_date  \n   &lt;date&gt;     &lt;chr&gt;       \n 1 2023-01-02 Jul 14, 1997\n 2 2023-01-02 Jan 28, 1998\n 3 2023-01-05 Jul 23, 1967\n 4 2023-01-05 Aug 26, 1987\n 5 2023-01-08 Nov 09, 1950\n 6 2023-01-14 Aug 24, 2001\n 7 2023-01-16 Sep 23, 1979\n 8 2023-01-23 Mar 22, 1970\n 9 2023-01-26 Apr 21, 1957\n10 2023-01-27 Mar 07, 1989\n11 2023-01-27 Nov 03, 1983\n12 2023-01-28 Jan 31, 1989\n\n\n\n\n\n\ndata2\n\n# A tibble: 9 × 4\n  test_date  birth_date age_at_testing birth_month\n  &lt;date&gt;     &lt;date&gt;     &lt;drtn&gt;         &lt;ord&gt;      \n1 2023-01-05 1967-07-23 20255 days     July       \n2 2023-01-05 1987-08-26 12916 days     August     \n3 2023-01-08 1950-11-09 26358 days     November   \n4 2023-01-16 1979-09-23 15821 days     September  \n5 2023-01-23 1970-03-22 19300 days     March      \n6 2023-01-26 1957-04-21 24021 days     April      \n7 2023-01-27 1989-03-07 12379 days     March      \n8 2023-01-27 1983-11-03 14330 days     November   \n9 2023-01-28 1989-01-31 12415 days     January"
   },
   {
     "objectID": "slides/23_dates.html#lets-code",
     "href": "slides/23_dates.html#lets-code",
     "title": "Dates and times",
     "section": "Let’s code!",
-    "text": "Let’s code!\nDates and times [Rmd]"
+    "text": "Let’s code!\nDates and times"
   },
   {
     "objectID": "slides/21_patterns.html#the-problem",
@@ -2996,6 +2919,41 @@
     "text": "Note this is tentative!\n\n\n\n\n\n\nWeek\nDate\nModule\nTopic\n\n\n\n\n1\n2025-01-20\n1\nMLK Day\n\n\n\n2025-01-22\n1\nCourse introduction\n\n\n\n2025-01-24\n1\nWorking in RStudio\n\n\n2\n2025-01-27\n1\nCoding basics\n\n\n\n2025-01-29\n1\nWorkflows\n\n\n\n2025-01-31\n1\nLiterate programming\n\n\n3\n2025-02-03\n2\nData types\n\n\n\n2025-02-05\n2\nData structures\n\n\n\n2025-02-07\n2\nImporting data\n\n\n4\n2025-02-10\n2\nValidating data\n\n\n\n2025-02-12\n3\nSelecting columns\n\n\n\n2025-02-14\n3\nMutating columns\n\n\n5\n2025-02-17\n3\nPiping commands\n\n\n\n2025-02-19\n3\nFiltering rows\n\n\n\n2025-02-21\n3\nSummarizing rows\n\n\n6\n2025-02-24\n4\nPivoting data\n\n\n\n2025-02-26\n4\nSeparating data\n\n\n\n2025-02-28\n4\nMerging columns\n\n\n7\n2025-03-03\n4\nMerging rows\n\n\n\n2025-03-05\n5\nNumbers\n\n\n\n2025-03-07\n5\nStrings\n\n\n8\n2025-03-10\n5\nMatching patterns\n\n\n\n2025-03-12\n5\nFactors\n\n\n\n2025-03-14\n5\nDates\n\n\n9\n2025-03-17\n\nSpring break\n\n\n\n2025-03-19\n\nSpring break\n\n\n\n2025-03-21\n\nSpring break\n\n\n10\n2025-03-24\n6\nFunctions\n\n\n\n2025-03-26\n6\nIteration\n\n\n\n2025-03-28\n7\nGrammar of graphics I\n\n\n11\n2025-03-31\n7\nGrammar of graphics II\n\n\n\n2025-04-02\n7\nDesign and themes\n\n\n\n2025-04-04\n7\nColor\n\n\n12\n2025-04-07\n8\nPlotting distributions: histograms\n\n\n\n2025-04-09\n8\nPlotting distributions: boxplots\n\n\n\n2025-04-11\n8\nPlotting amounts: bar charts\n\n\n13\n2025-04-14\n8\nPlotting x-y data: associations\n\n\n\n2025-04-16\n\nNebraska Symposium\n\n\n\n2025-04-18\n8\nPlotting x-y data: time series\n\n\n14\n2025-04-21\n8\nPlotting x-y data: categories\n\n\n\n2025-04-23\n9\nAdjusting axes\n\n\n\n2025-04-25\n9\nAnnotating plots\n\n\n15\n2025-04-28\n9\nPlotting challenge\n\n\n\n2025-04-30\n10\nTables\n\n\n\n2025-05-02\n10\nPublications\n\n\n16\n2025-05-05\n10\nAdvanced R Markdown\n\n\n\n2025-05-07\n11\nStatistics I\n\n\n\n2025-05-09\n11\nStatistics II"
   },
   {
+    "objectID": "posts/23_dates/index.html",
+    "href": "posts/23_dates/index.html",
+    "title": "Dates and times",
+    "section": "",
+    "text": "Because dates and times can come in different formats, it can be tricky working with them. But once they’re formatted properly, you can create time durations and spans."
+  },
+  {
+    "objectID": "posts/23_dates/index.html#learning-objectives",
+    "href": "posts/23_dates/index.html#learning-objectives",
+    "title": "Dates and times",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\nCreate and convert to dates\nExtract date and time components\nWork with time spans"
+  },
+  {
+    "objectID": "posts/23_dates/index.html#pre-meeting",
+    "href": "posts/23_dates/index.html#pre-meeting",
+    "title": "Dates and times",
+    "section": "Pre-meeting",
+    "text": "Pre-meeting\nTo prepare for this class meeting, please do the following:\n\nRead R4DS2 17"
+  },
+  {
+    "objectID": "posts/23_dates/index.html#class-meeting",
+    "href": "posts/23_dates/index.html#class-meeting",
+    "title": "Dates and times",
+    "section": "Class meeting",
+    "text": "Class meeting\n\nSlides and Code"
+  },
+  {
+    "objectID": "posts/23_dates/index.html#homework-after-the-class-meeting",
+    "href": "posts/23_dates/index.html#homework-after-the-class-meeting",
+    "title": "Dates and times",
+    "section": "Homework after the class meeting",
+    "text": "Homework after the class meeting\n\nWrap up this lesson\n\nComplete the exercises\n\n\n\nFor next class meeting\n\nRead R4DS1 19"
+  },
+  {
     "objectID": "posts/21_patterns/index.html",
     "href": "posts/21_patterns/index.html",
     "title": "Matching patterns",
@@ -3385,7 +3343,7 @@
     "href": "meetings.html",
     "title": "Class meetings",
     "section": "",
-    "text": "Factors\n\n\n\n\n\n\nmodule 5\n\n\nweek 9\n\n\ncollapse\n\n\nfactors\n\n\nlabels\n\n\nlevels\n\n\nrecode\n\n\n\nWork with categorical variables (factors)\n\n\n\n\n\nMar 12, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMatching patterns\n\n\n\n\n\n\nmodule 5\n\n\nweek 8\n\n\ncharacters\n\n\npatterns\n\n\nregular expressions\n\n\nstrings\n\n\n\nMatch patterns in character strings\n\n\n\n\n\nMar 10, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nStrings\n\n\n\n\n\n\nmodule 5\n\n\nweek 7\n\n\ncharacters\n\n\npaste\n\n\nstrings\n\n\n\nWork with character strings\n\n\n\n\n\nMar 7, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nNumbers\n\n\n\n\n\n\nmodule 5\n\n\nweek 8\n\n\ncount\n\n\nnumeric\n\n\nrounding\n\n\n\nParse and transform numbers\n\n\n\n\n\nMar 5, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMerging rows\n\n\n\n\n\n\nmodule 4\n\n\nweek 7\n\n\nbind\n\n\nfiltering joins\n\n\njoin\n\n\nmerge\n\n\nrows\n\n\nset operations\n\n\n\nMerge rows with filtering joins\n\n\n\n\n\nMar 3, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMerging columns\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\ncolumns\n\n\njoin\n\n\nmerge\n\n\nmutating joins\n\n\n\nMerge columns with mutating joins\n\n\n\n\n\nFeb 28, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSeparating data\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\ncoalesce\n\n\ncomplete\n\n\nexpand\n\n\nfill\n\n\nmissing data\n\n\nnesting\n\n\nseparate\n\n\nunite\n\n\n\nSeparate or unite values in columns\n\n\n\n\n\nFeb 26, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nPivoting data\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\nlong data\n\n\npivoting\n\n\ntidy data\n\n\nwide data\n\n\n\nTidy up your data into long or wide format\n\n\n\n\n\nFeb 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSummarizing rows\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\nacross\n\n\ncount\n\n\ngroup_by\n\n\nslice\n\n\nsummarise\n\n\n\nAggregate row values\n\n\n\n\n\nFeb 21, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nFiltering rows\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\narrange\n\n\nconditional statements\n\n\nfilter\n\n\nmissing data\n\n\nrows\n\n\n\nRemove rows based on data values\n\n\n\n\n\nFeb 19, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nPiping\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\nmutate\n\n\npipes\n\n\nselect\n\n\n\nPipes let us combine chains of functions\n\n\n\n\n\nFeb 17, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMutating columns\n\n\n\n\n\n\nmodule 3\n\n\nweek 4\n\n\nacross\n\n\ncase_when\n\n\ncolumns\n\n\nconditional statements\n\n\nifelse\n\n\nmutate\n\n\nrowwise\n\n\n\nChange and create data in columns\n\n\n\n\n\nFeb 14, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSelecting columns\n\n\n\n\n\n\nmodule 3\n\n\nweek 4\n\n\ncolumns\n\n\nrelocate\n\n\nrename\n\n\nselect\n\n\n\nSelect, move, and rename columns\n\n\n\n\n\nFeb 12, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nValidating data\n\n\n\n\n\n\nmodule 2\n\n\nweek 4\n\n\ncodebooks\n\n\ndata types\n\n\nduplicates\n\n\nmissing data\n\n\nvalidate\n\n\n\nTools for ensuring your data are valid\n\n\n\n\n\nFeb 10, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nImporting data\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\nCSV\n\n\nExcel\n\n\nexport\n\n\nimport\n\n\nQualtrics\n\n\n\nImport and export data from different sources\n\n\n\n\n\nFeb 7, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nData structures\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\ndata frames\n\n\nlists\n\n\ntibbles\n\n\nvectors\n\n\n\nCreate, modify, and subset vectors, lists, and data frames\n\n\n\n\n\nFeb 5, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nData types\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\ncharacters\n\n\ncoercion\n\n\ndates\n\n\nfactors\n\n\nlogicals\n\n\nmissing data\n\n\nnumerics\n\n\n\nCreate and convert numerics, character strings, logicals, factors, and dates.\n\n\n\n\n\nFeb 3, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nLiterate programming\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\nknitr\n\n\nR Markdown\n\n\nscripts\n\n\n\nCombining text, data, and code in R Markdown\n\n\n\n\n\nJan 31, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nWorkflows\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\nfile systems\n\n\npaths\n\n\nRStudio Projects\n\n\nworking directories\n\n\n\nAccess file systems with paths and set working directories with RStudio Projects\n\n\n\n\n\nJan 29, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCoding basics\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\ncoding\n\n\nnames\n\n\nstyle\n\n\n\nBasic concepts in coding, style, and naming\n\n\n\n\n\nJan 27, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nWorking in RStudio\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nhelp\n\n\nreprex\n\n\nRStudio\n\n\n\nIntroduction to RStudio Integrated Development Environment\n\n\n\n\n\nJan 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCourse introduction\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\ncourse-admin\n\n\nR\n\n\nRStudio\n\n\n\nIntroduction to Data Processing and Visualization in R\n\n\n\n\n\nJan 22, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nGetting started with R\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nR\n\n\nRStudio\n\n\n\nWelcome to Data Processing and Visualization in R\n\n\n\n\n\nJan 20, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\nNo matching items"
+    "text": "Dates and times\n\n\n\n\n\n\nmodule 5\n\n\nweek 9\n\n\ndates\n\n\ntime\n\n\n\nWorking with dates and times\n\n\n\n\n\nMar 14, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nFactors\n\n\n\n\n\n\nmodule 5\n\n\nweek 9\n\n\ncollapse\n\n\nfactors\n\n\nlabels\n\n\nlevels\n\n\nrecode\n\n\n\nWork with categorical variables (factors)\n\n\n\n\n\nMar 12, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMatching patterns\n\n\n\n\n\n\nmodule 5\n\n\nweek 8\n\n\ncharacters\n\n\npatterns\n\n\nregular expressions\n\n\nstrings\n\n\n\nMatch patterns in character strings\n\n\n\n\n\nMar 10, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nStrings\n\n\n\n\n\n\nmodule 5\n\n\nweek 7\n\n\ncharacters\n\n\npaste\n\n\nstrings\n\n\n\nWork with character strings\n\n\n\n\n\nMar 7, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nNumbers\n\n\n\n\n\n\nmodule 5\n\n\nweek 8\n\n\ncount\n\n\nnumeric\n\n\nrounding\n\n\n\nParse and transform numbers\n\n\n\n\n\nMar 5, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMerging rows\n\n\n\n\n\n\nmodule 4\n\n\nweek 7\n\n\nbind\n\n\nfiltering joins\n\n\njoin\n\n\nmerge\n\n\nrows\n\n\nset operations\n\n\n\nMerge rows with filtering joins\n\n\n\n\n\nMar 3, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMerging columns\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\ncolumns\n\n\njoin\n\n\nmerge\n\n\nmutating joins\n\n\n\nMerge columns with mutating joins\n\n\n\n\n\nFeb 28, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSeparating data\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\ncoalesce\n\n\ncomplete\n\n\nexpand\n\n\nfill\n\n\nmissing data\n\n\nnesting\n\n\nseparate\n\n\nunite\n\n\n\nSeparate or unite values in columns\n\n\n\n\n\nFeb 26, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nPivoting data\n\n\n\n\n\n\nmodule 4\n\n\nweek 6\n\n\nlong data\n\n\npivoting\n\n\ntidy data\n\n\nwide data\n\n\n\nTidy up your data into long or wide format\n\n\n\n\n\nFeb 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSummarizing rows\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\nacross\n\n\ncount\n\n\ngroup_by\n\n\nslice\n\n\nsummarise\n\n\n\nAggregate row values\n\n\n\n\n\nFeb 21, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nFiltering rows\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\narrange\n\n\nconditional statements\n\n\nfilter\n\n\nmissing data\n\n\nrows\n\n\n\nRemove rows based on data values\n\n\n\n\n\nFeb 19, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nPiping\n\n\n\n\n\n\nmodule 3\n\n\nweek 5\n\n\nmutate\n\n\npipes\n\n\nselect\n\n\n\nPipes let us combine chains of functions\n\n\n\n\n\nFeb 17, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nMutating columns\n\n\n\n\n\n\nmodule 3\n\n\nweek 4\n\n\nacross\n\n\ncase_when\n\n\ncolumns\n\n\nconditional statements\n\n\nifelse\n\n\nmutate\n\n\nrowwise\n\n\n\nChange and create data in columns\n\n\n\n\n\nFeb 14, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nSelecting columns\n\n\n\n\n\n\nmodule 3\n\n\nweek 4\n\n\ncolumns\n\n\nrelocate\n\n\nrename\n\n\nselect\n\n\n\nSelect, move, and rename columns\n\n\n\n\n\nFeb 12, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nValidating data\n\n\n\n\n\n\nmodule 2\n\n\nweek 4\n\n\ncodebooks\n\n\ndata types\n\n\nduplicates\n\n\nmissing data\n\n\nvalidate\n\n\n\nTools for ensuring your data are valid\n\n\n\n\n\nFeb 10, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nImporting data\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\nCSV\n\n\nExcel\n\n\nexport\n\n\nimport\n\n\nQualtrics\n\n\n\nImport and export data from different sources\n\n\n\n\n\nFeb 7, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nData structures\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\ndata frames\n\n\nlists\n\n\ntibbles\n\n\nvectors\n\n\n\nCreate, modify, and subset vectors, lists, and data frames\n\n\n\n\n\nFeb 5, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nData types\n\n\n\n\n\n\nmodule 2\n\n\nweek 3\n\n\ncharacters\n\n\ncoercion\n\n\ndates\n\n\nfactors\n\n\nlogicals\n\n\nmissing data\n\n\nnumerics\n\n\n\nCreate and convert numerics, character strings, logicals, factors, and dates.\n\n\n\n\n\nFeb 3, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nLiterate programming\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\nknitr\n\n\nR Markdown\n\n\nscripts\n\n\n\nCombining text, data, and code in R Markdown\n\n\n\n\n\nJan 31, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nWorkflows\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\nfile systems\n\n\npaths\n\n\nRStudio Projects\n\n\nworking directories\n\n\n\nAccess file systems with paths and set working directories with RStudio Projects\n\n\n\n\n\nJan 29, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCoding basics\n\n\n\n\n\n\nmodule 1\n\n\nweek 2\n\n\ncoding\n\n\nnames\n\n\nstyle\n\n\n\nBasic concepts in coding, style, and naming\n\n\n\n\n\nJan 27, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nWorking in RStudio\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nhelp\n\n\nreprex\n\n\nRStudio\n\n\n\nIntroduction to RStudio Integrated Development Environment\n\n\n\n\n\nJan 24, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nCourse introduction\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\ncourse-admin\n\n\nR\n\n\nRStudio\n\n\n\nIntroduction to Data Processing and Visualization in R\n\n\n\n\n\nJan 22, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\n\n\n\n\n\n\nGetting started with R\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nR\n\n\nRStudio\n\n\n\nWelcome to Data Processing and Visualization in R\n\n\n\n\n\nJan 20, 2025\n\n\nJeff Stevens\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",

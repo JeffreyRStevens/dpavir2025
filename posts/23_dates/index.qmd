@@ -2,7 +2,7 @@
 title: 'Dates and times'
 author:
   - Jeff Stevens
-date: '2023-03-22'
+date: '2025-03-14'
 categories: 
   - "module 5"
   - "week 9"
@@ -11,7 +11,7 @@ categories:
 description: "Working with dates and times"
 execute:
   freeze: auto
-draft: true
+draft: false
 ---
 
 Because dates and times can come in different formats, it can be tricky working with them. But once they're formatted properly, you can create time durations and spans.
@@ -19,7 +19,6 @@ Because dates and times can come in different formats, it can be tricky working 
 ## Learning objectives
 
 * Create and convert to dates
-* Format dates
 * Extract date and time components
 * Work with time spans
 
