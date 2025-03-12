@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ###
 
-As a reminder, the four core data types are character, double, integer, and logical. Factors _augmented integers_.
+As a reminder, the four core data types are character, double, integer, and logical. Factors are _augmented integers_.
 
 
 ### Set-up
@@ -55,46 +55,46 @@ levels(penguins$species)
 
 They seem to be in alphabetical order. Let's say that we want the levels to be in the opposite order: Gentoo, Chinstrap, Adelie.
 
-**Reverse the order of the levels by replacing the `...` with the proper `{forcats}` function. Note that since we are just working with the vector `penguins$species`, we don't need to mutate anything---we can just use one of the `{forcats}` functions to change the levels.**
+**1. Reverse the order of the levels by replacing the `...` with the proper `{forcats}` function. Note that since we are just working with the vector `penguins$species`, we don't need to mutate anything---we can just use one of the `{forcats}` functions to change the levels.**
 ```{r exercise1, exercise = TRUE}
-penguins$species %>% 
-  ... %>% 
+penguins$species |> 
+  ... |> 
   levels()
 ```
  
 ```{r exercise1-solution}
-penguins$species %>% 
-  fct_rev() %>% 
+penguins$species |> 
+  fct_rev() |> 
   levels()
 ```
 
 ```{r exercise1-check}
 grade_result(
-  pass_if(~identical(.result, penguins$species %>% 
-  fct_rev() %>% 
+  pass_if(~identical(.result, penguins$species |> 
+  fct_rev() |> 
   levels()))
 )
 ```
 
 ###
 
-**Now put the levels in the order Chinstrap, Gentoo, Adelie.**
+**2. Now put the levels in the order Chinstrap, Gentoo, Adelie.**
 ```{r exercise1b, exercise = TRUE}
-penguins$species %>% 
-  ... %>% 
+penguins$species |> 
+  ... |> 
   levels()
 ```
  
 ```{r exercise1b-solution}
-penguins$species %>% 
-  fct_relevel("Chinstrap", "Gentoo", "Adelie") %>% 
+penguins$species |> 
+  fct_relevel("Chinstrap", "Gentoo", "Adelie") |> 
   levels()
 ```
 
 ```{r exercise1b-check}
 grade_result(
-  pass_if(~identical(.result, penguins$species %>% 
-  fct_relevel("Chinstrap", "Gentoo", "Adelie") %>% 
+  pass_if(~identical(.result, penguins$species |> 
+  fct_relevel("Chinstrap", "Gentoo", "Adelie") |> 
   levels()
   ))
 )
@@ -110,23 +110,25 @@ We often need to change the factor level labels for a variable. This is termed _
 
 Now we want the word "Island" to be added to each of the island names in the data frame. So we need to recode the existing factor levels.
 
-**Recode the island variable to add "Island" to each factor level (e.g., "Biscoe Island", "Dream Island", and "Torgersen Island") using a `{forcats}` function (not a `{stringr}` function).**
+**3. Recode the island variable to add "Island" to each factor level (e.g., "Biscoe Island", "Dream Island", and "Torgersen Island") using a `{forcats}` function (not a `{stringr}` function).**
 ```{r exercise2, exercise = TRUE}
-penguins$island %>% 
-  ... %>% 
+penguins$island |> 
+  ... |> 
   levels()
 ```
  
 ```{r exercise2-solution}
-penguins$island %>% 
-  fct_recode("Biscoe Island" = "Biscoe", "Dream Island" = "Dream", "Torgersen Island" = "Torgersen") %>% 
+penguins$island |> 
+  fct_recode("Biscoe Island" = "Biscoe", 
+             "Dream Island" = "Dream", 
+             "Torgersen Island" = "Torgersen") |> 
   levels()
 ```
 
 ```{r exercise2-check}
 grade_result(
-  pass_if(~identical(.result, penguins$island %>% 
-  fct_recode("Biscoe Island" = "Biscoe", "Dream Island" = "Dream", "Torgersen Island" = "Torgersen") %>% 
+  pass_if(~identical(.result, penguins$island |> 
+  fct_recode("Biscoe Island" = "Biscoe", "Dream Island" = "Dream", "Torgersen Island" = "Torgersen") |> 
   levels()))
 )
 ```
@@ -135,25 +137,25 @@ grade_result(
 
 Now we want to create a new column that provides each species' diet. Gentoo penguins are generalists (meaning they feed on a number of different food items) and Adelie and chinstrap penguins are specialists that feed primarily on krill. To do this, we will mutate the `species` variable into a new `diet` variable that recodes Gentoo to "generalist" and Adelie and Chinstrap to "specialist".
 
-**Create a new column that recodes the species to their diets using the `fct_collapse()` function.**
+**4. Create a new column that recodes the species to their diets using the `fct_collapse()` function.**
 ```{r exercise3, exercise = TRUE}
-penguins %>% 
+penguins |> 
   mutate(diet = fct_collapse(...))
 ```
  
 ```{r exercise3-solution}
-penguins %>% 
-  mutate(diet = fct_collapse(species, generalist = "Gentoo", specialist = c("Adelie", "Chinstrap")))
+penguins |> 
+  mutate(diet = fct_collapse(species, 
+                             generalist = "Gentoo", 
+                             specialist = c("Adelie", "Chinstrap")))
 ```
 
 ```{r exercise3-check}
 grade_result(
-  pass_if(~identical(.result, penguins %>% 
+  pass_if(~identical(.result, penguins |> 
   mutate(diet = fct_collapse(species, generalist = "Gentoo", specialist = c("Adelie", "Chinstrap")))))
 )
 ```
-
-### 
 
 ### Wrap-up
 

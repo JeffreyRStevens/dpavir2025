@@ -2986,14 +2986,14 @@
     "href": "schedule.html",
     "title": "Data Processing and Visualization in R",
     "section": "",
-    "text": "Note this is tentative!\n\n\n\n\n\n\nWeek\nDate\nModule\nTopic\n\n\n\n\n1\n2025-01-20\n1\nMLK Day\n\n\n\n2025-01-22\n1\nCourse introduction\n\n\n\n2025-01-24\n1\nWorking in RStudio\n\n\n2\n2025-01-27\n1\nCoding basics\n\n\n\n2025-01-29\n1\nWorkflows\n\n\n\n2025-01-31\n1\nLiterate programming\n\n\n3\n2025-02-03\n2\nData types\n\n\n\n2025-02-05\n2\nData structures\n\n\n\n2025-02-07\n2\nImporting data\n\n\n4\n2025-02-10\n2\nValidating data\n\n\n\n2025-02-12\n3\nSelecting columns\n\n\n\n2025-02-14\n3\nMutating columns\n\n\n5\n2025-02-17\n3\nPiping commands\n\n\n\n2025-02-19\n3\nFiltering rows\n\n\n\n2025-02-21\n3\nSummarizing rows\n\n\n6\n2025-02-24\n4\nPivoting data\n\n\n\n2025-02-26\n4\nSeparating data\n\n\n\n2025-02-28\n4\nMerging columns\n\n\n7\n2025-03-03\n4\nMerging rows\n\n\n\n2025-03-05\n5\nNumbers\n\n\n\n2025-03-07\n5\nStrings\n\n\n8\n2025-03-10\n5\nMatching patterns\n\n\n\n2025-03-12\n5\nFactors\n\n\n\n2025-03-14\n5\nProject workday\n\n\n9\n2025-03-17\n\nSpring break\n\n\n\n2025-03-19\n\nSpring break\n\n\n\n2025-03-21\n\nSpring break\n\n\n10\n2025-03-24\n6\nFunctions\n\n\n\n2025-03-26\n6\nIteration\n\n\n\n2025-03-28\n7\nGrammar of graphics I\n\n\n11\n2025-03-31\n7\nGrammar of graphics II\n\n\n\n2025-04-02\n7\nDesign and themes\n\n\n\n2025-04-04\n7\nColor\n\n\n12\n2025-04-07\n8\nPlotting distributions: histograms\n\n\n\n2025-04-09\n8\nPlotting distributions: boxplots\n\n\n\n2025-04-11\n8\nPlotting amounts: bar charts\n\n\n13\n2025-04-14\n8\nPlotting x-y data: associations\n\n\n\n2025-04-16\n\nNebraska Symposium\n\n\n\n2025-04-18\n8\nPlotting x-y data: time series\n\n\n14\n2025-04-21\n8\nPlotting x-y data: categories\n\n\n\n2025-04-23\n9\nAdjusting axes\n\n\n\n2025-04-25\n9\nAnnotating plots\n\n\n15\n2025-04-28\n9\nPlotting challenge\n\n\n\n2025-04-30\n10\nTables\n\n\n\n2025-05-02\n10\nPublications\n\n\n16\n2025-05-05\n10\nAdvanced R Markdown\n\n\n\n2025-05-07\n11\nStatistics I\n\n\n\n2025-05-09\n11\nStatistics II"
+    "text": "Note this is tentative!\n\n\n\n\n\n\nWeek\nDate\nModule\nTopic\n\n\n\n\n1\n2025-01-20\n1\nMLK Day\n\n\n\n2025-01-22\n1\nCourse introduction\n\n\n\n2025-01-24\n1\nWorking in RStudio\n\n\n2\n2025-01-27\n1\nCoding basics\n\n\n\n2025-01-29\n1\nWorkflows\n\n\n\n2025-01-31\n1\nLiterate programming\n\n\n3\n2025-02-03\n2\nData types\n\n\n\n2025-02-05\n2\nData structures\n\n\n\n2025-02-07\n2\nImporting data\n\n\n4\n2025-02-10\n2\nValidating data\n\n\n\n2025-02-12\n3\nSelecting columns\n\n\n\n2025-02-14\n3\nMutating columns\n\n\n5\n2025-02-17\n3\nPiping commands\n\n\n\n2025-02-19\n3\nFiltering rows\n\n\n\n2025-02-21\n3\nSummarizing rows\n\n\n6\n2025-02-24\n4\nPivoting data\n\n\n\n2025-02-26\n4\nSeparating data\n\n\n\n2025-02-28\n4\nMerging columns\n\n\n7\n2025-03-03\n4\nMerging rows\n\n\n\n2025-03-05\n5\nNumbers\n\n\n\n2025-03-07\n5\nStrings\n\n\n8\n2025-03-10\n5\nMatching patterns\n\n\n\n2025-03-12\n5\nFactors\n\n\n\n2025-03-14\n5\nDates\n\n\n9\n2025-03-17\n\nSpring break\n\n\n\n2025-03-19\n\nSpring break\n\n\n\n2025-03-21\n\nSpring break\n\n\n10\n2025-03-24\n6\nFunctions\n\n\n\n2025-03-26\n6\nIteration\n\n\n\n2025-03-28\n7\nGrammar of graphics I\n\n\n11\n2025-03-31\n7\nGrammar of graphics II\n\n\n\n2025-04-02\n7\nDesign and themes\n\n\n\n2025-04-04\n7\nColor\n\n\n12\n2025-04-07\n8\nPlotting distributions: histograms\n\n\n\n2025-04-09\n8\nPlotting distributions: boxplots\n\n\n\n2025-04-11\n8\nPlotting amounts: bar charts\n\n\n13\n2025-04-14\n8\nPlotting x-y data: associations\n\n\n\n2025-04-16\n\nNebraska Symposium\n\n\n\n2025-04-18\n8\nPlotting x-y data: time series\n\n\n14\n2025-04-21\n8\nPlotting x-y data: categories\n\n\n\n2025-04-23\n9\nAdjusting axes\n\n\n\n2025-04-25\n9\nAnnotating plots\n\n\n15\n2025-04-28\n9\nPlotting challenge\n\n\n\n2025-04-30\n10\nTables\n\n\n\n2025-05-02\n10\nPublications\n\n\n16\n2025-05-05\n10\nAdvanced R Markdown\n\n\n\n2025-05-07\n11\nStatistics I\n\n\n\n2025-05-09\n11\nStatistics II"
   },
   {
     "objectID": "schedule.html#course-schedule",
     "href": "schedule.html#course-schedule",
     "title": "Data Processing and Visualization in R",
     "section": "",
-    "text": "Note this is tentative!\n\n\n\n\n\n\nWeek\nDate\nModule\nTopic\n\n\n\n\n1\n2025-01-20\n1\nMLK Day\n\n\n\n2025-01-22\n1\nCourse introduction\n\n\n\n2025-01-24\n1\nWorking in RStudio\n\n\n2\n2025-01-27\n1\nCoding basics\n\n\n\n2025-01-29\n1\nWorkflows\n\n\n\n2025-01-31\n1\nLiterate programming\n\n\n3\n2025-02-03\n2\nData types\n\n\n\n2025-02-05\n2\nData structures\n\n\n\n2025-02-07\n2\nImporting data\n\n\n4\n2025-02-10\n2\nValidating data\n\n\n\n2025-02-12\n3\nSelecting columns\n\n\n\n2025-02-14\n3\nMutating columns\n\n\n5\n2025-02-17\n3\nPiping commands\n\n\n\n2025-02-19\n3\nFiltering rows\n\n\n\n2025-02-21\n3\nSummarizing rows\n\n\n6\n2025-02-24\n4\nPivoting data\n\n\n\n2025-02-26\n4\nSeparating data\n\n\n\n2025-02-28\n4\nMerging columns\n\n\n7\n2025-03-03\n4\nMerging rows\n\n\n\n2025-03-05\n5\nNumbers\n\n\n\n2025-03-07\n5\nStrings\n\n\n8\n2025-03-10\n5\nMatching patterns\n\n\n\n2025-03-12\n5\nFactors\n\n\n\n2025-03-14\n5\nProject workday\n\n\n9\n2025-03-17\n\nSpring break\n\n\n\n2025-03-19\n\nSpring break\n\n\n\n2025-03-21\n\nSpring break\n\n\n10\n2025-03-24\n6\nFunctions\n\n\n\n2025-03-26\n6\nIteration\n\n\n\n2025-03-28\n7\nGrammar of graphics I\n\n\n11\n2025-03-31\n7\nGrammar of graphics II\n\n\n\n2025-04-02\n7\nDesign and themes\n\n\n\n2025-04-04\n7\nColor\n\n\n12\n2025-04-07\n8\nPlotting distributions: histograms\n\n\n\n2025-04-09\n8\nPlotting distributions: boxplots\n\n\n\n2025-04-11\n8\nPlotting amounts: bar charts\n\n\n13\n2025-04-14\n8\nPlotting x-y data: associations\n\n\n\n2025-04-16\n\nNebraska Symposium\n\n\n\n2025-04-18\n8\nPlotting x-y data: time series\n\n\n14\n2025-04-21\n8\nPlotting x-y data: categories\n\n\n\n2025-04-23\n9\nAdjusting axes\n\n\n\n2025-04-25\n9\nAnnotating plots\n\n\n15\n2025-04-28\n9\nPlotting challenge\n\n\n\n2025-04-30\n10\nTables\n\n\n\n2025-05-02\n10\nPublications\n\n\n16\n2025-05-05\n10\nAdvanced R Markdown\n\n\n\n2025-05-07\n11\nStatistics I\n\n\n\n2025-05-09\n11\nStatistics II"
+    "text": "Note this is tentative!\n\n\n\n\n\n\nWeek\nDate\nModule\nTopic\n\n\n\n\n1\n2025-01-20\n1\nMLK Day\n\n\n\n2025-01-22\n1\nCourse introduction\n\n\n\n2025-01-24\n1\nWorking in RStudio\n\n\n2\n2025-01-27\n1\nCoding basics\n\n\n\n2025-01-29\n1\nWorkflows\n\n\n\n2025-01-31\n1\nLiterate programming\n\n\n3\n2025-02-03\n2\nData types\n\n\n\n2025-02-05\n2\nData structures\n\n\n\n2025-02-07\n2\nImporting data\n\n\n4\n2025-02-10\n2\nValidating data\n\n\n\n2025-02-12\n3\nSelecting columns\n\n\n\n2025-02-14\n3\nMutating columns\n\n\n5\n2025-02-17\n3\nPiping commands\n\n\n\n2025-02-19\n3\nFiltering rows\n\n\n\n2025-02-21\n3\nSummarizing rows\n\n\n6\n2025-02-24\n4\nPivoting data\n\n\n\n2025-02-26\n4\nSeparating data\n\n\n\n2025-02-28\n4\nMerging columns\n\n\n7\n2025-03-03\n4\nMerging rows\n\n\n\n2025-03-05\n5\nNumbers\n\n\n\n2025-03-07\n5\nStrings\n\n\n8\n2025-03-10\n5\nMatching patterns\n\n\n\n2025-03-12\n5\nFactors\n\n\n\n2025-03-14\n5\nDates\n\n\n9\n2025-03-17\n\nSpring break\n\n\n\n2025-03-19\n\nSpring break\n\n\n\n2025-03-21\n\nSpring break\n\n\n10\n2025-03-24\n6\nFunctions\n\n\n\n2025-03-26\n6\nIteration\n\n\n\n2025-03-28\n7\nGrammar of graphics I\n\n\n11\n2025-03-31\n7\nGrammar of graphics II\n\n\n\n2025-04-02\n7\nDesign and themes\n\n\n\n2025-04-04\n7\nColor\n\n\n12\n2025-04-07\n8\nPlotting distributions: histograms\n\n\n\n2025-04-09\n8\nPlotting distributions: boxplots\n\n\n\n2025-04-11\n8\nPlotting amounts: bar charts\n\n\n13\n2025-04-14\n8\nPlotting x-y data: associations\n\n\n\n2025-04-16\n\nNebraska Symposium\n\n\n\n2025-04-18\n8\nPlotting x-y data: time series\n\n\n14\n2025-04-21\n8\nPlotting x-y data: categories\n\n\n\n2025-04-23\n9\nAdjusting axes\n\n\n\n2025-04-25\n9\nAnnotating plots\n\n\n15\n2025-04-28\n9\nPlotting challenge\n\n\n\n2025-04-30\n10\nTables\n\n\n\n2025-05-02\n10\nPublications\n\n\n16\n2025-05-05\n10\nAdvanced R Markdown\n\n\n\n2025-05-07\n11\nStatistics I\n\n\n\n2025-05-09\n11\nStatistics II"
   },
   {
     "objectID": "posts/21_patterns/index.html",
@@ -5618,7 +5618,7 @@
     "href": "slides/22_factors.html#factors",
     "title": "Factors",
     "section": "Factors",
-    "text": "Factors\nCategorical variables represented by augmented integers\n\n(x1 &lt;- c(\"Apr\", \"Jun\", \"Oct\", \"Jan\"))\n\n[1] \"Apr\" \"Jun\" \"Oct\" \"Jan\"\n\nmonth.abb\n\n [1] \"Jan\" \"Feb\" \"Mar\" \"Apr\" \"May\" \"Jun\" \"Jul\" \"Aug\" \"Sep\" \"Oct\" \"Nov\" \"Dec\"\n\n(y1 &lt;- factor(x1))\n\n[1] Apr Jun Oct Jan\nLevels: Apr Jan Jun Oct\n\n\n\n\nclass(y1)\n\n[1] \"factor\"\n\ntypeof(y1)\n\n[1] \"integer\""
+    "text": "Factors\nCategorical variables represented by augmented integers\n\n(x1 &lt;- c(\"Apr\", \"Jun\", \"Oct\", \"Jan\"))\n\n[1] \"Apr\" \"Jun\" \"Oct\" \"Jan\"\n\n(y1 &lt;- factor(x1))\n\n[1] Apr Jun Oct Jan\nLevels: Apr Jan Jun Oct\n\n\n\n\nclass(y1)\n\n[1] \"factor\"\n\ntypeof(y1)\n\n[1] \"integer\""
   },
   {
     "objectID": "slides/22_factors.html#mental-model",
@@ -5639,7 +5639,7 @@
     "href": "slides/22_factors.html#label-factors",
     "title": "Factors",
     "section": "Label factors",
-    "text": "Label factors\nlabels argument\n\n(y3 &lt;- factor(y1, labels = c(\"April\", \"January\", \"June\", \"October\")))\n\n[1] April   June    October January\nLevels: April January June October\n\n\n\n\n\n\n\n\nNote\n\n\nNote you have to label them in the order they appear as levels."
+    "text": "Label factors\nlabels argument\n\n(y3 &lt;- factor(y1, labels = c(\"April\", \"January\", \"June\", \"October\")))\n\n[1] April   June    October January\nLevels: April January June October\n\n\n\n\n\n\n\n\nNote you have to label them in the order they appear as levels."
   },
   {
     "objectID": "slides/22_factors.html#factors-with-forcats",
@@ -5660,77 +5660,77 @@
     "href": "slides/22_factors.html#check-level-order",
     "title": "Factors",
     "section": "Check level order",
-    "text": "Check level order\n\nlevels(y1)\n\n[1] \"Apr\" \"Jan\" \"Jun\" \"Oct\"\n\n\n\n\n\n\n\n\nNote\n\n\nBy default, level elements are sorted alphabetically."
+    "text": "Check level order\n\ny1\n\n[1] Apr Jun Oct Jan\nLevels: Apr Jan Jun Oct\n\nlevels(y1)\n\n[1] \"Apr\" \"Jan\" \"Jun\" \"Oct\"\n\n\n\n\n\n\n\n\nBy default, level elements are sorted alphabetically."
   },
   {
     "objectID": "slides/22_factors.html#check-level-order-with-pipes",
     "href": "slides/22_factors.html#check-level-order-with-pipes",
     "title": "Factors",
     "section": "Check level order with pipes",
-    "text": "Check level order with pipes\n\nmarital &lt;- gss_cat |&gt;\n  pull(marital)\nmarital |&gt; levels()\n\n[1] \"No answer\"     \"Never married\" \"Separated\"     \"Divorced\"     \n[5] \"Widowed\"       \"Married\"      \n\n\n\n\n\n\n\n\nNote\n\n\nHere, order was determined already."
+    "text": "Check level order with pipes\n\nmarital &lt;- gss_cat |&gt;\n  pull(marital)\nmarital |&gt; levels()\n\n[1] \"No answer\"     \"Never married\" \"Separated\"     \"Divorced\"     \n[5] \"Widowed\"       \"Married\"      \n\n\n\n\n\n\n\n\nHere, order was determined already."
   },
   {
     "objectID": "slides/22_factors.html#reordering-levels",
     "href": "slides/22_factors.html#reordering-levels",
     "title": "Factors",
     "section": "Reordering levels",
-    "text": "Reordering levels\nIn the order present in the data with fct_inorder()\n\nhead(marital, 20)\n\n [1] Never married Divorced      Widowed       Never married Divorced     \n [6] Married       Never married Divorced      Married       Married      \n[11] Married       Married       Married       Married       Divorced     \n[16] Married       Widowed       Never married Married       Married      \nLevels: No answer Never married Separated Divorced Widowed Married\n\n\n\n\nmarital |&gt; fct_inorder() |&gt;\n  levels()\n\n[1] \"Never married\" \"Divorced\"      \"Widowed\"       \"Married\"      \n[5] \"Separated\"     \"No answer\""
+    "text": "Reordering levels\nWhy reorder levels?"
   },
   {
     "objectID": "slides/22_factors.html#reordering-levels-1",
     "href": "slides/22_factors.html#reordering-levels-1",
     "title": "Factors",
     "section": "Reordering levels",
-    "text": "Reordering levels\nIn the order based on number of observations of each level with fct_infreq()\n\ngss_cat |&gt;\n  count(marital, sort = TRUE)\n\n# A tibble: 6 × 2\n  marital           n\n  &lt;fct&gt;         &lt;int&gt;\n1 Married       10117\n2 Never married  5416\n3 Divorced       3383\n4 Widowed        1807\n5 Separated       743\n6 No answer        17\n\n\n\n\nmarital |&gt; fct_infreq() |&gt;\n  levels()\n\n[1] \"Married\"       \"Never married\" \"Divorced\"      \"Widowed\"      \n[5] \"Separated\"     \"No answer\""
+    "text": "Reordering levels\nIn reverse order of factor levels with fct_rev()\n\n\n\nlevels(marital)\n\n[1] \"No answer\"     \"Never married\" \"Separated\"     \"Divorced\"     \n[5] \"Widowed\"       \"Married\"      \n\nmarital |&gt; fct_rev() |&gt;\n  levels()\n\n[1] \"Married\"       \"Widowed\"       \"Divorced\"      \"Separated\"    \n[5] \"Never married\" \"No answer\""
   },
   {
     "objectID": "slides/22_factors.html#reordering-levels-2",
     "href": "slides/22_factors.html#reordering-levels-2",
     "title": "Factors",
     "section": "Reordering levels",
-    "text": "Reordering levels\nIn reverse order of factor levels with fct_rev()\n\nlevels(marital)\n\n[1] \"No answer\"     \"Never married\" \"Separated\"     \"Divorced\"     \n[5] \"Widowed\"       \"Married\"      \n\nmarital |&gt; fct_rev() |&gt;\n  levels()\n\n[1] \"Married\"       \"Widowed\"       \"Divorced\"      \"Separated\"    \n[5] \"Never married\" \"No answer\""
-  },
-  {
-    "objectID": "slides/22_factors.html#manually-reorder-factor-levels",
-    "href": "slides/22_factors.html#manually-reorder-factor-levels",
-    "title": "Factors",
-    "section": "Manually reorder factor levels",
-    "text": "Manually reorder factor levels\nfct_relevel()\n\n(relig_summary &lt;- gss_cat |&gt;\n    group_by(relig) |&gt;\n    summarise(\n      tvhours = mean(tvhours, na.rm = TRUE),\n      n = n()))\n\n# A tibble: 15 × 3\n   relig                   tvhours     n\n   &lt;fct&gt;                     &lt;dbl&gt; &lt;int&gt;\n 1 No answer                  2.72    93\n 2 Don't know                 4.62    15\n 3 Inter-nondenominational    2.87   109\n 4 Native american            3.46    23\n 5 Christian                  2.79   689\n 6 Orthodox-christian         2.42    95\n 7 Moslem/islam               2.44   104\n 8 Other eastern              1.67    32\n 9 Hinduism                   1.89    71\n10 Buddhism                   2.38   147\n11 Other                      2.73   224\n12 None                       2.71  3523\n13 Jewish                     2.52   388\n14 Catholic                   2.96  5124\n15 Protestant                 3.15 10846"
-  },
-  {
-    "objectID": "slides/22_factors.html#manually-reorder-factor-levels-1",
-    "href": "slides/22_factors.html#manually-reorder-factor-levels-1",
-    "title": "Factors",
-    "section": "Manually reorder factor levels",
-    "text": "Manually reorder factor levels\nfct_relevel()\n\nrelig_summary |&gt; ggplot(aes(x = tvhours, y = relig)) +\n  geom_point()"
-  },
-  {
-    "objectID": "slides/22_factors.html#manually-reorder-factor-levels-2",
-    "href": "slides/22_factors.html#manually-reorder-factor-levels-2",
-    "title": "Factors",
-    "section": "Manually reorder factor levels",
-    "text": "Manually reorder factor levels\nfct_relevel()\n\nrelig_summary_releveled &lt;- relig_summary |&gt;\n  mutate(relig = fct_relevel(relig, c(\"None\", \"Other\"), after = 2))\nlevels(relig_summary_releveled$relig)\n\n [1] \"No answer\"               \"Don't know\"             \n [3] \"None\"                    \"Other\"                  \n [5] \"Inter-nondenominational\" \"Native american\"        \n [7] \"Christian\"               \"Orthodox-christian\"     \n [9] \"Moslem/islam\"            \"Other eastern\"          \n[11] \"Hinduism\"                \"Buddhism\"               \n[13] \"Jewish\"                  \"Catholic\"               \n[15] \"Protestant\"              \"Not applicable\""
-  },
-  {
-    "objectID": "slides/22_factors.html#manually-reorder-factor-levels-3",
-    "href": "slides/22_factors.html#manually-reorder-factor-levels-3",
-    "title": "Factors",
-    "section": "Manually reorder factor levels",
-    "text": "Manually reorder factor levels\nfct_relevel()\n\nrelig_summary_releveled |&gt; ggplot(aes(x = tvhours, y = relig)) +\n  geom_point()"
+    "text": "Reordering levels\nIn the order based on number of observations of each level with fct_infreq()\n\n\n\ngss_cat |&gt;\n  count(marital, sort = TRUE)\n\n# A tibble: 6 × 2\n  marital           n\n  &lt;fct&gt;         &lt;int&gt;\n1 Married       10117\n2 Never married  5416\n3 Divorced       3383\n4 Widowed        1807\n5 Separated       743\n6 No answer        17\n\n\n\n\nmarital |&gt; fct_infreq() |&gt;\n  levels()\n\n[1] \"Married\"       \"Never married\" \"Divorced\"      \"Widowed\"      \n[5] \"Separated\"     \"No answer\""
   },
   {
     "objectID": "slides/22_factors.html#order-factors-by-another-variable",
     "href": "slides/22_factors.html#order-factors-by-another-variable",
     "title": "Factors",
     "section": "Order factors by another variable",
-    "text": "Order factors by another variable\nfct_reorder()\n\nrelig_summary |&gt; mutate(relig = fct_reorder(relig, tvhours)) |&gt;\n  ggplot(aes(x = tvhours, y = relig)) +\n  geom_point()"
+    "text": "Order factors by another variable\n\n(relig_summary &lt;- gss_cat |&gt;\n    group_by(relig) |&gt;\n    summarise(\n      tvhours = mean(tvhours, na.rm = TRUE),\n      n = n()))\n\n# A tibble: 15 × 3\n   relig                   tvhours     n\n   &lt;fct&gt;                     &lt;dbl&gt; &lt;int&gt;\n 1 No answer                  2.72    93\n 2 Don't know                 4.62    15\n 3 Inter-nondenominational    2.87   109\n 4 Native american            3.46    23\n 5 Christian                  2.79   689\n 6 Orthodox-christian         2.42    95\n 7 Moslem/islam               2.44   104\n 8 Other eastern              1.67    32\n 9 Hinduism                   1.89    71\n10 Buddhism                   2.38   147\n11 Other                      2.73   224\n12 None                       2.71  3523\n13 Jewish                     2.52   388\n14 Catholic                   2.96  5124\n15 Protestant                 3.15 10846"
   },
   {
     "objectID": "slides/22_factors.html#order-factors-by-another-variable-1",
     "href": "slides/22_factors.html#order-factors-by-another-variable-1",
     "title": "Factors",
     "section": "Order factors by another variable",
-    "text": "Order factors by another variable\nfct_reorder()\n\nggplot(relig_summary, aes(x = tvhours, y = fct_reorder(relig, tvhours))) +\n  geom_point()"
+    "text": "Order factors by another variable"
+  },
+  {
+    "objectID": "slides/22_factors.html#order-factors-by-another-variable-2",
+    "href": "slides/22_factors.html#order-factors-by-another-variable-2",
+    "title": "Factors",
+    "section": "Order factors by another variable",
+    "text": "Order factors by another variable\nfct_reorder()\n\nmutate(relig = fct_reorder(relig, tvhours))"
+  },
+  {
+    "objectID": "slides/22_factors.html#manually-reorder-factor-levels",
+    "href": "slides/22_factors.html#manually-reorder-factor-levels",
+    "title": "Factors",
+    "section": "Manually reorder factor levels",
+    "text": "Manually reorder factor levels\nfct_relevel()"
+  },
+  {
+    "objectID": "slides/22_factors.html#manually-reorder-factor-levels-1",
+    "href": "slides/22_factors.html#manually-reorder-factor-levels-1",
+    "title": "Factors",
+    "section": "Manually reorder factor levels",
+    "text": "Manually reorder factor levels\nfct_relevel()\n\nrelig_summary_releveled &lt;- relig_summary |&gt;\n  mutate(relig = fct_relevel(relig, c(\"None\", \"Other\"), after = 2))\nlevels(relig_summary_releveled$relig)\n\n [1] \"No answer\"               \"Don't know\"             \n [3] \"None\"                    \"Other\"                  \n [5] \"Inter-nondenominational\" \"Native american\"        \n [7] \"Christian\"               \"Orthodox-christian\"     \n [9] \"Moslem/islam\"            \"Other eastern\"          \n[11] \"Hinduism\"                \"Buddhism\"               \n[13] \"Jewish\"                  \"Catholic\"               \n[15] \"Protestant\"              \"Not applicable\""
+  },
+  {
+    "objectID": "slides/22_factors.html#manually-reorder-factor-levels-2",
+    "href": "slides/22_factors.html#manually-reorder-factor-levels-2",
+    "title": "Factors",
+    "section": "Manually reorder factor levels",
+    "text": "Manually reorder factor levels\nfct_relevel()"
   },
   {
     "objectID": "slides/22_factors.html#recode-factor-levels",
@@ -5744,28 +5744,21 @@
     "href": "slides/22_factors.html#recode-factor-levels-1",
     "title": "Factors",
     "section": "Recode factor levels",
-    "text": "Recode factor levels\nfct_recode()\n\n\ngss_cat |&gt;\n  mutate(partyid = fct_recode(partyid,\n                              \"Republican, strong\"    = \"Strong republican\",\n                              \"Republican, weak\"      = \"Not str republican\",\n                              \"Independent, near rep\" = \"Ind,near rep\",\n                              \"Independent, near dem\" = \"Ind,near dem\",\n                              \"Democrat, weak\"        = \"Not str democrat\",\n                              \"Democrat, strong\"      = \"Strong democrat\"\n  )) |&gt;\n  count(partyid)\n\n# A tibble: 10 × 2\n   partyid                   n\n   &lt;fct&gt;                 &lt;int&gt;\n 1 No answer               154\n 2 Don't know                1\n 3 Other party             393\n 4 Republican, strong     2314\n 5 Republican, weak       3032\n 6 Independent, near rep  1791\n 7 Independent            4119\n 8 Independent, near dem  2499\n 9 Democrat, weak         3690\n10 Democrat, strong       3490"
-  },
-  {
-    "objectID": "slides/22_factors.html#recode-factor-levels-2",
-    "href": "slides/22_factors.html#recode-factor-levels-2",
-    "title": "Factors",
-    "section": "Recode factor levels",
-    "text": "Recode factor levels\nfct_recode()\n\n\ngss_cat |&gt;\n  mutate(partyid = fct_recode(partyid,\n                              \"Independent, near rep\" = \"Ind,near rep\",\n                              \"Independent, near dem\" = \"Ind,near dem\",\n  )) |&gt;\n  count(partyid)\n\n# A tibble: 10 × 2\n   partyid                   n\n   &lt;fct&gt;                 &lt;int&gt;\n 1 No answer               154\n 2 Don't know                1\n 3 Other party             393\n 4 Strong republican      2314\n 5 Not str republican     3032\n 6 Independent, near rep  1791\n 7 Independent            4119\n 8 Independent, near dem  2499\n 9 Not str democrat       3690\n10 Strong democrat        3490"
+    "text": "Recode factor levels\nfct_recode()\n\n\ngss_cat |&gt;\n  mutate(partyid = fct_recode(partyid,\n                              \"Republican, strong\"    = \"Strong republican\",\n                              \"Republican, weak\"      = \"Not str republican\",\n                              \"Independent, near rep\" = \"Ind,near rep\",\n                              \"Independent, near dem\" = \"Ind,near dem\",\n                              \"Democrat, weak\"        = \"Not str democrat\",\n                              \"Democrat, strong\"      = \"Strong democrat\")) |&gt;\n  count(partyid)\n\n# A tibble: 10 × 2\n   partyid                   n\n   &lt;fct&gt;                 &lt;int&gt;\n 1 No answer               154\n 2 Don't know                1\n 3 Other party             393\n 4 Republican, strong     2314\n 5 Republican, weak       3032\n 6 Independent, near rep  1791\n 7 Independent            4119\n 8 Independent, near dem  2499\n 9 Democrat, weak         3690\n10 Democrat, strong       3490"
   },
   {
     "objectID": "slides/22_factors.html#collapse-multiple-levels",
     "href": "slides/22_factors.html#collapse-multiple-levels",
     "title": "Factors",
     "section": "Collapse multiple levels",
-    "text": "Collapse multiple levels\nfct_collapse()\n\n\ngss_cat |&gt;\n  mutate(partyid = fct_collapse(partyid,\n                                \"other\" = c(\"No answer\", \"Don't know\", \"Other party\"),\n                                \"rep\" = c(\"Strong republican\", \"Not str republican\"),\n                                \"ind\" = c(\"Ind,near rep\", \"Independent\", \"Ind,near dem\"),\n                                \"dem\" = c(\"Not str democrat\", \"Strong democrat\")\n  )) |&gt;\n  count(partyid)\n\n# A tibble: 4 × 2\n  partyid     n\n  &lt;fct&gt;   &lt;int&gt;\n1 other     548\n2 rep      5346\n3 ind      8409\n4 dem      7180"
+    "text": "Collapse multiple levels\nfct_collapse()\n\n\ngss_cat |&gt;\n  mutate(partyid = fct_collapse(partyid,\n                                \"other\" = c(\"No answer\", \"Don't know\", \"Other party\"),\n                                \"rep\" = c(\"Strong republican\", \"Not str republican\"),\n                                \"ind\" = c(\"Ind,near rep\", \"Independent\", \"Ind,near dem\"),\n                                \"dem\" = c(\"Not str democrat\", \"Strong democrat\"))) |&gt;\n  count(partyid)\n\n# A tibble: 4 × 2\n  partyid     n\n  &lt;fct&gt;   &lt;int&gt;\n1 other     548\n2 rep      5346\n3 ind      8409\n4 dem      7180"
   },
   {
     "objectID": "slides/22_factors.html#combine-factor-levels",
     "href": "slides/22_factors.html#combine-factor-levels",
     "title": "Factors",
     "section": "Combine factor levels",
-    "text": "Combine factor levels\nBased on number of groups: fct_lump_n()\n\ngss_cat |&gt;\n  mutate(relig = fct_lump_n(relig, n = 5)) |&gt;\n  count(relig, sort = TRUE)\n\n# A tibble: 6 × 2\n  relig          n\n  &lt;fct&gt;      &lt;int&gt;\n1 Protestant 10846\n2 Catholic    5124\n3 None        3523\n4 Other        913\n5 Christian    689\n6 Jewish       388"
+    "text": "Combine factor levels\nBased on number of groups: fct_lump_n()\n\n\n\ngss_cat |&gt;\n  count(relig, sort = TRUE)\n\n# A tibble: 15 × 2\n   relig                       n\n   &lt;fct&gt;                   &lt;int&gt;\n 1 Protestant              10846\n 2 Catholic                 5124\n 3 None                     3523\n 4 Christian                 689\n 5 Jewish                    388\n 6 Other                     224\n 7 Buddhism                  147\n 8 Inter-nondenominational   109\n 9 Moslem/islam              104\n10 Orthodox-christian         95\n11 No answer                  93\n12 Hinduism                   71\n13 Other eastern              32\n14 Native american            23\n15 Don't know                 15\n\n\n\n\n\ngss_cat |&gt;\n  mutate(relig = fct_lump_n(relig, n = 5)) |&gt;\n  count(relig, sort = TRUE)\n\n# A tibble: 6 × 2\n  relig          n\n  &lt;fct&gt;      &lt;int&gt;\n1 Protestant 10846\n2 Catholic    5124\n3 None        3523\n4 Other        913\n5 Christian    689\n6 Jewish       388"
   },
   {
     "objectID": "slides/22_factors.html#combine-factor-levels-1",
@@ -5786,6 +5779,13 @@
     "href": "slides/22_factors.html#solving-the-problem",
     "title": "Factors",
     "section": "Solving the problem",
+    "text": "Solving the problem\n\nlibrary(tidyverse)\nnrows &lt;- 12\nset.seed(100)\ndata1 &lt;- starwars |&gt; \n  count(species) |&gt; \n  filter(n &gt; 1) |&gt; \n  drop_na()"
+  },
+  {
+    "objectID": "slides/22_factors.html#solving-the-problem-1",
+    "href": "slides/22_factors.html#solving-the-problem-1",
+    "title": "Factors",
+    "section": "Solving the problem",
     "text": "Solving the problem\nWhat code generates data2 from data1?\n\n\n\ndata1\n\n# A tibble: 8 × 2\n  species      n\n  &lt;chr&gt;    &lt;int&gt;\n1 Droid        6\n2 Gungan       3\n3 Human       35\n4 Kaminoan     2\n5 Mirialan     2\n6 Twi'lek      2\n7 Wookiee      2\n8 Zabrak       2\n\n\n\n\ndata2\n\n# A tibble: 4 × 2\n  species     n\n  &lt;fct&gt;   &lt;int&gt;\n1 Human      35\n2 Other      10\n3 Android     6\n4 Gungan      3"
   },
   {
@@ -5793,7 +5793,7 @@
     "href": "slides/22_factors.html#lets-code",
     "title": "Factors",
     "section": "Let’s code!",
-    "text": "Let’s code!\nFactors [Rmd]"
+    "text": "Let’s code!\nFactors"
   },
   {
     "objectID": "slides/24_functions.html#set-up",

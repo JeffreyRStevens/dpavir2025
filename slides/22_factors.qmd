@@ -1,7 +1,7 @@
 ---
 title: "Factors"
 author: "Jeff Stevens"
-date: "2023-03-20"
+date: "2025-03-12"
 date-format: iso
 execute:
   echo: true
@@ -34,11 +34,9 @@ data1 <- starwars |>
   drop_na()
 data2 <- starwars |> 
   semi_join(data1, by = "species") |> 
-  mutate(species = fct_lump(species, n = 3),
-         species = fct_recode(species, "Android" = "Droid"),
-         species = fct_infreq(species)) |> 
-  count(species) #|> 
-  # mutate(species = fct_infreq(species))
+  mutate(species = fct_lump_n(species, n = 3),
+         species = fct_recode(species, "Android" = "Droid")) |> 
+  count(species, sort = TRUE)
 ```
 
 What is needed to create `data2` from `data1`?
@@ -77,7 +75,6 @@ Categorical variables represented by **augmented integers**
 
 ```{r}
 (x1 <- c("Apr", "Jun", "Oct", "Jan"))
-month.abb
 (y1 <- factor(x1))
 ```
 
@@ -117,7 +114,7 @@ levels(y2)
 (y3 <- factor(y1, labels = c("April", "January", "June", "October")))
 ```
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"}
 Note you have to label them in the order they appear **as levels**.
 :::
 
@@ -173,10 +170,11 @@ gss_cat
 ## Check level order
 
 ```{r}
+y1
 levels(y1)
 ```
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"}
 By default, level elements are sorted alphabetically.
 :::
 
@@ -188,30 +186,94 @@ marital <- gss_cat |>
 marital |> levels()
 ```
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"}
 Here, order was determined already.
 :::
 
 
 ## Reordering levels
 
-In the order present in the data with `fct_inorder()`
+Why reorder levels?
 
-```{r}
-head(marital, 20)
+```{r echo=FALSE}
+gss_cat |> 
+  ggplot(aes(y = marital)) +  
+  geom_bar() +
+  theme(axis.text.y = element_text(size = 17))
 ```
-
-::: {.fragment}
-```{r}
-marital |> fct_inorder() |>
-  levels()
-```
-:::
 
 
 ## Reordering levels
 
+In reverse order of factor levels with `fct_rev()`
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+```{r}
+levels(marital)
+marital |> fct_rev() |>
+  levels()
+```
+:::
+
+::: {.column width="45%"}
+
+:::{.fragment}
+```{r echo=FALSE}
+gss_cat |> 
+  mutate(marital = fct_rev(marital)) |> 
+  ggplot(aes(y = marital)) +  
+  geom_bar() +
+  theme(axis.text.y = element_text(size = 17))
+```
+:::
+:::
+::::
+
+
+<!-- ## Reordering levels -->
+
+<!-- In the order present in the data with `fct_inorder()` -->
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="55%"} -->
+
+<!-- ```{r} -->
+<!-- head(marital, 10) -->
+<!-- ``` -->
+
+<!-- ::: {.fragment} -->
+<!-- ```{r} -->
+<!-- marital |> fct_inorder() |> -->
+<!--   levels() -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- ::: {.column width="45%"} -->
+
+<!-- :::{.fragment} -->
+<!-- ```{r echo=FALSE} -->
+<!-- gss_cat |>  -->
+<!--   mutate(marital = fct_inorder(marital)) |>  -->
+<!--   ggplot(aes(y = marital)) +   -->
+<!--   geom_bar() + -->
+<!--   theme(axis.text.y = element_text(size = 17)) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- :::: -->
+
+## Reordering levels
+
 In the order based on number of observations of each level with `fct_infreq()`
+
+:::: {.columns}
+
+::: {.column width="55%"}
 
 ```{r}
 gss_cat |>
@@ -224,22 +286,24 @@ marital |> fct_infreq() |>
   levels()
 ```
 :::
+:::
 
+::: {.column width="45%"}
 
-## Reordering levels
-
-In reverse order of factor levels with `fct_rev()`
-
-```{r}
-levels(marital)
-marital |> fct_rev() |>
-  levels()
+:::{.fragment}
+```{r echo=FALSE}
+gss_cat |> 
+  mutate(marital = fct_infreq(marital)) |> 
+  ggplot(aes(y = marital)) +  
+  geom_bar() +
+  theme(axis.text.y = element_text(size = 17))
 ```
+:::
+:::
+::::
 
 
-## Manually reorder factor levels 
-
-`fct_relevel()`
+## Order factors by another variable
 
 ```{r}
 (relig_summary <- gss_cat |>
@@ -250,13 +314,49 @@ marital |> fct_rev() |>
 ```
 
 
+## Order factors by another variable 
+
+```{r echo=FALSE}
+relig_summary |> ggplot(aes(x = tvhours, y = relig)) +
+  geom_point() +
+  theme(axis.text.y = element_text(size = 17))
+```
+
+
+## Order factors by another variable
+
+`fct_reorder()`
+
+```{r eval=FALSE}
+mutate(relig = fct_reorder(relig, tvhours))
+```
+
+```{r echo=FALSE}
+relig_summary |> mutate(relig = fct_reorder(relig, tvhours)) |>
+  ggplot(aes(x = tvhours, y = relig)) +
+  geom_point() +
+  theme(axis.text.y = element_text(size = 17))
+```
+
+
+<!-- ## Order factors by another variable -->
+
+<!-- `fct_reorder()` -->
+
+<!-- ```{r} -->
+<!-- ggplot(relig_summary, aes(x = tvhours, y = fct_reorder(relig, tvhours))) + -->
+<!--   geom_point() -->
+<!-- ``` -->
+
+
 ## Manually reorder factor levels 
 
 `fct_relevel()`
 
-```{r}
+```{r echo=FALSE}
 relig_summary |> ggplot(aes(x = tvhours, y = relig)) +
-  geom_point()
+  geom_point() +
+  theme(axis.text.y = element_text(size = 17))
 ```
 
 
@@ -275,35 +375,11 @@ levels(relig_summary_releveled$relig)
 
 `fct_relevel()`
 
-```{r}
+```{r echo=FALSE}
 relig_summary_releveled |> ggplot(aes(x = tvhours, y = relig)) +
-  geom_point()
+  geom_point() +
+  theme(axis.text.y = element_text(size = 17))
 ```
-
-
-## Order factors by another variable
-
-`fct_reorder()`
-
-```{r}
-relig_summary |> mutate(relig = fct_reorder(relig, tvhours)) |>
-  ggplot(aes(x = tvhours, y = relig)) +
-  geom_point()
-```
-
-
-## Order factors by another variable
-
-`fct_reorder()`
-
-```{r}
-ggplot(relig_summary, aes(x = tvhours, y = fct_reorder(relig, tvhours))) +
-  geom_point()
-```
-
-
-<!-- # Combining factors -->
-
 
 
 # Recode factors
@@ -331,27 +407,25 @@ gss_cat |>
                               "Independent, near rep" = "Ind,near rep",
                               "Independent, near dem" = "Ind,near dem",
                               "Democrat, weak"        = "Not str democrat",
-                              "Democrat, strong"      = "Strong democrat"
-  )) |>
+                              "Democrat, strong"      = "Strong democrat")) |>
   count(partyid)
 ```
 :::
 
 
-## Recode factor levels 
+<!-- ## Recode factor levels  -->
 
-`fct_recode()`
+<!-- `fct_recode()` -->
 
-::: {style="font-size:90%"}
-```{r}
-gss_cat |>
-  mutate(partyid = fct_recode(partyid,
-                              "Independent, near rep" = "Ind,near rep",
-                              "Independent, near dem" = "Ind,near dem",
-  )) |>
-  count(partyid)
-```
-:::
+<!-- ::: {style="font-size:90%"} -->
+<!-- ```{r} -->
+<!-- gss_cat |> -->
+<!--   mutate(partyid = fct_recode(partyid, -->
+<!--                               "Independent, near rep" = "Ind,near rep", -->
+<!--                               "Independent, near dem" = "Ind,near dem")) |> -->
+<!--   count(partyid) -->
+<!-- ``` -->
+<!-- ::: -->
 
 
 <!-- ## Aggregate multiple levels -->
@@ -386,8 +460,7 @@ gss_cat |>
                                 "other" = c("No answer", "Don't know", "Other party"),
                                 "rep" = c("Strong republican", "Not str republican"),
                                 "ind" = c("Ind,near rep", "Independent", "Ind,near dem"),
-                                "dem" = c("Not str democrat", "Strong democrat")
-  )) |>
+                                "dem" = c("Not str democrat", "Strong democrat"))) |>
   count(partyid)
 ```
 :::
@@ -397,11 +470,28 @@ gss_cat |>
 
 Based on number of groups: `fct_lump_n()`
 
+:::: {.columns}
+
+::: {.column width="45%"}
+
+```{r}
+gss_cat |>
+  count(relig, sort = TRUE)
+```
+:::
+
+::: {.column width="55%"}
+
+:::{.fragment}
 ```{r}
 gss_cat |>
   mutate(relig = fct_lump_n(relig, n = 5)) |>
   count(relig, sort = TRUE)
 ```
+:::
+:::
+
+::::
 
 
 ## Combine factor levels 
@@ -428,6 +518,17 @@ gss_cat |>
 
 ## Solving the problem
 
+```{r}
+library(tidyverse)
+nrows <- 12
+set.seed(100)
+data1 <- starwars |> 
+  count(species) |> 
+  filter(n > 1) |> 
+  drop_na()
+```
+## Solving the problem
+
 What code generates `data2` from `data1`?
 
 :::: {.columns}
@@ -451,4 +552,4 @@ data2
 
 ## Let's code!
 
-[Factors](../code/22_factors.html){target="_blank"} [[Rmd](../code/22_factors.Rmd){target="_blank"}]
+[Factors](../code/22_factors.html){target="_blank"}
