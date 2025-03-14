@@ -73,7 +73,7 @@ execute:
 
 </details>
 
-<details>
+<details open>
 
 <summary> Module 6: Programming </summary>
 
