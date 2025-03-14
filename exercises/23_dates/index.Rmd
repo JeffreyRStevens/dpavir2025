@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### Set-up
 
-Working with dates requires the `{lubridate}` package, which is now part of the core tidyverse packages if you use tidyverse version 2.0.0 or above (I recommend it!). Otherwise, you need to load it separately.
+Working with dates requires the `{lubridate}` package, which is now part of the core tidyverse. Otherwise, you need to load it separately.
 
 ```{r echo = TRUE, message = FALSE}
 library(tidyverse)
@@ -44,12 +44,19 @@ question(
 
 ## Creating dates and times
 
-Remember the standard way to format dates is the ISO 8601 format: YYYY-MM-DD. Type the code to convert the following dates or date/times to the standard format (e.g., 2021-06-11).
+Remember the standard way to format dates is the ISO 8601 format: YYYY-MM-DD. 
+
+**1. Type the code to convert the following dates or date/times to the standard format (e.g., 2021-06-11).**
 
 **11 Jun 21**
 ```{r exercise4, exercise = TRUE}
 mydate <- "11 Jun 21"
 ...
+```
+ 
+```{r exercise4-solution}
+mydate <- "11 Jun 21"
+dmy(mydate)
 ```
  
 ```{r exercise4-check}
@@ -64,6 +71,11 @@ mydate <- "2021-6-11"
 ...
 ```
  
+```{r exercise5-solution}
+mydate <- "2021-6-11"
+ymd(mydate)
+```
+ 
 ```{r exercise5-check}
 grade_result(
   pass_if(~identical(.result, ymd(mydate)))
@@ -74,6 +86,11 @@ grade_result(
 ```{r exercise6, exercise = TRUE}
 mydate <- "June 11th 2021"
 ...
+```
+ 
+```{r exercise6-solution}
+mydate <- "June 11th 2021"
+mdy(mydate)
 ```
  
 ```{r exercise6-check}
@@ -88,6 +105,11 @@ mydate <- "06/11/2021 15:00"
 ...
 ```
  
+```{r exercise7-solution}
+mydate <- "06/11/2021 15:00"
+mdy_hm(mydate)
+```
+ 
 ```{r exercise7-check}
 grade_result(
   pass_if(~identical(.result, mdy_hm(mydate)))
@@ -98,10 +120,15 @@ grade_result(
 
 Once your dates and times are formatted correctly, it is easy to extract individual components with the provided functions in `{lubridate}`.
 
-**Find today's date and extract the full word for the month (no abbreviations) using a `{lubridate}` function.**
+**2. Find today's date and extract the full word for the month (no abbreviations) using a `{lubridate}` function.**
 ```{r exercise8, exercise = TRUE}
 mydate <- today()
 ...
+```
+ 
+```{r exercise8-solution}
+mydate <- today()
+month(mydate, label = TRUE, abbr = FALSE)
 ```
  
 ```{r exercise8-check}
@@ -110,19 +137,9 @@ grade_result(
 )
 ```
 
-**Find today's date and extract the abbreviation for the day of the week using a `{lubridate}` function.**
-```{r exercise9, exercise = TRUE}
-mydate <- today()
-...
-```
- 
-```{r exercise9-check}
-grade_result(
-  pass_if(~identical(.result, wday(mydate, label = TRUE)))
-)
-```
+###
 
-**Create a character vector (not factors) of the full names of the _weekdays_ (not weekend days) using a `{lubridate}` function.**
+**3. Create a character vector (not factors) of the full names of the _weekdays_ (not weekend days) using a `{lubridate}` function.**
 ```{r exercise10, exercise = TRUE}
 ...
 ```
@@ -143,20 +160,28 @@ grade_result(
 
 One of the great things about working with dates is that you can use math to calculate time spans.
 
-**Calculate the number of days that have passed since the class started on January 23, 2023.**
+**4. Calculate the number of days that have passed since the class started on January 22, 2025.**
 ```{r exercise11, exercise = TRUE}
 ...
 ```
  
+```{r exercise11-solution}
+today() - ymd("2025-01-22")
+```
+ 
 ```{r exercise11-check}
 grade_result(
-  pass_if(~identical(.result, today() - ymd("2023-01-23")))
+  pass_if(~identical(.result, today() - ymd("2025-01-22")))
 )
 ```
 
-**Find the date 123 days from now.**
+**5. Find the date 123 days from now.**
 ```{r exercise12, exercise = TRUE}
 ...
+```
+ 
+```{r exercise12-solution}
+today() + 123
 ```
  
 ```{r exercise12-check}
@@ -165,7 +190,6 @@ grade_result(
 )
 ```
 
-### 
 
 ### Wrap-up
 

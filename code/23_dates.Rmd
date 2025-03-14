@@ -1,13 +1,17 @@
 ---
 title: "Dates and times"
 author: "Jeffrey R. Stevens"
-date: "2023-03-22"
+date: "2025-03-14"
 output: html_document
 execute:
   freeze: true
 ---
 
 For these exercises, we'll use the dates data set. 
+
+```{r}
+# >
+```
 
 
 1. Load tidyverse, import [`dates.csv`](https://jeffreyrstevens.github.io/dpavir2025/data/dates.csv) to `dates`, and view the data set.
@@ -24,7 +28,7 @@ For these exercises, we'll use the dates data set.
 ```
 
 
-3. Create a column called _time1_ that converts _test1_ to datetime and change the time zone to "America/Chicago".
+3. Create a column called _time1_ that converts _test1_ to datetime.
 
 ```{r}
 # >
