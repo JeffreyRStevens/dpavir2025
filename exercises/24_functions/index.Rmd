@@ -38,7 +38,7 @@ library(palmerpenguins)
 Functions are composed of _names_, _arguments_, and the _body_ of the function. Including arguments in functions is useful because the make the functions more flexible for your user.
 
 
-**Create a function called `divider` that takes two arguments (`dividend` and `divisor`) and divides the dividend by the divisor. Then run the function with the vector `numbers1` as the dividend and `numbers2` as the divisor.**
+**1. Create a function called `divider` that takes two arguments (`dividend` and `divisor`) and divides the dividend by the divisor. Then run the function with the vector `numbers1` as the dividend and `numbers2` as the divisor.**
 ```{r exercise1, exercise = TRUE}
 numbers1 <- c(19, 84, 20, 1, 7, 10)
 numbers2 <- c(5, 21, 4, 10, 7, 5)
@@ -64,7 +64,7 @@ grade_result(
 
 It's often useful to set default argument values. Of course, you want to be thoughtful about what those default values are.
 
-**Copy the `divider()` function from above and paste it below. Then alter the function to set the default value of the divisor argument to 3. Run the function on the `numbers1` vector with default argument values.**
+**2. Copy the `divider()` function from above and paste it below. Then alter the function to set the default value of the divisor argument to 3. Run the function on the `numbers1` vector with default argument values.**
 ```{r exercise2, exercise = TRUE}
 numbers1 <- c(19, 84, 20, 1, 7, 10)
 ...
@@ -134,7 +134,7 @@ quiz(
 
 Often when writing functions, there are different possibilities that we want to account for, so we need to execute different code depend (conditional) on certain inputs. The `square()` function that we saw previously includes this conditional execution by assessing whether the number of rows is greater than, less than, or equal to the number of columns. In each of those three cases, we need to conduct different computations. For conditional execution, we use the `if()` and `else()` functions.
 
-**Write a function called `season_greeting()` that does the following:**
+**3. Write a function called `season_greeting()` that does the following:**
 
 1. **Takes as an argument a date vector written in ISO 8601 standard format.**
 1. **Uses the current date as a default if no date is entered.**

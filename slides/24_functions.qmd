@@ -1,7 +1,7 @@
 ---
 title: "Functions"
 author: "Jeff Stevens"
-date: "2023-03-27"
+date: "2025-03-24"
 date-format: iso
 execute:
   echo: true
@@ -178,7 +178,7 @@ mymean6 <- function(x) {
 mymean6(mtcars$mpg)
 ```
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"}
 This is fine when testing out a function but probably not great practice 'in production'. Why?
 :::
 
@@ -241,12 +241,8 @@ multiplier(x = 7, constant = 3)
 multiplier(x = 1:10, constant = 3)
 ```
 
-```{r eval = FALSE}
+```{r error = TRUE}
 multiplier(x = 1:10)
-```
-```
-Error in multiplier(x = 1:10) : 
-argument "constant" is missing, with no default
 ```
 :::
 
@@ -371,11 +367,8 @@ age_cutoffs2 <- function(x) {
 ```{r}
 age_cutoffs2(15)
 ```
-```{r eval = FALSE}
+```{r error = TRUE}
 age_cutoffs2(22)
-```
-```
-Error in age_cutoffs2(22) : Age exceeded 20.
 ```
 :::
 
@@ -431,21 +424,15 @@ grouped_mean <- function(df, group_var, mean_var) {
 ```
 
 ::: {.fragment}
-```{r eval = FALSE}
+```{r error = TRUE}
 penguins |> 
   grouped_mean(group_var = species, mean_var = bill_length_mm)
-```
-```
-Error in `group_by()`:
-! Must group by variables found in `.data`.
-✖ Column `group_var` is not found.
-Run `rlang::last_trace()` to see where the error occurred.
 ```
 :::
 
 ## Embracing
 
-Embrace variables in `{{ }}`
+Embrace variables in `{{` `}}`
 
 ```{r}
 grouped_mean2 <- function(df, group_var, mean_var) {
@@ -463,4 +450,4 @@ penguins |>
 
 ## Let's code!
 
-[Functions](../code/24_functions.html){target="_blank"} [[Rmd](../code/24_functions.Rmd){target="_blank"}]
+[Functions](../code/24_functions.html){target="_blank"}

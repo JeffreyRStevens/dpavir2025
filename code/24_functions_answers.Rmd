@@ -1,7 +1,7 @@
 ---
 title: "Functions"
 author: "Jeffrey R. Stevens"
-date: "2023-03-27"
+date: "2025-03-24"
 output: html_document
 execute:
   freeze: auto
@@ -39,7 +39,7 @@ mystring(words[1:10], chars = 5)
 
 4. Add a step that checks whether the inputted vector is a character string. If it is, continue to return the truncated strings. If the vector is not a character string, use the `stop()` function to stop the computation and return a message to the console telling the user that the vector was not a character vector. Test your function with a character vector, a numeric vector, and a logical vector.
 
-```{r}
+```{r error = TRUE}
 mystring <- function(x, chars = 3) {
   if (!is.character(x)) {
     stop("Please enter a character vector.")
@@ -49,8 +49,8 @@ mystring <- function(x, chars = 3) {
 }
 
 mystring(words[1:10])
-# mystring(1:10)
-# mystring(c(TRUE, FALSE))
+mystring(1:10)
+mystring(c(TRUE, FALSE))
 ```
 
 5. Create a function called `parse_my_vector` that does the following:
@@ -93,13 +93,13 @@ parse_my_vector <- function(x, type) {
   * x = c(TRUE, FALSE, TRUE), type = "logical"
   * x = 1:10, type = "nums"
 
-```{r}
+```{r error = TRUE}
 parse_my_vector(x = 1:10, type = "num")
-# parse_my_vector(x = 1:10, type = "char")
-# parse_my_vector(x = words[1:10], type = "num")
+parse_my_vector(x = 1:10, type = "char")
+parse_my_vector(x = words[1:10], type = "num")
 parse_my_vector(x = words[1:10], type = "char")
-# parse_my_vector(x = c(TRUE, FALSE, TRUE), type = "num")
+parse_my_vector(x = c(TRUE, FALSE, TRUE), type = "num")
 parse_my_vector(x = c(TRUE, FALSE, TRUE), type = "logical")
-# parse_my_vector(x = 1:10, type = "nums")
+parse_my_vector(x = 1:10, type = "nums")
 ```
 
