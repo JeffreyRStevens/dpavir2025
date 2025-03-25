@@ -59,7 +59,7 @@ execute:
 
 </details>
 
-<details open>
+<details>
 
 <summary> Module 5: Transforming data values </summary>
 

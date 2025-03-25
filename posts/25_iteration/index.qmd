@@ -2,7 +2,7 @@
 title: 'Iteration'
 author:
   - Jeff Stevens
-date: '2023-03-29'
+date: '2025-03-26'
 categories: 
   - "module 6"
   - "week 10"
@@ -12,7 +12,7 @@ categories:
 description: "Use iteration for applying functions across data"
 execute:
   freeze: auto
-draft: true
+draft: false
 ---
 
 Functions reduce repetition in code, but you may need to iterate to apply the function across multiple objects.
