@@ -221,7 +221,7 @@ mymean9 <- function(x) {
 mymean9(mtcars$mpg)
 ```
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"}
 Check out [`{cli}`](https://cli.r-lib.org/) package for powerful messaging.
 :::
 
