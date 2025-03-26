@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Because R is a vectorized programming language, most of the time, we can apply functions to vectors to solve our coding problems. But sometimes, you need to repeat commands a certain number of times. This is where `for` statements come in. They are especially useful for repeatedly sampling.
 
-**Use a for loop to generate 20 random samples of 10 numbers from the sequence 1-100 and print them to the console. Use the `sample()` function to draw the samples, and feel free to look up how to use `sample()`.**
+**1. Use a for loop to generate 20 random samples of 10 numbers from the sequence 1-100 and print them to the console. Use the `sample()` function to draw the samples, and feel free to look up how to use `sample()`.**
 
 ```{r exercise5, exercise = TRUE}
 set.seed(1)
@@ -70,20 +70,12 @@ quiz(
     random_answer_order = TRUE
   ),
   question(
-    'Which map function returns a data frame?',
-    answer('`map_df()`', correct = TRUE),
-    answer('`map()`'),
-    answer('`map_dbl()`'),
-    answer('`map_d()`'),
-    answer('`map_data()`'),
-    allow_retry = TRUE,
-    random_answer_order = TRUE
-  ),
-  question(
-    'Check out the `purrr::list_cbind()` function documentation. What does this function do?',
-    answer('`Combines list elements into a data frame`', correct = TRUE),
-    answer('`Combines list elements into a vector`'),
-    answer('`Flattens lists by removing one level of list hierarchy`'),
+    'Which function combines list elements into a data frame by column binding?',
+    answer('`list_cbind()`', correct = TRUE),
+    answer('`list_rbind()`'),
+    answer('`list_c()`'),
+    answer('`list_flatten()`'),
+    answer('`list_merge()`'),
     allow_retry = TRUE,
     random_answer_order = TRUE
   ),
@@ -101,7 +93,7 @@ quiz(
 ###
 
 
-**Use one of the `map()` functions to find the maximum value for each of the numeric columns in `penguins` (ignoring `NA`s) and return a numeric vector. You'll need to use `is.numeric` inside the `where()` function to select the numeric columns. See the `where()` documentation for more information.**
+**2. Use one of the `map()` functions to find the maximum value for each of the numeric columns in `penguins` (ignoring `NA`s) and return a _numeric vector_. You'll need to use `is.numeric` inside the `where()` function to select the numeric columns. See the `where()` documentation for more information.**
 
 ```{r exercise6, exercise = TRUE}
 ...
@@ -118,8 +110,6 @@ grade_result(
   ))
 )
 ```
-
-### 
 
 ### Wrap-up
 

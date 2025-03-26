@@ -186,7 +186,7 @@
     "href": "code/25_iteration.html",
     "title": "Iteration",
     "section": "",
-    "text": "Write a for loop that calculates the mean bill length for each species in the penguins data set (don’t use group_by()) and saves them as species_means.\n\n\n# &gt;\n\n\nTurn #1 into a function called species_mean that lets the user determine which variable to calculate the mean over.\n\n\n# &gt;\n\n\nCreate a list penguins_island that separates the penguins data by island.\n\n\n# &gt;\n\n\nApply map() to find the number of observations for each year.\n\n\n# &gt;\n\n\nApply map() to calculate the mean body weight for each island.\n\n\n# &gt;\n\n\nRework #5 to return a numeric vector with values rounded to 1 decimal place.\n\n\n# &gt;"
+    "text": "Write a for loop that calculates the mean bill length for each species in the penguins data set (don’t use group_by()) and saves them as species_means.\n\n\n# &gt;\n\n\n\n\nCreate a list penguins_island that separates the penguins data by island.\n\n\n# &gt;\n\n\nApply map() to find the number of observations for each year.\n\n\n# &gt;\n\n\nApply map() to calculate the mean body weight for each island.\n\n\n# &gt;\n\n\nRework #5 to return a numeric vector with values rounded to 1 decimal place.\n\n\n# &gt;"
   },
   {
     "objectID": "code/24_functions.html",
@@ -977,14 +977,42 @@
     "href": "slides/25_iteration.html#building-objects-with-for-loops",
     "title": "Iteration",
     "section": "Building objects with for loops",
-    "text": "Building objects with for loops\n\nfor (i in 1:nrow(penguins)) {\n  bill_size[i] &lt;- penguins$bill_length_mm[i] * penguins$bill_depth_mm[i]\n}\n\n\nError: object 'bill_size' not found\n\n\n\n\n\n\n\n\nWarning\n\n\nYou must initialize variables that you build in for loops.\n\n\n\n\nbill_size &lt;- NA\nfor (i in 1:nrow(penguins)) {\n  bill_size[i] &lt;- penguins$bill_length_mm[i] * penguins$bill_depth_mm[i]\n}"
+    "text": "Building objects with for loops\n\nfor (i in 1:nrow(penguins)) {\n  bill_size[i] &lt;- penguins$bill_length_mm[i] * penguins$bill_depth_mm[i]\n}\n\n\nError: object 'bill_size' not found\n\n\n\n\n\n\n\n\nYou must initialize variables that you build in for loops.\n\n\n\n\nbill_size &lt;- NA\nfor (i in 1:nrow(penguins)) {\n  bill_size[i] &lt;- penguins$bill_length_mm[i] * penguins$bill_depth_mm[i]\n}\nhead(bill_size)\n\n[1] 731.17 687.30 725.40     NA 708.31 809.58"
   },
   {
     "objectID": "slides/25_iteration.html#for-loops-with-vectors",
     "href": "slides/25_iteration.html#for-loops-with-vectors",
     "title": "Iteration",
     "section": "For loops with vectors",
-    "text": "For loops with vectors\n\nfor (i in month.name) {\n  print(paste0(i, \" has \", str_length(i), \" letters.\"))\n}\n\n[1] \"January has 7 letters.\"\n[1] \"February has 8 letters.\"\n[1] \"March has 5 letters.\"\n[1] \"April has 5 letters.\"\n[1] \"May has 3 letters.\"\n[1] \"June has 4 letters.\"\n[1] \"July has 4 letters.\"\n[1] \"August has 6 letters.\"\n[1] \"September has 9 letters.\"\n[1] \"October has 7 letters.\"\n[1] \"November has 8 letters.\"\n[1] \"December has 8 letters.\""
+    "text": "For loops with vectors\n\nmonth.name\n\n [1] \"January\"   \"February\"  \"March\"     \"April\"     \"May\"       \"June\"     \n [7] \"July\"      \"August\"    \"September\" \"October\"   \"November\"  \"December\" \n\nfor (i in month.name) {\n  print(paste0(i, \" has \", str_length(i), \" letters.\"))\n}\n\n[1] \"January has 7 letters.\"\n[1] \"February has 8 letters.\"\n[1] \"March has 5 letters.\"\n[1] \"April has 5 letters.\"\n[1] \"May has 3 letters.\"\n[1] \"June has 4 letters.\"\n[1] \"July has 4 letters.\"\n[1] \"August has 6 letters.\"\n[1] \"September has 9 letters.\"\n[1] \"October has 7 letters.\"\n[1] \"November has 8 letters.\"\n[1] \"December has 8 letters.\""
+  },
+  {
+    "objectID": "slides/25_iteration.html#r-is-vectorized",
+    "href": "slides/25_iteration.html#r-is-vectorized",
+    "title": "Iteration",
+    "section": "R is vectorized",
+    "text": "R is vectorized\nMost R functions apply to vectors, so no need for for loops\n\nbill_size &lt;- penguins$bill_length_mm * penguins$bill_depth_mm\nhead(bill_size)\n\n[1] 731.17 687.30 725.40     NA 708.31 809.58\n\nprint(paste0(month.name, \" has \", str_length(month.name), \" letters.\"))\n\n [1] \"January has 7 letters.\"   \"February has 8 letters.\" \n [3] \"March has 5 letters.\"     \"April has 5 letters.\"    \n [5] \"May has 3 letters.\"       \"June has 4 letters.\"     \n [7] \"July has 4 letters.\"      \"August has 6 letters.\"   \n [9] \"September has 9 letters.\" \"October has 7 letters.\"  \n[11] \"November has 8 letters.\"  \"December has 8 letters.\""
+  },
+  {
+    "objectID": "slides/25_iteration.html#lagged-and-leading-values",
+    "href": "slides/25_iteration.html#lagged-and-leading-values",
+    "title": "Iteration",
+    "section": "Lagged and leading values",
+    "text": "Lagged and leading values\nTo compute based on previous or subsequent values, use dplyr::lag() and dplyr::lead()\n\ndata.frame(trial = 1:8, cond = rep(1:2, each = 4), resp = c(1, 3, 4, 6, 1, 4, 8, 10)) |&gt; \n  mutate(behind = lag(trial),\n         ahead = lead(trial),\n         diff = resp - lag(resp))\n\n  trial cond resp behind ahead diff\n1     1    1    1     NA     2   NA\n2     2    1    3      1     3    2\n3     3    1    4      2     4    1\n4     4    1    6      3     5    2\n5     5    2    1      4     6   -5\n6     6    2    4      5     7    3\n7     7    2    8      6     8    4\n8     8    2   10      7    NA    2"
+  },
+  {
+    "objectID": "slides/25_iteration.html#lagged-and-leading-values-1",
+    "href": "slides/25_iteration.html#lagged-and-leading-values-1",
+    "title": "Iteration",
+    "section": "Lagged and leading values",
+    "text": "Lagged and leading values\nTo compute based on previous or subsequent values, use dplyr::lag() and dplyr::lead()\n\ndata.frame(trial = 1:8, cond = rep(1:2, each = 4), resp = c(1, 3, 4, 6, 1, 4, 8, 10)) |&gt; \n  mutate(behind = lag(trial),\n         ahead = lead(trial),\n         diff = resp - lag(resp),\n         diff = ifelse(cond != lag(cond), NA, diff))\n\n  trial cond resp behind ahead diff\n1     1    1    1     NA     2   NA\n2     2    1    3      1     3    2\n3     3    1    4      2     4    1\n4     4    1    6      3     5    2\n5     5    2    1      4     6   NA\n6     6    2    4      5     7    3\n7     7    2    8      6     8    4\n8     8    2   10      7    NA    2"
+  },
+  {
+    "objectID": "slides/25_iteration.html#numbering-groups",
+    "href": "slides/25_iteration.html#numbering-groups",
+    "title": "Iteration",
+    "section": "Numbering groups",
+    "text": "Numbering groups\nRenumber row numbers based on groups\n\ndata.frame(trial = 1:8, cond = rep(1:2, each = 4)) |&gt; \n  mutate(.by = cond,\n         cond_trial = row_number())\n\n  trial cond cond_trial\n1     1    1          1\n2     2    1          2\n3     3    1          3\n4     4    1          4\n5     5    2          1\n6     6    2          2\n7     7    2          3\n8     8    2          4"
   },
   {
     "objectID": "slides/25_iteration.html#mapping-with-purrr",
@@ -998,21 +1026,21 @@
     "href": "slides/25_iteration.html#mapping-functions",
     "title": "Iteration",
     "section": "Mapping functions",
-    "text": "Mapping functions\npurrr::map() applies functions repeatedly across data\n\nmap(select(penguins, ends_with(\"_mm\")), ~ mean(.x, na.rm = TRUE))\n\n$bill_length_mm\n[1] 43.92193\n\n$bill_depth_mm\n[1] 17.15117\n\n$flipper_length_mm\n[1] 200.9152\n\n\n\nWhat kind of data type does map() return?"
+    "text": "Mapping functions\npurrr::map() applies functions repeatedly across data\n\nmap(select(penguins, ends_with(\"_mm\")), \n    ~ mean(.x, na.rm = TRUE))\n\n$bill_length_mm\n[1] 43.92193\n\n$bill_depth_mm\n[1] 17.15117\n\n$flipper_length_mm\n[1] 200.9152\n\n\n\nWhat kind of data type does map() return?"
   },
   {
     "objectID": "slides/25_iteration.html#mapping-function",
     "href": "slides/25_iteration.html#mapping-function",
     "title": "Iteration",
     "section": "Mapping function",
-    "text": "Mapping function\nNeed different data types as output?\n\nmap_dbl(select(penguins, ends_with(\"_mm\")), ~ mean(.x, na.rm = TRUE))\n\n   bill_length_mm     bill_depth_mm flipper_length_mm \n         43.92193          17.15117         200.91520 \n\nmap_chr(select(penguins, ends_with(\"_mm\")), ~ mean(.x, na.rm = TRUE))\n\n   bill_length_mm     bill_depth_mm flipper_length_mm \n      \"43.921930\"       \"17.151170\"      \"200.915205\""
+    "text": "Mapping function\nNeed different data types as output?\n\nmap_dbl(select(penguins, ends_with(\"_mm\")), \n        ~ mean(.x, na.rm = TRUE))\n\n   bill_length_mm     bill_depth_mm flipper_length_mm \n         43.92193          17.15117         200.91520 \n\nmap_chr(select(penguins, ends_with(\"_mm\")), \n        ~ mean(.x, na.rm = TRUE))\n\n   bill_length_mm     bill_depth_mm flipper_length_mm \n      \"43.921930\"       \"17.151170\"      \"200.915205\""
   },
   {
     "objectID": "slides/25_iteration.html#mapping-function-1",
     "href": "slides/25_iteration.html#mapping-function-1",
     "title": "Iteration",
     "section": "Mapping function",
-    "text": "Mapping function\nUse split() like dplyr::group_by()\n\npenguins |&gt;\n  split(penguins$species) |&gt;\n  map(~ lm(bill_length_mm ~ bill_depth_mm, data = .x))\n\n$Adelie\n\nCall:\nlm(formula = bill_length_mm ~ bill_depth_mm, data = .x)\n\nCoefficients:\n  (Intercept)  bill_depth_mm  \n       23.068          0.857  \n\n\n$Chinstrap\n\nCall:\nlm(formula = bill_length_mm ~ bill_depth_mm, data = .x)\n\nCoefficients:\n  (Intercept)  bill_depth_mm  \n       13.428          1.922  \n\n\n$Gentoo\n\nCall:\nlm(formula = bill_length_mm ~ bill_depth_mm, data = .x)\n\nCoefficients:\n  (Intercept)  bill_depth_mm  \n       17.230          2.021"
+    "text": "Mapping function\nUse split() like dplyr::group_by()\n\npenguins |&gt;\n  split(penguins$species) |&gt; # split() inputs vector (not column)\n  map(~ lm(bill_length_mm ~ bill_depth_mm, data = .x))\n\n$Adelie\n\nCall:\nlm(formula = bill_length_mm ~ bill_depth_mm, data = .x)\n\nCoefficients:\n  (Intercept)  bill_depth_mm  \n       23.068          0.857  \n\n\n$Chinstrap\n\nCall:\nlm(formula = bill_length_mm ~ bill_depth_mm, data = .x)\n\nCoefficients:\n  (Intercept)  bill_depth_mm  \n       13.428          1.922  \n\n\n$Gentoo\n\nCall:\nlm(formula = bill_length_mm ~ bill_depth_mm, data = .x)\n\nCoefficients:\n  (Intercept)  bill_depth_mm  \n       17.230          2.021"
   },
   {
     "objectID": "slides/25_iteration.html#mapping-function-2",
@@ -1026,7 +1054,7 @@
     "href": "slides/25_iteration.html#importing-multiple-data-files",
     "title": "Iteration",
     "section": "Importing multiple data files",
-    "text": "Importing multiple data files\nFirst, we’ll create multiple data files\n\nspecies_list &lt;- penguins |&gt; \n  split(penguins$species)\nwrite_csv(species_list$Adelie, here(\"data/adelie_penguin_data.csv\"))\nwrite_csv(species_list$Chinstrap, here(\"data/chinstrap_penguin_data.csv\"))\nwrite_csv(species_list$Gentoo, here(\"data/gentoo_penguin_data.csv\"))"
+    "text": "Importing multiple data files\nFirst, we’ll create multiple data files\n\nspecies_list &lt;- penguins |&gt; \n  split(penguins$species)\nmap2(species_list, names(species_list), \n     ~ write_csv(.x, here(paste0(\"data/\", tolower(.y), \"_penguin_data.csv\"))))\n\n$Adelie\n# A tibble: 152 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 142 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n$Chinstrap\n# A tibble: 68 × 8\n   species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Chinstrap Dream            46.5          17.9               192        3500\n 2 Chinstrap Dream            50            19.5               196        3900\n 3 Chinstrap Dream            51.3          19.2               193        3650\n 4 Chinstrap Dream            45.4          18.7               188        3525\n 5 Chinstrap Dream            52.7          19.8               197        3725\n 6 Chinstrap Dream            45.2          17.8               198        3950\n 7 Chinstrap Dream            46.1          18.2               178        3250\n 8 Chinstrap Dream            51.3          18.2               197        3750\n 9 Chinstrap Dream            46            18.9               195        4150\n10 Chinstrap Dream            51.3          19.9               198        3700\n# ℹ 58 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n$Gentoo\n# A tibble: 124 × 8\n   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Gentoo  Biscoe           46.1          13.2               211        4500\n 2 Gentoo  Biscoe           50            16.3               230        5700\n 3 Gentoo  Biscoe           48.7          14.1               210        4450\n 4 Gentoo  Biscoe           50            15.2               218        5700\n 5 Gentoo  Biscoe           47.6          14.5               215        5400\n 6 Gentoo  Biscoe           46.5          13.5               210        4550\n 7 Gentoo  Biscoe           45.4          14.6               211        4800\n 8 Gentoo  Biscoe           46.7          15.3               219        5200\n 9 Gentoo  Biscoe           43.3          13.4               209        4400\n10 Gentoo  Biscoe           46.8          15.4               215        5150\n# ℹ 114 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "slides/25_iteration.html#importing-multiple-data-files-1",
@@ -1047,7 +1075,7 @@
     "href": "slides/25_iteration.html#importing-multiple-data-files-3",
     "title": "Iteration",
     "section": "Importing multiple data files",
-    "text": "Importing multiple data files\n\nUse purrr::map_df() to return output as data frame\n\n(penguin_data2 &lt;- map_df(penguin_files, read_csv))\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;"
+    "text": "Importing multiple data files\n\nUse purrr::list_rbind() to return output as data frame\n\n(penguin_data2 &lt;- map(penguin_files, read_csv) |&gt; \n   list_rbind())\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;"
   },
   {
     "objectID": "slides/25_iteration.html#solving-the-problems",
@@ -1061,7 +1089,7 @@
     "href": "slides/25_iteration.html#lets-code",
     "title": "Iteration",
     "section": "Let’s code!",
-    "text": "Let’s code!\nIteration [Rmd]"
+    "text": "Let’s code!\nIteration"
   },
   {
     "objectID": "slides/23_dates.html#the-problem",
@@ -6619,7 +6647,7 @@
     "href": "code/25_iteration_answers.html",
     "title": "Iteration",
     "section": "",
-    "text": "Write a for loop that calculates the mean bill length for each species in the penguins data set (don’t use group_by()) and saves them as species_means.\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(palmerpenguins)\npenguin_species &lt;- unique(penguins$species)\nspecies_means &lt;- NA\nfor (i in penguin_species) {\n  species_means[i] &lt;- penguins |&gt; \n    filter(species == i) |&gt; \n    summarise(mean_bill_length = mean(bill_length_mm, na.rm = TRUE)) |&gt; \n    pull()\n}\nspecies_means &lt;- species_means[!is.na(species_means)]\n\n\nTurn #1 into a function called species_mean that lets the user determine which variable to calculate the mean over.\n\n\nspecies_mean &lt;- function(var) {\n  penguin_species &lt;- unique(penguins$species)\n  species_means &lt;- NA\n  for (i in penguin_species) {\n    species_means[i] &lt;- penguins |&gt; \n      filter(species == i) |&gt; \n      summarise(mean({{var}}, na.rm = TRUE)) |&gt; \n      pull()\n  }\n  species_means &lt;- species_means[!is.na(species_means)]\n  return(species_means)\n}\nspecies_mean(bill_length_mm)\n\n   Adelie    Gentoo Chinstrap \n 38.79139  47.50488  48.83382 \n\n\n\nCreate a list penguins_island that separates the penguins data by island.\n\n\npenguins_island &lt;- penguins |&gt; \n  split(penguins$island)\n\n\nApply map() to find the number of observations for each year.\n\n\nmap(penguins_island, nrow)\n\n$Biscoe\n[1] 168\n\n$Dream\n[1] 124\n\n$Torgersen\n[1] 52\n\n\n\nApply map() to calculate the mean body weight for each island.\n\n\nmap(penguins_island, ~ mean(.x$body_mass_g, na.rm = TRUE))\n\n$Biscoe\n[1] 4716.018\n\n$Dream\n[1] 3712.903\n\n$Torgersen\n[1] 3706.373\n\n\n\nRework #5 to return a numeric vector with values rounded to 1 decimal place.\n\n\nmap_dbl(penguins_island, ~ round(mean(.x$body_mass_g, na.rm = TRUE), 1))\n\n   Biscoe     Dream Torgersen \n   4716.0    3712.9    3706.4"
+    "text": "Write a for loop that calculates the mean bill length for each species in the penguins data set (don’t use group_by()) and saves them as species_means.\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(palmerpenguins)\npenguin_species &lt;- unique(penguins$species)\nspecies_means &lt;- NA\nfor (i in penguin_species) {\n  species_means[i] &lt;- penguins |&gt; \n    filter(species == i) |&gt; \n    summarise(mean_bill_length = mean(bill_length_mm, na.rm = TRUE)) |&gt; \n    pull()\n}\nspecies_means &lt;- species_means[!is.na(species_means)]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate a list penguins_island that separates the penguins data by island.\n\n\npenguins_island &lt;- penguins |&gt; \n  split(penguins$island)\n\n\nApply map() to find the number of observations for each year.\n\n\nmap(penguins_island, nrow)\n\n$Biscoe\n[1] 168\n\n$Dream\n[1] 124\n\n$Torgersen\n[1] 52\n\n\n\nApply map() to calculate the mean body weight for each island.\n\n\nmap(penguins_island, ~ mean(.x$body_mass_g, na.rm = TRUE))\n\n$Biscoe\n[1] 4716.018\n\n$Dream\n[1] 3712.903\n\n$Torgersen\n[1] 3706.373\n\n\n\nRework #5 to return a numeric vector with values rounded to 1 decimal place.\n\n\nmap_dbl(penguins_island, ~ round(mean(.x$body_mass_g, na.rm = TRUE), 1))\n\n   Biscoe     Dream Torgersen \n   4716.0    3712.9    3706.4"
   },
   {
     "objectID": "code/26_grammar1_answers.html",
