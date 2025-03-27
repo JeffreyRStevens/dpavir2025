@@ -84,7 +84,7 @@ execute:
 
 </details>
 
-<details>
+<details open>
 
 <summary> Module 7: Grammar of graphics </summary>
 
