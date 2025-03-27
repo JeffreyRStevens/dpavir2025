@@ -1,7 +1,7 @@
 ---
 title: "Grammar of graphics"
 author: "Jeff Stevens"
-date: "2023-03-31"
+date: "2025-03-28"
 date-format: iso
 execute:
   echo: true
@@ -48,7 +48,7 @@ Source: [Allison Horst](https://allisonhorst.com)
 
 ## Grammar of graphics
 
-![](../images/grammar-of-graphics.png){fig-align="center" width="58%"}
+[![](../images/grammar-of-graphics.png){fig-align="center" width="58%"}](https://link-springer-com.libproxy.unl.edu/book/10.1007/0-387-28695-0)
 
 
 ## Seven components/layers of ggplots
@@ -230,4 +230,4 @@ mpg |>
 
 ## Let's code!
 
-[Grammar of graphics](../code/26_grammar1.html){target="_blank"} [[Rmd](../code/26_grammar1.Rmd){target="_blank"}]
+[Grammar of graphics](../code/26_grammar1.html){target="_blank"}

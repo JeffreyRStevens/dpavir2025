@@ -68,9 +68,9 @@ Notice the warning about two rows have NAs, so they are not plotted. We'll turn 
 
 ### Piping data to plots
 
-We can pull out the data from the function and start a pipeline with it before piping to the plot function. Remember that pipes outside of ggplots use `|>` (or `%>%`) but once you start a ggplot, use `+` to connect commands. Also, we don't need the `mapping` argument in the ggplot and can go straight to `ggplot(aes(...))`.
+We can pull out the data from the function and start a pipeline with it before piping to the plot function. Remember that pipes outside of ggplots use `|>`, but once you start a ggplot, use `+` to connect commands. Also, we don't need the `mapping` argument name in the ggplot and can go straight to `ggplot(aes(...))`.
 
-**Start a plot with the data and plot the bill length on the x axis and the bill depth on the y axis.**
+**1. Start a plot with the data and plot the bill length on the x axis and the bill depth on the y axis.**
 
 ```{r exercise1, exercise = TRUE, warning = FALSE}
 penguins |> 
@@ -79,14 +79,15 @@ penguins |>
 
 ```{r exercise1-solution}
 penguins |> 
-  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  ggplot(mapping = aes(x = bill_length_mm, y = bill_depth_mm)) +
   geom_point()
 ```
 
 ### 
+
 To my knowledge, `{learnr}` cannot check if code entered for plots is correct. So going forward, I'll provide the correct plot, and you need to check if your plot matches it before continuing. Does the plot below match what you generated above? If so, continue. Otherwise, check your code and try again until you replicate this plot.
 
-```{r point2, warning = FALSE}
+```{r point2, echo = FALSE, warning = FALSE}
 penguins |> 
   ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
   geom_point()
@@ -96,7 +97,7 @@ penguins |>
 
 Because ggplots are part of the tidyverse, we can pipe other tidyverse commands into them. This is particularly useful if you want to filter your data for a plot but don't want to create a new object with the filtered data. Remember the rules of piping: once you include your data once, you shouldn't include it again.
 
-**In a single pipeline, filter the `penguins` data to remove observations of the chinstrap penguins, then plot the bill length by bill depth as shown above.**
+**2. In a single pipeline, filter the `penguins` data to remove observations of the chinstrap penguins, then plot the bill length by bill depth as shown above.**
 
 ```{r exercise2, exercise = TRUE, warning = FALSE}
 penguins |> 
@@ -112,7 +113,7 @@ penguins |>
 
 ### 
 
-```{r filter, warning = FALSE}
+```{r filter, echo = FALSE, warning = FALSE}
 penguins |> 
   filter(species != "Chinstrap") |> 
   ggplot(aes(bill_length_mm, bill_depth_mm)) +
@@ -177,7 +178,7 @@ This shows the distribution of the data better.
 
 ###
 
-Now make a boxplot instead of a violin plot.
+**3. Now make a boxplot instead of a violin plot.**
 
 ```{r exercise3, exercise = TRUE, warning = FALSE, message = FALSE}
 penguins |> 
@@ -217,7 +218,7 @@ penguins |>
 
 Notice that there are some data points that are visibly underneath the regression line. 
 
-**Now reverse the order the geoms to plot the regression line first.**
+**4. Now reverse the order the geoms to plot the regression line first.**
 
 ```{r exercise5, exercise = TRUE, warning = FALSE, message = FALSE}
 penguins |> 
@@ -244,7 +245,7 @@ penguins |>
 
 ###
 
-Now plot the penguin body mass data for each species, first with a violin plot then with the data points overlaid.
+**5. Now plot the penguin body mass data for each species, first with a violin plot then with the data points overlaid.**
 
 ```{r exercise6, exercise = TRUE, warning = FALSE, message = FALSE}
 penguins |> 

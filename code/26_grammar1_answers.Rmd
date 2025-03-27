@@ -1,7 +1,7 @@
 ---
 title: "Grammar of graphics I"
 author: "Jeffrey R. Stevens"
-date: "2023-03-31"
+date: "2025-03-28"
 output: html_document
 execute:
   freeze: auto
