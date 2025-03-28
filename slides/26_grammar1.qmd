@@ -48,7 +48,7 @@ Source: [Allison Horst](https://allisonhorst.com)
 
 ## Grammar of graphics
 
-[![](../images/grammar-of-graphics.png){fig-align="center" width="58%"}](https://link-springer-com.libproxy.unl.edu/book/10.1007/0-387-28695-0)
+[![](../images/grammar-of-graphics.png){fig-align="center" width="100%"}](https://link-springer-com.libproxy.unl.edu/book/10.1007/0-387-28695-0)
 
 
 ## Seven components/layers of ggplots
